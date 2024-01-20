@@ -1,0 +1,4 @@
+Triangle
+
+This package contains class used to call the 'triangle' 2d mesher
+on opencascade shapes to generate mesh representations.

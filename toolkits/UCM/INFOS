@@ -1,0 +1,5 @@
+UCM
+Uniaxial Constitutive Model
+
+This package contains class to decribe uniaxial constitutive
+material models.

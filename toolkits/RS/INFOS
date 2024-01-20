@@ -1,0 +1,5 @@
+RS
+Ruling Span
+
+This package contains classes and utilities used to solve cable
+equations under the ruling span hypothesis.

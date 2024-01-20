@@ -1,0 +1,4 @@
+Model
+
+This package contains base classes used to reprensent objects within
+the model data structure (ModelDS package).

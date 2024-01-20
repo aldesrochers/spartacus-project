@@ -1,0 +1,4 @@
+ts
+TimeSeries
+
+This package contains classes used to define time series functions.

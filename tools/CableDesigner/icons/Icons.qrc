@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>CableDesigner.png</file>
+    </qresource>
+</RCC>

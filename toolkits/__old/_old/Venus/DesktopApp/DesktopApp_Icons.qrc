@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/DesktopApp_About.png</file>
+        <file>icons/DesktopApp_Exit.png</file>
+        <file>icons/DesktopApp.png</file>
+        <file>icons/DesktopApp_Preferences.png</file>
+    </qresource>
+</RCC>

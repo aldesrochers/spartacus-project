@@ -1,0 +1,7 @@
+GCE2d
+
+This package contains direct geometry constructors for transient
+geometric objects in 2d space.
+It has a behaviour identical to OpenCascade 'GCE2d' package.
+
+Maintainer : Alexis L. Desrochers

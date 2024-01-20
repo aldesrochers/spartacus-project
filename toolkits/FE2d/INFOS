@@ -1,0 +1,4 @@
+FE1d
+Finite element 1d.
+
+This package contains classes used to describe finite element in 1d space.

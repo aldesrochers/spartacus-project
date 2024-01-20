@@ -1,0 +1,4 @@
+BRepCell
+
+This package contains classes used to build mesh
+cells in topological formats.

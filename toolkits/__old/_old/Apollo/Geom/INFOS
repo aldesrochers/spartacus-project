@@ -1,0 +1,6 @@
+Geom
+
+This package contains class implemented of 3d geometry objects. It has
+a role identical to OpenCascade 'Geom' package.
+
+Maintainer : Alexis L. Desrochers

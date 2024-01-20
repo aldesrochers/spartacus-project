@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Huygens_Document.png</file>
+        <file>Huygens.png</file>
+    </qresource>
+</RCC>
