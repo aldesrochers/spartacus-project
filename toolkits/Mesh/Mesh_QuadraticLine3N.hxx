@@ -20,23 +20,19 @@
 // ============================================================================
 
 
-#ifndef __Mesh_Node_hxx__
-#define __Mesh_Node_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#ifndef __Mesh_QuadraticLine3N_hxx__
+#define __Mesh_QuadraticLine3N_hxx__
 
 // Spartacus
-#include <Mesh_TypeOfNode.hxx>
+#include <Mesh_Cell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_Node
+ *  \brief Mesh_QuadraticLine3N
 */
 // ============================================================================
-class Mesh_Node
+class Mesh_QuadraticLine3N : public Mesh_Cell
 {
 
 public:
@@ -45,15 +41,33 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Mesh_Node();
+    Standard_EXPORT Mesh_QuadraticLine3N();
+    Standard_EXPORT Mesh_QuadraticLine3N(const Standard_Integer theNode1,
+                                         const Standard_Integer theNode2,
+                                         const Standard_Integer theNode3);
     // destructors
-    Standard_EXPORT ~Mesh_Node();
+    Standard_EXPORT ~Mesh_QuadraticLine3N();
 
 public:
 
-    virtual Standard_EXPORT Mesh_TypeOfNode     Type() const = 0;
+    Standard_EXPORT Mesh_TypeOfCell         Type() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Integer        Node1() const;
+    Standard_EXPORT Standard_Integer        Node2() const;
+    Standard_EXPORT Standard_Integer        Node3() const;
+    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
+    Standard_EXPORT void                    SetNode3(const Standard_Integer theNode3);
+
+private:
+
+    Standard_Integer        myNode1;
+    Standard_Integer        myNode2;
+    Standard_Integer        myNode3;
 
 };
 
 
-#endif // __Mesh_Node_hxx__
+#endif // __Mesh_QuadraticLine3N_hxx__

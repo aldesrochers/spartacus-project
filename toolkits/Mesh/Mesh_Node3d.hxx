@@ -20,23 +20,22 @@
 // ============================================================================
 
 
-#ifndef __Mesh_Node_hxx__
-#define __Mesh_Node_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#ifndef __Mesh_Node3d_hxx__
+#define __Mesh_Node3d_hxx__
 
 // Spartacus
-#include <Mesh_TypeOfNode.hxx>
+#include <Mesh_Node.hxx>
+
+// OpenCascade
+#include <gp_Pnt.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_Node
+ *  \brief Mesh_Node3d
 */
 // ============================================================================
-class Mesh_Node
+class Mesh_Node3d : public Mesh_Node
 {
 
 public:
@@ -45,15 +44,35 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Mesh_Node();
+    Standard_EXPORT Mesh_Node3d();
+    Standard_EXPORT Mesh_Node3d(const Standard_Real theX,
+                                const Standard_Real theY,
+                                const Standard_Real theZ);
+    Standard_EXPORT Mesh_Node3d(const gp_Pnt& thePoint);
     // destructors
-    Standard_EXPORT ~Mesh_Node();
+    Standard_EXPORT ~Mesh_Node3d();
 
 public:
 
-    virtual Standard_EXPORT Mesh_TypeOfNode     Type() const = 0;
+    Standard_EXPORT Mesh_TypeOfNode     Type() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Real       Distance(const Mesh_Node3d& theNode) const;
+    Standard_EXPORT const gp_Pnt&       Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT void                SetX(const Standard_Real theX);
+    Standard_EXPORT void                SetY(const Standard_Real theY);
+    Standard_EXPORT void                SetZ(const Standard_Real theZ);
+    Standard_EXPORT Standard_Real       X() const;
+    Standard_EXPORT Standard_Real       Y() const;
+    Standard_EXPORT Standard_Real       Z() const;
+
+private:
+
+    gp_Pnt        myPoint;
 
 };
 
 
-#endif // __Mesh_Node_hxx__
+#endif // __Mesh_Node3d_hxx__

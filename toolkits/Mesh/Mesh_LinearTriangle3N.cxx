@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Mesh_Node1d.hxx>
+#include <Mesh_LinearTriangle3N.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node1d::Mesh_Node1d()
+Mesh_LinearTriangle3N::Mesh_LinearTriangle3N()
 {
 
 }
@@ -39,8 +39,10 @@ Mesh_Node1d::Mesh_Node1d()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node1d::Mesh_Node1d(const Standard_Real theX)
-    : myX(theX)
+Mesh_LinearTriangle3N::Mesh_LinearTriangle3N(const Standard_Integer theNode1,
+                                             const Standard_Integer theNode2,
+                                             const Standard_Integer theNode3)
+    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3)
 {
 
 }
@@ -50,29 +52,69 @@ Mesh_Node1d::Mesh_Node1d(const Standard_Real theX)
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Node1d::~Mesh_Node1d()
+Mesh_LinearTriangle3N::~Mesh_LinearTriangle3N()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Distance()
+ *  \brief Node1()
 */
 // ============================================================================
-Standard_Real Mesh_Node1d::Distance(const Mesh_Node1d &theNode) const
+Standard_Integer Mesh_LinearTriangle3N::Node1() const
 {
-    return Abs(theNode.X() - myX);
+    return myNode1;
 }
 
 // ============================================================================
 /*!
- *  \brief SetX()
+ *  \brief Node2()
 */
 // ============================================================================
-void Mesh_Node1d::SetX(const Standard_Real theX)
+Standard_Integer Mesh_LinearTriangle3N::Node2() const
 {
-    myX = theX;
+    return myNode2;
+}
+
+// ============================================================================
+/*!
+ *  \brief Node3()
+*/
+// ============================================================================
+Standard_Integer Mesh_LinearTriangle3N::Node3() const
+{
+    return myNode3;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode1()
+*/
+// ============================================================================
+void Mesh_LinearTriangle3N::SetNode1(const Standard_Integer theNode1)
+{
+    myNode1 = theNode1;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode2()
+*/
+// ============================================================================
+void Mesh_LinearTriangle3N::SetNode2(const Standard_Integer theNode2)
+{
+    myNode2 = theNode2;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode3()
+*/
+// ============================================================================
+void Mesh_LinearTriangle3N::SetNode3(const Standard_Integer theNode3)
+{
+    myNode3 = theNode3;
 }
 
 // ============================================================================
@@ -80,17 +122,10 @@ void Mesh_Node1d::SetX(const Standard_Real theX)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfNode Mesh_Node1d::Type() const
+Mesh_TypeOfCell Mesh_LinearTriangle3N::Type() const
 {
-    return Mesh_NT_Node1d;
+    return Mesh_CT_LinearTriangle3N;
 }
 
-// ============================================================================
-/*!
- *  \brief X()
-*/
-// ============================================================================
-Standard_Real Mesh_Node1d::X() const
-{
-    return myX;
-}
+
+

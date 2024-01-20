@@ -20,18 +20,37 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __Mesh_TypeOfCell_hxx__
+#define __Mesh_TypeOfCell_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Mesh_TypeOfCell
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum Mesh_TypeOfCell
 {
+    Mesh_CT_LinearHexahedron8N,
+    Mesh_CT_LinearLine2N,
+    Mesh_CT_LinearPentahedron6N,
+    Mesh_CT_LinearPyramid5N,
+    Mesh_CT_LinearQuadrangle4N,
+    Mesh_CT_LinearTetrahedron4N,
+    Mesh_CT_LinearTriangle3N,
+    Mesh_CT_QuadraticHexahedron20N,
+    Mesh_CT_QuadraticHexahedron27N,
+    Mesh_CT_QuadraticLine3N,
+    Mesh_CT_QuadraticPentahedron15N,
+    Mesh_CT_QuadraticPentahedron18N,
+    Mesh_CT_QuadraticPyramid13N,
+    Mesh_CT_QuadraticPyramid14N,
+    Mesh_CT_QuadraticQuadrangle8N,
+    Mesh_CT_QuadraticQuadrangle9N,
+    Mesh_CT_QuadraticTetrahedron10N,
+    Mesh_CT_QuadraticTriangle6N,
+    Mesh_CT_QuadraticTriangle7N
+};
 
 
-
-}
+#endif // __Mesh_TypeOfCell_hxx__

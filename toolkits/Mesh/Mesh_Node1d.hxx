@@ -20,28 +20,19 @@
 // ============================================================================
 
 
-#ifndef __Mesh_Node_hxx__
-#define __Mesh_Node_hxx__
+#ifndef __Mesh_Node1d_hxx__
+#define __Mesh_Node1d_hxx__
 
 // Spartacus
-#include <Mesh_Object.hxx>
-
-// OpenCascade
-#include <gp_Pnt.hxx>
-
-// Forward declarations
-class Mesh_Node;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh_Node, Mesh_Object)
+#include <Mesh_Node.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_Node
+ *  \brief Mesh_Node1d
 */
 // ============================================================================
-class Mesh_Node : public Mesh_Object
+class Mesh_Node1d : public Mesh_Node
 {
 
 public:
@@ -50,35 +41,26 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Mesh_Node();
-    Standard_EXPORT Mesh_Node(const Standard_Real theX,
-                              const Standard_Real theY,
-                              const Standard_Real theZ);
-    Standard_EXPORT Mesh_Node(const gp_Pnt& thePoint);
+    Standard_EXPORT Mesh_Node1d();
+    Standard_EXPORT Mesh_Node1d(const Standard_Real theX);
     // destructors
-    Standard_EXPORT ~Mesh_Node();
+    Standard_EXPORT ~Mesh_Node1d();
 
 public:
 
-    Standard_EXPORT Standard_Real       Distance(const Handle(Mesh_Node)& theOther) const;
-    Standard_EXPORT const gp_Pnt&       Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT Standard_Real       Distance(const Mesh_Node1d& theNode) const;
     Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT void                SetY(const Standard_Real theY);
-    Standard_EXPORT void                SetZ(const Standard_Real theZ);
     Standard_EXPORT Standard_Real       X() const;
-    Standard_EXPORT Standard_Real       Y() const;
-    Standard_EXPORT Standard_Real       Z() const;
 
 private:
 
-    gp_Pnt        myPoint;
+    Standard_Real       myX;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh_Node, Mesh_Object);
+    Standard_EXPORT Mesh_TypeOfNode     Type() const Standard_OVERRIDE;
 
 };
 
 
-#endif // __Mesh_Node_hxx__
+#endif // __Mesh_Node1d_hxx__

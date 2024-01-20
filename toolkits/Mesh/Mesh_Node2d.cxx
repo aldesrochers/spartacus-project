@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Mesh_Node1d.hxx>
+#include <Mesh_Node2d.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node1d::Mesh_Node1d()
+Mesh_Node2d::Mesh_Node2d()
 {
 
 }
@@ -39,10 +39,22 @@ Mesh_Node1d::Mesh_Node1d()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node1d::Mesh_Node1d(const Standard_Real theX)
-    : myX(theX)
+Mesh_Node2d::Mesh_Node2d(const gp_Pnt2d &thePoint)
+    : myPoint(thePoint)
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh_Node2d::Mesh_Node2d(const Standard_Real theX,
+                         const Standard_Real theY)
+{
+    myPoint.SetX(theX);
+    myPoint.SetY(theY);
 }
 
 // ============================================================================
@@ -50,7 +62,7 @@ Mesh_Node1d::Mesh_Node1d(const Standard_Real theX)
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Node1d::~Mesh_Node1d()
+Mesh_Node2d::~Mesh_Node2d()
 {
 
 }
@@ -60,9 +72,29 @@ Mesh_Node1d::~Mesh_Node1d()
  *  \brief Distance()
 */
 // ============================================================================
-Standard_Real Mesh_Node1d::Distance(const Mesh_Node1d &theNode) const
+Standard_Real Mesh_Node2d::Distance(const Mesh_Node2d &theNode) const
 {
-    return Abs(theNode.X() - myX);
+    return myPoint.Distance(theNode.Point());
+}
+
+// ============================================================================
+/*!
+ *  \brief Point()
+*/
+// ============================================================================
+const gp_Pnt2d& Mesh_Node2d::Point() const
+{
+    return myPoint;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetPoint()
+*/
+// ============================================================================
+void Mesh_Node2d::SetPoint(const gp_Pnt2d &thePoint)
+{
+    myPoint = thePoint;
 }
 
 // ============================================================================
@@ -70,9 +102,19 @@ Standard_Real Mesh_Node1d::Distance(const Mesh_Node1d &theNode) const
  *  \brief SetX()
 */
 // ============================================================================
-void Mesh_Node1d::SetX(const Standard_Real theX)
+void Mesh_Node2d::SetX(const Standard_Real theX)
 {
-    myX = theX;
+    myPoint.SetX(theX);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetY()
+*/
+// ============================================================================
+void Mesh_Node2d::SetY(const Standard_Real theY)
+{
+    myPoint.SetY(theY);
 }
 
 // ============================================================================
@@ -80,9 +122,9 @@ void Mesh_Node1d::SetX(const Standard_Real theX)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfNode Mesh_Node1d::Type() const
+Mesh_TypeOfNode Mesh_Node2d::Type() const
 {
-    return Mesh_NT_Node1d;
+    return Mesh_NT_Node2d;
 }
 
 // ============================================================================
@@ -90,7 +132,17 @@ Mesh_TypeOfNode Mesh_Node1d::Type() const
  *  \brief X()
 */
 // ============================================================================
-Standard_Real Mesh_Node1d::X() const
+Standard_Real Mesh_Node2d::X() const
 {
-    return myX;
+    return myPoint.X();
+}
+
+// ============================================================================
+/*!
+ *  \brief Y()
+*/
+// ============================================================================
+Standard_Real Mesh_Node2d::Y() const
+{
+    return myPoint.Y();
 }

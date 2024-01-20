@@ -20,28 +20,23 @@
 // ============================================================================
 
 
-#ifndef __Mesh_Node_hxx__
-#define __Mesh_Node_hxx__
-
-// Spartacus
-#include <Mesh_Object.hxx>
+#ifndef __Mesh_Cell_hxx__
+#define __Mesh_Cell_hxx__
 
 // OpenCascade
-#include <gp_Pnt.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
-// Forward declarations
-class Mesh_Node;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh_Node, Mesh_Object)
+// Spartacus
+#include <Mesh_TypeOfCell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_Node
+ *  \brief Mesh_Cell
 */
 // ============================================================================
-class Mesh_Node : public Mesh_Object
+class Mesh_Cell
 {
 
 public:
@@ -50,35 +45,15 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Mesh_Node();
-    Standard_EXPORT Mesh_Node(const Standard_Real theX,
-                              const Standard_Real theY,
-                              const Standard_Real theZ);
-    Standard_EXPORT Mesh_Node(const gp_Pnt& thePoint);
+    Standard_EXPORT Mesh_Cell();
     // destructors
-    Standard_EXPORT ~Mesh_Node();
+    Standard_EXPORT ~Mesh_Cell();
 
 public:
 
-    Standard_EXPORT Standard_Real       Distance(const Handle(Mesh_Node)& theOther) const;
-    Standard_EXPORT const gp_Pnt&       Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT void                SetY(const Standard_Real theY);
-    Standard_EXPORT void                SetZ(const Standard_Real theZ);
-    Standard_EXPORT Standard_Real       X() const;
-    Standard_EXPORT Standard_Real       Y() const;
-    Standard_EXPORT Standard_Real       Z() const;
-
-private:
-
-    gp_Pnt        myPoint;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mesh_Node, Mesh_Object);
+    virtual Standard_EXPORT Mesh_TypeOfCell     Type() const = 0;
 
 };
 
 
-#endif // __Mesh_Node_hxx__
+#endif // __Mesh_Cell_hxx__

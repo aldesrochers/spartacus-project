@@ -20,18 +20,50 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __Mesh_LinearLine2N_hxx__
+#define __Mesh_LinearLine2N_hxx__
+
+// Spartacus
+#include <Mesh_Cell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Mesh_LinearLine2N
 */
 // ============================================================================
-int main(int argc, char** argv)
+class Mesh_LinearLine2N : public Mesh_Cell
 {
 
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_LinearLine2N();
+    Standard_EXPORT Mesh_LinearLine2N(const Standard_Integer theNode1,
+                                      const Standard_Integer theNode2);
+    // destructors
+    Standard_EXPORT ~Mesh_LinearLine2N();
+
+public:
+
+    Standard_EXPORT Mesh_TypeOfCell         Type() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Integer        Node1() const;
+    Standard_EXPORT Standard_Integer        Node2() const;
+    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
+
+private:
+
+    Standard_Integer        myNode1;
+    Standard_Integer        myNode2;
+
+};
 
 
-}
+#endif // __Mesh_LinearLine2N_hxx__

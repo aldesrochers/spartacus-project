@@ -20,18 +20,56 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __Mesh_Node2d_hxx__
+#define __Mesh_Node2d_hxx__
+
+// Spartacus
+#include <Mesh_Node.hxx>
+
+// OpenCascade
+#include <gp_Pnt2d.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Mesh_Node2d
 */
 // ============================================================================
-int main(int argc, char** argv)
+class Mesh_Node2d : public Mesh_Node
 {
 
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_Node2d();
+    Standard_EXPORT Mesh_Node2d(const Standard_Real theX,
+                                const Standard_Real theY);
+    Standard_EXPORT Mesh_Node2d(const gp_Pnt2d& thePoint);
+    // destructors
+    Standard_EXPORT ~Mesh_Node2d();
+
+public:
+
+    Standard_EXPORT Mesh_TypeOfNode     Type() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Real       Distance(const Mesh_Node2d& theNode) const;
+    Standard_EXPORT const gp_Pnt2d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
+    Standard_EXPORT void                SetX(const Standard_Real theX);
+    Standard_EXPORT void                SetY(const Standard_Real theY);
+    Standard_EXPORT Standard_Real       X() const;
+    Standard_EXPORT Standard_Real       Y() const;
+
+private:
+
+    gp_Pnt2d        myPoint;
+
+};
 
 
-}
+#endif // __Mesh_Node2d_hxx__
