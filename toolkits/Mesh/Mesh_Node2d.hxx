@@ -53,7 +53,7 @@ public:
 
 public:
 
-    Standard_EXPORT Mesh_TypeOfNode     Type() const Standard_OVERRIDE;
+    Standard_EXPORT MeshAbs_TypeOfNode  Type() const Standard_OVERRIDE;
 
 public:
 

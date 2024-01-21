@@ -134,9 +134,9 @@ void Mesh_Node3d::SetZ(const Standard_Real theZ)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfNode Mesh_Node3d::Type() const
+MeshAbs_TypeOfNode Mesh_Node3d::Type() const
 {
-    return Mesh_NT_Node3d;
+    return MeshAbs_Node3d;
 }
 
 // ============================================================================

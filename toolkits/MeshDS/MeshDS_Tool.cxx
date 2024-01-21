@@ -21,26 +21,25 @@
 
 
 // Spartacus
-#include <MeshDS_TNode.hxx>
 #include <MeshDS_Tool.hxx>
-
-// OpenCascade
-#include <Standard_NullObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Dimensinality()
- *  Retrieve the dimensionality of a mesh node.
+ *  \brief Constructor
 */
 // ============================================================================
-MeshAbs_TypeOfDimensionality MeshDS_Tool::Dimensionality(const MeshDS_Node &theNode)
+MeshDS_Tool::MeshDS_Tool()
 {
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Dimensionality() -> MeshDS_Node is null");
-    const Handle(MeshDS_PointRepresentation)& aRepresentation = aTNode->Representation();
-    return aRepresentation->Dimensionality();
+
 }
 
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshDS_Tool::~MeshDS_Tool()
+{
 
+}

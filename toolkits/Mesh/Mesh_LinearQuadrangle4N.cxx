@@ -143,9 +143,9 @@ void Mesh_LinearQuadrangle4N::SetNode4(const Standard_Integer theNode4)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearQuadrangle4N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearQuadrangle4N::Type() const
 {
-    return Mesh_CT_LinearQuadrangle4N;
+    return MeshAbs_LinearQuadrangle4N;
 }
 
 

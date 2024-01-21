@@ -28,9 +28,6 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
-// Spartacus
-#include <MeshAbs_TypeOfObject.hxx>
-
 // Forward declarations
 class MeshDS_TObject;
 
@@ -54,7 +51,13 @@ public:
 
 public:
 
-    virtual Standard_EXPORT MeshAbs_TypeOfObject        Type() const = 0;
+    Standard_EXPORT Standard_Boolean    IsModified() const;
+    Standard_EXPORT void                SetModified();
+    Standard_EXPORT void                SetNotModified();
+
+private:
+
+    Standard_Boolean        myIsModified;
 
 public:
 

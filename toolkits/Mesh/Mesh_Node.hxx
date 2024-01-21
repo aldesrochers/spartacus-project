@@ -28,7 +28,7 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <Mesh_TypeOfNode.hxx>
+#include <MeshAbs_TypeOfNode.hxx>
 
 
 // ============================================================================
@@ -51,7 +51,7 @@ public:
 
 public:
 
-    virtual Standard_EXPORT Mesh_TypeOfNode     Type() const = 0;
+    virtual Standard_EXPORT MeshAbs_TypeOfNode      Type() const;
 
 };
 

@@ -20,21 +20,22 @@
 // ============================================================================
 
 
-#ifndef __Mesh_TypeOfNode_hxx__
-#define __Mesh_TypeOfNode_hxx__
+#ifndef __MeshAbs_TypeOfNode_hxx__
+#define __MeshAbs_TypeOfNode_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_TypeOfNode
+ *  \brief MeshAbs_TypeOfNode
 */
 // ============================================================================
-enum Mesh_TypeOfNode
+enum MeshAbs_TypeOfNode
 {
-    Mesh_NT_Node1d,
-    Mesh_NT_Node2d,
-    Mesh_NT_Node3d
+    MeshAbs_Node,
+    MeshAbs_Node1d,
+    MeshAbs_Node2d,
+    MeshAbs_Node3d
 };
 
 
-#endif // __Mesh_TypeOfNode_hxx__
+#endif // __MeshAbs_TypeOfNode_hxx__

@@ -46,12 +46,10 @@ class MeshDS_TCell : public MeshDS_TObject
 public:
     // constructors
     Standard_EXPORT MeshDS_TCell();
+    Standard_EXPORT MeshDS_TCell(const MeshAbs_TypeOfCell theType,
+                                 const Standard_Integer theNbNodes);
     // destructors
     Standard_EXPORT ~MeshDS_TCell();
-
-public:
-
-    Standard_EXPORT MeshAbs_TypeOfObject        ObjectType() const Standard_OVERRIDE;
 
 public:
 
@@ -59,7 +57,6 @@ public:
     Standard_EXPORT const MeshDS_Node&      Node(const Standard_Integer theIndex) const;
     Standard_EXPORT void                    SetNode(const Standard_Integer theIndex,
                                                     const MeshDS_Node& theNode);
-    Standard_EXPORT void                    SetType(const MeshAbs_TypeOfCell theType);
     Standard_EXPORT MeshAbs_TypeOfCell      Type() const;
 
 private:

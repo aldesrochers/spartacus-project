@@ -271,9 +271,9 @@ void Mesh_QuadraticTetrahedron10N::SetNode10(const Standard_Integer theNode10)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticTetrahedron10N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticTetrahedron10N::Type() const
 {
-    return Mesh_CT_QuadraticTetrahedron10N;
+    return MeshAbs_QuadraticTetrahedron10N;
 }
 
 

@@ -49,10 +49,6 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject        ObjectType() const Standard_OVERRIDE;
-
-public:
-
     DEFINE_STANDARD_RTTIEXT(MeshDS_TMesh, MeshDS_TObject);
 
 };

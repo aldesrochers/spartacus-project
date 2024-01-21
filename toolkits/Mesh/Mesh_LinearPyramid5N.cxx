@@ -165,9 +165,9 @@ void Mesh_LinearPyramid5N::SetNode5(const Standard_Integer theNode5)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearPyramid5N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearPyramid5N::Type() const
 {
-    return Mesh_CT_LinearPyramid5N;
+    return MeshAbs_LinearPyramid5N;
 }
 
 

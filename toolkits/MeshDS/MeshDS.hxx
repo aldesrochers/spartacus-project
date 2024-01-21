@@ -27,10 +27,6 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
-// Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-
 
 // ============================================================================
 /*!
@@ -46,11 +42,6 @@ public:
 
 public:
 
-    static Standard_EXPORT const MeshDS_Mesh&  Mesh(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Mesh&        Mesh(MeshDS_Object& theObject);
-
-    static Standard_EXPORT const MeshDS_Node&  Node(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Node&        Node(MeshDS_Object& theObject);
 
 };
 

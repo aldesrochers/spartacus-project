@@ -20,26 +20,38 @@
 // ============================================================================
 
 
-#ifndef __Mesh_TypeOfCell_hxx__
-#define __Mesh_TypeOfCell_hxx__
+#ifndef __MeshAbs_TypeOfCell_hxx__
+#define __MeshAbs_TypeOfCell_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Mesh_TypeOfCell
+ *  \brief MeshAbs_TypeOfCell
 */
 // ============================================================================
-enum Mesh_TypeOfCell
+enum MeshAbs_TypeOfCell
 {
-    Mesh_CT_LinearLine2N,
-    Mesh_CT_LinearQuadrangle4N,
-    Mesh_CT_LinearTriangle3N,
-    Mesh_CT_QuadraticLine3N,
-    Mesh_CT_QuadraticQuadrangle8N,
-    Mesh_CT_QuadraticQuadrangle9N,
-    Mesh_CT_QuadraticTriangle6N,
-    Mesh_CT_QuadraticTriangle7N
+    MeshAbs_Invalid,
+    MeshAbs_LinearHexahedron8N,
+    MeshAbs_LinearLine2N,
+    MeshAbs_LinearPentahedron6N,
+    MeshAbs_LinearPyramid5N,
+    MeshAbs_LinearQuadrangle4N,
+    MeshAbs_LinearTetrahedron4N,
+    MeshAbs_LinearTriangle3N,
+    MeshAbs_QuadraticHexahedron20N,
+    MeshAbs_QuadraticHexahedron27N,
+    MeshAbs_QuadraticLine3N,
+    MeshAbs_QuadraticPentahedron15N,
+    MeshAbs_QuadraticPentahedron18N,
+    MeshAbs_QuadraticPyramid13N,
+    MeshAbs_QuadraticPyramid14N,
+    MeshAbs_QuadraticQuadrangle8N,
+    MeshAbs_QuadraticQuadrangle9N,
+    MeshAbs_QuadraticTetrahedron10N,
+    MeshAbs_QuadraticTriangle6N,
+    MeshAbs_QuadraticTriangle7N
 };
 
 
-#endif // __Mesh_TypeOfCell_hxx__
+#endif // __MeshAbs_TypeOfCell_hxx__

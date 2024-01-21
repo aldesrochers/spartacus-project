@@ -27,11 +27,25 @@
 // ============================================================================
 /*!
  *  \brief Constructor
+ *  Creates an invalid cell.
 */
 // ============================================================================
 MeshDS_TCell::MeshDS_TCell()
+    : myType(MeshAbs_Invalid)
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshDS_TCell::MeshDS_TCell(const MeshAbs_TypeOfCell theType,
+                           const Standard_Integer theNbNodes)
+    : myType(theType)
+{
+    myNodes.Resize(1, theNbNodes, Standard_False);
 }
 
 // ============================================================================
@@ -42,16 +56,6 @@ MeshDS_TCell::MeshDS_TCell()
 MeshDS_TCell::~MeshDS_TCell()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
-{
-    return MeshAbs_OBJ_Cell;
 }
 
 // ============================================================================
@@ -87,16 +91,6 @@ void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
 
 // ============================================================================
 /*!
- *  \brief SetType()
-*/
-// ============================================================================
-void MeshDS_TCell::SetType(const MeshAbs_TypeOfCell theType)
-{
-    myType = theType;
-}
-
-// ============================================================================
-/*!
  *  \brief Type()
 */
 // ============================================================================
@@ -109,5 +103,5 @@ MeshAbs_TypeOfCell MeshDS_TCell::Type() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);

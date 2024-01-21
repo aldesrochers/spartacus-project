@@ -228,9 +228,9 @@ void Mesh_LinearHexahedron8N::SetNode8(const Standard_Integer theNode8)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearHexahedron8N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearHexahedron8N::Type() const
 {
-    return Mesh_CT_LinearHexahedron8N;
+    return MeshAbs_LinearHexahedron8N;
 }
 
 

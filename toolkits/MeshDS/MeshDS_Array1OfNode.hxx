@@ -19,6 +19,7 @@
 //
 // ============================================================================
 
+
 #ifndef __MeshDS_Array1OfNode_hxx__
 #define __MeshDS_Array1OfNode_hxx__
 
@@ -31,5 +32,4 @@
 // Type definitions
 typedef NCollection_Array1<MeshDS_Node>     MeshDS_Array1OfNode;
 
-
-#endif  // __MeshDS_Array1OfNode_hxx__
+#endif // __MeshDS_Array1OfNode_hxx__

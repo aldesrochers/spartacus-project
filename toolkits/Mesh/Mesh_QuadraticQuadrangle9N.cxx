@@ -249,9 +249,9 @@ void Mesh_QuadraticQuadrangle9N::SetNode9(const Standard_Integer theNode9)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticQuadrangle9N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticQuadrangle9N::Type() const
 {
-    return Mesh_CT_QuadraticQuadrangle9N;
+    return MeshAbs_QuadraticQuadrangle9N;
 }
 
 

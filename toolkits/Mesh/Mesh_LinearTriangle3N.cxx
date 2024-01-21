@@ -122,9 +122,9 @@ void Mesh_LinearTriangle3N::SetNode3(const Standard_Integer theNode3)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearTriangle3N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearTriangle3N::Type() const
 {
-    return Mesh_CT_LinearTriangle3N;
+    return MeshAbs_LinearTriangle3N;
 }
 
 

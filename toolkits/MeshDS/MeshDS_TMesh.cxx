@@ -44,19 +44,9 @@ MeshDS_TMesh::~MeshDS_TMesh()
 
 }
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TMesh::ObjectType() const
-{
-    return MeshAbs_OBJ_Mesh;
-}
-
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TMesh, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TMesh, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TMesh, MeshDS_TObject);
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TMesh, MeshDS_TObject);

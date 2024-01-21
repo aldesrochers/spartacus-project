@@ -54,7 +54,7 @@ public:
 
 public:
 
-    Standard_EXPORT Mesh_TypeOfCell         Type() const Standard_OVERRIDE;
+    Standard_EXPORT MeshAbs_TypeOfCell      Type() const Standard_OVERRIDE;
 
 public:
 

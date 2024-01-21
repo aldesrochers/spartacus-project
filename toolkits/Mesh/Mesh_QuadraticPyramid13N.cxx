@@ -335,9 +335,9 @@ void Mesh_QuadraticPyramid13N::SetNode13(const Standard_Integer theNode13)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticPyramid13N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticPyramid13N::Type() const
 {
-    return Mesh_CT_QuadraticPyramid13N;
+    return MeshAbs_QuadraticPyramid13N;
 }
 
 

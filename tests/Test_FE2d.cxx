@@ -23,8 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <FE2d_ElasticTruss.hxx>
 
 
 // ============================================================================
@@ -35,13 +33,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    cmp_Elastic aMaterial;
-    aMaterial.SetE(2E11);
 
-    Handle(FE2d_ElasticTruss) aTruss = new FE2d_ElasticTruss(gp_Pnt2d(0,0), gp_Pnt2d(1,1), aMaterial, 1E-4);
-
-
-    cout << aTruss->InitialStiffness() << endl;
 
 
 }

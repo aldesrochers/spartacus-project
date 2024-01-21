@@ -27,14 +27,6 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
-// Spartacus
-#include <MeshAbs_TypeOfDimensionality.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-
-
-
 
 // ============================================================================
 /*!
@@ -49,8 +41,12 @@ public:
     DEFINE_STANDARD_ALLOC;
 
 public:
+    // constructors
+    Standard_EXPORT MeshDS_Tool();
+    // destructors
+    Standard_EXPORT ~MeshDS_Tool();
 
-    static Standard_EXPORT MeshAbs_TypeOfDimensionality     Dimensionality(const MeshDS_Node& theNode);
+
 
 };
 

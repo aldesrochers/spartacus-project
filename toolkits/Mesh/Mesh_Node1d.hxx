@@ -48,6 +48,10 @@ public:
 
 public:
 
+    Standard_EXPORT MeshAbs_TypeOfNode  Type() const Standard_OVERRIDE;
+
+public:
+
     Standard_EXPORT Standard_Real       Distance(const Mesh_Node1d& theNode) const;
     Standard_EXPORT void                SetX(const Standard_Real theX);
     Standard_EXPORT Standard_Real       X() const;
@@ -56,9 +60,7 @@ private:
 
     Standard_Real       myX;
 
-public:
 
-    Standard_EXPORT Mesh_TypeOfNode     Type() const Standard_OVERRIDE;
 
 };
 

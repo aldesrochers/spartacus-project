@@ -186,9 +186,9 @@ void Mesh_LinearPentahedron6N::SetNode6(const Standard_Integer theNode6)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearPentahedron6N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearPentahedron6N::Type() const
 {
-    return Mesh_CT_LinearPentahedron6N;
+    return MeshAbs_LinearPentahedron6N;
 }
 
 

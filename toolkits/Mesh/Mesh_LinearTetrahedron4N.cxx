@@ -143,9 +143,9 @@ void Mesh_LinearTetrahedron4N::SetNode4(const Standard_Integer theNode4)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearTetrahedron4N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearTetrahedron4N::Type() const
 {
-    return Mesh_CT_LinearTetrahedron4N;
+    return MeshAbs_LinearTetrahedron4N;
 }
 
 

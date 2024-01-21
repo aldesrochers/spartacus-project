@@ -101,9 +101,9 @@ void Mesh_LinearLine2N::SetNode2(const Standard_Integer theNode2)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_LinearLine2N::Type() const
+MeshAbs_TypeOfCell Mesh_LinearLine2N::Type() const
 {
-    return Mesh_CT_LinearLine2N;
+    return MeshAbs_LinearLine2N;
 }
 
 

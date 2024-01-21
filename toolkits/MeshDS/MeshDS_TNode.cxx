@@ -46,19 +46,38 @@ MeshDS_TNode::~MeshDS_TNode()
 
 // ============================================================================
 /*!
- *  \brief Type()
+ *  \brief IsNode1d()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TNode::Type() const
+Standard_Boolean MeshDS_TNode::IsNode1d() const
 {
-    return MeshAbs_OBJ_Node;
+    return Standard_False;
 }
 
+// ============================================================================
+/*!
+ *  \brief IsNode2d()
+*/
+// ============================================================================
+Standard_Boolean MeshDS_TNode::IsNode2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsNode3d()
+*/
+// ============================================================================
+Standard_Boolean MeshDS_TNode::IsNode3d() const
+{
+    return Standard_False;
+}
 
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TNode, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TNode, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TObject);
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TObject);

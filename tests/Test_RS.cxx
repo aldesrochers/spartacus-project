@@ -23,9 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <Cable_FindEmptyLength.hxx>
-#include <UXSM_Elastic.hxx>
 
 
 // ============================================================================
@@ -36,22 +33,5 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    Cable_SequenceOfLoading aLoading;
-    aLoading.Append(Cable_Loading(0., 0., 23.23, 0., 0.));
-    aLoading.Append(Cable_Loading(1., 0., 23.23, 0., 0.));
 
-    Cable_ListOfSaggingCondition aList;
-    aList.Append(Cable_SaggingCondition(Cable_SC_HorizontalTension, 40000.));
-
-    Handle(UXSM_Elastic) aSection = new UXSM_Elastic(cmp_Elastic(1.8E10, 1.2E-5), 0.001);
-
-
-    Cable_FindEmptyLength aSolver(400., 0.);
-    aSolver.SetLoading(aLoading);
-    aSolver.SetSaggingConditions(aList);
-    aSolver.SetSection(aSection);
-    cout << aSolver.Perform() << endl;
-
-
-    return 0;
 }

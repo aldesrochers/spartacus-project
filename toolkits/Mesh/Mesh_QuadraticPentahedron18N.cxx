@@ -441,9 +441,9 @@ void Mesh_QuadraticPentahedron18N::SetNode18(const Standard_Integer theNode18)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticPentahedron18N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticPentahedron18N::Type() const
 {
-    return Mesh_CT_QuadraticPentahedron18N;
+    return MeshAbs_QuadraticPentahedron18N;
 }
 
 

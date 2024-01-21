@@ -23,8 +23,12 @@
 #ifndef __MeshDS_Node_hxx__
 #define __MeshDS_Node_hxx__
 
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 // Spartacus
-#include <MeshDS_Object.hxx>
+#include <MeshDS_TNode.hxx>
 
 
 // ============================================================================
@@ -32,18 +36,28 @@
  *  \brief MeshDS_Node
 */
 // ============================================================================
-class MeshDS_Node : public MeshDS_Object
+class MeshDS_Node
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors
     Standard_EXPORT MeshDS_Node();
     // destructors
     Standard_EXPORT ~MeshDS_Node();
+
+public:
+
+    Standard_EXPORT Standard_Boolean            IsNull() const;
+    Standard_EXPORT MeshAbs_TypeOfNode          Type() const;
+
+public:
+
+    Standard_EXPORT void                        SetTNode(const Handle(MeshDS_TNode)& theTNode);
+    Standard_EXPORT const Handle(MeshDS_TNode)& TNode() const;
+
+private:
+
+    Handle(MeshDS_TNode)        myTNode;
 
 };
 

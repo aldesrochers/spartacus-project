@@ -44,10 +44,40 @@ MeshDS_TObject::~MeshDS_TObject()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief IsModified()
+*/
+// ============================================================================
+Standard_Boolean MeshDS_TObject::IsModified() const
+{
+    return myIsModified;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetModified()
+*/
+// ============================================================================
+void MeshDS_TObject::SetModified()
+{
+    myIsModified = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotModified()
+*/
+// ============================================================================
+void MeshDS_TObject::SetNotModified()
+{
+    myIsModified = Standard_False;
+}
+
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TObject, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TObject, MeshDS_TObject);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TObject, Standard_Transient);
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TObject, Standard_Transient);

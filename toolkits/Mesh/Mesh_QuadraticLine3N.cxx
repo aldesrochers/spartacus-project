@@ -122,9 +122,9 @@ void Mesh_QuadraticLine3N::SetNode3(const Standard_Integer theNode3)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticLine3N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticLine3N::Type() const
 {
-    return Mesh_CT_QuadraticLine3N;
+    return MeshAbs_QuadraticLine3N;
 }
 
 

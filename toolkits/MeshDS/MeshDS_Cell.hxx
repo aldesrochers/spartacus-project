@@ -23,8 +23,12 @@
 #ifndef __MeshDS_Cell_hxx__
 #define __MeshDS_Cell_hxx__
 
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 // Spartacus
-#include <MeshDS_Object.hxx>
+#include <MeshDS_TCell.hxx>
 
 
 // ============================================================================
@@ -32,18 +36,28 @@
  *  \brief MeshDS_Cell
 */
 // ============================================================================
-class MeshDS_Cell : public MeshDS_Object
+class MeshDS_Cell
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors
     Standard_EXPORT MeshDS_Cell();
     // destructors
     Standard_EXPORT ~MeshDS_Cell();
+
+public:
+
+    Standard_EXPORT Standard_Boolean            IsNull() const;
+    Standard_EXPORT MeshAbs_TypeOfCell          Type() const;
+
+public:
+
+    Standard_EXPORT void                        SetTCell(const Handle(MeshDS_TCell)& theTCell);
+    Standard_EXPORT const Handle(MeshDS_TCell)& TCell() const;
+
+private:
+
+    Handle(MeshDS_TCell)        myTCell;
 
 };
 

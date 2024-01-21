@@ -186,9 +186,9 @@ void Mesh_QuadraticTriangle6N::SetNode6(const Standard_Integer theNode6)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticTriangle6N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticTriangle6N::Type() const
 {
-    return Mesh_CT_QuadraticTriangle6N;
+    return MeshAbs_QuadraticTriangle6N;
 }
 
 

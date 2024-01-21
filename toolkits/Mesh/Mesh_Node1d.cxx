@@ -80,9 +80,9 @@ void Mesh_Node1d::SetX(const Standard_Real theX)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfNode Mesh_Node1d::Type() const
+MeshAbs_TypeOfNode Mesh_Node1d::Type() const
 {
-    return Mesh_NT_Node1d;
+    return MeshAbs_Node1d;
 }
 
 // ============================================================================

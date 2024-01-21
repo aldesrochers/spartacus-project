@@ -24,7 +24,7 @@
 #define __MeshDS_TNode_hxx__
 
 // Spartacus
-#include <MeshDS_PointRepresentation.hxx>
+#include <MeshAbs_TypeOfNode.hxx>
 #include <MeshDS_TObject.hxx>
 
 // Forward declarations
@@ -50,7 +50,13 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    Type() const Standard_OVERRIDE;
+    virtual Standard_EXPORT MeshAbs_TypeOfNode      Type() const = 0;
+
+public:
+
+    virtual Standard_EXPORT Standard_Boolean        IsNode1d() const;
+    virtual Standard_EXPORT Standard_Boolean        IsNode2d() const;
+    virtual Standard_EXPORT Standard_Boolean        IsNode3d() const;
 
 public:
 

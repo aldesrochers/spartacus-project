@@ -23,11 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// OpenCascade
-#include <TColgp_Array1OfPnt2d.hxx>
-
-// Spartacus
-#include <Triangle_MakeTriangulation.hxx>
 
 
 // ============================================================================
@@ -38,16 +33,4 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    TColgp_Array1OfPnt2d anArray(1,3);
-    anArray.SetValue(1, gp_Pnt2d(0,0));
-    anArray.SetValue(2, gp_Pnt2d(10,1));
-    anArray.SetValue(3, gp_Pnt2d(7,8));
-
-    Triangle_MakeTriangulation aBuilder(anArray, 0.5);
-    Handle(Poly_Triangulation) aTriangulation = aBuilder.Triangulation();
-
-    cout << aTriangulation->NbNodes() << endl;
-    cout << aTriangulation->NbTriangles() << endl;
-
-    return 0;
 }

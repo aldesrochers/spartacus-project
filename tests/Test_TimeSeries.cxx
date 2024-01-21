@@ -23,8 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <ts_PiecewiseLinear.hxx>
 
 
 // ============================================================================
@@ -35,17 +33,4 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    ts_Array1OfBreakpoint anArray(1, 4);
-    anArray.SetValue(1, ts_Breakpoint(0., 0.));
-    anArray.SetValue(2, ts_Breakpoint(1., 0.34));
-    anArray.SetValue(3, ts_Breakpoint(5., 1.4));
-    anArray.SetValue(4, ts_Breakpoint(10., 0.1));
-
-    Standard_Real F;
-    ts_PiecewiseLinear aTimeSeries(anArray);
-    cout << aTimeSeries.Value(8.5, F) << endl;
-    cout << F << endl;
-    cout << aTimeSeries.NbBreakpoints() << endl;
-
-    return 0;
 }

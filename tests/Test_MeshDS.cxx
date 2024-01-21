@@ -23,7 +23,8 @@
 #include <iostream>
 using namespace std;
 
-
+// Spartacus
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
@@ -33,6 +34,20 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
+
+    MeshDS_Builder aBuilder;
+
+    MeshDS_Node N1, N2, N3;
+    aBuilder.MakeNode1d(N1, 0.);
+    aBuilder.MakeNode1d(N2, 1.);
+    aBuilder.MakeNode1d(N3, 2.);
+
+    MeshDS_Cell C1, C2;
+    aBuilder.MakeLinearLine2N(C1, N1, N2);
+    aBuilder.MakeLinearLine2N(C2, N2, N3);
+
+    MeshDS_Grid G;
+    aBuilder.MakeUnstructuredGrid(G);
 
 
     return 0;

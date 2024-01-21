@@ -122,9 +122,9 @@ void Mesh_Node2d::SetY(const Standard_Real theY)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfNode Mesh_Node2d::Type() const
+MeshAbs_TypeOfNode Mesh_Node2d::Type() const
 {
-    return Mesh_NT_Node2d;
+    return MeshAbs_Node2d;
 }
 
 // ============================================================================

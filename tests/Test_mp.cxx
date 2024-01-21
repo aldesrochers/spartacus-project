@@ -23,30 +23,16 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <mp_TriangularFace3N.hxx>
-#include <mp_Edge3N1d.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Test_mp
 */
 // ============================================================================
 int main(int argc, char** argv)
 {
 
-    mp_Node aNode1(0., 0., 0.);
-    mp_Node aNode2(1., 0., 0.);
-    mp_Node aNode3(1., 1., 0.);
-    mp_TriangularFace3N aFace(aNode1, aNode2, aNode3);
-
-    cout << aFace.Normal().X() << " " << aFace.Normal().Y() << " " << aFace.Normal().Z() << endl;
-
-    mp_Node1d N1(0.);
-    mp_Node1d N2(10.);
-    mp_Edge3N1d E(N1, N2);
-    cout << E.Node3().X() << endl;
 
 
 

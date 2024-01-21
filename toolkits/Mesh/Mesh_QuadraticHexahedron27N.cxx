@@ -632,9 +632,9 @@ void Mesh_QuadraticHexahedron27N::SetNode27(const Standard_Integer theNode27)
  *  \brief Type()
 */
 // ============================================================================
-Mesh_TypeOfCell Mesh_QuadraticHexahedron27N::Type() const
+MeshAbs_TypeOfCell Mesh_QuadraticHexahedron27N::Type() const
 {
-    return Mesh_CT_QuadraticHexahedron27N;
+    return MeshAbs_QuadraticHexahedron27N;
 }
 
 
