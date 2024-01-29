@@ -82,7 +82,7 @@ Standard_Boolean MeshRep_Node::IsNode3d() const
  *  \brief Node1d()
 */
 // ============================================================================
-const mp_Node1d& MeshRep_Node::Node1d() const
+const Handle(Mesh1d_Node)& MeshRep_Node::Node1d() const
 {
     throw Standard_DomainError("MeshRep_Node::Node1d()");
 }
@@ -92,7 +92,7 @@ const mp_Node1d& MeshRep_Node::Node1d() const
  *  \brief Node2d()
 */
 // ============================================================================
-const mp_Node2d& MeshRep_Node::Node2d() const
+const Handle(Mesh2d_Node)& MeshRep_Node::Node2d() const
 {
     throw Standard_DomainError("MeshRep_Node::Node2d()");
 }
@@ -102,7 +102,7 @@ const mp_Node2d& MeshRep_Node::Node2d() const
  *  \brief Node3d()
 */
 // ============================================================================
-const mp_Node& MeshRep_Node::Node3d() const
+const Handle(Mesh_Node)& MeshRep_Node::Node3d() const
 {
     throw Standard_DomainError("MeshRep_Node::Node3d()");
 }

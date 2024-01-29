@@ -131,6 +131,7 @@ set(Mesh2d_PKG_SOURCES
 
 set(Mesh_PKG_HEADERS
     Mesh/Mesh_Cell.hxx
+    Mesh/Mesh_LinearHexahedron8N.hxx
     Mesh/Mesh_LinearLine2N.hxx
     Mesh/Mesh_LinearPentahedron6N.hxx
     Mesh/Mesh_LinearPyramid5N.hxx
@@ -155,6 +156,7 @@ set(Mesh_PKG_HEADERS
 
 set(Mesh_PKG_SOURCES
     Mesh/Mesh_Cell.cxx
+    Mesh/Mesh_LinearHexahedron8N.cxx
     Mesh/Mesh_LinearLine2N.cxx
     Mesh/Mesh_LinearPentahedron6N.cxx
     Mesh/Mesh_LinearPyramid5N.cxx
@@ -196,17 +198,14 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
     MeshDS/MeshDS_Group.hxx
+    MeshDS/MeshDS_ListOfCell.hxx
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TGroup.hxx
-    MeshDS/MeshDS_TLinearLine2N1d.hxx
     MeshDS/MeshDS_TMesh.hxx
     MeshDS/MeshDS_TNode.hxx
-    MeshDS/MeshDS_TNode1d.hxx
-    MeshDS/MeshDS_TNode2d.hxx
-    MeshDS/MeshDS_TNode3d.hxx
     MeshDS/MeshDS_TObject.hxx
 )
 
@@ -219,12 +218,8 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Object.cxx
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TGroup.cxx
-    MeshDS/MeshDS_TLinearLine2N1d.cxx
     MeshDS/MeshDS_TMesh.cxx
     MeshDS/MeshDS_TNode.cxx
-    MeshDS/MeshDS_TNode1d.cxx
-    MeshDS/MeshDS_TNode2d.cxx
-    MeshDS/MeshDS_TNode3d.cxx
     MeshDS/MeshDS_TObject.cxx
 )
 
@@ -257,9 +252,6 @@ set(MeshLib_PKG_SOURCES
 
 set(MeshRep_PKG_HEADERS
     MeshRep/MeshRep_Cell.hxx
-    MeshRep/MeshRep_Cell1d.hxx
-    MeshRep/MeshRep_Cell2d.hxx
-    MeshRep/MeshRep_Cell3d.hxx
     MeshRep/MeshRep_Node.hxx
     MeshRep/MeshRep_Node1d.hxx
     MeshRep/MeshRep_Node2d.hxx
@@ -269,9 +261,6 @@ set(MeshRep_PKG_HEADERS
 
 set(MeshRep_PKG_SOURCES
     MeshRep/MeshRep_Cell.cxx
-    MeshRep/MeshRep_Cell1d.cxx
-    MeshRep/MeshRep_Cell2d.cxx
-    MeshRep/MeshRep_Cell3d.cxx
     MeshRep/MeshRep_Node.cxx
     MeshRep/MeshRep_Node1d.cxx
     MeshRep/MeshRep_Node2d.cxx

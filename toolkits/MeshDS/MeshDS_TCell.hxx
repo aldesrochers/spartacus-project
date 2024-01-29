@@ -24,11 +24,11 @@
 #define __MeshDS_TCell_hxx__
 
 // Spartacus
-#include <Mesh1d_LinearLine2N.hxx>
+#include <MeshAbs_TypeOfCell.hxx>
+#include <MeshDS_Array1OfNode.hxx>
+#include <MeshDS_Node.hxx>
 #include <MeshDS_TObject.hxx>
 
-// OpenCascade
-#include <TopoDS_Shape.hxx>
 
 // Forward declarations
 class MeshDS_TCell;
@@ -53,18 +53,19 @@ public:
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean                    IsLinearLine2N1d() const;
-    virtual Standard_EXPORT const Handle(Mesh1d_LinearLine2N)&  LinearLine2N1d() const;
-
-public:
-
-    Standard_EXPORT Standard_Boolean            HasShape() const;
-    Standard_EXPORT void                        SetShape(const TopoDS_Shape& theShape);
-    Standard_EXPORT const TopoDS_Shape&         Shape() const;
+    Standard_EXPORT Standard_Integer        NbNodes() const;
+    Standard_EXPORT const MeshDS_Node&      Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT void                    ResizeNodes(const Standard_Integer theNbNodes,
+                                                        const Standard_Boolean toCopyData = Standard_False);
+    Standard_EXPORT void                    SetNode(const Standard_Integer theIndex,
+                                                    const MeshDS_Node& theNode);
+    Standard_EXPORT void                    SetType(const MeshAbs_TypeOfCell theType);
+    Standard_EXPORT MeshAbs_TypeOfCell      Type() const;
 
 private:
 
-    TopoDS_Shape        myShape;
+    MeshDS_Array1OfNode     myNodes;
+    MeshAbs_TypeOfCell      myType;
 
 public:
 

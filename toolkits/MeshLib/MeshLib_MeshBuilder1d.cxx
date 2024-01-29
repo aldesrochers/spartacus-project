@@ -53,7 +53,7 @@ MeshLib_MeshBuilder1d::~MeshLib_MeshBuilder1d()
 Standard_Integer MeshLib_MeshBuilder1d::AddNode(const gp_Pnt1d &thePoint)
 {
     MeshDS_Node aNode;
-    myBuilder.MakeNode(aNode, thePoint);
+    //myBuilder.MakeNode(aNode, thePoint);
     return myNodes.Add(aNode);
 }
 

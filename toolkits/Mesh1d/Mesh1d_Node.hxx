@@ -27,6 +27,8 @@
 #include <gp_Pnt1d.hxx>
 #include <Mesh1d_Object.hxx>
 
+
+
 // Forward declarations
 class Mesh1d_Node;
 

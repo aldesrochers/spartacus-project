@@ -21,6 +21,7 @@
 
 
 // Spartacus
+#include <MeshDS_Cell.hxx>
 #include <MeshDS_TNode.hxx>
 
 // OpenCascade
@@ -49,94 +50,43 @@ MeshDS_TNode::~MeshDS_TNode()
 
 // ============================================================================
 /*!
- *  \brief HasVertex()
+ *  \brief LinkedCells()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode::HasVertex() const
+const MeshDS_ListOfCell& MeshDS_TNode::LinkedCells() const
 {
-    return !myVertex.IsNull();
+    return myLinkedCells;
 }
 
 // ============================================================================
 /*!
- *  \brief IsNode1d()
+ *  \brief LinkedCells()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode::IsNode1d() const
+MeshDS_ListOfCell& MeshDS_TNode::LinkedCells()
 {
-    return Standard_False;
+    return myLinkedCells;
 }
 
 // ============================================================================
 /*!
- *  \brief IsNode2d()
+ *  \brief Point()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode::IsNode2d() const
+const gp_Pnt& MeshDS_TNode::Point() const
 {
-    return Standard_False;
+    return myPoint;
 }
 
 // ============================================================================
 /*!
- *  \brief IsNode3d()
+ *  \brief SetPoint()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode::IsNode3d() const
+void MeshDS_TNode::SetPoint(const gp_Pnt &thePoint)
 {
-    return Standard_False;
+    myPoint = thePoint;
 }
-
-// ============================================================================
-/*!
- *  \brief Node1d()
-*/
-// ============================================================================
-const Handle(Mesh1d_Node)& MeshDS_TNode::Node1d() const
-{
-    throw Standard_DomainError("MeshDS_TNode::Node1d()");
-}
-
-// ============================================================================
-/*!
- *  \brief Node2d()
-*/
-// ============================================================================
-const Handle(Mesh2d_Node)& MeshDS_TNode::Node2d() const
-{
-    throw Standard_DomainError("MeshDS_TNode::Node2d()");
-}
-
-// ============================================================================
-/*!
- *  \brief Node3d()
-*/
-// ============================================================================
-const Handle(Mesh_Node)& MeshDS_TNode::Node3d() const
-{
-    throw Standard_DomainError("MeshDS_TNode::Node3d()");
-}
-
-// ============================================================================
-/*!
- *  \brief SetVertex()
-*/
-// ============================================================================
-void MeshDS_TNode::SetVertex(const TopoDS_Vertex &theVertex)
-{
-    myVertex = theVertex;
-}
-
-// ============================================================================
-/*!
- *  \brief Vertex()
-*/
-// ============================================================================
-const TopoDS_Vertex& MeshDS_TNode::Vertex() const
-{
-    return myVertex;
-}
-
 
 // ****************************************************************************
 // Handles

@@ -49,62 +49,292 @@ MeshRep_Cell::~MeshRep_Cell()
 
 // ============================================================================
 /*!
- *  \brief IsCell1d()
+ *  \brief IsLinearHexahedron8N()
 */
 // ============================================================================
-Standard_Boolean MeshRep_Cell::IsCell1d() const
+Standard_Boolean MeshRep_Cell::IsLinearHexahedron8N() const
 {
     return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief IsCell2d()
+ *  \brief IsLinearLine2N()
 */
 // ============================================================================
-Standard_Boolean MeshRep_Cell::IsCell2d() const
+Standard_Boolean MeshRep_Cell::IsLinearLine2N() const
 {
     return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief IsCell3d()
+ *  \brief IsLinearLine2N1d()
 */
 // ============================================================================
-Standard_Boolean MeshRep_Cell::IsCell3d() const
+Standard_Boolean MeshRep_Cell::IsLinearLine2N1d() const
 {
     return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Cell1d()
+ *  \brief IsLinearLine2N2d()
 */
 // ============================================================================
-const Handle(Mesh1d_Cell)& MeshRep_Cell::Cell1d() const
+Standard_Boolean MeshRep_Cell::IsLinearLine2N2d() const
 {
-    throw Standard_DomainError("MeshRep_Cell::Cell1d()");
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Cell2d()
+ *  \brief IsLinearPentahedron6N()
 */
 // ============================================================================
-const Handle(Mesh2d_Cell)& MeshRep_Cell::Cell2d() const
+Standard_Boolean MeshRep_Cell::IsLinearPentahedron6N() const
 {
-    throw Standard_DomainError("MeshRep_Cell::Cell2d()");
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Cell3d()
+ *  \brief IsLinearPyramid5N()
 */
 // ============================================================================
-const Handle(Mesh_Cell)& MeshRep_Cell::Cell3d() const
+Standard_Boolean MeshRep_Cell::IsLinearPyramid5N() const
 {
-    throw Standard_DomainError("MeshRep_Cell::Cell3d()");
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsLinearQuadrangle4N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsLinearQuadrangle4N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsLinearQuadrangle4N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsLinearQuadrangle4N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsLinearTetrahedron4N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsLinearTetrahedron4N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsLinearTriangle3N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsLinearTriangle3N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsLinearTriangle3N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsLinearTriangle3N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticHexahedron20N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticHexahedron20N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticHexahedron27N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticHexahedron27N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticLine3N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticLine3N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticLine3N1d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticLine3N1d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticLine3N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticLine3N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticPentahedron15N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticPentahedron15N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticPentahedron18N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticPentahedron18N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticPyramid13N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticPyramid13N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticPyramid14N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticPyramid14N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticQuadrangle8N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticQuadrangle8N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticQuadrangle8N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticQuadrangle8N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticQuadrangle9N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticQuadrangle9N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticQuadrangle9N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticQuadrangle9N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticTetrahedron10N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticTetrahedron10N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticTriangle6N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticTriangle6N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticTriangle6N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticTriangle6N2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticTriangle7N()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticTriangle7N() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsQuadraticTriangle7N2d()
+*/
+// ============================================================================
+Standard_Boolean MeshRep_Cell::IsQuadraticTriangle7N2d() const
+{
+    return Standard_False;
 }
 
 

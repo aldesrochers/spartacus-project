@@ -41,16 +41,7 @@ int main(int argc, char** argv)
     MeshDS_Mesh aMesh;
     aBuilder.MakeMesh(aMesh);
     //aBuilder.ResizeCells(aMesh, 1);
-    aBuilder.ResizeNodes(aMesh, 2);
 
-    MeshDS_Node aNode1, aNode2;
-    aBuilder.MakeNode(aNode1, gp_Pnt1d(0.));
-    aBuilder.MakeNode(aNode2, gp_Pnt1d(1.));
-    aBuilder.SetNode(aMesh, 1, aNode1);
-    aBuilder.SetNode(aMesh, 2, aNode2);
-
-    MeshDS_Cell aCell;
-    aBuilder.MakeCell(aCell, new Mesh1d_LinearLine2N(mp_LinearLine2N(1, 2)));
 
 
 
