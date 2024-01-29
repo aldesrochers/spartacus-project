@@ -25,6 +25,9 @@
 
 // Spartacus
 #include <MeshRep_Representation.hxx>
+#include <mp_Node.hxx>
+#include <mp_Node1d.hxx>
+#include <mp_Node2d.hxx>
 
 // Forward declarations
 class MeshRep_Node;
@@ -52,6 +55,9 @@ public:
     Standard_EXPORT virtual Standard_Boolean    IsNode1d() const;
     Standard_EXPORT virtual Standard_Boolean    IsNode2d() const;
     Standard_EXPORT virtual Standard_Boolean    IsNode3d() const;
+    Standard_EXPORT virtual const mp_Node1d&    Node1d() const;
+    Standard_EXPORT virtual const mp_Node2d&    Node2d() const;
+    Standard_EXPORT virtual const mp_Node&      Node3d() const;
 
 public:
 

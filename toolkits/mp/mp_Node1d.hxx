@@ -26,13 +26,13 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-#include <Standard_Real.hxx>
 
+// Spartacus
+#include <gp_Pnt1d.hxx>
 
 // ============================================================================
 /*!
  *  \brief mp_Node1d
- *  Class definition of a mesh node in 1d space.
 */
 // ============================================================================
 class mp_Node1d
@@ -45,20 +45,23 @@ public:
 public:
     // constructors
     Standard_EXPORT mp_Node1d();
+    Standard_EXPORT mp_Node1d(const gp_Pnt1d& thePoint);
     Standard_EXPORT mp_Node1d(const Standard_Real theX);
     // destructors
     Standard_EXPORT ~mp_Node1d();
 
 public:
 
-    Standard_EXPORT Standard_Real       Distance(const mp_Node1d& theOther) const;
+    Standard_EXPORT const gp_Pnt1d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
     Standard_EXPORT void                SetX(const Standard_Real theX);
     Standard_EXPORT Standard_Real       X() const;
 
 private:
 
-    Standard_Real       myX;
+    gp_Pnt1d        myPoint;
 
 };
+
 
 #endif // __mp_Node1d_hxx__

@@ -24,7 +24,7 @@
 #define __MeshLib_MakeMesh_hxx__
 
 // Spartacus
-#include <MeshLib_MakeObject.hxx>
+#include <MeshLib_Command.hxx>
 
 
 // ============================================================================
@@ -32,7 +32,7 @@
  *  \brief MeshLib_MakeMesh
 */
 // ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
+class MeshLib_MakeMesh : public MeshLib_Command
 {
 
 public:

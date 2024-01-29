@@ -22,7 +22,8 @@
 
 // Spartacus
 #include <ModelDS_Builder.hxx>
-#include <ModelDS_TMesh.hxx>
+#include <ModelDS_TElement.hxx>
+#include <ModelDS_TModel.hxx>
 
 
 // ============================================================================
@@ -47,14 +48,38 @@ ModelDS_Builder::~ModelDS_Builder()
 
 // ============================================================================
 /*!
- *  \brief MakeMesh()
- *  Make an empty mesh object.
+ *  \brief MakeElement()
 */
 // ============================================================================
-void ModelDS_Builder::MakeMesh(ModelDS_Mesh &theMesh) const
+void ModelDS_Builder::MakeElement(ModelDS_Element& theElement) const
 {
-    Handle(ModelDS_TMesh) aTMesh = new ModelDS_TMesh();
-    MakeObject(theMesh, aTMesh);
+    Handle(ModelDS_TElement) aTElement = new ModelDS_TElement();
+    MakeObject(theElement, aTElement);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeElement()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeElement(ModelDS_Element &theElement,
+                                  const MeshDS_Cell &theCell,
+                                  const ModelAbs_TypeOfPhenomenon thePhenomenon,
+                                  const ModelAbs_TypeOfModelisation theModelisation) const
+{
+    MakeElement(theElement);
+    UpdateElement(theElement, theCell, thePhenomenon, theModelisation);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeModel()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeModel(ModelDS_Model &theModel) const
+{
+    Handle(ModelDS_TModel) aTModel = new ModelDS_TModel();
+    MakeObject(theModel, aTModel);
 }
 
 // ============================================================================
@@ -66,4 +91,20 @@ void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
                                  const Handle(ModelDS_TObject) &theTObject) const
 {
     theObject.SetTObject(theTObject);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateElement()
+*/
+// ============================================================================
+void ModelDS_Builder::UpdateElement(const ModelDS_Element &theElement,
+                                    const MeshDS_Cell &theCell,
+                                    const ModelAbs_TypeOfPhenomenon thePhenomenon,
+                                    const ModelAbs_TypeOfModelisation theModelisation) const
+{
+    const Handle(ModelDS_TElement)& aTElement = *((Handle(ModelDS_TElement)*) &theElement.TObject());
+    aTElement->SetCell(theCell);
+    aTElement->SetModelisation(theModelisation);
+    aTElement->SetPhenomenon(thePhenomenon);
 }

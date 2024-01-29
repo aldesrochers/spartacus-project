@@ -19,9 +19,9 @@
 //
 // ============================================================================
 
+
 // Spartacus
 #include <mp_Node1d.hxx>
-
 
 
 // ============================================================================
@@ -39,10 +39,20 @@ mp_Node1d::mp_Node1d()
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node1d::mp_Node1d(const Standard_Real theX)
-    : myX(theX)
+mp_Node1d::mp_Node1d(const gp_Pnt1d& thePoint)
+    : myPoint(thePoint)
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+mp_Node1d::mp_Node1d(const Standard_Real theX)
+{
+    myPoint.SetX(theX);
 }
 
 // ============================================================================
@@ -57,12 +67,22 @@ mp_Node1d::~mp_Node1d()
 
 // ============================================================================
 /*!
- *  \brief SetX()
+ *  \brief Point()
 */
 // ============================================================================
-Standard_Real mp_Node1d::Distance(const mp_Node1d &theOther) const
+const gp_Pnt1d& mp_Node1d::Point() const
 {
-    return abs(myX - theOther.X());
+    return myPoint;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetPoint()
+*/
+// ============================================================================
+void mp_Node1d::SetPoint(const gp_Pnt1d &thePoint)
+{
+    myPoint = thePoint;
 }
 
 // ============================================================================
@@ -72,7 +92,7 @@ Standard_Real mp_Node1d::Distance(const mp_Node1d &theOther) const
 // ============================================================================
 void mp_Node1d::SetX(const Standard_Real theX)
 {
-    myX = theX;
+    myPoint.SetX(theX);
 }
 
 // ============================================================================
@@ -82,6 +102,5 @@ void mp_Node1d::SetX(const Standard_Real theX)
 // ============================================================================
 Standard_Real mp_Node1d::X() const
 {
-    return myX;
+    return myPoint.X();
 }
-

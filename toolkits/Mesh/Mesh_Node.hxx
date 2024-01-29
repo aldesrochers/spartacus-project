@@ -23,12 +23,15 @@
 #ifndef __Mesh_Node_hxx__
 #define __Mesh_Node_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
 // Spartacus
-#include <MeshAbs_TypeOfNode.hxx>
+#include <gp_Pnt.hxx>
+#include <Mesh_Object.hxx>
+
+// Forward declarations
+class Mesh_Node;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Mesh_Node, Mesh_Object)
 
 
 // ============================================================================
@@ -36,7 +39,7 @@
  *  \brief Mesh_Node
 */
 // ============================================================================
-class Mesh_Node
+class Mesh_Node : public Mesh_Object
 {
 
 public:
@@ -46,12 +49,29 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh_Node();
+    Standard_EXPORT Mesh_Node(const gp_Pnt& thePoint);
+    Standard_EXPORT Mesh_Node(const Standard_Real theX);
     // destructors
     Standard_EXPORT ~Mesh_Node();
 
 public:
 
-    virtual Standard_EXPORT MeshAbs_TypeOfNode      Type() const;
+    Standard_EXPORT const gp_Pnt&       Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT void                SetX(const Standard_Real theX);
+    Standard_EXPORT void                SetY(const Standard_Real theY);
+    Standard_EXPORT void                SetZ(const Standard_Real theZ);
+    Standard_EXPORT Standard_Real       X() const;
+    Standard_EXPORT Standard_Real       Y() const;
+    Standard_EXPORT Standard_Real       Z() const;
+
+private:
+
+    gp_Pnt        myPoint;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Node, Mesh_Object);
 
 };
 

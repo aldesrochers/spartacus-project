@@ -39,11 +39,10 @@ Mesh2d_Node::Mesh2d_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh2d_Node::Mesh2d_Node(const Standard_Real theX,
-                         const Standard_Real theY)
+Mesh2d_Node::Mesh2d_Node(const gp_Pnt2d& thePoint)
+    : myPoint(thePoint)
 {
-    myPoint.SetX(theX);
-    myPoint.SetY(theY);
+
 }
 
 // ============================================================================
@@ -51,12 +50,10 @@ Mesh2d_Node::Mesh2d_Node(const Standard_Real theX,
  *  \brief Constructor
 */
 // ============================================================================
-Mesh2d_Node::Mesh2d_Node(const gp_Pnt2d& thePoint)
-    : myPoint(thePoint)
+Mesh2d_Node::Mesh2d_Node(const Standard_Real theX)
 {
-
+    myPoint.SetX(theX);
 }
-
 
 // ============================================================================
 /*!
@@ -66,16 +63,6 @@ Mesh2d_Node::Mesh2d_Node(const gp_Pnt2d& thePoint)
 Mesh2d_Node::~Mesh2d_Node()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Distance()
-*/
-// ============================================================================
-Standard_Real Mesh2d_Node::Distance(const Handle(Mesh2d_Node) &theOther) const
-{
-    return myPoint.Distance(theOther->Point());
 }
 
 // ============================================================================

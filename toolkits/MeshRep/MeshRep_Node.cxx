@@ -23,6 +23,9 @@
 // Spartacus
 #include <MeshRep_Node.hxx>
 
+// OpenCascade
+#include <Standard_DomainError.hxx>
+
 
 // ============================================================================
 /*!
@@ -74,6 +77,35 @@ Standard_Boolean MeshRep_Node::IsNode3d() const
     return Standard_False;
 }
 
+// ============================================================================
+/*!
+ *  \brief Node1d()
+*/
+// ============================================================================
+const mp_Node1d& MeshRep_Node::Node1d() const
+{
+    throw Standard_DomainError("MeshRep_Node::Node1d()");
+}
+
+// ============================================================================
+/*!
+ *  \brief Node2d()
+*/
+// ============================================================================
+const mp_Node2d& MeshRep_Node::Node2d() const
+{
+    throw Standard_DomainError("MeshRep_Node::Node2d()");
+}
+
+// ============================================================================
+/*!
+ *  \brief Node3d()
+*/
+// ============================================================================
+const mp_Node& MeshRep_Node::Node3d() const
+{
+    throw Standard_DomainError("MeshRep_Node::Node3d()");
+}
 
 
 // ****************************************************************************

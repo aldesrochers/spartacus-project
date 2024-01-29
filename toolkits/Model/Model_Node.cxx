@@ -40,20 +40,9 @@ Model_Node::Model_Node()
 */
 // ============================================================================
 Model_Node::Model_Node(const Standard_Integer theMeshNode,
-                       const Standard_Integer theNbDegreesOfFreedom)
-    : myMeshNode(theMeshNode)
-{
-    myDegreesOfFreedom.Resize(1, theNbDegreesOfFreedom, Standard_False);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_Node::Model_Node(const Standard_Integer theMeshNode,
-                       const Model_Array1OfTypeOfDOF &theDegreesOfFreedom)
-    : myMeshNode(theMeshNode), myDegreesOfFreedom(theDegreesOfFreedom)
+                       const TColStd_ListOfInteger &theDegreesOfFreedom)
+    : myMeshNode(theMeshNode),
+    myDegreesOfFreedom(theDegreesOfFreedom)
 {
 
 }
@@ -70,12 +59,13 @@ Model_Node::~Model_Node()
 
 // ============================================================================
 /*!
- *  \brief DegreeOfFreedom()
+ *  \brief DegreesOfFreedom()
+ *  Get the degrees of freedom associated to node.
 */
 // ============================================================================
-Model_TypeOfDOF Model_Node::DegreeOfFreedom(const Standard_Integer theIndex) const
+const TColStd_ListOfInteger& Model_Node::DegreesOfFreedom() const
 {
-    return (Model_TypeOfDOF) myDegreesOfFreedom.Size();
+    return myDegreesOfFreedom;
 }
 
 // ============================================================================
@@ -84,7 +74,7 @@ Model_TypeOfDOF Model_Node::DegreeOfFreedom(const Standard_Integer theIndex) con
  *  Get the degrees of freedom associated to node.
 */
 // ============================================================================
-const Model_Array1OfTypeOfDOF& Model_Node::DegreesOfFreedom() const
+TColStd_ListOfInteger& Model_Node::DegreesOfFreedom()
 {
     return myDegreesOfFreedom;
 }
@@ -108,28 +98,6 @@ Standard_Integer Model_Node::NbDegreesOfFreedom() const
 Standard_Integer Model_Node::MeshNode() const
 {
     return myMeshNode;
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeDegreesOfFreedom()
-*/
-// ============================================================================
-void Model_Node::ResizeDegreesOfFreedom(const Standard_Integer theNbDegreesOfFreedom,
-                                        const Standard_Boolean toCopyData)
-{
-    myDegreesOfFreedom.Resize(1, theNbDegreesOfFreedom, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief SetDegreeOfFreedom()
-*/
-// ============================================================================
-void Model_Node::SetDegreeOfFreedom(const Standard_Integer theIndex,
-                                    const Model_TypeOfDOF theDegreeOfFreedom)
-{
-    myDegreesOfFreedom.SetValue(theIndex, theDegreeOfFreedom);
 }
 
 // ============================================================================

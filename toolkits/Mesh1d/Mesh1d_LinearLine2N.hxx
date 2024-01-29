@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <Mesh1d_Cell.hxx>
+#include <mp_LinearLine2N.hxx>
 
 // Forward declarations
 class Mesh1d_LinearLine2N;
@@ -48,8 +49,7 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh1d_LinearLine2N();
-    Standard_EXPORT Mesh1d_LinearLine2N(const Standard_Integer theNode1,
-                                        const Standard_Integer theNode2);
+    Standard_EXPORT Mesh1d_LinearLine2N(const mp_LinearLine2N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh1d_LinearLine2N();
 
@@ -59,15 +59,19 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer        Node1() const;
-    Standard_EXPORT Standard_Integer        Node2() const;
-    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
-    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
+    Standard_EXPORT const mp_LinearLine2N&  Connectivity() const;
+    Standard_EXPORT void                    SetConnectivity(const mp_LinearLine2N& theConnectivity);
+
+public:
+
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
 
 private:
 
-    Standard_Integer        myNode1;
-    Standard_Integer        myNode2;
+    mp_LinearLine2N     myConnectivity;
 
 public:
 

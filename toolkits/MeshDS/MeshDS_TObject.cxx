@@ -59,21 +59,10 @@ Standard_Boolean MeshDS_TObject::IsModified() const
  *  \brief SetModified()
 */
 // ============================================================================
-void MeshDS_TObject::SetModified()
+void MeshDS_TObject::SetModified(const Standard_Boolean theIsModified)
 {
-    myIsModified = Standard_True;
+    myIsModified = theIsModified;
 }
-
-// ============================================================================
-/*!
- *  \brief SetNotModified()
-*/
-// ============================================================================
-void MeshDS_TObject::SetNotModified()
-{
-    myIsModified = Standard_False;
-}
-
 
 
 // ****************************************************************************

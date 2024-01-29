@@ -44,6 +44,132 @@ MeshDS_TMesh::~MeshDS_TMesh()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Cell& MeshDS_TMesh::Cell(const Standard_Integer theIndex) const
+{
+    return myCells.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief Group()
+*/
+// ============================================================================
+const MeshDS_Group& MeshDS_TMesh::Group(const Standard_Integer theIndex) const
+{
+    return myGroups.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const MeshDS_Node& MeshDS_TMesh::Node(const Standard_Integer theIndex) const
+{
+    return myNodes.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief NbCells()
+*/
+// ============================================================================
+Standard_Integer MeshDS_TMesh::NbCells() const
+{
+    return myCells.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbGroups()
+*/
+// ============================================================================
+Standard_Integer MeshDS_TMesh::NbGroups() const
+{
+    return myGroups.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbNodes()
+*/
+// ============================================================================
+Standard_Integer MeshDS_TMesh::NbNodes() const
+{
+    return myNodes.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeCells()
+*/
+// ============================================================================
+void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
+                               const Standard_Boolean toCopyData)
+{
+    myCells.Resize(1, theNbCells, toCopyData);
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeGroups()
+*/
+// ============================================================================
+void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
+                                const Standard_Boolean toCopyData)
+{
+    myGroups.Resize(1, theNbGroups, toCopyData);
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeNodes()
+*/
+// ============================================================================
+void MeshDS_TMesh::ResizeNodes(const Standard_Integer theNbNodes,
+                               const Standard_Boolean toCopyData)
+{
+    myNodes.Resize(1, theNbNodes, toCopyData);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetCell()
+*/
+// ============================================================================
+void MeshDS_TMesh::SetCell(const Standard_Integer theIndex,
+                           const MeshDS_Cell &theCell)
+{
+    myCells.SetValue(theIndex, theCell);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetGroup()
+*/
+// ============================================================================
+void MeshDS_TMesh::SetGroup(const Standard_Integer theIndex,
+                            const MeshDS_Group &theGroup)
+{
+    myGroups.SetValue(theIndex, theGroup);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void MeshDS_TMesh::SetNode(const Standard_Integer theIndex,
+                           const MeshDS_Node &theNode)
+{
+    myNodes.SetValue(theIndex, theNode);
+}
+
 
 // ****************************************************************************
 // Handles

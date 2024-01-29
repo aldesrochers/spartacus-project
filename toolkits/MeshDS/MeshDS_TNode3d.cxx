@@ -29,18 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TNode3d::MeshDS_TNode3d()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TNode3d::MeshDS_TNode3d(const gp_Pnt& thePoint)
-    : myPoint(thePoint)
+MeshDS_TNode3d::MeshDS_TNode3d(const Handle(Mesh_Node)& theNode3d)
+    : myNode3d(theNode3d)
 {
 
 }
@@ -67,14 +57,13 @@ Standard_Boolean MeshDS_TNode3d::IsNode3d() const
 
 // ============================================================================
 /*!
- *  \brief Type()
+ *  \brief Node3d()
 */
 // ============================================================================
-MeshAbs_TypeOfNode MeshDS_TNode3d::Type() const
+const Handle(Mesh_Node)& MeshDS_TNode3d::Node3d() const
 {
-    return MeshAbs_Node3d;
+    return myNode3d;
 }
-
 
 
 // ****************************************************************************

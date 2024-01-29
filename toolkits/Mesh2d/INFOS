@@ -1,3 +1,4 @@
-Mesh1d
+Mesh
 
-This package contains classes used to describe mesh objects in 1d space.
+This package contains classes used to describes meshes data structures
+in 1d, 2d and 3d spaces.

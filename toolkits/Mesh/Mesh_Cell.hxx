@@ -23,12 +23,15 @@
 #ifndef __Mesh_Cell_hxx__
 #define __Mesh_Cell_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
 // Spartacus
+#include <Mesh_Object.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
+
+// Forward declarations
+class Mesh_Cell;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
 
 
 // ============================================================================
@@ -36,7 +39,7 @@
  *  \brief Mesh_Cell
 */
 // ============================================================================
-class Mesh_Cell
+class Mesh_Cell : public Mesh_Object
 {
 
 public:
@@ -51,7 +54,11 @@ public:
 
 public:
 
-    virtual Standard_EXPORT MeshAbs_TypeOfCell      Type() const;
+    virtual Standard_EXPORT MeshAbs_TypeOfCell      Type() const = 0;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object);
 
 };
 

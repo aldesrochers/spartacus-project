@@ -27,9 +27,6 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
-// Spartacus
-#include <ModelDS_Object.hxx>
-
 
 // ============================================================================
 /*!
@@ -53,14 +50,9 @@ public:
 
     Standard_EXPORT Standard_Boolean        IsDone() const;
 
-protected:
-
-    Standard_EXPORT const ModelDS_Object&   Object() const;
-
 private:
 
     Standard_Boolean        myIsDone;
-    ModelDS_Object          myObject;
 
 };
 

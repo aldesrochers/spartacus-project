@@ -26,9 +26,7 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-
-// Spartacus
-#include <Model_Array1OfTypeOfDOF.hxx>
+#include <TColStd_ListOfInteger.hxx>
 
 
 // ============================================================================
@@ -46,28 +44,23 @@ public:
 public:
     // constructors
     Standard_EXPORT Model_Node();
+    Standard_EXPORT Model_Node(const Standard_Integer theMeshNode);
     Standard_EXPORT Model_Node(const Standard_Integer theMeshNode,
-                               const Standard_Integer theNbDegreesOfFreedom);
-    Standard_EXPORT Model_Node(const Standard_Integer theMeshNode,
-                               const Model_Array1OfTypeOfDOF& theDegreesOfFreedom);
+                               const TColStd_ListOfInteger& theDegreesOfFreedom);
     // destructors
     Standard_EXPORT ~Model_Node();
 
 public:
 
-    Standard_EXPORT Model_TypeOfDOF                 DegreeOfFreedom(const Standard_Integer theIndex) const;
-    Standard_EXPORT const Model_Array1OfTypeOfDOF&  DegreesOfFreedom() const;
+    Standard_EXPORT const TColStd_ListOfInteger&    DegreesOfFreedom() const;
+    Standard_EXPORT TColStd_ListOfInteger&          DegreesOfFreedom();
     Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
     Standard_EXPORT Standard_Integer                MeshNode() const;
-    Standard_EXPORT void                            ResizeDegreesOfFreedom(const Standard_Integer theNbDegreesOfFreedom,
-                                                                           const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                            SetDegreeOfFreedom(const Standard_Integer theIndex,
-                                                                       const Model_TypeOfDOF theDegreeOfFreedom);
     Standard_EXPORT void                            SetMeshNode(const Standard_Integer theMeshNode);
 
 private:
 
-    Model_Array1OfTypeOfDOF     myDegreesOfFreedom;
+    TColStd_ListOfInteger       myDegreesOfFreedom;
     Standard_Integer            myMeshNode;
 
 };

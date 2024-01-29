@@ -38,7 +38,6 @@ DEFINE_STANDARD_HANDLE(Mesh1d_Object, Standard_Transient)
 // ============================================================================
 /*!
  *  \brief Mesh1d_Object
- *  Class implementation of a base object for the package.
 */
 // ============================================================================
 class Mesh1d_Object : public Standard_Transient

@@ -56,16 +56,6 @@ Standard_Boolean ModelDS_Object::IsNull() const
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-ModelAbs_TypeOfObject ModelDS_Object::ObjectType() const
-{
-    return myTObject->ObjectType();
-}
-
-// ============================================================================
-/*!
  *  \brief SetTObject()
 */
 // ============================================================================
@@ -83,5 +73,4 @@ const Handle(ModelDS_TObject)& ModelDS_Object::TObject() const
 {
     return myTObject;
 }
-
 

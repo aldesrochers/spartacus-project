@@ -29,7 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshRep_Node1d::MeshRep_Node1d()
+MeshRep_Node1d::MeshRep_Node1d(const Handle(Mesh1d_Node)& theNode1d)
+    : myNode1d(theNode1d)
 {
 
 }
@@ -56,23 +57,14 @@ Standard_Boolean MeshRep_Node1d::IsNode1d() const
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief Node1d()
 */
 // ============================================================================
-const mp_Node1d& MeshRep_Node1d::Node() const
+const Handle(Mesh1d_Node)& MeshRep_Node1d::Node1d() const
 {
-    return myNode;
+    return myNode1d;
 }
 
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void MeshRep_Node1d::SetNode(const mp_Node1d &theNode)
-{
-    myNode = theNode;
-}
 
 
 // ****************************************************************************

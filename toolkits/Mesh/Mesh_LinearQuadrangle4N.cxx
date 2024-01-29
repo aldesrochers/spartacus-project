@@ -39,11 +39,8 @@ Mesh_LinearQuadrangle4N::Mesh_LinearQuadrangle4N()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_LinearQuadrangle4N::Mesh_LinearQuadrangle4N(const Standard_Integer theNode1,
-                                                 const Standard_Integer theNode2,
-                                                 const Standard_Integer theNode3,
-                                                 const Standard_Integer theNode4)
-    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3), myNode4(theNode4)
+Mesh_LinearQuadrangle4N::Mesh_LinearQuadrangle4N(const mp_LinearQuadrangle4N& theConnectivity)
+    : myConnectivity(theConnectivity)
 {
 
 }
@@ -60,12 +57,22 @@ Mesh_LinearQuadrangle4N::~Mesh_LinearQuadrangle4N()
 
 // ============================================================================
 /*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const mp_LinearQuadrangle4N& Mesh_LinearQuadrangle4N::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
 Standard_Integer Mesh_LinearQuadrangle4N::Node1() const
 {
-    return myNode1;
+    return myConnectivity.Node1();
 }
 
 // ============================================================================
@@ -75,7 +82,7 @@ Standard_Integer Mesh_LinearQuadrangle4N::Node1() const
 // ============================================================================
 Standard_Integer Mesh_LinearQuadrangle4N::Node2() const
 {
-    return myNode2;
+    return myConnectivity.Node2();
 }
 
 // ============================================================================
@@ -85,7 +92,7 @@ Standard_Integer Mesh_LinearQuadrangle4N::Node2() const
 // ============================================================================
 Standard_Integer Mesh_LinearQuadrangle4N::Node3() const
 {
-    return myNode3;
+    return myConnectivity.Node3();
 }
 
 // ============================================================================
@@ -95,7 +102,17 @@ Standard_Integer Mesh_LinearQuadrangle4N::Node3() const
 // ============================================================================
 Standard_Integer Mesh_LinearQuadrangle4N::Node4() const
 {
-    return myNode4;
+    return myConnectivity.Node4();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_LinearQuadrangle4N::SetConnectivity(const mp_LinearQuadrangle4N &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 // ============================================================================
@@ -105,7 +122,7 @@ Standard_Integer Mesh_LinearQuadrangle4N::Node4() const
 // ============================================================================
 void Mesh_LinearQuadrangle4N::SetNode1(const Standard_Integer theNode1)
 {
-    myNode1 = theNode1;
+    myConnectivity.SetNode1(theNode1);
 }
 
 // ============================================================================
@@ -115,7 +132,7 @@ void Mesh_LinearQuadrangle4N::SetNode1(const Standard_Integer theNode1)
 // ============================================================================
 void Mesh_LinearQuadrangle4N::SetNode2(const Standard_Integer theNode2)
 {
-    myNode2 = theNode2;
+    myConnectivity.SetNode2(theNode2);
 }
 
 // ============================================================================
@@ -125,7 +142,7 @@ void Mesh_LinearQuadrangle4N::SetNode2(const Standard_Integer theNode2)
 // ============================================================================
 void Mesh_LinearQuadrangle4N::SetNode3(const Standard_Integer theNode3)
 {
-    myNode3 = theNode3;
+    myConnectivity.SetNode3(theNode3);
 }
 
 // ============================================================================
@@ -135,7 +152,7 @@ void Mesh_LinearQuadrangle4N::SetNode3(const Standard_Integer theNode3)
 // ============================================================================
 void Mesh_LinearQuadrangle4N::SetNode4(const Standard_Integer theNode4)
 {
-    myNode4 = theNode4;
+    myConnectivity.SetNode4(theNode4);
 }
 
 // ============================================================================
@@ -149,3 +166,8 @@ MeshAbs_TypeOfCell Mesh_LinearQuadrangle4N::Type() const
 }
 
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_LinearQuadrangle4N, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_LinearQuadrangle4N, Mesh_Cell)

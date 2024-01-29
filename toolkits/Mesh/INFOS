@@ -1,3 +1,4 @@
 Mesh
 
-This packages contains classes used to describe meshes data structures.
+This package contains classes used to describes meshes data structures
+in 1d, 2d and 3d spaces.

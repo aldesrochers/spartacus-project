@@ -24,6 +24,7 @@
 #define __Mesh1d_Node_hxx__
 
 // Spartacus
+#include <gp_Pnt1d.hxx>
 #include <Mesh1d_Object.hxx>
 
 // Forward declarations
@@ -48,19 +49,21 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh1d_Node();
+    Standard_EXPORT Mesh1d_Node(const gp_Pnt1d& thePoint);
     Standard_EXPORT Mesh1d_Node(const Standard_Real theX);
     // destructors
     Standard_EXPORT ~Mesh1d_Node();
 
 public:
 
-    Standard_EXPORT Standard_Real       Distance(const Handle(Mesh1d_Node)& theOther) const;
+    Standard_EXPORT const gp_Pnt1d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
     Standard_EXPORT void                SetX(const Standard_Real theX);
     Standard_EXPORT Standard_Real       X() const;
 
 private:
 
-    Standard_Real       myX;
+    gp_Pnt1d        myPoint;
 
 public:
 

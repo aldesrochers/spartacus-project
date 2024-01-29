@@ -52,8 +52,7 @@ public:
 public:
 
     Standard_EXPORT Standard_Boolean    IsModified() const;
-    Standard_EXPORT void                SetModified();
-    Standard_EXPORT void                SetNotModified();
+    Standard_EXPORT void                SetModified(const Standard_Boolean theIsModified);
 
 private:
 

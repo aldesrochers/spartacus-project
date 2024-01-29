@@ -31,7 +31,6 @@
 // ============================================================================
 enum MeshAbs_TypeOfCell
 {
-    MeshAbs_Invalid,
     MeshAbs_LinearHexahedron8N,
     MeshAbs_LinearLine2N,
     MeshAbs_LinearPentahedron6N,

@@ -29,18 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TNode1d::MeshDS_TNode1d()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TNode1d::MeshDS_TNode1d(const Standard_Real theX)
-    : myX(theX)
+MeshDS_TNode1d::MeshDS_TNode1d(const Handle(Mesh1d_Node)& theNode1d)
+    : myNode1d(theNode1d)
 {
 
 }
@@ -67,12 +57,12 @@ Standard_Boolean MeshDS_TNode1d::IsNode1d() const
 
 // ============================================================================
 /*!
- *  \brief Type()
+ *  \brief Node1d()
 */
 // ============================================================================
-MeshAbs_TypeOfNode MeshDS_TNode1d::Type() const
+const Handle(Mesh1d_Node)& MeshDS_TNode1d::Node1d() const
 {
-    return MeshAbs_Node1d;
+    return myNode1d;
 }
 
 

@@ -28,7 +28,11 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <ModelDS_Mesh.hxx>
+#include <MeshDS_Cell.hxx>
+#include <ModelAbs_TypeOfModelisation.hxx>
+#include <ModelAbs_TypeOfPhenomenon.hxx>
+#include <ModelDS_Element.hxx>
+#include <ModelDS_Model.hxx>
 #include <ModelDS_Object.hxx>
 #include <ModelDS_TObject.hxx>
 
@@ -53,7 +57,18 @@ public:
 
 public:
 
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh) const;
+    Standard_EXPORT void    MakeElement(ModelDS_Element& theElement) const;
+    Standard_EXPORT void    MakeElement(ModelDS_Element& theElement,
+                                        const MeshDS_Cell& theCell,
+                                        const ModelAbs_TypeOfPhenomenon thePhenomenon,
+                                        const ModelAbs_TypeOfModelisation theModelisation) const;
+
+    Standard_EXPORT void    MakeModel(ModelDS_Model& theModel) const;
+
+    Standard_EXPORT void    UpdateElement(const ModelDS_Element& theElement,
+                                          const MeshDS_Cell& theCell,
+                                          const ModelAbs_TypeOfPhenomenon thePhenomenon,
+                                          const ModelAbs_TypeOfModelisation theModelisation) const;
 
 protected:
 

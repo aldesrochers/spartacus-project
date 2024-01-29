@@ -39,19 +39,8 @@ Mesh_QuadraticTetrahedron10N::Mesh_QuadraticTetrahedron10N()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_QuadraticTetrahedron10N::Mesh_QuadraticTetrahedron10N(const Standard_Integer theNode1,
-                                                           const Standard_Integer theNode2,
-                                                           const Standard_Integer theNode3,
-                                                           const Standard_Integer theNode4,
-                                                           const Standard_Integer theNode5,
-                                                           const Standard_Integer theNode6,
-                                                           const Standard_Integer theNode7,
-                                                           const Standard_Integer theNode8,
-                                                           const Standard_Integer theNode9,
-                                                           const Standard_Integer theNode10)
-    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3), myNode4(theNode4),
-    myNode5(theNode5), myNode6(theNode6), myNode7(theNode7), myNode8(theNode8),
-    myNode9(theNode9), myNode10(theNode10)
+Mesh_QuadraticTetrahedron10N::Mesh_QuadraticTetrahedron10N(const mp_QuadraticTetrahedron10N& theConnectivity)
+    : myConnectivity(theConnectivity)
 {
 
 }
@@ -68,12 +57,22 @@ Mesh_QuadraticTetrahedron10N::~Mesh_QuadraticTetrahedron10N()
 
 // ============================================================================
 /*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const mp_QuadraticTetrahedron10N& Mesh_QuadraticTetrahedron10N::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node1() const
 {
-    return myNode1;
+    return myConnectivity.Node1();
 }
 
 // ============================================================================
@@ -83,7 +82,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node1() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node2() const
 {
-    return myNode2;
+    return myConnectivity.Node2();
 }
 
 // ============================================================================
@@ -93,7 +92,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node2() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node3() const
 {
-    return myNode3;
+    return myConnectivity.Node3();
 }
 
 // ============================================================================
@@ -103,7 +102,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node3() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node4() const
 {
-    return myNode4;
+    return myConnectivity.Node4();
 }
 
 // ============================================================================
@@ -113,7 +112,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node4() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node5() const
 {
-    return myNode5;
+    return myConnectivity.Node5();
 }
 
 // ============================================================================
@@ -123,7 +122,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node5() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node6() const
 {
-    return myNode6;
+    return myConnectivity.Node6();
 }
 
 // ============================================================================
@@ -133,7 +132,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node6() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node7() const
 {
-    return myNode7;
+    return myConnectivity.Node7();
 }
 
 // ============================================================================
@@ -143,7 +142,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node7() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node8() const
 {
-    return myNode8;
+    return myConnectivity.Node8();
 }
 
 // ============================================================================
@@ -153,7 +152,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node8() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node9() const
 {
-    return myNode9;
+    return myConnectivity.Node9();
 }
 
 // ============================================================================
@@ -163,7 +162,17 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node9() const
 // ============================================================================
 Standard_Integer Mesh_QuadraticTetrahedron10N::Node10() const
 {
-    return myNode10;
+    return myConnectivity.Node10();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_QuadraticTetrahedron10N::SetConnectivity(const mp_QuadraticTetrahedron10N &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 // ============================================================================
@@ -173,7 +182,7 @@ Standard_Integer Mesh_QuadraticTetrahedron10N::Node10() const
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode1(const Standard_Integer theNode1)
 {
-    myNode1 = theNode1;
+    myConnectivity.SetNode1(theNode1);
 }
 
 // ============================================================================
@@ -183,7 +192,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode1(const Standard_Integer theNode1)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode2(const Standard_Integer theNode2)
 {
-    myNode2 = theNode2;
+    myConnectivity.SetNode2(theNode2);
 }
 
 // ============================================================================
@@ -193,7 +202,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode2(const Standard_Integer theNode2)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode3(const Standard_Integer theNode3)
 {
-    myNode3 = theNode3;
+    myConnectivity.SetNode3(theNode3);
 }
 
 // ============================================================================
@@ -203,7 +212,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode3(const Standard_Integer theNode3)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode4(const Standard_Integer theNode4)
 {
-    myNode4 = theNode4;
+    myConnectivity.SetNode4(theNode4);
 }
 
 // ============================================================================
@@ -213,7 +222,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode4(const Standard_Integer theNode4)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode5(const Standard_Integer theNode5)
 {
-    myNode5 = theNode5;
+    myConnectivity.SetNode5(theNode5);
 }
 
 // ============================================================================
@@ -223,7 +232,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode5(const Standard_Integer theNode5)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode6(const Standard_Integer theNode6)
 {
-    myNode6 = theNode6;
+    myConnectivity.SetNode6(theNode6);
 }
 
 // ============================================================================
@@ -233,7 +242,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode6(const Standard_Integer theNode6)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode7(const Standard_Integer theNode7)
 {
-    myNode7 = theNode7;
+    myConnectivity.SetNode7(theNode7);
 }
 
 // ============================================================================
@@ -243,7 +252,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode7(const Standard_Integer theNode7)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode8(const Standard_Integer theNode8)
 {
-    myNode8 = theNode8;
+    myConnectivity.SetNode8(theNode8);
 }
 
 // ============================================================================
@@ -253,7 +262,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode8(const Standard_Integer theNode8)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode9(const Standard_Integer theNode9)
 {
-    myNode9 = theNode9;
+    myConnectivity.SetNode9(theNode9);
 }
 
 // ============================================================================
@@ -263,7 +272,7 @@ void Mesh_QuadraticTetrahedron10N::SetNode9(const Standard_Integer theNode9)
 // ============================================================================
 void Mesh_QuadraticTetrahedron10N::SetNode10(const Standard_Integer theNode10)
 {
-    myNode10 = theNode10;
+    myConnectivity.SetNode10(theNode10);
 }
 
 // ============================================================================
@@ -277,3 +286,8 @@ MeshAbs_TypeOfCell Mesh_QuadraticTetrahedron10N::Type() const
 }
 
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_QuadraticTetrahedron10N, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_QuadraticTetrahedron10N, Mesh_Cell)

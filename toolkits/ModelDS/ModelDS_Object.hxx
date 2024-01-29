@@ -40,10 +40,6 @@ class ModelDS_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT ModelDS_Object();
     // destructors
@@ -51,8 +47,7 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Boolean                IsNull() const;
-    Standard_EXPORT ModelAbs_TypeOfObject           ObjectType() const;
+    Standard_EXPORT Standard_Boolean            IsNull() const;
 
 public:
 
@@ -61,7 +56,7 @@ public:
 
 private:
 
-    Handle(ModelDS_TObject)     myTObject;
+    Handle(ModelDS_TObject)        myTObject;
 
 };
 

@@ -54,13 +54,3 @@ Standard_Boolean ModelLib_Command::IsDone() const
     return myIsDone;
 }
 
-// ============================================================================
-/*!
- *  \brief Object()
-*/
-// ============================================================================
-const ModelDS_Object& ModelLib_Command::Object() const
-{
-    return myObject;
-}
-

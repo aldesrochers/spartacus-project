@@ -29,18 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TNode2d::MeshDS_TNode2d()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TNode2d::MeshDS_TNode2d(const gp_Pnt2d& thePoint)
-    : myPoint(thePoint)
+MeshDS_TNode2d::MeshDS_TNode2d(const Handle(Mesh2d_Node)& theNode2d)
+    : myNode2d(theNode2d)
 {
 
 }
@@ -67,14 +57,13 @@ Standard_Boolean MeshDS_TNode2d::IsNode2d() const
 
 // ============================================================================
 /*!
- *  \brief Type()
+ *  \brief Node2d()
 */
 // ============================================================================
-MeshAbs_TypeOfNode MeshDS_TNode2d::Type() const
+const Handle(Mesh2d_Node)& MeshDS_TNode2d::Node2d() const
 {
-    return MeshAbs_Node2d;
+    return myNode2d;
 }
-
 
 
 // ****************************************************************************

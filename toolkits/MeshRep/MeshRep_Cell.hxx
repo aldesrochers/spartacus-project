@@ -25,6 +25,9 @@
 
 // Spartacus
 #include <MeshRep_Representation.hxx>
+#include <Mesh_Cell.hxx>
+#include <Mesh1d_Cell.hxx>
+#include <Mesh2d_Cell.hxx>
 
 // Forward declarations
 class MeshRep_Cell;
@@ -46,6 +49,15 @@ public:
     Standard_EXPORT MeshRep_Cell();
     // destructors
     Standard_EXPORT ~MeshRep_Cell();
+
+public:
+
+    Standard_EXPORT virtual Standard_Boolean            IsCell1d() const;
+    Standard_EXPORT virtual Standard_Boolean            IsCell2d() const;
+    Standard_EXPORT virtual Standard_Boolean            IsCell3d() const;
+    Standard_EXPORT virtual const Handle(Mesh1d_Cell)&  Cell1d() const;
+    Standard_EXPORT virtual const Handle(Mesh2d_Cell)&  Cell2d() const;
+    Standard_EXPORT virtual const Handle(Mesh_Cell)&    Cell3d() const;
 
 public:
 

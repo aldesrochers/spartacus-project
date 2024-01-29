@@ -39,10 +39,20 @@ Mesh1d_Node::Mesh1d_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_Node::Mesh1d_Node(const Standard_Real theX)
-    : myX(theX)
+Mesh1d_Node::Mesh1d_Node(const gp_Pnt1d& thePoint)
+    : myPoint(thePoint)
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh1d_Node::Mesh1d_Node(const Standard_Real theX)
+{
+    myPoint.SetX(theX);
 }
 
 // ============================================================================
@@ -57,12 +67,22 @@ Mesh1d_Node::~Mesh1d_Node()
 
 // ============================================================================
 /*!
- *  \brief Distance()
+ *  \brief Point()
 */
 // ============================================================================
-Standard_Real Mesh1d_Node::Distance(const Handle(Mesh1d_Node) &theOther) const
+const gp_Pnt1d& Mesh1d_Node::Point() const
 {
-    return Abs(theOther->X() - myX);
+    return myPoint;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetPoint()
+*/
+// ============================================================================
+void Mesh1d_Node::SetPoint(const gp_Pnt1d &thePoint)
+{
+    myPoint = thePoint;
 }
 
 // ============================================================================
@@ -72,7 +92,7 @@ Standard_Real Mesh1d_Node::Distance(const Handle(Mesh1d_Node) &theOther) const
 // ============================================================================
 void Mesh1d_Node::SetX(const Standard_Real theX)
 {
-    myX = theX;
+    myPoint.SetX(theX);
 }
 
 // ============================================================================
@@ -82,9 +102,8 @@ void Mesh1d_Node::SetX(const Standard_Real theX)
 // ============================================================================
 Standard_Real Mesh1d_Node::X() const
 {
-    return myX;
+    return myPoint.X();
 }
-
 
 
 // ****************************************************************************

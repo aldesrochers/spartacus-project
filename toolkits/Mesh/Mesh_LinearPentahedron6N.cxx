@@ -39,14 +39,8 @@ Mesh_LinearPentahedron6N::Mesh_LinearPentahedron6N()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_LinearPentahedron6N::Mesh_LinearPentahedron6N(const Standard_Integer theNode1,
-                                                   const Standard_Integer theNode2,
-                                                   const Standard_Integer theNode3,
-                                                   const Standard_Integer theNode4,
-                                                   const Standard_Integer theNode5,
-                                                   const Standard_Integer theNode6)
-    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3),
-    myNode4(theNode4), myNode5(theNode5), myNode6(theNode6)
+Mesh_LinearPentahedron6N::Mesh_LinearPentahedron6N(const mp_LinearPentahedron6N& theConnectivity)
+    : myConnectivity(theConnectivity)
 {
 
 }
@@ -63,12 +57,22 @@ Mesh_LinearPentahedron6N::~Mesh_LinearPentahedron6N()
 
 // ============================================================================
 /*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const mp_LinearPentahedron6N& Mesh_LinearPentahedron6N::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node1() const
 {
-    return myNode1;
+    return myConnectivity.Node1();
 }
 
 // ============================================================================
@@ -78,7 +82,7 @@ Standard_Integer Mesh_LinearPentahedron6N::Node1() const
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node2() const
 {
-    return myNode2;
+    return myConnectivity.Node2();
 }
 
 // ============================================================================
@@ -88,7 +92,7 @@ Standard_Integer Mesh_LinearPentahedron6N::Node2() const
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node3() const
 {
-    return myNode3;
+    return myConnectivity.Node3();
 }
 
 // ============================================================================
@@ -98,7 +102,7 @@ Standard_Integer Mesh_LinearPentahedron6N::Node3() const
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node4() const
 {
-    return myNode4;
+    return myConnectivity.Node4();
 }
 
 // ============================================================================
@@ -108,7 +112,7 @@ Standard_Integer Mesh_LinearPentahedron6N::Node4() const
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node5() const
 {
-    return myNode5;
+    return myConnectivity.Node5();
 }
 
 // ============================================================================
@@ -118,7 +122,17 @@ Standard_Integer Mesh_LinearPentahedron6N::Node5() const
 // ============================================================================
 Standard_Integer Mesh_LinearPentahedron6N::Node6() const
 {
-    return myNode6;
+    return myConnectivity.Node6();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_LinearPentahedron6N::SetConnectivity(const mp_LinearPentahedron6N &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 // ============================================================================
@@ -128,7 +142,7 @@ Standard_Integer Mesh_LinearPentahedron6N::Node6() const
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode1(const Standard_Integer theNode1)
 {
-    myNode1 = theNode1;
+    myConnectivity.SetNode1(theNode1);
 }
 
 // ============================================================================
@@ -138,7 +152,7 @@ void Mesh_LinearPentahedron6N::SetNode1(const Standard_Integer theNode1)
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode2(const Standard_Integer theNode2)
 {
-    myNode2 = theNode2;
+    myConnectivity.SetNode2(theNode2);
 }
 
 // ============================================================================
@@ -148,7 +162,7 @@ void Mesh_LinearPentahedron6N::SetNode2(const Standard_Integer theNode2)
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode3(const Standard_Integer theNode3)
 {
-    myNode3 = theNode3;
+    myConnectivity.SetNode3(theNode3);
 }
 
 // ============================================================================
@@ -158,7 +172,7 @@ void Mesh_LinearPentahedron6N::SetNode3(const Standard_Integer theNode3)
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode4(const Standard_Integer theNode4)
 {
-    myNode4 = theNode4;
+    myConnectivity.SetNode4(theNode4);
 }
 
 // ============================================================================
@@ -168,7 +182,7 @@ void Mesh_LinearPentahedron6N::SetNode4(const Standard_Integer theNode4)
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode5(const Standard_Integer theNode5)
 {
-    myNode5 = theNode5;
+    myConnectivity.SetNode5(theNode5);
 }
 
 // ============================================================================
@@ -178,7 +192,7 @@ void Mesh_LinearPentahedron6N::SetNode5(const Standard_Integer theNode5)
 // ============================================================================
 void Mesh_LinearPentahedron6N::SetNode6(const Standard_Integer theNode6)
 {
-    myNode6 = theNode6;
+    myConnectivity.SetNode6(theNode6);
 }
 
 // ============================================================================
@@ -192,4 +206,8 @@ MeshAbs_TypeOfCell Mesh_LinearPentahedron6N::Type() const
 }
 
 
-
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_LinearPentahedron6N, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_LinearPentahedron6N, Mesh_Cell)

@@ -43,19 +43,18 @@ class MeshDS_TNode1d : public MeshDS_TNode
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TNode1d();
-    Standard_EXPORT MeshDS_TNode1d(const Standard_Real theX);
+    Standard_EXPORT MeshDS_TNode1d(const Handle(Mesh1d_Node)& theNode1d);
     // destructors
     Standard_EXPORT ~MeshDS_TNode1d();
 
 public:
 
-    Standard_EXPORT Standard_Boolean        IsNode1d() const Standard_OVERRIDE;
-    Standard_EXPORT MeshAbs_TypeOfNode      Type() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Boolean            IsNode1d() const Standard_OVERRIDE;
+    Standard_EXPORT const Handle(Mesh1d_Node)&  Node1d() const Standard_OVERRIDE;
 
 private:
 
-    Standard_Real       myX;
+    Handle(Mesh1d_Node)     myNode1d;
 
 public:
 

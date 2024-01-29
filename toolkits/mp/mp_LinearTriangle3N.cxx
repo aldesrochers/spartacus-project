@@ -59,6 +59,19 @@ mp_LinearTriangle3N::~mp_LinearTriangle3N()
 
 // ============================================================================
 /*!
+ *  \brief Edge1()
+*/
+// ============================================================================
+TColStd_SequenceOfInteger mp_LinearTriangle3N::Edge1() const
+{
+    TColStd_SequenceOfInteger aSequence;
+    aSequence.Append(myNode1);
+    aSequence.Append(myNode2);
+    return aSequence;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

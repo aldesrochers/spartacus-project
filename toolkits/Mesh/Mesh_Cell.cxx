@@ -44,14 +44,9 @@ Mesh_Cell::~Mesh_Cell()
 
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_Cell::Type() const
-{
-    return MeshAbs_Cell;
-}
 
-
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)

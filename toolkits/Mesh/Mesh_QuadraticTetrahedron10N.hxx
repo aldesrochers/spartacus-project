@@ -25,6 +25,13 @@
 
 // Spartacus
 #include <Mesh_Cell.hxx>
+#include <mp_QuadraticTetrahedron10N.hxx>
+
+// Forward declarations
+class Mesh_QuadraticTetrahedron10N;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Mesh_QuadraticTetrahedron10N, Mesh_Cell)
 
 
 // ============================================================================
@@ -42,16 +49,7 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh_QuadraticTetrahedron10N();
-    Standard_EXPORT Mesh_QuadraticTetrahedron10N(const Standard_Integer theNode1,
-                                                 const Standard_Integer theNode2,
-                                                 const Standard_Integer theNode3,
-                                                 const Standard_Integer theNode4,
-                                                 const Standard_Integer theNode5,
-                                                 const Standard_Integer theNode6,
-                                                 const Standard_Integer theNode7,
-                                                 const Standard_Integer theNode8,
-                                                 const Standard_Integer theNode9,
-                                                 const Standard_Integer theNode10);
+    Standard_EXPORT Mesh_QuadraticTetrahedron10N(const mp_QuadraticTetrahedron10N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh_QuadraticTetrahedron10N();
 
@@ -61,39 +59,39 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer        Node1() const;
-    Standard_EXPORT Standard_Integer        Node2() const;
-    Standard_EXPORT Standard_Integer        Node3() const;
-    Standard_EXPORT Standard_Integer        Node4() const;
-    Standard_EXPORT Standard_Integer        Node5() const;
-    Standard_EXPORT Standard_Integer        Node6() const;
-    Standard_EXPORT Standard_Integer        Node7() const;
-    Standard_EXPORT Standard_Integer        Node8() const;
-    Standard_EXPORT Standard_Integer        Node9() const;
-    Standard_EXPORT Standard_Integer        Node10() const;
-    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
-    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
-    Standard_EXPORT void                    SetNode3(const Standard_Integer theNode3);
-    Standard_EXPORT void                    SetNode4(const Standard_Integer theNode4);
-    Standard_EXPORT void                    SetNode5(const Standard_Integer theNode5);
-    Standard_EXPORT void                    SetNode6(const Standard_Integer theNode6);
-    Standard_EXPORT void                    SetNode7(const Standard_Integer theNode7);
-    Standard_EXPORT void                    SetNode8(const Standard_Integer theNode8);
-    Standard_EXPORT void                    SetNode9(const Standard_Integer theNode9);
-    Standard_EXPORT void                    SetNode10(const Standard_Integer theNode10);
+    Standard_EXPORT const mp_QuadraticTetrahedron10N&   Connectivity() const;
+    Standard_EXPORT void                                SetConnectivity(const mp_QuadraticTetrahedron10N& theConnectivity);
+
+public:
+
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT Standard_Integer    Node3() const;
+    Standard_EXPORT Standard_Integer    Node4() const;
+    Standard_EXPORT Standard_Integer    Node5() const;
+    Standard_EXPORT Standard_Integer    Node6() const;
+    Standard_EXPORT Standard_Integer    Node7() const;
+    Standard_EXPORT Standard_Integer    Node8() const;
+    Standard_EXPORT Standard_Integer    Node9() const;
+    Standard_EXPORT Standard_Integer    Node10() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
+    Standard_EXPORT void                SetNode3(const Standard_Integer theNode3);
+    Standard_EXPORT void                SetNode4(const Standard_Integer theNode4);
+    Standard_EXPORT void                SetNode5(const Standard_Integer theNode5);
+    Standard_EXPORT void                SetNode6(const Standard_Integer theNode6);
+    Standard_EXPORT void                SetNode7(const Standard_Integer theNode7);
+    Standard_EXPORT void                SetNode8(const Standard_Integer theNode8);
+    Standard_EXPORT void                SetNode9(const Standard_Integer theNode9);
+    Standard_EXPORT void                SetNode10(const Standard_Integer theNode10);
 
 private:
 
-    Standard_Integer        myNode1;
-    Standard_Integer        myNode2;
-    Standard_Integer        myNode3;
-    Standard_Integer        myNode4;
-    Standard_Integer        myNode5;
-    Standard_Integer        myNode6;
-    Standard_Integer        myNode7;
-    Standard_Integer        myNode8;
-    Standard_Integer        myNode9;
-    Standard_Integer        myNode10;
+    mp_QuadraticTetrahedron10N     myConnectivity;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_QuadraticTetrahedron10N, Mesh_Cell);
 
 };
 

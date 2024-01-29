@@ -39,10 +39,8 @@ Mesh_LinearTriangle3N::Mesh_LinearTriangle3N()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_LinearTriangle3N::Mesh_LinearTriangle3N(const Standard_Integer theNode1,
-                                             const Standard_Integer theNode2,
-                                             const Standard_Integer theNode3)
-    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3)
+Mesh_LinearTriangle3N::Mesh_LinearTriangle3N(const mp_LinearTriangle3N& theConnectivity)
+    : myConnectivity(theConnectivity)
 {
 
 }
@@ -59,12 +57,22 @@ Mesh_LinearTriangle3N::~Mesh_LinearTriangle3N()
 
 // ============================================================================
 /*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const mp_LinearTriangle3N& Mesh_LinearTriangle3N::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
 Standard_Integer Mesh_LinearTriangle3N::Node1() const
 {
-    return myNode1;
+    return myConnectivity.Node1();
 }
 
 // ============================================================================
@@ -74,7 +82,7 @@ Standard_Integer Mesh_LinearTriangle3N::Node1() const
 // ============================================================================
 Standard_Integer Mesh_LinearTriangle3N::Node2() const
 {
-    return myNode2;
+    return myConnectivity.Node2();
 }
 
 // ============================================================================
@@ -84,7 +92,17 @@ Standard_Integer Mesh_LinearTriangle3N::Node2() const
 // ============================================================================
 Standard_Integer Mesh_LinearTriangle3N::Node3() const
 {
-    return myNode3;
+    return myConnectivity.Node3();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_LinearTriangle3N::SetConnectivity(const mp_LinearTriangle3N &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 // ============================================================================
@@ -94,7 +112,7 @@ Standard_Integer Mesh_LinearTriangle3N::Node3() const
 // ============================================================================
 void Mesh_LinearTriangle3N::SetNode1(const Standard_Integer theNode1)
 {
-    myNode1 = theNode1;
+    myConnectivity.SetNode1(theNode1);
 }
 
 // ============================================================================
@@ -104,7 +122,7 @@ void Mesh_LinearTriangle3N::SetNode1(const Standard_Integer theNode1)
 // ============================================================================
 void Mesh_LinearTriangle3N::SetNode2(const Standard_Integer theNode2)
 {
-    myNode2 = theNode2;
+    myConnectivity.SetNode2(theNode2);
 }
 
 // ============================================================================
@@ -114,7 +132,7 @@ void Mesh_LinearTriangle3N::SetNode2(const Standard_Integer theNode2)
 // ============================================================================
 void Mesh_LinearTriangle3N::SetNode3(const Standard_Integer theNode3)
 {
-    myNode3 = theNode3;
+    myConnectivity.SetNode3(theNode3);
 }
 
 // ============================================================================
@@ -128,4 +146,8 @@ MeshAbs_TypeOfCell Mesh_LinearTriangle3N::Type() const
 }
 
 
-
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_LinearTriangle3N, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_LinearTriangle3N, Mesh_Cell)

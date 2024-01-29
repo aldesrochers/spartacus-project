@@ -39,9 +39,8 @@ Mesh_LinearLine2N::Mesh_LinearLine2N()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_LinearLine2N::Mesh_LinearLine2N(const Standard_Integer theNode1,
-                                     const Standard_Integer theNode2)
-    : myNode1(theNode1), myNode2(theNode2)
+Mesh_LinearLine2N::Mesh_LinearLine2N(const mp_LinearLine2N& theConnectivity)
+    : myConnectivity(theConnectivity)
 {
 
 }
@@ -58,12 +57,22 @@ Mesh_LinearLine2N::~Mesh_LinearLine2N()
 
 // ============================================================================
 /*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const mp_LinearLine2N& Mesh_LinearLine2N::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
 Standard_Integer Mesh_LinearLine2N::Node1() const
 {
-    return myNode1;
+    return myConnectivity.Node1();
 }
 
 // ============================================================================
@@ -73,7 +82,17 @@ Standard_Integer Mesh_LinearLine2N::Node1() const
 // ============================================================================
 Standard_Integer Mesh_LinearLine2N::Node2() const
 {
-    return myNode2;
+    return myConnectivity.Node2();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_LinearLine2N::SetConnectivity(const mp_LinearLine2N &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 // ============================================================================
@@ -83,7 +102,7 @@ Standard_Integer Mesh_LinearLine2N::Node2() const
 // ============================================================================
 void Mesh_LinearLine2N::SetNode1(const Standard_Integer theNode1)
 {
-    myNode1 = theNode1;
+    myConnectivity.SetNode1(theNode1);
 }
 
 // ============================================================================
@@ -93,7 +112,7 @@ void Mesh_LinearLine2N::SetNode1(const Standard_Integer theNode1)
 // ============================================================================
 void Mesh_LinearLine2N::SetNode2(const Standard_Integer theNode2)
 {
-    myNode2 = theNode2;
+    myConnectivity.SetNode2(theNode2);
 }
 
 // ============================================================================
@@ -107,3 +126,8 @@ MeshAbs_TypeOfCell Mesh_LinearLine2N::Type() const
 }
 
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_LinearLine2N, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_LinearLine2N, Mesh_Cell)

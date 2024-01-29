@@ -25,6 +25,13 @@
 
 // Spartacus
 #include <Mesh_Cell.hxx>
+#include <mp_LinearPyramid5N.hxx>
+
+// Forward declarations
+class Mesh_LinearPyramid5N;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Mesh_LinearPyramid5N, Mesh_Cell)
 
 
 // ============================================================================
@@ -42,11 +49,7 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh_LinearPyramid5N();
-    Standard_EXPORT Mesh_LinearPyramid5N(const Standard_Integer theNode1,
-                                         const Standard_Integer theNode2,
-                                         const Standard_Integer theNode3,
-                                         const Standard_Integer theNode4,
-                                         const Standard_Integer theNode5);
+    Standard_EXPORT Mesh_LinearPyramid5N(const mp_LinearPyramid5N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh_LinearPyramid5N();
 
@@ -56,24 +59,29 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer        Node1() const;
-    Standard_EXPORT Standard_Integer        Node2() const;
-    Standard_EXPORT Standard_Integer        Node3() const;
-    Standard_EXPORT Standard_Integer        Node4() const;
-    Standard_EXPORT Standard_Integer        Node5() const;
-    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
-    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
-    Standard_EXPORT void                    SetNode3(const Standard_Integer theNode3);
-    Standard_EXPORT void                    SetNode4(const Standard_Integer theNode4);
-    Standard_EXPORT void                    SetNode5(const Standard_Integer theNode4);
+    Standard_EXPORT const mp_LinearPyramid5N&   Connectivity() const;
+    Standard_EXPORT void                        SetConnectivity(const mp_LinearPyramid5N& theConnectivity);
+
+public:
+
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT Standard_Integer    Node3() const;
+    Standard_EXPORT Standard_Integer    Node4() const;
+    Standard_EXPORT Standard_Integer    Node5() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
+    Standard_EXPORT void                SetNode3(const Standard_Integer theNode3);
+    Standard_EXPORT void                SetNode4(const Standard_Integer theNode4);
+    Standard_EXPORT void                SetNode5(const Standard_Integer theNode5);
 
 private:
 
-    Standard_Integer        myNode1;
-    Standard_Integer        myNode2;
-    Standard_Integer        myNode3;
-    Standard_Integer        myNode4;
-    Standard_Integer        myNode5;
+    mp_LinearPyramid5N     myConnectivity;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_LinearPyramid5N, Mesh_Cell);
 
 };
 

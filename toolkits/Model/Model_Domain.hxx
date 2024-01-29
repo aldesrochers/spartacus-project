@@ -28,6 +28,12 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
+// Spartacus
+#include <Model_Array1OfElement.hxx>
+#include <Model_Array1OfNode.hxx>
+#include <Model_Element.hxx>
+#include <Model_Node.hxx>
+
 // Forward declarations
 class Model_Domain;
 
@@ -48,6 +54,16 @@ public:
     Standard_EXPORT Model_Domain();
     // destructors
     Standard_EXPORT ~Model_Domain();
+
+public:
+
+    Standard_EXPORT Standard_Integer    NbElements() const;
+    Standard_EXPORT Standard_Integer    NbNodes() const;
+
+private:
+
+    Model_Array1OfElement       myElements;
+    Model_Array1OfNode          myNodes;
 
 public:
 

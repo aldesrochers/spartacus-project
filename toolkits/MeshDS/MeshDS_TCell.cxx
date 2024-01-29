@@ -23,29 +23,18 @@
 // Spartacus
 #include <MeshDS_TCell.hxx>
 
+// OpenCascade
+#include <Standard_DomainError.hxx>
+
 
 // ============================================================================
 /*!
  *  \brief Constructor
- *  Creates an invalid cell.
 */
 // ============================================================================
 MeshDS_TCell::MeshDS_TCell()
-    : myType(MeshAbs_Invalid)
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TCell::MeshDS_TCell(const MeshAbs_TypeOfCell theType,
-                           const Standard_Integer theNbNodes)
-    : myType(theType)
-{
-    myNodes.Resize(1, theNbNodes, Standard_False);
 }
 
 // ============================================================================
@@ -60,43 +49,52 @@ MeshDS_TCell::~MeshDS_TCell()
 
 // ============================================================================
 /*!
- *  \brief NbNodes()
+ *  \brief IsLinearLine2N1d()
 */
 // ============================================================================
-Standard_Integer MeshDS_TCell::NbNodes() const
+Standard_Boolean MeshDS_TCell::IsLinearLine2N1d() const
 {
-    return myNodes.Size();
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief HasShape()
 */
 // ============================================================================
-const MeshDS_Node& MeshDS_TCell::Node(const Standard_Integer theIndex) const
+Standard_Boolean MeshDS_TCell::HasShape() const
 {
-    return myNodes.Value(theIndex);
+    return !myShape.IsNull();
 }
 
 // ============================================================================
 /*!
- *  \brief SetNode()
+ *  \brief LinearLine2N1d()
 */
 // ============================================================================
-void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
-                           const MeshDS_Node &theNode)
+const Handle(Mesh1d_LinearLine2N)& MeshDS_TCell::LinearLine2N1d() const
 {
-    myNodes.SetValue(theIndex, theNode);
+    throw Standard_DomainError("MeshDS_TCell::LinearLine2N1d()");
 }
 
 // ============================================================================
 /*!
- *  \brief Type()
+ *  \brief SetShape()
 */
 // ============================================================================
-MeshAbs_TypeOfCell MeshDS_TCell::Type() const
+void MeshDS_TCell::SetShape(const TopoDS_Shape &theShape)
 {
-    return myType;
+    myShape = theShape;
+}
+
+// ============================================================================
+/*!
+ *  \brief Shape()
+*/
+// ============================================================================
+const TopoDS_Shape& MeshDS_TCell::Shape() const
+{
+    return myShape;
 }
 
 

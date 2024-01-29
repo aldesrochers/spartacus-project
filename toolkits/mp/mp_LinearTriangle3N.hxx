@@ -26,6 +26,7 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <TColStd_SequenceOfInteger.hxx>
 
 
 // ============================================================================
@@ -57,6 +58,10 @@ public:
     Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
     Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
     Standard_EXPORT void                    SetNode3(const Standard_Integer theNode3);
+
+public:
+
+    Standard_EXPORT TColStd_SequenceOfInteger   Edge1() const;
 
 private:
 

@@ -25,7 +25,6 @@
 
 // Spartacus
 #include <MeshRep_Node.hxx>
-#include <mp_Node1d.hxx>
 
 // Forward declarations
 class MeshRep_Node1d;
@@ -44,22 +43,18 @@ class MeshRep_Node1d : public MeshRep_Node
 
 public:
     // constructors
-    Standard_EXPORT MeshRep_Node1d();
+    Standard_EXPORT MeshRep_Node1d(const Handle(Mesh1d_Node)& theNode1d);
     // destructors
     Standard_EXPORT ~MeshRep_Node1d();
 
 public:
 
-    Standard_EXPORT Standard_Boolean    IsNode1d() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT const mp_Node1d&    Node() const;
-    Standard_EXPORT void                SetNode(const mp_Node1d& theNode);
+    Standard_EXPORT Standard_Boolean            IsNode1d() const Standard_OVERRIDE;
+    Standard_EXPORT const Handle(Mesh1d_Node)&  Node1d() const Standard_OVERRIDE;
 
 private:
 
-    mp_Node1d       myNode;
+    Handle(Mesh1d_Node)     myNode1d;
 
 public:
 

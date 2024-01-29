@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <Mesh2d_Cell.hxx>
+#include <mp_QuadraticLine3N.hxx>
 
 // Forward declarations
 class Mesh2d_QuadraticLine3N;
@@ -48,9 +49,7 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh2d_QuadraticLine3N();
-    Standard_EXPORT Mesh2d_QuadraticLine3N(const Standard_Integer theNode1,
-                                           const Standard_Integer theNode2,
-                                           const Standard_Integer theNode3);
+    Standard_EXPORT Mesh2d_QuadraticLine3N(const mp_QuadraticLine3N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh2d_QuadraticLine3N();
 
@@ -60,18 +59,21 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer        Node1() const;
-    Standard_EXPORT Standard_Integer        Node2() const;
-    Standard_EXPORT Standard_Integer        Node3() const;
-    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
-    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
-    Standard_EXPORT void                    SetNode3(const Standard_Integer theNode3);
+    Standard_EXPORT const mp_QuadraticLine3N&   Connectivity() const;
+    Standard_EXPORT void                        SetConnectivity(const mp_QuadraticLine3N& theConnectivity);
+
+public:
+
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT Standard_Integer    Node3() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
+    Standard_EXPORT void                SetNode3(const Standard_Integer theNode3);
 
 private:
 
-    Standard_Integer        myNode1;
-    Standard_Integer        myNode2;
-    Standard_Integer        myNode3;
+    mp_QuadraticLine3N     myConnectivity;
 
 public:
 

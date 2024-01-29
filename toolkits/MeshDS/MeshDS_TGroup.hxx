@@ -24,11 +24,7 @@
 #define __MeshDS_TGroup_hxx__
 
 // Spartacus
-#include <MeshDS_ListOfCell.hxx>
 #include <MeshDS_TObject.hxx>
-
-// OpenCascade
-#include <TCollection_AsciiString.hxx>
 
 // Forward declarations
 class MeshDS_TGroup;
@@ -50,20 +46,6 @@ public:
     Standard_EXPORT MeshDS_TGroup();
     // destructors
     Standard_EXPORT ~MeshDS_TGroup();
-
-public:
-
-    Standard_EXPORT void                            AddCell(const MeshDS_Cell& theCell);
-    Standard_EXPORT const MeshDS_ListOfCell&        Cells() const;
-    Standard_EXPORT MeshDS_ListOfCell&              Cells();
-    Standard_EXPORT const TCollection_AsciiString&  Name() const;
-    Standard_EXPORT Standard_Integer                NbCells() const;
-    Standard_EXPORT void                            SetName(const TCollection_AsciiString& theName);
-
-private:
-
-    MeshDS_ListOfCell           myCells;
-    TCollection_AsciiString     myName;
 
 public:
 
