@@ -195,15 +195,6 @@ void Mesh2d_QuadraticTriangle6N::SetNode6(const Standard_Integer theNode6)
     myConnectivity.SetNode6(theNode6);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh2d_QuadraticTriangle6N::Type() const
-{
-    return MeshAbs_QuadraticTriangle6N;
-}
 
 
 // ****************************************************************************

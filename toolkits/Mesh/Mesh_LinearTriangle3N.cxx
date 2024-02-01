@@ -135,15 +135,7 @@ void Mesh_LinearTriangle3N::SetNode3(const Standard_Integer theNode3)
     myConnectivity.SetNode3(theNode3);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_LinearTriangle3N::Type() const
-{
-    return MeshAbs_LinearTriangle3N;
-}
+
 
 
 // ****************************************************************************

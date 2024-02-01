@@ -20,16 +20,32 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_Array1OfGroup_hxx__
-#define __MeshDS_Array1OfGroup_hxx__
+#ifndef __BRepCellAPI_MakeCell_hxx__
+#define __BRepCellAPI_MakeCell_hxx__
 
 // OpenCascade
-#include <NCollection_Array1.hxx>
+#include <BRepBuilderAPI_MakeShape.hxx>
 
-// Spartacus
-class MeshDS_Group;
 
-// Type definitions
-typedef NCollection_Array1<MeshDS_Group>    MeshDS_Array1OfGroup;
+// ============================================================================
+/*!
+ *  \brief BRepCellAPI_MakeCell
+*/
+// ============================================================================
+class BRepCellAPI_MakeCell : public BRepBuilderAPI_MakeShape
+{
 
-#endif // __MeshDS_Array1OfGroup_hxx__
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT BRepCellAPI_MakeCell();
+    // destructors
+    Standard_EXPORT ~BRepCellAPI_MakeCell();
+
+};
+
+
+#endif // __BRepCellAPI_MakeCell_hxx__

@@ -20,18 +20,47 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_ListOfCell_hxx__
-#define __MeshDS_ListOfCell_hxx__
-
-// OpenCascade
-#include <NCollection_List.hxx>
+#ifndef __MeshRep_Cell1d_hxx__
+#define __MeshRep_Cell1d_hxx__
 
 // Spartacus
-class MeshDS_Cell;
+#include <MeshRep_Cell.hxx>
 
-// Type definitions
-typedef NCollection_List<MeshDS_Cell>               MeshDS_ListOfCell;
-typedef NCollection_List<MeshDS_Cell>::Iterator     MeshDS_ListIteratorOfListOfCell;
+// Forward declarations
+class MeshRep_Cell1d;
+
+// Handles
+DEFINE_STANDARD_HANDLE(MeshRep_Cell1d, MeshRep_Cell);
 
 
-#endif // __MeshDS_ListOfCell_hxx__
+// ============================================================================
+/*!
+ *  \brief MeshRep_Cell1d
+*/
+// ============================================================================
+class MeshRep_Cell1d : public MeshRep_Cell
+{
+
+public:
+    // constructors
+    Standard_EXPORT MeshRep_Cell1d(const Handle(Mesh1d_Cell)& theCell1d);
+    // destructors
+    Standard_EXPORT ~MeshRep_Cell1d();
+
+public:
+
+    Standard_EXPORT Standard_Boolean            IsCell1d() const Standard_OVERRIDE;
+    Standard_EXPORT const Handle(Mesh1d_Cell)&  Cell1d() const Standard_OVERRIDE;
+
+private:
+
+    Handle(Mesh1d_Cell)     myCell1d;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshRep_Cell1d, MeshRep_Cell);
+
+};
+
+
+#endif // __MeshRep_Cell1d_hxx__

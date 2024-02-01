@@ -25,8 +25,8 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_Array1OfNode.hxx>
-#include <MeshDS_Node.hxx>
+#include <MeshDS_Array1OfObject.hxx>
+#include <MeshDS_Object.hxx>
 #include <MeshDS_TObject.hxx>
 
 
@@ -53,19 +53,23 @@ public:
 
 public:
 
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT MeshAbs_TypeOfCell      CellType() const;
     Standard_EXPORT Standard_Integer        NbNodes() const;
-    Standard_EXPORT const MeshDS_Node&      Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT const MeshDS_Object&    Node(const Standard_Integer theIndex) const;
     Standard_EXPORT void                    ResizeNodes(const Standard_Integer theNbNodes,
                                                         const Standard_Boolean toCopyData = Standard_False);
+    Standard_EXPORT void                    SetCellType(const MeshAbs_TypeOfCell theType);
     Standard_EXPORT void                    SetNode(const Standard_Integer theIndex,
-                                                    const MeshDS_Node& theNode);
-    Standard_EXPORT void                    SetType(const MeshAbs_TypeOfCell theType);
-    Standard_EXPORT MeshAbs_TypeOfCell      Type() const;
+                                                    const MeshDS_Object& theNode);
 
 private:
 
-    MeshDS_Array1OfNode     myNodes;
-    MeshAbs_TypeOfCell      myType;
+    MeshAbs_TypeOfCell      myCellType;
+    MeshDS_Array1OfObject   myNodes;
 
 public:
 

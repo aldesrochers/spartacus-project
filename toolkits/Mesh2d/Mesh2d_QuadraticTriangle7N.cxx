@@ -215,15 +215,6 @@ void Mesh2d_QuadraticTriangle7N::SetNode7(const Standard_Integer theNode7)
     myConnectivity.SetNode7(theNode7);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh2d_QuadraticTriangle7N::Type() const
-{
-    return MeshAbs_QuadraticTriangle7N;
-}
 
 
 // ****************************************************************************

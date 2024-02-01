@@ -24,6 +24,7 @@
 #define __MeshDS_TGroup_hxx__
 
 // Spartacus
+#include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
 // Forward declarations
@@ -46,6 +47,19 @@ public:
     Standard_EXPORT MeshDS_TGroup();
     // destructors
     Standard_EXPORT ~MeshDS_TGroup();
+
+public:
+
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const MeshDS_ListOfObject&  Cells() const;
+    Standard_EXPORT MeshDS_ListOfObject&        Cells();
+
+private:
+
+    MeshDS_ListOfObject     myCells;
 
 public:
 

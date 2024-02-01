@@ -20,47 +20,27 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TLinearLine2N1d_hxx__
-#define __MeshDS_TLinearLine2N1d_hxx__
-
 // Spartacus
-#include <MeshDS_TCell.hxx>
-
-// Forward declarations
-class MeshDS_TLinearLine2N1d;
-
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TLinearLine2N1d, MeshDS_TCell);
+#include <MeshDS_Node2d.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TLinearLine2N1d
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshDS_TLinearLine2N1d : public MeshDS_TCell
+MeshDS_Node2d::MeshDS_Node2d()
 {
 
-public:
-    // constructors
-    Standard_EXPORT MeshDS_TLinearLine2N1d(const Handle(Mesh1d_LinearLine2N)& theLinearLine2N1d);
-    // destructors
-    Standard_EXPORT ~MeshDS_TLinearLine2N1d();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshDS_Node2d::~MeshDS_Node2d()
+{
 
-    Standard_EXPORT Standard_Boolean                    IsLinearLine2N1d() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(Mesh1d_LinearLine2N)&  LinearLine2N1d() const Standard_OVERRIDE;
+}
 
-private:
-
-    Handle(Mesh1d_LinearLine2N)     myLinearLine2N1d;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TLinearLine2N1d, MeshDS_TCell);
-
-};
-
-
-#endif // __MeshDS_TLinearLine2N1d_hxx__

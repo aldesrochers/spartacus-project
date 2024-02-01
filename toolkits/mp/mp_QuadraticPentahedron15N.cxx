@@ -74,6 +74,61 @@ mp_QuadraticPentahedron15N::~mp_QuadraticPentahedron15N()
 
 // ============================================================================
 /*!
+ *  \brief Face1()
+*/
+// ============================================================================
+mp_QuadrangleFace8N mp_QuadraticPentahedron15N::Face1() const
+{
+    return mp_QuadrangleFace8N(myNode1, myNode2, myNode5, myNode4,
+                               myNode7, myNode11, myNode13, myNode10);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face2()
+*/
+// ============================================================================
+mp_QuadrangleFace8N mp_QuadraticPentahedron15N::Face2() const
+{
+    return mp_QuadrangleFace8N(myNode2, myNode3, myNode6, myNode5,
+                               myNode8, myNode12, myNode14, myNode11);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face3()
+*/
+// ============================================================================
+mp_QuadrangleFace8N mp_QuadraticPentahedron15N::Face3() const
+{
+    return mp_QuadrangleFace8N(myNode3, myNode1, myNode4, myNode6,
+                               myNode9, myNode10, myNode15, myNode12);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face4()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticPentahedron15N::Face4() const
+{
+    return mp_TriangleFace6N(myNode1, myNode3, myNode2,
+                             myNode9, myNode8, myNode7);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face5()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticPentahedron15N::Face5() const
+{
+    return mp_TriangleFace6N(myNode4, myNode5, myNode6,
+                             myNode13, myNode14, myNode15);
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

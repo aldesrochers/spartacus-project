@@ -24,6 +24,7 @@
 #define __MeshDS_Cell_hxx__
 
 // Spartacus
+#include <MeshAbs_TypeOfCell.hxx>
 #include <MeshDS_Object.hxx>
 
 
@@ -40,6 +41,10 @@ public:
     Standard_EXPORT MeshDS_Cell();
     // destructors
     Standard_EXPORT ~MeshDS_Cell();
+
+public:
+
+    Standard_EXPORT MeshAbs_TypeOfCell      CellType() const;
 
 };
 

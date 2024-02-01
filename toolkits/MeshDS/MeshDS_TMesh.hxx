@@ -24,12 +24,7 @@
 #define __MeshDS_TMesh_hxx__
 
 // Spartacus
-#include <MeshDS_Array1OfCell.hxx>
-#include <MeshDS_Array1OfGroup.hxx>
-#include <MeshDS_Array1OfNode.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Group.hxx>
-#include <MeshDS_Node.hxx>
+#include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
 // Forward declarations
@@ -55,33 +50,16 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_Cell&  Cell(const Standard_Integer theIndex) const;
-    Standard_EXPORT const MeshDS_Group& Group(const Standard_Integer theIndex) const;
-    Standard_EXPORT const MeshDS_Node&  Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
 
-    Standard_EXPORT Standard_Integer    NbCells() const;
-    Standard_EXPORT Standard_Integer    NbGroups() const;
-    Standard_EXPORT Standard_Integer    NbNodes() const;
+public:
 
-    Standard_EXPORT void                ResizeCells(const Standard_Integer theNbCells,
-                                                    const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                ResizeGroups(const Standard_Integer theNbGroups,
-                                                     const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                ResizeNodes(const Standard_Integer theNbNodes,
-                                                    const Standard_Boolean toCopyData = Standard_True);
-
-    Standard_EXPORT void                SetCell(const Standard_Integer theIndex,
-                                                const MeshDS_Cell& theCell);
-    Standard_EXPORT void                SetGroup(const Standard_Integer theIndex,
-                                                 const MeshDS_Group& theGroup);
-    Standard_EXPORT void                SetNode(const Standard_Integer theIndex,
-                                                const MeshDS_Node& theNode);
+    Standard_EXPORT const MeshDS_ListOfObject&  Groups() const;
+    Standard_EXPORT MeshDS_ListOfObject&        Groups();
 
 private:
 
-    MeshDS_Array1OfCell             myCells;
-    MeshDS_Array1OfGroup            myGroups;
-    MeshDS_Array1OfNode             myNodes;
+    MeshDS_ListOfObject     myGroups;
 
 public:
 

@@ -24,6 +24,7 @@
 #define __MeshLib_MakeMesh_hxx__
 
 // Spartacus
+#include <MeshDS_Mesh.hxx>
 #include <MeshLib_Command.hxx>
 
 
@@ -44,6 +45,19 @@ public:
     Standard_EXPORT MeshLib_MakeMesh();
     // destructors
     Standard_EXPORT ~MeshLib_MakeMesh();
+
+public:
+
+    virtual Standard_EXPORT void            Build();
+
+public:
+
+    Standard_EXPORT const MeshDS_Mesh&      Mesh();
+    Standard_EXPORT operator                MeshDS_Mesh();
+
+protected:
+
+    MeshDS_Mesh             myMesh;
 
 };
 

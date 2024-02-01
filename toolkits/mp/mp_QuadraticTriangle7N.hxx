@@ -27,6 +27,9 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
+// Spartacus
+#include <mp_TriangleFace7N.hxx>
+
 
 // ============================================================================
 /*!
@@ -55,6 +58,7 @@ public:
 
 public:
 
+    Standard_EXPORT mp_TriangleFace7N       Face() const;
     Standard_EXPORT Standard_Integer        Node1() const;
     Standard_EXPORT Standard_Integer        Node2() const;
     Standard_EXPORT Standard_Integer        Node3() const;

@@ -27,6 +27,8 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
+// Spartacus
+#include <mp_QuadrangleFace4N.hxx>
 
 
 // ============================================================================
@@ -53,6 +55,7 @@ public:
 
 public:
 
+    Standard_EXPORT mp_QuadrangleFace4N     Face() const;
     Standard_EXPORT Standard_Integer        Node1() const;
     Standard_EXPORT Standard_Integer        Node2() const;
     Standard_EXPORT Standard_Integer        Node3() const;

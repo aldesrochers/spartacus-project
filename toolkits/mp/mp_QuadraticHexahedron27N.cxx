@@ -89,6 +89,72 @@ mp_QuadraticHexahedron27N::~mp_QuadraticHexahedron27N()
 
 // ============================================================================
 /*!
+ *  \brief Face1()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face1() const
+{
+    return mp_QuadrangleFace9N(myNode1, myNode4, myNode3, myNode2,
+                               myNode12, myNode11, myNode10, myNode9, myNode21);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face2()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face2() const
+{
+    return mp_QuadrangleFace9N(myNode1, myNode2, myNode6, myNode5,
+                               myNode9, myNode14, myNode17, myNode13, myNode22);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face3()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face3() const
+{
+    return mp_QuadrangleFace9N(myNode2, myNode3, myNode7, myNode6,
+                               myNode10, myNode15, myNode18, myNode14, myNode23);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face4()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face4() const
+{
+    return mp_QuadrangleFace9N(myNode3, myNode4, myNode8, myNode7,
+                               myNode11, myNode16, myNode19, myNode15, myNode24);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face5()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face5() const
+{
+    return mp_QuadrangleFace9N(myNode1, myNode5, myNode8, myNode4,
+                               myNode13, myNode20, myNode16, myNode12, myNode25);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face6()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticHexahedron27N::Face6() const
+{
+    return mp_QuadrangleFace9N(myNode5, myNode6, myNode7, myNode8,
+                               myNode17, myNode18, myNode19, myNode20, myNode26);
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

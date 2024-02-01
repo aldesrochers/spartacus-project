@@ -175,15 +175,6 @@ void Mesh_LinearPyramid5N::SetNode5(const Standard_Integer theNode5)
     myConnectivity.SetNode5(theNode5);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_LinearPyramid5N::Type() const
-{
-    return MeshAbs_LinearPyramid5N;
-}
 
 
 // ****************************************************************************

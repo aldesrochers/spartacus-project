@@ -335,15 +335,6 @@ void Mesh_QuadraticPyramid13N::SetNode13(const Standard_Integer theNode13)
     myConnectivity.SetNode13(theNode13);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticPyramid13N::Type() const
-{
-    return MeshAbs_QuadraticPyramid13N;
-}
 
 
 // ****************************************************************************

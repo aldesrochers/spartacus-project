@@ -24,15 +24,17 @@
 #define __BRepCell_MakeCell_hxx__
 
 // OpenCascade
-#include <BRepLib_MakeShape.hxx>
-
+#include <BRepCell_Command.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Vertex.hxx>
+#include <TopTools_Array1OfShape.hxx>
 
 // ============================================================================
 /*!
  *  \brief BRepCell_MakeCell
 */
 // ============================================================================
-class BRepCell_MakeCell : public BRepLib_MakeShape
+class BRepCell_MakeCell : public BRepCell_Command
 {
 
 public:
@@ -44,6 +46,19 @@ public:
     Standard_EXPORT BRepCell_MakeCell();
     // destructors
     Standard_EXPORT ~BRepCell_MakeCell();
+
+public:
+
+    Standard_EXPORT const TopoDS_Edge&      Edge(const Standard_Integer theIndex) const;
+    Standard_EXPORT Standard_Integer        NbEdges() const;
+    Standard_EXPORT Standard_Integer        NbVertices() const;
+    Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const;
+
+
+protected:
+
+    TopTools_Array1OfShape      myEdges;
+    TopTools_Array1OfShape      myVertices;
 
 };
 

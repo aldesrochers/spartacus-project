@@ -68,6 +68,50 @@ mp_QuadraticTetrahedron10N::~mp_QuadraticTetrahedron10N()
 
 // ============================================================================
 /*!
+ *  \brief Face1()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticTetrahedron10N::Face1() const
+{
+    return mp_TriangleFace6N(myNode1, myNode3, myNode2,
+                             myNode7, myNode6, myNode5);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face2()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticTetrahedron10N::Face2() const
+{
+    return mp_TriangleFace6N(myNode1, myNode2, myNode4,
+                             myNode5, myNode9, myNode8);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face3()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticTetrahedron10N::Face3() const
+{
+    return mp_TriangleFace6N(myNode2, myNode3, myNode4,
+                             myNode6, myNode10, myNode9);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face4()
+*/
+// ============================================================================
+mp_TriangleFace6N mp_QuadraticTetrahedron10N::Face4() const
+{
+    return mp_TriangleFace6N(myNode3, myNode1, myNode4,
+                             myNode7, myNode8, myNode10);
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

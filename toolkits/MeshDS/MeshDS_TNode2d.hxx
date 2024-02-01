@@ -24,6 +24,7 @@
 #define __MeshDS_TNode2d_hxx__
 
 // Spartacus
+#include <gp_Pnt2d.hxx>
 #include <MeshDS_TNode.hxx>
 
 // Forward declarations
@@ -43,18 +44,22 @@ class MeshDS_TNode2d : public MeshDS_TNode
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TNode2d(const Handle(Mesh2d_Node)& theNode2d);
+    Standard_EXPORT MeshDS_TNode2d();
     // destructors
     Standard_EXPORT ~MeshDS_TNode2d();
 
 public:
 
-    Standard_EXPORT Standard_Boolean            IsNode2d() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(Mesh2d_Node)&  Node2d() const Standard_OVERRIDE;
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const gp_Pnt2d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
 
 private:
 
-    Handle(Mesh2d_Node)     myNode2d;
+    gp_Pnt2d    myPoint;
 
 public:
 

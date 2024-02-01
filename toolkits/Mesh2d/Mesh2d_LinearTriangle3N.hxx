@@ -55,10 +55,6 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfCell      Type() const Standard_OVERRIDE;
-
-public:
-
     Standard_EXPORT const mp_LinearTriangle3N&  Connectivity() const;
     Standard_EXPORT void                        SetConnectivity(const mp_LinearTriangle3N& theConnectivity);
 

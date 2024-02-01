@@ -27,6 +27,8 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
+// Spartacus
+#include <mp_Edge2N.hxx>
 
 // ============================================================================
 /*!
@@ -50,6 +52,7 @@ public:
 
 public:
 
+    Standard_EXPORT mp_Edge2N               Edge() const;
     Standard_EXPORT Standard_Integer        Node1() const;
     Standard_EXPORT Standard_Integer        Node2() const;
     Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);

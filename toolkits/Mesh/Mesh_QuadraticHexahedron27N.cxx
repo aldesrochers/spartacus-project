@@ -615,15 +615,7 @@ void Mesh_QuadraticHexahedron27N::SetNode27(const Standard_Integer theNode27)
     myConnectivity.SetNode27(theNode27);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticHexahedron27N::Type() const
-{
-    return MeshAbs_QuadraticHexahedron27N;
-}
+
 
 
 // ****************************************************************************

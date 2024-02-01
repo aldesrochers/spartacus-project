@@ -275,15 +275,6 @@ void Mesh_QuadraticTetrahedron10N::SetNode10(const Standard_Integer theNode10)
     myConnectivity.SetNode10(theNode10);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticTetrahedron10N::Type() const
-{
-    return MeshAbs_QuadraticTetrahedron10N;
-}
 
 
 // ****************************************************************************

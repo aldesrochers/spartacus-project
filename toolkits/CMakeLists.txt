@@ -24,13 +24,39 @@
 # =============================================================================
 
 set(BRepCell_PKG_HEADERS
+    BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_MakeCell.hxx
-    BRepCell/BRepCell_MakeTriangle.hxx
+    BRepCell/BRepCell_MakeLinearLine.hxx
 )
 
 set(BRepCell_PKG_SOURCES
+    BRepCell/BRepCell_Command.cxx
     BRepCell/BRepCell_MakeCell.cxx
-    BRepCell/BRepCell_MakeTriangle.cxx
+    BRepCell/BRepCell_MakeLinearLine.cxx
+)
+
+# =============================================================================
+# Package : BRepCellAPI
+# =============================================================================
+
+set(BRepCellAPI_PKG_HEADERS
+    BRepCellAPI/BRepCellAPI_MakeCell.hxx
+)
+
+set(BRepCellAPI_PKG_SOURCES
+    BRepCellAPI/BRepCellAPI_MakeCell.cxx
+)
+
+# =============================================================================
+# Package : cp
+# =============================================================================
+
+set(cp_PKG_HEADERS
+    cp/cp_Edge.hxx
+)
+
+set(cp_PKG_SOURCES
+    cp/cp_Edge.cxx
 )
 
 # =============================================================================
@@ -185,6 +211,7 @@ set(Mesh_PKG_SOURCES
 
 set(MeshAbs_PKG_HEADERS
     MeshAbs/MeshAbs_TypeOfCell.hxx
+    MeshAbs/MeshAbs_TypeOfObject.hxx
 )
 
 # =============================================================================
@@ -192,13 +219,12 @@ set(MeshAbs_PKG_HEADERS
 # =============================================================================
 
 set(MeshDS_PKG_HEADERS
-    MeshDS/MeshDS_Array1OfCell.hxx
-    MeshDS/MeshDS_Array1OfGroup.hxx
-    MeshDS/MeshDS_Array1OfNode.hxx
+    MeshDS/MeshDS.hxx
+    MeshDS/MeshDS_Array1OfObject.hxx
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
     MeshDS/MeshDS_Group.hxx
-    MeshDS/MeshDS_ListOfCell.hxx
+    MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
@@ -207,9 +233,11 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_TMesh.hxx
     MeshDS/MeshDS_TNode.hxx
     MeshDS/MeshDS_TObject.hxx
+    MeshDS/MeshDS_Tool.hxx
 )
 
 set(MeshDS_PKG_SOURCES
+    MeshDS/MeshDS.cxx
     MeshDS/MeshDS_Builder.cxx
     MeshDS/MeshDS_Cell.cxx
     MeshDS/MeshDS_Group.cxx
@@ -221,6 +249,7 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_TMesh.cxx
     MeshDS/MeshDS_TNode.cxx
     MeshDS/MeshDS_TObject.cxx
+    MeshDS/MeshDS_Tool.cxx
 )
 
 # =============================================================================
@@ -252,6 +281,9 @@ set(MeshLib_PKG_SOURCES
 
 set(MeshRep_PKG_HEADERS
     MeshRep/MeshRep_Cell.hxx
+    MeshRep/MeshRep_Cell1d.hxx
+    MeshRep/MeshRep_Cell2d.hxx
+    MeshRep/MeshRep_Cell3d.hxx
     MeshRep/MeshRep_Node.hxx
     MeshRep/MeshRep_Node1d.hxx
     MeshRep/MeshRep_Node2d.hxx
@@ -261,6 +293,9 @@ set(MeshRep_PKG_HEADERS
 
 set(MeshRep_PKG_SOURCES
     MeshRep/MeshRep_Cell.cxx
+    MeshRep/MeshRep_Cell1d.cxx
+    MeshRep/MeshRep_Cell2d.cxx
+    MeshRep/MeshRep_Cell3d.cxx
     MeshRep/MeshRep_Node.cxx
     MeshRep/MeshRep_Node1d.cxx
     MeshRep/MeshRep_Node2d.cxx
@@ -361,6 +396,8 @@ set(ModelLib_PKG_SOURCES
 # =============================================================================
 
 set(mp_PKG_HEADERS
+    mp/mp_Edge2N.hxx
+    mp/mp_Edge3N.hxx
     mp/mp_LinearHexahedron8N.hxx
     mp/mp_LinearLine2N.hxx
     mp/mp_LinearPentahedron6N.hxx
@@ -371,6 +408,9 @@ set(mp_PKG_HEADERS
     mp/mp_Node.hxx
     mp/mp_Node1d.hxx
     mp/mp_Node2d.hxx
+    mp/mp_QuadrangleFace4N.hxx
+    mp/mp_QuadrangleFace8N.hxx
+    mp/mp_QuadrangleFace9N.hxx
     mp/mp_QuadraticHexahedron20N.hxx
     mp/mp_QuadraticHexahedron27N.hxx
     mp/mp_QuadraticLine3N.hxx
@@ -383,9 +423,14 @@ set(mp_PKG_HEADERS
     mp/mp_QuadraticTetrahedron10N.hxx
     mp/mp_QuadraticTriangle6N.hxx
     mp/mp_QuadraticTriangle7N.hxx
+    mp/mp_TriangleFace3N.hxx
+    mp/mp_TriangleFace6N.hxx
+    mp/mp_TriangleFace7N.hxx
 )
 
 set(mp_PKG_SOURCES
+    mp/mp_Edge2N.cxx
+    mp/mp_Edge3N.cxx
     mp/mp_LinearHexahedron8N.cxx
     mp/mp_LinearLine2N.cxx
     mp/mp_LinearPentahedron6N.cxx
@@ -396,6 +441,9 @@ set(mp_PKG_SOURCES
     mp/mp_Node.cxx
     mp/mp_Node1d.cxx
     mp/mp_Node2d.cxx
+    mp/mp_QuadrangleFace4N.cxx
+    mp/mp_QuadrangleFace8N.cxx
+    mp/mp_QuadrangleFace9N.cxx
     mp/mp_QuadraticHexahedron20N.cxx
     mp/mp_QuadraticHexahedron27N.cxx
     mp/mp_QuadraticLine3N.cxx
@@ -408,6 +456,18 @@ set(mp_PKG_SOURCES
     mp/mp_QuadraticTetrahedron10N.cxx
     mp/mp_QuadraticTriangle6N.cxx
     mp/mp_QuadraticTriangle7N.cxx
+    mp/mp_TriangleFace3N.cxx
+    mp/mp_TriangleFace6N.cxx
+    mp/mp_TriangleFace7N.cxx
+)
+
+# =============================================================================
+# Package : TColgp
+# =============================================================================
+
+set(TColgp_PKG_HEADERS
+    TColgp/TColgp_Array1OfPnt1d.hxx
+    TColgp/TColgp_SequenceOfPnt1d.hxx
 )
 
 # =============================================================================
@@ -434,6 +494,9 @@ set(TColmp_PKG_HEADERS
     TColmp/TColmp_Array1OfQuadraticTetrahedron10N.hxx
     TColmp/TColmp_Array1OfQuadraticTriangle6N.hxx
     TColmp/TColmp_Array1OfQuadraticTriangle7N.hxx
+    TColmp/TColmp_DataMapOfIntegerNode.hxx
+    TColmp/TColmp_DataMapOfIntegerNode1d.hxx
+    TColmp/TColmp_DataMapOfIntegerNode2d.hxx
     TColmp/TColmp_SequenceOfLinearHexahedron8N.hxx
     TColmp/TColmp_SequenceOfLinearLine2N.hxx
     TColmp/TColmp_SequenceOfLinearPentahedron6N.hxx
@@ -504,7 +567,9 @@ set(xsp_PKG_SOURCES
 # header files
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
-    ${ElePRep_PKG_HEADERS}
+    ${BRepCellAPI_PKG_HEADERS}
+    ${cp_PKG_HEADERS}
+    #${ElePRep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     ${Mesh_PKG_HEADERS}
     ${Mesh1d_PKG_HEADERS}
@@ -514,21 +579,24 @@ set(Ceres_HEADERS
     ${MeshLib_PKG_HEADERS}
     ${MeshRep_PKG_HEADERS}
     ${MeshTools_PKG_HEADERS}
-    ${Model_PKG_HEADERS}
-    ${ModelAbs_PKG_HEADERS}
-    ${ModelDS_PKG_HEADERS}
-    ${ModelLib_PKG_HEADERS}
+    #${Model_PKG_HEADERS}
+    #${ModelAbs_PKG_HEADERS}
+    #${ModelDS_PKG_HEADERS}
+    #${ModelLib_PKG_HEADERS}
     ${mp_PKG_HEADERS}
+    ${TColgp_PKG_HEADERS}
     ${TColmp_PKG_HEADERS}
-    ${XS_PKG_HEADERS}
-    ${XSAbs_PKG_HEADERS}
+    #${XS_PKG_HEADERS}
+    #${XSAbs_PKG_HEADERS}
     ${xsp_PKG_HEADERS}
 )
 
 # source files
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
-    ${ElePRep_PKG_SOURCES}
+    ${BRepCellAPI_PKG_SOURCES}
+    ${cp_PKG_SOURCES}
+    #${ElePRep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     ${Mesh_PKG_SOURCES}
     ${Mesh1d_PKG_SOURCES}
@@ -537,11 +605,11 @@ set(Ceres_SOURCES
     ${MeshLib_PKG_SOURCES}
     ${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
-    ${Model_PKG_SOURCES}
-    ${ModelDS_PKG_SOURCES}
-    ${ModelLib_PKG_SOURCES}
+    #${Model_PKG_SOURCES}
+    #${ModelDS_PKG_SOURCES}
+    #${ModelLib_PKG_SOURCES}
     ${mp_PKG_SOURCES}
-    ${XS_PKG_SOURCES}
+    #${XS_PKG_SOURCES}
     ${xsp_PKG_SOURCES}
 )
 
@@ -550,6 +618,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
+    ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
+    ${CMAKE_CURRENT_SOURCE_DIR}/cp
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
@@ -565,6 +635,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColmp
     ${CMAKE_CURRENT_SOURCE_DIR}/XS
     ${CMAKE_CURRENT_SOURCE_DIR}/XSAbs

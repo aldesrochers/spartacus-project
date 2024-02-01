@@ -235,15 +235,6 @@ void Mesh2d_QuadraticQuadrangle8N::SetNode8(const Standard_Integer theNode8)
     myConnectivity.SetNode8(theNode8);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh2d_QuadraticQuadrangle8N::Type() const
-{
-    return MeshAbs_QuadraticQuadrangle8N;
-}
 
 
 // ****************************************************************************

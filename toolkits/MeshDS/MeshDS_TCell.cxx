@@ -21,6 +21,7 @@
 
 
 // Spartacus
+#include <MeshDS_Object.hxx>
 #include <MeshDS_TCell.hxx>
 
 
@@ -31,6 +32,7 @@
 */
 // ============================================================================
 MeshDS_TCell::MeshDS_TCell()
+    : myCellType(MeshAbs_CT_Undefined)
 {
 
 }
@@ -43,6 +45,16 @@ MeshDS_TCell::MeshDS_TCell()
 MeshDS_TCell::~MeshDS_TCell()
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief CellType()
+*/
+// ============================================================================
+MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
+{
+    return myCellType;
 }
 
 // ============================================================================
@@ -60,9 +72,19 @@ Standard_Integer MeshDS_TCell::NbNodes() const
  *  \brief Node()
 */
 // ============================================================================
-const MeshDS_Node& MeshDS_TCell::Node(const Standard_Integer theIndex) const
+const MeshDS_Object& MeshDS_TCell::Node(const Standard_Integer theIndex) const
 {
     return myNodes.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
+{
+    return MeshAbs_OT_Cell;
 }
 
 // ============================================================================
@@ -78,34 +100,26 @@ void MeshDS_TCell::ResizeNodes(const Standard_Integer theNbNodes,
 
 // ============================================================================
 /*!
+ *  \brief SetCellType()
+*/
+// ============================================================================
+void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
+{
+    myCellType = theCellType;
+}
+
+// ============================================================================
+/*!
  *  \brief SetNode()
 */
 // ============================================================================
 void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
-                           const MeshDS_Node &theNode)
+                           const MeshDS_Object &theNode)
 {
     myNodes.SetValue(theIndex, theNode);
 }
 
-// ============================================================================
-/*!
- *  \brief SetType()
-*/
-// ============================================================================
-void MeshDS_TCell::SetType(const MeshAbs_TypeOfCell theType)
-{
-    myType = theType;
-}
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell MeshDS_TCell::Type() const
-{
-    return myType;
-}
 
 
 // ****************************************************************************

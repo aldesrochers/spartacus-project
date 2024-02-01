@@ -23,6 +23,9 @@
 // Spartacus
 #include <MeshDS_Builder.hxx>
 #include <MeshLib_MeshBuilder1d.hxx>
+#include <mp_Node1d.hxx>
+#include <mp_LinearLine2N.hxx>
+#include <mp_QuadraticLine3N.hxx>
 
 
 // ============================================================================
@@ -47,14 +50,92 @@ MeshLib_MeshBuilder1d::~MeshLib_MeshBuilder1d()
 
 // ============================================================================
 /*!
+ *  \brief AddLinearLine2N()
+*/
+// ============================================================================
+void MeshLib_MeshBuilder1d::AddLinearLine2N(const Standard_Integer theNode1,
+                                            const Standard_Integer theNode2)
+{
+    mp_LinearLine2N aLine(theNode1, theNode2);
+    myLinearLines2N.Append(aLine);
+}
+
+// ============================================================================
+/*!
  *  \brief AddNode()
 */
 // ============================================================================
-Standard_Integer MeshLib_MeshBuilder1d::AddNode(const gp_Pnt1d &thePoint)
+Standard_Integer MeshLib_MeshBuilder1d::AddNode(const gp_Pnt1d& thePoint)
 {
-    MeshDS_Node aNode;
-    //myBuilder.MakeNode(aNode, thePoint);
-    return myNodes.Add(aNode);
+    mp_Node1d aNode(thePoint);
+    Standard_Integer aNodeId = FindNodeId();
+    myNodes.Bind(aNodeId, aNode);
+    return aNodeId;
 }
 
+// ============================================================================
+/*!
+ *  \brief AddQuadraticLine3N()
+*/
+// ============================================================================
+void MeshLib_MeshBuilder1d::AddQuadraticLine3N(const Standard_Integer theNode1,
+                                               const Standard_Integer theNode2,
+                                               const Standard_Integer theNode3)
+{
+    mp_QuadraticLine3N aLine(theNode1, theNode2, theNode3);
+    myQuadraticLines3N.Append(aLine);
+}
 
+// ============================================================================
+/*!
+ *  \brief Build()
+*/
+// ============================================================================
+void MeshLib_MeshBuilder1d::Build()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief NbLinearLines2N()
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::NbLinearLines2N() const
+{
+    return myLinearLines2N.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbNodes()
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::NbNodes() const
+{
+    return myNodes.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbQuadraticLines3N()
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::NbQuadraticLines3N() const
+{
+    return myQuadraticLines3N.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief FindNodeId()
+ *  Internal helper function used to find an unused node id.
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::FindNodeId() const
+{
+    Standard_Integer aNodeId = 1;
+    while(myNodes.IsBound(aNodeId))
+        aNodeId++;
+    return aNodeId;
+}

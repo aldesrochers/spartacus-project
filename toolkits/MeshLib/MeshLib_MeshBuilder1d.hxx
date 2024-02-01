@@ -24,10 +24,10 @@
 #define __MeshLib_MeshBuilder1d_hxx__
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
-#include <MeshDS_Builder.hxx>
 #include <MeshLib_MakeMesh.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
+#include <TColmp_DataMapOfIntegerNode1d.hxx>
+#include <TColmp_SequenceOfLinearLine2N.hxx>
+#include <TColmp_SequenceOfQuadraticLine3N.hxx>
 
 
 // ============================================================================
@@ -50,16 +50,34 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer    AddLinearLine2N(const Standard_Integer theNode1,
+    Standard_EXPORT void                Build() Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT void                AddLinearLine2N(const Standard_Integer theNode1,
                                                         const Standard_Integer theNode2);
 
     Standard_EXPORT Standard_Integer    AddNode(const gp_Pnt1d& thePoint);
 
+    Standard_EXPORT void                AddQuadraticLine3N(const Standard_Integer theNode1,
+                                                           const Standard_Integer theNode2,
+                                                           const Standard_Integer theNode3);
+
+    Standard_EXPORT Standard_Integer    NbLinearLines2N() const;
+
+    Standard_EXPORT Standard_Integer    NbNodes() const;
+
+    Standard_EXPORT Standard_Integer    NbQuadraticLines3N() const;
+
+protected:
+
+    Standard_EXPORT Standard_Integer    FindNodeId() const;
 
 private:
 
-    MeshDS_Builder                  myBuilder;
-    MeshTools_IndexedMapOfObject    myNodes;
+    TColmp_SequenceOfLinearLine2N       myLinearLines2N;
+    TColmp_DataMapOfIntegerNode1d       myNodes;
+    TColmp_SequenceOfQuadraticLine3N    myQuadraticLines3N;
 
 };
 

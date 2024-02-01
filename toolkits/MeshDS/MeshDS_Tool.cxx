@@ -21,25 +21,25 @@
 
 
 // Spartacus
+#include <MeshDS_TNode1d.hxx>
+#include <MeshDS_TNode2d.hxx>
+#include <MeshDS_TNode3d.hxx>
 #include <MeshDS_Tool.hxx>
 
+// OpenCascade
+#include <Standard_NullObject.hxx>
+
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Point()
 */
 // ============================================================================
-MeshDS_Tool::MeshDS_Tool()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_Tool::~MeshDS_Tool()
-{
-
-}
+//gp_Pnt MeshDS_Tool::Point(const MeshDS_Node &theNode)
+//{
+//    const MeshDS_TNode3d* aTNode = static_cast<const MeshDS_TNode3d*>(theNode.TObject().get());
+//    if (aTNode == 0)
+//        throw Standard_NullObject("MeshDS_Tool::Point()");
+//    const gp_Pnt& aPoint = aTNode->Point();
+//    return aPoint;
+//}

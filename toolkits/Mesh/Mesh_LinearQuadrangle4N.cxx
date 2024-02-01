@@ -155,15 +155,6 @@ void Mesh_LinearQuadrangle4N::SetNode4(const Standard_Integer theNode4)
     myConnectivity.SetNode4(theNode4);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_LinearQuadrangle4N::Type() const
-{
-    return MeshAbs_LinearQuadrangle4N;
-}
 
 
 // ****************************************************************************

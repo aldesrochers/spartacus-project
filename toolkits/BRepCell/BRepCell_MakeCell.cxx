@@ -23,6 +23,9 @@
 // Spartacus
 #include <BRepCell_MakeCell.hxx>
 
+// OpenCascade
+#include <TopoDS.hxx>
+
 
 // ============================================================================
 /*!
@@ -44,3 +47,42 @@ BRepCell_MakeCell::~BRepCell_MakeCell()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const TopoDS_Edge& BRepCell_MakeCell::Edge(const Standard_Integer theIndex) const
+{
+    return TopoDS::Edge(myEdges.Value(theIndex));
+}
+
+// ============================================================================
+/*!
+ *  \brief NbEdges()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbEdges() const
+{
+    return myEdges.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbVertices()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbVertices() const
+{
+    return myVertices.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const TopoDS_Vertex& BRepCell_MakeCell::Vertex(const Standard_Integer theIndex) const
+{
+    return TopoDS::Vertex(myVertices.Value(theIndex));
+}

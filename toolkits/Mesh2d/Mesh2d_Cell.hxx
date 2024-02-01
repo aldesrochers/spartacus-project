@@ -54,10 +54,6 @@ public:
 
 public:
 
-    virtual Standard_EXPORT MeshAbs_TypeOfCell      Type() const = 0;
-
-public:
-
     DEFINE_STANDARD_RTTIEXT(Mesh2d_Cell, Mesh2d_Object);
 
 };

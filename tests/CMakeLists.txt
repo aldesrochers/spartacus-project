@@ -33,11 +33,13 @@ set(Test_LINKED_LIBRARIES
 # test sources
 set(Test_SOURCES
     Test_BasicFEModel.cxx
+    Test_BRepCell.cxx
     Test_Discrete.cxx
     Test_FE1d.cxx
     Test_FE2d.cxx
     Test_Mesh1d.cxx
     Test_MeshDS.cxx
+    Test_MeshLib.cxx
     Test_Model.cxx
     Test_mp.cxx
     Test_ReadFileSTL.cxx

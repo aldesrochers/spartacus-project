@@ -195,15 +195,7 @@ void Mesh_LinearPentahedron6N::SetNode6(const Standard_Integer theNode6)
     myConnectivity.SetNode6(theNode6);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_LinearPentahedron6N::Type() const
-{
-    return MeshAbs_LinearPentahedron6N;
-}
+
 
 
 // ****************************************************************************

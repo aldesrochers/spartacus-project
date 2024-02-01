@@ -55,12 +55,8 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfCell      Type() const Standard_OVERRIDE;
-
-public:
-
     Standard_EXPORT const mp_QuadraticHexahedron20N&   Connectivity() const;
-    Standard_EXPORT void                                SetConnectivity(const mp_QuadraticHexahedron20N& theConnectivity);
+    Standard_EXPORT void                               SetConnectivity(const mp_QuadraticHexahedron20N& theConnectivity);
 
 public:
 

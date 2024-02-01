@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <MeshDS_TLinearLine2N1d.hxx>
+#include <mp_Edge2N.hxx>
+
 
 
 // ============================================================================
@@ -29,8 +30,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TLinearLine2N1d::MeshDS_TLinearLine2N1d(const Handle(Mesh1d_LinearLine2N)& theLinearLine2N1d)
-    : myLinearLine2N1d(theLinearLine2N1d)
+mp_Edge2N::mp_Edge2N(const Standard_Integer theNode1,
+                     const Standard_Integer theNode2)
+    : myNode1(theNode1),
+    myNode2(theNode2)
 {
 
 }
@@ -40,34 +43,28 @@ MeshDS_TLinearLine2N1d::MeshDS_TLinearLine2N1d(const Handle(Mesh1d_LinearLine2N)
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TLinearLine2N1d::~MeshDS_TLinearLine2N1d()
+mp_Edge2N::~mp_Edge2N()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief IsLinearLine2N1d()
+ *  \brief Node1()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TLinearLine2N1d::IsLinearLine2N1d() const
+Standard_Integer mp_Edge2N::Node1() const
 {
-    return Standard_True;
+    return myNode1;
 }
 
 // ============================================================================
 /*!
- *  \brief LinearLine2N1d()
+ *  \brief Node2()
 */
 // ============================================================================
-const Handle(Mesh1d_LinearLine2N)& MeshDS_TLinearLine2N1d::LinearLine2N1d() const
+Standard_Integer mp_Edge2N::Node2() const
 {
-    return myLinearLine2N1d;
+    return myNode2;
 }
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TLinearLine2N1d, MeshDS_TCell);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TLinearLine2N1d, MeshDS_TCell);

@@ -235,15 +235,6 @@ void Mesh_LinearHexahedron8N::SetNode8(const Standard_Integer theNode8)
     myConnectivity.SetNode8(theNode8);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_LinearHexahedron8N::Type() const
-{
-    return MeshAbs_LinearHexahedron8N;
-}
 
 
 // ****************************************************************************

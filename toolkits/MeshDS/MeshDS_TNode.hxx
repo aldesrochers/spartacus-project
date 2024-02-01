@@ -24,7 +24,7 @@
 #define __MeshDS_TNode_hxx__
 
 // Spartacus
-#include <MeshDS_ListOfCell.hxx>
+#include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
 // OpenCascade
@@ -53,15 +53,12 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_ListOfCell&    LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfCell&          LinkedCells();
-    Standard_EXPORT const gp_Pnt&               Point() const;
-    Standard_EXPORT void                        SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
+    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
 
 private:
 
-    MeshDS_ListOfCell   myLinkedCells;
-    gp_Pnt              myPoint;
+    MeshDS_ListOfObject     myLinkedCells;
 
 public:
 

@@ -20,42 +20,18 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TCell_hxx__
-#define __MeshDS_TCell_hxx__
+#ifndef __MeshDS_ListOfObject_hxx__
+#define __MeshDS_ListOfObject_hxx__
+
+// OpenCascade
+#include <NCollection_List.hxx>
 
 // Spartacus
-#include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_Array1OfNode.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_TObject.hxx>
+class MeshDS_Object;
+
+// Type definitions
+typedef NCollection_List<MeshDS_Object>             MeshDS_ListOfObject;
+typedef NCollection_List<MeshDS_Object>::Iterator   MeshDS_ListIteratorOfListOfObject;
 
 
-// Forward declarations
-class MeshDS_TCell;
-
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
-
-
-// ============================================================================
-/*!
- *  \brief MeshDS_TCell
-*/
-// ============================================================================
-class MeshDS_TCell : public MeshDS_TObject
-{
-
-public:
-    // constructors
-    Standard_EXPORT MeshDS_TCell();
-    // destructors
-    Standard_EXPORT ~MeshDS_TCell();
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);
-
-};
-
-
-#endif // __MeshDS_TCell_hxx__
+#endif // __MeshDS_ListOfObject_hxx__

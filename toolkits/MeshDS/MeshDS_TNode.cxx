@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_Cell.hxx>
+#include <MeshDS_Object.hxx>
 #include <MeshDS_TNode.hxx>
 
 // OpenCascade
@@ -53,7 +53,7 @@ MeshDS_TNode::~MeshDS_TNode()
  *  \brief LinkedCells()
 */
 // ============================================================================
-const MeshDS_ListOfCell& MeshDS_TNode::LinkedCells() const
+const MeshDS_ListOfObject& MeshDS_TNode::LinkedCells() const
 {
     return myLinkedCells;
 }
@@ -63,30 +63,11 @@ const MeshDS_ListOfCell& MeshDS_TNode::LinkedCells() const
  *  \brief LinkedCells()
 */
 // ============================================================================
-MeshDS_ListOfCell& MeshDS_TNode::LinkedCells()
+MeshDS_ListOfObject& MeshDS_TNode::LinkedCells()
 {
     return myLinkedCells;
 }
 
-// ============================================================================
-/*!
- *  \brief Point()
-*/
-// ============================================================================
-const gp_Pnt& MeshDS_TNode::Point() const
-{
-    return myPoint;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPoint()
-*/
-// ============================================================================
-void MeshDS_TNode::SetPoint(const gp_Pnt &thePoint)
-{
-    myPoint = thePoint;
-}
 
 // ****************************************************************************
 // Handles

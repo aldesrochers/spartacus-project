@@ -28,6 +28,9 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
+// Spartacus
+#include <MeshAbs_TypeOfObject.hxx>
+
 // Forward declarations
 class MeshDS_TObject;
 
@@ -48,6 +51,10 @@ public:
     Standard_EXPORT MeshDS_TObject();
     // destructors
     Standard_EXPORT ~MeshDS_TObject();
+
+public:
+
+    virtual Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const = 0;
 
 public:
 

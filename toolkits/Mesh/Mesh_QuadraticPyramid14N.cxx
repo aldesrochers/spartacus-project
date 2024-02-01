@@ -355,16 +355,6 @@ void Mesh_QuadraticPyramid14N::SetNode14(const Standard_Integer theNode14)
     myConnectivity.SetNode14(theNode14);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticPyramid14N::Type() const
-{
-    return MeshAbs_QuadraticPyramid14N;
-}
-
 
 // ****************************************************************************
 // Handles

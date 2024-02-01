@@ -42,7 +42,9 @@ mp_LinearTriangle3N::mp_LinearTriangle3N()
 mp_LinearTriangle3N::mp_LinearTriangle3N(const Standard_Integer theNode1,
                                          const Standard_Integer theNode2,
                                          const Standard_Integer theNode3)
-    : myNode1(theNode1), myNode2(theNode2), myNode3(theNode3)
+    : myNode1(theNode1),
+    myNode2(theNode2),
+    myNode3(theNode3)
 {
 
 }
@@ -59,16 +61,14 @@ mp_LinearTriangle3N::~mp_LinearTriangle3N()
 
 // ============================================================================
 /*!
- *  \brief Edge1()
+ *  \brief Face()
 */
 // ============================================================================
-TColStd_SequenceOfInteger mp_LinearTriangle3N::Edge1() const
+mp_TriangleFace3N mp_LinearTriangle3N::Face() const
 {
-    TColStd_SequenceOfInteger aSequence;
-    aSequence.Append(myNode1);
-    aSequence.Append(myNode2);
-    return aSequence;
+    return mp_TriangleFace3N(myNode1, myNode2, myNode3);
 }
+
 
 // ============================================================================
 /*!

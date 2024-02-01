@@ -29,8 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TNode2d::MeshDS_TNode2d(const Handle(Mesh2d_Node)& theNode2d)
-    : myNode2d(theNode2d)
+MeshDS_TNode2d::MeshDS_TNode2d()
 {
 
 }
@@ -47,24 +46,33 @@ MeshDS_TNode2d::~MeshDS_TNode2d()
 
 // ============================================================================
 /*!
- *  \brief IsNode2d()
+ *  \brief ObjectType()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode2d::IsNode2d() const
+MeshAbs_TypeOfObject MeshDS_TNode2d::ObjectType() const
 {
-    return Standard_True;
+    return MeshAbs_OT_Node2d;
 }
 
 // ============================================================================
 /*!
- *  \brief Node2d()
+ *  \brief Point()
 */
 // ============================================================================
-const Handle(Mesh2d_Node)& MeshDS_TNode2d::Node2d() const
+const gp_Pnt2d& MeshDS_TNode2d::Point() const
 {
-    return myNode2d;
+    return myPoint;
 }
 
+// ============================================================================
+/*!
+ *  \brief SetPoint()
+*/
+// ============================================================================
+void MeshDS_TNode2d::SetPoint(const gp_Pnt2d &thePoint)
+{
+    myPoint = thePoint;
+}
 
 // ****************************************************************************
 // Handles

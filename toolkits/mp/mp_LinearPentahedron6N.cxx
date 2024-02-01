@@ -63,6 +63,56 @@ mp_LinearPentahedron6N::~mp_LinearPentahedron6N()
 
 // ============================================================================
 /*!
+ *  \brief Face1()
+*/
+// ============================================================================
+mp_QuadrangleFace4N mp_LinearPentahedron6N::Face1() const
+{
+    return mp_QuadrangleFace4N(myNode1, myNode2, myNode5, myNode4);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face2()
+*/
+// ============================================================================
+mp_QuadrangleFace4N mp_LinearPentahedron6N::Face2() const
+{
+    return mp_QuadrangleFace4N(myNode2, myNode3, myNode6, myNode5);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face3()
+*/
+// ============================================================================
+mp_QuadrangleFace4N mp_LinearPentahedron6N::Face3() const
+{
+    return mp_QuadrangleFace4N(myNode3, myNode1, myNode4, myNode6);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face4()
+*/
+// ============================================================================
+mp_TriangleFace3N mp_LinearPentahedron6N::Face4() const
+{
+    return mp_TriangleFace3N(myNode1, myNode3, myNode2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Face5()
+*/
+// ============================================================================
+mp_TriangleFace3N mp_LinearPentahedron6N::Face5() const
+{
+    return mp_TriangleFace3N(myNode4, myNode5, myNode6);
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

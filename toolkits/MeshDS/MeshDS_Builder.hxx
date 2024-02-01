@@ -28,15 +28,6 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <Mesh_Node.hxx>
-#include <Mesh1d_LinearLine2N.hxx>
-#include <Mesh1d_Node.hxx>
-#include <Mesh1d_QuadraticLine3N.hxx>
-#include <Mesh2d_Node.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Group.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
 #include <MeshDS_TObject.hxx>
 
@@ -59,40 +50,7 @@ public:
     // destructors
     Standard_EXPORT ~MeshDS_Builder();
 
-public:
-
-    Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell) const;
-
-    Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
-
-    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh) const;
-
-    Standard_EXPORT void    MakeLinearLine2N(MeshDS_Cell& theCell,
-                                             const MeshDS_Node& theNode1,
-                                             const MeshDS_Node& theNode2) const;
-
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
-                                     const gp_Pnt& thePoint) const;
-
-    Standard_EXPORT void    UpdateLinearLine2N(const MeshDS_Cell& theCell,
-                                               const MeshDS_Node& theNode1,
-                                               const MeshDS_Node& theNode2) const;
-
-
-
-    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
-                                       const gp_Pnt& thePoint) const;
-
 protected:
-
-    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
-                                    const MeshAbs_TypeOfCell theType,
-                                    const Standard_Integer theNbNodes) const;
-
-    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
-                                    const Standard_Integer theIndex,
-                                    const MeshDS_Node& theNode) const;
 
     Standard_EXPORT void    MakeObject(MeshDS_Object& theObject,
                                        const Handle(MeshDS_TObject)& theTObject) const;

@@ -135,15 +135,7 @@ void Mesh_QuadraticLine3N::SetNode3(const Standard_Integer theNode3)
     myConnectivity.SetNode3(theNode3);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticLine3N::Type() const
-{
-    return MeshAbs_QuadraticLine3N;
-}
+
 
 
 // ****************************************************************************

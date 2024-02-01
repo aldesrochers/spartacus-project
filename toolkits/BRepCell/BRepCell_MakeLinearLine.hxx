@@ -20,16 +20,41 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_Array1OfNode_hxx__
-#define __MeshDS_Array1OfNode_hxx__
-
-// OpenCascade
-#include <NCollection_Array1.hxx>
+#ifndef __BRepCell_MakeLinearLine_hxx__
+#define __BRepCell_MakeLinearLine_hxx__
 
 // Spartacus
-class MeshDS_Node;
+#include <BRepCell_MakeCell.hxx>
 
-// Type definitions
-typedef NCollection_Array1<MeshDS_Node>     MeshDS_Array1OfNode;
+// OpenCascade
+#include <TopoDS_Vertex.hxx>
 
-#endif // __MeshDS_Array1OfNode_hxx__
+
+// ============================================================================
+/*!
+ *  \brief BRepCell_MakeLinearLine
+*/
+// ============================================================================
+class BRepCell_MakeLinearLine : public BRepCell_MakeCell
+{
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
+                                            const gp_Pnt& thePoint2);
+    // destructors
+    Standard_EXPORT ~BRepCell_MakeLinearLine();
+
+protected:
+
+    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
+                                           const gp_Pnt& thePoint2);
+
+};
+
+
+#endif // __BRepCell_MakeLinearLine_hxx__

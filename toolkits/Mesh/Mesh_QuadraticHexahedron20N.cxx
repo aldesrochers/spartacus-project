@@ -475,16 +475,6 @@ void Mesh_QuadraticHexahedron20N::SetNode20(const Standard_Integer theNode20)
     myConnectivity.SetNode20(theNode20);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticHexahedron20N::Type() const
-{
-    return MeshAbs_QuadraticHexahedron20N;
-}
-
 
 // ****************************************************************************
 // Handles

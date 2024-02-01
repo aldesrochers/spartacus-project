@@ -67,6 +67,18 @@ mp_QuadraticQuadrangle9N::~mp_QuadraticQuadrangle9N()
 
 // ============================================================================
 /*!
+ *  \brief Face()
+*/
+// ============================================================================
+mp_QuadrangleFace9N mp_QuadraticQuadrangle9N::Face() const
+{
+    return mp_QuadrangleFace9N(myNode1, myNode2, myNode3, myNode4,
+                               myNode5, myNode6, myNode7, myNode8, myNode9);
+}
+
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================

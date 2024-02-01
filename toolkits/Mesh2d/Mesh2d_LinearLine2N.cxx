@@ -115,15 +115,6 @@ void Mesh2d_LinearLine2N::SetNode2(const Standard_Integer theNode2)
     myConnectivity.SetNode2(theNode2);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh2d_LinearLine2N::Type() const
-{
-    return MeshAbs_LinearLine2N;
-}
 
 
 // ****************************************************************************

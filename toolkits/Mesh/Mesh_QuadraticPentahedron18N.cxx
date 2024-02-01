@@ -435,15 +435,6 @@ void Mesh_QuadraticPentahedron18N::SetNode18(const Standard_Integer theNode18)
     myConnectivity.SetNode18(theNode18);
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh_QuadraticPentahedron18N::Type() const
-{
-    return MeshAbs_QuadraticPentahedron18N;
-}
 
 
 // ****************************************************************************

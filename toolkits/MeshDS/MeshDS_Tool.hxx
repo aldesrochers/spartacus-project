@@ -26,6 +26,12 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
+
+// Spartacus
+#include <gp_Pnt1d.hxx>
+#include <MeshDS_Node.hxx>
 
 
 // ============================================================================
@@ -41,12 +47,8 @@ public:
     DEFINE_STANDARD_ALLOC;
 
 public:
-    // constructors
-    Standard_EXPORT MeshDS_Tool();
-    // destructors
-    Standard_EXPORT ~MeshDS_Tool();
 
-
+    //Standard_EXPORT static gp_Pnt       Point(const MeshDS_Node& theNode);
 
 };
 

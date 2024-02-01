@@ -24,6 +24,7 @@
 #define __MeshDS_TNode3d_hxx__
 
 // Spartacus
+#include <gp_Pnt.hxx>
 #include <MeshDS_TNode.hxx>
 
 // Forward declarations
@@ -43,18 +44,22 @@ class MeshDS_TNode3d : public MeshDS_TNode
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TNode3d(const Handle(Mesh_Node)& theNode3d);
+    Standard_EXPORT MeshDS_TNode3d();
     // destructors
     Standard_EXPORT ~MeshDS_TNode3d();
 
 public:
 
-    Standard_EXPORT Standard_Boolean            IsNode3d() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(Mesh_Node)&    Node3d() const Standard_OVERRIDE;
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const gp_Pnt&       Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
 
 private:
 
-    Handle(Mesh_Node)       myNode3d;
+    gp_Pnt      myPoint;
 
 public:
 

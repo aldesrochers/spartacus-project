@@ -22,6 +22,7 @@
 
 // Spartacus
 #include <MeshDS_Cell.hxx>
+#include <MeshDS_TCell.hxx>
 
 
 // ============================================================================
@@ -44,3 +45,13 @@ MeshDS_Cell::~MeshDS_Cell()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief CellType()
+*/
+// ============================================================================
+MeshAbs_TypeOfCell MeshDS_Cell::CellType() const
+{
+    const Handle(MeshDS_TCell)& aTCell = Handle(MeshDS_TCell)::DownCast(TObject());
+    return aTCell->CellType();
+}
