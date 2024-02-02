@@ -28,6 +28,16 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
+#include <Mesh_Cell.hxx>
+#include <Mesh_Node.hxx>
+#include <Mesh1d_Cell.hxx>
+#include <Mesh1d_Node.hxx>
+#include <Mesh2d_Cell.hxx>
+#include <Mesh2d_Node.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
 #include <MeshDS_TObject.hxx>
 
@@ -49,6 +59,51 @@ public:
     Standard_EXPORT MeshDS_Builder();
     // destructors
     Standard_EXPORT ~MeshDS_Builder();
+
+public:
+
+    Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell) const;
+    Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
+                                     const Handle(Mesh1d_Cell)& theCell1d) const;
+    Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
+                                     const Handle(Mesh2d_Cell)& theCell2d) const;
+    Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
+                                     const Handle(Mesh_Cell)& theCell3d) const;
+
+    Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
+
+    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh) const;
+    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh,
+                                     const Standard_Integer theNbNodes,
+                                     const Standard_Integer theNbCells,
+                                     const Standard_Integer theNbGroups = 0) const;
+
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const Handle(Mesh1d_Node)& theNode1d) const;
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const Handle(Mesh2d_Node)& theNode2d) const;
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const Handle(Mesh_Node)& theNode3d) const;
+
+    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
+                                       const Handle(Mesh1d_Cell)& theCell1d) const;
+    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
+                                       const Handle(Mesh2d_Cell)& theCell2d) const;
+    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
+                                       const Handle(Mesh_Cell)& theCell3d) const;
+
+    Standard_EXPORT void    UpdateMesh(const MeshDS_Mesh& theMesh,
+                                       const Standard_Integer theNbNodes,
+                                       const Standard_Integer theNbCells,
+                                       const Standard_Integer theNbGroups = 0) const;
+
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const Handle(Mesh1d_Node)& theNode1d) const;
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const Handle(Mesh2d_Node)& theNode2d) const;
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const Handle(Mesh_Node)& theNode3d) const;
 
 protected:
 

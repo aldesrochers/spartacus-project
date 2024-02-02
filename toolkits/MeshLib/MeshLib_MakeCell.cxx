@@ -20,51 +20,61 @@
 // ============================================================================
 
 
-#ifndef __mp_Node2d_hxx__
-#define __mp_Node2d_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
 // Spartacus
-#include <gp_Pnt2d.hxx>
+#include <MeshLib_MakeCell.hxx>
+
 
 // ============================================================================
 /*!
- *  \brief mp_Node2d
+ *  \brief Constructor
 */
 // ============================================================================
-class mp_Node2d
+MeshLib_MakeCell::MeshLib_MakeCell()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_MakeCell::~MeshLib_MakeCell()
+{
 
-public:
-    // constructors
-    Standard_EXPORT mp_Node2d();
-    Standard_EXPORT mp_Node2d(const gp_Pnt2d& thePoint);
-    Standard_EXPORT mp_Node2d(const Standard_Real theX,
-                              const Standard_Real theY);
-    // destructors
-    Standard_EXPORT ~mp_Node2d();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Build()
+*/
+// ============================================================================
+void MeshLib_MakeCell::Build()
+{
 
-    Standard_EXPORT const gp_Pnt2d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT void                SetY(const Standard_Real theY);
-    Standard_EXPORT Standard_Real       X() const;
-    Standard_EXPORT Standard_Real       Y() const;
+}
 
-private:
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Cell&  MeshLib_MakeCell::Cell()
+{
+    if (!IsDone()) {
+        ((MeshLib_MakeCell*) (void*) this)->Build();
+        Check();
+    }
+    return myCell;
+}
 
-    gp_Pnt2d        myPoint;
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Cell()
+*/
+// ============================================================================
+MeshLib_MakeCell::operator MeshDS_Cell()
+{
+    return Cell();
+}
 
-};
-
-
-#endif // __mp_Node2d_hxx__

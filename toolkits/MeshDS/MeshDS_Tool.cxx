@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TNode1d.hxx>
-#include <MeshDS_TNode2d.hxx>
-#include <MeshDS_TNode3d.hxx>
+#include <MeshDS_TNode.hxx>
 #include <MeshDS_Tool.hxx>
 
 // OpenCascade

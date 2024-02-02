@@ -19,13 +19,16 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
+#include <Mesh1d_LinearLine2N.hxx>
+#include <Mesh1d_Node.hxx>
+#include <Mesh1d_QuadraticLine3N.hxx>
 #include <MeshDS_Builder.hxx>
 #include <MeshLib_MeshBuilder1d.hxx>
-#include <mp_Node1d.hxx>
-#include <mp_LinearLine2N.hxx>
-#include <mp_QuadraticLine3N.hxx>
+
 
 
 // ============================================================================
@@ -53,11 +56,13 @@ MeshLib_MeshBuilder1d::~MeshLib_MeshBuilder1d()
  *  \brief AddLinearLine2N()
 */
 // ============================================================================
-void MeshLib_MeshBuilder1d::AddLinearLine2N(const Standard_Integer theNode1,
-                                            const Standard_Integer theNode2)
+Standard_Integer MeshLib_MeshBuilder1d::AddLinearLine2N(const Standard_Integer theNode1,
+                                                        const Standard_Integer theNode2)
 {
-    mp_LinearLine2N aLine(theNode1, theNode2);
-    myLinearLines2N.Append(aLine);
+    Standard_Integer aCellId = FindCellId();
+    Handle(Mesh1d_LinearLine2N) aCell = new Mesh1d_LinearLine2N(theNode1, theNode2);
+    myCells.Bind(aCellId, aCell);
+    return aCellId;
 }
 
 // ============================================================================
@@ -67,8 +72,8 @@ void MeshLib_MeshBuilder1d::AddLinearLine2N(const Standard_Integer theNode1,
 // ============================================================================
 Standard_Integer MeshLib_MeshBuilder1d::AddNode(const gp_Pnt1d& thePoint)
 {
-    mp_Node1d aNode(thePoint);
     Standard_Integer aNodeId = FindNodeId();
+    Handle(Mesh1d_Node) aNode = new Mesh1d_Node(thePoint);
     myNodes.Bind(aNodeId, aNode);
     return aNodeId;
 }
@@ -78,12 +83,14 @@ Standard_Integer MeshLib_MeshBuilder1d::AddNode(const gp_Pnt1d& thePoint)
  *  \brief AddQuadraticLine3N()
 */
 // ============================================================================
-void MeshLib_MeshBuilder1d::AddQuadraticLine3N(const Standard_Integer theNode1,
-                                               const Standard_Integer theNode2,
-                                               const Standard_Integer theNode3)
+Standard_Integer MeshLib_MeshBuilder1d::AddQuadraticLine3N(const Standard_Integer theNode1,
+                                                           const Standard_Integer theNode2,
+                                                           const Standard_Integer theNode3)
 {
-    mp_QuadraticLine3N aLine(theNode1, theNode2, theNode3);
-    myQuadraticLines3N.Append(aLine);
+    Standard_Integer aCellId = FindCellId();
+    Handle(Mesh1d_QuadraticLine3N) aCell = new Mesh1d_QuadraticLine3N(theNode1, theNode2, theNode3);
+    myCells.Bind(aCellId, aCell);
+    return aCellId;
 }
 
 // ============================================================================
@@ -93,17 +100,45 @@ void MeshLib_MeshBuilder1d::AddQuadraticLine3N(const Standard_Integer theNode1,
 // ============================================================================
 void MeshLib_MeshBuilder1d::Build()
 {
+    // size of mesh
+    Standard_Integer nbNodes = myNodes.Size();
+    Standard_Integer nbCells = myCells.Size();
+    Standard_Integer nbGroups = myGroups.Size();
+
+    // initialize mesh with valid dimensions
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeMesh(myMesh, nbNodes, nbCells, nbGroups);
+
+    // loop each node, set in mesh
+    TColMesh1d_DataMapIteratorOfDataMapOfIntegerNode anIterator(myNodes);
+    for(; anIterator.More(); anIterator.Next()) {
+        Standard_Integer aNodeId = anIterator.Key();
+        Handle(Mesh1d_Node) aNode1d = anIterator.Value();
+        MeshDS_Node aNode;
+        aBuilder.MakeNode(aNode, aNode1d);
+    }
+
 
 }
 
 // ============================================================================
 /*!
- *  \brief NbLinearLines2N()
+ *  \brief NbCells()
 */
 // ============================================================================
-Standard_Integer MeshLib_MeshBuilder1d::NbLinearLines2N() const
+Standard_Integer MeshLib_MeshBuilder1d::NbCells() const
 {
-    return myLinearLines2N.Size();
+    return myCells.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbGroups()
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::NbGroups() const
+{
+    return myGroups.Size();
 }
 
 // ============================================================================
@@ -118,12 +153,30 @@ Standard_Integer MeshLib_MeshBuilder1d::NbNodes() const
 
 // ============================================================================
 /*!
- *  \brief NbQuadraticLines3N()
+ *  \brief FindCellId()
+ *  Internal helper function used to find an unused cell id.
 */
 // ============================================================================
-Standard_Integer MeshLib_MeshBuilder1d::NbQuadraticLines3N() const
+Standard_Integer MeshLib_MeshBuilder1d::FindCellId() const
 {
-    return myQuadraticLines3N.Size();
+    Standard_Integer aCellId = 1;
+    while(myCells.IsBound(aCellId))
+        aCellId++;
+    return aCellId;
+}
+
+// ============================================================================
+/*!
+ *  \brief FindGroupId()
+ *  Internal helper function used to find an unused group id.
+*/
+// ============================================================================
+Standard_Integer MeshLib_MeshBuilder1d::FindGroupId() const
+{
+    Standard_Integer aGroupId = 1;
+    while(myGroups.IsBound(aGroupId))
+        aGroupId++;
+    return aGroupId;
 }
 
 // ============================================================================

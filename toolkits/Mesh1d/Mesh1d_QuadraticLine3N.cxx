@@ -39,6 +39,20 @@ Mesh1d_QuadraticLine3N::Mesh1d_QuadraticLine3N()
  *  \brief Constructor
 */
 // ============================================================================
+Mesh1d_QuadraticLine3N::Mesh1d_QuadraticLine3N(const Standard_Integer theNode1,
+                                               const Standard_Integer theNode2,
+                                               const Standard_Integer theNode3)
+{
+    myConnectivity.SetNode1(theNode1);
+    myConnectivity.SetNode2(theNode2);
+    myConnectivity.SetNode3(theNode3);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
 Mesh1d_QuadraticLine3N::Mesh1d_QuadraticLine3N(const mp_QuadraticLine3N& theConnectivity)
     : myConnectivity(theConnectivity)
 {

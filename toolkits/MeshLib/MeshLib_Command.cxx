@@ -33,6 +33,7 @@
 */
 // ============================================================================
 MeshLib_Command::MeshLib_Command()
+    : myIsDone(Standard_False)
 {
 
 }

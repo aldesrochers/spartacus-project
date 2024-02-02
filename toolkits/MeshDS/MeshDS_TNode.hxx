@@ -26,9 +26,10 @@
 // Spartacus
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_TObject.hxx>
+#include <MeshRep_Node.hxx>
 
 // OpenCascade
-#include <gp_Pnt.hxx>
+#include <TopoDS_Vertex.hxx>
 
 // Forward declarations
 class MeshDS_TNode;
@@ -53,12 +54,22 @@ public:
 
 public:
 
+    Standard_EXPORT MeshAbs_TypeOfObject        ObjectType() const Standard_OVERRIDE;
+
+public:
+
     Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
     Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
+    Standard_EXPORT const Handle(MeshRep_Node)& Representation() const;
+    Standard_EXPORT void                        SetRepresentation(const Handle(MeshRep_Node)& theRepresentation);
+    Standard_EXPORT void                        SetVertex(const TopoDS_Vertex& theVertex);
+    Standard_EXPORT const TopoDS_Vertex&        Vertex() const;
 
 private:
 
     MeshDS_ListOfObject     myLinkedCells;
+    Handle(MeshRep_Node)    myRepresentation;
+    TopoDS_Vertex           myVertex;
 
 public:
 

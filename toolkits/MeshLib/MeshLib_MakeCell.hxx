@@ -20,16 +20,46 @@
 // ============================================================================
 
 
-#ifndef __TColmp_Array1OfQuadraticLine3N_hxx__
-#define __TColmp_Array1OfQuadraticLine3N_hxx__
-
-// OpenCascade
-#include <NCollection_Array1.hxx>
+#ifndef __MeshLib_MakeCell_hxx__
+#define __MeshLib_MakeCell_hxx__
 
 // Spartacus
-#include <mp_QuadraticLine3N.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshLib_Command.hxx>
 
-// Type definitions
-typedef NCollection_Array1<mp_QuadraticLine3N>      TColmp_Array1OfQuadraticLine3N;
 
-#endif  // __TColmp_Array1OfQuadraticLine3N_hxx__
+// ============================================================================
+/*!
+ *  \brief MeshLib_MakeCell
+*/
+// ============================================================================
+class MeshLib_MakeCell : public MeshLib_Command
+{
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT MeshLib_MakeCell();
+    // destructors
+    Standard_EXPORT ~MeshLib_MakeCell();
+
+public:
+
+    virtual Standard_EXPORT void            Build();
+
+public:
+
+    Standard_EXPORT const MeshDS_Cell&      Cell();
+    Standard_EXPORT operator                MeshDS_Cell();
+
+protected:
+
+    MeshDS_Cell             myCell;
+
+};
+
+
+#endif // __MeshLib_MakeCell_hxx__

@@ -41,11 +41,14 @@ int main(int argc, char** argv)
     Standard_Integer N2 = aBuilder.AddNode(gp_Pnt1d(1.));
     Standard_Integer N3 = aBuilder.AddNode(gp_Pnt1d(2.));
 
-    aBuilder.AddLinearLine2N(N1, N2);
-    aBuilder.AddLinearLine2N(N2, N3);
+    Standard_Integer C1 = aBuilder.AddLinearLine2N(N1, N2);
+    Standard_Integer C2 = aBuilder.AddLinearLine2N(N2, N3);
 
-    MeshDS_Mesh aMesh = aBuilder.Mesh();
-    cout << aMesh.IsNull() << endl;
+    cout << aBuilder.NbNodes() << endl;
+    cout << aBuilder.NbCells() << endl;
+
+    //MeshDS_Mesh aMesh = aBuilder.Mesh();
+
 
 
 

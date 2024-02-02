@@ -24,7 +24,7 @@
 #define __MeshDS_TMesh_hxx__
 
 // Spartacus
-#include <MeshDS_ListOfObject.hxx>
+#include <MeshDS_Array1OfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
 // Forward declarations
@@ -54,12 +54,28 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_ListOfObject&  Groups() const;
-    Standard_EXPORT MeshDS_ListOfObject&        Groups();
+    Standard_EXPORT Standard_Integer    NbCells() const;
+    Standard_EXPORT Standard_Integer    NbGroups() const;
+    Standard_EXPORT Standard_Integer    NbNodes() const;
+    Standard_EXPORT void                ResizeCells(const Standard_Integer theNbCells,
+                                                    const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                ResizeGroups(const Standard_Integer theNbGroups,
+                                                     const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                ResizeNodes(const Standard_Integer theNbNodes,
+                                                    const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                SetCell(const Standard_Integer theIndex,
+                                                const MeshDS_Object& theCell);
+    Standard_EXPORT void                SetGroup(const Standard_Integer theIndex,
+                                                 const MeshDS_Object& theGroup);
+    Standard_EXPORT void                SetNode(const Standard_Integer theIndex,
+                                                const MeshDS_Object& theNode);
+
 
 private:
 
-    MeshDS_ListOfObject     myGroups;
+    MeshDS_Array1OfObject   myCells;
+    MeshDS_Array1OfObject   myGroups;
+    MeshDS_Array1OfObject   myNodes;
 
 public:
 

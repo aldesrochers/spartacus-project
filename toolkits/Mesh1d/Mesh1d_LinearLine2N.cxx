@@ -39,6 +39,18 @@ Mesh1d_LinearLine2N::Mesh1d_LinearLine2N()
  *  \brief Constructor
 */
 // ============================================================================
+Mesh1d_LinearLine2N::Mesh1d_LinearLine2N(const Standard_Integer theNode1,
+                                         const Standard_Integer theNode2)
+{
+    myConnectivity.SetNode1(theNode1);
+    myConnectivity.SetNode2(theNode2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
 Mesh1d_LinearLine2N::Mesh1d_LinearLine2N(const mp_LinearLine2N& theConnectivity)
     : myConnectivity(theConnectivity)
 {

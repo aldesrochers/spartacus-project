@@ -20,52 +20,57 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TNode2d_hxx__
-#define __MeshDS_TNode2d_hxx__
+#ifndef __MeshLib_MakeNode2d_hxx__
+#define __MeshLib_MakeNode2d_hxx__
+
+// OpenCascade
+#include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <gp_Pnt2d.hxx>
-#include <MeshDS_TNode.hxx>
-
-// Forward declarations
-class MeshDS_TNode2d;
-
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TNode2d, MeshDS_TNode);
+#include <Mesh2d_Node.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshLib_MakeObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TNode2d
+ *  \brief MeshLib_MakeNode2d
 */
 // ============================================================================
-class MeshDS_TNode2d : public MeshDS_TNode
+class MeshLib_MakeNode2d : public MeshLib_MakeObject
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
     // constructors
-    Standard_EXPORT MeshDS_TNode2d();
+    Standard_EXPORT MeshLib_MakeNode2d(const Standard_Real theX,
+                                       const Standard_Real theY);
+    Standard_EXPORT MeshLib_MakeNode2d(const gp_Pnt2d& thePoint);
+    Standard_EXPORT MeshLib_MakeNode2d(const Handle(Mesh2d_Node)& theNode2d);
+
     // destructors
-    Standard_EXPORT ~MeshDS_TNode2d();
+    Standard_EXPORT ~MeshLib_MakeNode2d();
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+    virtual Standard_EXPORT void            Build();
 
 public:
 
-    Standard_EXPORT const gp_Pnt2d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
-
-private:
-
-    gp_Pnt2d    myPoint;
+    Standard_EXPORT void                    Initialize(const Standard_Real theX,
+                                                       const Standard_Real theY);
+    Standard_EXPORT void                    Initialize(const gp_Pnt2d& thePoint);
+    Standard_EXPORT void                    Initialize(const Handle(Mesh2d_Node)& theNode2d);
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TNode2d, MeshDS_TNode);
+    Standard_EXPORT const MeshDS_Node&      Node();
+    Standard_EXPORT operator                MeshDS_Node();
 
 };
 
 
-#endif // __MeshDS_TNode2d_hxx__
+#endif // __MeshLib_MakeNode2d_hxx__

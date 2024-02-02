@@ -42,10 +42,6 @@ public:
     // destructors
     Standard_EXPORT ~MeshDS_Cell();
 
-public:
-
-    Standard_EXPORT MeshAbs_TypeOfCell      CellType() const;
-
 };
 
 

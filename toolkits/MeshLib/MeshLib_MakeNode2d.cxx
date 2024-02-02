@@ -21,7 +21,9 @@
 
 
 // Spartacus
-#include <mp_Node2d.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
+#include <MeshLib_MakeNode2d.hxx>
 
 
 // ============================================================================
@@ -29,9 +31,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node2d::mp_Node2d()
+MeshLib_MakeNode2d::MeshLib_MakeNode2d(const Standard_Real theX,
+                                       const Standard_Real theY)
 {
-
+    Initialize(theX, theY);
 }
 
 // ============================================================================
@@ -39,10 +42,9 @@ mp_Node2d::mp_Node2d()
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node2d::mp_Node2d(const gp_Pnt2d& thePoint)
-    : myPoint(thePoint)
+MeshLib_MakeNode2d::MeshLib_MakeNode2d(const gp_Pnt2d& thePoint)
 {
-
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -50,11 +52,9 @@ mp_Node2d::mp_Node2d(const gp_Pnt2d& thePoint)
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node2d::mp_Node2d(const Standard_Real theX,
-                     const Standard_Real theY)
+MeshLib_MakeNode2d::MeshLib_MakeNode2d(const Handle(Mesh2d_Node)& theNode2d)
 {
-    myPoint.SetX(theX);
-    myPoint.SetY(theY);
+    Initialize(theNode2d);
 }
 
 // ============================================================================
@@ -62,68 +62,73 @@ mp_Node2d::mp_Node2d(const Standard_Real theX,
  *  \brief Destructor
 */
 // ============================================================================
-mp_Node2d::~mp_Node2d()
+MeshLib_MakeNode2d::~MeshLib_MakeNode2d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief Build()
 */
 // ============================================================================
-const gp_Pnt2d& mp_Node2d::Point() const
+void MeshLib_MakeNode2d::Build()
 {
-    return myPoint;
+
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node2d::SetPoint(const gp_Pnt2d &thePoint)
+void MeshLib_MakeNode2d::Initialize(const Standard_Real theX,
+                                    const Standard_Real theY)
 {
-    myPoint = thePoint;
+    gp_Pnt2d aPoint(theX, theY);
+    Initialize(aPoint);
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshLib_MakeNode2d::Initialize(const gp_Pnt2d &thePoint)
+{
+    Handle(Mesh2d_Node) aNode = new Mesh2d_Node(thePoint);
+    Initialize(aNode);
 }
 
 // ============================================================================
 /*!
- *  \brief SetX()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node2d::SetX(const Standard_Real theX)
+void MeshLib_MakeNode2d::Initialize(const Handle(Mesh2d_Node)& theNode2d)
 {
-    myPoint.SetX(theX);
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(MeshDS::Node(myObject), theNode2d);
 }
 
 // ============================================================================
 /*!
- *  \brief SetY()
+ *  \brief Node()
 */
 // ============================================================================
-void mp_Node2d::SetY(const Standard_Real theY)
+const MeshDS_Node&  MeshLib_MakeNode2d::Node()
 {
-    myPoint.SetY(theY);
+    return MeshDS::Node(Object());
 }
 
 // ============================================================================
 /*!
- *  \brief X()
+ *  \brief operator MeshDS_Node()
 */
 // ============================================================================
-Standard_Real mp_Node2d::X() const
+MeshLib_MakeNode2d::operator MeshDS_Node()
 {
-    return myPoint.X();
-}
-
-// ============================================================================
-/*!
- *  \brief Y()
-*/
-// ============================================================================
-Standard_Real mp_Node2d::Y() const
-{
-    return myPoint.Y();
+    return Node();
 }
 

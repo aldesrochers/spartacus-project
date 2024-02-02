@@ -68,6 +68,56 @@ MeshDS_ListOfObject& MeshDS_TNode::LinkedCells()
     return myLinkedCells;
 }
 
+// ============================================================================
+/*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+MeshAbs_TypeOfObject MeshDS_TNode::ObjectType() const
+{
+    return MeshAbs_OT_Node;
+}
+
+// ============================================================================
+/*!
+ *  \brief Representation()
+*/
+// ============================================================================
+const Handle(MeshRep_Node)& MeshDS_TNode::Representation() const
+{
+    return myRepresentation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetRepresentation()
+*/
+// ============================================================================
+void MeshDS_TNode::SetRepresentation(const Handle(MeshRep_Node) &theRepresentation)
+{
+    myRepresentation = theRepresentation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetVertex()
+*/
+// ============================================================================
+void MeshDS_TNode::SetVertex(const TopoDS_Vertex &theVertex)
+{
+    myVertex = theVertex;
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const TopoDS_Vertex& MeshDS_TNode::Vertex() const
+{
+    return myVertex;
+}
+
 
 // ****************************************************************************
 // Handles

@@ -32,7 +32,6 @@
 */
 // ============================================================================
 MeshDS_TCell::MeshDS_TCell()
-    : myCellType(MeshAbs_CT_Undefined)
 {
 
 }
@@ -49,36 +48,6 @@ MeshDS_TCell::~MeshDS_TCell()
 
 // ============================================================================
 /*!
- *  \brief CellType()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
-{
-    return myCellType;
-}
-
-// ============================================================================
-/*!
- *  \brief NbNodes()
-*/
-// ============================================================================
-Standard_Integer MeshDS_TCell::NbNodes() const
-{
-    return myNodes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief Node()
-*/
-// ============================================================================
-const MeshDS_Object& MeshDS_TCell::Node(const Standard_Integer theIndex) const
-{
-    return myNodes.Value(theIndex);
-}
-
-// ============================================================================
-/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -89,36 +58,23 @@ MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief ResizeNodes()
+ *  \brief Representation()
 */
 // ============================================================================
-void MeshDS_TCell::ResizeNodes(const Standard_Integer theNbNodes,
-                               const Standard_Boolean toCopyData)
+const Handle(MeshRep_Cell)& MeshDS_TCell::Representation() const
 {
-    myNodes.Resize(1, theNbNodes, toCopyData);
+    return myRepresentation;
 }
 
 // ============================================================================
 /*!
- *  \brief SetCellType()
+ *  \brief SetRepresentation()
 */
 // ============================================================================
-void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
+void MeshDS_TCell::SetRepresentation(const Handle(MeshRep_Cell) &theRepresentation)
 {
-    myCellType = theCellType;
+    myRepresentation = theRepresentation;
 }
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
-                           const MeshDS_Object &theNode)
-{
-    myNodes.SetValue(theIndex, theNode);
-}
-
 
 
 

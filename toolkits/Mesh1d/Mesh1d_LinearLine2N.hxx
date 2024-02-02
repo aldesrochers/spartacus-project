@@ -49,6 +49,8 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh1d_LinearLine2N();
+    Standard_EXPORT Mesh1d_LinearLine2N(const Standard_Integer theNode1,
+                                        const Standard_Integer theNode2);
     Standard_EXPORT Mesh1d_LinearLine2N(const mp_LinearLine2N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh1d_LinearLine2N();

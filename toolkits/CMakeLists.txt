@@ -48,18 +48,6 @@ set(BRepCellAPI_PKG_SOURCES
 )
 
 # =============================================================================
-# Package : cp
-# =============================================================================
-
-set(cp_PKG_HEADERS
-    cp/cp_Edge.hxx
-)
-
-set(cp_PKG_SOURCES
-    cp/cp_Edge.cxx
-)
-
-# =============================================================================
 # Package : ElePRep
 # =============================================================================
 
@@ -259,7 +247,12 @@ set(MeshDS_PKG_SOURCES
 set(MeshLib_PKG_HEADERS
     MeshLib/MeshLib_BaseMeshBuilder.hxx
     MeshLib/MeshLib_Command.hxx
+    MeshLib/MeshLib_MakeCell.hxx
     MeshLib/MeshLib_MakeMesh.hxx
+    MeshLib/MeshLib_MakeNode.hxx
+    MeshLib/MeshLib_MakeNode1d.hxx
+    MeshLib/MeshLib_MakeNode2d.hxx
+    MeshLib/MeshLib_MakeObject.hxx
     MeshLib/MeshLib_MeshBuilder.hxx
     MeshLib/MeshLib_MeshBuilder1d.hxx
     MeshLib/MeshLib_MeshBuilder2d.hxx
@@ -269,7 +262,12 @@ set(MeshLib_PKG_HEADERS
 set(MeshLib_PKG_SOURCES
     MeshLib/MeshLib_BaseMeshBuilder.cxx
     MeshLib/MeshLib_Command.cxx
+    MeshLib/MeshLib_MakeCell.cxx
     MeshLib/MeshLib_MakeMesh.cxx
+    MeshLib/MeshLib_MakeNode.cxx
+    MeshLib/MeshLib_MakeNode1d.cxx
+    MeshLib/MeshLib_MakeNode2d.cxx
+    MeshLib/MeshLib_MakeObject.cxx
     MeshLib/MeshLib_MeshBuilder.cxx
     MeshLib/MeshLib_MeshBuilder1d.cxx
     MeshLib/MeshLib_MeshBuilder2d.cxx
@@ -405,9 +403,6 @@ set(mp_PKG_HEADERS
     mp/mp_LinearQuadrangle4N.hxx
     mp/mp_LinearTetrahedron4N.hxx
     mp/mp_LinearTriangle3N.hxx
-    mp/mp_Node.hxx
-    mp/mp_Node1d.hxx
-    mp/mp_Node2d.hxx
     mp/mp_QuadrangleFace4N.hxx
     mp/mp_QuadrangleFace8N.hxx
     mp/mp_QuadrangleFace9N.hxx
@@ -438,9 +433,6 @@ set(mp_PKG_SOURCES
     mp/mp_LinearQuadrangle4N.cxx
     mp/mp_LinearTetrahedron4N.cxx
     mp/mp_LinearTriangle3N.cxx
-    mp/mp_Node.cxx
-    mp/mp_Node1d.cxx
-    mp/mp_Node2d.cxx
     mp/mp_QuadrangleFace4N.cxx
     mp/mp_QuadrangleFace8N.cxx
     mp/mp_QuadrangleFace9N.cxx
@@ -471,6 +463,15 @@ set(TColgp_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : TColMesh1d
+# =============================================================================
+
+set(TColMesh1d_PKG_HEADERS
+    TColMesh1d/TColMesh1d_DataMapOfIntegerCell.hxx
+    TColMesh1d/TColMesh1d_DataMapOfIntegerNode.hxx
+)
+
+# =============================================================================
 # Package : TColmp
 # =============================================================================
 
@@ -494,9 +495,6 @@ set(TColmp_PKG_HEADERS
     TColmp/TColmp_Array1OfQuadraticTetrahedron10N.hxx
     TColmp/TColmp_Array1OfQuadraticTriangle6N.hxx
     TColmp/TColmp_Array1OfQuadraticTriangle7N.hxx
-    TColmp/TColmp_DataMapOfIntegerNode.hxx
-    TColmp/TColmp_DataMapOfIntegerNode1d.hxx
-    TColmp/TColmp_DataMapOfIntegerNode2d.hxx
     TColmp/TColmp_SequenceOfLinearHexahedron8N.hxx
     TColmp/TColmp_SequenceOfLinearLine2N.hxx
     TColmp/TColmp_SequenceOfLinearPentahedron6N.hxx
@@ -568,7 +566,6 @@ set(xsp_PKG_SOURCES
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
     ${BRepCellAPI_PKG_HEADERS}
-    ${cp_PKG_HEADERS}
     #${ElePRep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     ${Mesh_PKG_HEADERS}
@@ -585,6 +582,7 @@ set(Ceres_HEADERS
     #${ModelLib_PKG_HEADERS}
     ${mp_PKG_HEADERS}
     ${TColgp_PKG_HEADERS}
+    ${TColMesh1d_PKG_HEADERS}
     ${TColmp_PKG_HEADERS}
     #${XS_PKG_HEADERS}
     #${XSAbs_PKG_HEADERS}
@@ -595,7 +593,6 @@ set(Ceres_HEADERS
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
     ${BRepCellAPI_PKG_SOURCES}
-    ${cp_PKG_SOURCES}
     #${ElePRep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     ${Mesh_PKG_SOURCES}
@@ -619,7 +616,6 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
-    ${CMAKE_CURRENT_SOURCE_DIR}/cp
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
@@ -636,6 +632,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/TColmp
     ${CMAKE_CURRENT_SOURCE_DIR}/XS
     ${CMAKE_CURRENT_SOURCE_DIR}/XSAbs

@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TNode2d.hxx>
+#include <MeshLib_MakeObject.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TNode2d::MeshDS_TNode2d()
+MeshLib_MakeObject::MeshLib_MakeObject()
 {
 
 }
@@ -39,43 +39,42 @@ MeshDS_TNode2d::MeshDS_TNode2d()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TNode2d::~MeshDS_TNode2d()
+MeshLib_MakeObject::~MeshLib_MakeObject()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Build()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TNode2d::ObjectType() const
+void MeshLib_MakeObject::Build()
 {
-    return MeshAbs_OT_Node2d;
+
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief Object()
 */
 // ============================================================================
-const gp_Pnt2d& MeshDS_TNode2d::Point() const
+const MeshDS_Object&  MeshLib_MakeObject::Object()
 {
-    return myPoint;
+    if (!IsDone()) {
+        ((MeshLib_MakeObject*) (void*) this)->Build();
+        Check();
+    }
+    return myObject;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief operator MeshDS_Object()
 */
 // ============================================================================
-void MeshDS_TNode2d::SetPoint(const gp_Pnt2d &thePoint)
+MeshLib_MakeObject::operator MeshDS_Object()
 {
-    myPoint = thePoint;
+    return Object();
 }
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TNode2d, MeshDS_TNode);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TNode2d, MeshDS_TNode);

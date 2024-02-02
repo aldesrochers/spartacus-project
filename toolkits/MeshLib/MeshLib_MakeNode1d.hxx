@@ -20,22 +20,22 @@
 // ============================================================================
 
 
-#ifndef __mp_Node1d_hxx__
-#define __mp_Node1d_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#ifndef __MeshLib_MakeNode1d_hxx__
+#define __MeshLib_MakeNode1d_hxx__
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
+#include <Mesh1d_Node.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshLib_MakeObject.hxx>
+
 
 // ============================================================================
 /*!
- *  \brief mp_Node1d
+ *  \brief MeshLib_MakeNode1d
 */
 // ============================================================================
-class mp_Node1d
+class MeshLib_MakeNode1d : public MeshLib_MakeObject
 {
 
 public:
@@ -44,24 +44,33 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT mp_Node1d();
-    Standard_EXPORT mp_Node1d(const gp_Pnt1d& thePoint);
-    Standard_EXPORT mp_Node1d(const Standard_Real theX);
+    Standard_EXPORT MeshLib_MakeNode1d(const Standard_Real theX);
+    Standard_EXPORT MeshLib_MakeNode1d(const gp_Pnt1d& thePoint);
+    Standard_EXPORT MeshLib_MakeNode1d(const Handle(Mesh1d_Node)& theNode1d);
+
     // destructors
-    Standard_EXPORT ~mp_Node1d();
+    Standard_EXPORT ~MeshLib_MakeNode1d();
 
 public:
 
-    Standard_EXPORT const gp_Pnt1d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT Standard_Real       X() const;
+    virtual Standard_EXPORT void            Build();
 
-private:
+public:
 
-    gp_Pnt1d        myPoint;
+    Standard_EXPORT void                    Initialize(const Standard_Real theX);
+    Standard_EXPORT void                    Initialize(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void                    Initialize(const Handle(Mesh1d_Node)& theNode1d);
+
+public:
+
+    Standard_EXPORT const MeshDS_Node&      Node();
+    Standard_EXPORT operator                MeshDS_Node();
+
+protected:
+
+    MeshDS_Node             myNode;
 
 };
 
 
-#endif // __mp_Node1d_hxx__
+#endif // __MeshLib_MakeNode1d_hxx__

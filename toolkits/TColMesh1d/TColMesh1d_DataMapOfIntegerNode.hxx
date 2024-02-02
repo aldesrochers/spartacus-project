@@ -20,16 +20,18 @@
 // ============================================================================
 
 
-#ifndef __TColmp_Array1OfNode_hxx__
-#define __TColmp_Array1OfNode_hxx__
+#ifndef __TColMesh1d_DataMapOfIntegerNode_hxx__
+#define __TColMesh1d_DataMapOfIntegerNode_hxx__
 
 // OpenCascade
-#include <NCollection_Array1.hxx>
+#include <NCollection_DataMap.hxx>
+#include <TColStd_MapIntegerHasher.hxx>
 
 // Spartacus
-#include <mp_Node.hxx>
+#include <Mesh1d_Node.hxx>
 
 // Type definitions
-typedef NCollection_Array1<mp_Node>     TColmp_Array1OfNode;
+typedef NCollection_DataMap<Standard_Integer, Handle(Mesh1d_Node), TColStd_MapIntegerHasher>            TColMesh1d_DataMapOfIntegerNode;
+typedef NCollection_DataMap<Standard_Integer, Handle(Mesh1d_Node), TColStd_MapIntegerHasher>::Iterator  TColMesh1d_DataMapIteratorOfDataMapOfIntegerNode;
 
-#endif  // __TColmp_Array1OfNode_hxx__
+#endif  // __TColMesh1d_DataMapOfIntegerNode_hxx__

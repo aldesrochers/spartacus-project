@@ -20,18 +20,48 @@
 // ============================================================================
 
 
-#ifndef __TColmp_DataMapOfIntegerNode_hxx__
-#define __TColmp_DataMapOfIntegerNode_hxx__
-
-// OpenCascade
-#include <NCollection_DataMap.hxx>
-#include <TColStd_MapIntegerHasher.hxx>
+#ifndef __MeshLib_MakeObject_hxx__
+#define __MeshLib_MakeObject_hxx__
 
 // Spartacus
-#include <mp_Node.hxx>
+#include <MeshDS_Object.hxx>
+#include <MeshLib_Command.hxx>
 
-// Type definitions
-typedef NCollection_DataMap<Standard_Integer, mp_Node, TColStd_MapIntegerHasher>            TColmp_DataMapOfIntegerNode;
-typedef NCollection_DataMap<Standard_Integer, mp_Node, TColStd_MapIntegerHasher>::Iterator  TColmp_DataMapIteratorOfDataMapOfIntegerNode;
 
-#endif  // __TColmp_DataMapOfIntegerNode_hxx__
+
+// ============================================================================
+/*!
+ *  \brief MeshLib_MakeObject
+*/
+// ============================================================================
+class MeshLib_MakeObject : public MeshLib_Command
+{
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT MeshLib_MakeObject();
+
+    // destructors
+    Standard_EXPORT ~MeshLib_MakeObject();
+
+public:
+
+    virtual Standard_EXPORT void            Build();
+
+public:
+
+    Standard_EXPORT const MeshDS_Object&    Object();
+    Standard_EXPORT operator                MeshDS_Object();
+
+protected:
+
+    MeshDS_Object             myObject;
+
+};
+
+
+#endif // __MeshLib_MakeObject_hxx__

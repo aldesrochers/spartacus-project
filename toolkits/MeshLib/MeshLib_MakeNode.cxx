@@ -21,7 +21,9 @@
 
 
 // Spartacus
-#include <mp_Node.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
+#include <MeshLib_MakeNode.hxx>
 
 
 // ============================================================================
@@ -29,9 +31,11 @@
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node::mp_Node()
+MeshLib_MakeNode::MeshLib_MakeNode(const Standard_Real theX,
+                                   const Standard_Real theY,
+                                   const Standard_Real theZ)
 {
-
+    Initialize(theX, theY, theZ);
 }
 
 // ============================================================================
@@ -39,10 +43,9 @@ mp_Node::mp_Node()
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node::mp_Node(const gp_Pnt& thePoint)
-    : myPoint(thePoint)
+MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt& thePoint)
 {
-
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -50,13 +53,9 @@ mp_Node::mp_Node(const gp_Pnt& thePoint)
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node::mp_Node(const Standard_Real theX,
-                 const Standard_Real theY,
-                 const Standard_Real theZ)
+MeshLib_MakeNode::MeshLib_MakeNode(const Handle(Mesh_Node)& theNode)
 {
-    myPoint.SetX(theX);
-    myPoint.SetY(theY);
-    myPoint.SetZ(theZ);
+    Initialize(theNode);
 }
 
 // ============================================================================
@@ -64,87 +63,74 @@ mp_Node::mp_Node(const Standard_Real theX,
  *  \brief Destructor
 */
 // ============================================================================
-mp_Node::~mp_Node()
+MeshLib_MakeNode::~MeshLib_MakeNode()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief Build()
 */
 // ============================================================================
-const gp_Pnt& mp_Node::Point() const
+void MeshLib_MakeNode::Build()
 {
-    return myPoint;
+
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node::SetPoint(const gp_Pnt& thePoint)
+void MeshLib_MakeNode::Initialize(const Standard_Real theX,
+                                  const Standard_Real theY,
+                                  const Standard_Real theZ)
 {
-    myPoint = thePoint;
+    gp_Pnt aPoint(theX, theY, theZ);
+    Initialize(aPoint);
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshLib_MakeNode::Initialize(const gp_Pnt &thePoint)
+{
+    Handle(Mesh_Node) aNode = new Mesh_Node(thePoint);
+    Initialize(aNode);
 }
 
 // ============================================================================
 /*!
- *  \brief SetX()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node::SetX(const Standard_Real theX)
+void MeshLib_MakeNode::Initialize(const Handle(Mesh_Node)& theNode)
 {
-    myPoint.SetX(theX);
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(MeshDS::Node(myObject), theNode);
 }
 
 // ============================================================================
 /*!
- *  \brief SetY()
+ *  \brief Node()
 */
 // ============================================================================
-void mp_Node::SetY(const Standard_Real theY)
+const MeshDS_Node&  MeshLib_MakeNode::Node()
 {
-    myPoint.SetY(theY);
+    return MeshDS::Node(Object());
 }
 
 // ============================================================================
 /*!
- *  \brief SetZ()
+ *  \brief operator MeshDS_Node()
 */
 // ============================================================================
-void mp_Node::SetZ(const Standard_Real theZ)
+MeshLib_MakeNode::operator MeshDS_Node()
 {
-    myPoint.SetZ(theZ);
+    return Node();
 }
 
-// ============================================================================
-/*!
- *  \brief X()
-*/
-// ============================================================================
-Standard_Real mp_Node::X() const
-{
-    return myPoint.X();
-}
-
-// ============================================================================
-/*!
- *  \brief Y()
-*/
-// ============================================================================
-Standard_Real mp_Node::Y() const
-{
-    return myPoint.Y();
-}
-
-// ============================================================================
-/*!
- *  \brief Z()
-*/
-// ============================================================================
-Standard_Real mp_Node::Z() const
-{
-    return myPoint.Z();
-}

@@ -21,7 +21,9 @@
 
 
 // Spartacus
-#include <mp_Node1d.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
+#include <MeshLib_MakeNode1d.hxx>
 
 
 // ============================================================================
@@ -29,9 +31,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node1d::mp_Node1d()
+MeshLib_MakeNode1d::MeshLib_MakeNode1d(const Standard_Real theX)
 {
-
+    Initialize(theX);
 }
 
 // ============================================================================
@@ -39,10 +41,9 @@ mp_Node1d::mp_Node1d()
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node1d::mp_Node1d(const gp_Pnt1d& thePoint)
-    : myPoint(thePoint)
+MeshLib_MakeNode1d::MeshLib_MakeNode1d(const gp_Pnt1d& thePoint)
 {
-
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -50,9 +51,9 @@ mp_Node1d::mp_Node1d(const gp_Pnt1d& thePoint)
  *  \brief Constructor
 */
 // ============================================================================
-mp_Node1d::mp_Node1d(const Standard_Real theX)
+MeshLib_MakeNode1d::MeshLib_MakeNode1d(const Handle(Mesh1d_Node)& theNode1d)
 {
-    myPoint.SetX(theX);
+    Initialize(theNode1d);
 }
 
 // ============================================================================
@@ -60,47 +61,72 @@ mp_Node1d::mp_Node1d(const Standard_Real theX)
  *  \brief Destructor
 */
 // ============================================================================
-mp_Node1d::~mp_Node1d()
+MeshLib_MakeNode1d::~MeshLib_MakeNode1d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief Build()
 */
 // ============================================================================
-const gp_Pnt1d& mp_Node1d::Point() const
+void MeshLib_MakeNode1d::Build()
 {
-    return myPoint;
+
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node1d::SetPoint(const gp_Pnt1d &thePoint)
+void MeshLib_MakeNode1d::Initialize(const Standard_Real theX)
 {
-    myPoint = thePoint;
+    gp_Pnt1d aPoint(theX);
+    Initialize(aPoint);
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshLib_MakeNode1d::Initialize(const gp_Pnt1d &thePoint)
+{
+    Handle(Mesh1d_Node) aNode = new Mesh1d_Node(thePoint);
+    Initialize(aNode);
 }
 
 // ============================================================================
 /*!
- *  \brief SetX()
+ *  \brief Initialize()
 */
 // ============================================================================
-void mp_Node1d::SetX(const Standard_Real theX)
+void MeshLib_MakeNode1d::Initialize(const Handle(Mesh1d_Node)& theNode1d)
 {
-    myPoint.SetX(theX);
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(MeshDS::Node(myObject), theNode1d);
 }
 
 // ============================================================================
 /*!
- *  \brief X()
+ *  \brief Node()
 */
 // ============================================================================
-Standard_Real mp_Node1d::X() const
+const MeshDS_Node&  MeshLib_MakeNode1d::Node()
 {
-    return myPoint.X();
+    return MeshDS::Node(Object());
 }
+
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Node()
+*/
+// ============================================================================
+MeshLib_MakeNode1d::operator MeshDS_Node()
+{
+    return Node();
+}
+

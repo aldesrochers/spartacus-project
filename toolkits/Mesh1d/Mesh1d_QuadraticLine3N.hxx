@@ -49,6 +49,9 @@ public:
 public:
     // constructors
     Standard_EXPORT Mesh1d_QuadraticLine3N();
+    Standard_EXPORT Mesh1d_QuadraticLine3N(const Standard_Integer theNode1,
+                                           const Standard_Integer theNode2,
+                                           const Standard_Integer theNode3);
     Standard_EXPORT Mesh1d_QuadraticLine3N(const mp_QuadraticLine3N& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh1d_QuadraticLine3N();
