@@ -26,9 +26,10 @@ using namespace std;
 #include <Mesh1d_LinearLine2N.hxx>
 #include <Mesh1d_Node.hxx>
 #include <Mesh1d_QuadraticLine3N.hxx>
+#include <MeshDS.hxx>
 #include <MeshDS_Builder.hxx>
 #include <MeshLib_MeshBuilder1d.hxx>
-
+#include <MeshTools_DataMapOfIntegerObject.hxx>
 
 
 // ============================================================================
@@ -100,25 +101,61 @@ Standard_Integer MeshLib_MeshBuilder1d::AddQuadraticLine3N(const Standard_Intege
 // ============================================================================
 void MeshLib_MeshBuilder1d::Build()
 {
+    MeshDS_Builder aBuilder;
+    MeshTools_DataMapOfIntegerObject    meshNodes;
+    MeshTools_DataMapOfIntegerObject    meshCells;
+    MeshTools_DataMapOfIntegerObject    meshGroups;
+
     // size of mesh
     Standard_Integer nbNodes = myNodes.Size();
     Standard_Integer nbCells = myCells.Size();
     Standard_Integer nbGroups = myGroups.Size();
 
-    // initialize mesh with valid dimensions
-    MeshDS_Builder aBuilder;
+    // initialize mesh
     aBuilder.MakeMesh(myMesh, nbNodes, nbCells, nbGroups);
 
-    // loop each node, set in mesh
-    TColMesh1d_DataMapIteratorOfDataMapOfIntegerNode anIterator(myNodes);
-    for(; anIterator.More(); anIterator.Next()) {
-        Standard_Integer aNodeId = anIterator.Key();
-        Handle(Mesh1d_Node) aNode1d = anIterator.Value();
+    // ---
+    // nodes
+    // ---
+    TColMesh1d_DataMapIteratorOfDataMapOfIntegerNode aNodeIterator(myNodes);
+    for(; aNodeIterator.More(); aNodeIterator.Next()) {
+        Standard_Integer aNodeId = aNodeIterator.Key();
+        Handle(Mesh1d_Node) aNode1d = aNodeIterator.Value();
         MeshDS_Node aNode;
         aBuilder.MakeNode(aNode, aNode1d);
+        meshNodes.Bind(aNodeId, aNode);
+    }
+
+    // ---
+    // cells
+    // ---
+    TColMesh1d_DataMapIteratorOfDataMapOfIntegerCell aCellIterator(myCells);
+    for(; aCellIterator.More(); aCellIterator.Next()) {
+        Standard_Integer aCellId = aCellIterator.Key();
+        Handle(Mesh1d_Cell) aCell1d = aCellIterator.Value();
+
+        // make cell, define in mesh
+        MeshDS_Cell aCell;
+        aBuilder.MakeCell(aCell, aCell1d);
+        meshCells.Bind(aCellId, aCell);
+
+        // for all nodes in cell, link to cell
+        TColStd_ListOfInteger aListOfCellNodes;
+        aCell1d->Nodes(aListOfCellNodes);
+        TColStd_ListIteratorOfListOfInteger anIterator(aListOfCellNodes);
+        for(; anIterator.More(); anIterator.Next()) {
+            Standard_Integer aNodeId = anIterator.Value();
+            MeshDS_Node aNode = MeshDS::Node(meshNodes(aNodeId));
+            aBuilder.LinkCell(aNode, aCell);
+        }
     }
 
 
+
+
+
+
+    SetDone();
 }
 
 // ============================================================================

@@ -58,6 +58,8 @@ public:
 
 public:
 
+    Standard_EXPORT Standard_Boolean            HasRepresentation() const;
+    Standard_EXPORT Standard_Boolean            HasVertex() const;
     Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
     Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
     Standard_EXPORT const Handle(MeshRep_Node)& Representation() const;

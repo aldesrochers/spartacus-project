@@ -30,7 +30,13 @@
 #include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
+#include <Mesh_Cell.hxx>
+#include <Mesh_Node.hxx>
+#include <Mesh1d_Cell.hxx>
+#include <Mesh1d_Node.hxx>
+#include <Mesh2d_Cell.hxx>
+#include <Mesh2d_Node.hxx>
+#include <MeshDS_Cell.hxx>
 #include <MeshDS_Node.hxx>
 
 
@@ -48,7 +54,13 @@ public:
 
 public:
 
-    //Standard_EXPORT static gp_Pnt       Point(const MeshDS_Node& theNode);
+    static Standard_EXPORT Handle(Mesh1d_Cell)  Cell1d(const MeshDS_Cell& theCell);
+    static Standard_EXPORT Handle(Mesh2d_Cell)  Cell2d(const MeshDS_Cell& theCell);
+    static Standard_EXPORT Handle(Mesh_Cell)    Cell3d(const MeshDS_Cell& theCell);
+
+    static Standard_EXPORT Handle(Mesh1d_Node)  Node1d(const MeshDS_Node& theNode);
+    static Standard_EXPORT Handle(Mesh2d_Node)  Node2d(const MeshDS_Node& theNode);
+    static Standard_EXPORT Handle(Mesh_Node)    Node3d(const MeshDS_Node& theNode);
 
 };
 

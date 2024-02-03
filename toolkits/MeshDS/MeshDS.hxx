@@ -32,8 +32,7 @@
 #include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
-#include <MeshDS_Node1d.hxx>
-#include <MeshDS_Node2d.hxx>
+
 
 
 // ============================================================================
@@ -61,12 +60,6 @@ public:
 
     static Standard_EXPORT const MeshDS_Node&   Node(const MeshDS_Object& theObject);
     static Standard_EXPORT MeshDS_Node&         Node(MeshDS_Object& theObject);
-
-    static Standard_EXPORT const MeshDS_Node1d& Node1d(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Node1d&       Node1d(MeshDS_Object& theObject);
-
-    static Standard_EXPORT const MeshDS_Node2d& Node2d(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Node2d&       Node2d(MeshDS_Object& theObject);
 
 protected:
 

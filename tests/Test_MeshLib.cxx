@@ -47,7 +47,7 @@ int main(int argc, char** argv)
     cout << aBuilder.NbNodes() << endl;
     cout << aBuilder.NbCells() << endl;
 
-    //MeshDS_Mesh aMesh = aBuilder.Mesh();
+    MeshDS_Mesh aMesh = aBuilder.Mesh();
 
 
 

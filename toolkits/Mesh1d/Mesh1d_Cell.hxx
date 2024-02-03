@@ -27,6 +27,9 @@
 #include <Mesh1d_Object.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
 
+// OpenCascade
+#include <TColStd_ListOfInteger.hxx>
+
 // Forward declarations
 class Mesh1d_Cell;
 
@@ -51,6 +54,10 @@ public:
     Standard_EXPORT Mesh1d_Cell();
     // destructors
     Standard_EXPORT ~Mesh1d_Cell();
+
+public:
+
+    virtual Standard_EXPORT void    Nodes(TColStd_ListOfInteger& theNodes) const = 0;
 
 public:
 

@@ -125,54 +125,6 @@ MeshDS_Node& MeshDS::Node(MeshDS_Object& theObject)
 
 // ============================================================================
 /*!
- *  \brief Node1d()
-*/
-// ============================================================================
-const MeshDS_Node1d& MeshDS::Node1d(const MeshDS_Object& theObject)
-{
-    Standard_TypeMismatch_Raise_if(TypeMismatch(theObject, MeshAbs_OT_Node1d),
-                                   "MeshDS::Node1d()");
-    return *(MeshDS_Node1d*) &theObject;
-}
-
-// ============================================================================
-/*!
- *  \brief Node1d()
-*/
-// ============================================================================
-MeshDS_Node1d& MeshDS::Node1d(MeshDS_Object& theObject)
-{
-    Standard_TypeMismatch_Raise_if(TypeMismatch(theObject, MeshAbs_OT_Node1d),
-                                   "MeshDS::Node1d()");
-    return *(MeshDS_Node1d*) &theObject;
-}
-
-// ============================================================================
-/*!
- *  \brief Node2d()
-*/
-// ============================================================================
-const MeshDS_Node2d& MeshDS::Node2d(const MeshDS_Object& theObject)
-{
-    Standard_TypeMismatch_Raise_if(TypeMismatch(theObject, MeshAbs_OT_Node2d),
-                                   "MeshDS::Node2d()");
-    return *(MeshDS_Node2d*) &theObject;
-}
-
-// ============================================================================
-/*!
- *  \brief Node2d()
-*/
-// ============================================================================
-MeshDS_Node2d& MeshDS::Node2d(MeshDS_Object& theObject)
-{
-    Standard_TypeMismatch_Raise_if(TypeMismatch(theObject, MeshAbs_OT_Node2d),
-                                   "MeshDS::Node2d()");
-    return *(MeshDS_Node2d*) &theObject;
-}
-
-// ============================================================================
-/*!
  *  \brief TypeMismatch()
 */
 // ============================================================================

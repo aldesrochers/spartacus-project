@@ -62,6 +62,12 @@ public:
 
 public:
 
+    Standard_EXPORT void    AddCell(MeshDS_Group& theGroup,
+                                    const MeshDS_Cell& theCell) const;
+
+    Standard_EXPORT void    LinkCell(MeshDS_Node& theNode,
+                                     const MeshDS_Cell& theCell) const;
+
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell) const;
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
                                      const Handle(Mesh1d_Cell)& theCell1d) const;
@@ -85,6 +91,18 @@ public:
                                      const Handle(Mesh2d_Node)& theNode2d) const;
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const Handle(Mesh_Node)& theNode3d) const;
+
+    Standard_EXPORT void    SetCell(MeshDS_Mesh& theMesh,
+                                    const Standard_Integer theIndex,
+                                    const MeshDS_Cell& theCell) const;
+
+    Standard_EXPORT void    SetGroup(MeshDS_Mesh& theMesh,
+                                     const Standard_Integer theIndex,
+                                     const MeshDS_Group& theGroup) const;
+
+    Standard_EXPORT void    SetNode(MeshDS_Mesh& theMesh,
+                                    const Standard_Integer theIndex,
+                                    const MeshDS_Node& theNode) const;
 
     Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
                                        const Handle(Mesh1d_Cell)& theCell1d) const;

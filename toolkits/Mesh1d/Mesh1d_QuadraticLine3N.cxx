@@ -111,6 +111,18 @@ Standard_Integer Mesh1d_QuadraticLine3N::Node3() const
 
 // ============================================================================
 /*!
+ *  \brief Nodes()
+*/
+// ============================================================================
+void Mesh1d_QuadraticLine3N::Nodes(TColStd_ListOfInteger &theNodes) const
+{
+    theNodes.Append(Node1());
+    theNodes.Append(Node2());
+    theNodes.Append(Node3());
+}
+
+// ============================================================================
+/*!
  *  \brief SetConnectivity()
 */
 // ============================================================================

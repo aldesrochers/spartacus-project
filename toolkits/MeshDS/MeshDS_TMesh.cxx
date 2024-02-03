@@ -47,6 +47,26 @@ MeshDS_TMesh::~MeshDS_TMesh()
 
 // ============================================================================
 /*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Object& MeshDS_TMesh::Cell(const Standard_Integer theIndex) const
+{
+    return myCells.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief Group()
+*/
+// ============================================================================
+const MeshDS_Object& MeshDS_TMesh::Group(const Standard_Integer theIndex) const
+{
+    return myGroups.Value(theIndex);
+}
+
+// ============================================================================
+/*!
  *  \brief NbCells()
 */
 // ============================================================================
@@ -77,13 +97,24 @@ Standard_Integer MeshDS_TMesh::NbNodes() const
 
 // ============================================================================
 /*!
+ *  \brief Node()
+*/
+// ============================================================================
+const MeshDS_Object& MeshDS_TMesh::Node(const Standard_Integer theIndex) const
+{
+    return myNodes.Value(theIndex);
+}
+
+// ============================================================================
+/*!
  *  \brief ResizeCells()
 */
 // ============================================================================
 void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
                                const Standard_Boolean toCopyData)
 {
-    myCells.Resize(1, theNbCells, toCopyData);
+    if(theNbCells > 0)
+        myCells.Resize(1, theNbCells, toCopyData);
 }
 
 // ============================================================================
@@ -94,7 +125,8 @@ void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
 void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
                                 const Standard_Boolean toCopyData)
 {
-    myGroups.Resize(1, theNbGroups, toCopyData);
+    if(theNbGroups > 0)
+        myGroups.Resize(1, theNbGroups, toCopyData);
 }
 
 // ============================================================================
@@ -105,7 +137,8 @@ void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
 void MeshDS_TMesh::ResizeNodes(const Standard_Integer theNbNodes,
                                const Standard_Boolean toCopyData)
 {
-    myNodes.Resize(1, theNbNodes, toCopyData);
+    if(theNbNodes > 0)
+        myNodes.Resize(1, theNbNodes, toCopyData);
 }
 
 // ============================================================================

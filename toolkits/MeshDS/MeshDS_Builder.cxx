@@ -57,6 +57,36 @@ MeshDS_Builder::~MeshDS_Builder()
 
 // ============================================================================
 /*!
+ *  \brief AddCell()
+ *  Add a cell to a group.
+*/
+// ============================================================================
+void MeshDS_Builder::AddCell(MeshDS_Group &theGroup,
+                             const MeshDS_Cell &theCell) const
+{
+    const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
+    MeshDS_ListOfObject& aList = aTGroup->Cells();
+    aList.Append(theCell);
+    aTGroup->SetModified(Standard_True);
+}
+
+// ============================================================================
+/*!
+ *  \brief LinkCell()
+ *  Link a cell to a node.
+*/
+// ============================================================================
+void MeshDS_Builder::LinkCell(MeshDS_Node &theNode,
+                              const MeshDS_Cell &theCell) const
+{
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    MeshDS_ListOfObject& aList = aTNode->LinkedCells();
+    aList.Append(theCell);
+    aTNode->SetModified(Standard_True);
+}
+
+// ============================================================================
+/*!
  *  \brief MakeCell()
 */
 // ============================================================================
@@ -194,6 +224,51 @@ void MeshDS_Builder::MakeObject(MeshDS_Object &theObject,
                                 const Handle(MeshDS_TObject) &theTObject) const
 {
     theObject.SetTObject(theTObject);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetCell()
+ *  Set a cell within a mesh.
+*/
+// ============================================================================
+void MeshDS_Builder::SetCell(MeshDS_Mesh &theMesh,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Cell &theCell) const
+{
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetCell(theIndex, theCell);
+    aTMesh->SetModified(Standard_True);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetGroup()
+ *  Set a group within a mesh.
+*/
+// ============================================================================
+void MeshDS_Builder::SetGroup(MeshDS_Mesh &theMesh,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Group &theGroup) const
+{
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetGroup(theIndex, theGroup);
+    aTMesh->SetModified(Standard_True);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+ *  Set a node within a mesh.
+*/
+// ============================================================================
+void MeshDS_Builder::SetNode(MeshDS_Mesh &theMesh,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Node &theNode) const
+{
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetNode(theIndex, theNode);
+    aTMesh->SetModified(Standard_True);
 }
 
 // ============================================================================

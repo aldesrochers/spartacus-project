@@ -27,6 +27,9 @@
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
+// OpenCascade
+#include <TCollection_AsciiString.hxx>
+
 // Forward declarations
 class MeshDS_TGroup;
 
@@ -54,12 +57,15 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_ListOfObject&  Cells() const;
-    Standard_EXPORT MeshDS_ListOfObject&        Cells();
+    Standard_EXPORT const MeshDS_ListOfObject&      Cells() const;
+    Standard_EXPORT MeshDS_ListOfObject&            Cells();
+    Standard_EXPORT const TCollection_AsciiString&  Name() const;
+    Standard_EXPORT void                            SetName(const TCollection_AsciiString& theName);
 
 private:
 
-    MeshDS_ListOfObject     myCells;
+    MeshDS_ListOfObject         myCells;
+    TCollection_AsciiString     myName;
 
 public:
 

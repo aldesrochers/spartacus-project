@@ -63,6 +63,10 @@ public:
 
 public:
 
+    Standard_EXPORT void                Nodes(TColStd_ListOfInteger& theNodes) const Standard_OVERRIDE;
+
+public:
+
     Standard_EXPORT Standard_Integer    Node1() const;
     Standard_EXPORT Standard_Integer    Node2() const;
     Standard_EXPORT Standard_Integer    Node3() const;
