@@ -26,7 +26,11 @@
 // OpenCascade
 #include <BRepCell_Command.hxx>
 #include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Shell.hxx>
+#include <TopoDS_Solid.hxx>
 #include <TopoDS_Vertex.hxx>
+#include <TopoDS_Wire.hxx>
 #include <TopTools_Array1OfShape.hxx>
 
 // ============================================================================
@@ -50,15 +54,27 @@ public:
 public:
 
     Standard_EXPORT const TopoDS_Edge&      Edge(const Standard_Integer theIndex) const;
+    Standard_EXPORT const TopoDS_Face&      Face(const Standard_Integer theIndex) const;
     Standard_EXPORT Standard_Integer        NbEdges() const;
+    Standard_EXPORT Standard_Integer        NbFaces() const;
+    Standard_EXPORT Standard_Integer        NbShells() const;
+    Standard_EXPORT Standard_Integer        NbSolids() const;
     Standard_EXPORT Standard_Integer        NbVertices() const;
+    Standard_EXPORT Standard_Integer        NbWires() const;
+    Standard_EXPORT const TopoDS_Shell&     Shell(const Standard_Integer theIndex) const;
+    Standard_EXPORT const TopoDS_Solid&     Solid(const Standard_Integer theIndex) const;
     Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const;
+    Standard_EXPORT const TopoDS_Wire&      Wire(const Standard_Integer theIndex) const;
 
 
 protected:
 
     TopTools_Array1OfShape      myEdges;
+    TopTools_Array1OfShape      myFaces;
+    TopTools_Array1OfShape      myShells;
+    TopTools_Array1OfShape      mySolids;
     TopTools_Array1OfShape      myVertices;
+    TopTools_Array1OfShape      myWires;
 
 };
 

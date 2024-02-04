@@ -20,8 +20,8 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearLine_hxx__
-#define __BRepCell_MakeLinearLine_hxx__
+#ifndef __BRepCell_MakeLinearLine2N_hxx__
+#define __BRepCell_MakeLinearLine2N_hxx__
 
 // Spartacus
 #include <BRepCell_MakeCell.hxx>
@@ -32,10 +32,10 @@
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearLine
+ *  \brief BRepCell_MakeLinearLine2N
 */
 // ============================================================================
-class BRepCell_MakeLinearLine : public BRepCell_MakeCell
+class BRepCell_MakeLinearLine2N : public BRepCell_MakeCell
 {
 
 public:
@@ -44,17 +44,21 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
-                                            const gp_Pnt& thePoint2);
+    Standard_EXPORT BRepCell_MakeLinearLine2N(const gp_Pnt& thePoint1,
+                                              const gp_Pnt& thePoint2);
+    Standard_EXPORT BRepCell_MakeLinearLine2N(const TopoDS_Vertex& theVertex1,
+                                              const TopoDS_Vertex& theVertex2);
     // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearLine();
+    Standard_EXPORT ~BRepCell_MakeLinearLine2N();
 
 protected:
 
     Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
                                            const gp_Pnt& thePoint2);
+    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
+                                           const TopoDS_Vertex& theVertex2);
 
 };
 
 
-#endif // __BRepCell_MakeLinearLine_hxx__
+#endif // __BRepCell_MakeLinearLine2N_hxx__

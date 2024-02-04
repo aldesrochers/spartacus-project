@@ -59,12 +59,52 @@ const TopoDS_Edge& BRepCell_MakeCell::Edge(const Standard_Integer theIndex) cons
 
 // ============================================================================
 /*!
+ *  \brief Face()
+*/
+// ============================================================================
+const TopoDS_Face& BRepCell_MakeCell::Face(const Standard_Integer theIndex) const
+{
+    return TopoDS::Face(myFaces.Value(theIndex));
+}
+
+// ============================================================================
+/*!
  *  \brief NbEdges()
 */
 // ============================================================================
 Standard_Integer BRepCell_MakeCell::NbEdges() const
 {
     return myEdges.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbFaces()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbFaces() const
+{
+    return myFaces.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbShells()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbShells() const
+{
+    return myShells.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbSolids()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbSolids() const
+{
+    return mySolids.Size();
 }
 
 // ============================================================================
@@ -79,10 +119,50 @@ Standard_Integer BRepCell_MakeCell::NbVertices() const
 
 // ============================================================================
 /*!
+ *  \brief NbWires()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbWires() const
+{
+    return myWires.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief Shell()
+*/
+// ============================================================================
+const TopoDS_Shell& BRepCell_MakeCell::Shell(const Standard_Integer theIndex) const
+{
+    return TopoDS::Shell(myShells.Value(theIndex));
+}
+
+// ============================================================================
+/*!
+ *  \brief Solid()
+*/
+// ============================================================================
+const TopoDS_Solid& BRepCell_MakeCell::Solid(const Standard_Integer theIndex) const
+{
+    return TopoDS::Solid(mySolids.Value(theIndex));
+}
+
+// ============================================================================
+/*!
  *  \brief Vertex()
 */
 // ============================================================================
 const TopoDS_Vertex& BRepCell_MakeCell::Vertex(const Standard_Integer theIndex) const
 {
     return TopoDS::Vertex(myVertices.Value(theIndex));
+}
+
+// ============================================================================
+/*!
+ *  \brief Wire()
+*/
+// ============================================================================
+const TopoDS_Wire& BRepCell_MakeCell::Wire(const Standard_Integer theIndex) const
+{
+    return TopoDS::Wire(myWires.Value(theIndex));
 }

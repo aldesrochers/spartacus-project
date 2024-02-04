@@ -20,34 +20,21 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-#include <BRepCell_MakeLinearLine2N.hxx>
-
-// OpenCascade
-#include <BRep_Tool.hxx>
+#ifndef __BRepCell_LinearLine2NError_hxx__
+#define __BRepCell_LinearLine2NError_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_BRepCell
+ *  \brief BRepCell_LinearLine2NError
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum BRepCell_LinearLine2NError
 {
-
-    BRepCell_MakeLinearLine2N aBuilder(gp_Pnt(0,0,0), gp_Pnt(3,0,0));
-
-    TopoDS_Edge anEdge = aBuilder.Edge(1);
-
-    cout << anEdge.NbChildren() << endl;
-
-    Standard_Real U1, U2;
-    Handle(Geom_Curve) aCurve = BRep_Tool::Curve(anEdge, U1, U2);
-
-    cout << U1 << " " << U2 << endl;
-
-
+    BRepCell_LL2NE_NoError,
+    BRepCell_LL2NE_ZeroLengthError
 }
+
+
+
+#endif // __BRepCell_LinearLine2NError_hxx__

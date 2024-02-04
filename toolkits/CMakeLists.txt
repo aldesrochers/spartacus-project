@@ -26,13 +26,13 @@
 set(BRepCell_PKG_HEADERS
     BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_MakeCell.hxx
-    BRepCell/BRepCell_MakeLinearLine.hxx
+    BRepCell/BRepCell_MakeLinearLine2N.hxx
 )
 
 set(BRepCell_PKG_SOURCES
     BRepCell/BRepCell_Command.cxx
     BRepCell/BRepCell_MakeCell.cxx
-    BRepCell/BRepCell_MakeLinearLine.cxx
+    BRepCell/BRepCell_MakeLinearLine2N.cxx
 )
 
 # =============================================================================

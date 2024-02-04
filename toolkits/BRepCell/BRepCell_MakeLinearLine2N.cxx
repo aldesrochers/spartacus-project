@@ -21,8 +21,9 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLinearLine.hxx>
+#include <BRepCell_MakeLinearLine2N.hxx>
 #include <BRepLib_MakeEdge.hxx>
+#include <BRepLib_MakeVertex.hxx>
 
 
 // ============================================================================
@@ -30,10 +31,21 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLinearLine::BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
-                                                 const gp_Pnt& thePoint2)
+BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const gp_Pnt& thePoint1,
+                                                     const gp_Pnt& thePoint2)
 {
     Initialize(thePoint1, thePoint2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const TopoDS_Vertex &theVertex1,
+                                                     const TopoDS_Vertex &theVertex2)
+{
+    Initialize(theVertex1, theVertex2);
 }
 
 // ============================================================================
@@ -41,7 +53,7 @@ BRepCell_MakeLinearLine::BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLinearLine::~BRepCell_MakeLinearLine()
+BRepCell_MakeLinearLine2N::~BRepCell_MakeLinearLine2N()
 {
 
 }
@@ -51,17 +63,34 @@ BRepCell_MakeLinearLine::~BRepCell_MakeLinearLine()
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLinearLine::Initialize(const gp_Pnt &thePoint1,
-                                         const gp_Pnt &thePoint2)
+void BRepCell_MakeLinearLine2N::Initialize(const gp_Pnt &thePoint1,
+                                           const gp_Pnt &thePoint2)
 {
+    TopoDS_Vertex aVertex1 = BRepLib_MakeVertex(thePoint1).Vertex();
+    TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(thePoint2).Vertex();
+    Initialize(aVertex1, aVertex2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void BRepCell_MakeLinearLine2N::Initialize(const TopoDS_Vertex &theVertex1,
+                                           const TopoDS_Vertex &theVertex2)
+{
+    // resize internal containers
     myVertices.Resize(1, 2, Standard_False);
     myEdges.Resize(1, 1, Standard_False);
 
-    BRepLib_MakeEdge aBuilder(thePoint1, thePoint2);
+    // define vertices
+    myVertices.SetValue(1, theVertex1);
+    myVertices.SetValue(2, theVertex2);
+
+    // make edge
+    BRepLib_MakeEdge aBuilder(theVertex1, theVertex2);
     if(!aBuilder.IsDone()) {
-        // do something
+        if(aBuilder.Error() == BRepLib_EdgeError::BRepLib_LineThroughIdenticPoints)
+
     }
-    myEdges.SetValue(1, aBuilder.Edge());
-    myVertices.SetValue(1, aBuilder.Vertex1());
-    myVertices.SetValue(2, aBuilder.Vertex2());
 }
