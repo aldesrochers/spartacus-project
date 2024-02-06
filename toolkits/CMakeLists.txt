@@ -25,14 +25,19 @@
 
 set(BRepCell_PKG_HEADERS
     BRepCell/BRepCell_Command.hxx
+    BRepCell/BRepCell_Error.hxx
     BRepCell/BRepCell_MakeCell.hxx
     BRepCell/BRepCell_MakeLinearLine2N.hxx
+    BRepCell/BRepCell_MakeLinearQuadrangle4N.hxx
+    BRepCell/BRepCell_MakeLinearTriangle3N.hxx
 )
 
 set(BRepCell_PKG_SOURCES
     BRepCell/BRepCell_Command.cxx
     BRepCell/BRepCell_MakeCell.cxx
     BRepCell/BRepCell_MakeLinearLine2N.cxx
+    BRepCell/BRepCell_MakeLinearQuadrangle4N.cxx
+    BrepCell/BRepCell_MakeLinearTriangle3N.cxx
 )
 
 # =============================================================================
@@ -45,6 +50,18 @@ set(BRepCellAPI_PKG_HEADERS
 
 set(BRepCellAPI_PKG_SOURCES
     BRepCellAPI/BRepCellAPI_MakeCell.cxx
+)
+
+# =============================================================================
+# Package : BRepPolyAPI
+# =============================================================================
+
+set(BRepPolyAPI_PKG_HEADERS
+    BRepPolyAPI/BRepPolyAPI_MakeLine.hxx
+)
+
+set(BRepPolyAPI_PKG_SOURCES
+    BRepPolyAPI/BRepPolyAPI_MakeLine.cxx
 )
 
 # =============================================================================
@@ -566,6 +583,7 @@ set(xsp_PKG_SOURCES
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
     ${BRepCellAPI_PKG_HEADERS}
+    ${BRepPolyAPI_PKG_HEADERS}
     #${ElePRep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     ${Mesh_PKG_HEADERS}
@@ -593,6 +611,7 @@ set(Ceres_HEADERS
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
     ${BRepCellAPI_PKG_SOURCES}
+    ${BRepPolyAPI_PKG_SOURCES}
     #${ElePRep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     ${Mesh_PKG_SOURCES}
@@ -616,6 +635,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
+    ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh

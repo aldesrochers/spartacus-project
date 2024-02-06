@@ -20,8 +20,8 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearLine2N_hxx__
-#define __BRepCell_MakeLinearLine2N_hxx__
+#ifndef __BRepCell_MakeLinearQuadrangle4N_hxx__
+#define __BRepCell_MakeLinearQuadrangle4N_hxx__
 
 // Spartacus
 #include <BRepCell_MakeCell.hxx>
@@ -32,10 +32,10 @@
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearLine2N
+ *  \brief BRepCell_MakeLinearQuadrangle4N
 */
 // ============================================================================
-class BRepCell_MakeLinearLine2N : public BRepCell_MakeCell
+class BRepCell_MakeLinearQuadrangle4N : public BRepCell_MakeCell
 {
 
 public:
@@ -44,26 +44,34 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeLinearLine2N(const gp_Pnt& thePoint1,
-                                              const gp_Pnt& thePoint2);
-    Standard_EXPORT BRepCell_MakeLinearLine2N(const TopoDS_Vertex& theVertex1,
-                                              const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepCell_MakeLinearQuadrangle4N(const gp_Pnt& thePoint1,
+                                                    const gp_Pnt& thePoint2,
+                                                    const gp_Pnt& thePoint3,
+                                                    const gp_Pnt& thePoint4);
+    Standard_EXPORT BRepCell_MakeLinearQuadrangle4N(const TopoDS_Vertex& theVertex1,
+                                                    const TopoDS_Vertex& theVertex2,
+                                                    const TopoDS_Vertex& theVertex3,
+                                                    const TopoDS_Vertex& theVertex4);
     // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearLine2N();
+    Standard_EXPORT ~BRepCell_MakeLinearQuadrangle4N();
 
 protected:
 
     Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
-                                           const gp_Pnt& thePoint2);
+                                           const gp_Pnt& thePoint2,
+                                           const gp_Pnt& thePoint3,
+                                           const gp_Pnt& thePoint4);
     Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2);
+                                           const TopoDS_Vertex& theVertex2,
+                                           const TopoDS_Vertex& theVertex3,
+                                           const TopoDS_Vertex& theVertex4);
 
 public:
 
-    Standard_EXPORT const TopoDS_Edge&      Edge() const;
-    Standard_EXPORT operator                TopoDS_Edge();
+    Standard_EXPORT const TopoDS_Face&      Face() const;
+    Standard_EXPORT operator                TopoDS_Face();
 
 };
 
 
-#endif // __BRepCell_MakeLinearLine2N_hxx__
+#endif // __BRepCell_MakeLinearQuadrangle4N_hxx__

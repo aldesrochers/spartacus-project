@@ -20,21 +20,27 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_LinearLine2NError_hxx__
-#define __BRepCell_LinearLine2NError_hxx__
+// Spartacus
+#include <BRepPolyAPI_MakeLine.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_LinearLine2NError
+ *  \brief Constructor
 */
 // ============================================================================
-enum BRepCell_LinearLine2NError
+BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine()
 {
-    BRepCell_LL2NE_NoError,
-    BRepCell_LL2NE_ZeroLengthError
+
 }
 
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+{
 
+}
 
-#endif // __BRepCell_LinearLine2NError_hxx__

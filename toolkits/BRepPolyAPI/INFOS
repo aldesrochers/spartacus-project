@@ -1,0 +1,4 @@
+BRepCell
+
+This package contains algorithms used to build topology objects
+that represents mesh cells.

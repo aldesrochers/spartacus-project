@@ -20,20 +20,19 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_Command_hxx__
-#define __BRepCell_Command_hxx__
+#ifndef __BRepPolyAPI_MakeLine_hxx__
+#define __BRepPolyAPI_MakeLine_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <BRepBuilderAPI_MakeShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_Command
+ *  \brief BRepPolyAPI_MakeLine
 */
 // ============================================================================
-class BRepCell_Command
+class BRepPolyAPI_MakeLine : public BRepBuilderAPI_MakeShape
 {
 
 public:
@@ -42,25 +41,11 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_Command();
+    Standard_EXPORT BRepPolyAPI_MakeLine();
     // destructors
-    Standard_EXPORT ~BRepCell_Command();
-
-public:
-
-    Standard_EXPORT void                Check() const;
-    Standard_EXPORT Standard_Boolean    IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                SetDone();
-    Standard_EXPORT void                SetNotDone();
-
-private:
-
-    Standard_Boolean        myIsDone;
+    Standard_EXPORT ~BRepPolyAPI_MakeLine();
 
 };
 
 
-#endif // __BRepCell_Command_hxx__
+#endif // __BRepPolyAPI_MakeLine_hxx__

@@ -20,26 +20,23 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-#include <BRepCell_MakeLinearLine2N.hxx>
-
-// OpenCascade
-#include <BRep_Tool.hxx>
+#ifndef __BRepCell_Error_hxx__
+#define __BRepCell_Error_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_BRepCell
+ *  \brief BRepCell_Error
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum BRepCell_Error
 {
+    BRepCell_FaceNotPlanarError,
+    BRepCell_LineThroughIdenticPointsError,
+    BRepCell_NoError,
+    BRepCell_UnknownError
+};
 
-    BRepCell_MakeLinearLine2N aBuilder(gp_Pnt(0,0,0), gp_Pnt(3,0,0));
 
 
-
-}
+#endif // __BRepCell_Error_hxx__
