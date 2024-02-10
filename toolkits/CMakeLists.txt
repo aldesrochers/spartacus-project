@@ -24,20 +24,16 @@
 # =============================================================================
 
 set(BRepCell_PKG_HEADERS
-    BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_Error.hxx
     BRepCell/BRepCell_MakeCell.hxx
-    BRepCell/BRepCell_MakeLinearLine2N.hxx
-    BRepCell/BRepCell_MakeLinearQuadrangle4N.hxx
-    BRepCell/BRepCell_MakeLinearTriangle3N.hxx
+    BRepCell/BRepCell_MakeLinearLine.hxx
+    BRepCell/BRepCell_MakeQuadraticLine.hxx
 )
 
 set(BRepCell_PKG_SOURCES
-    BRepCell/BRepCell_Command.cxx
     BRepCell/BRepCell_MakeCell.cxx
-    BRepCell/BRepCell_MakeLinearLine2N.cxx
-    BRepCell/BRepCell_MakeLinearQuadrangle4N.cxx
-    BrepCell/BRepCell_MakeLinearTriangle3N.cxx
+    BRepCell/BRepCell_MakeLinearLine.cxx
+    BRepCell/BRepCell_MakeQuadraticLine.cxx
 )
 
 # =============================================================================
@@ -53,15 +49,47 @@ set(BRepCellAPI_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : BRepPoly
+# =============================================================================
+
+set(BRepPoly_PKG_HEADERS
+    BRepPoly/BRepPoly_MakeShape.hxx
+    BRepPoly/BRepPoly_MakeLine.hxx
+    BRepPoly/BRepPoly_MakeQuadrangle.hxx
+    BRepPoly/BRepPoly_MakeTriangle.hxx
+)
+
+set(BRepPoly_PKG_SOURCES
+    BRepPoly/BRepPoly_MakeShape.cxx
+    BRepPoly/BRepPoly_MakeLine.cxx
+    BRepPoly/BRepPoly_MakeQuadrangle.cxx
+    BRepPoly/BRepPoly_MakeTriangle.cxx
+)
+
+# =============================================================================
 # Package : BRepPolyAPI
 # =============================================================================
 
 set(BRepPolyAPI_PKG_HEADERS
-    BRepPolyAPI/BRepPolyAPI_MakeLine.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakeHexahedron.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakeLine.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakePentahedron.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakePyramid.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakeQuadrangle.hxx
+    BRepPolyAPI/BRepPolyAPI_MakeShape.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakeTetrahedron.hxx
+    #BRepPolyAPI/BRepPolyAPI_MakeTriangle.hxx
 )
 
 set(BRepPolyAPI_PKG_SOURCES
-    BRepPolyAPI/BRepPolyAPI_MakeLine.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeHexahedron.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeLine.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakePentahedron.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakePyramid.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeQuadrangle.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeShape.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeTetrahedron.cxx
+    #BRepPolyAPI/BRepPolyAPI_MakeTriangle.cxx
 )
 
 # =============================================================================
@@ -583,6 +611,7 @@ set(xsp_PKG_SOURCES
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
     ${BRepCellAPI_PKG_HEADERS}
+    ${BRepPoly_PKG_HEADERS}
     ${BRepPolyAPI_PKG_HEADERS}
     #${ElePRep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
@@ -611,6 +640,7 @@ set(Ceres_HEADERS
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
     ${BRepCellAPI_PKG_SOURCES}
+    ${BRepPoly_PKG_SOURCES}
     ${BRepPolyAPI_PKG_SOURCES}
     #${ElePRep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
@@ -635,6 +665,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
+    ${CMAKE_CURRENT_SOURCE_DIR}/BRepPoly
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp

@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#ifndef __BRepPolyAPI_MakeLine_hxx__
-#define __BRepPolyAPI_MakeLine_hxx__
+#ifndef __BRepPolyAPI_MakePentahedron_hxx__
+#define __BRepPolyAPI_MakePentahedron_hxx__
 
 // OpenCascade
-#include <BRepPoly_MakeLine.hxx>
+#include <BRepPoly_MakePentahedron.hxx>
 #include <BRepPolyAPI_MakeShape.hxx>
 
 
 
 // ============================================================================
 /*!
- *  \brief BRepPolyAPI_MakeLine
+ *  \brief BRepPolyAPI_MakePentahedron
 */
 // ============================================================================
-class BRepPolyAPI_MakeLine : public BRepPolyAPI_MakeShape
+class BRepPolyAPI_MakePentahedron : public BRepPolyAPI_MakeShape
 {
 
 public:
@@ -43,10 +43,14 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                         const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepPolyAPI_MakePentahedron(const TopoDS_Vertex& theVertex1,
+                                                const TopoDS_Vertex& theVertex2,
+                                                const TopoDS_Vertex& theVertex3,
+                                                const TopoDS_Vertex& theVertex4,
+                                                const TopoDS_Vertex& theVertex5,
+                                                const TopoDS_Vertex& theVertex6);
     // destructors
-    Standard_EXPORT ~BRepPolyAPI_MakeLine();
+    Standard_EXPORT ~BRepPolyAPI_MakePentahedron();
 
 public:
 
@@ -54,13 +58,13 @@ public:
 
 public:
 
-    Standard_EXPORT const BRepPoly_MakeLine&    Line() const;
+    Standard_EXPORT const BRepPoly_MakePentahedron&     Pentahedron() const;
 
 private:
 
-    BRepPoly_MakeLine       myLine;
+    BRepPoly_MakePentahedron    myPentahedron;
 
 };
 
 
-#endif // __BRepPolyAPI_MakeLine_hxx__
+#endif // __BRepPolyAPI_MakePentahedron_hxx__

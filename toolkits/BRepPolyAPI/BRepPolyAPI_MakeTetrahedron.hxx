@@ -20,51 +20,49 @@
 // ============================================================================
 
 
-// Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#ifndef __BRepPolyAPI_MakeTetrahedron_hxx__
+#define __BRepPolyAPI_MakeTetrahedron_hxx__
+
+// OpenCascade
+#include <BRepPoly_MakeTetrahedron.hxx>
+#include <BRepPolyAPI_MakeShape.hxx>
 
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
-{
-
-}
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief BRepPolyAPI_MakeTetrahedron
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+class BRepPolyAPI_MakeTetrahedron : public BRepPolyAPI_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
+    DEFINE_STANDARD_ALLOC;
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPolyAPI_MakeTetrahedron(const TopoDS_Vertex& theVertex1,
+                                                const TopoDS_Vertex& theVertex2,
+                                                const TopoDS_Vertex& theVertex3,
+                                                const TopoDS_Vertex& theVertex4);
+    // destructors
+    Standard_EXPORT ~BRepPolyAPI_MakeTetrahedron();
+
+public:
+
+    Standard_EXPORT void                        Build(const Message_ProgressRange& theRange = Message_ProgressRange()) Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const BRepPoly_MakeTetrahedron&     Tetrahedron() const;
+
+private:
+
+    BRepPoly_MakeTetrahedron    myTetrahedron;
+
+};
+
+
+#endif // __BRepPolyAPI_MakeTetrahedron_hxx__

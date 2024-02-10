@@ -20,51 +20,47 @@
 // ============================================================================
 
 
+#ifndef __BRepPoly_MakeShape_hxx__
+#define __BRepPoly_MakeShape_hxx__
+
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_Error.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief BRepPoly_MakeShape
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+class BRepPoly_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPoly_MakeShape();
+    // destructors
+    Standard_EXPORT ~BRepPoly_MakeShape();
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+    Standard_EXPORT BRepPoly_Error      Error() const;
+    Standard_EXPORT Standard_Boolean    IsDone() const;
+
+protected:
+
+    BRepPoly_Error      myError;
+    Standard_Boolean    myIsDone;
+
+};
+
+
+#endif // __BRepPoly_MakeShape_hxx__

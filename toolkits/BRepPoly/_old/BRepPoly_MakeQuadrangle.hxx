@@ -20,51 +20,43 @@
 // ============================================================================
 
 
+#ifndef __BRepPoly_MakeQuadrangle_hxx__
+#define __BRepPoly_MakeQuadrangle_hxx__
+
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_MakeShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief BRepPoly_MakeQuadrangle
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+class BRepPoly_MakeQuadrangle : public BRepPoly_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPoly_MakeQuadrangle(const TopoDS_Vertex& theVertex1,
+                                            const TopoDS_Vertex& theVertex2,
+                                            const TopoDS_Vertex& theVertex3,
+                                            const TopoDS_Vertex& theVertex4);
+    // destructors
+    Standard_EXPORT ~BRepPoly_MakeQuadrangle();
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
+protected:
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+    Standard_EXPORT void    Initialize(const TopoDS_Vertex& theVertex1,
+                                       const TopoDS_Vertex& theVertex2,
+                                       const TopoDS_Vertex& theVertex3,
+                                       const TopoDS_Vertex& theVertex4);
+
+
+};
+
+
+#endif // __BRepPoly_MakeQuadrangle_hxx__

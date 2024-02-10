@@ -20,51 +20,44 @@
 // ============================================================================
 
 
+#ifndef __BRepPoly_MakePyramid_hxx__
+#define __BRepPoly_MakePyramid_hxx__
+
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_MakeShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief BRepPoly_MakePyramid
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+class BRepPoly_MakePyramid : public BRepPoly_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPoly_MakePyramid(const TopoDS_Vertex& theVertex1,
+                                         const TopoDS_Vertex& theVertex2,
+                                         const TopoDS_Vertex& theVertex3,
+                                         const TopoDS_Vertex& theVertex4,
+                                         const TopoDS_Vertex& theVertex5);
+    // destructors
+    Standard_EXPORT ~BRepPoly_MakePyramid();
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
+protected:
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+    Standard_EXPORT void    Initialize(const TopoDS_Vertex& theVertex1,
+                                       const TopoDS_Vertex& theVertex2,
+                                       const TopoDS_Vertex& theVertex3,
+                                       const TopoDS_Vertex& theVertex4,
+                                       const TopoDS_Vertex& theVertex5);
+
+};
+
+
+#endif // __BRepPoly_MakePyramid_hxx__

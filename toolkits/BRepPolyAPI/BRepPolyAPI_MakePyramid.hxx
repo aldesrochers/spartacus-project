@@ -20,51 +20,50 @@
 // ============================================================================
 
 
-// Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#ifndef __BRepPolyAPI_MakePyramid_hxx__
+#define __BRepPolyAPI_MakePyramid_hxx__
+
+// OpenCascade
+#include <BRepPoly_MakePyramid.hxx>
+#include <BRepPolyAPI_MakeShape.hxx>
 
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
-{
-
-}
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief BRepPolyAPI_MakePyramid
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+class BRepPolyAPI_MakePyramid : public BRepPolyAPI_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
+    DEFINE_STANDARD_ALLOC;
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPolyAPI_MakePyramid(const TopoDS_Vertex& theVertex1,
+                                            const TopoDS_Vertex& theVertex2,
+                                            const TopoDS_Vertex& theVertex3,
+                                            const TopoDS_Vertex& theVertex4,
+                                            const TopoDS_Vertex& theVertex5);
+    // destructors
+    Standard_EXPORT ~BRepPolyAPI_MakePyramid();
+
+public:
+
+    Standard_EXPORT void                        Build(const Message_ProgressRange& theRange = Message_ProgressRange()) Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const BRepPoly_MakePyramid&     Pyramid() const;
+
+private:
+
+    BRepPoly_MakePyramid    myPyramid;
+
+};
+
+
+#endif // __BRepPolyAPI_MakePyramid_hxx__

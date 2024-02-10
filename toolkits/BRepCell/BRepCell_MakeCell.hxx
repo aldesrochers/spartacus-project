@@ -24,22 +24,19 @@
 #define __BRepCell_MakeCell_hxx__
 
 // OpenCascade
-#include <BRepCell_Command.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
+// Spartacus
 #include <BRepCell_Error.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Shell.hxx>
-#include <TopoDS_Solid.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopoDS_Wire.hxx>
-#include <TopTools_Array1OfShape.hxx>
+
 
 // ============================================================================
 /*!
  *  \brief BRepCell_MakeCell
 */
 // ============================================================================
-class BRepCell_MakeCell : public BRepCell_Command
+class BRepCell_MakeCell
 {
 
 public:
@@ -54,50 +51,13 @@ public:
 
 public:
 
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-    Standard_EXPORT const TopoDS_Edge&      Edge(const Standard_Integer theIndex) const;
-    Standard_EXPORT const TopoDS_Face&      Face(const Standard_Integer theIndex) const;
-    Standard_EXPORT Standard_Integer        NbEdges() const;
-    Standard_EXPORT Standard_Integer        NbFaces() const;
-    Standard_EXPORT Standard_Integer        NbShells() const;
-    Standard_EXPORT Standard_Integer        NbSolids() const;
-    Standard_EXPORT Standard_Integer        NbVertices() const;
-    Standard_EXPORT Standard_Integer        NbWires() const;
-    Standard_EXPORT const TopoDS_Shell&     Shell(const Standard_Integer theIndex) const;
-    Standard_EXPORT const TopoDS_Solid&     Solid(const Standard_Integer theIndex) const;
-    Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const;
-    Standard_EXPORT const TopoDS_Wire&      Wire(const Standard_Integer theIndex) const;
-
-public:
-
-    Standard_EXPORT BRepCell_Error          Error() const;
-    Standard_EXPORT const TopoDS_Shape&     Shape() const;
-
-public:
-
-    Standard_EXPORT operator                TopoDS_Shape();
+    Standard_EXPORT BRepCell_Error      Error() const;
+    Standard_EXPORT Standard_Boolean    IsDone() const;
 
 protected:
 
-    Standard_EXPORT void                    SetError(const BRepCell_Error theError);
-    Standard_EXPORT void                    SetShape(const TopoDS_Shape& theShape);
-
-protected:
-
-    TopTools_Array1OfShape      myEdges;
-    TopTools_Array1OfShape      myFaces;
-    TopTools_Array1OfShape      myShells;
-    TopTools_Array1OfShape      mySolids;
-    TopTools_Array1OfShape      myVertices;
-    TopTools_Array1OfShape      myWires;
-
-protected:
-
-    BRepCell_Error              myError;
-    TopoDS_Shape                myShape;
+    BRepCell_Error      myError;
+    Standard_Boolean    myIsDone;
 
 };
 

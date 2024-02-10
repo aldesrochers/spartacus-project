@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPolyAPI_MakePentahedron.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,14 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPolyAPI_MakePentahedron::BRepPolyAPI_MakePentahedron(const TopoDS_Vertex& theVertex1,
+                                                         const TopoDS_Vertex& theVertex2,
+                                                         const TopoDS_Vertex& theVertex3,
+                                                         const TopoDS_Vertex& theVertex4,
+                                                         const TopoDS_Vertex& theVertex5,
+                                                         const TopoDS_Vertex& theVertex6)
+    : myPentahedron(theVertex1, theVertex2, theVertex3,
+                    theVertex4, theVertex5, theVertex6)
 {
 
 }
@@ -41,7 +46,7 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPolyAPI_MakePentahedron::~BRepPolyAPI_MakePentahedron()
 {
 
 }
@@ -51,20 +56,20 @@ BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
  *  \brief Build()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPolyAPI_MakePentahedron::Build(const Message_ProgressRange &theRange)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
+    if(myPentahedron.IsDone()) {
+        myShape = myPentahedron.Shape();
         Done();
     }
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief Pentahedron()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+const BRepPoly_MakePentahedron &BRepPolyAPI_MakePentahedron::Pentahedron() const
 {
-    return myLine;
+    return myPentahedron;
 }

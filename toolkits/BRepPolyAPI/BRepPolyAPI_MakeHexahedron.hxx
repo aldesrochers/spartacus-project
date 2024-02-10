@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#ifndef __BRepPolyAPI_MakeLine_hxx__
-#define __BRepPolyAPI_MakeLine_hxx__
+#ifndef __BRepPolyAPI_MakeHexahedron_hxx__
+#define __BRepPolyAPI_MakeHexahedron_hxx__
 
 // OpenCascade
-#include <BRepPoly_MakeLine.hxx>
+#include <BRepPoly_MakeHexahedron.hxx>
 #include <BRepPolyAPI_MakeShape.hxx>
 
 
 
 // ============================================================================
 /*!
- *  \brief BRepPolyAPI_MakeLine
+ *  \brief BRepPolyAPI_MakeHexahedron
 */
 // ============================================================================
-class BRepPolyAPI_MakeLine : public BRepPolyAPI_MakeShape
+class BRepPolyAPI_MakeHexahedron : public BRepPolyAPI_MakeShape
 {
 
 public:
@@ -43,10 +43,16 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                         const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepPolyAPI_MakeHexahedron(const TopoDS_Vertex& theVertex1,
+                                               const TopoDS_Vertex& theVertex2,
+                                               const TopoDS_Vertex& theVertex3,
+                                               const TopoDS_Vertex& theVertex4,
+                                               const TopoDS_Vertex& theVertex5,
+                                               const TopoDS_Vertex& theVertex6,
+                                               const TopoDS_Vertex& theVertex7,
+                                               const TopoDS_Vertex& theVertex8);
     // destructors
-    Standard_EXPORT ~BRepPolyAPI_MakeLine();
+    Standard_EXPORT ~BRepPolyAPI_MakeHexahedron();
 
 public:
 
@@ -54,13 +60,13 @@ public:
 
 public:
 
-    Standard_EXPORT const BRepPoly_MakeLine&    Line() const;
+    Standard_EXPORT const BRepPoly_MakeHexahedron&  Hexahedron() const;
 
 private:
 
-    BRepPoly_MakeLine       myLine;
+    BRepPoly_MakeHexahedron     myHexahedron;
 
 };
 
 
-#endif // __BRepPolyAPI_MakeLine_hxx__
+#endif // __BRepPolyAPI_MakeHexahedron_hxx__

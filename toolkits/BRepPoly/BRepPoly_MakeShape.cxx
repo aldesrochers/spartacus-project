@@ -20,8 +20,10 @@
 // ============================================================================
 
 
+
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_MakeShape.hxx>
+
 
 
 // ============================================================================
@@ -29,9 +31,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPoly_MakeShape::BRepPoly_MakeShape()
+    : myIsDone(Standard_False),
+    myError(BRepPoly_NoError)
 {
 
 }
@@ -41,30 +43,29 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPoly_MakeShape::~BRepPoly_MakeShape()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief Error()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+BRepPoly_Error BRepPoly_MakeShape::Error() const
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
+    return myError;
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief IsDone()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+Standard_Boolean BRepPoly_MakeShape::IsDone() const
 {
-    return myLine;
+    return myIsDone;
 }
+
+

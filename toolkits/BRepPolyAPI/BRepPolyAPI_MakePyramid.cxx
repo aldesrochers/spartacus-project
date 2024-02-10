@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPolyAPI_MakePyramid.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,12 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPolyAPI_MakePyramid::BRepPolyAPI_MakePyramid(const TopoDS_Vertex& theVertex1,
+                                                 const TopoDS_Vertex& theVertex2,
+                                                 const TopoDS_Vertex& theVertex3,
+                                                 const TopoDS_Vertex& theVertex4,
+                                                 const TopoDS_Vertex& theVertex5)
+    : myPyramid(theVertex1, theVertex2, theVertex3, theVertex4, theVertex5)
 {
 
 }
@@ -41,7 +44,7 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPolyAPI_MakePyramid::~BRepPolyAPI_MakePyramid()
 {
 
 }
@@ -51,20 +54,20 @@ BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
  *  \brief Build()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPolyAPI_MakePyramid::Build(const Message_ProgressRange &theRange)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
+    if(myPyramid.IsDone()) {
+        myShape = myPyramid.Shape();
         Done();
     }
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief Pyramid()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+const BRepPoly_MakePyramid &BRepPolyAPI_MakePyramid::Pyramid() const
 {
-    return myLine;
+    return myPyramid;
 }

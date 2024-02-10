@@ -20,20 +20,19 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_Command_hxx__
-#define __BRepCell_Command_hxx__
+#ifndef __BRepPoly_MakeLine_hxx__
+#define __BRepPoly_MakeLine_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+// Spartacus
+#include <BRepPoly_MakeShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_Command
+ *  \brief BRepPoly_MakeLine
 */
 // ============================================================================
-class BRepCell_Command
+class BRepPoly_MakeLine : public BRepPoly_MakeShape
 {
 
 public:
@@ -42,25 +41,17 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_Command();
+    Standard_EXPORT BRepPoly_MakeLine(const TopoDS_Vertex& theVertex1,
+                                      const TopoDS_Vertex& theVertex2);
     // destructors
-    Standard_EXPORT ~BRepCell_Command();
-
-public:
-
-    Standard_EXPORT void                Check() const;
-    Standard_EXPORT Standard_Boolean    IsDone() const;
+    Standard_EXPORT ~BRepPoly_MakeLine();
 
 protected:
 
-    Standard_EXPORT void                SetDone();
-    Standard_EXPORT void                SetNotDone();
-
-private:
-
-    Standard_Boolean        myIsDone;
+    Standard_EXPORT void    Initialize(const TopoDS_Vertex& theVertex1,
+                                       const TopoDS_Vertex& theVertex2);
 
 };
 
 
-#endif // __BRepCell_Command_hxx__
+#endif // __BRepPoly_MakeLine_hxx__

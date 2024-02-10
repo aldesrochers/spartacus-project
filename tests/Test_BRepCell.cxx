@@ -23,12 +23,14 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <BRepCell_MakeLinearLine2N.hxx>
-
 // OpenCascade
-#include <BRep_Tool.hxx>
+#include <BRepLib_MakeVertex.hxx>
 
+// Spartacus
+#include <BRepCell_MakeQuadraticLine.hxx>
+#include <TopExp.hxx>
+#include <TopoDS.hxx>
+#include <BRep_Tool.hxx>
 
 // ============================================================================
 /*!
@@ -38,8 +40,28 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    BRepCell_MakeLinearLine2N aBuilder(gp_Pnt(0,0,0), gp_Pnt(3,0,0));
+    TopoDS_Vertex aVertex1 = BRepLib_MakeVertex(gp_Pnt(0,0,0)).Vertex();
+    TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(gp_Pnt(2,0,0)).Vertex();
+    TopoDS_Vertex aVertex3 = BRepLib_MakeVertex(gp_Pnt(1,0,0)).Vertex();
 
+    BRepCell_MakeQuadraticLine aLine(aVertex1, aVertex2, aVertex3);
+    cout << aLine.IsDone() << endl;
+    TopoDS_Edge anEdge = aLine.Edge();
+
+
+    TopTools_IndexedMapOfShape aMap;
+    TopExp::MapShapes(anEdge, TopAbs_VERTEX, aMap);
+    cout << aMap.Size() << endl;
+    TopoDS_Vertex V1 = TopoDS::Vertex(aMap.FindKey(1));
+    TopoDS_Vertex V2 = TopoDS::Vertex(aMap.FindKey(2));
+    TopoDS_Vertex V3 = TopoDS::Vertex(aMap.FindKey(3));
+    gp_Pnt P1 = BRep_Tool::Pnt(V1);
+    gp_Pnt P2 = BRep_Tool::Pnt(V2);
+    gp_Pnt P3 = BRep_Tool::Pnt(V3);
+
+    cout << P1.X() << " " << P1.Y() << " " << P1.Z() << endl;
+    cout << P2.X() << " " << P2.Y() << " " << P2.Z() << endl;
+    cout << P3.X() << " " << P3.Y() << " " << P3.Z() << endl;
 
 
 }

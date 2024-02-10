@@ -20,21 +20,19 @@
 // ============================================================================
 
 
-#ifndef __BRepPolyAPI_MakeLine_hxx__
-#define __BRepPolyAPI_MakeLine_hxx__
+#ifndef __BRepPoly_MakePentahedron_hxx__
+#define __BRepPoly_MakePentahedron_hxx__
 
-// OpenCascade
-#include <BRepPoly_MakeLine.hxx>
-#include <BRepPolyAPI_MakeShape.hxx>
-
+// Spartacus
+#include <BRepPoly_MakeShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepPolyAPI_MakeLine
+ *  \brief BRepPoly_MakePentahedron
 */
 // ============================================================================
-class BRepPolyAPI_MakeLine : public BRepPolyAPI_MakeShape
+class BRepPoly_MakePentahedron : public BRepPoly_MakeShape
 {
 
 public:
@@ -43,24 +41,25 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                         const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepPoly_MakePentahedron(const TopoDS_Vertex& theVertex1,
+                                             const TopoDS_Vertex& theVertex2,
+                                             const TopoDS_Vertex& theVertex3,
+                                             const TopoDS_Vertex& theVertex4,
+                                             const TopoDS_Vertex& theVertex5,
+                                             const TopoDS_Vertex& theVertex6);
     // destructors
-    Standard_EXPORT ~BRepPolyAPI_MakeLine();
+    Standard_EXPORT ~BRepPoly_MakePentahedron();
 
-public:
+protected:
 
-    Standard_EXPORT void                        Build(const Message_ProgressRange& theRange = Message_ProgressRange()) Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT const BRepPoly_MakeLine&    Line() const;
-
-private:
-
-    BRepPoly_MakeLine       myLine;
+    Standard_EXPORT void    Initialize(const TopoDS_Vertex& theVertex1,
+                                       const TopoDS_Vertex& theVertex2,
+                                       const TopoDS_Vertex& theVertex3,
+                                       const TopoDS_Vertex& theVertex4,
+                                       const TopoDS_Vertex& theVertex5,
+                                       const TopoDS_Vertex& theVertex6);
 
 };
 
 
-#endif // __BRepPolyAPI_MakeLine_hxx__
+#endif // __BRepPoly_MakePentahedron_hxx__

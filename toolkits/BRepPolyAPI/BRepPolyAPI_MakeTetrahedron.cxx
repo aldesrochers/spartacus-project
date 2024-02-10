@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPolyAPI_MakeTetrahedron.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,11 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPolyAPI_MakeTetrahedron::BRepPolyAPI_MakeTetrahedron(const TopoDS_Vertex& theVertex1,
+                                                         const TopoDS_Vertex& theVertex2,
+                                                         const TopoDS_Vertex& theVertex3,
+                                                         const TopoDS_Vertex& theVertex4)
+    : myTetrahedron(theVertex1, theVertex2, theVertex3, theVertex4)
 {
 
 }
@@ -41,7 +43,7 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPolyAPI_MakeTetrahedron::~BRepPolyAPI_MakeTetrahedron()
 {
 
 }
@@ -51,20 +53,20 @@ BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
  *  \brief Build()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPolyAPI_MakeTetrahedron::Build(const Message_ProgressRange &theRange)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
+    if(myTetrahedron.IsDone()) {
+        myShape = myTetrahedron.Shape();
         Done();
     }
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief Tetrahedron()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+const BRepPoly_MakeTetrahedron &BRepPolyAPI_MakeTetrahedron::Tetrahedron() const
 {
-    return myLine;
+    return myTetrahedron;
 }

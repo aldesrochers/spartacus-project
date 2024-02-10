@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPolyAPI_MakeTriangle.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPolyAPI_MakeTriangle::BRepPolyAPI_MakeTriangle(const TopoDS_Vertex& theVertex1,
+                                                   const TopoDS_Vertex& theVertex2,
+                                                   const TopoDS_Vertex& theVertex3)
+    : myTriangle(theVertex1, theVertex2, theVertex3)
 {
 
 }
@@ -41,7 +42,7 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPolyAPI_MakeTriangle::~BRepPolyAPI_MakeTriangle()
 {
 
 }
@@ -51,20 +52,20 @@ BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
  *  \brief Build()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPolyAPI_MakeTriangle::Build(const Message_ProgressRange &theRange)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
+    if(myTriangle.IsDone()) {
+        myShape = myTriangle.Shape();
         Done();
     }
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief Triangle()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+const BRepPoly_MakeTriangle &BRepPolyAPI_MakeTriangle::Triangle() const
 {
-    return myLine;
+    return myTriangle;
 }

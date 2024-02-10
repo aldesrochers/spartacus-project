@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPolyAPI_MakeQuadrangle.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,11 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPolyAPI_MakeQuadrangle::BRepPolyAPI_MakeQuadrangle(const TopoDS_Vertex& theVertex1,
+                                                       const TopoDS_Vertex& theVertex2,
+                                                       const TopoDS_Vertex& theVertex3,
+                                                       const TopoDS_Vertex& theVertex4)
+    : myQuadrangle(theVertex1, theVertex2, theVertex3, theVertex4)
 {
 
 }
@@ -41,7 +43,7 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPolyAPI_MakeQuadrangle::~BRepPolyAPI_MakeQuadrangle()
 {
 
 }
@@ -51,20 +53,20 @@ BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
  *  \brief Build()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPolyAPI_MakeQuadrangle::Build(const Message_ProgressRange &theRange)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
+    if(myQuadrangle.IsDone()) {
+        myShape = myQuadrangle.Shape();
         Done();
     }
 }
 
 // ============================================================================
 /*!
- *  \brief Line()
+ *  \brief Quadrangle()
 */
 // ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
+const BRepPoly_MakeQuadrangle &BRepPolyAPI_MakeQuadrangle::Quadrangle() const
 {
-    return myLine;
+    return myQuadrangle;
 }

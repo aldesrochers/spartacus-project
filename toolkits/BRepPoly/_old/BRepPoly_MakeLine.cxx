@@ -21,7 +21,11 @@
 
 
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_MakeLine.hxx>
+
+// OpenCascade
+#include <BRepLib_MakeEdge.hxx>
+#include <TopoDS.hxx>
 
 
 // ============================================================================
@@ -29,11 +33,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+BRepPoly_MakeLine::BRepPoly_MakeLine(const TopoDS_Vertex& theVertex1,
+                                     const TopoDS_Vertex& theVertex2)
 {
-
+    Initialize(theVertex1, theVertex2);
 }
 
 // ============================================================================
@@ -41,30 +44,41 @@ BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
+BRepPoly_MakeLine::~BRepPoly_MakeLine()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief Initialize()
 */
 // ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
+void BRepPoly_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
+                                   const TopoDS_Vertex &theVertex2)
 {
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
+    myVertices.Resize(1, 2, Standard_False);
+    myEdges.Resize(1, 1, Standard_False);
+
+    // setup vertices
+    myVertices.SetValue(1, theVertex1);
+    myVertices.SetValue(2, theVertex2);
+
+    // build edge
+    BRepLib_MakeEdge aBuilder(theVertex1, theVertex2);
+    if(!aBuilder.IsDone()) {
+        if(aBuilder.Error() == BRepLib_LineThroughIdenticPoints) {
+            myError = BRepPoly_LineThroughIdenticPointsError;
+        } else {
+            myError = BRepPoly_UnknownError;
+        }
+        return;
     }
+    TopoDS_Edge anEdge = aBuilder.Edge();
+    myEdges.SetValue(1, anEdge);
+
+    // set shape, internal state
+    myShape = anEdge;
+    myIsDone = Standard_True;
 }
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}

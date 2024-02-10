@@ -20,51 +20,31 @@
 // ============================================================================
 
 
+#include <iostream>
+using namespace std;
+
+
+
 // Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#include <BRepPoly_MakeLine.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Test_BRepPolyAPI
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+int main(int argc, char** argv)
 {
 
-}
+    BRepPoly_MakeLine aBuilder(gp_Pnt(0,0,0), gp_Pnt(1,0,0));
+    TopoDS_Edge anEdge = aBuilder.Edge();
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
-{
+    cout << anEdge.IsNull() << endl;
 
-}
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
+
+
+    return 0;
 }

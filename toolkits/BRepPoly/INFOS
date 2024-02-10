@@ -1,4 +1,3 @@
-BRepCell
+BRepPoly
 
-This package contains algorithms used to build topology objects
-that represents mesh cells.
+This package contains classes used to build polygon and polyhedron shapes.

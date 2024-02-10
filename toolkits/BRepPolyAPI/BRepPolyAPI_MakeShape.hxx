@@ -20,51 +20,35 @@
 // ============================================================================
 
 
-// Spartacus
-#include <BRepPolyAPI_MakeLine.hxx>
+#ifndef __BRepPolyAPI_MakeShape_hxx__
+#define __BRepPolyAPI_MakeShape_hxx__
+
+// OpenCascade
+#include <BRepBuilderAPI_MakeShape.hxx>
+#include <TopoDS_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief BRepPolyAPI_MakeShape
 */
 // ============================================================================
-BRepPolyAPI_MakeLine::BRepPolyAPI_MakeLine(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2)
-    : myLine(theVertex1, theVertex2)
+class BRepPolyAPI_MakeShape : public BRepBuilderAPI_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepPolyAPI_MakeLine::~BRepPolyAPI_MakeLine()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT BRepPolyAPI_MakeShape();
+    // destructors
+    Standard_EXPORT ~BRepPolyAPI_MakeShape();
 
-// ============================================================================
-/*!
- *  \brief Build()
-*/
-// ============================================================================
-void BRepPolyAPI_MakeLine::Build(const Message_ProgressRange &theRange)
-{
-    if(myLine.IsDone()) {
-        myShape = myLine.Shape();
-        Done();
-    }
-}
 
-// ============================================================================
-/*!
- *  \brief Line()
-*/
-// ============================================================================
-const BRepPoly_MakeLine &BRepPolyAPI_MakeLine::Line() const
-{
-    return myLine;
-}
+
+};
+
+
+#endif // __BRepPolyAPI_MakeShape_hxx__

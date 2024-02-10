@@ -21,12 +21,11 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLinearLine2N.hxx>
-#include <BRepLib_MakeEdge.hxx>
-#include <BRepLib_MakeVertex.hxx>
+#include <BRepCell_MakeLinearLine.hxx>
+#include <BRepPoly_MakeLine.hxx>
 
 // OpenCascade
-#include <TopoDS.hxx>
+#include <BRepLib_MakeVertex.hxx>
 
 
 // ============================================================================
@@ -34,8 +33,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const gp_Pnt& thePoint1,
-                                                     const gp_Pnt& thePoint2)
+BRepCell_MakeLinearLine::BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
+                                                 const gp_Pnt& thePoint2)
 {
     Initialize(thePoint1, thePoint2);
 }
@@ -45,8 +44,8 @@ BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const gp_Pnt& thePoint1,
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const TopoDS_Vertex &theVertex1,
-                                                     const TopoDS_Vertex &theVertex2)
+BRepCell_MakeLinearLine::BRepCell_MakeLinearLine(const TopoDS_Vertex &theVertex1,
+                                                 const TopoDS_Vertex &theVertex2)
 {
     Initialize(theVertex1, theVertex2);
 }
@@ -56,19 +55,9 @@ BRepCell_MakeLinearLine2N::BRepCell_MakeLinearLine2N(const TopoDS_Vertex &theVer
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLinearLine2N::~BRepCell_MakeLinearLine2N()
+BRepCell_MakeLinearLine::~BRepCell_MakeLinearLine()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Edge()
-*/
-// ============================================================================
-const TopoDS_Edge& BRepCell_MakeLinearLine2N::Edge() const
-{
-    return TopoDS::Edge(Shape());
 }
 
 // ============================================================================
@@ -76,8 +65,8 @@ const TopoDS_Edge& BRepCell_MakeLinearLine2N::Edge() const
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLinearLine2N::Initialize(const gp_Pnt &thePoint1,
-                                           const gp_Pnt &thePoint2)
+void BRepCell_MakeLinearLine::Initialize(const gp_Pnt &thePoint1,
+                                         const gp_Pnt &thePoint2)
 {
     TopoDS_Vertex aVertex1 = BRepLib_MakeVertex(thePoint1).Vertex();
     TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(thePoint2).Vertex();
@@ -89,41 +78,22 @@ void BRepCell_MakeLinearLine2N::Initialize(const gp_Pnt &thePoint1,
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLinearLine2N::Initialize(const TopoDS_Vertex &theVertex1,
-                                           const TopoDS_Vertex &theVertex2)
+void BRepCell_MakeLinearLine::Initialize(const TopoDS_Vertex &theVertex1,
+                                         const TopoDS_Vertex &theVertex2)
 {
-    // resize internal containers
-    myVertices.Resize(1, 2, Standard_False);
-    myEdges.Resize(1, 1, Standard_False);
+    myVertex1 = theVertex1;
+    myVertex2 = theVertex2;
 
-    // define vertices
-    myVertices.SetValue(1, theVertex1);
-    myVertices.SetValue(2, theVertex2);
-
-    // make edge
-    BRepLib_MakeEdge aBuilder(theVertex1, theVertex2);
-    if(!aBuilder.IsDone()) {
-        if(aBuilder.Error() == BRepLib_LineThroughIdenticPoints) {
-            SetError(BRepCell_LineThroughIdenticPointsError);
+    BRepPoly_MakeLine aLineBuilder(myVertex1, myVertex2);
+    if(!aLineBuilder.IsDone()) {
+        if(aLineBuilder.Error() == BRepPoly_LineThroughIdenticPointsError) {
+            myError = BRepCell_LineThroughIdenticPointsError;
         } else {
-            SetError(BRepCell_UnknownError);
+            myError = BRepCell_UnknownError;
         }
         return;
     }
-    TopoDS_Edge anEdge = aBuilder.Edge();
-    myEdges.SetValue(1, anEdge);
+    myEdge = aLineBuilder.Edge();
 
-    SetShape(anEdge);
-    SetDone();
+    myIsDone = Standard_True;
 }
-
-// ============================================================================
-/*!
- *  \brief operator TopoDS_Edge()
-*/
-// ============================================================================
-BRepCell_MakeLinearLine2N::operator TopoDS_Edge()
-{
-    return Edge();
-}
-

@@ -34,6 +34,8 @@ set(Test_LINKED_LIBRARIES
 set(Test_SOURCES
     Test_BasicFEModel.cxx
     Test_BRepCell.cxx
+    Test_BRepPoly.cxx
+    Test_BRepPolyAPI.cxx
     Test_Discrete.cxx
     Test_FE1d.cxx
     Test_FE2d.cxx

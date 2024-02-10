@@ -21,10 +21,7 @@
 
 
 // Spartacus
-#include <BRepCell_Command.hxx>
-
-// OpenCascade
-#include <StdFail_NotDone.hxx>
+#include <BRepPolyAPI_MakeHexahedron.hxx>
 
 
 // ============================================================================
@@ -32,8 +29,16 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_Command::BRepCell_Command()
-    : myIsDone(Standard_False)
+BRepPolyAPI_MakeHexahedron::BRepPolyAPI_MakeHexahedron(const TopoDS_Vertex& theVertex1,
+                                                       const TopoDS_Vertex& theVertex2,
+                                                       const TopoDS_Vertex& theVertex3,
+                                                       const TopoDS_Vertex& theVertex4,
+                                                       const TopoDS_Vertex& theVertex5,
+                                                       const TopoDS_Vertex& theVertex6,
+                                                       const TopoDS_Vertex& theVertex7,
+                                                       const TopoDS_Vertex& theVertex8)
+    : myHexahedron(theVertex1, theVertex2, theVertex3, theVertex4,
+                   theVertex5, theVertex6, theVertex7, theVertex8)
 {
 
 }
@@ -43,48 +48,30 @@ BRepCell_Command::BRepCell_Command()
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_Command::~BRepCell_Command()
+BRepPolyAPI_MakeHexahedron::~BRepPolyAPI_MakeHexahedron()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Check()
+ *  \brief Build()
 */
 // ============================================================================
-void BRepCell_Command::Check()const
+void BRepPolyAPI_MakeHexahedron::Build(const Message_ProgressRange &theRange)
 {
-    if (!myIsDone)
-        throw StdFail_NotDone("BRepCell_Command::Check() -> Command not done");
+    if(myHexahedron.IsDone()) {
+        myShape = myHexahedron.Shape();
+        Done();
+    }
 }
 
 // ============================================================================
 /*!
- *  \brief IsDone()
+ *  \brief Hexahedron()
 */
 // ============================================================================
-Standard_Boolean BRepCell_Command::IsDone() const
+const BRepPoly_MakeHexahedron &BRepPolyAPI_MakeHexahedron::Hexahedron() const
 {
-    return myIsDone;
-}
-
-// ============================================================================
-/*!
- *  \brief SetDone()
-*/
-// ============================================================================
-void BRepCell_Command::SetDone()
-{
-    myIsDone = Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNotDone()
-*/
-// ============================================================================
-void BRepCell_Command::SetNotDone()
-{
-    myIsDone = Standard_False;
+    return myHexahedron;
 }
