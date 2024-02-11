@@ -31,6 +31,9 @@
 // ============================================================================
 enum MeshAbs_TypeOfCell
 {
+    MeshAbs_CT_LinearLine1d,
+    MeshAbs_CT_QuadraticLine1d,
+
     MeshAbs_CT_LinearHexahedron8N,
     MeshAbs_CT_LinearLine2N,
     MeshAbs_CT_LinearLine2N1d,

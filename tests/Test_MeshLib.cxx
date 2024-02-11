@@ -23,35 +23,15 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <MeshLib_MeshBuilder1d.hxx>
-
 
 // ============================================================================
 /*!
- *  \brief Test_MeshDS
+ *  \brief Test_MeshLib
 */
 // ============================================================================
 int main(int argc, char** argv)
 {
 
-    MeshLib_MeshBuilder1d aBuilder;
 
-    Standard_Integer N1 = aBuilder.AddNode(gp_Pnt1d(0.));
-    Standard_Integer N2 = aBuilder.AddNode(gp_Pnt1d(1.));
-    Standard_Integer N3 = aBuilder.AddNode(gp_Pnt1d(2.));
-
-    Standard_Integer C1 = aBuilder.AddLinearLine2N(N1, N2);
-    Standard_Integer C2 = aBuilder.AddLinearLine2N(N2, N3);
-
-    cout << aBuilder.NbNodes() << endl;
-    cout << aBuilder.NbCells() << endl;
-
-    MeshDS_Mesh aMesh = aBuilder.Mesh();
-
-
-
-
-    cout << "DONE" << endl;
     return 0;
 }

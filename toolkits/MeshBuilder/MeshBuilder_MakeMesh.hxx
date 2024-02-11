@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <MeshBuilder_Command.hxx>
+#include <MeshDS_Builder.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
@@ -70,8 +71,9 @@ protected:
     Standard_EXPORT Standard_Integer    FreeCellId() const;
     Standard_EXPORT Standard_Integer    FreeNodeId() const;
 
-private:
+protected:
 
+    MeshDS_Builder                      myBuilder;
     MeshTools_DataMapOfIntegerObject    myCells;
     MeshDS_Mesh                         myMesh;
     MeshTools_DataMapOfIntegerObject    myNodes;

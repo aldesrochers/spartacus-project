@@ -59,8 +59,8 @@ public:
 
     Standard_EXPORT MeshAbs_TypeOfCell                  CellType() const;
     Standard_EXPORT const TColStd_SequenceOfInteger&    Connectivity() const;
-    Standard_EXPORT TColStd_SequenceOfInteger&          Connectivity();
     Standard_EXPORT void                                SetCellType(const MeshAbs_TypeOfCell theCellType);
+    Standard_EXPORT void                                SetConnectivity(const TColStd_SequenceOfInteger& theConnectivity);
 
 private:
 

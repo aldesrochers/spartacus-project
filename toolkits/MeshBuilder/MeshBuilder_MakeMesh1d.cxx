@@ -45,4 +45,56 @@ MeshBuilder_MakeMesh1d::~MeshBuilder_MakeMesh1d()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief AddLinearLine()
+*/
+// ============================================================================
+Standard_Integer MeshBuilder_MakeMesh1d::AddLinearLine(const Standard_Integer theNode1,
+                                                       const Standard_Integer theNode2)
+{
+    TColStd_SequenceOfInteger aConnectivity;
+    aConnectivity.Append(theNode1);
+    aConnectivity.Append(theNode2);
 
+    Standard_Integer aCellId = FreeCellId();
+    MeshDS_Cell aCell;
+    myBuilder.MakeCell(aCell, MeshAbs_CT_LinearLine1d, aConnectivity);
+    myCells.Bind(aCellId, aCell);
+    return aCellId;
+}
+
+// ============================================================================
+/*!
+ *  \brief AddNode()
+*/
+// ============================================================================
+Standard_Integer MeshBuilder_MakeMesh1d::AddNode(const gp_Pnt1d &thePoint)
+{
+    Standard_Integer aNodeId = FreeNodeId();
+    MeshDS_Node aNode;
+    myBuilder.MakeNode(aNode, thePoint);
+    BindNode(aNodeId, aNode);
+    return aNodeId;
+}
+
+// ============================================================================
+/*!
+ *  \brief AddQuadraticLine()
+*/
+// ============================================================================
+Standard_Integer MeshBuilder_MakeMesh1d::AddQuadraticLine(const Standard_Integer theNode1,
+                                                          const Standard_Integer theNode2,
+                                                          const Standard_Integer theNode3)
+{
+    TColStd_SequenceOfInteger aConnectivity;
+    aConnectivity.Append(theNode1);
+    aConnectivity.Append(theNode2);
+    aConnectivity.Append(theNode3);
+
+    Standard_Integer aCellId = FreeCellId();
+    MeshDS_Cell aCell;
+    myBuilder.MakeCell(aCell, MeshAbs_CT_QuadraticLine1d, aConnectivity);
+    myCells.Bind(aCellId, aCell);
+    return aCellId;
+}

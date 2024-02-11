@@ -68,16 +68,6 @@ const TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity() const
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
-*/
-// ============================================================================
-TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity()
-{
-    return myConnectivity;
-}
-
-// ============================================================================
-/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -94,6 +84,16 @@ MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
 void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
 {
     myCellType = theCellType;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void MeshDS_TCell::SetConnectivity(const TColStd_SequenceOfInteger &theConnectivity)
+{
+    myConnectivity = theConnectivity;
 }
 
 

@@ -40,6 +40,7 @@ set(Test_SOURCES
     Test_FE1d.cxx
     Test_FE2d.cxx
     Test_Mesh1d.cxx
+    Test_MeshBuilder.cxx
     Test_MeshDS.cxx
     Test_MeshLib.cxx
     Test_Model.cxx

@@ -663,7 +663,7 @@ set(Ceres_HEADERS
     ${MeshAbs_PKG_HEADERS}
     ${MeshBuilder_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
-    ${MeshLib_PKG_HEADERS}
+    #${MeshLib_PKG_HEADERS}
     ${MeshRep_PKG_HEADERS}
     ${MeshTools_PKG_HEADERS}
     #${Model_PKG_HEADERS}
@@ -692,7 +692,7 @@ set(Ceres_SOURCES
     ${Mesh2d_PKG_SOURCES}
     ${MeshBuilder_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
-    ${MeshLib_PKG_SOURCES}
+    #${MeshLib_PKG_SOURCES}
     ${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     #${Model_PKG_SOURCES}

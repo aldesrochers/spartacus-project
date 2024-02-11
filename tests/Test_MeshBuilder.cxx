@@ -20,42 +20,34 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh1d_hxx__
-#define __MeshBuilder_MakeMesh1d_hxx__
+#include <iostream>
+using namespace std;
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
-#include <MeshBuilder_MakeMesh.hxx>
+#include <MeshBuilder_MakeMesh1d.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh1d
+ *  \brief Test_MeshBuilder
 */
 // ============================================================================
-class MeshBuilder_MakeMesh1d : public MeshBuilder_MakeMesh
+int main(int argc, char** argv)
 {
 
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh1d();
-    // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh1d();
-
-public:
-
-    Standard_EXPORT Standard_Integer    AddLinearLine(const Standard_Integer theNode1,
-                                                      const Standard_Integer theNode2);
-    Standard_EXPORT Standard_Integer    AddNode(const gp_Pnt1d& thePoint);
-    Standard_EXPORT Standard_Integer    AddQuadraticLine(const Standard_Integer theNode1,
-                                                         const Standard_Integer theNode2,
-                                                         const Standard_Integer theNode3);
-
-};
+    MeshBuilder_MakeMesh1d aBuilder;
+    Standard_Integer N1 = aBuilder.AddNode(gp_Pnt1d(0.));
+    Standard_Integer N2 = aBuilder.AddNode(gp_Pnt1d(1.));
+    Standard_Integer N3 = aBuilder.AddNode(gp_Pnt1d(2.));
+    Standard_Integer C1 = aBuilder.AddLinearLine(N1, N2);
+    Standard_Integer C2 = aBuilder.AddLinearLine(N2, N3);
 
 
-#endif // __MeshBuilder_MakeMesh1d_hxx__
+    cout << N1 << " " << N2 << " " << N3 << endl;
+    cout << C1 << " " << C2 << endl;
+
+    MeshDS_Mesh aMesh = aBuilder.Mesh();
+
+
+    return 0;
+}
