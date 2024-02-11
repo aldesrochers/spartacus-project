@@ -33,8 +33,10 @@ enum BRepCell_Error
 {
     BRepCell_NoError,
     BRepCell_UnknownError,
+    BRepCell_FaceNotPlanarError,
     BRepCell_LineThroughIdenticPointsError,
-    BRepCell_PointNotOnEdgeError
+    BRepCell_PointNotOnEdgeError,
+    BRepCell_PointNotOnFaceError
 };
 
 

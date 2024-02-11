@@ -20,48 +20,43 @@
 // ============================================================================
 
 
+#ifndef __BRepCell_MakeSolid_hxx__
+#define __BRepCell_MakeSolid_hxx__
+
 // Spartacus
-#include <BRepCell_MakeCell.hxx>
+#include <BRepCell_MakeShape.hxx>
+
+// OpenCascade
+#include <TopoDS_Solid.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief BRepCell_MakeSolid
 */
 // ============================================================================
-BRepCell_MakeCell::BRepCell_MakeCell()
-    : myError(BRepCell_NoError),
-    myIsDone(Standard_False)
+class BRepCell_MakeSolid : public BRepCell_MakeShape
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-BRepCell_MakeCell::~BRepCell_MakeCell()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT BRepCell_MakeSolid();
+    // destructors
+    Standard_EXPORT ~BRepCell_MakeSolid();
 
-// ============================================================================
-/*!
- *  \brief Error()
-*/
-// ============================================================================
-BRepCell_Error BRepCell_MakeCell::Error() const
-{
-    return myError;
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief IsDone()
-*/
-// ============================================================================
-Standard_Boolean BRepCell_MakeCell::IsDone() const
-{
-    return myIsDone;
-}
+    Standard_EXPORT const TopoDS_Solid&  Solid() const;
+
+public:
+
+    Standard_EXPORT operator            TopoDS_Solid() const;
+
+};
+
+
+#endif // __BRepCell_MakeSolid_hxx__

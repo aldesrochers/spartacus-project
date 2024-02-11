@@ -27,8 +27,8 @@ using namespace std;
 
 // OpenCascade
 #include <BRep_Tool.hxx>
+#include <BRepCell_MakeLinearLine.hxx>
 #include <BRepLib_MakeVertex.hxx>
-#include <BRepPoly_MakeLine.hxx>
 #include <GeomAPI_ProjectPointOnCurve.hxx>
 #include <TopoDS_Builder.hxx>
 #include <TopoDS_Edge.hxx>
@@ -92,33 +92,31 @@ void BRepCell_MakeQuadraticLine::Initialize(const TopoDS_Vertex &theVertex1,
                                             const TopoDS_Vertex &theVertex2,
                                             const TopoDS_Vertex &theVertex3)
 {
-    myVertex1 = theVertex1;
-    myVertex2 = theVertex2;
-    myVertex3 = theVertex3;
+    // setup vertices
+    ResizeVertices(3);
+    SetVertex(1, theVertex1);
+    SetVertex(2, theVertex2);
+    SetVertex(3, theVertex3);
 
     // build an edge from 2 end nodes
-    BRepPoly_MakeLine aLineBuilder(myVertex1, myVertex2);
+    BRepCell_MakeLinearLine aLineBuilder(theVertex1, theVertex2);
     if(!aLineBuilder.IsDone()) {
-        if(aLineBuilder.Error() == BRepPoly_LineThroughIdenticPointsError) {
-            myError = BRepCell_LineThroughIdenticPointsError;
-        } else {
-            myError = BRepCell_UnknownError;
-        }
+        SetError(aLineBuilder.Error());
         return;
     }
-    myEdge = aLineBuilder.Edge();
+    TopoDS_Edge anEdge = aLineBuilder.Edge();
 
     // retrieve line geometry from edge
     Standard_Real UFirst, ULast;
-    BRep_Tool::Range(myEdge, UFirst, ULast);
-    Handle(Geom_Curve) aCurve = BRep_Tool::Curve(myEdge, UFirst, ULast);
+    BRep_Tool::Range(anEdge, UFirst, ULast);
+    Handle(Geom_Curve) aCurve = BRep_Tool::Curve(anEdge, UFirst, ULast);
     gp_Pnt aPoint3 = BRep_Tool::Pnt(theVertex3);
 
     // check that mid-edge point (Vertex3) is on edge with precision
     GeomAPI_ProjectPointOnCurve aProjector(aPoint3, aCurve);
     Standard_Real aDistance = aProjector.LowerDistance();
     if(aDistance > Precision::Confusion()) {
-        myError = BRepCell_PointNotOnEdgeError;
+        SetError(BRepCell_PointNotOnEdgeError);
         return;
     }
 
@@ -127,7 +125,9 @@ void BRepCell_MakeQuadraticLine::Initialize(const TopoDS_Vertex &theVertex1,
 
     // add vertex on edge
     TopoDS_Builder aBuilder;
-    aBuilder.Add(myEdge, aVertex);
+    aBuilder.Add(anEdge, aVertex);
 
-    myIsDone = Standard_True;
+    // setup result edge
+    SetShape(anEdge);
+    SetDone();
 }

@@ -20,23 +20,22 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeCell_hxx__
-#define __BRepCell_MakeCell_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#ifndef __BRepCell_MakeEdge_hxx__
+#define __BRepCell_MakeEdge_hxx__
 
 // Spartacus
-#include <BRepCell_Error.hxx>
+#include <BRepCell_MakeShape.hxx>
+
+// OpenCascade
+#include <TopoDS_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeCell
+ *  \brief BRepCell_MakeEdge
 */
 // ============================================================================
-class BRepCell_MakeCell
+class BRepCell_MakeEdge : public BRepCell_MakeShape
 {
 
 public:
@@ -45,21 +44,19 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeCell();
+    Standard_EXPORT BRepCell_MakeEdge();
     // destructors
-    Standard_EXPORT ~BRepCell_MakeCell();
+    Standard_EXPORT ~BRepCell_MakeEdge();
 
 public:
 
-    Standard_EXPORT BRepCell_Error      Error() const;
-    Standard_EXPORT Standard_Boolean    IsDone() const;
+    Standard_EXPORT const TopoDS_Edge&  Edge() const;
 
-protected:
+public:
 
-    BRepCell_Error      myError;
-    Standard_Boolean    myIsDone;
+    Standard_EXPORT operator            TopoDS_Edge() const;
 
 };
 
 
-#endif // __BRepCell_MakeCell_hxx__
+#endif // __BRepCell_MakeEdge_hxx__

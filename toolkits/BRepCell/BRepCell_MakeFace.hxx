@@ -20,20 +20,24 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearLine_hxx__
-#define __BRepCell_MakeLinearLine_hxx__
+#ifndef __BRepCell_MakeFace_hxx__
+#define __BRepCell_MakeFace_hxx__
 
 // Spartacus
-#include <BRepCell_MakeEdge.hxx>
+#include <BRepCell_MakeShape.hxx>
 
+// OpenCascade
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Wire.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearLine
+ *  \brief BRepCell_MakeFace
 */
 // ============================================================================
-class BRepCell_MakeLinearLine : public BRepCell_MakeEdge
+class BRepCell_MakeFace : public BRepCell_MakeShape
 {
 
 public:
@@ -42,22 +46,39 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
-                                            const gp_Pnt& thePoint2);
-    Standard_EXPORT BRepCell_MakeLinearLine(const TopoDS_Vertex& theVertex1,
-                                            const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepCell_MakeFace();
     // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearLine();
+    Standard_EXPORT ~BRepCell_MakeFace();
+
+public:
+
+    Standard_EXPORT const TopoDS_Edge&  Edge(const Standard_Integer theIndex) const;
+    Standard_EXPORT Standard_Integer    NbEdges() const;
+
+public:
+
+    Standard_EXPORT const TopoDS_Face&  Face() const;
+    Standard_EXPORT const TopoDS_Wire&  Wire() const;
+
+public:
+
+    Standard_EXPORT operator            TopoDS_Face() const;
+    Standard_EXPORT operator            TopoDS_Wire() const;
 
 protected:
 
-    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
-                                           const gp_Pnt& thePoint2);
+    Standard_EXPORT void        ResizeEdges(const Standard_Integer theNbEdges,
+                                            const Standard_Boolean toCopyData = Standard_False);
 
-    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT void        SetEdge(const Standard_Integer theIndex,
+                                        const TopoDS_Edge& theEdge);
+
+protected:
+
+    TopTools_Array1OfShape      myEdges;
+    TopoDS_Wire                 myWire;
 
 };
 
 
-#endif // __BRepCell_MakeLinearLine_hxx__
+#endif // __BRepCell_MakeFace_hxx__

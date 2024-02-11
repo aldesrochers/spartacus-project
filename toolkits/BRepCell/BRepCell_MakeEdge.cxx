@@ -20,44 +20,50 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearLine_hxx__
-#define __BRepCell_MakeLinearLine_hxx__
-
 // Spartacus
 #include <BRepCell_MakeEdge.hxx>
 
+// OpenCascade
+#include <TopoDS.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearLine
+ *  \brief Constructor
 */
 // ============================================================================
-class BRepCell_MakeLinearLine : public BRepCell_MakeEdge
+BRepCell_MakeEdge::BRepCell_MakeEdge()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+BRepCell_MakeEdge::~BRepCell_MakeEdge()
+{
 
-public:
-    // constructors
-    Standard_EXPORT BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
-                                            const gp_Pnt& thePoint2);
-    Standard_EXPORT BRepCell_MakeLinearLine(const TopoDS_Vertex& theVertex1,
-                                            const TopoDS_Vertex& theVertex2);
-    // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearLine();
+}
 
-protected:
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const TopoDS_Edge& BRepCell_MakeEdge::Edge() const
+{
+    return TopoDS::Edge(Shape());
+}
 
-    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
-                                           const gp_Pnt& thePoint2);
+// ============================================================================
+/*!
+ *  \brief operator TopoDS_Edge()
+*/
+// ============================================================================
+BRepCell_MakeEdge::operator TopoDS_Edge() const
+{
+    return Edge();
+}
 
-    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2);
-
-};
-
-
-#endif // __BRepCell_MakeLinearLine_hxx__

@@ -24,11 +24,7 @@
 #define __BRepCell_MakeQuadraticLine_hxx__
 
 // Spartacus
-#include <BRepCell_MakeCell.hxx>
-
-// OpenCascade
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
+#include <BRepCell_MakeEdge.hxx>
 
 
 // ============================================================================
@@ -36,7 +32,7 @@
  *  \brief BRepCell_MakeQuadraticLine
 */
 // ============================================================================
-class BRepCell_MakeQuadraticLine : public BRepCell_MakeCell
+class BRepCell_MakeQuadraticLine : public BRepCell_MakeEdge
 {
 
 public:
@@ -54,17 +50,6 @@ public:
     // destructors
     Standard_EXPORT ~BRepCell_MakeQuadraticLine();
 
-public:
-
-    Standard_EXPORT const TopoDS_Edge&      Edge() const {return myEdge;}
-    Standard_EXPORT const TopoDS_Vertex&    Vertex1() const {return myVertex1;}
-    Standard_EXPORT const TopoDS_Vertex&    Vertex2() const {return myVertex2;}
-    Standard_EXPORT const TopoDS_Vertex&    Vertex3() const {return myVertex3;}
-
-public:
-
-    Standard_EXPORT operator                TopoDS_Edge() const {return Edge();}
-
 protected:
 
     Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
@@ -74,14 +59,6 @@ protected:
     Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
                                            const TopoDS_Vertex& theVertex2,
                                            const TopoDS_Vertex& theVertex3);
-
-private:
-
-    TopoDS_Edge         myEdge;
-    TopoDS_Vertex       myVertex1;
-    TopoDS_Vertex       myVertex2;
-    TopoDS_Vertex       myVertex3;
-
 
 };
 

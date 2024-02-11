@@ -21,10 +21,7 @@
 
 
 // Spartacus
-#include <BRepCell_Command.hxx>
-
-// OpenCascade
-#include <StdFail_NotDone.hxx>
+#include <BRepCellAPI_MakeLinearLine.hxx>
 
 
 // ============================================================================
@@ -32,8 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_Command::BRepCell_Command()
-    : myIsDone(Standard_False)
+BRepCellAPI_MakeLinearLine::BRepCellAPI_MakeLinearLine()
 {
 
 }
@@ -43,48 +39,8 @@ BRepCell_Command::BRepCell_Command()
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_Command::~BRepCell_Command()
+BRepCellAPI_MakeLinearLine::~BRepCellAPI_MakeLinearLine()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief Check()
-*/
-// ============================================================================
-void BRepCell_Command::Check()const
-{
-    if (!myIsDone)
-        throw StdFail_NotDone("BRepCell_Command::Check() -> Command not done");
-}
-
-// ============================================================================
-/*!
- *  \brief IsDone()
-*/
-// ============================================================================
-Standard_Boolean BRepCell_Command::IsDone() const
-{
-    return myIsDone;
-}
-
-// ============================================================================
-/*!
- *  \brief SetDone()
-*/
-// ============================================================================
-void BRepCell_Command::SetDone()
-{
-    myIsDone = Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNotDone()
-*/
-// ============================================================================
-void BRepCell_Command::SetNotDone()
-{
-    myIsDone = Standard_False;
-}

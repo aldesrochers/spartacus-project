@@ -70,6 +70,7 @@ void BRepCell_MakeLinearLine::Initialize(const gp_Pnt &thePoint1,
 {
     TopoDS_Vertex aVertex1 = BRepLib_MakeVertex(thePoint1).Vertex();
     TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(thePoint2).Vertex();
+
     Initialize(aVertex1, aVertex2);
 }
 
@@ -81,19 +82,24 @@ void BRepCell_MakeLinearLine::Initialize(const gp_Pnt &thePoint1,
 void BRepCell_MakeLinearLine::Initialize(const TopoDS_Vertex &theVertex1,
                                          const TopoDS_Vertex &theVertex2)
 {
-    myVertex1 = theVertex1;
-    myVertex2 = theVertex2;
+    // setup vertices
+    ResizeVertices(2);
+    SetVertex(1, theVertex1);
+    SetVertex(2, theVertex2);
 
-    BRepPoly_MakeLine aLineBuilder(myVertex1, myVertex2);
+    // build edge
+    BRepPoly_MakeLine aLineBuilder(theVertex1, theVertex2);
     if(!aLineBuilder.IsDone()) {
         if(aLineBuilder.Error() == BRepPoly_LineThroughIdenticPointsError) {
-            myError = BRepCell_LineThroughIdenticPointsError;
+            SetError(BRepCell_LineThroughIdenticPointsError);
         } else {
-            myError = BRepCell_UnknownError;
+            SetError(BRepCell_UnknownError);
         }
         return;
     }
-    myEdge = aLineBuilder.Edge();
+    TopoDS_Edge anEdge = aLineBuilder.Edge();
 
-    myIsDone = Standard_True;
+    // set result edge
+    SetShape(anEdge);
+    SetDone();
 }

@@ -21,8 +21,8 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLinearTriangle3N.hxx>
-#include <BRepLib_MakeEdge.hxx>
+#include <BRepCell_MakeLinearLine.hxx>
+#include <BRepCell_MakeLinearTriangle.hxx>
 #include <BRepLib_MakeFace.hxx>
 #include <BRepLib_MakeVertex.hxx>
 #include <BRepLib_MakeWire.hxx>
@@ -36,9 +36,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLinearTriangle3N::BRepCell_MakeLinearTriangle3N(const gp_Pnt& thePoint1,
-                                                             const gp_Pnt& thePoint2,
-                                                             const gp_Pnt& thePoint3)
+BRepCell_MakeLinearTriangle::BRepCell_MakeLinearTriangle(const gp_Pnt& thePoint1,
+                                                         const gp_Pnt& thePoint2,
+                                                         const gp_Pnt& thePoint3)
 {
     Initialize(thePoint1, thePoint2, thePoint3);
 }
@@ -48,9 +48,9 @@ BRepCell_MakeLinearTriangle3N::BRepCell_MakeLinearTriangle3N(const gp_Pnt& thePo
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLinearTriangle3N::BRepCell_MakeLinearTriangle3N(const TopoDS_Vertex &theVertex1,
-                                                             const TopoDS_Vertex &theVertex2,
-                                                             const TopoDS_Vertex &theVertex3)
+BRepCell_MakeLinearTriangle::BRepCell_MakeLinearTriangle(const TopoDS_Vertex &theVertex1,
+                                                         const TopoDS_Vertex &theVertex2,
+                                                         const TopoDS_Vertex &theVertex3)
 {
     Initialize(theVertex1, theVertex2, theVertex3);
 }
@@ -60,7 +60,7 @@ BRepCell_MakeLinearTriangle3N::BRepCell_MakeLinearTriangle3N(const TopoDS_Vertex
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLinearTriangle3N::~BRepCell_MakeLinearTriangle3N()
+BRepCell_MakeLinearTriangle::~BRepCell_MakeLinearTriangle()
 {
 
 }
@@ -70,7 +70,7 @@ BRepCell_MakeLinearTriangle3N::~BRepCell_MakeLinearTriangle3N()
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLinearTriangle3N::Initialize(const gp_Pnt &thePoint1,
+void BRepCell_MakeLinearTriangle::Initialize(const gp_Pnt &thePoint1,
                                                const gp_Pnt &thePoint2,
                                                const gp_Pnt &thePoint3)
 {
@@ -85,70 +85,56 @@ void BRepCell_MakeLinearTriangle3N::Initialize(const gp_Pnt &thePoint1,
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLinearTriangle3N::Initialize(const TopoDS_Vertex &theVertex1,
-                                               const TopoDS_Vertex &theVertex2,
-                                               const TopoDS_Vertex &theVertex3)
+void BRepCell_MakeLinearTriangle::Initialize(const TopoDS_Vertex &theVertex1,
+                                             const TopoDS_Vertex &theVertex2,
+                                             const TopoDS_Vertex &theVertex3)
 {
     // resize internal containers
-    myVertices.Resize(1, 3, Standard_False);
-    myEdges.Resize(1, 3, Standard_False);
-    myWires.Resize(1, 1, Standard_False);
-    myFaces.Resize(1, 1, Standard_False);
+    ResizeVertices(3);
+    ResizeEdges(3);
 
-    // define vertices
-    myVertices.SetValue(1, theVertex1);
-    myVertices.SetValue(2, theVertex2);
-    myVertices.SetValue(3, theVertex3);
+    // setup vertices
+    SetVertex(1, theVertex1);
+    SetVertex(2, theVertex2);
+    SetVertex(3, theVertex3);
 
     // make edge 1
-    BRepLib_MakeEdge anEdgeBuilder1(theVertex1, theVertex2);
-    if(!anEdgeBuilder1.IsDone()) {
-        if(anEdgeBuilder1.Error() == BRepLib_LineThroughIdenticPoints) {
-            SetError(BRepCell_LineThroughIdenticPointsError);
-        } else {
-            SetError(BRepCell_UnknownError);
-        }
+    BRepCell_MakeLinearLine aLineBuilder1(theVertex1, theVertex2);
+    if(!aLineBuilder1.IsDone()) {
+        SetError(aLineBuilder1.Error());
         return;
     }
-    TopoDS_Edge anEdge1 = anEdgeBuilder1.Edge();
-    myEdges.SetValue(1, anEdge1);
+    TopoDS_Edge anEdge1 = aLineBuilder1.Edge();
+    SetEdge(1, anEdge1);
 
     // make edge 2
-    BRepLib_MakeEdge anEdgeBuilder2(theVertex2, theVertex3);
-    if(!anEdgeBuilder2.IsDone()) {
-        if(anEdgeBuilder2.Error() == BRepLib_LineThroughIdenticPoints) {
-            SetError(BRepCell_LineThroughIdenticPointsError);
-        } else {
-            SetError(BRepCell_UnknownError);
-        }
+    BRepCell_MakeLinearLine aLineBuilder2(theVertex2, theVertex3);
+    if(!aLineBuilder2.IsDone()) {
+        SetError(aLineBuilder2.Error());
         return;
     }
-    TopoDS_Edge anEdge2 = anEdgeBuilder2.Edge();
-    myEdges.SetValue(2, anEdge2);
+    TopoDS_Edge anEdge2 = aLineBuilder2.Edge();
+    SetEdge(2, anEdge2);
 
     // make edge 3
-    BRepLib_MakeEdge anEdgeBuilder3(theVertex3, theVertex1);
-    if(!anEdgeBuilder3.IsDone()) {
-        if(anEdgeBuilder3.Error() == BRepLib_LineThroughIdenticPoints) {
-            SetError(BRepCell_LineThroughIdenticPointsError);
-        } else {
-            SetError(BRepCell_UnknownError);
-        }
+    BRepCell_MakeLinearLine aLineBuilder3(theVertex3, theVertex1);
+    if(!aLineBuilder3.IsDone()) {
+        SetError(aLineBuilder3.Error());
         return;
     }
-    TopoDS_Edge anEdge3 = anEdgeBuilder3.Edge();
-    myEdges.SetValue(3, anEdge3);
+    TopoDS_Edge anEdge3 = aLineBuilder3.Edge();
+    SetEdge(3, anEdge3);
 
-    // wire
+    // build wire
     BRepLib_MakeWire aWireBuilder(anEdge1, anEdge2, anEdge3);
     if(!aWireBuilder.IsDone()) {
         SetError(BRepCell_UnknownError);
         return;
     }
     TopoDS_Wire aWire = aWireBuilder.Wire();
-    myWires.SetValue(1, aWire);
+    myWire = aWire;
 
-    // face
+    // build face
     BRepLib_MakeFace aFaceBuilder(aWire, Standard_True);
     if(!aFaceBuilder.IsDone()) {
         if(aFaceBuilder.Error() == BRepLib_NotPlanar) {
@@ -159,8 +145,8 @@ void BRepCell_MakeLinearTriangle3N::Initialize(const TopoDS_Vertex &theVertex1,
         return;
     }
     TopoDS_Face aFace = aFaceBuilder.Face();
-    myFaces.SetValue(1, aFace);
 
+    // set shape
     SetShape(aFace);
     SetDone();
 }

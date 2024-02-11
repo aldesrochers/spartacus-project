@@ -27,7 +27,8 @@ using namespace std;
 #include <BRepLib_MakeVertex.hxx>
 
 // Spartacus
-#include <BRepCell_MakeQuadraticLine.hxx>
+#include <BRepCell_MakeBiQuadraticTriangle.hxx>
+#include <BRepCell_MakeQuadraticTriangle.hxx>
 #include <TopExp.hxx>
 #include <TopoDS.hxx>
 #include <BRep_Tool.hxx>
@@ -41,27 +42,36 @@ int main(int argc, char** argv)
 {
 
     TopoDS_Vertex aVertex1 = BRepLib_MakeVertex(gp_Pnt(0,0,0)).Vertex();
-    TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(gp_Pnt(2,0,0)).Vertex();
-    TopoDS_Vertex aVertex3 = BRepLib_MakeVertex(gp_Pnt(1,0,0)).Vertex();
+    TopoDS_Vertex aVertex2 = BRepLib_MakeVertex(gp_Pnt(1,0,0)).Vertex();
+    TopoDS_Vertex aVertex3 = BRepLib_MakeVertex(gp_Pnt(0,1,0)).Vertex();
+    TopoDS_Vertex aVertex4 = BRepLib_MakeVertex(gp_Pnt(0.5,0,0)).Vertex();
+    TopoDS_Vertex aVertex5 = BRepLib_MakeVertex(gp_Pnt(0.5,0.5,0)).Vertex();
+    TopoDS_Vertex aVertex6 = BRepLib_MakeVertex(gp_Pnt(0,0.5,0)).Vertex();
+    TopoDS_Vertex aVertex7 = BRepLib_MakeVertex(gp_Pnt(0.25,0.8, 0.)).Vertex();
 
-    BRepCell_MakeQuadraticLine aLine(aVertex1, aVertex2, aVertex3);
-    cout << aLine.IsDone() << endl;
-    TopoDS_Edge anEdge = aLine.Edge();
+    BRepCell_MakeQuadraticTriangle aTriangle(aVertex1, aVertex2, aVertex3,
+                                             aVertex4, aVertex5, aVertex6);
+    TopoDS_Shape aShape = aTriangle.Shape();
+
+
+
+    BRepCell_MakeBiQuadraticTriangle aBTriangle(aVertex1, aVertex2, aVertex3, aVertex4, aVertex5, aVertex6, aVertex7);
+    cout << aBTriangle.IsDone() << endl;
+    TopoDS_Face aFace = aBTriangle.Face();
 
 
     TopTools_IndexedMapOfShape aMap;
-    TopExp::MapShapes(anEdge, TopAbs_VERTEX, aMap);
+    TopExp::MapShapes(aFace, TopAbs_VERTEX, aMap);
     cout << aMap.Size() << endl;
-    TopoDS_Vertex V1 = TopoDS::Vertex(aMap.FindKey(1));
-    TopoDS_Vertex V2 = TopoDS::Vertex(aMap.FindKey(2));
-    TopoDS_Vertex V3 = TopoDS::Vertex(aMap.FindKey(3));
-    gp_Pnt P1 = BRep_Tool::Pnt(V1);
-    gp_Pnt P2 = BRep_Tool::Pnt(V2);
-    gp_Pnt P3 = BRep_Tool::Pnt(V3);
 
-    cout << P1.X() << " " << P1.Y() << " " << P1.Z() << endl;
-    cout << P2.X() << " " << P2.Y() << " " << P2.Z() << endl;
-    cout << P3.X() << " " << P3.Y() << " " << P3.Z() << endl;
+    for(Standard_Integer i=1; i<=aMap.Size(); i++) {
+        TopoDS_Vertex aVertex = TopoDS::Vertex(aMap.FindKey(i));
+        gp_Pnt aPnt = BRep_Tool::Pnt(aVertex);
+        cout << aPnt.X() << " " << aPnt.Y() << " " << aPnt.Z() << endl;
+    }
+
+
+
 
 
 }

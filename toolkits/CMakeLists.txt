@@ -24,16 +24,28 @@
 # =============================================================================
 
 set(BRepCell_PKG_HEADERS
+    BRepCell/BRepCell_MakeBiQuadraticTriangle.hxx
     BRepCell/BRepCell_Error.hxx
-    BRepCell/BRepCell_MakeCell.hxx
+    BRepCell/BRepCell_MakeEdge.hxx
+    BRepCell/BRepCell_MakeFace.hxx
     BRepCell/BRepCell_MakeLinearLine.hxx
+    BRepCell/BRepCell_MakeLinearTriangle.hxx
     BRepCell/BRepCell_MakeQuadraticLine.hxx
+    BRepCell/BRepCell_MakeQuadraticTriangle.hxx
+    BRepCell/BRepCell_MakeShape.hxx
+    BRepCell/BRepCell_MakeSolid.hxx
 )
 
 set(BRepCell_PKG_SOURCES
-    BRepCell/BRepCell_MakeCell.cxx
+    BRepCell/BRepCell_MakeBiQuadraticTriangle.cxx
+    BRepCell/BRepCell_MakeEdge.cxx
+    BRepCell/BRepCell_MakeFace.cxx
     BRepCell/BRepCell_MakeLinearLine.cxx
+    BRepCell/BRepCell_MakeLinearTriangle.cxx
     BRepCell/BRepCell_MakeQuadraticLine.cxx
+    BRepCell/BRepCell_MakeQuadraticTriangle.cxx
+    BRepCell/BRepCell_MakeShape.cxx
+    BRepCell/BRepCell_MakeSolid.cxx
 )
 
 # =============================================================================
@@ -42,10 +54,12 @@ set(BRepCell_PKG_SOURCES
 
 set(BRepCellAPI_PKG_HEADERS
     BRepCellAPI/BRepCellAPI_MakeCell.hxx
+    BRepCellAPI/BRepCellAPI_MakeLinearLine.hxx
 )
 
 set(BRepCellAPI_PKG_SOURCES
     BRepCellAPI/BRepCellAPI_MakeCell.cxx
+    BRepCellAPI/BRepCellAPI_MakeLinearLine.cxx
 )
 
 # =============================================================================

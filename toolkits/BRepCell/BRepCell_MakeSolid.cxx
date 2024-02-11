@@ -20,44 +20,50 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearLine_hxx__
-#define __BRepCell_MakeLinearLine_hxx__
-
 // Spartacus
-#include <BRepCell_MakeEdge.hxx>
+#include <BRepCell_MakeSolid.hxx>
 
+// OpenCascade
+#include <TopoDS.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearLine
+ *  \brief Constructor
 */
 // ============================================================================
-class BRepCell_MakeLinearLine : public BRepCell_MakeEdge
+BRepCell_MakeSolid::BRepCell_MakeSolid()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+BRepCell_MakeSolid::~BRepCell_MakeSolid()
+{
 
-public:
-    // constructors
-    Standard_EXPORT BRepCell_MakeLinearLine(const gp_Pnt& thePoint1,
-                                            const gp_Pnt& thePoint2);
-    Standard_EXPORT BRepCell_MakeLinearLine(const TopoDS_Vertex& theVertex1,
-                                            const TopoDS_Vertex& theVertex2);
-    // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearLine();
+}
 
-protected:
+// ============================================================================
+/*!
+ *  \brief Solid()
+*/
+// ============================================================================
+const TopoDS_Solid& BRepCell_MakeSolid::Solid() const
+{
+    return TopoDS::Solid(Shape());
+}
 
-    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
-                                           const gp_Pnt& thePoint2);
+// ============================================================================
+/*!
+ *  \brief operator TopoDS_Solid()
+*/
+// ============================================================================
+BRepCell_MakeSolid::operator TopoDS_Solid() const
+{
+    return Solid();
+}
 
-    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2);
-
-};
-
-
-#endif // __BRepCell_MakeLinearLine_hxx__

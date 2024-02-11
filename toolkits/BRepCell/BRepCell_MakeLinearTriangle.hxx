@@ -20,22 +20,19 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeLinearTriangle3N_hxx__
-#define __BRepCell_MakeLinearTriangle3N_hxx__
+#ifndef __BRepCell_MakeLinearTriangle_hxx__
+#define __BRepCell_MakeLinearTriangle_hxx__
 
 // Spartacus
-#include <BRepCell_MakeCell.hxx>
-
-// OpenCascade
-#include <TopoDS_Vertex.hxx>
+#include <BRepCell_MakeFace.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeLinearTriangle3N
+ *  \brief BRepCell_MakeLinearTriangle
 */
 // ============================================================================
-class BRepCell_MakeLinearTriangle3N : public BRepCell_MakeCell
+class BRepCell_MakeLinearTriangle : public BRepCell_MakeFace
 {
 
 public:
@@ -44,14 +41,14 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeLinearTriangle3N(const gp_Pnt& thePoint1,
-                                                  const gp_Pnt& thePoint2,
-                                                  const gp_Pnt& thePoint3);
-    Standard_EXPORT BRepCell_MakeLinearTriangle3N(const TopoDS_Vertex& theVertex1,
-                                                  const TopoDS_Vertex& theVertex2,
-                                                  const TopoDS_Vertex& theVertex3);
+    Standard_EXPORT BRepCell_MakeLinearTriangle(const gp_Pnt& thePoint1,
+                                                const gp_Pnt& thePoint2,
+                                                const gp_Pnt& thePoint3);
+    Standard_EXPORT BRepCell_MakeLinearTriangle(const TopoDS_Vertex& theVertex1,
+                                                const TopoDS_Vertex& theVertex2,
+                                                const TopoDS_Vertex& theVertex3);
     // destructors
-    Standard_EXPORT ~BRepCell_MakeLinearTriangle3N();
+    Standard_EXPORT ~BRepCell_MakeLinearTriangle();
 
 protected:
 
@@ -62,12 +59,7 @@ protected:
                                            const TopoDS_Vertex& theVertex2,
                                            const TopoDS_Vertex& theVertex3);
 
-public:
-
-    Standard_EXPORT const TopoDS_Face&      Face() const;
-    Standard_EXPORT operator                TopoDS_Face();
-
 };
 
 
-#endif // __BRepCell_MakeLinearTriangle3N_hxx__
+#endif // __BRepCell_MakeLinearTriangle_hxx__
