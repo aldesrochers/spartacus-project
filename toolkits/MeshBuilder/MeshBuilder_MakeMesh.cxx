@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_Object.hxx>
-#include <MeshDS_TCell.hxx>
+#include <MeshBuilder_MakeMesh.hxx>
 
 
 
@@ -31,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TCell::MeshDS_TCell()
+MeshBuilder_MakeMesh::MeshBuilder_MakeMesh()
 {
 
 }
@@ -41,64 +40,89 @@ MeshDS_TCell::MeshDS_TCell()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TCell::~MeshDS_TCell()
+MeshBuilder_MakeMesh::~MeshBuilder_MakeMesh()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief CellType()
+ *  \brief BindCell()
 */
 // ============================================================================
-MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
+Standard_Boolean MeshBuilder_MakeMesh::BindCell(const Standard_Integer theCellId,
+                                                const MeshDS_Cell &theCell)
 {
-    return myCellType;
+    return myCells.Bind(theCellId, theCell);
 }
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
+ *  \brief BindNode()
 */
 // ============================================================================
-const TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity() const
+Standard_Boolean MeshBuilder_MakeMesh::BindNode(const Standard_Integer theNodeId,
+                                                const MeshDS_Node &theNode)
 {
-    return myConnectivity;
+    return myNodes.Bind(theNodeId, theNode);
 }
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
+ *  \brief Build()
 */
 // ============================================================================
-TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity()
+void MeshBuilder_MakeMesh::Build()
 {
-    return myConnectivity;
+
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief FreeCellId()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
+Standard_Integer MeshBuilder_MakeMesh::FreeCellId() const
 {
-    return MeshAbs_OT_Cell;
+    Standard_Integer aCellId = 1;
+    while(myCells.IsBound(aCellId))
+        aCellId++;
+    return aCellId;
 }
 
 // ============================================================================
 /*!
- *  \brief SetCellType()
+ *  \brief FreeNodeId()
 */
 // ============================================================================
-void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
+Standard_Integer MeshBuilder_MakeMesh::FreeNodeId() const
 {
-    myCellType = theCellType;
+    Standard_Integer aNodeId = 1;
+    while(myNodes.IsBound(aNodeId))
+        aNodeId++;
+    return aNodeId;
 }
 
+// ============================================================================
+/*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+const MeshDS_Mesh& MeshBuilder_MakeMesh::Mesh() const
+{
+    if (!IsDone()) {
+        ((MeshBuilder_MakeMesh*) (void*) this)->Build();
+        Check();
+    }
+    return myMesh;
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Mesh()
+*/
+// ============================================================================
+MeshBuilder_MakeMesh::operator MeshDS_Mesh() const
+{
+    return Mesh();
+}

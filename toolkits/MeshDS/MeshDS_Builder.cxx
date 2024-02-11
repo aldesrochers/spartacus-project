@@ -32,6 +32,7 @@
 #include <MeshRep_Node1d.hxx>
 #include <MeshRep_Node2d.hxx>
 #include <MeshRep_Node3d.hxx>
+#include <MeshDS_Point1d.hxx>
 
 
 
@@ -185,6 +186,18 @@ void MeshDS_Builder::MakeNode(MeshDS_Node &theNode) const
 */
 // ============================================================================
 void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
+                              const gp_Pnt1d& thePoint) const
+{
+    MakeNode(theNode);
+    UpdateNode(theNode, thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeNode()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
                               const Handle(Mesh1d_Node) &theNode1d) const
 {
     MakeNode(theNode);
@@ -297,9 +310,9 @@ void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
                                 const Handle(Mesh1d_Node) &theNode1d) const
 {
     const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
-    Handle(MeshRep_Node1d) aReprensentation = new MeshRep_Node1d(theNode1d);
-    aTNode->SetRepresentation(aReprensentation);
-    aTNode->SetModified(Standard_True);
+    //Handle(MeshRep_Node1d) aReprensentation = new MeshRep_Node1d(theNode1d);
+    //aTNode->SetRepresentation(aReprensentation);
+    //aTNode->SetModified(Standard_True);
 }
 
 // ============================================================================
@@ -311,9 +324,9 @@ void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
                                 const Handle(Mesh2d_Node) &theNode2d) const
 {
     const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
-    Handle(MeshRep_Node2d) aRepresentation = new MeshRep_Node2d(theNode2d);
-    aTNode->SetRepresentation(aRepresentation);
-    aTNode->SetModified(Standard_True);
+    //Handle(MeshRep_Node2d) aRepresentation = new MeshRep_Node2d(theNode2d);
+    //aTNode->SetRepresentation(aRepresentation);
+    //aTNode->SetModified(Standard_True);
 }
 
 // ============================================================================
@@ -325,9 +338,9 @@ void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
                                 const Handle(Mesh_Node) &theNode3d) const
 {
     const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
-    Handle(MeshRep_Node3d) aRepresentation = new MeshRep_Node3d(theNode3d);
-    aTNode->SetRepresentation(aRepresentation);
-    aTNode->SetModified(Standard_True);
+    //Handle(MeshRep_Node3d) aRepresentation = new MeshRep_Node3d(theNode3d);
+    //aTNode->SetRepresentation(aRepresentation);
+    //aTNode->SetModified(Standard_True);
 }
 // ============================================================================
 /*!
@@ -339,8 +352,8 @@ void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
     Handle(MeshRep_Cell1d) aReprensentation = new MeshRep_Cell1d(theCell1d);
-    aTCell->SetRepresentation(aReprensentation);
-    aTCell->SetModified(Standard_True);
+    //aTCell->SetRepresentation(aReprensentation);
+    //aTCell->SetModified(Standard_True);
 }
 
 // ============================================================================
@@ -353,8 +366,8 @@ void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
     Handle(MeshRep_Cell2d) aRepresentation = new MeshRep_Cell2d(theCell2d);
-    aTCell->SetRepresentation(aRepresentation);
-    aTCell->SetModified(Standard_True);
+    //aTCell->SetRepresentation(aRepresentation);
+    //aTCell->SetModified(Standard_True);
 }
 
 // ============================================================================
@@ -367,9 +380,22 @@ void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
     Handle(MeshRep_Cell3d) aRepresentation = new MeshRep_Cell3d(theCell3d);
-    aTCell->SetRepresentation(aRepresentation);
-    aTCell->SetModified(Standard_True);
+    //aTCell->SetRepresentation(aRepresentation);
+    //aTCell->SetModified(Standard_True);
 }
 
+// ============================================================================
+/*!
+ *  \brief UpdateNode()
+*/
+// ============================================================================
+void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
+                                const gp_Pnt1d& thePoint) const
+{
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    Handle(MeshDS_Point1d) aPoint1d = new MeshDS_Point1d(thePoint);
+    aTNode->SetPoint(aPoint1d);
+    aTNode->SetModified(Standard_True);
+}
 
 

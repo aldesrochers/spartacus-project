@@ -20,60 +20,29 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TNode_hxx__
-#define __MeshDS_TNode_hxx__
-
 // Spartacus
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshDS_Point.hxx>
-#include <MeshDS_TObject.hxx>
+#include <MeshBuilder_MakeMesh1d.hxx>
 
-// OpenCascade
-#include <TopoDS_Vertex.hxx>
-
-// Forward declarations
-class MeshDS_TNode;
-
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TObject);
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TNode
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshDS_TNode : public MeshDS_TObject
+MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
 {
 
-public:
-    // constructors
-    Standard_EXPORT MeshDS_TNode();
-    // destructors
-    Standard_EXPORT ~MeshDS_TNode();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshBuilder_MakeMesh1d::~MeshBuilder_MakeMesh1d()
+{
 
-    Standard_EXPORT MeshAbs_TypeOfObject        ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT Standard_Boolean            HasPoint() const;
-    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
-    Standard_EXPORT const Handle(MeshDS_Point)& Point() const;
-    Standard_EXPORT void                        SetPoint(const Handle(MeshDS_Point)& thePoint);
-
-private:
-
-    MeshDS_ListOfObject     myLinkedCells;
-    Handle(MeshDS_Point)    myPoint;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TObject);
-
-};
+}
 
 
-#endif // __MeshDS_TNode_hxx__

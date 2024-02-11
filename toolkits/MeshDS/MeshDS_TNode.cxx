@@ -50,22 +50,12 @@ MeshDS_TNode::~MeshDS_TNode()
 
 // ============================================================================
 /*!
- *  \brief HasRepresentation()
+ *  \brief HasPoint()
 */
 // ============================================================================
-Standard_Boolean MeshDS_TNode::HasRepresentation() const
+Standard_Boolean MeshDS_TNode::HasPoint() const
 {
-    return !myRepresentation.IsNull();
-}
-
-// ============================================================================
-/*!
- *  \brief HasVertex()
-*/
-// ============================================================================
-Standard_Boolean MeshDS_TNode::HasVertex() const
-{
-    return !myVertex.IsNull();
+    return !myPoint.IsNull();
 }
 
 // ============================================================================
@@ -100,42 +90,22 @@ MeshAbs_TypeOfObject MeshDS_TNode::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief Representation()
+ *  \brief Point()
 */
 // ============================================================================
-const Handle(MeshRep_Node)& MeshDS_TNode::Representation() const
+const Handle(MeshDS_Point)& MeshDS_TNode::Point() const
 {
-    return myRepresentation;
+    return myPoint;
 }
 
 // ============================================================================
 /*!
- *  \brief SetRepresentation()
+ *  \brief SetPoint()
 */
 // ============================================================================
-void MeshDS_TNode::SetRepresentation(const Handle(MeshRep_Node) &theRepresentation)
+void MeshDS_TNode::SetPoint(const Handle(MeshDS_Point) &thePoint)
 {
-    myRepresentation = theRepresentation;
-}
-
-// ============================================================================
-/*!
- *  \brief SetVertex()
-*/
-// ============================================================================
-void MeshDS_TNode::SetVertex(const TopoDS_Vertex &theVertex)
-{
-    myVertex = theVertex;
-}
-
-// ============================================================================
-/*!
- *  \brief Vertex()
-*/
-// ============================================================================
-const TopoDS_Vertex& MeshDS_TNode::Vertex() const
-{
-    return myVertex;
+    myPoint = thePoint;
 }
 
 

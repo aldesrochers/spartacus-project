@@ -262,6 +262,26 @@ set(MeshAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : MeshBuilder
+# =============================================================================
+
+set(MeshBuilder_PKG_HEADERS
+    MeshBuilder/MeshBuilder_Command.hxx
+    MeshBuilder/MeshBuilder_MakeMesh.hxx
+    MeshBuilder/MeshBuilder_MakeMesh1d.hxx
+    MeshBuilder/MeshBuilder_MakeMesh2d.hxx
+    MeshBuilder/MeshBuilder_MakeMesh3d.hxx
+)
+
+set(MeshBuilder_PKG_SOURCES
+    MeshBuilder/MeshBuilder_Command.cxx
+    MeshBuilder/MeshBuilder_MakeMesh.cxx
+    MeshBuilder/MeshBuilder_MakeMesh1d.cxx
+    MeshBuilder/MeshBuilder_MakeMesh2d.cxx
+    MeshBuilder/MeshBuilder_MakeMesh3d.cxx
+)
+
+# =============================================================================
 # Package : MeshDS
 # =============================================================================
 
@@ -275,6 +295,10 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
+    MeshDS/MeshDS_Point1d.hxx
+    MeshDS/MeshDS_Point2d.hxx
+    MeshDS/MeshDS_Point3d.hxx
+    MeshDS/MeshDS_Point.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
@@ -291,6 +315,10 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Mesh.cxx
     MeshDS/MeshDS_Node.cxx
     MeshDS/MeshDS_Object.cxx
+    MeshDS/MeshDS_Point1d.cxx
+    MeshDS/MeshDS_Point2d.cxx
+    MeshDS/MeshDS_Point3d.cxx
+    MeshDS/MeshDS_Point.cxx
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
@@ -633,6 +661,7 @@ set(Ceres_HEADERS
     ${Mesh1d_PKG_HEADERS}
     ${Mesh2d_PKG_HEADERS}
     ${MeshAbs_PKG_HEADERS}
+    ${MeshBuilder_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
     ${MeshLib_PKG_HEADERS}
     ${MeshRep_PKG_HEADERS}
@@ -661,6 +690,7 @@ set(Ceres_SOURCES
     ${Mesh_PKG_SOURCES}
     ${Mesh1d_PKG_SOURCES}
     ${Mesh2d_PKG_SOURCES}
+    ${MeshBuilder_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
     ${MeshLib_PKG_SOURCES}
     ${MeshRep_PKG_SOURCES}
@@ -687,6 +717,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh2d
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshRep

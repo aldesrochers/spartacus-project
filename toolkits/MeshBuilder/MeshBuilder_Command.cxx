@@ -21,9 +21,10 @@
 
 
 // Spartacus
-#include <MeshDS_Object.hxx>
-#include <MeshDS_TCell.hxx>
+#include <MeshBuilder_Command.hxx>
 
+// OpenCascade
+#include <StdFail_NotDone.hxx>
 
 
 // ============================================================================
@@ -31,7 +32,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TCell::MeshDS_TCell()
+MeshBuilder_Command::MeshBuilder_Command()
+    : myIsDone(Standard_False)
 {
 
 }
@@ -41,64 +43,51 @@ MeshDS_TCell::MeshDS_TCell()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TCell::~MeshDS_TCell()
+MeshBuilder_Command::~MeshBuilder_Command()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief CellType()
+ *  \brief Check()
 */
 // ============================================================================
-MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
+void MeshBuilder_Command::Check()const
 {
-    return myCellType;
+    if (!myIsDone)
+        throw StdFail_NotDone("MeshBuilder_Command::Check() -> Command not done");
 }
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
+ *  \brief IsDone()
 */
 // ============================================================================
-const TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity() const
+Standard_Boolean MeshBuilder_Command::IsDone() const
 {
-    return myConnectivity;
+    return myIsDone;
 }
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
+ *  \brief SetDone()
 */
 // ============================================================================
-TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity()
+void MeshBuilder_Command::SetDone()
 {
-    return myConnectivity;
+    myIsDone = Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief SetNotDone()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
+void MeshBuilder_Command::SetNotDone()
 {
-    return MeshAbs_OT_Cell;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCellType()
-*/
-// ============================================================================
-void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
-{
-    myCellType = theCellType;
+    myIsDone = Standard_False;
 }
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);
+

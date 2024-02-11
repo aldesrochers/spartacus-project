@@ -45,13 +45,13 @@ Handle(Mesh1d_Cell) MeshDS_Tool::Cell1d(const MeshDS_Cell& theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if (aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Cell1d()");
-    Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Cell1d()");
-    if(!aRepresentation->IsCell1d())
-        throw Standard_DomainError("MeshDS_Tool::Cell1d()->Not a valid 1d Cell.");
-    Handle(MeshRep_Cell1d) aRepresentation1d = Handle(MeshRep_Cell1d)::DownCast(aRepresentation);
-    return aRepresentation1d->Cell1d();
+    //Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Cell1d()");
+    //if(!aRepresentation->IsCell1d())
+    //    throw Standard_DomainError("MeshDS_Tool::Cell1d()->Not a valid 1d Cell.");
+    //Handle(MeshRep_Cell1d) aRepresentation1d = Handle(MeshRep_Cell1d)::DownCast(aRepresentation);
+    //return aRepresentation1d->Cell1d();
 }
 
 // ============================================================================
@@ -65,13 +65,13 @@ Handle(Mesh2d_Cell) MeshDS_Tool::Cell2d(const MeshDS_Cell& theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if (aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Cell2d()");
-    Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Cell2d()");
-    if(!aRepresentation->IsCell2d())
-        throw Standard_DomainError("MeshDS_Tool::Cell2d()->Not a valid 2d Cell.");
-    Handle(MeshRep_Cell2d) aRepresentation2d = Handle(MeshRep_Cell2d)::DownCast(aRepresentation);
-    return aRepresentation2d->Cell2d();
+    //Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Cell2d()");
+    //if(!aRepresentation->IsCell2d())
+    //    throw Standard_DomainError("MeshDS_Tool::Cell2d()->Not a valid 2d Cell.");
+    //Handle(MeshRep_Cell2d) aRepresentation2d = Handle(MeshRep_Cell2d)::DownCast(aRepresentation);
+    //return aRepresentation2d->Cell2d();
 }
 
 // ============================================================================
@@ -85,13 +85,13 @@ Handle(Mesh_Cell) MeshDS_Tool::Cell3d(const MeshDS_Cell& theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if (aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Cell3d()");
-    Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Cell3d()");
-    if(!aRepresentation->IsCell3d())
-        throw Standard_DomainError("MeshDS_Tool::Cell3d()->Not a valid 3d Cell.");
-    Handle(MeshRep_Cell3d) aRepresentation3d = Handle(MeshRep_Cell3d)::DownCast(aRepresentation);
-    return aRepresentation3d->Cell3d();
+    //Handle(MeshRep_Cell) aRepresentation = aTCell->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Cell3d()");
+    //if(!aRepresentation->IsCell3d())
+    //    throw Standard_DomainError("MeshDS_Tool::Cell3d()->Not a valid 3d Cell.");
+    //Handle(MeshRep_Cell3d) aRepresentation3d = Handle(MeshRep_Cell3d)::DownCast(aRepresentation);
+    //return aRepresentation3d->Cell3d();
 }
 
 // ============================================================================
@@ -105,13 +105,13 @@ Handle(Mesh1d_Node) MeshDS_Tool::Node1d(const MeshDS_Node& theNode)
     const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
     if (aTNode == 0)
         throw Standard_NullObject("MeshDS_Tool::Node1d()");
-    Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Node1d()");
-    if(!aRepresentation->IsNode1d())
-        throw Standard_DomainError("MeshDS_Tool::Node1d()->Not a valid 1d node.");
-    Handle(MeshRep_Node1d) aRepresentation1d = Handle(MeshRep_Node1d)::DownCast(aRepresentation);
-    return aRepresentation1d->Node1d();
+    //Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Node1d()");
+    //if(!aRepresentation->IsNode1d())
+    //    throw Standard_DomainError("MeshDS_Tool::Node1d()->Not a valid 1d node.");
+    //Handle(MeshRep_Node1d) aRepresentation1d = Handle(MeshRep_Node1d)::DownCast(aRepresentation);
+    //return aRepresentation1d->Node1d();
 }
 
 // ============================================================================
@@ -125,13 +125,13 @@ Handle(Mesh2d_Node) MeshDS_Tool::Node2d(const MeshDS_Node& theNode)
     const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
     if (aTNode == 0)
         throw Standard_NullObject("MeshDS_Tool::Node2d()");
-    Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Node2d()");
-    if(!aRepresentation->IsNode2d())
-        throw Standard_DomainError("MeshDS_Tool::Node2d()->Not a valid 2d node.");
-    Handle(MeshRep_Node2d) aRepresentation2d = Handle(MeshRep_Node2d)::DownCast(aRepresentation);
-    return aRepresentation2d->Node2d();
+    //Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Node2d()");
+    //if(!aRepresentation->IsNode2d())
+    //    throw Standard_DomainError("MeshDS_Tool::Node2d()->Not a valid 2d node.");
+    //Handle(MeshRep_Node2d) aRepresentation2d = Handle(MeshRep_Node2d)::DownCast(aRepresentation);
+    //return aRepresentation2d->Node2d();
 }
 
 // ============================================================================
@@ -145,12 +145,12 @@ Handle(Mesh_Node) MeshDS_Tool::Node3d(const MeshDS_Node& theNode)
     const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
     if (aTNode == 0)
         throw Standard_NullObject("MeshDS_Tool::Node3d()");
-    Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
-    if(aRepresentation.IsNull())
-        throw Standard_NullObject("MeshDS_Tool::Node3d()");
-    if(!aRepresentation->IsNode3d())
-        throw Standard_DomainError("MeshDS_Tool::Node3d()->Not a valid 3d node.");
-    Handle(MeshRep_Node3d) aRepresentation3d = Handle(MeshRep_Node3d)::DownCast(aRepresentation);
-    return aRepresentation3d->Node3d();
+    //Handle(MeshRep_Node) aRepresentation = aTNode->Representation();
+    //if(aRepresentation.IsNull())
+    //    throw Standard_NullObject("MeshDS_Tool::Node3d()");
+    //if(!aRepresentation->IsNode3d())
+    //    throw Standard_DomainError("MeshDS_Tool::Node3d()->Not a valid 3d node.");
+    //Handle(MeshRep_Node3d) aRepresentation3d = Handle(MeshRep_Node3d)::DownCast(aRepresentation);
+    //return aRepresentation3d->Node3d();
 }
 

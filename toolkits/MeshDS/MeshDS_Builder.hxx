@@ -86,6 +86,9 @@ public:
 
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const gp_Pnt1d& thePoint) const;
+
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const Handle(Mesh1d_Node)& theNode1d) const;
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const Handle(Mesh2d_Node)& theNode2d) const;
@@ -115,6 +118,10 @@ public:
                                        const Standard_Integer theNbNodes,
                                        const Standard_Integer theNbCells,
                                        const Standard_Integer theNbGroups = 0) const;
+
+
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const gp_Pnt1d& thePoint) const;
 
     Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
                                        const Handle(Mesh1d_Node)& theNode1d) const;
