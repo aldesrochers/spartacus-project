@@ -20,25 +20,21 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh_hxx__
-#define __MeshBuilder_MakeMesh_hxx__
+#ifndef __MeshBuilder_MakeCell_hxx__
+#define __MeshBuilder_MakeCell_hxx__
 
 // Spartacus
 #include <MeshBuilder_Command.hxx>
-#include <MeshDS_Builder.hxx>
 #include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh
+ *  \brief MeshBuilder_MakeCell
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+class MeshBuilder_MakeCell : public MeshBuilder_Command
 {
 
 public:
@@ -47,30 +43,23 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh();
+    Standard_EXPORT MeshBuilder_MakeCell();
     // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh();
+    Standard_EXPORT ~MeshBuilder_MakeCell();
 
 public:
 
-    virtual Standard_EXPORT void        Build();
+    Standard_EXPORT const MeshDS_Cell&  Cell() const;
 
 public:
 
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
-
-public:
-
-    Standard_EXPORT operator            MeshDS_Mesh() const;
+    Standard_EXPORT operator            MeshDS_Cell() const;
 
 protected:
 
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
+    MeshDS_Cell     myCell;
 
 };
 
 
-#endif // __MeshBuilder_MakeMesh_hxx__
+#endif // __MeshBuilder_MakeCell_hxx__

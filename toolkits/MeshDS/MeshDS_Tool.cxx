@@ -154,3 +154,16 @@ Handle(Mesh_Node) MeshDS_Tool::Node3d(const MeshDS_Node& theNode)
     //return aRepresentation3d->Node3d();
 }
 
+// ============================================================================
+/*!
+ *  \brief Point()
+*/
+// ============================================================================
+gp_Pnt MeshDS_Tool::Point(const MeshDS_Node& theNode)
+{
+    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
+    if (aTNode == 0)
+        throw Standard_NullObject("MeshDS_Tool::Point()");
+    Handle(MeshDS_Point) aPoint = aTNode->Point();
+    return gp_Pnt(aPoint->X(), aPoint->Y(), aPoint->Z());
+}

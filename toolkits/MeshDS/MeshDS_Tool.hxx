@@ -54,6 +54,8 @@ public:
 
 public:
 
+    static Standard_EXPORT gp_Pnt       Point(const MeshDS_Node& theNode);
+
     static Standard_EXPORT Handle(Mesh1d_Cell)  Cell1d(const MeshDS_Cell& theCell);
     static Standard_EXPORT Handle(Mesh2d_Cell)  Cell2d(const MeshDS_Cell& theCell);
     static Standard_EXPORT Handle(Mesh_Cell)    Cell3d(const MeshDS_Cell& theCell);

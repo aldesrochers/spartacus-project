@@ -52,6 +52,9 @@ public:
 
     Standard_EXPORT Standard_Boolean    IsPoint3d() const Standard_OVERRIDE;
     Standard_EXPORT const gp_Pnt&       Point3d() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Real       X() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Real       Y() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Real       Z() const Standard_OVERRIDE;
 
 private:
 

@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <MeshBuilder_MakeMesh1d.hxx>
-
+#include <MeshBuilder_MakeGroup.hxx>
 
 
 // ============================================================================
@@ -30,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
+MeshBuilder_MakeGroup::MeshBuilder_MakeGroup()
 {
 
 }
@@ -40,58 +39,40 @@ MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
  *  \brief Destructor
 */
 // ============================================================================
-MeshBuilder_MakeMesh1d::~MeshBuilder_MakeMesh1d()
+MeshBuilder_MakeGroup::~MeshBuilder_MakeGroup()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief AddLinearLine()
+ *  \brief Add()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddLinearLine(const MeshDS_Node& theNode1,
-                                                  const MeshDS_Node& theNode2)
+void MeshBuilder_MakeGroup::Add(const MeshDS_Cell &theCell)
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_LinearLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+    myCells.Append(theCell);
 }
 
 // ============================================================================
 /*!
- *  \brief AddNode()
+ *  \brief Group()
 */
 // ============================================================================
-MeshDS_Node MeshBuilder_MakeMesh1d::AddNode(const gp_Pnt1d &thePoint)
+const MeshDS_Group& MeshBuilder_MakeGroup::Group() const
 {
-    MeshDS_Node aNode;
-    myBuilder.MakeNode(aNode, thePoint);
-    myNodes.Add(aNode);
-    return aNode;
+    if (!IsDone()) {
+        Check();
+    }
+    return myGroup;
 }
 
 // ============================================================================
 /*!
- *  \brief AddQuadraticLine()
+ *  \brief operator GroupDS_Group()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddQuadraticLine(const MeshDS_Node& theNode1,
-                                                     const MeshDS_Node& theNode2,
-                                                     const MeshDS_Node& theNode3)
+MeshBuilder_MakeGroup::operator MeshDS_Group() const
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-    aConnectivity.Append(myNodes.FindIndex(theNode3));
-
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_QuadraticLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+    return Group();
 }

@@ -24,7 +24,8 @@
 using namespace std;
 
 // Spartacus
-#include <MeshBuilder_MakeMesh1d.hxx>
+#include <MeshBuilder_MakeNode.hxx>
+#include <MeshBuilder_MakeLinearLine.hxx>
 
 
 // ============================================================================
@@ -35,18 +36,13 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    MeshBuilder_MakeMesh1d aBuilder;
-    Standard_Integer N1 = aBuilder.AddNode(gp_Pnt1d(0.));
-    Standard_Integer N2 = aBuilder.AddNode(gp_Pnt1d(1.));
-    Standard_Integer N3 = aBuilder.AddNode(gp_Pnt1d(2.));
-    Standard_Integer C1 = aBuilder.AddLinearLine(N1, N2);
-    Standard_Integer C2 = aBuilder.AddLinearLine(N2, N3);
+    MeshDS_Node aNode1 = MeshBuilder_MakeNode(gp_Pnt1d(0.)).Node();
+    MeshDS_Node aNode2 = MeshBuilder_MakeNode(gp_Pnt1d(1.)).Node();
+    MeshDS_Node aNode3 = MeshBuilder_MakeNode(gp_Pnt1d(2.)).Node();
+    MeshDS_Cell aCell1 = MeshBuilder_MakeLinearLine(aNode1, aNode2).Cell();
+    MeshDS_Cell aCell2 = MeshBuilder_MakeLinearLine(aNode2, aNode3).Cell();
 
 
-    cout << N1 << " " << N2 << " " << N3 << endl;
-    cout << C1 << " " << C2 << endl;
-
-    MeshDS_Mesh aMesh = aBuilder.Mesh();
 
 
     return 0;

@@ -20,33 +20,16 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh2d_hxx__
-#define __MeshBuilder_MakeMesh2d_hxx__
+#ifndef __MeshDS_SequenceOfNode_hxx__
+#define __MeshDS_SequenceOfNode_hxx__
+
+// OpenCascade
+#include <NCollection_Sequence.hxx>
 
 // Spartacus
-#include <MeshBuilder_MakeMesh.hxx>
+class MeshDS_Node;
 
+// Type definitions
+typedef NCollection_Sequence<MeshDS_Node>   MeshDS_SequenceOfNode;
 
-// ============================================================================
-/*!
- *  \brief MeshBuilder_MakeMesh2d
-*/
-// ============================================================================
-class MeshBuilder_MakeMesh2d : public MeshBuilder_MakeMesh
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh2d();
-    // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh2d();
-
-
-};
-
-
-#endif // __MeshBuilder_MakeMesh2d_hxx__
+#endif // __MeshDS_SequenceOfNode_hxx__

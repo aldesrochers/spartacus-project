@@ -40,6 +40,7 @@
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
+#include <MeshDS_SequenceOfNode.hxx>
 #include <MeshDS_TObject.hxx>
 
 
@@ -72,7 +73,7 @@ public:
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell) const;
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
                                      const MeshAbs_TypeOfCell theCellType,
-                                     const TColStd_SequenceOfInteger& theConnectivity) const;
+                                     const MeshDS_SequenceOfNode& theNodes) const;
 
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
 
@@ -85,6 +86,10 @@ public:
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
+                                     const gp_Pnt& thePoint) const;
 
     Standard_EXPORT void    SetCell(MeshDS_Mesh& theMesh,
                                     const Standard_Integer theIndex,
@@ -101,7 +106,7 @@ public:
 
     Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
                                        const MeshAbs_TypeOfCell theCellType,
-                                       const TColStd_SequenceOfInteger& theConnectivity) const;
+                                       const MeshDS_SequenceOfNode& theNodes) const;
 
     Standard_EXPORT void    UpdateMesh(const MeshDS_Mesh& theMesh,
                                        const Standard_Integer theNbNodes,
@@ -111,6 +116,10 @@ public:
 
     Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
                                        const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
+                                       const gp_Pnt& thePoint) const;
 
 protected:
 

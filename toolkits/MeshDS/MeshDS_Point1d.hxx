@@ -52,6 +52,7 @@ public:
 
     Standard_EXPORT Standard_Boolean    IsPoint1d() const Standard_OVERRIDE;
     Standard_EXPORT const gp_Pnt1d&     Point1d() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Real       X() const Standard_OVERRIDE;
 
 private:
 

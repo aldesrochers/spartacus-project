@@ -33,7 +33,8 @@
 #include <MeshRep_Node2d.hxx>
 #include <MeshRep_Node3d.hxx>
 #include <MeshDS_Point1d.hxx>
-
+#include <MeshDS_Point2d.hxx>
+#include <MeshDS_Point3d.hxx>
 
 
 // ============================================================================
@@ -104,10 +105,10 @@ void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell) const
 // ============================================================================
 void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell,
                               const MeshAbs_TypeOfCell theCellType,
-                              const TColStd_SequenceOfInteger &theConnectivity) const
+                              const MeshDS_SequenceOfNode& theNodes) const
 {
     MakeCell(theCell);
-    UpdateCell(theCell, theCellType, theConnectivity);
+    UpdateCell(theCell, theCellType, theNodes);
 }
 
 // ============================================================================
@@ -164,6 +165,30 @@ void MeshDS_Builder::MakeNode(MeshDS_Node &theNode) const
 // ============================================================================
 void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
                               const gp_Pnt1d& thePoint) const
+{
+    MakeNode(theNode);
+    UpdateNode(theNode, thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeNode()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
+                              const gp_Pnt2d& thePoint) const
+{
+    MakeNode(theNode);
+    UpdateNode(theNode, thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeNode()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
+                              const gp_Pnt& thePoint) const
 {
     MakeNode(theNode);
     UpdateNode(theNode, thePoint);
@@ -232,7 +257,7 @@ void MeshDS_Builder::SetNode(MeshDS_Mesh &theMesh,
 // ============================================================================
 void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
                                 const MeshAbs_TypeOfCell theCellType,
-                                const TColStd_SequenceOfInteger& theConnectivity) const
+                                const MeshDS_SequenceOfNode& theNodes) const
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
 
@@ -271,4 +296,30 @@ void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
     aTNode->SetModified(Standard_True);
 }
 
+// ============================================================================
+/*!
+ *  \brief UpdateNode()
+*/
+// ============================================================================
+void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
+                                const gp_Pnt2d& thePoint) const
+{
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    Handle(MeshDS_Point2d) aPoint2d = new MeshDS_Point2d(thePoint);
+    aTNode->SetPoint(aPoint2d);
+    aTNode->SetModified(Standard_True);
+}
 
+// ============================================================================
+/*!
+ *  \brief UpdateNode()
+*/
+// ============================================================================
+void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
+                                const gp_Pnt& thePoint) const
+{
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    Handle(MeshDS_Point3d) aPoint3d = new MeshDS_Point3d(thePoint);
+    aTNode->SetPoint(aPoint3d);
+    aTNode->SetModified(Standard_True);
+}

@@ -20,25 +20,22 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh_hxx__
-#define __MeshBuilder_MakeMesh_hxx__
+#ifndef __MeshBuilder_MakeGroup_hxx__
+#define __MeshBuilder_MakeGroup_hxx__
 
 // Spartacus
 #include <MeshBuilder_Command.hxx>
-#include <MeshDS_Builder.hxx>
 #include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
+#include <MeshDS_Group.hxx>
+#include <MeshTools_ListOfObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh
+ *  \brief MeshBuilder_MakeGroup
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+class MeshBuilder_MakeGroup : public MeshBuilder_Command
 {
 
 public:
@@ -47,30 +44,28 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh();
+    Standard_EXPORT MeshBuilder_MakeGroup();
     // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh();
+    Standard_EXPORT ~MeshBuilder_MakeGroup();
 
 public:
 
-    virtual Standard_EXPORT void        Build();
+    Standard_EXPORT void                Add(const MeshDS_Cell& theCell);
 
 public:
 
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
+    Standard_EXPORT const MeshDS_Group& Group() const;
 
 public:
 
-    Standard_EXPORT operator            MeshDS_Mesh() const;
+    Standard_EXPORT operator            MeshDS_Group() const;
 
 protected:
 
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
+    MeshTools_ListOfObject  myCells;
+    MeshDS_Group            myGroup;
 
 };
 
 
-#endif // __MeshBuilder_MakeMesh_hxx__
+#endif // __MeshBuilder_MakeGroup_hxx__

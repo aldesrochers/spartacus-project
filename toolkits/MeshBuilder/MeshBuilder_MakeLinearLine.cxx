@@ -20,57 +20,45 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh_hxx__
-#define __MeshBuilder_MakeMesh_hxx__
-
 // Spartacus
-#include <MeshBuilder_Command.hxx>
+#include <MeshBuilder_MakeLinearLine.hxx>
 #include <MeshDS_Builder.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+MeshBuilder_MakeLinearLine::MeshBuilder_MakeLinearLine(const MeshDS_Node& theNode1,
+                                                       const MeshDS_Node& theNode2)
+{
+    Initialize(theNode1, theNode2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshBuilder_MakeLinearLine::~MeshBuilder_MakeLinearLine()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshBuilder_MakeLinearLine::Initialize(const MeshDS_Node &theNode1,
+                                            const MeshDS_Node &theNode2)
+{
+    MeshDS_SequenceOfNode aSeq;
+    aSeq.Append(theNode1);
+    aSeq.Append(theNode2);
 
-public:
-    // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh();
-
-public:
-
-    virtual Standard_EXPORT void        Build();
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
-
-public:
-
-    Standard_EXPORT operator            MeshDS_Mesh() const;
-
-protected:
-
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
-
-};
-
-
-#endif // __MeshBuilder_MakeMesh_hxx__
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeCell(myCell, MeshAbs_CT_LinearLine, aSeq);
+    SetDone();
+}

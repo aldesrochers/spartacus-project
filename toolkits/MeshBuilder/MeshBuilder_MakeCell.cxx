@@ -20,57 +20,49 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh_hxx__
-#define __MeshBuilder_MakeMesh_hxx__
-
 // Spartacus
-#include <MeshBuilder_Command.hxx>
-#include <MeshDS_Builder.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
+#include <MeshBuilder_MakeCell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+MeshBuilder_MakeCell::MeshBuilder_MakeCell()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshBuilder_MakeCell::~MeshBuilder_MakeCell()
+{
 
-public:
-    // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Cell& MeshBuilder_MakeCell::Cell() const
+{
+    if (!IsDone()) {
+        Check();
+    }
+    return myCell;
+}
 
-    virtual Standard_EXPORT void        Build();
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
-
-public:
-
-    Standard_EXPORT operator            MeshDS_Mesh() const;
-
-protected:
-
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
-
-};
-
-
-#endif // __MeshBuilder_MakeMesh_hxx__
+// ============================================================================
+/*!
+ *  \brief operator CellDS_Cell()
+*/
+// ============================================================================
+MeshBuilder_MakeCell::operator MeshDS_Cell() const
+{
+    return Cell();
+}

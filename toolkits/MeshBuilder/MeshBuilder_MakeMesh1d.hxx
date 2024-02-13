@@ -48,12 +48,14 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Integer    AddLinearLine(const Standard_Integer theNode1,
-                                                      const Standard_Integer theNode2);
-    Standard_EXPORT Standard_Integer    AddNode(const gp_Pnt1d& thePoint);
-    Standard_EXPORT Standard_Integer    AddQuadraticLine(const Standard_Integer theNode1,
-                                                         const Standard_Integer theNode2,
-                                                         const Standard_Integer theNode3);
+    Standard_EXPORT MeshDS_Cell         AddLinearLine(const MeshDS_Node& theNode1,
+                                                      const MeshDS_Node& theNode2);
+
+    Standard_EXPORT MeshDS_Node         AddNode(const gp_Pnt1d& thePoint);
+
+    Standard_EXPORT MeshDS_Cell         AddQuadraticLine(const MeshDS_Node& theNode1,
+                                                         const MeshDS_Node& theNode2,
+                                                         const MeshDS_Node& theNode3);
 
 };
 

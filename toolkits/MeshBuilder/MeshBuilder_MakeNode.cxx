@@ -21,8 +21,8 @@
 
 
 // Spartacus
-#include <MeshBuilder_MakeMesh1d.hxx>
-
+#include <MeshBuilder_MakeNode.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
@@ -30,9 +30,29 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
+MeshBuilder_MakeNode::MeshBuilder_MakeNode(const gp_Pnt1d& thePoint)
 {
+    Initialize(thePoint);
+}
 
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshBuilder_MakeNode::MeshBuilder_MakeNode(const gp_Pnt2d& thePoint)
+{
+    Initialize(thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshBuilder_MakeNode::MeshBuilder_MakeNode(const gp_Pnt& thePoint)
+{
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -40,58 +60,66 @@ MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
  *  \brief Destructor
 */
 // ============================================================================
-MeshBuilder_MakeMesh1d::~MeshBuilder_MakeMesh1d()
+MeshBuilder_MakeNode::~MeshBuilder_MakeNode()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief AddLinearLine()
+ *  \brief Initialize()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddLinearLine(const MeshDS_Node& theNode1,
-                                                  const MeshDS_Node& theNode2)
+void MeshBuilder_MakeNode::Initialize(const gp_Pnt1d &thePoint)
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_LinearLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(myNode, thePoint);
+    SetDone();
 }
 
 // ============================================================================
 /*!
- *  \brief AddNode()
+ *  \brief Initialize()
 */
 // ============================================================================
-MeshDS_Node MeshBuilder_MakeMesh1d::AddNode(const gp_Pnt1d &thePoint)
+void MeshBuilder_MakeNode::Initialize(const gp_Pnt2d &thePoint)
 {
-    MeshDS_Node aNode;
-    myBuilder.MakeNode(aNode, thePoint);
-    myNodes.Add(aNode);
-    return aNode;
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(myNode, thePoint);
+    SetDone();
 }
 
 // ============================================================================
 /*!
- *  \brief AddQuadraticLine()
+ *  \brief Initialize()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddQuadraticLine(const MeshDS_Node& theNode1,
-                                                     const MeshDS_Node& theNode2,
-                                                     const MeshDS_Node& theNode3)
+void MeshBuilder_MakeNode::Initialize(const gp_Pnt &thePoint)
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-    aConnectivity.Append(myNodes.FindIndex(theNode3));
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(myNode, thePoint);
+    SetDone();
+}
 
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_QuadraticLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const MeshDS_Node& MeshBuilder_MakeNode::Node() const
+{
+    if (!IsDone()) {
+        Check();
+    }
+    return myNode;
+}
+
+// ============================================================================
+/*!
+ *  \brief operator NodeDS_Node()
+*/
+// ============================================================================
+MeshBuilder_MakeNode::operator MeshDS_Node() const
+{
+    return Node();
 }

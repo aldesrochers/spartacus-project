@@ -20,25 +20,25 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeMesh_hxx__
-#define __MeshBuilder_MakeMesh_hxx__
+#ifndef __MeshBuilder_MakeNode_hxx__
+#define __MeshBuilder_MakeNode_hxx__
 
 // Spartacus
+#include <gp_Pnt1d.hxx>
 #include <MeshBuilder_Command.hxx>
-#include <MeshDS_Builder.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
+
+// OpenCascade
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeMesh
+ *  \brief MeshBuilder_MakeNode
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+class MeshBuilder_MakeNode : public MeshBuilder_Command
 {
 
 public:
@@ -47,30 +47,31 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeMesh();
+    Standard_EXPORT MeshBuilder_MakeNode(const gp_Pnt1d& thePoint);
+    Standard_EXPORT MeshBuilder_MakeNode(const gp_Pnt2d& thePoint);
+    Standard_EXPORT MeshBuilder_MakeNode(const gp_Pnt& thePoint);
     // destructors
-    Standard_EXPORT ~MeshBuilder_MakeMesh();
+    Standard_EXPORT ~MeshBuilder_MakeNode();
 
 public:
 
-    virtual Standard_EXPORT void        Build();
+    Standard_EXPORT const MeshDS_Node&  Node() const;
 
 public:
 
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
-
-public:
-
-    Standard_EXPORT operator            MeshDS_Mesh() const;
+    Standard_EXPORT operator            MeshDS_Node() const;
 
 protected:
 
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
+    Standard_EXPORT void        Initialize(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void        Initialize(const gp_Pnt2d& thePoint);
+    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint);
+
+protected:
+
+    MeshDS_Node     myNode;
 
 };
 
 
-#endif // __MeshBuilder_MakeMesh_hxx__
+#endif // __MeshBuilder_MakeNode_hxx__

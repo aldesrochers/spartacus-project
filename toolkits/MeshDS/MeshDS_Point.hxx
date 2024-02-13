@@ -62,6 +62,9 @@ public:
     virtual Standard_EXPORT const gp_Pnt1d&     Point1d() const;
     virtual Standard_EXPORT const gp_Pnt2d&     Point2d() const;
     virtual Standard_EXPORT const gp_Pnt&       Point3d() const;
+    virtual Standard_EXPORT Standard_Real       X() const;
+    virtual Standard_EXPORT Standard_Real       Y() const;
+    virtual Standard_EXPORT Standard_Real       Z() const;
 
 public:
 

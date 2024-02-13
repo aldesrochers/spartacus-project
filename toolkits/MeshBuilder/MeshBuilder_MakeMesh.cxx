@@ -49,62 +49,15 @@ MeshBuilder_MakeMesh::~MeshBuilder_MakeMesh()
 
 // ============================================================================
 /*!
- *  \brief BindCell()
-*/
-// ============================================================================
-Standard_Boolean MeshBuilder_MakeMesh::BindCell(const Standard_Integer theCellId,
-                                                const MeshDS_Cell &theCell)
-{
-    return myCells.Bind(theCellId, theCell);
-}
-
-// ============================================================================
-/*!
- *  \brief BindNode()
-*/
-// ============================================================================
-Standard_Boolean MeshBuilder_MakeMesh::BindNode(const Standard_Integer theNodeId,
-                                                const MeshDS_Node &theNode)
-{
-    return myNodes.Bind(theNodeId, theNode);
-}
-
-// ============================================================================
-/*!
  *  \brief Build()
 */
 // ============================================================================
 void MeshBuilder_MakeMesh::Build()
 {
 
+    cout << "OK" << endl;
 
 
-}
-
-// ============================================================================
-/*!
- *  \brief FreeCellId()
-*/
-// ============================================================================
-Standard_Integer MeshBuilder_MakeMesh::FreeCellId() const
-{
-    Standard_Integer aCellId = 1;
-    while(myCells.IsBound(aCellId))
-        aCellId++;
-    return aCellId;
-}
-
-// ============================================================================
-/*!
- *  \brief FreeNodeId()
-*/
-// ============================================================================
-Standard_Integer MeshBuilder_MakeMesh::FreeNodeId() const
-{
-    Standard_Integer aNodeId = 1;
-    while(myNodes.IsBound(aNodeId))
-        aNodeId++;
-    return aNodeId;
 }
 
 // ============================================================================

@@ -267,18 +267,26 @@ set(MeshAbs_PKG_HEADERS
 
 set(MeshBuilder_PKG_HEADERS
     MeshBuilder/MeshBuilder_Command.hxx
+    MeshBuilder/MeshBuilder_MakeCell.hxx
+    MeshBuilder/MeshBuilder_MakeGroup.hxx
+    MeshBuilder/MeshBuilder_MakeLinearLine.hxx
     MeshBuilder/MeshBuilder_MakeMesh.hxx
     MeshBuilder/MeshBuilder_MakeMesh1d.hxx
     MeshBuilder/MeshBuilder_MakeMesh2d.hxx
     MeshBuilder/MeshBuilder_MakeMesh3d.hxx
+    MeshBuilder/MeshBuilder_MakeNode.hxx
 )
 
 set(MeshBuilder_PKG_SOURCES
     MeshBuilder/MeshBuilder_Command.cxx
+    MeshBuilder/MeshBuilder_MakeCell.cxx
+    MeshBuilder/MeshBuilder_MakeGroup.cxx
+    MeshBuilder/MeshBuilder_MakeLinearLine.cxx
     MeshBuilder/MeshBuilder_MakeMesh.cxx
     MeshBuilder/MeshBuilder_MakeMesh1d.cxx
     MeshBuilder/MeshBuilder_MakeMesh2d.cxx
     MeshBuilder/MeshBuilder_MakeMesh3d.cxx
+    MeshBuilder/MeshBuilder_MakeNode.cxx
 )
 
 # =============================================================================
@@ -299,6 +307,8 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Point2d.hxx
     MeshDS/MeshDS_Point3d.hxx
     MeshDS/MeshDS_Point.hxx
+    MeshDS/MeshDS_SequenceOfNode.hxx
+    MeshDS/MeshDS_SequenceOfObject.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx

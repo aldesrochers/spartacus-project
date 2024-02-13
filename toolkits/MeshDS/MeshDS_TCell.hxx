@@ -25,7 +25,9 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
+#include <MeshDS_Node.hxx>
 #include <MeshDS_TObject.hxx>
+#include <MeshDS_SequenceOfNode.hxx>
 
 // OpenCascade
 #include <TColStd_SequenceOfInteger.hxx>
@@ -59,13 +61,16 @@ public:
 
     Standard_EXPORT MeshAbs_TypeOfCell                  CellType() const;
     Standard_EXPORT const TColStd_SequenceOfInteger&    Connectivity() const;
+    Standard_EXPORT const MeshDS_SequenceOfNode&        Nodes() const;
     Standard_EXPORT void                                SetCellType(const MeshAbs_TypeOfCell theCellType);
     Standard_EXPORT void                                SetConnectivity(const TColStd_SequenceOfInteger& theConnectivity);
+    Standard_EXPORT void                                SetNodes(const MeshDS_SequenceOfNode& theNodes);
 
 private:
 
     MeshAbs_TypeOfCell          myCellType;
     TColStd_SequenceOfInteger   myConnectivity;
+    MeshDS_SequenceOfNode     myNodes;
 
 public:
 
