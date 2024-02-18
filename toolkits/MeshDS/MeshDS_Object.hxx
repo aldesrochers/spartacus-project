@@ -50,7 +50,6 @@ public:
     Standard_EXPORT Standard_Integer        HashCode (Standard_Integer theUpperBound) const;
     Standard_EXPORT Standard_Boolean        IsEqual(const MeshDS_Object& theOther) const;
     Standard_EXPORT Standard_Boolean        IsNull() const;
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const;
 
 public:
 

@@ -25,12 +25,8 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_Node.hxx>
+#include <MeshDS_SequenceOfObject.hxx>
 #include <MeshDS_TObject.hxx>
-#include <MeshDS_SequenceOfNode.hxx>
-
-// OpenCascade
-#include <TColStd_SequenceOfInteger.hxx>
 
 // Forward declarations
 class MeshDS_TCell;
@@ -55,22 +51,15 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT MeshAbs_TypeOfCell                  CellType() const;
-    Standard_EXPORT const TColStd_SequenceOfInteger&    Connectivity() const;
-    Standard_EXPORT const MeshDS_SequenceOfNode&        Nodes() const;
-    Standard_EXPORT void                                SetCellType(const MeshAbs_TypeOfCell theCellType);
-    Standard_EXPORT void                                SetConnectivity(const TColStd_SequenceOfInteger& theConnectivity);
-    Standard_EXPORT void                                SetNodes(const MeshDS_SequenceOfNode& theNodes);
+    Standard_EXPORT MeshAbs_TypeOfCell              CellType() const;
+    Standard_EXPORT const MeshDS_SequenceOfObject&  Nodes() const;
+    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theCellType);
+    Standard_EXPORT void                            SetNodes(const MeshDS_SequenceOfObject& theNodes);
 
 private:
 
     MeshAbs_TypeOfCell          myCellType;
-    TColStd_SequenceOfInteger   myConnectivity;
-    MeshDS_SequenceOfNode     myNodes;
+    MeshDS_SequenceOfObject     myNodes;
 
 public:
 

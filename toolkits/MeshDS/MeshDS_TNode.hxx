@@ -28,9 +28,6 @@
 #include <MeshDS_Point.hxx>
 #include <MeshDS_TObject.hxx>
 
-// OpenCascade
-#include <TopoDS_Vertex.hxx>
-
 // Forward declarations
 class MeshDS_TNode;
 
@@ -54,20 +51,15 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject        ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT Standard_Boolean            HasPoint() const;
-    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
-    Standard_EXPORT const Handle(MeshDS_Point)& Point() const;
-    Standard_EXPORT void                        SetPoint(const Handle(MeshDS_Point)& thePoint);
+    Standard_EXPORT const MeshDS_ListOfObject&      LinkedCells() const;
+    Standard_EXPORT MeshDS_ListOfObject&            LinkedCells();
+    Standard_EXPORT const Handle(MeshDS_Point)&     Point() const;
+    Standard_EXPORT void                            SetPoint(const Handle(MeshDS_Point)& thePoint);
 
 private:
 
-    MeshDS_ListOfObject     myLinkedCells;
-    Handle(MeshDS_Point)    myPoint;
+    MeshDS_ListOfObject         myLinkedCells;
+    Handle(MeshDS_Point)        myPoint;
 
 public:
 

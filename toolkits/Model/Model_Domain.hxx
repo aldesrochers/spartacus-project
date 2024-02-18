@@ -23,22 +23,19 @@
 #ifndef __Model_Domain_hxx__
 #define __Model_Domain_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
 // Spartacus
-#include <Model_Array1OfElement.hxx>
-#include <Model_Array1OfNode.hxx>
-#include <Model_Element.hxx>
-#include <Model_Node.hxx>
+#include <Model_DegreeOfFreedom.hxx>
+#include <Model_Mesh.hxx>
+#include <Model_Object.hxx>
+
+// OpenCascade
+#include <TColStd_DataMapOfIntegerTransient.hxx>
 
 // Forward declarations
 class Model_Domain;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Model_Domain, Standard_Transient);
+DEFINE_STANDARD_HANDLE(Model_Domain, Model_Object);
 
 
 // ============================================================================
@@ -46,28 +43,33 @@ DEFINE_STANDARD_HANDLE(Model_Domain, Standard_Transient);
  *  \brief Model_Domain
 */
 // ============================================================================
-class Model_Domain : public Standard_Transient
+class Model_Domain : public Model_Object
 {
 
 public:
     // constructors
     Standard_EXPORT Model_Domain();
+    Standard_EXPORT Model_Domain(const Handle(Model_Mesh)& theMesh);
     // destructors
     Standard_EXPORT ~Model_Domain();
 
 public:
 
-    Standard_EXPORT Standard_Integer    NbElements() const;
-    Standard_EXPORT Standard_Integer    NbNodes() const;
+    Standard_EXPORT Handle(Model_DegreeOfFreedom)   DegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId) const;
+    Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
+    Standard_EXPORT const Handle(Model_Mesh)&       Mesh() const;
+    Standard_EXPORT void                            SetDegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId,
+                                                                       const Handle(Model_DegreeOfFreedom)& theDegreeOfFreedom);
+    Standard_EXPORT void                            SetMesh(const Handle(Model_Mesh)& theMesh);
 
 private:
 
-    Model_Array1OfElement       myElements;
-    Model_Array1OfNode          myNodes;
+    TColStd_DataMapOfIntegerTransient   myDegreesOfFreedom;
+    Handle(Model_Mesh)                  myMesh;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Model_Domain, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(Model_Domain, Model_Object);
 
 };
 

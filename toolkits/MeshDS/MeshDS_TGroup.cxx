@@ -21,7 +21,6 @@
 
 
 // Spartacus
-#include <MeshDS_Object.hxx>
 #include <MeshDS_TGroup.hxx>
 
 
@@ -77,12 +76,12 @@ const TCollection_AsciiString& MeshDS_TGroup::Name() const
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief SetCells()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TGroup::ObjectType() const
+void MeshDS_TGroup::SetCells(const MeshDS_ListOfObject &theCells)
 {
-    return MeshAbs_OT_Group;
+    myCells = theCells;
 }
 
 // ============================================================================
@@ -94,6 +93,7 @@ void MeshDS_TGroup::SetName(const TCollection_AsciiString &theName)
 {
     myName = theName;
 }
+
 
 // ****************************************************************************
 // Handles

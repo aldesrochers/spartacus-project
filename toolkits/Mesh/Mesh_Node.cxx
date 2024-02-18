@@ -39,7 +39,7 @@ Mesh_Node::Mesh_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node::Mesh_Node(const gp_Pnt& thePoint)
+Mesh_Node::Mesh_Node(const gp_Pnt &thePoint)
     : myPoint(thePoint)
 {
 
@@ -50,9 +50,13 @@ Mesh_Node::Mesh_Node(const gp_Pnt& thePoint)
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Node::Mesh_Node(const Standard_Real theX)
+Mesh_Node::Mesh_Node(const Standard_Real theX,
+                     const Standard_Real theY,
+                     const Standard_Real theZ)
 {
     myPoint.SetX(theX);
+    myPoint.SetY(theY);
+    myPoint.SetZ(theZ);
 }
 
 // ============================================================================
@@ -67,7 +71,7 @@ Mesh_Node::~Mesh_Node()
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  Point()
 */
 // ============================================================================
 const gp_Pnt& Mesh_Node::Point() const

@@ -24,7 +24,6 @@
 #define __MeshDS_TMesh_hxx__
 
 // Spartacus
-#include <MeshDS_Array1OfObject.hxx>
 #include <MeshDS_TObject.hxx>
 
 // Forward declarations
@@ -47,38 +46,6 @@ public:
     Standard_EXPORT MeshDS_TMesh();
     // destructors
     Standard_EXPORT ~MeshDS_TMesh();
-
-public:
-
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT const MeshDS_Object&    Cell(const Standard_Integer theIndex) const;
-    Standard_EXPORT const MeshDS_Object&    Group(const Standard_Integer theIndex) const;
-    Standard_EXPORT Standard_Integer        NbCells() const;
-    Standard_EXPORT Standard_Integer        NbGroups() const;
-    Standard_EXPORT Standard_Integer        NbNodes() const;
-    Standard_EXPORT const MeshDS_Object&    Node(const Standard_Integer theIndex) const;
-    Standard_EXPORT void                    ResizeCells(const Standard_Integer theNbCells,
-                                                        const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                    ResizeGroups(const Standard_Integer theNbGroups,
-                                                         const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                    ResizeNodes(const Standard_Integer theNbNodes,
-                                                        const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                    SetCell(const Standard_Integer theIndex,
-                                                    const MeshDS_Object& theCell);
-    Standard_EXPORT void                    SetGroup(const Standard_Integer theIndex,
-                                                     const MeshDS_Object& theGroup);
-    Standard_EXPORT void                    SetNode(const Standard_Integer theIndex,
-                                                    const MeshDS_Object& theNode);
-
-
-private:
-
-    MeshDS_Array1OfObject   myCells;
-    MeshDS_Array1OfObject   myGroups;
-    MeshDS_Array1OfObject   myNodes;
 
 public:
 

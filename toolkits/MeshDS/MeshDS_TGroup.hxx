@@ -53,13 +53,10 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-public:
-
     Standard_EXPORT const MeshDS_ListOfObject&      Cells() const;
     Standard_EXPORT MeshDS_ListOfObject&            Cells();
     Standard_EXPORT const TCollection_AsciiString&  Name() const;
+    Standard_EXPORT void                            SetCells(const MeshDS_ListOfObject& theCells);
     Standard_EXPORT void                            SetName(const TCollection_AsciiString& theName);
 
 private:

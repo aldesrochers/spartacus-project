@@ -39,7 +39,7 @@ Mesh1d_Node::Mesh1d_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_Node::Mesh1d_Node(const gp_Pnt1d& thePoint)
+Mesh1d_Node::Mesh1d_Node(const gp_Pnt1d &thePoint)
     : myPoint(thePoint)
 {
 
@@ -67,7 +67,7 @@ Mesh1d_Node::~Mesh1d_Node()
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  Point()
 */
 // ============================================================================
 const gp_Pnt1d& Mesh1d_Node::Point() const

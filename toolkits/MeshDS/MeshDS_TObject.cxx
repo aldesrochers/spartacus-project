@@ -44,25 +44,6 @@ MeshDS_TObject::~MeshDS_TObject()
 
 }
 
-// ============================================================================
-/*!
- *  \brief IsModified()
-*/
-// ============================================================================
-Standard_Boolean MeshDS_TObject::IsModified() const
-{
-    return myIsModified;
-}
-
-// ============================================================================
-/*!
- *  \brief SetModified()
-*/
-// ============================================================================
-void MeshDS_TObject::SetModified(const Standard_Boolean theIsModified)
-{
-    myIsModified = theIsModified;
-}
 
 
 // ****************************************************************************

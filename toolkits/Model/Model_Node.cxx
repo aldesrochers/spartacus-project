@@ -19,9 +19,14 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
 #include <Model_Node.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -31,7 +36,10 @@
 // ============================================================================
 Model_Node::Model_Node()
 {
-
+    ResizeCoordinates(3, Standard_False);
+    SetX(0.);
+    SetY(0.);
+    SetZ(0.);
 }
 
 // ============================================================================
@@ -39,12 +47,51 @@ Model_Node::Model_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Model_Node::Model_Node(const Standard_Integer theMeshNode,
-                       const TColStd_ListOfInteger &theDegreesOfFreedom)
-    : myMeshNode(theMeshNode),
-    myDegreesOfFreedom(theDegreesOfFreedom)
+Model_Node::Model_Node(const Standard_Integer theNbCoordinates)
 {
+    ResizeCoordinates(theNbCoordinates, Standard_False);
+    SetX(0.);
+    SetY(0.);
+    SetZ(0.);
+}
 
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Node::Model_Node(const Standard_Real theX)
+{
+    ResizeCoordinates(1, Standard_False);
+    SetX(theX);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Node::Model_Node(const Standard_Real theX,
+                       const Standard_Real theY)
+{
+    ResizeCoordinates(2, Standard_False);
+    SetX(theX);
+    SetY(theY);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Node::Model_Node(const Standard_Real theX,
+                       const Standard_Real theY,
+                       const Standard_Real theZ)
+{
+    ResizeCoordinates(3, Standard_False);
+    SetX(theX);
+    SetY(theY);
+    SetZ(theZ);
 }
 
 // ============================================================================
@@ -59,56 +106,113 @@ Model_Node::~Model_Node()
 
 // ============================================================================
 /*!
- *  \brief DegreesOfFreedom()
- *  Get the degrees of freedom associated to node.
+ *  \brief Coordinate()
 */
 // ============================================================================
-const TColStd_ListOfInteger& Model_Node::DegreesOfFreedom() const
+Standard_Real Model_Node::Coordinate(const Standard_Integer theIndex) const
 {
-    return myDegreesOfFreedom;
+    return myCoordinates.Value(theIndex);
 }
 
 // ============================================================================
 /*!
- *  \brief DegreesOfFreedom()
- *  Get the degrees of freedom associated to node.
+ *  \brief NbCoordinates()
 */
 // ============================================================================
-TColStd_ListOfInteger& Model_Node::DegreesOfFreedom()
+Standard_Integer Model_Node::NbCoordinates() const
 {
-    return myDegreesOfFreedom;
+    return myCoordinates.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief NbDegreesOfFreedom()
+ *  \brief ResizeCoordinates()
 */
 // ============================================================================
-Standard_Integer Model_Node::NbDegreesOfFreedom() const
+void Model_Node::ResizeCoordinates(const Standard_Integer theNbCoordinates,
+                                   const Standard_Boolean toCopyData)
 {
-    return myDegreesOfFreedom.Size();
+    Standard_DomainError_Raise_if(theNbCoordinates < 1,
+                                  "Model_Node::Model_ResizeCoordinates()");
+    Standard_DomainError_Raise_if(theNbCoordinates > 3,
+                                  "Model_Node::Model_ResizeCoordinates()");
+    myCoordinates.Resize(1, theNbCoordinates, toCopyData);
 }
 
 // ============================================================================
 /*!
- *  \brief MeshNode()
- *  Get the id of the node in mesh.
+ *  \brief SetCoordinate()
 */
 // ============================================================================
-Standard_Integer Model_Node::MeshNode() const
+void Model_Node::SetCoordinate(const Standard_Integer theIndex,
+                               const Standard_Real theCoordinate)
 {
-    return myMeshNode;
+    myCoordinates.SetValue(theIndex, theCoordinate);
 }
 
 // ============================================================================
 /*!
- *  \brief SetMeshNode()
- *  Set the id of the node in mesh.
+ *  \brief SetX()
 */
 // ============================================================================
-void Model_Node::SetMeshNode(const Standard_Integer theMeshNode)
+void Model_Node::SetX(const Standard_Real theX)
 {
-    myMeshNode = theMeshNode;
+    myCoordinates.SetValue(1, theX);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetY()
+*/
+// ============================================================================
+void Model_Node::SetY(const Standard_Real theY)
+{
+    myCoordinates.SetValue(2, theY);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetZ()
+*/
+// ============================================================================
+void Model_Node::SetZ(const Standard_Real theZ)
+{
+    myCoordinates.SetValue(3, theZ);
+}
+
+// ============================================================================
+/*!
+ *  \brief X()
+*/
+// ============================================================================
+Standard_Real Model_Node::X() const
+{
+    return myCoordinates.Value(1);
+}
+
+// ============================================================================
+/*!
+ *  \brief Y()
+*/
+// ============================================================================
+Standard_Real Model_Node::Y() const
+{
+    return myCoordinates.Value(2);
+}
+
+// ============================================================================
+/*!
+ *  \brief Z()
+*/
+// ============================================================================
+Standard_Real Model_Node::Z() const
+{
+    return myCoordinates.Value(3);
 }
 
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Model_Node, Model_Object);
+IMPLEMENT_STANDARD_RTTIEXT(Model_Node, Model_Object);

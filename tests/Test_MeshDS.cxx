@@ -23,10 +23,7 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <MeshDS_Builder.hxx>
 
-#include <mp_LinearHexahedron8N.hxx>
 
 
 // ============================================================================
@@ -36,11 +33,6 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
-    MeshDS_Builder aBuilder;
-
-    mp_LinearHexahedron8N aHex(1,2,3,4,5,6,7,8);
-
-    cout << aHex.Face1().Edge1().Node1() << " " << aHex.Face1().Edge1().Node2() << endl;
 
 
 

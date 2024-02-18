@@ -24,8 +24,10 @@
 #define __Mesh2d_Node_hxx__
 
 // Spartacus
-#include <gp_Pnt2d.hxx>
 #include <Mesh2d_Object.hxx>
+
+// OpenCascade
+#include <gp_Pnt2d.hxx>
 
 // Forward declarations
 class Mesh2d_Node;
@@ -43,25 +45,23 @@ class Mesh2d_Node : public Mesh2d_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT Mesh2d_Node();
     Standard_EXPORT Mesh2d_Node(const gp_Pnt2d& thePoint);
-    Standard_EXPORT Mesh2d_Node(const Standard_Real theX);
+    Standard_EXPORT Mesh2d_Node(const Standard_Real theX,
+                                const Standard_Real theY);
     // destructors
     Standard_EXPORT ~Mesh2d_Node();
 
 public:
 
-    Standard_EXPORT const gp_Pnt2d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT void                SetY(const Standard_Real theY);
-    Standard_EXPORT Standard_Real       X() const;
-    Standard_EXPORT Standard_Real       Y() const;
+    Standard_EXPORT Standard_Real   Distance(const Handle(Mesh2d_Node)& theOther) const;
+    Standard_EXPORT const gp_Pnt2d& Point() const;
+    Standard_EXPORT void            SetPoint(const gp_Pnt2d& thePoint);
+    Standard_EXPORT void            SetX(const Standard_Real theX);
+    Standard_EXPORT void            SetY(const Standard_Real theY);
+    Standard_EXPORT Standard_Real   X() const;
+    Standard_EXPORT Standard_Real   Y() const;
 
 private:
 

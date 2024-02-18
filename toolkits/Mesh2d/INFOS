@@ -1,4 +1,4 @@
-Mesh
+Mesh2d
 
-This package contains classes used to describes meshes data structures
-in 1d, 2d and 3d spaces.
+This package contains classes used to describes polygon meshes
+in 2d space.

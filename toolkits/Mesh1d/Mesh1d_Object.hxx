@@ -44,10 +44,6 @@ class Mesh1d_Object : public Standard_Transient
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT Mesh1d_Object();
     // destructors

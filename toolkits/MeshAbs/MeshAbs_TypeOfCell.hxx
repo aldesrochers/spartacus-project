@@ -31,41 +31,8 @@
 // ============================================================================
 enum MeshAbs_TypeOfCell
 {
-    MeshAbs_CT_LinearLine,
-
-    MeshAbs_CT_LinearLine1d,
-    MeshAbs_CT_QuadraticLine1d,
-
-    MeshAbs_CT_LinearHexahedron8N,
-    MeshAbs_CT_LinearLine2N,
-    MeshAbs_CT_LinearLine2N1d,
-    MeshAbs_CT_LinearLine2N2d,
-    MeshAbs_CT_LinearPentahedron6N,
-    MeshAbs_CT_LinearPyramid5N,
-    MeshAbs_CT_LinearQuadrangle4N,
-    MeshAbs_CT_LinearQuadrangle4N2d,
-    MeshAbs_CT_LinearTetrahedron4N,
-    MeshAbs_CT_LinearTriangle3N,
-    MeshAbs_CT_LinearTriangle3N2d,
-    MeshAbs_CT_QuadraticHexahedron20N,
-    MeshAbs_CT_QuadraticHexahedron27N,
-    MeshAbs_CT_QuadraticLine3N,
-    MeshAbs_CT_QuadraticLine3N1d,
-    MeshAbs_CT_QuadraticLine3N2d,
-    MeshAbs_CT_QuadraticPentahedron15N,
-    MeshAbs_CT_QuadraticPentahedron18N,
-    MeshAbs_CT_QuadraticPyramid13N,
-    MeshAbs_CT_QuadraticPyramid14N,
-    MeshAbs_CT_QuadraticQuadrangle8N,
-    MeshAbs_CT_QuadraticQuadrangle8N2d,
-    MeshAbs_CT_QuadraticQuadrangle9N,
-    MeshAbs_CT_QuadraticQuadrangle9N2d,
-    MeshAbs_CT_QuadraticTetrahedron10N,
-    MeshAbs_CT_QuadraticTriangle6N,
-    MeshAbs_CT_QuadraticTriangle6N2d,
-    MeshAbs_CT_QuadraticTriangle7N,
-    MeshAbs_CT_QuadraticTriangle7N2d,
-    MeshAbs_CT_Undefined
+    MeshAbs_TOC_LinearLine,
+    MeshAbs_TOC_QuadraticLine
 };
 
 

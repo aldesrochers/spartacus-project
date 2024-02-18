@@ -36,12 +36,96 @@ Mesh_Cell::Mesh_Cell()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh_Cell::Mesh_Cell(const Mesh_TypeOfCell theType,
+                     const TColStd_SequenceOfInteger &theConnectivity)
+    : myConnectivity(theConnectivity),
+    myType(theType)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
 Mesh_Cell::~Mesh_Cell()
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Connectivity()
+*/
+// ============================================================================
+const TColStd_SequenceOfInteger& Mesh_Cell::Connectivity() const
+{
+    return myConnectivity;
+}
+
+// ============================================================================
+/*!
+ *  \brief NbNodes()
+*/
+// ============================================================================
+Standard_Integer Mesh_Cell::NbNodes() const
+{
+    return myConnectivity.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+Standard_Integer Mesh_Cell::Node(const Standard_Integer theIndex) const
+{
+    return myConnectivity.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetConnectivity()
+*/
+// ============================================================================
+void Mesh_Cell::SetConnectivity(const TColStd_SequenceOfInteger &theConnectivity)
+{
+    myConnectivity = theConnectivity;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void Mesh_Cell::SetNode(const Standard_Integer theIndex,
+                        const Standard_Integer theNode)
+{
+    myConnectivity.SetValue(theIndex, theNode);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetType()
+*/
+// ============================================================================
+void Mesh_Cell::SetType(const Mesh_TypeOfCell theType)
+{
+    myType = theType;
+}
+
+// ============================================================================
+/*!
+ *  \brief Type()
+*/
+// ============================================================================
+Mesh_TypeOfCell Mesh_Cell::Type() const
+{
+    return myType;
 }
 
 

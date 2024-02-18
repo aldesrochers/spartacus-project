@@ -21,11 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_Object.hxx>
 #include <MeshDS_TNode.hxx>
-
-// OpenCascade
-#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -50,16 +46,6 @@ MeshDS_TNode::~MeshDS_TNode()
 
 // ============================================================================
 /*!
- *  \brief HasPoint()
-*/
-// ============================================================================
-Standard_Boolean MeshDS_TNode::HasPoint() const
-{
-    return !myPoint.IsNull();
-}
-
-// ============================================================================
-/*!
  *  \brief LinkedCells()
 */
 // ============================================================================
@@ -78,15 +64,6 @@ MeshDS_ListOfObject& MeshDS_TNode::LinkedCells()
     return myLinkedCells;
 }
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TNode::ObjectType() const
-{
-    return MeshAbs_OT_Node;
-}
 
 // ============================================================================
 /*!

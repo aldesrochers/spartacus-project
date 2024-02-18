@@ -27,9 +27,9 @@
 #include <NCollection_Array1.hxx>
 
 // Spartacus
-class Model_Element;
+#include <Model_Element.hxx>
 
 // Type definitions
-typedef NCollection_Array1<Model_Element>       Model_Array1OfElement;
+typedef NCollection_Array1<Handle(Model_Element)>   Model_Array1OfElement;
 
 #endif // __Model_Array1OfElement_hxx__

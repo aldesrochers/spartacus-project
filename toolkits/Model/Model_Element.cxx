@@ -39,12 +39,12 @@ Model_Element::Model_Element()
  *  \brief Constructor
 */
 // ============================================================================
-Model_Element::Model_Element(const Standard_Integer theMeshCell,
-                             const ModelAbs_TypeOfPhenomenon thePhenomenon,
-                             const ModelAbs_TypeOfModelisation theModelisation)
-    : myMeshCell(theMeshCell),
-    myPhenomenon(thePhenomenon),
-    myModelisation(theModelisation)
+Model_Element::Model_Element(const Standard_Integer theCellId,
+                             const Model_TypeOfPhenomenon thePhenomenon,
+                             const Model_TypeOfModelisation theModelisation)
+    : myCellId(theCellId),
+    myModelisation(theModelisation),
+    myPhenomenon(thePhenomenon)
 {
 
 }
@@ -61,12 +61,12 @@ Model_Element::~Model_Element()
 
 // ============================================================================
 /*!
- *  \brief MeshCell()
+ *  \brief CellId()
 */
 // ============================================================================
-Standard_Integer Model_Element::MeshCell() const
+Standard_Integer Model_Element::CellId() const
 {
-    return myMeshCell;
+    return myCellId;
 }
 
 // ============================================================================
@@ -74,7 +74,7 @@ Standard_Integer Model_Element::MeshCell() const
  *  \brief Modelisation()
 */
 // ============================================================================
-ModelAbs_TypeOfModelisation Model_Element::Modelisation() const
+Model_TypeOfModelisation Model_Element::Modelisation() const
 {
     return myModelisation;
 }
@@ -84,19 +84,19 @@ ModelAbs_TypeOfModelisation Model_Element::Modelisation() const
  *  \brief Phenomenon()
 */
 // ============================================================================
-ModelAbs_TypeOfPhenomenon Model_Element::Phenomenon() const
+Model_TypeOfPhenomenon Model_Element::Phenomenon() const
 {
     return myPhenomenon;
 }
 
 // ============================================================================
 /*!
- *  \brief SetMeshCell()
+ *  \brief SetCellId()
 */
 // ============================================================================
-void Model_Element::SetMeshCell(const Standard_Integer theMeshCell)
+void Model_Element::SetCellId(const Standard_Integer theCellId)
 {
-    myMeshCell = theMeshCell;
+    myCellId = theCellId;
 }
 
 // ============================================================================
@@ -104,7 +104,7 @@ void Model_Element::SetMeshCell(const Standard_Integer theMeshCell)
  *  \brief SetModelisation()
 */
 // ============================================================================
-void Model_Element::SetModelisation(const ModelAbs_TypeOfModelisation theModelisation)
+void Model_Element::SetModelisation(const Model_TypeOfModelisation theModelisation)
 {
     myModelisation = theModelisation;
 }
@@ -114,10 +114,16 @@ void Model_Element::SetModelisation(const ModelAbs_TypeOfModelisation theModelis
  *  \brief SetPhenomenon()
 */
 // ============================================================================
-void Model_Element::SetPhenomenon(const ModelAbs_TypeOfPhenomenon thePhenomenon)
+void Model_Element::SetPhenomenon(const Model_TypeOfPhenomenon thePhenomenon)
 {
     myPhenomenon = thePhenomenon;
 }
 
 
 
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Model_Element, Model_Object);
+IMPLEMENT_STANDARD_RTTIEXT(Model_Element, Model_Object);

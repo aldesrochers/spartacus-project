@@ -28,7 +28,6 @@
 #include <Mesh1d_Object.hxx>
 
 
-
 // Forward declarations
 class Mesh1d_Node;
 
@@ -45,10 +44,6 @@ class Mesh1d_Node : public Mesh1d_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT Mesh1d_Node();
     Standard_EXPORT Mesh1d_Node(const gp_Pnt1d& thePoint);
@@ -58,10 +53,10 @@ public:
 
 public:
 
-    Standard_EXPORT const gp_Pnt1d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT Standard_Real       X() const;
+    Standard_EXPORT const gp_Pnt1d& Point() const;
+    Standard_EXPORT void            SetPoint(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void            SetX(const Standard_Real theX);
+    Standard_EXPORT Standard_Real   X() const;
 
 private:
 

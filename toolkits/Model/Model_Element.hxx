@@ -23,14 +23,16 @@
 #ifndef __Model_Element_hxx__
 #define __Model_Element_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
 // Spartacus
-#include <ModelAbs_TypeOfModelisation.hxx>
-#include <ModelAbs_TypeOfPhenomenon.hxx>
+#include <Model_Object.hxx>
+#include <Model_TypeOfModelisation.hxx>
+#include <Model_TypeOfPhenomenon.hxx>
 
+// Forward declarations
+class Model_Element;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Model_Element, Model_Object);
 
 
 // ============================================================================
@@ -38,36 +40,36 @@
  *  \brief Model_Element
 */
 // ============================================================================
-class Model_Element
+class Model_Element : public Model_Object
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors
     Standard_EXPORT Model_Element();
-    Standard_EXPORT Model_Element(const Standard_Integer theMeshCell,
-                                  const ModelAbs_TypeOfPhenomenon thePhenomenon,
-                                  const ModelAbs_TypeOfModelisation theModelisation);
+    Standard_EXPORT Model_Element(const Standard_Integer theCellId,
+                                  const Model_TypeOfPhenomenon thePhenomenon,
+                                  const Model_TypeOfModelisation theModelisation);
     // destructors
     Standard_EXPORT ~Model_Element();
 
 public:
 
-    Standard_EXPORT Standard_Integer            MeshCell() const;
-    Standard_EXPORT ModelAbs_TypeOfModelisation Modelisation() const;
-    Standard_EXPORT ModelAbs_TypeOfPhenomenon   Phenomenon() const;
-    Standard_EXPORT void                        SetMeshCell(const Standard_Integer theMeshCell);
-    Standard_EXPORT void                        SetModelisation(const ModelAbs_TypeOfModelisation theModelisation);
-    Standard_EXPORT void                        SetPhenomenon(const ModelAbs_TypeOfPhenomenon thePhenomenon);
+    Standard_EXPORT Standard_Integer            CellId() const;
+    Standard_EXPORT Model_TypeOfModelisation    Modelisation() const;
+    Standard_EXPORT Model_TypeOfPhenomenon      Phenomenon() const;
+    Standard_EXPORT void                        SetCellId(const Standard_Integer theCellId);
+    Standard_EXPORT void                        SetModelisation(const Model_TypeOfModelisation theModelisation);
+    Standard_EXPORT void                        SetPhenomenon(const Model_TypeOfPhenomenon thePhenomenon);
 
 private:
 
-    Standard_Integer                myMeshCell;
-    ModelAbs_TypeOfModelisation     myModelisation;
-    ModelAbs_TypeOfPhenomenon       myPhenomenon;
+    Standard_Integer            myCellId;
+    Model_TypeOfModelisation    myModelisation;
+    Model_TypeOfPhenomenon      myPhenomenon;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Model_Element, Model_Object);
 
 };
 

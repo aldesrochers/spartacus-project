@@ -24,8 +24,10 @@
 #define __Mesh_Node_hxx__
 
 // Spartacus
-#include <gp_Pnt.hxx>
 #include <Mesh_Object.hxx>
+
+// OpenCascade
+#include <gp_Pnt.hxx>
 
 // Forward declarations
 class Mesh_Node;
@@ -43,31 +45,29 @@ class Mesh_Node : public Mesh_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT Mesh_Node();
     Standard_EXPORT Mesh_Node(const gp_Pnt& thePoint);
-    Standard_EXPORT Mesh_Node(const Standard_Real theX);
+    Standard_EXPORT Mesh_Node(const Standard_Real theX,
+                              const Standard_Real theY,
+                              const Standard_Real theZ);
     // destructors
     Standard_EXPORT ~Mesh_Node();
 
 public:
 
-    Standard_EXPORT const gp_Pnt&       Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
-    Standard_EXPORT void                SetX(const Standard_Real theX);
-    Standard_EXPORT void                SetY(const Standard_Real theY);
-    Standard_EXPORT void                SetZ(const Standard_Real theZ);
-    Standard_EXPORT Standard_Real       X() const;
-    Standard_EXPORT Standard_Real       Y() const;
-    Standard_EXPORT Standard_Real       Z() const;
+    Standard_EXPORT const gp_Pnt&   Point() const;
+    Standard_EXPORT void            SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT void            SetX(const Standard_Real theX);
+    Standard_EXPORT void            SetY(const Standard_Real theY);
+    Standard_EXPORT void            SetZ(const Standard_Real theZ);
+    Standard_EXPORT Standard_Real   X() const;
+    Standard_EXPORT Standard_Real   Y() const;
+    Standard_EXPORT Standard_Real   Z() const;
 
 private:
 
-    gp_Pnt        myPoint;
+    gp_Pnt      myPoint;
 
 public:
 

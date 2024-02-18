@@ -25,10 +25,10 @@
 
 // Spartacus
 #include <Mesh1d_Object.hxx>
-#include <MeshAbs_TypeOfCell.hxx>
+#include <Mesh1d_TypeOfCell.hxx>
 
 // OpenCascade
-#include <TColStd_ListOfInteger.hxx>
+#include <TColStd_SequenceOfInteger.hxx>
 
 // Forward declarations
 class Mesh1d_Cell;
@@ -46,18 +46,28 @@ class Mesh1d_Cell : public Mesh1d_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT Mesh1d_Cell();
+    Standard_EXPORT Mesh1d_Cell(const Mesh1d_TypeOfCell theType,
+                                const TColStd_SequenceOfInteger& theConnectivity);
     // destructors
     Standard_EXPORT ~Mesh1d_Cell();
 
 public:
 
-    virtual Standard_EXPORT void    Nodes(TColStd_ListOfInteger& theNodes) const = 0;
+    Standard_EXPORT const TColStd_SequenceOfInteger&    Connectivity() const;
+    Standard_EXPORT Standard_Integer                    NbNodes() const;
+    Standard_EXPORT Standard_Integer                    Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT void                                SetConnectivity(const TColStd_SequenceOfInteger& theConnectivity);
+    Standard_EXPORT void                                SetNode(const Standard_Integer theIndex,
+                                                                const Standard_Integer theNode);
+    Standard_EXPORT void                                SetType(const Mesh1d_TypeOfCell theType);
+    Standard_EXPORT Mesh1d_TypeOfCell                   Type() const;
+
+private:
+
+    TColStd_SequenceOfInteger   myConnectivity;
+    Mesh1d_TypeOfCell           myType;
 
 public:
 

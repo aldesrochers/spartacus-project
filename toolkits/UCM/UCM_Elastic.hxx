@@ -25,26 +25,24 @@
 
 // Spartacus
 #include <cmp_Elastic.hxx>
-#include <UCM_Material.hxx>
+#include <UCM_Model.hxx>
 
 // Forward declarations
 class UCM_Elastic;
 
 // Handles
-DEFINE_STANDARD_HANDLE(UCM_Elastic, UCM_Material);
+DEFINE_STANDARD_HANDLE(UCM_Elastic, UCM_Model);
 
 
 // ============================================================================
 /*!
  *  \brief UCM_Elastic
- *  Implementation of an elastic constitutive model with given equation :
+ *  Implementation of an elastic constitutive Material with given equation :
  *  Sig = E * (Eps - Alpha * (T - T0))
  *
- *  Variables are T, Eps
- *  Values are Sig
 */
 // ============================================================================
-class UCM_Elastic : public UCM_Material
+class UCM_Elastic : public UCM_Model
 {
 
 public:
@@ -53,9 +51,15 @@ public:
     // destructors
     Standard_EXPORT ~UCM_Elastic();
 
+private:
+
+    Standard_EXPORT math_Matrix     CurrentDerivatives() const Standard_OVERRIDE;
+    Standard_EXPORT math_Vector     CurrentValues() const Standard_OVERRIDE;
+    Standard_EXPORT math_Vector     CurrentVariables() const Standard_OVERRIDE;
+
 public:
 
-    DEFINE_STANDARD_RTTIEXT(UCM_Elastic, UCM_Material);
+    DEFINE_STANDARD_RTTIEXT(UCM_Elastic, UCM_Model);
 
 };
 

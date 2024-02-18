@@ -25,10 +25,6 @@ using namespace std;
 
 
 
-// Spartacus
-#include <BRepPoly_MakeLine.hxx>
-
-
 // ============================================================================
 /*!
  *  \brief Test_BRepPolyAPI
@@ -36,11 +32,6 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
-
-    BRepPoly_MakeLine aBuilder(gp_Pnt(0,0,0), gp_Pnt(1,0,0));
-    TopoDS_Edge anEdge = aBuilder.Edge();
-
-    cout << anEdge.IsNull() << endl;
 
 
 

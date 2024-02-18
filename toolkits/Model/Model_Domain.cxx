@@ -36,6 +36,17 @@ Model_Domain::Model_Domain()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Domain::Model_Domain(const Handle(Model_Mesh)& theMesh)
+    : myMesh(theMesh)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -44,10 +55,61 @@ Model_Domain::~Model_Domain()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief DegreeOfFreedom()
+*/
+// ============================================================================
+Handle(Model_DegreeOfFreedom) Model_Domain::DegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId) const
+{
+    return Handle(Model_DegreeOfFreedom)::DownCast(myDegreesOfFreedom.Find(theDegreeOfFreedomId));
+}
+
+// ============================================================================
+/*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+const Handle(Model_Mesh)& Model_Domain::Mesh() const
+{
+    return myMesh;
+}
+
+// ============================================================================
+/*!
+ *  \brief NbDegreesOfFreedom()
+*/
+// ============================================================================
+Standard_Integer Model_Domain::NbDegreesOfFreedom() const
+{
+    return myDegreesOfFreedom.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetDegreeOfFreedom()
+*/
+// ============================================================================
+void Model_Domain::SetDegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId,
+                                      const Handle(Model_DegreeOfFreedom) &theDegreeOfFreedom)
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief SetMesh()
+*/
+// ============================================================================
+void Model_Domain::SetMesh(const Handle(Model_Mesh) &theMesh)
+{
+    myMesh = theMesh;
+}
+
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
+IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);

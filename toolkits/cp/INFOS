@@ -1,9 +1,4 @@
-gp
-g -> geometric
-p -> processor
+ccp
+Cell Connectivity Pre-Processor
 
-This package contains additionals class used to described geometric
-objects in parametric space.
-See OpenCascade gp package.
-
-Maintainer : Alexis L. Desrochers
+This package contains classes used to describe cell connectivity.

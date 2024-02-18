@@ -52,8 +52,6 @@ public:
 
     Standard_EXPORT Standard_Boolean    IsPoint2d() const Standard_OVERRIDE;
     Standard_EXPORT const gp_Pnt2d&     Point2d() const Standard_OVERRIDE;
-    Standard_EXPORT Standard_Real       X() const Standard_OVERRIDE;
-    Standard_EXPORT Standard_Real       Y() const Standard_OVERRIDE;
 
 private:
 

@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_Object.hxx>
 #include <MeshDS_TCell.hxx>
-
 
 
 // ============================================================================
@@ -58,32 +56,12 @@ MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
-*/
-// ============================================================================
-const TColStd_SequenceOfInteger& MeshDS_TCell::Connectivity() const
-{
-    return myConnectivity;
-}
-
-// ============================================================================
-/*!
  *  \brief Nodes()
 */
 // ============================================================================
-const MeshDS_SequenceOfNode& MeshDS_TCell::Nodes() const
+const MeshDS_SequenceOfObject& MeshDS_TCell::Nodes() const
 {
     return myNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
-{
-    return MeshAbs_OT_Cell;
 }
 
 // ============================================================================
@@ -98,20 +76,10 @@ void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
 
 // ============================================================================
 /*!
- *  \brief SetConnectivity()
-*/
-// ============================================================================
-void MeshDS_TCell::SetConnectivity(const TColStd_SequenceOfInteger &theConnectivity)
-{
-    myConnectivity = theConnectivity;
-}
-
-// ============================================================================
-/*!
  *  \brief SetNodes()
 */
 // ============================================================================
-void MeshDS_TCell::SetNodes(const MeshDS_SequenceOfNode &theNodes)
+void MeshDS_TCell::SetNodes(const MeshDS_SequenceOfObject &theNodes)
 {
     myNodes = theNodes;
 }

@@ -27,9 +27,10 @@
 #include <NCollection_Sequence.hxx>
 
 // Spartacus
-class MeshDS_Object;
+#include <MeshDS_Object.hxx>
 
-// Type definitions
+// Type definition
 typedef NCollection_Sequence<MeshDS_Object>     MeshDS_SequenceOfObject;
+
 
 #endif // __MeshDS_SequenceOfObject_hxx__

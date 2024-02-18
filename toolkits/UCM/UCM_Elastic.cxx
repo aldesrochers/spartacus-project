@@ -44,10 +44,40 @@ UCM_Elastic::~UCM_Elastic()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief CurrentDerivatives()
+*/
+// ============================================================================
+math_Matrix UCM_Elastic::CurrentDerivatives() const
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief CurrentValues()
+*/
+// ============================================================================
+math_Vector UCM_Elastic::CurrentValues() const
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief CurrentVariables()
+*/
+// ============================================================================
+math_Vector UCM_Elastic::CurrentVariables() const
+{
+
+}
+
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(UCM_Elastic, UCM_Material);
-IMPLEMENT_STANDARD_RTTIEXT(UCM_Elastic, UCM_Material);
+IMPLEMENT_STANDARD_HANDLE(UCM_Elastic, UCM_Model);
+IMPLEMENT_STANDARD_RTTIEXT(UCM_Elastic, UCM_Model);

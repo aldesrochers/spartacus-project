@@ -22,7 +22,6 @@
 
 // Spartacus
 #include <MeshDS_Cell.hxx>
-#include <MeshDS_TCell.hxx>
 
 
 // ============================================================================

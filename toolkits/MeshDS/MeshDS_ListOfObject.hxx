@@ -27,9 +27,9 @@
 #include <NCollection_List.hxx>
 
 // Spartacus
-class MeshDS_Object;
+#include <MeshDS_Object.hxx>
 
-// Type definitions
+// Type definition
 typedef NCollection_List<MeshDS_Object>             MeshDS_ListOfObject;
 typedef NCollection_List<MeshDS_Object>::Iterator   MeshDS_ListIteratorOfListOfObject;
 

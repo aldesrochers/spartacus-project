@@ -36,6 +36,35 @@ Mesh2d_Grid::Mesh2d_Grid()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh2d_Grid::Mesh2d_Grid(const Mesh2d_Array1OfNode &theNodes,
+                         const Mesh2d_Array1OfCell &theCells,
+                         const Mesh2d_Array1OfGroup &theGroups)
+    : myCells(theCells),
+    myGroups(theGroups),
+    myNodes(theNodes)
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh2d_Grid::Mesh2d_Grid(const Standard_Integer theNbNodes,
+                         const Standard_Integer theNbCells,
+                         const Standard_Integer theNbGroups)
+{
+    myCells.Resize(1, theNbCells, Standard_False);
+    myGroups.Resize(1, theNbGroups, Standard_False);
+    myNodes.Resize(1, theNbNodes, Standard_False);
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -46,162 +75,32 @@ Mesh2d_Grid::~Mesh2d_Grid()
 
 // ============================================================================
 /*!
- *  \brief GroupOfLinearLines2N()
+ *  \brief Cell()
 */
 // ============================================================================
-const mp_Group& Mesh2d_Grid::GroupOfLinearLines2N(const Standard_Integer theIndex) const
+const Handle(Mesh2d_Cell)& Mesh2d_Grid::Cell(const Standard_Integer theIndex) const
 {
-    return myGroupsOfLinearLines2N.Value(theIndex);
+    return myCells.Value(theIndex);
 }
 
 // ============================================================================
 /*!
- *  \brief GroupOfNodes()
+ *  \brief NbCells()
 */
 // ============================================================================
-const mp_Group& Mesh2d_Grid::GroupOfNodes(const Standard_Integer theIndex) const
+Standard_Integer Mesh2d_Grid::NbCells() const
 {
-    return myGroupsOfNodes.Value(theIndex);
+    return myCells.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief GroupOfQuadraticLines3N()
+ *  \brief NbGroups()
 */
 // ============================================================================
-const mp_Group& Mesh2d_Grid::GroupOfQuadraticLines3N(const Standard_Integer theIndex) const
+Standard_Integer Mesh2d_Grid::NbGroups() const
 {
-    return myGroupsOfQuadraticLines3N.Value(theIndex);
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfLinearLines2N()
-*/
-// ============================================================================
-const TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfLinearLines2N() const
-{
-    return myGroupsOfLinearLines2N;
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfLinearLines2N()
-*/
-// ============================================================================
-TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfLinearLines2N()
-{
-    return myGroupsOfLinearLines2N;
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfNodes()
-*/
-// ============================================================================
-const TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfNodes() const
-{
-    return myGroupsOfNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfNodes()
-*/
-// ============================================================================
-TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfNodes()
-{
-    return myGroupsOfNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfQuadraticLines3N()
-*/
-// ============================================================================
-const TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfQuadraticLines3N() const
-{
-    return myGroupsOfQuadraticLines3N;
-}
-
-// ============================================================================
-/*!
- *  \brief GroupsOfQuadraticLines3N()
-*/
-// ============================================================================
-TColmp_Array1OfGroup& Mesh2d_Grid::GroupsOfQuadraticLines3N()
-{
-    return myGroupsOfQuadraticLines3N;
-}
-
-// ============================================================================
-/*!
- *  \brief LinearLine2N()
-*/
-// ============================================================================
-const mp_LinearLine2N& Mesh2d_Grid::LinearLine2N(const Standard_Integer theIndex) const
-{
-    return myLinearLines2N.Value(theIndex);
-}
-
-// ============================================================================
-/*!
- *  \brief LinearLines2N()
-*/
-// ============================================================================
-const TColmp_Array1OfLinearLine2N& Mesh2d_Grid::LinearLines2N() const
-{
-    return myLinearLines2N;
-}
-
-// ============================================================================
-/*!
- *  \brief LinearLines2N()
-*/
-// ============================================================================
-TColmp_Array1OfLinearLine2N& Mesh2d_Grid::LinearLines2N()
-{
-    return myLinearLines2N;
-}
-
-// ============================================================================
-/*!
- *  \brief NbGroupsOfLinearLines2N()
-*/
-// ============================================================================
-Standard_Integer Mesh2d_Grid::NbGroupsOfLinearLines2N() const
-{
-    return myGroupsOfLinearLines2N.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbGroupsOfNodes()
-*/
-// ============================================================================
-Standard_Integer Mesh2d_Grid::NbGroupsOfNodes() const
-{
-    return myGroupsOfNodes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbGroupsOfQuadraticLines3N()
-*/
-// ============================================================================
-Standard_Integer Mesh2d_Grid::NbGroupsOfQuadraticLines3N() const
-{
-    return myGroupsOfQuadraticLines3N.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbLinearLines2N()
-*/
-// ============================================================================
-Standard_Integer Mesh2d_Grid::NbLinearLines2N() const
-{
-    return myLinearLines2N.Size();
+    return myGroups.Size();
 }
 
 // ============================================================================
@@ -216,12 +115,12 @@ Standard_Integer Mesh2d_Grid::NbNodes() const
 
 // ============================================================================
 /*!
- *  \brief NbQuadraticLines3N()
+ *  \brief Group()
 */
 // ============================================================================
-Standard_Integer Mesh2d_Grid::NbQuadraticLines3N() const
+const Handle(Mesh2d_Group)& Mesh2d_Grid::Group(const Standard_Integer theIndex) const
 {
-    return myQuadraticLines3N.Size();
+    return myGroups.Value(theIndex);
 }
 
 // ============================================================================
@@ -229,73 +128,31 @@ Standard_Integer Mesh2d_Grid::NbQuadraticLines3N() const
  *  \brief Node()
 */
 // ============================================================================
-const mp_Node2d& Mesh2d_Grid::Node(const Standard_Integer theIndex) const
+const Handle(Mesh2d_Node)& Mesh2d_Grid::Node(const Standard_Integer theIndex) const
 {
     return myNodes.Value(theIndex);
 }
 
 // ============================================================================
 /*!
- *  \brief Nodes()
+ *  \brief ResizeCells()
 */
 // ============================================================================
-const TColmp_Array1OfNode2d& Mesh2d_Grid::Nodes() const
+void Mesh2d_Grid::ResizeCells(const Standard_Integer theNbCells,
+                              const Standard_Boolean toCopyData)
 {
-    return myNodes;
+    myCells.Resize(1, theNbCells, toCopyData);
 }
 
 // ============================================================================
 /*!
- *  \brief Nodes()
+ *  \brief ResizeGroups()
 */
 // ============================================================================
-TColmp_Array1OfNode2d& Mesh2d_Grid::Nodes()
+void Mesh2d_Grid::ResizeGroups(const Standard_Integer theNbGroups,
+                               const Standard_Boolean toCopyData)
 {
-    return myNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeGroupsOfLinearLines2N()
-*/
-// ============================================================================
-void Mesh2d_Grid::ResizeGroupsOfLinearLines2N(const Standard_Integer theNbGroups,
-                                              const Standard_Boolean toCopyData)
-{
-    myGroupsOfLinearLines2N.Resize(1, theNbGroups, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeGroupsOfNodes()
-*/
-// ============================================================================
-void Mesh2d_Grid::ResizeGroupsOfNodes(const Standard_Integer theNbGroups,
-                                      const Standard_Boolean toCopyData)
-{
-    myGroupsOfNodes.Resize(1, theNbGroups, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeGroupsOfQuadraticLines3N()
-*/
-// ============================================================================
-void Mesh2d_Grid::ResizeGroupsOfQuadraticLines3N(const Standard_Integer theNbGroups,
-                                                 const Standard_Boolean toCopyData)
-{
-    myGroupsOfQuadraticLines3N.Resize(1, theNbGroups, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeLinearLines2N()
-*/
-// ============================================================================
-void Mesh2d_Grid::ResizeLinearLines2N(const Standard_Integer theNbLinearLines,
-                                      const Standard_Boolean toCopyData)
-{
-    myLinearLines2N.Resize(1, theNbLinearLines, toCopyData);
+    myGroups.Resize(1, theNbGroups, toCopyData);
 }
 
 // ============================================================================
@@ -303,65 +160,32 @@ void Mesh2d_Grid::ResizeLinearLines2N(const Standard_Integer theNbLinearLines,
  *  \brief ResizeNodes()
 */
 // ============================================================================
-void Mesh2d_Grid::ResizeNodes(const Standard_Integer theNbLinearLines,
-                                      const Standard_Boolean toCopyData)
+void Mesh2d_Grid::ResizeNodes(const Standard_Integer theNbNodes,
+                              const Standard_Boolean toCopyData)
 {
-    myNodes.Resize(1, theNbLinearLines, toCopyData);
+    myNodes.Resize(1, theNbNodes, toCopyData);
 }
 
 // ============================================================================
 /*!
- *  \brief ResizeQuadraticLines3N()
+ *  \brief SetCell()
 */
 // ============================================================================
-void Mesh2d_Grid::ResizeQuadraticLines3N(const Standard_Integer theNbLinearLines,
-                                      const Standard_Boolean toCopyData)
+void Mesh2d_Grid::SetCell(const Standard_Integer theIndex,
+                          const Handle(Mesh2d_Cell) &theCell)
 {
-    myQuadraticLines3N.Resize(1, theNbLinearLines, toCopyData);
+    myCells.SetValue(theIndex, theCell);
 }
 
 // ============================================================================
 /*!
- *  \brief SetGroupOfLinearLines2N()
+ *  \brief SetGroup()
 */
 // ============================================================================
-void Mesh2d_Grid::SetGroupOfLinearLines2N(const Standard_Integer theIndex,
-                                          const mp_Group& theGroup)
+void Mesh2d_Grid::SetGroup(const Standard_Integer theIndex,
+                           const Handle(Mesh2d_Group) &theGroup)
 {
-    myGroupsOfLinearLines2N.SetValue(theIndex, theGroup);
-}
-
-// ============================================================================
-/*!
- *  \brief SetGroupOfNodes()
-*/
-// ============================================================================
-void Mesh2d_Grid::SetGroupOfNodes(const Standard_Integer theIndex,
-                                  const mp_Group& theGroup)
-{
-    myGroupsOfNodes.SetValue(theIndex, theGroup);
-}
-
-// ============================================================================
-/*!
- *  \brief SetGroupOfQuadraticLines3N()
-*/
-// ============================================================================
-void Mesh2d_Grid::SetGroupOfQuadraticLines3N(const Standard_Integer theIndex,
-                                             const mp_Group& theGroup)
-{
-    myGroupsOfQuadraticLines3N.SetValue(theIndex, theGroup);
-}
-
-// ============================================================================
-/*!
- *  \brief SetLinearLine2N()
-*/
-// ============================================================================
-void Mesh2d_Grid::SetLinearLine2N(const Standard_Integer theIndex,
-                                  const mp_LinearLine2N& theLinearLine2N)
-{
-    myLinearLines2N.SetValue(theIndex, theLinearLine2N);
+    myGroups.SetValue(theIndex, theGroup);
 }
 
 // ============================================================================
@@ -370,24 +194,14 @@ void Mesh2d_Grid::SetLinearLine2N(const Standard_Integer theIndex,
 */
 // ============================================================================
 void Mesh2d_Grid::SetNode(const Standard_Integer theIndex,
-                          const mp_Node2d& theNode)
+                          const Handle(Mesh2d_Node) &theNode)
 {
     myNodes.SetValue(theIndex, theNode);
 }
 
-// ============================================================================
-/*!
- *  \brief SetQuadraticLine3N()
-*/
-// ============================================================================
-void Mesh2d_Grid::SetQuadraticLine3N(const Standard_Integer theIndex,
-                                     const mp_QuadraticLine3N& theQuadraticLine3N)
-{
-    myQuadraticLines3N.SetValue(theIndex, theQuadraticLine3N);
-}
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh2d_Grid, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh2d_Grid, Standard_Transient)
+IMPLEMENT_STANDARD_HANDLE(Mesh2d_Grid, Mesh2d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh2d_Grid, Mesh2d_Object)

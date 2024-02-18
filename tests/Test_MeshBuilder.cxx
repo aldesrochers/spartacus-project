@@ -23,10 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <MeshBuilder_MakeNode.hxx>
-#include <MeshBuilder_MakeLinearLine.hxx>
-
 
 // ============================================================================
 /*!
@@ -35,12 +31,6 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
-
-    MeshDS_Node aNode1 = MeshBuilder_MakeNode(gp_Pnt1d(0.)).Node();
-    MeshDS_Node aNode2 = MeshBuilder_MakeNode(gp_Pnt1d(1.)).Node();
-    MeshDS_Node aNode3 = MeshBuilder_MakeNode(gp_Pnt1d(2.)).Node();
-    MeshDS_Cell aCell1 = MeshBuilder_MakeLinearLine(aNode1, aNode2).Cell();
-    MeshDS_Cell aCell2 = MeshBuilder_MakeLinearLine(aNode2, aNode3).Cell();
 
 
 

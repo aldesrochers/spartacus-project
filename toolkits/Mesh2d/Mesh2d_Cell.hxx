@@ -25,7 +25,6 @@
 
 // Spartacus
 #include <Mesh2d_Object.hxx>
-#include <MeshAbs_TypeOfCell.hxx>
 
 // Forward declarations
 class Mesh2d_Cell;
@@ -41,10 +40,6 @@ DEFINE_STANDARD_HANDLE(Mesh2d_Cell, Mesh2d_Object)
 // ============================================================================
 class Mesh2d_Cell : public Mesh2d_Object
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors

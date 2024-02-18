@@ -23,10 +23,17 @@
 #ifndef __Model_Node_hxx__
 #define __Model_Node_hxx__
 
+// Spartacus
+#include <Model_Object.hxx>
+
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-#include <TColStd_ListOfInteger.hxx>
+#include <TColStd_Array1OfReal.hxx>
+
+// Forward declarations
+class Model_Node;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Model_Node, Model_Object);
 
 
 // ============================================================================
@@ -34,34 +41,44 @@
  *  \brief Model_Node
 */
 // ============================================================================
-class Model_Node
+class Model_Node : public Model_Object
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors
     Standard_EXPORT Model_Node();
-    Standard_EXPORT Model_Node(const Standard_Integer theMeshNode);
-    Standard_EXPORT Model_Node(const Standard_Integer theMeshNode,
-                               const TColStd_ListOfInteger& theDegreesOfFreedom);
+    Standard_EXPORT Model_Node(const Standard_Integer theNbCoordinates);
+    Standard_EXPORT Model_Node(const Standard_Real theX);
+    Standard_EXPORT Model_Node(const Standard_Real theX,
+                               const Standard_Real theY);
+    Standard_EXPORT Model_Node(const Standard_Real theX,
+                               const Standard_Real theY,
+                               const Standard_Real theZ);
     // destructors
     Standard_EXPORT ~Model_Node();
 
 public:
 
-    Standard_EXPORT const TColStd_ListOfInteger&    DegreesOfFreedom() const;
-    Standard_EXPORT TColStd_ListOfInteger&          DegreesOfFreedom();
-    Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
-    Standard_EXPORT Standard_Integer                MeshNode() const;
-    Standard_EXPORT void                            SetMeshNode(const Standard_Integer theMeshNode);
+    Standard_EXPORT Standard_Real       Coordinate(const Standard_Integer theIndex) const;
+    Standard_EXPORT Standard_Integer    NbCoordinates() const;
+    Standard_EXPORT void                ResizeCoordinates(const Standard_Integer theNbCoordinates,
+                                                          const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                SetCoordinate(const Standard_Integer theIndex,
+                                                      const Standard_Real theCoordinate);
+    Standard_EXPORT void                SetX(const Standard_Real theX);
+    Standard_EXPORT void                SetY(const Standard_Real theY);
+    Standard_EXPORT void                SetZ(const Standard_Real theZ);
+    Standard_EXPORT Standard_Real       X() const;
+    Standard_EXPORT Standard_Real       Y() const;
+    Standard_EXPORT Standard_Real       Z() const;
 
 private:
 
-    TColStd_ListOfInteger       myDegreesOfFreedom;
-    Standard_Integer            myMeshNode;
+    TColStd_Array1OfReal        myCoordinates;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Model_Node, Model_Object);
 
 };
 
