@@ -437,28 +437,19 @@ set(MeshTools_PKG_SOURCES
 # =============================================================================
 
 set(Model_PKG_HEADERS
-    Model/Model_Cell.hxx
-    Model/Model_DegreeOfFreedom.hxx
     Model/Model_Domain.hxx
-    Model/Model_DomainComponent.hxx
     Model/Model_Element.hxx
-    Model/Model_Mesh.hxx
-    Model/Model_Node.hxx
+    Model/Model_Material.hxx
     Model/Model_Object.hxx
-    Model/Model_TypeOfDOF.hxx
-    Model/Model_TypeOfModelisation.hxx
-    Model/Model_TypeOfPhenomenon.hxx
+    Model/Model_Section.hxx
 )
 
 set(Model_PKG_SOURCES
-    Model/Model_Cell.cxx
-    Model/Model_DegreeOfFreedom.cxx
     Model/Model_Domain.cxx
-    Model/Model_DomainComponent.cxx
     Model/Model_Element.cxx
-    Model/Model_Mesh.cxx
-    Model/Model_Node.cxx
+    Model/Model_Material.cxx
     Model/Model_Object.cxx
+    Model/Model_Section.cxx
 )
 
 # =============================================================================
@@ -466,9 +457,12 @@ set(Model_PKG_SOURCES
 # =============================================================================
 
 set(ModelAbs_PKG_HEADERS
-    ModelAbs/ModelAbs_TypeOfDimensionality.hxx
-    ModelAbs/ModelAbs_TypeOfDOF.hxx
-    ModelAbs/ModelAbs_TypeOfElementProperty.hxx
+    ModelAbs/ModelAbs_Material.hxx
+    ModelAbs/ModelAbs_MaterialAttribute.hxx
+    ModelAbs/ModelAbs_Section.hxx
+    ModelAbs/ModelAbs_SectionAttribute.hxx
+    ModelAbs/ModelAbs_TypeOfMaterial.hxx
+    ModelAbs/ModelAbs_TypeOfMaterialAttribute.hxx
     ModelAbs/ModelAbs_TypeOfModelisation.hxx
     ModelAbs/ModelAbs_TypeOfPhenomenon.hxx
 )
@@ -478,11 +472,15 @@ set(ModelAbs_PKG_HEADERS
 # =============================================================================
 
 set(ModelDS_PKG_HEADERS
+    ModelDS/ModelDS_TMesh.hxx
     ModelDS/ModelDS_TObject.hxx
+    ModelDS/ModelDS_TPolyMesh1d.hxx
 )
 
 set(ModelDS_PKG_SOURCES
+    ModelDS/ModelDS_TMesh.cxx
     ModelDS/ModelDS_TObject.cxx
+    ModelDS/ModelDS_TPolyMesh1d.cxx
 )
 
 # =============================================================================
@@ -565,6 +563,39 @@ set(mp_PKG_SOURCES
     mp/mp_TriangleFace7N.cxx
 
     mp/mp_LinearLine.cxx
+)
+
+# =============================================================================
+# Package : PolyMesh1d
+# =============================================================================
+
+set(PolyMesh1d_PKG_HEADERS
+    PolyMesh1d/PolyMesh1d_Array1OfCell.hxx
+    PolyMesh1d/PolyMesh1d_Array1OfGroup.hxx
+    PolyMesh1d/PolyMesh1d_Array1OfNode.hxx
+    PolyMesh1d/PolyMesh1d_Cell.hxx
+    PolyMesh1d/PolyMesh1d_Group.hxx
+    PolyMesh1d/PolyMesh1d_Mesh.hxx
+    PolyMesh1d/PolyMesh1d_Node.hxx
+    PolyMesh1d/PolyMesh1d_Object.hxx
+)
+
+set(PolyMesh1d_PKG_SOURCES
+    PolyMesh1d/PolyMesh1d_Cell.cxx
+    PolyMesh1d/PolyMesh1d_Group.cxx
+    PolyMesh1d/PolyMesh1d_Mesh.cxx
+    PolyMesh1d/PolyMesh1d_Node.cxx
+    PolyMesh1d/PolyMesh1d_Object.cxx
+)
+
+# =============================================================================
+# Package : PolyMeshAbs
+# =============================================================================
+
+set(PolyMeshAbs_PKG_HEADERS
+    PolyMeshAbs/PolyMeshAbs_TypeOfCell.hxx
+    PolyMeshAbs/PolyMeshAbs_TypeOfCell1d.hxx
+    PolyMeshAbs/PolyMeshAbs_TypeOfCell2d.hxx
 )
 
 # =============================================================================
@@ -745,6 +776,8 @@ set(Ceres_HEADERS
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
+    ${PolyMesh1d_PKG_HEADERS}
+    ${PolyMeshAbs_PKG_HEADERS}
     #${TColgp_PKG_HEADERS}
     #${TColMesh1d_PKG_HEADERS}
     #${TColmp_PKG_HEADERS}
@@ -780,6 +813,7 @@ set(Ceres_SOURCES
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
+    ${PolyMesh1d_PKG_SOURCES}
     ${Trsf2d_PKG_SOURCES}
     ${UCM_PKG_SOURCES}
     ${UCMF_PKG_SOURCES}
@@ -816,6 +850,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
+    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMeshAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/TColmp

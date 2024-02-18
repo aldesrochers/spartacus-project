@@ -31,6 +31,7 @@
 // ============================================================================
 enum ModelAbs_TypeOfPhenomenon
 {
+    ModelAbs_PHE_Invalid,
     ModelAbs_PHE_Mechanic,
     ModelAbs_PHE_Thermic
 };

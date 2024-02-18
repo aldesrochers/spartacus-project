@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Element.hxx>
+#include <PolyMesh1d_Cell.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Element::Model_Element()
-    : myModelisation(ModelAbs_MOD_Invalid),
-    myPhenomenon(ModelAbs_PHE_Invalid)
+PolyMesh1d_Cell::PolyMesh1d_Cell()
+    : myType(PolyMeshAbs_Invalid1d)
 {
 
 }
@@ -41,12 +40,21 @@ Model_Element::Model_Element()
  *  \brief Constructor
 */
 // ============================================================================
-Model_Element::Model_Element(const Standard_Integer theCell,
-                             const ModelAbs_TypeOfPhenomenon thePhenomenon,
-                             const ModelAbs_TypeOfModelisation theModelisation)
-    : myCell(theCell),
-    myModelisation(theModelisation),
-    myPhenomenon(thePhenomenon)
+PolyMesh1d_Cell::PolyMesh1d_Cell(const Standard_Integer theNbNodes,
+                                 const PolyMeshAbs_TypeOfCell1d theType)
+    : myType(theType)
+{
+    myNodes.Resize(1, theNbNodes, Standard_False);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+PolyMesh1d_Cell::PolyMesh1d_Cell(const TColStd_Array1OfInteger &theNodes,
+                                 const PolyMeshAbs_TypeOfCell1d theType)
+    : myNodes(theNodes), myType(theType)
 {
 
 }
@@ -56,76 +64,76 @@ Model_Element::Model_Element(const Standard_Integer theCell,
  *  \brief Destructor
 */
 // ============================================================================
-Model_Element::~Model_Element()
+PolyMesh1d_Cell::~PolyMesh1d_Cell()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief NbNodes()
 */
 // ============================================================================
-Standard_Integer Model_Element::Cell() const
+Standard_Integer PolyMesh1d_Cell::NbNodes() const
 {
-    return myCell;
+    return myNodes.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief Modelisation()
+ *  \brief Node()
 */
 // ============================================================================
-ModelAbs_TypeOfModelisation Model_Element::Modelisation() const
+Standard_Integer PolyMesh1d_Cell::Node(const Standard_Integer theIndex) const
 {
-    return myModelisation;
+    return myNodes.Value(theIndex);
 }
 
 // ============================================================================
 /*!
- *  \brief Phenomenon()
+ *  \brief ResizeNodes()
 */
 // ============================================================================
-ModelAbs_TypeOfPhenomenon Model_Element::Phenomenon() const
+void PolyMesh1d_Cell::ResizeNodes(const Standard_Integer theNbNodes,
+                                  const Standard_Boolean toCopyData)
 {
-    return myPhenomenon;
+    myNodes.Resize(1, theNbNodes, toCopyData);
 }
 
 // ============================================================================
 /*!
- *  \brief SetCell()
+ *  \brief SetNode()
 */
 // ============================================================================
-void Model_Element::SetCell(const Standard_Integer theCell)
+void PolyMesh1d_Cell::SetNode(const Standard_Integer theIndex,
+                              const Standard_Integer theNode)
 {
-    myCell = theCell;
+    myNodes.SetValue(theIndex, theNode);
 }
 
 // ============================================================================
 /*!
- *  \brief SetModelisation()
+ *  \brief SetType()
 */
 // ============================================================================
-void Model_Element::SetModelisation(const ModelAbs_TypeOfModelisation theModelisation)
+void PolyMesh1d_Cell::SetType(const PolyMeshAbs_TypeOfCell1d theType)
 {
-    myModelisation = theModelisation;
+    myType = theType;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPhenomenon()
+ *  \brief Type()
 */
 // ============================================================================
-void Model_Element::SetPhenomenon(const ModelAbs_TypeOfPhenomenon thePhenomenon)
+PolyMeshAbs_TypeOfCell1d PolyMesh1d_Cell::Type() const
 {
-    myPhenomenon = thePhenomenon;
+    return myType;
 }
-
-
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Element, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Element, Model_Object);
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(PolyMesh1d_Cell, PolyMesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(PolyMesh1d_Cell, PolyMesh1d_Object)

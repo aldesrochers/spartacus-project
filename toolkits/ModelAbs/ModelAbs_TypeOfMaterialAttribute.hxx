@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-
+#ifndef __ModelAbs_TypeOfMaterialAttribute_hxx__
+#define __ModelAbs_TypeOfMaterialAttribute_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief ModelAbs_TypeOfMaterialAttribute
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum ModelAbs_TypeOfMaterialAttribute
 {
+    ModelAbs_MatAttr_Alpha,
+    ModelAbs_MatAttr_E,
+    ModelAbs_MatAttr_Nu
+};
 
 
-
-}
+#endif // __ModelAbs_TypeOfMaterialAttribute_hxx__

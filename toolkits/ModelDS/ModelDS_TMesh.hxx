@@ -20,24 +20,46 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_TypeOfDOF_hxx__
-#define __ModelAbs_TypeOfDOF_hxx__
+#ifndef __ModelDS_TMesh_hxx__
+#define __ModelDS_TMesh_hxx__
+
+// Spartacus
+#include <ModelDS_TObject.hxx>
+#include <PolyMesh1d_Mesh.hxx>
+
+// Forward declarations
+class ModelDS_TMesh;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TMesh, ModelDS_TObject);
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_TypeOfDOF
+ *  \brief ModelDS_TMesh
 */
 // ============================================================================
-enum ModelAbs_TypeOfDOF
+class ModelDS_TMesh : public ModelDS_TObject
 {
-    ModelAbs_DOF_DX,
-    ModelAbs_DOF_DY,
-    ModelAbs_DOF_DZ,
-    ModelAbs_DOF_DRX,
-    ModelAbs_DOF_DRY,
-    ModelAbs_DOF_DRZ
+
+public:
+    // constructors
+    Standard_EXPORT ModelDS_TMesh();
+    // destructors
+    Standard_EXPORT ~ModelDS_TMesh();
+
+public:
+
+    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh1d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh2d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh3d() const;
+    virtual const Handle(PolyMesh1d_Mesh)&      PolyMesh1d() const;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TMesh, ModelDS_TObject);
+
 };
 
 
-#endif // __ModelAbs_TypeOfDOF_hxx__
+#endif // __ModelDS_TMesh_hxx__

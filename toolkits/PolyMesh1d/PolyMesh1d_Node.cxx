@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Domain.hxx>
+#include <PolyMesh1d_Node.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,30 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Domain::Model_Domain()
+PolyMesh1d_Node::PolyMesh1d_Node()
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+PolyMesh1d_Node::PolyMesh1d_Node(const gp_Pnt1d& thePoint)
+    : myPoint(thePoint)
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+PolyMesh1d_Node::PolyMesh1d_Node(const Standard_Real theX)
+{
+    myPoint.SetX(theX);
 }
 
 // ============================================================================
@@ -39,35 +60,54 @@ Model_Domain::Model_Domain()
  *  \brief Destructor
 */
 // ============================================================================
-Model_Domain::~Model_Domain()
+PolyMesh1d_Node::~PolyMesh1d_Node()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief NbMaterials()
+ *  \brief Point()
 */
 // ============================================================================
-Standard_Integer Model_Domain::NbMaterials() const
+const gp_Pnt1d& PolyMesh1d_Node::Point() const
 {
-    return myMaterials.Size();
+    return myPoint;
 }
 
 // ============================================================================
 /*!
- *  \brief NbSections()
+ *  \brief SetPoint()
 */
 // ============================================================================
-Standard_Integer Model_Domain::NbSections() const
+void PolyMesh1d_Node::SetPoint(const gp_Pnt1d &thePoint)
 {
-    return mySections.Size();
+    myPoint = thePoint;
 }
 
+// ============================================================================
+/*!
+ *  \brief SetX()
+*/
+// ============================================================================
+void PolyMesh1d_Node::SetX(const Standard_Real theX)
+{
+    myPoint.SetX(theX);
+}
+
+// ============================================================================
+/*!
+ *  \brief X()
+*/
+// ============================================================================
+Standard_Real PolyMesh1d_Node::X() const
+{
+    return myPoint.X();
+}
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(PolyMesh1d_Node, PolyMesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(PolyMesh1d_Node, PolyMesh1d_Object)

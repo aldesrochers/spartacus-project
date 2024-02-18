@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_DegreeOfFreedom.hxx>
+#include <ModelDS_TPolyMesh1d.hxx>
 
 
 // ============================================================================
@@ -29,20 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_DegreeOfFreedom::Model_DegreeOfFreedom()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_DegreeOfFreedom::Model_DegreeOfFreedom(const Standard_Integer theNodeId,
-                                             const ModelAbs_TypeOfDOF theType)
-    : myNodeId(theNodeId),
-    myType(theType)
+ModelDS_TPolyMesh1d::ModelDS_TPolyMesh1d(const Handle(PolyMesh1d_Mesh)& theMesh)
+    : myMesh(theMesh)
 {
 
 }
@@ -52,54 +40,34 @@ Model_DegreeOfFreedom::Model_DegreeOfFreedom(const Standard_Integer theNodeId,
  *  \brief Destructor
 */
 // ============================================================================
-Model_DegreeOfFreedom::~Model_DegreeOfFreedom()
+ModelDS_TPolyMesh1d::~ModelDS_TPolyMesh1d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief NodeId()
+ *  \brief IsPolyMesh1d()
 */
 // ============================================================================
-Standard_Integer Model_DegreeOfFreedom::NodeId() const
+Standard_Boolean ModelDS_TPolyMesh1d::IsPolyMesh1d() const
 {
-    return myNodeId;
+    return Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief SetNodeId()
+ *  \brief PolyMesh1d()
 */
 // ============================================================================
-void Model_DegreeOfFreedom::SetNodeId(const Standard_Integer theNodeId)
+const Handle(PolyMesh1d_Mesh)& ModelDS_TPolyMesh1d::PolyMesh1d() const
 {
-    myNodeId = theNodeId;
-}
-
-// ============================================================================
-/*!
- *  \brief SetType()
-*/
-// ============================================================================
-void Model_DegreeOfFreedom::SetType(const ModelAbs_TypeOfDOF theType)
-{
-    myType = theType;
-}
-
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-ModelAbs_TypeOfDOF Model_DegreeOfFreedom::Type() const
-{
-    return myType;
+    return myMesh;
 }
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_DegreeOfFreedom, Model_DomainComponent);
-IMPLEMENT_STANDARD_RTTIEXT(Model_DegreeOfFreedom, Model_DomainComponent);
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TPolyMesh1d, ModelDS_TMesh);
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TPolyMesh1d, ModelDS_TMesh);

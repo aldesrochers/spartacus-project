@@ -20,21 +20,19 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-
+#ifndef __ModelAbs_SectionAttribute_hxx__
+#define __ModelAbs_SectionAttribute_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief ModelAbs_SectionAttribute
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum ModelAbs_SectionAttribute
 {
+    ModelAbs_SectionAttribute_Area
+};
 
 
-
-}
+#endif // __ModelAbs_SectionAttribute_hxx__

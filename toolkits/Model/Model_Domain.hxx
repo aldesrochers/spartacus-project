@@ -24,9 +24,9 @@
 #define __Model_Domain_hxx__
 
 // Spartacus
-#include <Model_DegreeOfFreedom.hxx>
-#include <Model_Mesh.hxx>
+#include <Model_Material.hxx>
 #include <Model_Object.hxx>
+#include <Model_Section.hxx>
 
 // OpenCascade
 #include <TColStd_DataMapOfIntegerTransient.hxx>
@@ -49,23 +49,22 @@ class Model_Domain : public Model_Object
 public:
     // constructors
     Standard_EXPORT Model_Domain();
-    Standard_EXPORT Model_Domain(const Handle(Model_Mesh)& theMesh);
     // destructors
     Standard_EXPORT ~Model_Domain();
 
 public:
 
-    Standard_EXPORT Handle(Model_DegreeOfFreedom)   DegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId) const;
-    Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
-    Standard_EXPORT const Handle(Model_Mesh)&       Mesh() const;
-    Standard_EXPORT void                            SetDegreeOfFreedom(const Standard_Integer theDegreeOfFreedomId,
-                                                                       const Handle(Model_DegreeOfFreedom)& theDegreeOfFreedom);
-    Standard_EXPORT void                            SetMesh(const Handle(Model_Mesh)& theMesh);
+    Standard_EXPORT Standard_Integer    NbMaterials() const;
+    Standard_EXPORT Standard_Integer    NbSections() const;
+    Standard_EXPORT Standard_Boolean    SetMaterial(const Standard_Integer theMaterialId,
+                                                    const Handle(Model_Material)& theMaterial);
+    Standard_EXPORT Standard_Boolean    SetSection(const Standard_Integer theSectionId,
+                                                   const Handle(Model_Section)& theSection);
 
 private:
 
-    TColStd_DataMapOfIntegerTransient   myDegreesOfFreedom;
-    Handle(Model_Mesh)                  myMesh;
+    TColStd_DataMapOfIntegerTransient   myMaterials;
+    TColStd_DataMapOfIntegerTransient   mySections;
 
 public:
 

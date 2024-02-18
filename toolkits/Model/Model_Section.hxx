@@ -20,58 +20,58 @@
 // ============================================================================
 
 
-#ifndef __Model_Element_hxx__
-#define __Model_Element_hxx__
+#ifndef __Model_Section_hxx__
+#define __Model_Section_hxx__
 
 // Spartacus
 #include <Model_Object.hxx>
-#include <ModelAbs_TypeOfModelisation.hxx>
-#include <ModelAbs_TypeOfPhenomenon.hxx>
+#include <ModelAbs_Section.hxx>
+#include <ModelAbs_SectionAttribute.hxx>
+
+// OpenCascade
+#include <TColStd_DataMapOfIntegerReal.hxx>
 
 // Forward declarations
-class Model_Element;
+class Model_Section;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Model_Element, Model_Object);
+DEFINE_STANDARD_HANDLE(Model_Section, Model_Object);
 
 
 // ============================================================================
 /*!
- *  \brief Model_Element
+ *  \brief Model_Section
 */
 // ============================================================================
-class Model_Element : public Model_Object
+class Model_Section : public Model_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT Model_Element();
-    Standard_EXPORT Model_Element(const Standard_Integer theCell,
-                                  const ModelAbs_TypeOfPhenomenon thePhenomenon,
-                                  const ModelAbs_TypeOfModelisation theModelisation);
+    Standard_EXPORT Model_Section();
+    Standard_EXPORT Model_Section(const ModelAbs_Section theType);
     // destructors
-    Standard_EXPORT ~Model_Element();
+    Standard_EXPORT ~Model_Section();
 
 public:
 
-    Standard_EXPORT Standard_Integer            Cell() const;
-    Standard_EXPORT ModelAbs_TypeOfModelisation Modelisation() const;
-    Standard_EXPORT ModelAbs_TypeOfPhenomenon   Phenomenon() const;
-    Standard_EXPORT void                        SetCell(const Standard_Integer theCell);
-    Standard_EXPORT void                        SetModelisation(const ModelAbs_TypeOfModelisation theModelisation);
-    Standard_EXPORT void                        SetPhenomenon(const ModelAbs_TypeOfPhenomenon thePhenomenon);
+    Standard_EXPORT Standard_Real       Attribute(const ModelAbs_SectionAttribute theAttribute) const;
+    Standard_EXPORT Standard_Integer    NbAttributes() const;
+    Standard_EXPORT void                SetAttribute(const ModelAbs_SectionAttribute theAttribute,
+                                                     const Standard_Real theValue);
+    Standard_EXPORT void                SetType(const ModelAbs_Section theType);
+    Standard_EXPORT ModelAbs_Section    Type() const;
 
 private:
 
-    Standard_Integer                myCell;
-    ModelAbs_TypeOfModelisation     myModelisation;
-    ModelAbs_TypeOfPhenomenon       myPhenomenon;
+    TColStd_DataMapOfIntegerReal    myAttributes;
+    ModelAbs_Section                myType;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Model_Element, Model_Object);
+    DEFINE_STANDARD_RTTIEXT(Model_Section, Model_Object);
 
 };
 
 
-#endif // __Model_Element_hxx__
+#endif // __Model_Section_hxx__

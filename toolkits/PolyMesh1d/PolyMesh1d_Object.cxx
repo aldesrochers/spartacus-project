@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Domain.hxx>
+#include <PolyMesh1d_Object.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Domain::Model_Domain()
+PolyMesh1d_Object::PolyMesh1d_Object()
 {
 
 }
@@ -39,35 +39,15 @@ Model_Domain::Model_Domain()
  *  \brief Destructor
 */
 // ============================================================================
-Model_Domain::~Model_Domain()
+PolyMesh1d_Object::~PolyMesh1d_Object()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief NbMaterials()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbMaterials() const
-{
-    return myMaterials.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbSections()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbSections() const
-{
-    return mySections.Size();
 }
 
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(PolyMesh1d_Object, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(PolyMesh1d_Object, Standard_Transient)

@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Domain.hxx>
+#include <Model_Material.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Domain::Model_Domain()
+Model_Material::Model_Material()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Material::Model_Material(const ModelAbs_Material theType)
+    : myType(theType)
 {
 
 }
@@ -39,35 +50,65 @@ Model_Domain::Model_Domain()
  *  \brief Destructor
 */
 // ============================================================================
-Model_Domain::~Model_Domain()
+Model_Material::~Model_Material()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief NbMaterials()
+ *  \brief Attribute()
 */
 // ============================================================================
-Standard_Integer Model_Domain::NbMaterials() const
+Standard_Real Model_Material::Attribute(const ModelAbs_MaterialAttribute theAttribute) const
 {
-    return myMaterials.Size();
+    return myAttributes.Find(theAttribute);
 }
 
 // ============================================================================
 /*!
- *  \brief NbSections()
+ *  \brief NbAttributes()
 */
 // ============================================================================
-Standard_Integer Model_Domain::NbSections() const
+Standard_Integer Model_Material::NbAttributes() const
 {
-    return mySections.Size();
+    return myAttributes.Size();
 }
 
+// ============================================================================
+/*!
+ *  \brief SetAttribute()
+*/
+// ============================================================================
+void Model_Material::SetAttribute(const ModelAbs_MaterialAttribute theAttribute,
+                                  const Standard_Real theValue)
+{
+    myAttributes.Bind(theAttribute, theValue);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetType()
+*/
+// ============================================================================
+void Model_Material::SetType(const ModelAbs_Material theType)
+{
+    myType = theType;
+}
+
+// ============================================================================
+/*!
+ *  \brief Type()
+*/
+// ============================================================================
+ModelAbs_Material Model_Material::Type() const
+{
+    return myType;
+}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);
+IMPLEMENT_STANDARD_HANDLE(Model_Material, Model_Object);
+IMPLEMENT_STANDARD_RTTIEXT(Model_Material, Model_Object);

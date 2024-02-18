@@ -20,54 +20,40 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Model_Domain.hxx>
+#ifndef __PolyMesh1d_Object_hxx__
+#define __PolyMesh1d_Object_hxx__
 
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_Domain::Model_Domain()
-{
+// Forward declarations
+class PolyMesh1d_Object;
 
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Model_Domain::~Model_Domain()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief NbMaterials()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbMaterials() const
-{
-    return myMaterials.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbSections()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbSections() const
-{
-    return mySections.Size();
-}
-
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);
+DEFINE_STANDARD_HANDLE(PolyMesh1d_Object, Standard_Transient)
+
+
+// ============================================================================
+/*!
+ *  \brief PolyMesh1d_Object
+*/
+// ============================================================================
+class PolyMesh1d_Object : public Standard_Transient
+{
+
+public:
+    // constructors
+    Standard_EXPORT PolyMesh1d_Object();
+    // destructors
+    Standard_EXPORT ~PolyMesh1d_Object();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(PolyMesh1d_Object, Standard_Transient)
+
+};
+
+
+#endif // __PolyMesh1d_Object_hxx__

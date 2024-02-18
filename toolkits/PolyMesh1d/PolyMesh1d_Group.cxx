@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Element.hxx>
+#include <PolyMesh1d_Group.hxx>
 
 
 // ============================================================================
@@ -29,9 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Element::Model_Element()
-    : myModelisation(ModelAbs_MOD_Invalid),
-    myPhenomenon(ModelAbs_PHE_Invalid)
+PolyMesh1d_Group::PolyMesh1d_Group()
 {
 
 }
@@ -41,12 +39,20 @@ Model_Element::Model_Element()
  *  \brief Constructor
 */
 // ============================================================================
-Model_Element::Model_Element(const Standard_Integer theCell,
-                             const ModelAbs_TypeOfPhenomenon thePhenomenon,
-                             const ModelAbs_TypeOfModelisation theModelisation)
-    : myCell(theCell),
-    myModelisation(theModelisation),
-    myPhenomenon(thePhenomenon)
+PolyMesh1d_Group::PolyMesh1d_Group(const Standard_Integer theNbCells,
+                                   const TCollection_AsciiString &theName)
+    : myName(theName)
+{
+    myCells.Resize(1, theNbCells, Standard_False);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+PolyMesh1d_Group::PolyMesh1d_Group(const TColStd_Array1OfInteger &theCells, const TCollection_AsciiString &theName)
+    : myCells(theCells), myName(theName)
 {
 
 }
@@ -56,7 +62,7 @@ Model_Element::Model_Element(const Standard_Integer theCell,
  *  \brief Destructor
 */
 // ============================================================================
-Model_Element::~Model_Element()
+PolyMesh1d_Group::~PolyMesh1d_Group()
 {
 
 }
@@ -66,29 +72,40 @@ Model_Element::~Model_Element()
  *  \brief Cell()
 */
 // ============================================================================
-Standard_Integer Model_Element::Cell() const
+Standard_Integer PolyMesh1d_Group::Cell(const Standard_Integer theIndex) const
 {
-    return myCell;
+    return myCells.Value(theIndex);
 }
 
 // ============================================================================
 /*!
- *  \brief Modelisation()
+ *  \brief Name()
 */
 // ============================================================================
-ModelAbs_TypeOfModelisation Model_Element::Modelisation() const
+const TCollection_AsciiString& PolyMesh1d_Group::Name() const
 {
-    return myModelisation;
+    return myName;
 }
 
 // ============================================================================
 /*!
- *  \brief Phenomenon()
+ *  \brief NbCells()
 */
 // ============================================================================
-ModelAbs_TypeOfPhenomenon Model_Element::Phenomenon() const
+Standard_Integer PolyMesh1d_Group::NbCells() const
 {
-    return myPhenomenon;
+    return myCells.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeCells()
+*/
+// ============================================================================
+void PolyMesh1d_Group::ResizeCells(const Standard_Integer theNbCells,
+                                   const Standard_Boolean toCopyData)
+{
+    myCells.Resize(1, theNbCells, toCopyData);
 }
 
 // ============================================================================
@@ -96,36 +113,24 @@ ModelAbs_TypeOfPhenomenon Model_Element::Phenomenon() const
  *  \brief SetCell()
 */
 // ============================================================================
-void Model_Element::SetCell(const Standard_Integer theCell)
+void PolyMesh1d_Group::SetCell(const Standard_Integer theIndex,
+                               const Standard_Integer theCell)
 {
-    myCell = theCell;
+    myCells.SetValue(theIndex, theCell);
 }
 
 // ============================================================================
 /*!
- *  \brief SetModelisation()
+ *  \brief SetName()
 */
 // ============================================================================
-void Model_Element::SetModelisation(const ModelAbs_TypeOfModelisation theModelisation)
+void PolyMesh1d_Group::SetName(const TCollection_AsciiString &theName)
 {
-    myModelisation = theModelisation;
+    myName = theName;
 }
-
-// ============================================================================
-/*!
- *  \brief SetPhenomenon()
-*/
-// ============================================================================
-void Model_Element::SetPhenomenon(const ModelAbs_TypeOfPhenomenon thePhenomenon)
-{
-    myPhenomenon = thePhenomenon;
-}
-
-
-
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Element, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Element, Model_Object);
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(PolyMesh1d_Group, PolyMesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(PolyMesh1d_Group, PolyMesh1d_Object)

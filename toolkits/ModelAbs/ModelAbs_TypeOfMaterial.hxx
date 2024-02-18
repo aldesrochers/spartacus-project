@@ -20,21 +20,20 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-
+#ifndef __ModelAbs_TypeOfMaterial_hxx__
+#define __ModelAbs_TypeOfMaterial_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief ModelAbs_TypeOfMaterial
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum ModelAbs_TypeOfMaterial
 {
+    ModelAbs_MAT_Elastic,
+    ModelAbs_MAT_ElastoPlastic
+};
 
 
-
-}
+#endif // __ModelAbs_TypeOfMaterial_hxx__

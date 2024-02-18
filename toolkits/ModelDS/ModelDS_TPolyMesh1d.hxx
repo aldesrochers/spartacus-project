@@ -20,20 +20,47 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_TypeOfElementProperty_hxx__
-#define __ModelAbs_TypeOfElementProperty_hxx__
+#ifndef __ModelDS_TPolyMesh1d_hxx__
+#define __ModelDS_TPolyMesh1d_hxx__
+
+// Spartacus
+#include <ModelDS_TMesh.hxx>
+
+// Forward declarations
+class ModelDS_TPolyMesh1d;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TPolyMesh1d, ModelDS_TMesh);
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_TypeOfElementProperty
+ *  \brief ModelDS_TPolyMesh1d
 */
 // ============================================================================
-enum ModelAbs_TypeOfElementProperty
+class ModelDS_TPolyMesh1d : public ModelDS_TMesh
 {
-    ModelAbs_EP_R,
-    ModelAbs_EP_T
+
+public:
+    // constructors
+    Standard_EXPORT ModelDS_TPolyMesh1d(const Handle(PolyMesh1d_Mesh)& theMesh);
+    // destructors
+    Standard_EXPORT ~ModelDS_TPolyMesh1d();
+
+public:
+
+    Standard_EXPORT Standard_Boolean                IsPolyMesh1d() const Standard_OVERRIDE;
+    Standard_EXPORT const Handle(PolyMesh1d_Mesh)&  PolyMesh1d() const Standard_OVERRIDE;
+
+private:
+
+    Handle(PolyMesh1d_Mesh)     myMesh;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TPolyMesh1d, ModelDS_TMesh);
+
 };
 
 
-#endif // __ModelAbs_TypeOfElementProperty_hxx__
+#endif // __ModelDS_TPolyMesh1d_hxx__

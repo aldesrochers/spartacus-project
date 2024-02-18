@@ -21,9 +21,10 @@
 
 
 // Spartacus
-#include <Model_Cell.hxx>
-#include <Model_MeshNode.hxx>
-#include <Model_Mesh.hxx>
+#include <ModelDS_TMesh.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -31,33 +32,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Cell::Model_Cell()
-    : myType(ModelAbs_CELL_Invalid)
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_Cell::Model_Cell(const ModelAbs_TypeOfCell theType,
-                               const Standard_Integer theNbNodes)
-    : myType(theType)
-{
-    myNodes.Resize(1, theNbNodes, Standard_False);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_Cell::Model_Cell(const ModelAbs_TypeOfCell theType,
-                               const TColStd_Array1OfInteger& theNodes)
-    : myNodes(theNodes),
-    myType(theType)
+ModelDS_TMesh::ModelDS_TMesh()
 {
 
 }
@@ -67,76 +42,56 @@ Model_Cell::Model_Cell(const ModelAbs_TypeOfCell theType,
  *  \brief Destructor
 */
 // ============================================================================
-Model_Cell::~Model_Cell()
+ModelDS_TMesh::~ModelDS_TMesh()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief NbNodes()
+ *  \brief IsPolyMesh1d()
 */
 // ============================================================================
-Standard_Integer Model_Cell::NbNodes() const
+Standard_Boolean ModelDS_TMesh::IsPolyMesh1d() const
 {
-    return myNodes.Size();
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief IsPolyMesh2d()
 */
 // ============================================================================
-Standard_Integer Model_Cell::Node(const Standard_Integer theIndex) const
+Standard_Boolean ModelDS_TMesh::IsPolyMesh2d() const
 {
-    return myNodes.Value(theIndex);
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief ResizeNodes()
+ *  \brief IsPolyMesh3d()
 */
 // ============================================================================
-void Model_Cell::ResizeNodes(const Standard_Integer theNbNodes,
-                             const Standard_Boolean toCopyData)
+Standard_Boolean ModelDS_TMesh::IsPolyMesh3d() const
 {
-    myNodes.Resize(1, theNbNodes, toCopyData);
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief SetNode()
+ *  \brief PolyMesh1d()
 */
 // ============================================================================
-void Model_Cell::SetNode(const Standard_Integer theIndex,
-                         const Standard_Integer theNodeId)
+const Handle(PolyMesh1d_Mesh)& ModelDS_TMesh::PolyMesh1d() const
 {
-    myNodes.SetValue(theIndex, theNodeId);
+    throw Standard_DomainError("ModelDS_TMesh::PolyMesh1d()");
 }
 
-// ============================================================================
-/*!
- *  \brief SetType()
-*/
-// ============================================================================
-void Model_Cell::SetType(const ModelAbs_TypeOfCell theType)
-{
-    myType = theType;
-}
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-ModelAbs_TypeOfCell Model_Cell::Type() const
-{
-    return myType;
-}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Cell, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Cell, Model_Object);
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TMesh, ModelDS_TObject);
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TMesh, ModelDS_TObject);

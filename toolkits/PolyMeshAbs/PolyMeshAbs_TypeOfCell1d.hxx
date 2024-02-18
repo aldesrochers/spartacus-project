@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-
+#ifndef __PolyMeshAbs_TypeOfCell1d_hxx__
+#define __PolyMeshAbs_TypeOfCell1d_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief PolyMeshAbs_TypeOfCell1d
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum PolyMeshAbs_TypeOfCell1d
 {
+    PolyMeshAbs_Invalid1d,
+    PolyMeshAbs_LinearLine1d,
+    PolyMeshAbs_QuadraticLine1d
+};
 
 
-
-}
+#endif // __PolyMeshAbs_TypeOfCell1d_hxx__

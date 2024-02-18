@@ -20,21 +20,17 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __PolyMesh1d_Array1OfNode_hxx__
+#define __PolyMesh1d_Array1OfNode_hxx__
+
+// OpenCascade
+#include <NCollection_Array1.hxx>
 
 // Spartacus
+#include <PolyMesh1d_Node.hxx>
+
+// Type definitions
+typedef NCollection_Array1<Handle(PolyMesh1d_Node)>     PolyMesh1d_Array1OfNode;
 
 
-
-// ============================================================================
-/*!
- *  \brief Test_Kernel
-*/
-// ============================================================================
-int main(int argc, char** argv)
-{
-
-
-
-}
+#endif // __PolyMesh1d_Array1OfNode_hxx__

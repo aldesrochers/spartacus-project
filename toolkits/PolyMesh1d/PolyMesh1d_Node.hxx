@@ -20,54 +20,52 @@
 // ============================================================================
 
 
+#ifndef __PolyMesh1d_Node_hxx__
+#define __PolyMesh1d_Node_hxx__
+
 // Spartacus
-#include <Model_Domain.hxx>
+#include <gp_Pnt1d.hxx>
+#include <PolyMesh1d_Object.hxx>
 
+// Forward declarations
+class PolyMesh1d_Node;
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Model_Domain::Model_Domain()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Model_Domain::~Model_Domain()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief NbMaterials()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbMaterials() const
-{
-    return myMaterials.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbSections()
-*/
-// ============================================================================
-Standard_Integer Model_Domain::NbSections() const
-{
-    return mySections.Size();
-}
-
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Domain, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Domain, Model_Object);
+DEFINE_STANDARD_HANDLE(PolyMesh1d_Node, PolyMesh1d_Object)
+
+
+// ============================================================================
+/*!
+ *  \brief PolyMesh1d_Node
+*/
+// ============================================================================
+class PolyMesh1d_Node : public PolyMesh1d_Object
+{
+
+public:
+    // constructors
+    Standard_EXPORT PolyMesh1d_Node();
+    Standard_EXPORT PolyMesh1d_Node(const gp_Pnt1d& thePoint);
+    Standard_EXPORT PolyMesh1d_Node(const Standard_Real theX);
+    // destructors
+    Standard_EXPORT ~PolyMesh1d_Node();
+
+public:
+
+    Standard_EXPORT const gp_Pnt1d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void                SetX(const Standard_Real theX);
+    Standard_EXPORT Standard_Real       X() const;
+
+private:
+
+    gp_Pnt1d    myPoint;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(PolyMesh1d_Node, PolyMesh1d_Object)
+
+};
+
+
+#endif // __PolyMesh1d_Node_hxx__

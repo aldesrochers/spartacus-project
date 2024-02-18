@@ -31,6 +31,7 @@
 // ============================================================================
 enum ModelAbs_TypeOfModelisation
 {
+    ModelAbs_MOD_Invalid,
     ModelAbs_MOD_ElasticTruss1d,
     ModelAbs_MOD_ElasticTruss2d,
     ModelAbs_MOD_ElasticTruss3d
