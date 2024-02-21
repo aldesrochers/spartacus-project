@@ -107,6 +107,18 @@ set(BRepPolyAPI_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : CM
+# =============================================================================
+
+set(CM_PKG_HEADERS
+    CM/CM_Material.hxx
+)
+
+set(CM_PKG_SOURCES
+    CM/CM_Material.cxx
+)
+
+# =============================================================================
 # Package : cmp
 # =============================================================================
 
@@ -164,6 +176,28 @@ set(EleProp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : FEAbs
+# =============================================================================
+
+set(FEAbs_PKG_HEADERS
+    FEAbs/FEAbs_TypeOfPhenomenon.hxx
+)
+
+# =============================================================================
+# Package : FEM
+# =============================================================================
+
+set(FEM_PKG_HEADERS
+    FEM/FEM_Model.hxx
+    FEM/FEM_Object.hxx
+)
+
+set(FEM_PKG_SOURCES
+    FEM/FEM_Model.cxx
+    FEM/FEM_Object.cxx
+)
+
+# =============================================================================
 # Package : gp
 # =============================================================================
 
@@ -205,6 +239,24 @@ set(Mech1d_PKG_SOURCES
     Mech1d/Mech1d_ElasticTruss.cxx
     Mech1d/Mech1d_Element.cxx
     Mech1d/Mech1d_Truss.cxx
+)
+
+# =============================================================================
+# Package : Mech2d
+# =============================================================================
+
+set(Mech2d_PKG_HEADERS
+    Mech2d/Mech2d_ElasticTruss.hxx
+    Mech2d/Mech2d_Element.hxx
+    Mech2d/Mech2d_Object.hxx
+    Mech2d/Mech2d_Truss.hxx
+)
+
+set(Mech2d_PKG_SOURCES
+    Mech2d/Mech2d_ElasticTruss.cxx
+    Mech2d/Mech2d_Element.cxx
+    Mech2d/Mech2d_Object.cxx
+    Mech2d/Mech2d_Truss.cxx
 )
 
 # =============================================================================
@@ -437,19 +489,21 @@ set(MeshTools_PKG_SOURCES
 # =============================================================================
 
 set(Model_PKG_HEADERS
-    Model/Model_Domain.hxx
-    Model/Model_Element.hxx
-    Model/Model_Material.hxx
+    Model/Model_Mesh.hxx
     Model/Model_Object.hxx
-    Model/Model_Section.hxx
+    Model/Model_PolyMesh.hxx
+    Model/Model_PolyMesh1d.hxx
+    Model/Model_PolyMesh2d.hxx
+    Model/Model_Triangulation.hxx
 )
 
 set(Model_PKG_SOURCES
-    Model/Model_Domain.cxx
-    Model/Model_Element.cxx
-    Model/Model_Material.cxx
+    Model/Model_Mesh.cxx
     Model/Model_Object.cxx
-    Model/Model_Section.cxx
+    Model/Model_PolyMesh.cxx
+    Model/Model_PolyMesh1d.cxx
+    Model/Model_PolyMesh2d.cxx
+    Model/Model_Triangulation.cxx
 )
 
 # =============================================================================
@@ -468,19 +522,41 @@ set(ModelAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : ModelBuilder
+# =============================================================================
+
+set(ModelBuilder_PKG_HEADERS
+    ModelBuilder/ModelBuilder_Command.hxx
+    ModelBuilder/ModelBuilder_MakeMesh.hxx
+    ModelBuilder/ModelBuilder_MakeModel.hxx
+)
+
+set(ModelBuilder_PKG_SOURCES
+    ModelBuilder/ModelBuilder_Command.cxx
+    ModelBuilder/ModelBuilder_MakeMesh.cxx
+    ModelBuilder/ModelBuilder_MakeModel.cxx
+)
+
+# =============================================================================
 # Package : ModelDS
 # =============================================================================
 
 set(ModelDS_PKG_HEADERS
+    ModelDS/ModelDS_Builder.hxx
+    ModelDS/ModelDS_Mesh.hxx
+    ModelDS/ModelDS_Model.hxx
+    ModelDS/ModelDS_Object.hxx
     ModelDS/ModelDS_TMesh.hxx
     ModelDS/ModelDS_TObject.hxx
-    ModelDS/ModelDS_TPolyMesh1d.hxx
 )
 
 set(ModelDS_PKG_SOURCES
+    ModelDS/ModelDS_Builder.cxx
+    ModelDS/ModelDS_Mesh.cxx
+    ModelDS/ModelDS_Model.cxx
+    ModelDS/ModelDS_Object.cxx
     ModelDS/ModelDS_TMesh.cxx
     ModelDS/ModelDS_TObject.cxx
-    ModelDS/ModelDS_TPolyMesh1d.cxx
 )
 
 # =============================================================================
@@ -566,6 +642,29 @@ set(mp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : PolyMesh
+# =============================================================================
+
+set(PolyMesh_PKG_HEADERS
+    PolyMesh/PolyMesh_Array1OfCell.hxx
+    PolyMesh/PolyMesh_Array1OfGroup.hxx
+    PolyMesh/PolyMesh_Array1OfNode.hxx
+    PolyMesh/PolyMesh_Cell.hxx
+    PolyMesh/PolyMesh_Group.hxx
+    PolyMesh/PolyMesh_Mesh.hxx
+    PolyMesh/PolyMesh_Node.hxx
+    PolyMesh/PolyMesh_Object.hxx
+)
+
+set(PolyMesh_PKG_SOURCES
+    PolyMesh/PolyMesh_Cell.cxx
+    PolyMesh/PolyMesh_Group.cxx
+    PolyMesh/PolyMesh_Mesh.cxx
+    PolyMesh/PolyMesh_Node.cxx
+    PolyMesh/PolyMesh_Object.cxx
+)
+
+# =============================================================================
 # Package : PolyMesh1d
 # =============================================================================
 
@@ -586,6 +685,29 @@ set(PolyMesh1d_PKG_SOURCES
     PolyMesh1d/PolyMesh1d_Mesh.cxx
     PolyMesh1d/PolyMesh1d_Node.cxx
     PolyMesh1d/PolyMesh1d_Object.cxx
+)
+
+# =============================================================================
+# Package : PolyMesh2d
+# =============================================================================
+
+set(PolyMesh2d_PKG_HEADERS
+    PolyMesh2d/PolyMesh2d_Array1OfCell.hxx
+    PolyMesh2d/PolyMesh2d_Array1OfGroup.hxx
+    PolyMesh2d/PolyMesh2d_Array1OfNode.hxx
+    PolyMesh2d/PolyMesh2d_Cell.hxx
+    PolyMesh2d/PolyMesh2d_Group.hxx
+    PolyMesh2d/PolyMesh2d_Mesh.hxx
+    PolyMesh2d/PolyMesh2d_Node.hxx
+    PolyMesh2d/PolyMesh2d_Object.hxx
+)
+
+set(PolyMesh2d_PKG_SOURCES
+    PolyMesh2d/PolyMesh2d_Cell.cxx
+    PolyMesh2d/PolyMesh2d_Group.cxx
+    PolyMesh2d/PolyMesh2d_Mesh.cxx
+    PolyMesh2d/PolyMesh2d_Node.cxx
+    PolyMesh2d/PolyMesh2d_Object.cxx
 )
 
 # =============================================================================
@@ -730,20 +852,37 @@ set(XSAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : XSM2d
+# =============================================================================
+
+set(XSM2d_PKG_HEADERS
+    XSM2d/XSM2d_Elastic.hxx
+    XSM2d/XSM2d_Section.hxx
+)
+
+set(XSM2d_PKG_SOURCES
+    XSM2d/XSM2d_Elastic.cxx
+    XSM2d/XSM2d_Section.cxx
+)
+
+# =============================================================================
 # Package : xsp
 # =============================================================================
 
 set(xsp_PKG_HEADERS
     xsp/xsp_Circle.hxx
+    xsp/xsp_Generic.hxx
     xsp/xsp_Rectangle.hxx
     xsp/xsp_Square.hxx
 )
 
 set(xsp_PKG_SOURCES
     xsp/xsp_Circle.cxx
+    xsp/xsp_Generic.cxx
     xsp/xsp_Rectangle.cxx
     xsp/xsp_Square.cxx
 )
+
 
 
 # =============================================================================
@@ -756,12 +895,16 @@ set(Ceres_HEADERS
     #${BRepCellAPI_PKG_HEADERS}
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
+    ${CM_PKG_HEADERS}
     ${cmp_PKG_HEADERS}
     #${cp_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
+    ${FEAbs_PKG_HEADERS}
+    ${FEM_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     #${material_PKG_HEADERS}
     ${Mech1d_PKG_HEADERS}
+    ${Mech2d_PKG_HEADERS}
     #${Mesh_PKG_HEADERS}
     #${Mesh1d_PKG_HEADERS}
     ${Mesh2d_PKG_HEADERS}
@@ -773,10 +916,13 @@ set(Ceres_HEADERS
     ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
+    ${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
+    ${PolyMesh_PKG_HEADERS}
     ${PolyMesh1d_PKG_HEADERS}
+    ${PolyMesh2d_PKG_HEADERS}
     ${PolyMeshAbs_PKG_HEADERS}
     #${TColgp_PKG_HEADERS}
     #${TColMesh1d_PKG_HEADERS}
@@ -786,7 +932,8 @@ set(Ceres_HEADERS
     ${UCMF_PKG_HEADERS}
     #${XS_PKG_HEADERS}
     #${XSAbs_PKG_HEADERS}
-    #${xsp_PKG_HEADERS}
+    ${xsp_PKG_HEADERS}
+    ${XSM2d_PKG_HEADERS}
 )
 
 # source files
@@ -795,12 +942,15 @@ set(Ceres_SOURCES
     #${BRepCellAPI_PKG_SOURCES}
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
+    ${CM_PKG_SOURCES}
     ${cmp_PKG_SOURCES}
     #${cp_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
+    ${FEM_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     #${material_PKG_SOURCES}
     ${Mech1d_PKG_SOURCES}
+    ${Mech2d_PKG_SOURCES}
     #${Mesh_PKG_SOURCES}
     #${Mesh1d_PKG_SOURCES}
     ${Mesh2d_PKG_SOURCES}
@@ -810,15 +960,19 @@ set(Ceres_SOURCES
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
+    ${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
+    ${PolyMesh_PKG_SOURCES}
     ${PolyMesh1d_PKG_SOURCES}
+    ${PolyMesh2d_PKG_SOURCES}
     ${Trsf2d_PKG_SOURCES}
     ${UCM_PKG_SOURCES}
     ${UCMF_PKG_SOURCES}
     #${XS_PKG_SOURCES}
-    #${xsp_PKG_SOURCES}
+    ${xsp_PKG_SOURCES}
+    ${XSM2d_PKG_SOURCES}
 )
 
 # include directories
@@ -829,13 +983,17 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPoly
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
+    ${CMAKE_CURRENT_SOURCE_DIR}/CM
     ${CMAKE_CURRENT_SOURCE_DIR}/cmp
     ${CMAKE_CURRENT_SOURCE_DIR}/cp
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/FEM
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/material
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/Mech2d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh2d
@@ -847,10 +1005,13 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
     ${CMAKE_CURRENT_SOURCE_DIR}/Model
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
+    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh2d
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMeshAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
@@ -861,6 +1022,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/XS
     ${CMAKE_CURRENT_SOURCE_DIR}/XSAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/xsp
+    ${CMAKE_CURRENT_SOURCE_DIR}/XSM2d
     ${OpenCASCADE_INCLUDE_DIR}
     ${Triangle_INCLUDE_DIRS}
 )

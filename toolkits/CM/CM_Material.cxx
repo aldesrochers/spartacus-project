@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <UCM_Material.hxx>
+#include <CM_Material.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-UCM_Material::UCM_Material()
+CM_Material::CM_Material()
 {
 
 }
@@ -39,7 +39,7 @@ UCM_Material::UCM_Material()
  *  \brief Destructor
 */
 // ============================================================================
-UCM_Material::~UCM_Material()
+CM_Material::~CM_Material()
 {
 
 }
@@ -49,5 +49,5 @@ UCM_Material::~UCM_Material()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(UCM_Material, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(UCM_Material, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(CM_Material, Standard_Transient);
+IMPLEMENT_STANDARD_RTTIEXT(CM_Material, Standard_Transient);

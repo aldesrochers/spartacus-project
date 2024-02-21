@@ -1,4 +1,4 @@
-Mech1d
+PolyMesh1d
 
-This package contains implementation of mechanic finite elements
-in 1d space.
+This packages contains classes used to build polygon meshes
+in 1d spaces.

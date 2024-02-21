@@ -1,5 +1,5 @@
 CM
 Constitutive Model
 
-This package contains classes used to describe material
-behavior in a continuum.
+This package contains classes that implements material constitutive
+models used by finite elements.

@@ -23,9 +23,6 @@
 // Spartacus
 #include <ModelDS_TMesh.hxx>
 
-// OpenCascade
-#include <Standard_DomainError.hxx>
-
 
 // ============================================================================
 /*!
@@ -49,45 +46,23 @@ ModelDS_TMesh::~ModelDS_TMesh()
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh1d()
+ *  \brief Representation()
 */
 // ============================================================================
-Standard_Boolean ModelDS_TMesh::IsPolyMesh1d() const
+const Handle(Model_Mesh)& ModelDS_TMesh::Representation() const
 {
-    return Standard_False;
+    return myRepresentation;
 }
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh2d()
+ *  \brief SetRepresentation()
 */
 // ============================================================================
-Standard_Boolean ModelDS_TMesh::IsPolyMesh2d() const
+void ModelDS_TMesh::SetRepresentation(const Handle(Model_Mesh) &theRepresentation)
 {
-    return Standard_False;
+    myRepresentation = theRepresentation;
 }
-
-// ============================================================================
-/*!
- *  \brief IsPolyMesh3d()
-*/
-// ============================================================================
-Standard_Boolean ModelDS_TMesh::IsPolyMesh3d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief PolyMesh1d()
-*/
-// ============================================================================
-const Handle(PolyMesh1d_Mesh)& ModelDS_TMesh::PolyMesh1d() const
-{
-    throw Standard_DomainError("ModelDS_TMesh::PolyMesh1d()");
-}
-
-
 
 
 // ****************************************************************************

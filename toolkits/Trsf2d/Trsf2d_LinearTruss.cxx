@@ -39,9 +39,8 @@ Trsf2d_LinearTruss::Trsf2d_LinearTruss()
  *  \brief Constructor
 */
 // ============================================================================
-Trsf2d_LinearTruss::Trsf2d_LinearTruss(const gp_Pnt2d& thePoint1,
-                                       const gp_Pnt2d& thePoint2)
-    : Trsf2d_Truss(thePoint1, thePoint2)
+Trsf2d_LinearTruss::Trsf2d_LinearTruss(const Handle(Mesh2d_LinearLine)& theCell)
+    : Trsf2d_Truss(theCell)
 {
 
 }
@@ -58,15 +57,32 @@ Trsf2d_LinearTruss::~Trsf2d_LinearTruss()
 
 // ============================================================================
 /*!
- *  \brief Transformation()
+ *  \brief CurrentTransformation()
 */
 // ============================================================================
-Standard_Boolean Trsf2d_LinearTruss::Transformation(const math_Vector &U,
-                                                    math_Matrix &T) const
+math_Matrix Trsf2d_LinearTruss::CurrentTransformation(const math_Vector &theDisplacements)
 {
-
+    return InitialTransformation();
 }
 
+// ============================================================================
+/*!
+ *  \brief InitialTransformation()
+*/
+// ============================================================================
+math_Matrix Trsf2d_LinearTruss::InitialTransformation() const
+{
+    gp_Pnt2d P1 = myCell->Node1()->Point();
+    gp_Pnt2d P2 = myCell->Node2()->Point();
+    gp_Vec2d V(P1,P2);
+    math_Matrix T(1,2,1,4,0.);
+    T(1,1) = V.X();
+    T(1,2) = V.Y();
+    T(2,3) = V.X();
+    T(2,4) = V.Y();
+    return T;
+
+}
 
 
 // ****************************************************************************

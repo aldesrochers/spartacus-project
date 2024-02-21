@@ -1,0 +1,4 @@
+ModelRep
+
+This package contains classes used to describe transient representation
+of model data structures used in ModelDS.

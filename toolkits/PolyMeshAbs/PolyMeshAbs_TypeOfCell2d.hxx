@@ -32,8 +32,14 @@
 enum PolyMeshAbs_TypeOfCell2d
 {
     PolyMeshAbs_Invalid2d,
+    PolyMeshAbs_BiQuadraticQuadrangle2d,
+    PolyMeshAbs_BiQuadraticTriangle2d,
     PolyMeshAbs_LinearLine2d,
-    PolyMeshAbs_QuadraticLine2d
+    PolyMeshAbs_LinearQuadrangle2d,
+    PolyMeshAbs_LinearTriangle2d,
+    PolyMeshAbs_QuadraticLine2d,
+    PolyMeshAbs_QuadraticQuadrangle2d,
+    PolyMeshAbs_QuadraticTriangle2d
 };
 
 

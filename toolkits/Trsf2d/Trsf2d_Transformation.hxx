@@ -28,6 +28,7 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 #include <math_Matrix.hxx>
+#include <math_Vector.hxx>
 
 // Forward declarations
 class Trsf2d_Transformation;
@@ -57,8 +58,8 @@ public:
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean    Transformation(const math_Vector& U,
-                                                               math_Matrix& T) const = 0;
+    virtual Standard_EXPORT math_Matrix     CurrentTransformation(const math_Vector& theDisplacements) = 0;
+    virtual Standard_EXPORT math_Matrix     InitialTransformation() const = 0;
 
 public:
 

@@ -24,7 +24,7 @@
 #define __Trsf2d_Truss_hxx__
 
 // Spartacus
-#include <gp_Pnt2d.hxx>
+#include <Mesh2d_LinearLine.hxx>
 #include <Trsf2d_Transformation.hxx>
 
 // Forward declarations
@@ -45,23 +45,18 @@ class Trsf2d_Truss : public Trsf2d_Transformation
 public:
     // constructors
     Standard_EXPORT Trsf2d_Truss();
-    Standard_EXPORT Trsf2d_Truss(const gp_Pnt2d& thePoint1,
-                                 const gp_Pnt2d& thePoint2);
+    Standard_EXPORT Trsf2d_Truss(const Handle(Mesh2d_LinearLine)& theCell);
     // destructors
     Standard_EXPORT ~Trsf2d_Truss();
 
 public:
 
-    Standard_EXPORT Standard_Real       Length() const;
-    Standard_EXPORT const gp_Pnt2d&     Point1() const;
-    Standard_EXPORT const gp_Pnt2d&     Point2() const;
-    Standard_EXPORT void                SetPoint1(const gp_Pnt2d& thePoint1);
-    Standard_EXPORT void                SetPoint2(const gp_Pnt2d& thePoint2);
+    Standard_EXPORT const Handle(Mesh2d_LinearLine)&    Cell() const;
+    Standard_EXPORT void                                SetCell(const Handle(Mesh2d_LinearLine)& theCell);
 
-private:
+protected:
 
-    gp_Pnt2d        myPoint1;
-    gp_Pnt2d        myPoint2;
+    Handle(Mesh2d_LinearLine)   myCell;
 
 public:
 

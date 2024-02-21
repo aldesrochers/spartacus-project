@@ -44,15 +44,14 @@ class Trsf2d_LinearTruss : public Trsf2d_Truss
 public:
     // constructors
     Standard_EXPORT Trsf2d_LinearTruss();
-    Standard_EXPORT Trsf2d_LinearTruss(const gp_Pnt2d& thePoint1,
-                                       const gp_Pnt2d& thePoint2);
+    Standard_EXPORT Trsf2d_LinearTruss(const Handle(Mesh2d_LinearLine)& theCell);
     // destructors
     Standard_EXPORT ~Trsf2d_LinearTruss();
 
 public:
 
-    Standard_EXPORT Standard_Boolean    Transformation(const math_Vector& U,
-                                                       math_Matrix& T) const Standard_OVERRIDE;
+    Standard_EXPORT math_Matrix     CurrentTransformation(const math_Vector& theDisplacements) Standard_OVERRIDE;
+    Standard_EXPORT math_Matrix     InitialTransformation() const Standard_OVERRIDE;
 
 public:
 

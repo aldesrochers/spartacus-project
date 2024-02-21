@@ -32,8 +32,23 @@
 enum PolyMeshAbs_TypeOfCell
 {
     PolyMeshAbs_Invalid,
+    PolyMeshAbs_BiQuadraticHexahedron,
+    PolyMeshAbs_BiQuadraticQuadrangle,
+    PolyMeshAbs_BiQuadraticTriangle,
+    PolyMeshAbs_LinearHexahedron,
     PolyMeshAbs_LinearLine,
-    PolyMeshAbs_QuadraticLine
+    PolyMeshAbs_LinearPentahedron,
+    PolyMeshAbs_LinearPyramid,
+    PolyMeshAbs_LinearQuadrangle,
+    PolyMeshAbs_LinearTetrahedron,
+    PolyMeshAbs_LinearTriangle,
+    PolyMeshAbs_QuadraticHexahedron,
+    PolyMeshAbs_QuadraticLine,
+    PolyMeshAbs_QuadraticPentahedron,
+    PolyMeshAbs_QuadraticPyramid,
+    PolyMeshAbs_QuadraticQuadrangle,
+    PolyMeshAbs_QuadraticTetrahedron,
+    PolyMeshAbs_QuadraticTriangle
 };
 
 

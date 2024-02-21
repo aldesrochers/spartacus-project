@@ -39,10 +39,8 @@ Trsf2d_Truss::Trsf2d_Truss()
  *  \brief Constructor
 */
 // ============================================================================
-Trsf2d_Truss::Trsf2d_Truss(const gp_Pnt2d& thePoint1,
-                           const gp_Pnt2d& thePoint2)
-    : myPoint1(thePoint1),
-    myPoint2(thePoint2)
+Trsf2d_Truss::Trsf2d_Truss(const Handle(Mesh2d_LinearLine)& theCell)
+    : myCell(theCell)
 {
 
 }
@@ -59,54 +57,23 @@ Trsf2d_Truss::~Trsf2d_Truss()
 
 // ============================================================================
 /*!
- *  \brief Length()
+ *  \brief Cell()
 */
 // ============================================================================
-Standard_Real Trsf2d_Truss::Length() const
+const Handle(Mesh2d_LinearLine)& Trsf2d_Truss::Cell() const
 {
-    return myPoint1.Distance(myPoint2);
+    return myCell;
 }
 
 // ============================================================================
 /*!
- *  \brief Point1()
+ *  \brief SetCell()
 */
 // ============================================================================
-const gp_Pnt2d& Trsf2d_Truss::Point1() const
+void Trsf2d_Truss::SetCell(const Handle(Mesh2d_LinearLine) &theCell)
 {
-    return myPoint1;
+    myCell = theCell;
 }
-
-// ============================================================================
-/*!
- *  \brief Point2()
-*/
-// ============================================================================
-const gp_Pnt2d& Trsf2d_Truss::Point2() const
-{
-    return myPoint2;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPoint1()
-*/
-// ============================================================================
-void Trsf2d_Truss::SetPoint1(const gp_Pnt2d &thePoint1)
-{
-    myPoint1 = thePoint1;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPoint2()
-*/
-// ============================================================================
-void Trsf2d_Truss::SetPoint2(const gp_Pnt2d &thePoint2)
-{
-    myPoint2 = thePoint2;
-}
-
 
 
 

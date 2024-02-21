@@ -1,0 +1,4 @@
+PolyMesh2d
+
+This packages contains classes used to build polygon meshes
+in 2d spaces.

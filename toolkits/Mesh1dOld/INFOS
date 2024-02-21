@@ -1,0 +1,4 @@
+Mesh1d
+
+This package contains classes used to describes polygon meshes
+in 1d space.

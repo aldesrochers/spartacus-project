@@ -24,8 +24,8 @@
 #define __ModelDS_TMesh_hxx__
 
 // Spartacus
+#include <Model_Mesh.hxx>
 #include <ModelDS_TObject.hxx>
-#include <PolyMesh1d_Mesh.hxx>
 
 // Forward declarations
 class ModelDS_TMesh;
@@ -50,10 +50,12 @@ public:
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh1d() const;
-    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh2d() const;
-    virtual Standard_EXPORT Standard_Boolean    IsPolyMesh3d() const;
-    virtual const Handle(PolyMesh1d_Mesh)&      PolyMesh1d() const;
+    Standard_EXPORT const Handle(Model_Mesh)&   Representation() const;
+    Standard_EXPORT void                        SetRepresentation(const Handle(Model_Mesh)& theRepresentation);
+
+private:
+
+    Handle(Model_Mesh)      myRepresentation;
 
 public:
 

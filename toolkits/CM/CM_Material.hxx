@@ -20,8 +20,8 @@
 // ============================================================================
 
 
-#ifndef __UCM_Material_hxx__
-#define __UCM_Material_hxx__
+#ifndef __CM_Material_hxx__
+#define __CM_Material_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
@@ -29,32 +29,32 @@
 #include <Standard_Transient.hxx>
 
 // Forward declarations
-class UCM_Material;
+class CM_Material;
 
 // Handles
-DEFINE_STANDARD_HANDLE(UCM_Material, Standard_Transient);
+DEFINE_STANDARD_HANDLE(CM_Material, Standard_Transient);
 
 
 // ============================================================================
 /*!
- *  \brief UCM_Material
+ *  \brief CM_Material
 */
 // ============================================================================
-class UCM_Material : public Standard_Transient
+class CM_Material : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT UCM_Material();
+    Standard_EXPORT CM_Material();
     // destructors
-    Standard_EXPORT ~UCM_Material();
+    Standard_EXPORT ~CM_Material();
 
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(UCM_Material, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(CM_Material, Standard_Transient);
 
 };
 
 
-#endif // __UCM_Material_hxx__
+#endif // __CM_Material_hxx__
