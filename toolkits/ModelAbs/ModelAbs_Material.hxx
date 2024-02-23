@@ -31,8 +31,8 @@
 // ============================================================================
 enum ModelAbs_Material
 {
-    ModelAbs_Material_Elastic,
-    ModelAbs_Material_ElastoPlastic
+    ModelAbs_MAT_Elastic,
+    ModelAbs_MAT_ElastoPlastic
 };
 
 

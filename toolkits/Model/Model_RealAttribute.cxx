@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Triangulation.hxx>
+#include <Model_RealAttribute.hxx>
 
 
 // ============================================================================
@@ -29,8 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Triangulation::Model_Triangulation(const Handle(Poly_Triangulation)& theTriangulation)
-    : myTriangulation(theTriangulation)
+Model_RealAttribute::Model_RealAttribute()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_RealAttribute::Model_RealAttribute(const Standard_Real theValue)
+    : myValue(theValue)
 {
 
 }
@@ -40,34 +50,34 @@ Model_Triangulation::Model_Triangulation(const Handle(Poly_Triangulation)& theTr
  *  \brief Destructor
 */
 // ============================================================================
-Model_Triangulation::~Model_Triangulation()
+Model_RealAttribute::~Model_RealAttribute()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief IsTriangulation()
+ *  \brief SetValue()
 */
 // ============================================================================
-Standard_Boolean Model_Triangulation::IsTriangulation() const
+void Model_RealAttribute::SetValue(const Standard_Real theValue)
 {
-    return Standard_True;
+    myValue = theValue;
 }
 
 // ============================================================================
 /*!
- *  \brief Triangulation()
+ *  \brief Value()
 */
 // ============================================================================
-const Handle(Poly_Triangulation)& Model_Triangulation::Triangulation() const
+Standard_Real Model_RealAttribute::Value() const
 {
-    return myTriangulation;
+    return myValue;
 }
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Triangulation, Model_Mesh);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Triangulation, Model_Mesh);
+IMPLEMENT_STANDARD_HANDLE(Model_RealAttribute, Model_Attribute)
+IMPLEMENT_STANDARD_RTTIEXT(Model_RealAttribute, Model_Attribute)

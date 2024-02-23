@@ -20,22 +20,31 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_TypeOfModelisation_hxx__
-#define __ModelAbs_TypeOfModelisation_hxx__
+// Spartacus
+#include <FEP_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_TypeOfModelisation
+ *  \brief Constructor
 */
 // ============================================================================
-enum ModelAbs_TypeOfModelisation
+FEP_Object::FEP_Object()
 {
-    ModelAbs_MOD_Invalid,
-    ModelAbs_MOD_ElasticTruss1d,
-    ModelAbs_MOD_ElasticTruss2d,
-    ModelAbs_MOD_ElasticTruss3d
-};
 
+}
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+FEP_Object::~FEP_Object()
+{
 
-#endif // __ModelAbs_TypeOfModelisation_hxx__
+}
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FEP_Object, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FEP_Object, Standard_Transient)

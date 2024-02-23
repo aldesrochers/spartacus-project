@@ -20,21 +20,20 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+#ifndef __ModelAbs_Phenomenon_hxx__
+#define __ModelAbs_Phenomenon_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief ModelAbs_Phenomenon
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+enum ModelAbs_Phenomenon
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
+    ModelAbs_PHE_Mechanic,
+    ModelAbs_PHE_Thermic
 };
 
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+#endif // __ModelAbs_Phenomenon_hxx__

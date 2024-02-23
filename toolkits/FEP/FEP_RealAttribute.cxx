@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Object.hxx>
+#include <FEP_RealAttribute.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Object::Model_Object()
+FEP_RealAttribute::FEP_RealAttribute()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+FEP_RealAttribute::FEP_RealAttribute(const Standard_Real theValue)
+    : myValue(theValue)
 {
 
 }
@@ -39,15 +50,34 @@ Model_Object::Model_Object()
  *  \brief Destructor
 */
 // ============================================================================
-Model_Object::~Model_Object()
+FEP_RealAttribute::~FEP_RealAttribute()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief SetValue()
+*/
+// ============================================================================
+void FEP_RealAttribute::SetValue(const Standard_Real theValue)
+{
+    myValue = theValue;
+}
+
+// ============================================================================
+/*!
+ *  \brief Value()
+*/
+// ============================================================================
+Standard_Real FEP_RealAttribute::Value() const
+{
+    return myValue;
+}
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Object, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(Model_Object, Standard_Transient)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FEP_RealAttribute, FEP_Attribute)
+IMPLEMENT_STANDARD_RTTIEXT(FEP_RealAttribute, FEP_Attribute)

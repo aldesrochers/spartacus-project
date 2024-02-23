@@ -23,13 +23,7 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <ModelBuilder_MakeMesh.hxx>
-#include <ModelBuilder_MakeModel.hxx>
-#include <PolyMesh1d_Mesh.hxx>
 
-#include <Trsf2d_LinearTruss.hxx>
-#include <Mech2d_ElasticTruss.hxx>
 
 // ============================================================================
 /*!
@@ -38,21 +32,5 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
-
-
-
-
-    Handle(Mesh2d_Node) aNode1 = new Mesh2d_Node(0.,0.);
-    Handle(Mesh2d_Node) aNode2 = new Mesh2d_Node(1.,1.);
-    Handle(Mesh2d_LinearLine) aCell1 = new Mesh2d_LinearLine(aNode1, aNode2);
-    Handle(Trsf2d_LinearTruss) aTransformation = new Trsf2d_LinearTruss();
-
-    Handle(Mech2d_Truss) aTruss = new Mech2d_ElasticTruss(2E11, 1.1E-4);
-    aTruss->SetCell(aCell1);
-    aTruss->SetTransformation(aTransformation);
-
-
-
-    cout << aTruss->InitialStiffness() << endl;
 
 }

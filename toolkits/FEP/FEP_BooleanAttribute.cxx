@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_Object.hxx>
+#include <FEP_BooleanAttribute.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Object::Model_Object()
+FEP_BooleanAttribute::FEP_BooleanAttribute()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+FEP_BooleanAttribute::FEP_BooleanAttribute(const Standard_Boolean theValue)
+    : myValue(theValue)
 {
 
 }
@@ -39,15 +50,34 @@ Model_Object::Model_Object()
  *  \brief Destructor
 */
 // ============================================================================
-Model_Object::~Model_Object()
+FEP_BooleanAttribute::~FEP_BooleanAttribute()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief SetValue()
+*/
+// ============================================================================
+void FEP_BooleanAttribute::SetValue(const Standard_Boolean theValue)
+{
+    myValue = theValue;
+}
+
+// ============================================================================
+/*!
+ *  \brief Value()
+*/
+// ============================================================================
+Standard_Boolean FEP_BooleanAttribute::Value() const
+{
+    return myValue;
+}
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Object, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(Model_Object, Standard_Transient)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FEP_BooleanAttribute, FEP_Attribute)
+IMPLEMENT_STANDARD_RTTIEXT(FEP_BooleanAttribute, FEP_Attribute)

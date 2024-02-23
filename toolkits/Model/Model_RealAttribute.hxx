@@ -20,47 +20,48 @@
 // ============================================================================
 
 
-#ifndef __Model_PolyMesh_hxx__
-#define __Model_PolyMesh_hxx__
+#ifndef __Model_RealAttribute_hxx__
+#define __Model_RealAttribute_hxx__
 
 // Spartacus
-#include <Model_Mesh.hxx>
+#include <Model_Attribute.hxx>
 
 // Forward declarations
-class Model_PolyMesh;
+class Model_RealAttribute;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Model_PolyMesh, Model_Mesh)
+DEFINE_STANDARD_HANDLE(Model_RealAttribute, Model_Attribute)
 
 
 // ============================================================================
 /*!
- *  \brief Model_PolyMesh
+ *  \brief Model_RealAttribute
 */
 // ============================================================================
-class Model_PolyMesh : public Model_Mesh
+class Model_RealAttribute : public Model_Attribute
 {
 
 public:
     // constructors
-    Standard_EXPORT Model_PolyMesh(const Handle(PolyMesh_Mesh)& theMesh);
+    Standard_EXPORT Model_RealAttribute();
+    Standard_EXPORT Model_RealAttribute(const Standard_Real theValue);
     // destructors
-    Standard_EXPORT ~Model_PolyMesh();
+    Standard_EXPORT ~Model_RealAttribute();
 
 public:
 
-    Standard_EXPORT Standard_Boolean                IsPolyMesh3d() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(PolyMesh_Mesh)&    PolyMesh3d() const Standard_OVERRIDE;
+    Standard_EXPORT void            SetValue(const Standard_Real theValue);
+    Standard_EXPORT Standard_Real   Value() const;
 
 private:
 
-    Handle(PolyMesh_Mesh)   myMesh;
+    Standard_Real       myValue;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Model_PolyMesh, Model_Mesh)
+    DEFINE_STANDARD_RTTIEXT(Model_RealAttribute, Model_Attribute)
 
 };
 
 
-#endif // __Model_PolyMesh_hxx__
+#endif // __Model_RealAttribute_hxx__

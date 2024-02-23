@@ -20,47 +20,54 @@
 // ============================================================================
 
 
-#ifndef __Model_Triangulation_hxx__
-#define __Model_Triangulation_hxx__
+#ifndef __Model_Modelization_hxx__
+#define __Model_Modelization_hxx__
 
 // Spartacus
-#include <Model_Mesh.hxx>
+#include <Model_Object.hxx>
+#include <ModelAbs_Modelization.hxx>
+#include <ModelAbs_Phenomenon.hxx>
 
 // Forward declarations
-class Model_Triangulation;
+class Model_Modelization;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Model_Triangulation, Model_Mesh)
+DEFINE_STANDARD_HANDLE(Model_Modelization, Model_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Model_Triangulation
+ *  \brief Model_Modelization
 */
 // ============================================================================
-class Model_Triangulation : public Model_Mesh
+class Model_Modelization : public Model_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT Model_Triangulation(const Handle(Poly_Triangulation)& theTriangulation);
+    Standard_EXPORT Model_Modelization();
+    Standard_EXPORT Model_Modelization(const ModelAbs_Phenomenon thePhenomenon,
+                                       const ModelAbs_Modelization theModelization);
     // destructors
-    Standard_EXPORT ~Model_Triangulation();
+    Standard_EXPORT ~Model_Modelization();
 
 public:
 
-    Standard_EXPORT Standard_Boolean                    IsTriangulation() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(Poly_Triangulation)&   Triangulation() const Standard_OVERRIDE;
+    Standard_EXPORT ModelAbs_Modelization   Modelization() const;
+    Standard_EXPORT ModelAbs_Phenomenon     Phenomenon() const;
+    Standard_EXPORT void                    SetModelization(const ModelAbs_Modelization theModelization);
+    Standard_EXPORT void                    SetPhenomenon(const ModelAbs_Phenomenon thePhenomenon);
 
 private:
 
-    Handle(Poly_Triangulation)     myTriangulation;
+    ModelAbs_Modelization   myModelization;
+    ModelAbs_Phenomenon     myPhenomenon;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Model_Triangulation, Model_Mesh)
+    DEFINE_STANDARD_RTTIEXT(Model_Modelization, Model_Object)
 
 };
 
 
-#endif // __Model_Triangulation_hxx__
+#endif // __Model_Modelization_hxx__

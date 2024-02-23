@@ -20,21 +20,31 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+// Spartacus
+#include <FEP_Attribute.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief Constructor
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+FEP_Attribute::FEP_Attribute()
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
-};
 
+}
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+FEP_Attribute::~FEP_Attribute()
+{
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+}
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FEP_Attribute, FEP_Object)
+IMPLEMENT_STANDARD_RTTIEXT(FEP_Attribute, FEP_Object)

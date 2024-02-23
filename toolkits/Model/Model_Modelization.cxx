@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Model_PolyMesh1d.hxx>
+#include <Model_Modelization.hxx>
 
 
 // ============================================================================
@@ -29,8 +29,20 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_PolyMesh1d::Model_PolyMesh1d(const Handle(PolyMesh1d_Mesh)& theMesh)
-    : myMesh(theMesh)
+Model_Modelization::Model_Modelization()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Modelization::Model_Modelization(const ModelAbs_Phenomenon thePhenomenon,
+                                       const ModelAbs_Modelization theModelization)
+    : myModelization(theModelization),
+    myPhenomenon(thePhenomenon)
 {
 
 }
@@ -40,34 +52,54 @@ Model_PolyMesh1d::Model_PolyMesh1d(const Handle(PolyMesh1d_Mesh)& theMesh)
  *  \brief Destructor
 */
 // ============================================================================
-Model_PolyMesh1d::~Model_PolyMesh1d()
+Model_Modelization::~Model_Modelization()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh1d()
+ *  \brief Modelization()
 */
 // ============================================================================
-Standard_Boolean Model_PolyMesh1d::IsPolyMesh1d() const
+ModelAbs_Modelization Model_Modelization::Modelization() const
 {
-    return Standard_True;
+    return myModelization;
 }
 
 // ============================================================================
 /*!
- *  \brief PolyMesh1d()
+ *  \brief Phenomenon()
 */
 // ============================================================================
-const Handle(PolyMesh1d_Mesh)& Model_PolyMesh1d::PolyMesh1d() const
+ModelAbs_Phenomenon Model_Modelization::Phenomenon() const
 {
-    return myMesh;
+    return myPhenomenon;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetModelization()
+*/
+// ============================================================================
+void Model_Modelization::SetModelization(const ModelAbs_Modelization theModelization)
+{
+    myModelization = theModelization;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetPhenomenon()
+*/
+// ============================================================================
+void Model_Modelization::SetPhenomenon(const ModelAbs_Phenomenon thePhenomenon)
+{
+    myPhenomenon = thePhenomenon;
 }
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_PolyMesh1d, Model_Mesh);
-IMPLEMENT_STANDARD_RTTIEXT(Model_PolyMesh1d, Model_Mesh);
+IMPLEMENT_STANDARD_HANDLE(Model_Modelization, Model_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Model_Modelization, Model_Object)

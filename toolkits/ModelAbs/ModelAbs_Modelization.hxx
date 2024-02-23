@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+#ifndef __ModelAbs_Modelization_hxx__
+#define __ModelAbs_Modelization_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief ModelAbs_Modelization
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+enum ModelAbs_Modelization
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
+    ModelAbs_MOD_Truss1d,
+    ModelAbs_MOD_Truss2d,
+    ModelAbs_MOD_Truss3d
 };
 
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+#endif // __ModelAbs_Modelization_hxx__

@@ -198,6 +198,26 @@ set(FEM_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : FEP
+# =============================================================================
+
+set(FEP_PKG_HEADERS
+    FEP/FEP_Attribute.hxx
+    FEP/FEP_BooleanAttribute.hxx
+    FEP/FEP_IntegerAttribute.hxx
+    FEP/FEP_Object.hxx
+    FEP/FEP_RealAttribute.hxx
+)
+
+set(FEP_PKG_SOURCES
+    FEP/FEP_Attribute.cxx
+    FEP/FEP_BooleanAttribute.cxx
+    FEP/FEP_IntegerAttribute.cxx
+    FEP/FEP_Object.cxx
+    FEP/FEP_RealAttribute.cxx
+)
+
+# =============================================================================
 # Package : gp
 # =============================================================================
 
@@ -489,21 +509,21 @@ set(MeshTools_PKG_SOURCES
 # =============================================================================
 
 set(Model_PKG_HEADERS
-    Model/Model_Mesh.hxx
+    Model/Model_Attribute.hxx
+    Model/Model_Element.hxx
+    Model/Model_Material.hxx
+    Model/Model_Modelization.cxx
     Model/Model_Object.hxx
-    Model/Model_PolyMesh.hxx
-    Model/Model_PolyMesh1d.hxx
-    Model/Model_PolyMesh2d.hxx
-    Model/Model_Triangulation.hxx
+    Model/Model_RealAttribute.hxx
 )
 
 set(Model_PKG_SOURCES
-    Model/Model_Mesh.cxx
+    Model/Model_Attribute.cxx
+    Model/Model_Element.cxx
+    Model/Model_Material.cxx
+    Model/Model_Modelization.hxx
     Model/Model_Object.cxx
-    Model/Model_PolyMesh.cxx
-    Model/Model_PolyMesh1d.cxx
-    Model/Model_PolyMesh2d.cxx
-    Model/Model_Triangulation.cxx
+    Model/Model_RealAttribute.cxx
 )
 
 # =============================================================================
@@ -511,14 +531,8 @@ set(Model_PKG_SOURCES
 # =============================================================================
 
 set(ModelAbs_PKG_HEADERS
-    ModelAbs/ModelAbs_Material.hxx
-    ModelAbs/ModelAbs_MaterialAttribute.hxx
-    ModelAbs/ModelAbs_Section.hxx
-    ModelAbs/ModelAbs_SectionAttribute.hxx
-    ModelAbs/ModelAbs_TypeOfMaterial.hxx
-    ModelAbs/ModelAbs_TypeOfMaterialAttribute.hxx
-    ModelAbs/ModelAbs_TypeOfModelisation.hxx
-    ModelAbs/ModelAbs_TypeOfPhenomenon.hxx
+    ModelAbs/ModelAbs_Modelization.hxx
+    ModelAbs/ModelAbs_Phenomenon.hxx
 )
 
 # =============================================================================
@@ -895,45 +909,46 @@ set(Ceres_HEADERS
     #${BRepCellAPI_PKG_HEADERS}
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
-    ${CM_PKG_HEADERS}
-    ${cmp_PKG_HEADERS}
+    #${CM_PKG_HEADERS}
+    #${cmp_PKG_HEADERS}
     #${cp_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
-    ${FEAbs_PKG_HEADERS}
-    ${FEM_PKG_HEADERS}
-    ${gp_PKG_HEADERS}
+    #${FEAbs_PKG_HEADERS}
+    #${FEM_PKG_HEADERS}
+    #${FEP_PKG_HEADERS}
+    #${gp_PKG_HEADERS}
     #${material_PKG_HEADERS}
-    ${Mech1d_PKG_HEADERS}
-    ${Mech2d_PKG_HEADERS}
+    #${Mech1d_PKG_HEADERS}
+    #${Mech2d_PKG_HEADERS}
     #${Mesh_PKG_HEADERS}
     #${Mesh1d_PKG_HEADERS}
-    ${Mesh2d_PKG_HEADERS}
-    ${MeshAbs_PKG_HEADERS}
-    ${MeshBuilder_PKG_HEADERS}
-    ${MeshDS_PKG_HEADERS}
+    #${Mesh2d_PKG_HEADERS}
+    #${MeshAbs_PKG_HEADERS}
+    #${MeshBuilder_PKG_HEADERS}
+    #${MeshDS_PKG_HEADERS}
     #${MeshLib_PKG_HEADERS}
     #${MeshRep_PKG_HEADERS}
-    ${MeshTools_PKG_HEADERS}
+    #${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
-    ${ModelBuilder_PKG_HEADERS}
-    ${ModelDS_PKG_HEADERS}
+    #${ModelBuilder_PKG_HEADERS}
+    #${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
-    ${PolyMesh_PKG_HEADERS}
-    ${PolyMesh1d_PKG_HEADERS}
-    ${PolyMesh2d_PKG_HEADERS}
-    ${PolyMeshAbs_PKG_HEADERS}
+    #${PolyMesh_PKG_HEADERS}
+    #${PolyMesh1d_PKG_HEADERS}
+    #${PolyMesh2d_PKG_HEADERS}
+    #${PolyMeshAbs_PKG_HEADERS}
     #${TColgp_PKG_HEADERS}
     #${TColMesh1d_PKG_HEADERS}
     #${TColmp_PKG_HEADERS}
-    ${Trsf2d_PKG_HEADERS}
-    ${UCM_PKG_HEADERS}
-    ${UCMF_PKG_HEADERS}
+    #${Trsf2d_PKG_HEADERS}
+    #${UCM_PKG_HEADERS}
+    #${UCMF_PKG_HEADERS}
     #${XS_PKG_HEADERS}
     #${XSAbs_PKG_HEADERS}
-    ${xsp_PKG_HEADERS}
-    ${XSM2d_PKG_HEADERS}
+    #${xsp_PKG_HEADERS}
+    #${XSM2d_PKG_HEADERS}
 )
 
 # source files
@@ -942,37 +957,38 @@ set(Ceres_SOURCES
     #${BRepCellAPI_PKG_SOURCES}
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
-    ${CM_PKG_SOURCES}
-    ${cmp_PKG_SOURCES}
+    #${CM_PKG_SOURCES}
+    #${cmp_PKG_SOURCES}
     #${cp_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
-    ${FEM_PKG_SOURCES}
-    ${gp_PKG_SOURCES}
+    #${FEM_PKG_SOURCES}
+    #${FEP_PKG_SOURCES}
+    #${gp_PKG_SOURCES}
     #${material_PKG_SOURCES}
-    ${Mech1d_PKG_SOURCES}
-    ${Mech2d_PKG_SOURCES}
+    #${Mech1d_PKG_SOURCES}
+    #${Mech2d_PKG_SOURCES}
     #${Mesh_PKG_SOURCES}
     #${Mesh1d_PKG_SOURCES}
-    ${Mesh2d_PKG_SOURCES}
-    ${MeshBuilder_PKG_SOURCES}
-    ${MeshDS_PKG_SOURCES}
+    #${Mesh2d_PKG_SOURCES}
+    #${MeshBuilder_PKG_SOURCES}
+    #${MeshDS_PKG_SOURCES}
     #${MeshLib_PKG_SOURCES}
     #${MeshRep_PKG_SOURCES}
-    ${MeshTools_PKG_SOURCES}
+    #${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
-    ${ModelBuilder_PKG_SOURCES}
-    ${ModelDS_PKG_SOURCES}
+    #${ModelBuilder_PKG_SOURCES}
+    #${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
-    ${PolyMesh_PKG_SOURCES}
-    ${PolyMesh1d_PKG_SOURCES}
-    ${PolyMesh2d_PKG_SOURCES}
-    ${Trsf2d_PKG_SOURCES}
-    ${UCM_PKG_SOURCES}
-    ${UCMF_PKG_SOURCES}
+    #${PolyMesh_PKG_SOURCES}
+    #${PolyMesh1d_PKG_SOURCES}
+    #${PolyMesh2d_PKG_SOURCES}
+    #${Trsf2d_PKG_SOURCES}
+    #${UCM_PKG_SOURCES}
+    #${UCMF_PKG_SOURCES}
     #${XS_PKG_SOURCES}
-    ${xsp_PKG_SOURCES}
-    ${XSM2d_PKG_SOURCES}
+    #${xsp_PKG_SOURCES}
+    #${XSM2d_PKG_SOURCES}
 )
 
 # include directories
@@ -990,6 +1006,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
     ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/FEM
+    ${CMAKE_CURRENT_SOURCE_DIR}/FEP
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/material
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech1d

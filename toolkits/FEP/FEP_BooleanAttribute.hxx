@@ -20,21 +20,48 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+#ifndef __FEP_BooleanAttribute_hxx__
+#define __FEP_BooleanAttribute_hxx__
+
+// Spartacus
+#include <FEP_Attribute.hxx>
+
+// Forward declarations
+class FEP_BooleanAttribute;
+
+// Handles
+DEFINE_STANDARD_HANDLE(FEP_BooleanAttribute, FEP_Attribute)
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief FEP_BooleanAttribute
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+class FEP_BooleanAttribute : public FEP_Attribute
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
+
+public:
+    // constructors
+    Standard_EXPORT FEP_BooleanAttribute();
+    Standard_EXPORT FEP_BooleanAttribute(const Standard_Boolean theValue);
+    // destructors
+    Standard_EXPORT ~FEP_BooleanAttribute();
+
+public:
+
+    Standard_EXPORT void                SetValue(const Standard_Boolean theValue);
+    Standard_EXPORT Standard_Boolean    Value() const;
+
+private:
+
+    Standard_Boolean        myValue;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FEP_BooleanAttribute, FEP_Attribute)
+
 };
 
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+#endif // __FEP_BooleanAttribute_hxx__

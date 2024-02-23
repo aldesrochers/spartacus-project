@@ -20,19 +20,38 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_SectionAttribute_hxx__
-#define __ModelAbs_SectionAttribute_hxx__
+#ifndef __Model_Attribute_hxx__
+#define __Model_Attribute_hxx__
+
+// Spartacus
+#include <Model_Object.hxx>
+
+// Forward declarations
+class Model_Attribute;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Model_Attribute, Model_Object)
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_SectionAttribute
+ *  \brief Model_Attribute
 */
 // ============================================================================
-enum ModelAbs_SectionAttribute
+class Model_Attribute : public Model_Object
 {
-    ModelAbs_SectionAttribute_Area
+
+public:
+    // constructors
+    Standard_EXPORT Model_Attribute();
+    // destructors
+    Standard_EXPORT ~Model_Attribute();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Model_Attribute, Model_Object)
+
 };
 
 
-#endif // __ModelAbs_SectionAttribute_hxx__
+#endif // __Model_Attribute_hxx__

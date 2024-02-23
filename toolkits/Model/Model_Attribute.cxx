@@ -20,47 +20,35 @@
 // ============================================================================
 
 
-#ifndef __Model_PolyMesh1d_hxx__
-#define __Model_PolyMesh1d_hxx__
-
 // Spartacus
-#include <Model_Mesh.hxx>
-
-// Forward declarations
-class Model_PolyMesh1d;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Model_PolyMesh1d, Model_Mesh)
+#include <Model_Attribute.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Model_PolyMesh1d
+ *  \brief Constructor
 */
 // ============================================================================
-class Model_PolyMesh1d : public Model_Mesh
+Model_Attribute::Model_Attribute()
 {
 
-public:
-    // constructors
-    Standard_EXPORT Model_PolyMesh1d(const Handle(PolyMesh1d_Mesh)& theMesh);
-    // destructors
-    Standard_EXPORT ~Model_PolyMesh1d();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+Model_Attribute::~Model_Attribute()
+{
 
-    Standard_EXPORT Standard_Boolean                IsPolyMesh1d() const Standard_OVERRIDE;
-    Standard_EXPORT const Handle(PolyMesh1d_Mesh)&  PolyMesh1d() const Standard_OVERRIDE;
-
-private:
-
-    Handle(PolyMesh1d_Mesh)     myMesh;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Model_PolyMesh1d, Model_Mesh)
-
-};
+}
 
 
-#endif // __Model_PolyMesh1d_hxx__
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Model_Attribute, Model_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Model_Attribute, Model_Object)

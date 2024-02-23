@@ -21,10 +21,7 @@
 
 
 // Spartacus
-#include <Model_Mesh.hxx>
-
-// OpenCascade
-#include <Standard_DomainError.hxx>
+#include <Model_Material.hxx>
 
 
 // ============================================================================
@@ -32,106 +29,98 @@
  *  \brief Constructor
 */
 // ============================================================================
-Model_Mesh::Model_Mesh()
+Model_Material::Model_Material()
 {
 
 }
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Model_Material::Model_Material(const ModelAbs_Material theType)
+    : myType(theType)
+{
+
+}
+
 
 // ============================================================================
 /*!
  *  \brief Destructor
 */
 // ============================================================================
-Model_Mesh::~Model_Mesh()
+Model_Material::~Model_Material()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh1d()
+ *  \brief Attribute()
 */
 // ============================================================================
-Standard_Boolean Model_Mesh::IsPolyMesh1d() const
+Handle(Model_Attribute) Model_Material::Attribute(const ModelAbs_MaterialAttribute theType) const
 {
-    return Standard_False;
+    return Handle(Model_Attribute)::DownCast(myAttributes.Find(theType));
 }
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh2d()
+ *  \brief IsAttribute()
 */
 // ============================================================================
-Standard_Boolean Model_Mesh::IsPolyMesh2d() const
+Standard_Boolean Model_Material::IsAttribute(const ModelAbs_MaterialAttribute theType) const
 {
-    return Standard_False;
+    return myAttributes.IsBound(theType);
 }
 
 // ============================================================================
 /*!
- *  \brief IsPolyMesh3d()
+ *  \brief NbAttributes()
 */
 // ============================================================================
-Standard_Boolean Model_Mesh::IsPolyMesh3d() const
+Standard_Integer Model_Material::NbAttributes() const
 {
-    return Standard_False;
+    return myAttributes.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief IsTriangulation()
+ *  \brief SetAttribute()
 */
 // ============================================================================
-Standard_Boolean Model_Mesh::IsTriangulation() const
+void Model_Material::SetAttribute(const ModelAbs_MaterialAttribute theType,
+                                  const Handle(Model_Attribute) &theAttribute)
 {
-    return Standard_False;
+    myAttributes.Bind(theType, theAttribute);
 }
 
 // ============================================================================
 /*!
- *  \brief PolyMesh1d()
+ *  \brief SetType()
 */
 // ============================================================================
-const Handle(PolyMesh1d_Mesh)& Model_Mesh::PolyMesh1d() const
+void Model_Material::SetType(const ModelAbs_Material theType)
 {
-    throw Standard_DomainError("Model_Mesh::PolyMesh1d()");
+    myType = theType;
 }
 
 // ============================================================================
 /*!
- *  \brief PolyMesh2d()
+ *  \brief Type()
 */
 // ============================================================================
-const Handle(PolyMesh2d_Mesh)& Model_Mesh::PolyMesh2d() const
+ModelAbs_Material Model_Material::Type() const
 {
-    throw Standard_DomainError("Model_Mesh::PolyMesh2d()");
+    return myType;
 }
-
-// ============================================================================
-/*!
- *  \brief PolyMesh3d()
-*/
-// ============================================================================
-const Handle(PolyMesh_Mesh)& Model_Mesh::PolyMesh3d() const
-{
-    throw Standard_DomainError("Model_Mesh::PolyMesh3d()");
-}
-
-// ============================================================================
-/*!
- *  \brief Triangulation()
-*/
-// ============================================================================
-const Handle(Poly_Triangulation)& Model_Mesh::Triangulation() const
-{
-    throw Standard_DomainError("Model_Mesh::Triangulation()");
-}
-
 
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Model_Mesh, Model_Object);
-IMPLEMENT_STANDARD_RTTIEXT(Model_Mesh, Model_Object);
+IMPLEMENT_STANDARD_HANDLE(Model_Material, Model_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Model_Material, Model_Object)

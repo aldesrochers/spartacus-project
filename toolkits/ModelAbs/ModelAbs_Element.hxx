@@ -20,21 +20,20 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+#ifndef __ModelAbs_Element_hxx__
+#define __ModelAbs_Element_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief ModelAbs_Element
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+enum ModelAbs_Element
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
+    ModelAbs_ELE_TrussGeneral,
+    ModelAbs_ELE_TrussSquare
 };
 
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+#endif // __ModelAbs_Element_hxx__

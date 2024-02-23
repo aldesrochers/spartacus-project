@@ -20,21 +20,48 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_MaterialAttribute_hxx__
-#define __ModelAbs_MaterialAttribute_hxx__
+#ifndef __FEP_IntegerAttribute_hxx__
+#define __FEP_IntegerAttribute_hxx__
+
+// Spartacus
+#include <FEP_Attribute.hxx>
+
+// Forward declarations
+class FEP_IntegerAttribute;
+
+// Handles
+DEFINE_STANDARD_HANDLE(FEP_IntegerAttribute, FEP_Attribute)
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_MaterialAttribute
+ *  \brief FEP_IntegerAttribute
 */
 // ============================================================================
-enum ModelAbs_MaterialAttribute
+class FEP_IntegerAttribute : public FEP_Attribute
 {
-    ModelAbs_MATATTR_A,
-    ModelAbs_MATATTR_E,
-    ModelAbs_MATATTR_NU
+
+public:
+    // constructors
+    Standard_EXPORT FEP_IntegerAttribute();
+    Standard_EXPORT FEP_IntegerAttribute(const Standard_Integer theValue);
+    // destructors
+    Standard_EXPORT ~FEP_IntegerAttribute();
+
+public:
+
+    Standard_EXPORT void                SetValue(const Standard_Integer theValue);
+    Standard_EXPORT Standard_Integer    Value() const;
+
+private:
+
+    Standard_Integer        myValue;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FEP_IntegerAttribute, FEP_Attribute)
+
 };
 
 
-#endif // __ModelAbs_MaterialAttribute_hxx__
+#endif // __FEP_IntegerAttribute_hxx__

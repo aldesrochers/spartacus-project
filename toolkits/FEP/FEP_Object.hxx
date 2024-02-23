@@ -20,21 +20,40 @@
 // ============================================================================
 
 
-#ifndef __ModelAbs_TypeOfPhenomenon_hxx__
-#define __ModelAbs_TypeOfPhenomenon_hxx__
+#ifndef __FEP_Object_hxx__
+#define __FEP_Object_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+
+// Forward declarations
+class FEP_Object;
+
+// Handles
+DEFINE_STANDARD_HANDLE(FEP_Object, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief ModelAbs_TypeOfPhenomenon
+ *  \brief FEP_Object
 */
 // ============================================================================
-enum ModelAbs_TypeOfPhenomenon
+class FEP_Object : public Standard_Transient
 {
-    ModelAbs_PHE_Invalid,
-    ModelAbs_PHE_Mechanic,
-    ModelAbs_PHE_Thermic
+
+public:
+    // constructors
+    Standard_EXPORT FEP_Object();
+    // destructors
+    Standard_EXPORT ~FEP_Object();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FEP_Object, Standard_Transient)
+
 };
 
 
-#endif // __ModelAbs_TypeOfPhenomenon_hxx__
+#endif // __FEP_Object_hxx__
