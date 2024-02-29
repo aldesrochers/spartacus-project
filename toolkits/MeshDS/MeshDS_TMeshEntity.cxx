@@ -20,57 +20,53 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeNode1d_hxx__
-#define __MeshLib_MakeNode1d_hxx__
-
 // Spartacus
-#include <gp_Pnt1d.hxx>
-#include <Mesh1d_Node.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshLib_MakeObject.hxx>
+#include <MeshDS_TMeshEntity.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeNode1d
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshLib_MakeNode1d : public MeshLib_MakeObject
+MeshDS_TMeshEntity::MeshDS_TMeshEntity()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshDS_TMeshEntity::~MeshDS_TMeshEntity()
+{
 
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeNode1d(const Standard_Real theX);
-    Standard_EXPORT MeshLib_MakeNode1d(const gp_Pnt1d& thePoint);
-    Standard_EXPORT MeshLib_MakeNode1d(const Handle(Mesh1d_Node)& theNode1d);
+}
 
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeNode1d();
+// ============================================================================
+/*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+const MeshDS_Mesh& MeshDS_TMeshEntity::Mesh() const
+{
+    return myMesh;
+}
 
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-    Standard_EXPORT void                    Initialize(const Standard_Real theX);
-    Standard_EXPORT void                    Initialize(const gp_Pnt1d& thePoint);
-    Standard_EXPORT void                    Initialize(const Handle(Mesh1d_Node)& theNode1d);
-
-public:
-
-    Standard_EXPORT const MeshDS_Node&      Node();
-    Standard_EXPORT operator                MeshDS_Node();
-
-protected:
-
-    MeshDS_Node             myNode;
-
-};
+// ============================================================================
+/*!
+ *  \brief SetMesh()
+*/
+// ============================================================================
+void MeshDS_TMeshEntity::SetMesh(const MeshDS_Mesh &theMesh)
+{
+    myMesh = theMesh;
+}
 
 
-#endif // __MeshLib_MakeNode1d_hxx__
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TMeshEntity, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TMeshEntity, MeshDS_TObject)

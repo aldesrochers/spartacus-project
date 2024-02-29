@@ -20,52 +20,17 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
+#ifndef __MeshDS_Array1OfObject_hxx__
+#define __MeshDS_Array1OfObject_hxx__
+
+// OpenCascade
+#include <NCollection_Array1.hxx>
 
 // Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <MeshDS_Object.hxx>
+
+// Type definitions
+typedef NCollection_Array1<MeshDS_Object>   MeshDS_Array1OfObject;
 
 
-// ============================================================================
-/*!
- *  \brief MeshLib_MakeMesh
-*/
-// ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
-
-};
-
-
-#endif // __MeshLib_MakeMesh_hxx__
+#endif // __MeshDS_Array1OfObject_hxx__

@@ -20,17 +20,34 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_SequenceOfObject_hxx__
-#define __MeshDS_SequenceOfObject_hxx__
-
-// OpenCascade
-#include <NCollection_Sequence.hxx>
-
 // Spartacus
-#include <MeshDS_Object.hxx>
-
-// Type definition
-typedef NCollection_Sequence<MeshDS_Object>     MeshDS_SequenceOfObject;
+#include <ModelDS_TMaterial.hxx>
 
 
-#endif // __MeshDS_SequenceOfObject_hxx__
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+ModelDS_TMaterial::ModelDS_TMaterial()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+ModelDS_TMaterial::~ModelDS_TMaterial()
+{
+
+}
+
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TMaterial, ModelDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TMaterial, ModelDS_TObject)

@@ -25,14 +25,15 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_SequenceOfObject.hxx>
-#include <MeshDS_TObject.hxx>
+#include <MeshDS_Array1OfObject.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshDS_TMeshEntity.hxx>
 
 // Forward declarations
 class MeshDS_TCell;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
+DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TMeshEntity)
 
 
 // ============================================================================
@@ -40,7 +41,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
  *  \brief MeshDS_TCell
 */
 // ============================================================================
-class MeshDS_TCell : public MeshDS_TObject
+class MeshDS_TCell : public MeshDS_TMeshEntity
 {
 
 public:
@@ -51,19 +52,27 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfCell              CellType() const;
-    Standard_EXPORT const MeshDS_SequenceOfObject&  Nodes() const;
-    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theCellType);
-    Standard_EXPORT void                            SetNodes(const MeshDS_SequenceOfObject& theNodes);
-
-private:
-
-    MeshAbs_TypeOfCell          myCellType;
-    MeshDS_SequenceOfObject     myNodes;
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);
+    Standard_EXPORT MeshAbs_TypeOfCell  CellType() const;
+    Standard_EXPORT Standard_Integer    NbNodes() const;
+    Standard_EXPORT const MeshDS_Node&  Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT void                ResizeNodes(const Standard_Integer theNbNodes,
+                                                    const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                SetCellType(const MeshAbs_TypeOfCell theCellType);
+    Standard_EXPORT void                SetNode(const Standard_Integer theIndex,
+                                                const MeshDS_Node& theNode);
+
+private:
+
+    MeshAbs_TypeOfCell      myCellType;
+    MeshDS_Array1OfObject   myNodes;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TMeshEntity)
 
 };
 

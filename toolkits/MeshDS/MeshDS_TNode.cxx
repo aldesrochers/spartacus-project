@@ -64,6 +64,15 @@ MeshDS_ListOfObject& MeshDS_TNode::LinkedCells()
     return myLinkedCells;
 }
 
+// ============================================================================
+/*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+MeshAbs_TypeOfObject MeshDS_TNode::ObjectType() const
+{
+    return MeshAbs_OBJ_Node;
+}
 
 // ============================================================================
 /*!
@@ -89,5 +98,5 @@ void MeshDS_TNode::SetPoint(const Handle(MeshDS_Point) &thePoint)
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TObject);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TMeshEntity)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TMeshEntity)

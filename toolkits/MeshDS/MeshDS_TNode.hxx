@@ -26,13 +26,13 @@
 // Spartacus
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_Point.hxx>
-#include <MeshDS_TObject.hxx>
+#include <MeshDS_TMeshEntity.hxx>
 
 // Forward declarations
 class MeshDS_TNode;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TObject);
+DEFINE_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TMeshEntity)
 
 
 // ============================================================================
@@ -40,7 +40,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TNode, MeshDS_TObject);
  *  \brief MeshDS_TNode
 */
 // ============================================================================
-class MeshDS_TNode : public MeshDS_TObject
+class MeshDS_TNode : public MeshDS_TMeshEntity
 {
 
 public:
@@ -51,19 +51,23 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_ListOfObject&      LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfObject&            LinkedCells();
-    Standard_EXPORT const Handle(MeshDS_Point)&     Point() const;
-    Standard_EXPORT void                            SetPoint(const Handle(MeshDS_Point)& thePoint);
-
-private:
-
-    MeshDS_ListOfObject         myLinkedCells;
-    Handle(MeshDS_Point)        myPoint;
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TObject);
+    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
+    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
+    Standard_EXPORT const Handle(MeshDS_Point)& Point() const;
+    Standard_EXPORT void                        SetPoint(const Handle(MeshDS_Point)& thePoint);
+
+private:
+
+    MeshDS_ListOfObject     myLinkedCells;
+    Handle(MeshDS_Point)    myPoint;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TNode, MeshDS_TMeshEntity)
 
 };
 

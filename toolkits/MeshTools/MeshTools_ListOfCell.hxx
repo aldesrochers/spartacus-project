@@ -20,52 +20,17 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
+#ifndef __MeshTools_ListOfCell_hxx__
+#define __MeshTools_ListOfCell_hxx__
+
+// OpenCascade
+#include <NCollection_List.hxx>
 
 // Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <MeshDS_Cell.hxx>
 
+// Type definitions
+typedef NCollection_List<MeshDS_Cell>               MeshTools_ListOfCell;
+typedef NCollection_List<MeshDS_Cell>::Iterator     MeshTools_ListIteratorOfListOfCell;
 
-// ============================================================================
-/*!
- *  \brief MeshLib_MakeMesh
-*/
-// ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
-
-};
-
-
-#endif // __MeshLib_MakeMesh_hxx__
+#endif  // __MeshTools_ListOfCell_hxx__

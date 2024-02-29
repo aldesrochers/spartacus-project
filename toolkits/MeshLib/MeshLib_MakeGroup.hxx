@@ -20,24 +20,25 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeNode2d_hxx__
-#define __MeshLib_MakeNode2d_hxx__
-
-// OpenCascade
-#include <gp_Pnt2d.hxx>
+#ifndef __MeshLib_MakeGroup_hxx__
+#define __MeshLib_MakeGroup_hxx__
 
 // Spartacus
-#include <Mesh2d_Node.hxx>
-#include <MeshDS_Node.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
 #include <MeshLib_MakeObject.hxx>
+#include <MeshTools_ListOfObject.hxx>
+
+// OpenCascade
+#include <TCollection_AsciiString.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeNode2d
+ *  \brief MeshLib_MakeGroup
 */
 // ============================================================================
-class MeshLib_MakeNode2d : public MeshLib_MakeObject
+class MeshLib_MakeGroup : public MeshLib_MakeObject
 {
 
 public:
@@ -46,31 +47,22 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshLib_MakeNode2d(const Standard_Real theX,
-                                       const Standard_Real theY);
-    Standard_EXPORT MeshLib_MakeNode2d(const gp_Pnt2d& thePoint);
-    Standard_EXPORT MeshLib_MakeNode2d(const Handle(Mesh2d_Node)& theNode2d);
-
+    Standard_EXPORT MeshLib_MakeGroup();
+    Standard_EXPORT MeshLib_MakeGroup(const TCollection_AsciiString& theName);
     // destructors
-    Standard_EXPORT ~MeshLib_MakeNode2d();
+    Standard_EXPORT ~MeshLib_MakeGroup();
 
 public:
 
-    virtual Standard_EXPORT void            Build();
+    Standard_EXPORT void    AddCell(const MeshDS_Cell& theCell);
+    Standard_EXPORT void    Initialize(const TCollection_AsciiString& theName);
 
 public:
 
-    Standard_EXPORT void                    Initialize(const Standard_Real theX,
-                                                       const Standard_Real theY);
-    Standard_EXPORT void                    Initialize(const gp_Pnt2d& thePoint);
-    Standard_EXPORT void                    Initialize(const Handle(Mesh2d_Node)& theNode2d);
-
-public:
-
-    Standard_EXPORT const MeshDS_Node&      Node();
-    Standard_EXPORT operator                MeshDS_Node();
+    Standard_EXPORT const MeshDS_Group&     Group();
+    Standard_EXPORT operator                MeshDS_Group();
 
 };
 
 
-#endif // __MeshLib_MakeNode2d_hxx__
+#endif // __MeshLib_MakeGroup_hxx__

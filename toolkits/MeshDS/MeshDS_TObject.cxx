@@ -49,5 +49,5 @@ MeshDS_TObject::~MeshDS_TObject()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TObject, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TObject, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TObject, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TObject, Standard_Transient)

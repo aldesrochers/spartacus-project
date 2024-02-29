@@ -20,32 +20,43 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MeshBuilder2d_hxx__
-#define __MeshLib_MeshBuilder2d_hxx__
+#ifndef __ModelDS_TFunction_hxx__
+#define __ModelDS_TFunction_hxx__
 
 // Spartacus
-#include <MeshLib_BaseMeshBuilder.hxx>
+#include <ModelAbs_Parameter.hxx>
+#include <ModelDS_TObject.hxx>
+
+// Forward declarations
+class ModelDS_TFunction;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TFunction, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MeshBuilder2d
+ *  \brief ModelDS_TFunction
 */
 // ============================================================================
-class MeshLib_MeshBuilder2d : public MeshLib_BaseMeshBuilder
+class ModelDS_TFunction : public ModelDS_TObject
 {
 
 public:
+    // constructors
+    Standard_EXPORT ModelDS_TFunction();
+    // destructors
+    Standard_EXPORT ~ModelDS_TFunction();
 
-    DEFINE_STANDARD_ALLOC;
+private:
+
+    ModelAbs_Parameter      myParameterType;
 
 public:
-    // constructors
-    Standard_EXPORT MeshLib_MeshBuilder2d();
-    // destructors
-    Standard_EXPORT ~MeshLib_MeshBuilder2d();
+
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TFunction, ModelDS_TObject)
 
 };
 
 
-#endif // __MeshLib_MeshBuilder2d_hxx__
+#endif // __ModelDS_TFunction_hxx__

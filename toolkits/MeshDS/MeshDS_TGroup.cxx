@@ -76,6 +76,16 @@ const TCollection_AsciiString& MeshDS_TGroup::Name() const
 
 // ============================================================================
 /*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+MeshAbs_TypeOfObject MeshDS_TGroup::ObjectType() const
+{
+    return MeshAbs_OBJ_Group;
+}
+
+// ============================================================================
+/*!
  *  \brief SetCells()
 */
 // ============================================================================
@@ -98,5 +108,5 @@ void MeshDS_TGroup::SetName(const TCollection_AsciiString &theName)
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TObject);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TMeshEntity)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TMeshEntity)

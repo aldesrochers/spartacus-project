@@ -27,6 +27,15 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
+// Spartacus
+#include <MeshAbs_TypeOfObject.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshDS_Object.hxx>
+
+
 
 // ============================================================================
 /*!
@@ -41,6 +50,25 @@ public:
     DEFINE_STANDARD_ALLOC;
 
 public:
+
+    static Standard_EXPORT const MeshDS_Cell&   Cell(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Cell&         Cell(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Group&  Group(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Group&        Group(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Mesh&   Mesh(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Mesh&         Mesh(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Node&   Node(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Node&         Node(MeshDS_Object& theObject);
+
+protected:
+
+    static Standard_EXPORT Standard_Boolean     TypeMismatch(const MeshDS_Object& theObject,
+                                                             const MeshAbs_TypeOfObject theObjectType);
+
+
 
 };
 

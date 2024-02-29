@@ -25,9 +25,11 @@
 
 // OpenCascade
 #include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <Mesh2d_Node.hxx>
+#include <gp_Pnt1d.hxx>
+#include <MeshAbs_TypeOfDimensionality.hxx>
 #include <MeshDS_Node.hxx>
 #include <MeshLib_MakeObject.hxx>
 
@@ -46,35 +48,23 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshLib_MakeNode(const Standard_Real theX,
-                                     const Standard_Real theY,
-                                     const Standard_Real theZ);
+    Standard_EXPORT MeshLib_MakeNode(const gp_Pnt1d& thePoint);
+    Standard_EXPORT MeshLib_MakeNode(const gp_Pnt2d& thePoint);
     Standard_EXPORT MeshLib_MakeNode(const gp_Pnt& thePoint);
-    Standard_EXPORT MeshLib_MakeNode(const Handle(Mesh_Node)& theNode);
 
     // destructors
     Standard_EXPORT ~MeshLib_MakeNode();
 
 public:
 
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-    Standard_EXPORT void                    Initialize(const Standard_Real theX,
-                                                       const Standard_Real theY,
-                                                       const Standard_Real theZ);
+    Standard_EXPORT void                    Initialize(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void                    Initialize(const gp_Pnt2d& thePoint);
     Standard_EXPORT void                    Initialize(const gp_Pnt& thePoint);
-    Standard_EXPORT void                    Initialize(const Handle(Mesh_Node)& theNode);
 
 public:
 
     Standard_EXPORT const MeshDS_Node&      Node();
     Standard_EXPORT operator                MeshDS_Node();
-
-protected:
-
-    MeshDS_Node             myNode;
 
 };
 

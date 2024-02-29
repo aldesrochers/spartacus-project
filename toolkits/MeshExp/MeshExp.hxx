@@ -20,52 +20,29 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
+#ifndef __MeshExp_hxx__
+#define __MeshExp_hxx__
 
-// Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeMesh
+ *  \brief MeshExp
 */
 // ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
+class MeshExp
 {
 
 public:
 
     DEFINE_STANDARD_ALLOC;
 
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
 
 };
 
 
-#endif // __MeshLib_MakeMesh_hxx__
+#endif // __MeshExp_hxx__

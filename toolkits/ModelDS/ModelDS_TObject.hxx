@@ -32,7 +32,7 @@
 class ModelDS_TObject;
 
 // Handles
-DEFINE_STANDARD_HANDLE(ModelDS_TObject, Standard_Transient);
+DEFINE_STANDARD_HANDLE(ModelDS_TObject, Standard_Transient)
 
 
 // ============================================================================
@@ -51,7 +51,7 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(ModelDS_TObject, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TObject, Standard_Transient)
 
 };
 

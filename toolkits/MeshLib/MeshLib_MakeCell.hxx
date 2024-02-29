@@ -25,7 +25,8 @@
 
 // Spartacus
 #include <MeshDS_Cell.hxx>
-#include <MeshLib_Command.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshLib_MakeObject.hxx>
 
 
 // ============================================================================
@@ -33,7 +34,7 @@
  *  \brief MeshLib_MakeCell
 */
 // ============================================================================
-class MeshLib_MakeCell : public MeshLib_Command
+class MeshLib_MakeCell : public MeshLib_MakeObject
 {
 
 public:
@@ -48,16 +49,8 @@ public:
 
 public:
 
-    virtual Standard_EXPORT void            Build();
-
-public:
-
     Standard_EXPORT const MeshDS_Cell&      Cell();
     Standard_EXPORT operator                MeshDS_Cell();
-
-protected:
-
-    MeshDS_Cell             myCell;
 
 };
 

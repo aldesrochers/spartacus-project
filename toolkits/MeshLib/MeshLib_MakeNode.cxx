@@ -31,19 +31,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshLib_MakeNode::MeshLib_MakeNode(const Standard_Real theX,
-                                   const Standard_Real theY,
-                                   const Standard_Real theZ)
-{
-    Initialize(theX, theY, theZ);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt& thePoint)
+MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt1d& thePoint)
 {
     Initialize(thePoint);
 }
@@ -53,9 +41,20 @@ MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt& thePoint)
  *  \brief Constructor
 */
 // ============================================================================
-MeshLib_MakeNode::MeshLib_MakeNode(const Handle(Mesh_Node)& theNode)
+MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt2d& thePoint)
 {
-    Initialize(theNode);
+    Initialize(thePoint);
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshLib_MakeNode::MeshLib_MakeNode(const gp_Pnt& thePoint)
+{
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -70,12 +69,14 @@ MeshLib_MakeNode::~MeshLib_MakeNode()
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief Initialize()
 */
 // ============================================================================
-void MeshLib_MakeNode::Build()
+void MeshLib_MakeNode::Initialize(const gp_Pnt1d &thePoint)
 {
-
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(MeshDS::Node(myObject), thePoint);
+    SetDone();
 }
 
 // ============================================================================
@@ -83,14 +84,12 @@ void MeshLib_MakeNode::Build()
  *  \brief Initialize()
 */
 // ============================================================================
-void MeshLib_MakeNode::Initialize(const Standard_Real theX,
-                                  const Standard_Real theY,
-                                  const Standard_Real theZ)
+void MeshLib_MakeNode::Initialize(const gp_Pnt2d &thePoint)
 {
-    gp_Pnt aPoint(theX, theY, theZ);
-    Initialize(aPoint);
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeNode(MeshDS::Node(myObject), thePoint);
+    SetDone();
 }
-
 
 // ============================================================================
 /*!
@@ -99,19 +98,9 @@ void MeshLib_MakeNode::Initialize(const Standard_Real theX,
 // ============================================================================
 void MeshLib_MakeNode::Initialize(const gp_Pnt &thePoint)
 {
-    Handle(Mesh_Node) aNode = new Mesh_Node(thePoint);
-    Initialize(aNode);
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void MeshLib_MakeNode::Initialize(const Handle(Mesh_Node)& theNode)
-{
     MeshDS_Builder aBuilder;
-    aBuilder.MakeNode(MeshDS::Node(myObject), theNode);
+    aBuilder.MakeNode(MeshDS::Node(myObject), thePoint);
+    SetDone();
 }
 
 // ============================================================================

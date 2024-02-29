@@ -42,7 +42,7 @@ set(Test_SOURCES
     #Test_Mesh1d.cxx
     #Test_MeshBuilder.cxx
     #Test_MeshDS.cxx
-    #Test_MeshLib.cxx
+    Test_MeshLib.cxx
     Test_Model.cxx
     #Test_mp.cxx
     #Test_ReadFileSTL.cxx

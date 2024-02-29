@@ -28,11 +28,14 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
+// Spartacus
+#include <MeshAbs_TypeOfObject.hxx>
+
 // Forward declarations
 class MeshDS_TObject;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TObject, Standard_Transient);
+DEFINE_STANDARD_HANDLE(MeshDS_TObject, Standard_Transient)
 
 
 // ============================================================================
@@ -51,7 +54,11 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TObject, Standard_Transient);
+    virtual Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const = 0;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TObject, Standard_Transient)
 
 };
 

@@ -20,26 +20,48 @@
 // ============================================================================
 
 
+#ifndef __MeshDS_TMeshEntity_hxx__
+#define __MeshDS_TMeshEntity_hxx__
+
 // Spartacus
-#include <MeshLib_MeshBuilder.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshDS_TObject.hxx>
+
+// Forward declarations
+class MeshDS_TMeshEntity;
+
+// Handles
+DEFINE_STANDARD_HANDLE(MeshDS_TMeshEntity, MeshDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshDS_TMeshEntity
 */
 // ============================================================================
-MeshLib_MeshBuilder::MeshLib_MeshBuilder()
+class MeshDS_TMeshEntity : public MeshDS_TObject
 {
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshDS_TMeshEntity();
+    // destructors
+    Standard_EXPORT ~MeshDS_TMeshEntity();
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshLib_MeshBuilder::~MeshLib_MeshBuilder()
-{
+public:
 
-}
+    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
+    Standard_EXPORT void                SetMesh(const MeshDS_Mesh& theMesh);
+
+private:
+
+    MeshDS_Mesh     myMesh;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TMeshEntity, MeshDS_TObject)
+
+};
+
+
+#endif // __MeshDS_TMeshEntity_hxx__

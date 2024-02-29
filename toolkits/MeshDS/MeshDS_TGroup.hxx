@@ -25,7 +25,7 @@
 
 // Spartacus
 #include <MeshDS_ListOfObject.hxx>
-#include <MeshDS_TObject.hxx>
+#include <MeshDS_TMeshEntity.hxx>
 
 // OpenCascade
 #include <TCollection_AsciiString.hxx>
@@ -34,7 +34,7 @@
 class MeshDS_TGroup;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TObject);
+DEFINE_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TMeshEntity)
 
 
 // ============================================================================
@@ -42,7 +42,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TObject);
  *  \brief MeshDS_TGroup
 */
 // ============================================================================
-class MeshDS_TGroup : public MeshDS_TObject
+class MeshDS_TGroup : public MeshDS_TMeshEntity
 {
 
 public:
@@ -50,6 +50,10 @@ public:
     Standard_EXPORT MeshDS_TGroup();
     // destructors
     Standard_EXPORT ~MeshDS_TGroup();
+
+public:
+
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
 
 public:
 
@@ -66,7 +70,7 @@ private:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TObject);
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TMeshEntity)
 
 };
 

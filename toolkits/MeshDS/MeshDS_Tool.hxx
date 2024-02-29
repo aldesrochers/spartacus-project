@@ -24,8 +24,18 @@
 #define __MeshDS_Tool_hxx__
 
 // OpenCascade
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+
+
+// Spartacus
+#include <gp_Pnt1d.hxx>
+#include <MeshAbs_TypeOfCell.hxx>
+#include <MeshAbs_TypeOfDimensionality.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Node.hxx>
 
 
 // ============================================================================
@@ -41,6 +51,14 @@ public:
     DEFINE_STANDARD_ALLOC;
 
 public:
+
+    static Standard_EXPORT MeshAbs_TypeOfCell           CellType(const MeshDS_Cell& theCell);
+    static Standard_EXPORT MeshAbs_TypeOfDimensionality Dimensionality(const MeshDS_Cell& theCell);
+    static Standard_EXPORT MeshAbs_TypeOfDimensionality Dimensionality(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt                       Point(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt1d                     Point1d(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt2d                     Point2d(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt                       Point3d(const MeshDS_Node& theNode);
 
 };
 

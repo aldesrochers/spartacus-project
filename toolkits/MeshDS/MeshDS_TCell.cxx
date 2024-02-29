@@ -21,6 +21,7 @@
 
 
 // Spartacus
+#include <MeshDS.hxx>
 #include <MeshDS_TCell.hxx>
 
 
@@ -56,12 +57,43 @@ MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
 
 // ============================================================================
 /*!
- *  \brief Nodes()
+ *  \brief NbNodes()
 */
 // ============================================================================
-const MeshDS_SequenceOfObject& MeshDS_TCell::Nodes() const
+Standard_Integer MeshDS_TCell::NbNodes() const
 {
-    return myNodes;
+    return myNodes.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const MeshDS_Node& MeshDS_TCell::Node(const Standard_Integer theIndex) const
+{
+    return MeshDS::Node(myNodes.Value(theIndex));
+}
+
+// ============================================================================
+/*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
+{
+    return MeshAbs_OBJ_Cell;
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeNodes()
+*/
+// ============================================================================
+void MeshDS_TCell::ResizeNodes(const Standard_Integer theNbNodes,
+                               const Standard_Boolean toCopyData)
+{
+    myNodes.Resize(1, theNbNodes, toCopyData);
 }
 
 // ============================================================================
@@ -76,17 +108,20 @@ void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
 
 // ============================================================================
 /*!
- *  \brief SetNodes()
+ *  \brief SetNode()
 */
 // ============================================================================
-void MeshDS_TCell::SetNodes(const MeshDS_SequenceOfObject &theNodes)
+void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
+                           const MeshDS_Node& theNode)
 {
-    myNodes = theNodes;
+    myNodes.SetValue(theIndex, theNode);
 }
+
+
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TMeshEntity)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TMeshEntity)

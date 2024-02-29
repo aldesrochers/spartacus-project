@@ -20,52 +20,38 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
+#ifndef __ModelDS_TModel_hxx__
+#define __ModelDS_TModel_hxx__
 
 // Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <ModelDS_TObject.hxx>
+
+// Forward declarations
+class ModelDS_TModel;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TModel, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeMesh
+ *  \brief ModelDS_TModel
 */
 // ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
+class ModelDS_TModel : public ModelDS_TObject
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
+    Standard_EXPORT ModelDS_TModel();
     // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
+    Standard_EXPORT ~ModelDS_TModel();
 
 public:
 
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TModel, ModelDS_TObject)
 
 };
 
 
-#endif // __MeshLib_MakeMesh_hxx__
+#endif // __ModelDS_TModel_hxx__

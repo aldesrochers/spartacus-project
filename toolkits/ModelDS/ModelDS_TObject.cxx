@@ -49,5 +49,5 @@ ModelDS_TObject::~ModelDS_TObject()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(ModelDS_TObject, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TObject, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TObject, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TObject, Standard_Transient)

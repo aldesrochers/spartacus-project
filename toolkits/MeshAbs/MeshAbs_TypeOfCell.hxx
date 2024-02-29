@@ -31,8 +31,8 @@
 // ============================================================================
 enum MeshAbs_TypeOfCell
 {
-    MeshAbs_TOC_LinearLine,
-    MeshAbs_TOC_QuadraticLine
+    MeshAbs_CELL_LinearLine,
+    MeshAbs_CELL_QuadraticLine
 };
 
 

@@ -20,52 +20,21 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
-
-// Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#ifndef __ModelAbs_Parameter_hxx__
+#define __ModelAbs_Parameter_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeMesh
+ *  \brief ModelAbs_Parameter
 */
 // ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
+enum ModelAbs_Parameter
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
-
+    ModelAbs_PAR_DX,
+    ModelAbs_PAR_DY,
+    ModelAbs_PAR_DZ
 };
 
 
-#endif // __MeshLib_MakeMesh_hxx__
+#endif // __ModelAbs_Parameter_hxx__

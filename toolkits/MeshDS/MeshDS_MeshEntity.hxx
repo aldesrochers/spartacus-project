@@ -20,20 +20,28 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MeshBuilderError_hxx__
-#define __MeshLib_MeshBuilderError_hxx__
+#ifndef __MeshDS_MeshEntity_hxx__
+#define __MeshDS_MeshEntity_hxx__
+
+// Spartacus
+#include <MeshDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MeshBuilderError
+ *  \brief MeshDS_MeshEntity
 */
 // ============================================================================
-enum MeshLib_MeshBuilderError
+class MeshDS_MeshEntity : public MeshDS_Object
 {
-    MeshLib_MBE_NodeAlreadyExists,
-    MeshLib_MBE_NoError
+
+public:
+    // constructors
+    Standard_EXPORT MeshDS_MeshEntity();
+    // destructors
+    Standard_EXPORT ~MeshDS_MeshEntity();
+
 };
 
 
-#endif // __MeshLib_MeshBuilderError_hxx__
+#endif // __MeshDS_MeshEntity_hxx__

@@ -22,7 +22,8 @@
 
 // Spartacus
 #include <MeshDS.hxx>
-#include <MeshLib_MakeCell.hxx>
+#include <MeshDS_Builder.hxx>
+#include <MeshLib_MakeGroup.hxx>
 
 
 // ============================================================================
@@ -30,9 +31,19 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshLib_MakeCell::MeshLib_MakeCell()
+MeshLib_MakeGroup::MeshLib_MakeGroup()
 {
+    Initialize(TCollection_AsciiString());
+}
 
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshLib_MakeGroup::MeshLib_MakeGroup(const TCollection_AsciiString& theName)
+{
+    Initialize(theName);
 }
 
 // ============================================================================
@@ -40,28 +51,52 @@ MeshLib_MakeCell::MeshLib_MakeCell()
  *  \brief Destructor
 */
 // ============================================================================
-MeshLib_MakeCell::~MeshLib_MakeCell()
+MeshLib_MakeGroup::~MeshLib_MakeGroup()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief AddCell()
 */
 // ============================================================================
-const MeshDS_Cell&  MeshLib_MakeCell::Cell()
+void MeshLib_MakeGroup::AddCell(const MeshDS_Cell &theCell)
 {
-    return MeshDS::Cell(Object());
+    MeshDS_Builder aBuilder;
+    aBuilder.AddCell(MeshDS::Group(myObject), theCell);
+    SetDone();
 }
 
 // ============================================================================
 /*!
- *  \brief operator MeshDS_Cell()
+ *  \brief Group()
 */
 // ============================================================================
-MeshLib_MakeCell::operator MeshDS_Cell()
+const MeshDS_Group& MeshLib_MakeGroup::Group()
 {
-    return Cell();
+    return MeshDS::Group(Object());
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshLib_MakeGroup::Initialize(const TCollection_AsciiString &theName)
+{
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeGroup(MeshDS::Group(myObject), theName);
+    SetDone();
+}
+
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Group()
+*/
+// ============================================================================
+MeshLib_MakeGroup::operator MeshDS_Group()
+{
+    return Group();
 }
 

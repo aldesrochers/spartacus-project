@@ -19,10 +19,11 @@
 //
 // ============================================================================
 
-#include <iostream>
-using namespace  std;
+
 
 // Spartacus
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
 #include <MeshLib_MakeMesh.hxx>
 
 
@@ -63,11 +64,7 @@ void MeshLib_MakeMesh::Build()
 // ============================================================================
 const MeshDS_Mesh&  MeshLib_MakeMesh::Mesh()
 {
-    if (!IsDone()) {
-        ((MeshLib_MakeMesh*) (void*) this)->Build();
-        Check();
-    }
-    return myMesh;
+    return MeshDS::Mesh(Object());
 }
 
 // ============================================================================

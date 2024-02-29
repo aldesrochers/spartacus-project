@@ -23,6 +23,119 @@
 // Spartacus
 #include <MeshDS.hxx>
 
+// OpenCascade
+#include <Standard_TypeMismatch.hxx>
 
+
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Cell& MeshDS::Cell(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Cell),
+                                   "MeshDS::Cell()->Type mismatch.");
+    return *(MeshDS_Cell*) &theObject;
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+MeshDS_Cell& MeshDS::Cell(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Cell),
+                                   "MeshDS::Cell()->Type mismatch.");
+    return *(MeshDS_Cell*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Group()
+*/
+// ============================================================================
+const MeshDS_Group& MeshDS::Group(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Group),
+                                   "MeshDS::Group()->Type mismatch.");
+    return *(MeshDS_Group*) &theObject;
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Group()
+*/
+// ============================================================================
+MeshDS_Group& MeshDS::Group(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Group),
+                                   "MeshDS::Group()->Type mismatch.");
+    return *(MeshDS_Group*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+const MeshDS_Mesh& MeshDS::Mesh(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Mesh),
+                                   "MeshDS::Mesh()->Type mismatch.");
+    return *(MeshDS_Mesh*) &theObject;
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+MeshDS_Mesh& MeshDS::Mesh(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Mesh),
+                                   "MeshDS::Mesh()->Type mismatch.");
+    return *(MeshDS_Mesh*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const MeshDS_Node& MeshDS::Node(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Node),
+                                   "MeshDS::Node()->Type mismatch.");
+    return *(MeshDS_Node*) &theObject;
+}
+
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+MeshDS_Node& MeshDS::Node(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Node),
+                                   "MeshDS::Node()->Type mismatch.");
+    return *(MeshDS_Node*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief TypeMismatch()
+*/
+// ============================================================================
+Standard_Boolean MeshDS::TypeMismatch(const MeshDS_Object &theObject,
+                                      const MeshAbs_TypeOfObject theObjectType)
+{
+        return theObject.IsNull() ? Standard_False : theObject.ObjectType() != theObjectType;
+}
 
 

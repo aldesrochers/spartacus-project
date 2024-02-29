@@ -30,6 +30,19 @@
 #include <MeshDS_TNode.hxx>
 
 
+// ============================================================================
+/*!
+ *  \brief AddCell()
+*/
+// ============================================================================
+void MeshDS_Builder::AddCell(const MeshDS_Group &theGroup,
+                             const MeshDS_Cell &theCell) const
+{
+    // add cell to group
+    const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
+    MeshDS_ListOfObject& aList = aTGroup->Cells();
+    aList.Append(theCell);
+}
 
 // ============================================================================
 /*!
@@ -49,10 +62,10 @@ void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell) const
 // ============================================================================
 void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell,
                               const MeshAbs_TypeOfCell theCellType,
-                              const MeshDS_SequenceOfObject &theNodes)
+                              const Standard_Integer theNbNodes) const
 {
     MakeCell(theCell);
-    UpdateCell(theCell, theCellType, theNodes);
+    UpdateCell(theCell, theCellType, theNbNodes);
 }
 
 // ============================================================================
@@ -72,23 +85,9 @@ void MeshDS_Builder::MakeGroup(MeshDS_Group &theGroup) const
 */
 // ============================================================================
 void MeshDS_Builder::MakeGroup(MeshDS_Group &theGroup,
-                               const MeshDS_ListOfObject &theCells) const
+                               const TCollection_AsciiString &theName) const
 {
     MakeGroup(theGroup);
-    UpdateGroup(theGroup, theCells);
-}
-
-// ============================================================================
-/*!
- *  \brief MakeGroup()
-*/
-// ============================================================================
-void MeshDS_Builder::MakeGroup(MeshDS_Group &theGroup,
-                               const MeshDS_ListOfObject &theCells,
-                               const TCollection_AsciiString& theName) const
-{
-    MakeGroup(theGroup);
-    UpdateGroup(theGroup, theCells);
     UpdateGroup(theGroup, theName);
 }
 
@@ -152,28 +151,35 @@ void MeshDS_Builder::MakeObject(MeshDS_Object &theObject,
 
 // ============================================================================
 /*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void MeshDS_Builder::SetNode(const MeshDS_Cell &theCell,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Node &theNode) const
+{
+    // Add node to cell definition
+    const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
+    aTCell->SetNode(theIndex, theNode);
+
+    // Link cell to node
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    MeshDS_ListOfObject& aList = aTNode->LinkedCells();
+    aList.Append(theCell);
+}
+
+// ============================================================================
+/*!
  *  \brief UpdateCell()
 */
 // ============================================================================
 void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
                                 const MeshAbs_TypeOfCell theCellType,
-                                const MeshDS_SequenceOfObject &theNodes) const
+                                const Standard_Integer theNbNodes) const
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
     aTCell->SetCellType(theCellType);
-    aTCell->SetNodes(theNodes);
-}
-
-// ============================================================================
-/*!
- *  \brief UpdateGroup()
-*/
-// ============================================================================
-void MeshDS_Builder::UpdateGroup(const MeshDS_Group &theGroup,
-                                 const MeshDS_ListOfObject &theCells) const
-{
-    const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
-    aTGroup->SetCells(theCells);
+    aTCell->ResizeNodes(theNbNodes, Standard_False);
 }
 
 // ============================================================================
@@ -187,7 +193,6 @@ void MeshDS_Builder::UpdateGroup(const MeshDS_Group &theGroup,
     const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
     aTGroup->SetName(theName);
 }
-
 
 // ============================================================================
 /*!

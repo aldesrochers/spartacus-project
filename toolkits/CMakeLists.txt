@@ -365,6 +365,8 @@ set(Mesh_PKG_SOURCES
 
 set(MeshAbs_PKG_HEADERS
     MeshAbs/MeshAbs_TypeOfCell.hxx
+    MeshAbs/MeshAbs_TypeOfDimensionality.hxx
+    MeshAbs/MeshAbs_TypeOfObject.hxx
 )
 
 # =============================================================================
@@ -385,21 +387,23 @@ set(MeshBuilder_PKG_SOURCES
 
 set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS.hxx
+    MeshDS/MeshDS_Array1OfObject.hxx
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
     MeshDS/MeshDS_Group.hxx
     MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
+    MeshDS/MeshDS_MeshEntity.hxx
     MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
     MeshDS/MeshDS_Point.hxx
     MeshDS/MeshDS_Point1d.hxx
     MeshDS/MeshDS_Point2d.hxx
     MeshDS/MeshDS_Point3d.hxx
-    MeshDS/MeshDS_SequenceOfObject.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
+    MeshDS/MeshDS_TMeshEntity.hxx
     MeshDS/MeshDS_TNode.hxx
     MeshDS/MeshDS_TObject.hxx
     MeshDS/MeshDS_Tool.hxx
@@ -411,6 +415,7 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Cell.cxx
     MeshDS/MeshDS_Group.cxx
     MeshDS/MeshDS_Mesh.cxx
+    MeshDS/MeshDS_MeshEntity.cxx
     MeshDS/MeshDS_Node.cxx
     MeshDS/MeshDS_Object.cxx
     MeshDS/MeshDS_Point.cxx
@@ -420,9 +425,22 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
+    MeshDS/MeshDS_TMeshEntity.cxx
     MeshDS/MeshDS_TNode.cxx
     MeshDS/MeshDS_TObject.cxx
     MeshDS/MeshDS_Tool.cxx
+)
+
+# =============================================================================
+# Package : MeshExp
+# =============================================================================
+
+set(MeshExp_PKG_HEADERS
+    MeshExp/MeshExp.hxx
+)
+
+set(MeshExp_PKG_SOURCES
+    MeshExp/MeshExp.cxx
 )
 
 # =============================================================================
@@ -430,32 +448,23 @@ set(MeshDS_PKG_SOURCES
 # =============================================================================
 
 set(MeshLib_PKG_HEADERS
-    MeshLib/MeshLib_BaseMeshBuilder.hxx
     MeshLib/MeshLib_Command.hxx
     MeshLib/MeshLib_MakeCell.hxx
+    MeshLib/MeshLib_MakeGroup.hxx
+    MeshLib/MeshLib_MakeLinearLine.hxx
     MeshLib/MeshLib_MakeMesh.hxx
     MeshLib/MeshLib_MakeNode.hxx
-    MeshLib/MeshLib_MakeNode1d.hxx
-    MeshLib/MeshLib_MakeNode2d.hxx
     MeshLib/MeshLib_MakeObject.hxx
-    MeshLib/MeshLib_MeshBuilder.hxx
-    MeshLib/MeshLib_MeshBuilder1d.hxx
-    MeshLib/MeshLib_MeshBuilder2d.hxx
-    MeshLib/MeshLib_MeshBuilderError.hxx
 )
 
 set(MeshLib_PKG_SOURCES
-    MeshLib/MeshLib_BaseMeshBuilder.cxx
     MeshLib/MeshLib_Command.cxx
     MeshLib/MeshLib_MakeCell.cxx
+    MeshLib/MeshLib_MakeGroup.cxx
+    MeshLib/MeshLib_MakeLinearLine.cxx
     MeshLib/MeshLib_MakeMesh.cxx
     MeshLib/MeshLib_MakeNode.cxx
-    MeshLib/MeshLib_MakeNode1d.cxx
-    MeshLib/MeshLib_MakeNode2d.cxx
     MeshLib/MeshLib_MakeObject.cxx
-    MeshLib/MeshLib_MeshBuilder.cxx
-    MeshLib/MeshLib_MeshBuilder1d.cxx
-    MeshLib/MeshLib_MeshBuilder2d.cxx
 )
 
 # =============================================================================
@@ -496,6 +505,7 @@ set(MeshTools_PKG_HEADERS
     MeshTools/MeshTools_DataMapOfIntegerObject.hxx
     MeshTools/MeshTools_IndexedMapOfObject.hxx
     MeshTools/MeshTools_ListIteratorOfListOfObject.hxx
+    MeshTools/MeshTools_ListOfCell.hxx
     MeshTools/MeshTools_ListOfObject.hxx
     MeshTools/MeshTools_ObjectMapHasher.hxx
 )
@@ -532,6 +542,7 @@ set(Model_PKG_SOURCES
 
 set(ModelAbs_PKG_HEADERS
     ModelAbs/ModelAbs_Modelization.hxx
+    ModelAbs/ModelAbs_Parameter.hxx
     ModelAbs/ModelAbs_Phenomenon.hxx
 )
 
@@ -556,20 +567,18 @@ set(ModelBuilder_PKG_SOURCES
 # =============================================================================
 
 set(ModelDS_PKG_HEADERS
-    ModelDS/ModelDS_Builder.hxx
-    ModelDS/ModelDS_Mesh.hxx
-    ModelDS/ModelDS_Model.hxx
     ModelDS/ModelDS_Object.hxx
-    ModelDS/ModelDS_TMesh.hxx
+    ModelDS/ModelDS_TFunction.hxx
+    ModelDS/ModelDS_TMaterial.hxx
+    ModelDS/ModelDS_TModel.hxx
     ModelDS/ModelDS_TObject.hxx
 )
 
 set(ModelDS_PKG_SOURCES
-    ModelDS/ModelDS_Builder.cxx
-    ModelDS/ModelDS_Mesh.cxx
-    ModelDS/ModelDS_Model.cxx
     ModelDS/ModelDS_Object.cxx
-    ModelDS/ModelDS_TMesh.cxx
+    ModelDS/ModelDS_TFunction.cxx
+    ModelDS/ModelDS_TMaterial.cxx
+    ModelDS/ModelDS_TModel.cxx
     ModelDS/ModelDS_TObject.cxx
 )
 
@@ -916,23 +925,24 @@ set(Ceres_HEADERS
     #${FEAbs_PKG_HEADERS}
     #${FEM_PKG_HEADERS}
     #${FEP_PKG_HEADERS}
-    #${gp_PKG_HEADERS}
+    ${gp_PKG_HEADERS}
     #${material_PKG_HEADERS}
     #${Mech1d_PKG_HEADERS}
     #${Mech2d_PKG_HEADERS}
     #${Mesh_PKG_HEADERS}
     #${Mesh1d_PKG_HEADERS}
     #${Mesh2d_PKG_HEADERS}
-    #${MeshAbs_PKG_HEADERS}
+    ${MeshAbs_PKG_HEADERS}
     #${MeshBuilder_PKG_HEADERS}
-    #${MeshDS_PKG_HEADERS}
-    #${MeshLib_PKG_HEADERS}
+    ${MeshDS_PKG_HEADERS}
+    ${MeshExp_PKG_HEADERS}
+    ${MeshLib_PKG_HEADERS}
     #${MeshRep_PKG_HEADERS}
-    #${MeshTools_PKG_HEADERS}
+    ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
     #${ModelBuilder_PKG_HEADERS}
-    #${ModelDS_PKG_HEADERS}
+    ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
     #${PolyMesh_PKG_HEADERS}
@@ -963,7 +973,7 @@ set(Ceres_SOURCES
     #${EleProp_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
     #${FEP_PKG_SOURCES}
-    #${gp_PKG_SOURCES}
+    ${gp_PKG_SOURCES}
     #${material_PKG_SOURCES}
     #${Mech1d_PKG_SOURCES}
     #${Mech2d_PKG_SOURCES}
@@ -971,13 +981,14 @@ set(Ceres_SOURCES
     #${Mesh1d_PKG_SOURCES}
     #${Mesh2d_PKG_SOURCES}
     #${MeshBuilder_PKG_SOURCES}
-    #${MeshDS_PKG_SOURCES}
-    #${MeshLib_PKG_SOURCES}
+    ${MeshDS_PKG_SOURCES}
+    ${MeshExp_PKG_SOURCES}
+    ${MeshLib_PKG_SOURCES}
     #${MeshRep_PKG_SOURCES}
-    #${MeshTools_PKG_SOURCES}
+    ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
     #${ModelBuilder_PKG_SOURCES}
-    #${ModelDS_PKG_SOURCES}
+    ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
     #${PolyMesh_PKG_SOURCES}
@@ -1017,6 +1028,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshExp
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshRep
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools

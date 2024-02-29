@@ -20,32 +20,34 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MeshBuilder_hxx__
-#define __MeshLib_MeshBuilder_hxx__
-
 // Spartacus
-#include <MeshLib_BaseMeshBuilder.hxx>
+#include <ModelDS_TModel.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MeshBuilder
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshLib_MeshBuilder : public MeshLib_BaseMeshBuilder
+ModelDS_TModel::ModelDS_TModel()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+ModelDS_TModel::~ModelDS_TModel()
+{
 
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MeshBuilder();
-    // destructors
-    Standard_EXPORT ~MeshLib_MeshBuilder();
-
-};
+}
 
 
-#endif // __MeshLib_MeshBuilder_hxx__
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TModel, ModelDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TModel, ModelDS_TObject)

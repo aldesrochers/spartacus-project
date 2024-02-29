@@ -20,21 +20,19 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeMesh_hxx__
-#define __MeshLib_MakeMesh_hxx__
+#ifndef __MeshLib_MakeLinearLine_hxx__
+#define __MeshLib_MakeLinearLine_hxx__
 
 // Spartacus
-#include <MeshDS_Mesh.hxx>
-#include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <MeshLib_MakeCell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeMesh
+ *  \brief MeshLib_MakeLinearLine
 */
 // ============================================================================
-class MeshLib_MakeMesh : public MeshLib_MakeObject
+class MeshLib_MakeLinearLine : public MeshLib_MakeCell
 {
 
 public:
@@ -43,29 +41,18 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshLib_MakeMesh();
+    Standard_EXPORT MeshLib_MakeLinearLine(const MeshDS_Node& theNode1,
+                                           const MeshDS_Node& theNode2);
     // destructors
-    Standard_EXPORT ~MeshLib_MakeMesh();
+    Standard_EXPORT ~MeshLib_MakeLinearLine();
 
 public:
 
-    virtual Standard_EXPORT void            Build();
+    Standard_EXPORT void        Initialize(const MeshDS_Node& theNode1,
+                                           const MeshDS_Node& theNode2);
 
-public:
-
-
-
-public:
-
-    Standard_EXPORT const MeshDS_Mesh&      Mesh();
-    Standard_EXPORT operator                MeshDS_Mesh();
-
-private:
-
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
 
 };
 
 
-#endif // __MeshLib_MakeMesh_hxx__
+#endif // __MeshLib_MakeLinearLine_hxx__

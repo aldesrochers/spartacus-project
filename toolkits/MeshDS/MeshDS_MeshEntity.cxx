@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <MeshLib_BaseMeshBuilder.hxx>
+#include <MeshDS_MeshEntity.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshLib_BaseMeshBuilder::MeshLib_BaseMeshBuilder()
+MeshDS_MeshEntity::MeshDS_MeshEntity()
 {
 
 }
@@ -39,37 +39,8 @@ MeshLib_BaseMeshBuilder::MeshLib_BaseMeshBuilder()
  *  \brief Destructor
 */
 // ============================================================================
-MeshLib_BaseMeshBuilder::~MeshLib_BaseMeshBuilder()
+MeshDS_MeshEntity::~MeshDS_MeshEntity()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief Builder()
-*/
-// ============================================================================
-const MeshDS_Builder& MeshLib_BaseMeshBuilder::Builder() const
-{
-    return myBuilder;
-}
-
-// ============================================================================
-/*!
- *  \brief LastError()
-*/
-// ============================================================================
-MeshLib_MeshBuilderError MeshLib_BaseMeshBuilder::LastError() const
-{
-    return myLastError;
-}
-
-// ============================================================================
-/*!
- *  \brief SetLastError()
-*/
-// ============================================================================
-void MeshLib_BaseMeshBuilder::SetLastError(const MeshLib_MeshBuilderError theLastError)
-{
-    myLastError = theLastError;
-}

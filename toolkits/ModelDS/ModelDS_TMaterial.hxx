@@ -20,50 +20,38 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_BaseMeshBuilder_hxx__
-#define __MeshLib_BaseMeshBuilder_hxx__
+#ifndef __ModelDS_TMaterial_hxx__
+#define __ModelDS_TMaterial_hxx__
 
 // Spartacus
-#include <MeshDS_Builder.hxx>
-#include <MeshLib_MakeMesh.hxx>
-#include <MeshLib_MeshBuilderError.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <ModelDS_TObject.hxx>
+
+// Forward declarations
+class ModelDS_TMaterial;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TMaterial, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief MeshLib_BaseMeshBuilder
+ *  \brief ModelDS_TMaterial
 */
 // ============================================================================
-class MeshLib_BaseMeshBuilder : public MeshLib_MakeMesh
+class ModelDS_TMaterial : public ModelDS_TObject
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
-    Standard_EXPORT MeshLib_BaseMeshBuilder();
+    Standard_EXPORT ModelDS_TMaterial();
     // destructors
-    Standard_EXPORT ~MeshLib_BaseMeshBuilder();
+    Standard_EXPORT ~ModelDS_TMaterial();
 
 public:
 
-    Standard_EXPORT MeshLib_MeshBuilderError    LastError() const;
-
-protected:
-
-    Standard_EXPORT const MeshDS_Builder&   Builder() const;
-    Standard_EXPORT void                    SetLastError(const MeshLib_MeshBuilderError theLastError);
-
-protected:
-
-    MeshDS_Builder                  myBuilder;
-    MeshLib_MeshBuilderError        myLastError;
-    MeshTools_ListOfObject          myNodes;
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TMaterial, ModelDS_TObject)
 
 };
 
 
-#endif // __MeshLib_BaseMeshBuilder_hxx__
+#endif // __ModelDS_TMaterial_hxx__

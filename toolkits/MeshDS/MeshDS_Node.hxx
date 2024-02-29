@@ -24,7 +24,7 @@
 #define __MeshDS_Node_hxx__
 
 // Spartacus
-#include <MeshDS_Object.hxx>
+#include <MeshDS_MeshEntity.hxx>
 
 
 // ============================================================================
@@ -32,7 +32,7 @@
  *  \brief MeshDS_Node
 */
 // ============================================================================
-class MeshDS_Node : public MeshDS_Object
+class MeshDS_Node : public MeshDS_MeshEntity
 {
 
 public:

@@ -25,7 +25,7 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_Object.hxx>
+#include <MeshDS_MeshEntity.hxx>
 
 
 // ============================================================================
@@ -33,7 +33,7 @@
  *  \brief MeshDS_Cell
 */
 // ============================================================================
-class MeshDS_Cell : public MeshDS_Object
+class MeshDS_Cell : public MeshDS_MeshEntity
 {
 
 public:
