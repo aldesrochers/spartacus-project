@@ -669,78 +669,23 @@ set(mp_PKG_SOURCES
 # =============================================================================
 
 set(PolyMesh_PKG_HEADERS
-    PolyMesh/PolyMesh_Array1OfCell.hxx
-    PolyMesh/PolyMesh_Array1OfGroup.hxx
-    PolyMesh/PolyMesh_Array1OfNode.hxx
-    PolyMesh/PolyMesh_Cell.hxx
-    PolyMesh/PolyMesh_Group.hxx
-    PolyMesh/PolyMesh_Mesh.hxx
-    PolyMesh/PolyMesh_Node.hxx
-    PolyMesh/PolyMesh_Object.hxx
+    PolyMesh/PolyMesh_Mesh1d.hxx
 )
 
 set(PolyMesh_PKG_SOURCES
-    PolyMesh/PolyMesh_Cell.cxx
-    PolyMesh/PolyMesh_Group.cxx
-    PolyMesh/PolyMesh_Mesh.cxx
-    PolyMesh/PolyMesh_Node.cxx
-    PolyMesh/PolyMesh_Object.cxx
+    PolyMesh/PolyMesh_Mesh1d.cxx
 )
 
 # =============================================================================
-# Package : PolyMesh1d
+# Package : pmp
 # =============================================================================
 
-set(PolyMesh1d_PKG_HEADERS
-    PolyMesh1d/PolyMesh1d_Array1OfCell.hxx
-    PolyMesh1d/PolyMesh1d_Array1OfGroup.hxx
-    PolyMesh1d/PolyMesh1d_Array1OfNode.hxx
-    PolyMesh1d/PolyMesh1d_Cell.hxx
-    PolyMesh1d/PolyMesh1d_Group.hxx
-    PolyMesh1d/PolyMesh1d_Mesh.hxx
-    PolyMesh1d/PolyMesh1d_Node.hxx
-    PolyMesh1d/PolyMesh1d_Object.hxx
+set(pmp_PKG_HEADERS
+    pmp/pmp_LinearLine.hxx
 )
 
-set(PolyMesh1d_PKG_SOURCES
-    PolyMesh1d/PolyMesh1d_Cell.cxx
-    PolyMesh1d/PolyMesh1d_Group.cxx
-    PolyMesh1d/PolyMesh1d_Mesh.cxx
-    PolyMesh1d/PolyMesh1d_Node.cxx
-    PolyMesh1d/PolyMesh1d_Object.cxx
-)
-
-# =============================================================================
-# Package : PolyMesh2d
-# =============================================================================
-
-set(PolyMesh2d_PKG_HEADERS
-    PolyMesh2d/PolyMesh2d_Array1OfCell.hxx
-    PolyMesh2d/PolyMesh2d_Array1OfGroup.hxx
-    PolyMesh2d/PolyMesh2d_Array1OfNode.hxx
-    PolyMesh2d/PolyMesh2d_Cell.hxx
-    PolyMesh2d/PolyMesh2d_Group.hxx
-    PolyMesh2d/PolyMesh2d_Mesh.hxx
-    PolyMesh2d/PolyMesh2d_Node.hxx
-    PolyMesh2d/PolyMesh2d_Object.hxx
-)
-
-set(PolyMesh2d_PKG_SOURCES
-    PolyMesh2d/PolyMesh2d_Cell.cxx
-    PolyMesh2d/PolyMesh2d_Group.cxx
-    PolyMesh2d/PolyMesh2d_Mesh.cxx
-    PolyMesh2d/PolyMesh2d_Node.cxx
-    PolyMesh2d/PolyMesh2d_Object.cxx
-)
-
-# =============================================================================
-# Package : PolyMeshAbs
-# =============================================================================
-
-set(PolyMeshAbs_PKG_HEADERS
-    PolyMeshAbs/PolyMeshAbs_TypeOfCell.hxx
-    PolyMeshAbs/PolyMeshAbs_TypeOfCell1d.hxx
-    PolyMeshAbs/PolyMeshAbs_TypeOfCell2d.hxx
+set(pmp_PKG_SOURCES
+    pmp/pmp_LinearLine.cxx
 )
 
 # =============================================================================
@@ -804,6 +749,14 @@ set(TColmp_PKG_HEADERS
     TColmp/TColmp_SequenceOfQuadraticTetrahedron10N.hxx
     TColmp/TColmp_SequenceOfQuadraticTriangle6N.hxx
     TColmp/TColmp_SequenceOfQuadraticTriangle7N.hxx
+)
+
+# =============================================================================
+# Package : TColpmp
+# =============================================================================
+
+set(TColpmp_PKG_HEADERS
+    TColpmp/TColpmp_Array1OfLinearLine.hxx
 )
 
 # =============================================================================
@@ -945,13 +898,15 @@ set(Ceres_HEADERS
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
-    #${PolyMesh_PKG_HEADERS}
+    ${PolyMesh_PKG_HEADERS}
     #${PolyMesh1d_PKG_HEADERS}
     #${PolyMesh2d_PKG_HEADERS}
     #${PolyMeshAbs_PKG_HEADERS}
+    ${pmp_PKG_HEADERS}
     #${TColgp_PKG_HEADERS}
     #${TColMesh1d_PKG_HEADERS}
     #${TColmp_PKG_HEADERS}
+    ${TColpmp_PKG_HEADERS}
     #${Trsf2d_PKG_HEADERS}
     #${UCM_PKG_HEADERS}
     #${UCMF_PKG_HEADERS}
@@ -991,9 +946,10 @@ set(Ceres_SOURCES
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
-    #${PolyMesh_PKG_SOURCES}
+    ${PolyMesh_PKG_SOURCES}
     #${PolyMesh1d_PKG_SOURCES}
     #${PolyMesh2d_PKG_SOURCES}
+    ${pmp_PKG_SOURCES}
     #${Trsf2d_PKG_SOURCES}
     #${UCM_PKG_SOURCES}
     #${UCMF_PKG_SOURCES}
@@ -1042,9 +998,11 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh2d
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMeshAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/pmp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/TColmp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TColpmp
     ${CMAKE_CURRENT_SOURCE_DIR}/Trsf2d
     ${CMAKE_CURRENT_SOURCE_DIR}/UCM
     ${CMAKE_CURRENT_SOURCE_DIR}/UCMF
