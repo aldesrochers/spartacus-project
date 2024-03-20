@@ -27,6 +27,7 @@
 #include <MeshDS_Point3d.hxx>
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TGroup.hxx>
+#include <MeshDS_TMesh.hxx>
 #include <MeshDS_TNode.hxx>
 
 
@@ -93,6 +94,31 @@ void MeshDS_Builder::MakeGroup(MeshDS_Group &theGroup,
 
 // ============================================================================
 /*!
+ *  \brief MakeMesh()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeMesh(MeshDS_Mesh &theMesh) const
+{
+    Handle(MeshDS_TMesh) aTMesh = new MeshDS_TMesh();
+    MakeObject(theMesh, aTMesh);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeMesh()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeMesh(MeshDS_Mesh &theMesh,
+                              const Standard_Integer theNbNodes,
+                              const Standard_Integer theNbCells,
+                              const Standard_Integer theNbGroups) const
+{
+    MakeMesh(theMesh);
+    ResizeMesh(theMesh, theNbNodes, theNbCells, theNbGroups);
+}
+
+// ============================================================================
+/*!
  *  \brief MakeNode()
 */
 // ============================================================================
@@ -147,6 +173,76 @@ void MeshDS_Builder::MakeObject(MeshDS_Object &theObject,
                                 const Handle(MeshDS_TObject) &theTObject) const
 {
     theObject.SetTObject(theTObject);
+}
+
+// ============================================================================
+/*!
+ *  \brief ResizeMesh()
+*/
+// ============================================================================
+void MeshDS_Builder::ResizeMesh(const MeshDS_Mesh &theMesh,
+                                const Standard_Integer theNbNodes,
+                                const Standard_Integer theNbCells,
+                                const Standard_Integer theNbGroups) const
+{
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->ResizeNodes(theNbNodes);
+    aTMesh->ResizeCells(theNbCells);
+    aTMesh->ResizeGroups(theNbGroups);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetCell()
+*/
+// ============================================================================
+void MeshDS_Builder::SetCell(const MeshDS_Mesh &theMesh,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Cell &theCell) const
+{
+    // bind Cell to mesh
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetCell(theIndex, theCell);
+
+    // set Cell parent mesh
+    const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
+    aTCell->SetMesh(theMesh);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetGroup()
+*/
+// ============================================================================
+void MeshDS_Builder::SetGroup(const MeshDS_Mesh &theMesh,
+                              const Standard_Integer theIndex,
+                              const MeshDS_Group &theGroup) const
+{
+    // bind Group to mesh
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetGroup(theIndex, theGroup);
+
+    // set Group parent mesh
+    const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
+    aTGroup->SetMesh(theMesh);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void MeshDS_Builder::SetNode(const MeshDS_Mesh &theMesh,
+                             const Standard_Integer theIndex,
+                             const MeshDS_Node &theNode) const
+{
+    // bind node to mesh
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    aTMesh->SetNode(theIndex, theNode);
+
+    // set node parent mesh
+    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    aTNode->SetMesh(theMesh);
 }
 
 // ============================================================================

@@ -34,7 +34,11 @@
 #include <gp_Pnt1d.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
 #include <MeshAbs_TypeOfDimensionality.hxx>
+#include <MeshDS_Array1OfObject.hxx>
 #include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
+#include <MeshDS_ListOfObject.hxx>
+#include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
 
 
@@ -52,13 +56,16 @@ public:
 
 public:
 
-    static Standard_EXPORT MeshAbs_TypeOfCell           CellType(const MeshDS_Cell& theCell);
-    static Standard_EXPORT MeshAbs_TypeOfDimensionality Dimensionality(const MeshDS_Cell& theCell);
-    static Standard_EXPORT MeshAbs_TypeOfDimensionality Dimensionality(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt                       Point(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt1d                     Point1d(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt2d                     Point2d(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt                       Point3d(const MeshDS_Node& theNode);
+    static Standard_EXPORT MeshAbs_TypeOfCell               CellType(const MeshDS_Cell& theCell);
+    static Standard_EXPORT MeshAbs_TypeOfDimensionality     Dimensionality(const MeshDS_Cell& theCell);
+    static Standard_EXPORT MeshAbs_TypeOfDimensionality     Dimensionality(const MeshDS_Node& theNode);
+    static Standard_EXPORT const MeshDS_Array1OfObject&     Nodes(const MeshDS_Cell& theCell);
+    static Standard_EXPORT const MeshDS_Array1OfObject&     Nodes(const MeshDS_Mesh& theMesh);
+    static Standard_EXPORT gp_Pnt                           Point(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt1d                         Point1d(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt2d                         Point2d(const MeshDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt                           Point3d(const MeshDS_Node& theNode);
+    static Standard_EXPORT const MeshDS_ListOfObject&       ListOfCells(const MeshDS_Group& theGroup);
 
 };
 

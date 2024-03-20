@@ -27,6 +27,12 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
+// Spartacus
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshDS_Node.hxx>
+#include <MeshTools_ListOfObject.hxx>
 
 
 // ============================================================================
@@ -41,6 +47,12 @@ public:
 
     DEFINE_STANDARD_ALLOC;
 
+public:
+
+    static Standard_EXPORT void     ListCells(const MeshDS_Group& theGroup,
+                                              MeshTools_ListOfObject& theList);
+    static Standard_EXPORT void     ListNodes(const MeshDS_Cell& theCell,
+                                              MeshTools_ListOfObject& theList);
 
 };
 

@@ -24,9 +24,11 @@
 #define __MeshLib_MakeMesh_hxx__
 
 // Spartacus
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshLib_MakeObject.hxx>
-#include <MeshTools_ListOfObject.hxx>
+#include <MeshTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
@@ -53,7 +55,12 @@ public:
 
 public:
 
-
+    Standard_EXPORT void                    Add(const MeshDS_Cell& theCell);
+    Standard_EXPORT void                    Add(const MeshDS_Group& theGroup);
+    Standard_EXPORT void                    Add(const MeshDS_Node& theNode);
+    Standard_EXPORT Standard_Integer        NbCells() const;
+    Standard_EXPORT Standard_Integer        NbGroups() const;
+    Standard_EXPORT Standard_Integer        NbNodes() const;
 
 public:
 
@@ -62,8 +69,9 @@ public:
 
 private:
 
-    MeshTools_ListOfObject      myCells;
-    MeshTools_ListOfObject      myGroups;
+    MeshTools_IndexedMapOfObject    myCells;
+    MeshTools_IndexedMapOfObject    myGroups;
+    MeshTools_IndexedMapOfObject    myNodes;
 
 };
 

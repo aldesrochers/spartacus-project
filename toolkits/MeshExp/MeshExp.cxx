@@ -21,7 +21,35 @@
 
 
 // Spartacus
+#include <MeshDS_Tool.hxx>
 #include <MeshExp.hxx>
 
 
+
+// ============================================================================
+/*!
+ *  \brief ListCells()
+*/
+// ============================================================================
+void MeshExp::ListCells(const MeshDS_Group &theGroup,
+                        MeshTools_ListOfObject &theList)
+{
+    MeshDS_ListOfObject aList = MeshDS_Tool::ListOfCells(theGroup);
+    MeshDS_ListIteratorOfListOfObject anIterator(aList);
+    for(; anIterator.More(); anIterator.Next())
+        theList.Append(anIterator.Value());
+}
+
+// ============================================================================
+/*!
+ *  \brief ListNodes()
+*/
+// ============================================================================
+void MeshExp::ListNodes(const MeshDS_Cell &theCell,
+                        MeshTools_ListOfObject &theList)
+{
+    MeshDS_Array1OfObject anArray = MeshDS_Tool::Nodes(theCell);
+    for(Standard_Integer i=anArray.Lower(); i<=anArray.Upper(); i++)
+        theList.Append(anArray.Value(i));
+}
 

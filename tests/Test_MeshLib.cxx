@@ -27,6 +27,7 @@ using namespace std;
 #include <MeshDS_Tool.hxx>
 #include <MeshLib_MakeGroup.hxx>
 #include <MeshLib_MakeLinearLine.hxx>
+#include <MeshLib_MakeMesh.hxx>
 #include <MeshLib_MakeNode.hxx>
 
 
@@ -44,14 +45,16 @@ int main(int argc, char** argv)
     MeshDS_Cell aCell1 = MeshLib_MakeLinearLine(aNode1, aNode2).Cell();
     MeshDS_Cell aCell2 = MeshLib_MakeLinearLine(aNode2, aNode3).Cell();
 
-    MeshLib_MakeGroup aBuilder;
-    aBuilder.AddCell(aCell1);
-    aBuilder.AddCell(aCell2);
-    cout << aBuilder.IsDone() << endl;
+    MeshLib_MakeMesh aMeshBuilder;
+    aMeshBuilder.Add(aCell1);
+    aMeshBuilder.Add(aCell2);
+    MeshDS_Mesh aMesh = aMeshBuilder.Mesh();
 
 
+    cout << aMeshBuilder.NbCells() << endl;
+    cout << aMeshBuilder.NbGroups() << endl;
+    cout << aMeshBuilder.NbNodes() << endl;
 
-    cout << MeshDS_Tool::Dimensionality(aCell1) << " " << MeshAbs_DIM_1D << endl;
 
     return 0;
 }

@@ -33,6 +33,7 @@
 #include <gp_Pnt1d.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
+#include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
 #include <MeshDS_TObject.hxx>
@@ -64,6 +65,12 @@ public:
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup,
                                       const TCollection_AsciiString& theName) const;
 
+    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh) const;
+    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh,
+                                     const Standard_Integer theNbNodes,
+                                     const Standard_Integer theNbCells,
+                                     const Standard_Integer theNbGroups) const;
+
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const gp_Pnt1d& thePoint) const;
@@ -72,7 +79,23 @@ public:
     Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
                                      const gp_Pnt& thePoint) const;
 
+    Standard_EXPORT void    ResizeMesh(const MeshDS_Mesh& theMesh,
+                                       const Standard_Integer theNbNodes,
+                                       const Standard_Integer theNbCells,
+                                       const Standard_Integer theNbGroups) const;
+
+    Standard_EXPORT void    SetCell(const MeshDS_Mesh& theMesh,
+                                    const Standard_Integer theIndex,
+                                    const MeshDS_Cell& theCell) const;
+
+    Standard_EXPORT void    SetGroup(const MeshDS_Mesh& theMesh,
+                                     const Standard_Integer theIndex,
+                                     const MeshDS_Group& theGroup) const;
+
     Standard_EXPORT void    SetNode(const MeshDS_Cell& theCell,
+                                    const Standard_Integer theIndex,
+                                    const MeshDS_Node& theNode) const;
+    Standard_EXPORT void    SetNode(const MeshDS_Mesh& theMesh,
                                     const Standard_Integer theIndex,
                                     const MeshDS_Node& theNode) const;
 

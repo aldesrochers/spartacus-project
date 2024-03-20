@@ -25,6 +25,8 @@
 #include <MeshDS_Point2d.hxx>
 #include <MeshDS_Point3d.hxx>
 #include <MeshDS_TCell.hxx>
+#include <MeshDS_TGroup.hxx>
+#include <MeshDS_TMesh.hxx>
 #include <MeshDS_TNode.hxx>
 #include <MeshDS_Tool.hxx>
 
@@ -85,6 +87,45 @@ MeshAbs_TypeOfDimensionality MeshDS_Tool::Dimensionality(const MeshDS_Node& theN
         return MeshAbs_DIM_3D;
     else
         return MeshAbs_DIM_0D;
+}
+
+// ============================================================================
+/*!
+ *  \brief ListOfCells()
+*/
+// ============================================================================
+const MeshDS_ListOfObject& MeshDS_Tool::ListOfCells(const MeshDS_Group &theGroup)
+{
+    const MeshDS_TGroup* aTGroup = static_cast<const MeshDS_TGroup*>(theGroup.TObject().get());
+    if(aTGroup == 0)
+        throw Standard_NullObject("MeshDS_Tool::ListOfCells()->Invalid group.");
+    return aTGroup->Cells();
+}
+
+// ============================================================================
+/*!
+ *  \brief Nodes()
+*/
+// ============================================================================
+const MeshDS_Array1OfObject& MeshDS_Tool::Nodes(const MeshDS_Cell &theCell)
+{
+    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
+    if(aTCell == 0)
+        throw Standard_NullObject("MeshDS_Tool::Nodes()->Invalid cell.");
+    return aTCell->Nodes();
+}
+
+// ============================================================================
+/*!
+ *  \brief Nodes()
+*/
+// ============================================================================
+const MeshDS_Array1OfObject& MeshDS_Tool::Nodes(const MeshDS_Mesh &theMesh)
+{
+    const MeshDS_TMesh* aTMesh = static_cast<const MeshDS_TMesh*>(theMesh.TObject().get());
+    if(aTMesh == 0)
+        throw Standard_NullObject("MeshDS_Tool::Nodes()->Invalid mesh.");
+    return aTMesh->Nodes();
 }
 
 // ============================================================================

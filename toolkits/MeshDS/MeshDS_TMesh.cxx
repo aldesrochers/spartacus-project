@@ -107,6 +107,26 @@ const MeshDS_Node& MeshDS_TMesh::Node(const Standard_Integer theIndex) const
 
 // ============================================================================
 /*!
+ *  \brief Nodes()
+*/
+// ============================================================================
+const MeshDS_Array1OfObject& MeshDS_TMesh::Nodes() const
+{
+    return myNodes;
+}
+
+// ============================================================================
+/*!
+ *  \brief Nodes()
+*/
+// ============================================================================
+MeshDS_Array1OfObject& MeshDS_TMesh::Nodes()
+{
+    return myNodes;
+}
+
+// ============================================================================
+/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -123,6 +143,8 @@ MeshAbs_TypeOfObject MeshDS_TMesh::ObjectType() const
 void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
                                const Standard_Boolean toCopyData)
 {
+    if(theNbCells < 1)
+        return;
     myCells.Resize(1, theNbCells, toCopyData);
 }
 
@@ -134,6 +156,8 @@ void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
 void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
                                 const Standard_Boolean toCopyData)
 {
+    if(theNbGroups < 1)
+        return;
     myGroups.Resize(1, theNbGroups, toCopyData);
 }
 
@@ -145,6 +169,8 @@ void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
 void MeshDS_TMesh::ResizeNodes(const Standard_Integer theNbNodes,
                                const Standard_Boolean toCopyData)
 {
+    if(theNbNodes < 1)
+        return;
     myNodes.Resize(1, theNbNodes, toCopyData);
 }
 

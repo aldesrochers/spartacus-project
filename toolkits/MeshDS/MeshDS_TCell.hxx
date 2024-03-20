@@ -56,14 +56,16 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfCell  CellType() const;
-    Standard_EXPORT Standard_Integer    NbNodes() const;
-    Standard_EXPORT const MeshDS_Node&  Node(const Standard_Integer theIndex) const;
-    Standard_EXPORT void                ResizeNodes(const Standard_Integer theNbNodes,
-                                                    const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                SetCellType(const MeshAbs_TypeOfCell theCellType);
-    Standard_EXPORT void                SetNode(const Standard_Integer theIndex,
-                                                const MeshDS_Node& theNode);
+    Standard_EXPORT MeshAbs_TypeOfCell              CellType() const;
+    Standard_EXPORT Standard_Integer                NbNodes() const;
+    Standard_EXPORT const MeshDS_Node&              Node(const Standard_Integer theIndex) const;
+    Standard_EXPORT const MeshDS_Array1OfObject&    Nodes() const;
+    Standard_EXPORT MeshDS_Array1OfObject&          Nodes();
+    Standard_EXPORT void                            ResizeNodes(const Standard_Integer theNbNodes,
+                                                                const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theCellType);
+    Standard_EXPORT void                            SetNode(const Standard_Integer theIndex,
+                                                            const MeshDS_Node& theNode);
 
 private:
 
