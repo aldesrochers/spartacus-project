@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <ModelDS_Builder.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <ModelDS_TElement.hxx>
 
 
 // ============================================================================
@@ -30,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+ModelDS_TElement::ModelDS_TElement()
 {
 
 }
@@ -40,30 +39,24 @@ ModelDS_Builder::ModelDS_Builder()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+ModelDS_TElement::~ModelDS_TElement()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief ObjectType()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+ModelAbs_TypeOfObject ModelDS_TElement::ObjectType() const
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+    return ModelAbs_OBJ_Element;
 }
 
-// ============================================================================
-/*!
- *  \brief MakeObject()
-*/
-// ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
-{
-    theObject.SetTObject(theTObject);
-}
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TElement, ModelDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TElement, ModelDS_TObject)

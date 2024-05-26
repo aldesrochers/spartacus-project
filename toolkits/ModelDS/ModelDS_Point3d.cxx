@@ -21,8 +21,10 @@
 
 
 // Spartacus
-#include <ModelDS_Builder.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <ModelDS_Point3d.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -30,7 +32,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+ModelDS_Point3d::ModelDS_Point3d(const gp_Pnt& thePoint3d)
+    : myPoint3d(thePoint3d)
 {
 
 }
@@ -40,30 +43,36 @@ ModelDS_Builder::ModelDS_Builder()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+ModelDS_Point3d::~ModelDS_Point3d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief IsPoint3d()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+Standard_Boolean ModelDS_Point3d::IsPoint3d() const
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+    return Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief MakeObject()
+ *  \brief Point3d()
 */
 // ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
+const gp_Pnt& ModelDS_Point3d::Point3d() const
 {
-    theObject.SetTObject(theTObject);
+    return myPoint3d;
 }
 
+
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_Point3d, ModelDS_Point)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_Point3d, ModelDS_Point)

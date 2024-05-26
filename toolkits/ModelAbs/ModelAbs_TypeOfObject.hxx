@@ -20,28 +20,21 @@
 // ============================================================================
 
 
-#ifndef __ModelDS_Model_hxx__
-#define __ModelDS_Model_hxx__
-
-// Spartacus
-#include <ModelDS_Object.hxx>
+#ifndef __ModelAbs_TypeOfObject_hxx__
+#define __ModelAbs_TypeOfObject_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief ModelDS_Model
+ *  \brief ModelAbs_TypeOfObject
 */
 // ============================================================================
-class ModelDS_Model : public ModelDS_Object
+enum ModelAbs_TypeOfObject
 {
-
-public:
-    // constructors
-    Standard_EXPORT ModelDS_Model();
-    // destructors
-    Standard_EXPORT ~ModelDS_Model();
-
+    ModelAbs_OBJ_Domain,
+    ModelAbs_OBJ_Element,
+    ModelAbs_OBJ_Node
 };
 
 
-#endif // __ModelDS_Model_hxx__
+#endif // __ModelAbs_TypeOfObject_hxx__

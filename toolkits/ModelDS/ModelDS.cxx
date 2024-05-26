@@ -21,49 +21,71 @@
 
 
 // Spartacus
-#include <ModelDS_Builder.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <ModelDS.hxx>
+
+// OpenCascade
+#include <Standard_TypeMismatch.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Element()
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+const ModelDS_Element& ModelDS::Element(const ModelDS_Object& theObject)
 {
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Element),
+                                   "ModelDS::Element()->Type mismatch.");
+    return *(ModelDS_Element*) &theObject;
+}
 
+
+// ============================================================================
+/*!
+ *  \brief Element()
+*/
+// ============================================================================
+ModelDS_Element& ModelDS::Element(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Element),
+                                   "ModelDS::Element()->Type mismatch.");
+    return *(ModelDS_Element*) &theObject;
 }
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief Node()
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+const ModelDS_Node& ModelDS::Node(const ModelDS_Object& theObject)
 {
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Node),
+                                   "ModelDS::Node()->Type mismatch.");
+    return *(ModelDS_Node*) &theObject;
+}
 
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+ModelDS_Node& ModelDS::Node(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Node),
+                                   "ModelDS::Node()->Type mismatch.");
+    return *(ModelDS_Node*) &theObject;
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief TypeMismatch()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+Standard_Boolean ModelDS::TypeMismatch(const ModelDS_Object &theObject,
+                                      const ModelAbs_TypeOfObject theObjectType)
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+        return theObject.IsNull() ? Standard_False : theObject.ObjectType() != theObjectType;
 }
 
-// ============================================================================
-/*!
- *  \brief MakeObject()
-*/
-// ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
-{
-    theObject.SetTObject(theTObject);
-}
 

@@ -20,54 +20,53 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_ElasticTruss_hxx__
-#define __Mech1d_ElasticTruss_hxx__
+#ifndef __FE1d_Node_hxx__
+#define __FE1d_Node_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Spartacus
-#include <Mech1d_Truss.hxx>
+#include <gp_Pnt1d.hxx>
 
 // Forward declarations
-class Mech1d_ElasticTruss;
+class FE1d_Node;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
+DEFINE_STANDARD_HANDLE(FE1d_Node, Standard_Transient);
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_ElasticTruss
+ *  \brief FE1d_Node
 */
 // ============================================================================
-class Mech1d_ElasticTruss : public Mech1d_Truss
+class FE1d_Node : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss();
-    Standard_EXPORT Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                        const Handle(FE1d_Node)& theNode2,
-                                        const Standard_Real theModulous,
-                                        const Standard_Real theArea);
+    Standard_EXPORT FE1d_Node();
+    Standard_EXPORT FE1d_Node(const gp_Pnt1d& thePoint);
     // destructors
-    Standard_EXPORT ~Mech1d_ElasticTruss();
+    Standard_EXPORT ~FE1d_Node();
 
 public:
 
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
+    Standard_EXPORT const gp_Pnt1d&     Point() const;
+    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
 
 private:
 
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
+    gp_Pnt1d        myPoint;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    DEFINE_STANDARD_RTTIEXT(FE1d_Node, Standard_Transient);
 
 };
 
 
-#endif // __Mech1d_ElasticTruss_hxx__
+#endif // __FE1d_Node_hxx__

@@ -20,28 +20,48 @@
 // ============================================================================
 
 
-// Spartacus
-#include <ModelDS_Model.hxx>
+#ifndef __FEA_Analysis_hxx__
+#define __FEA_Analysis_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+
+// Forward declarations
+class FEA_Analysis;
+
+// Handles
+DEFINE_STANDARD_HANDLE(FEA_Analysis, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief FEA_Analysis
 */
 // ============================================================================
-ModelDS_Model::ModelDS_Model()
+class FEA_Analysis : public Standard_Transient
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-ModelDS_Model::~ModelDS_Model()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT FEA_Analysis();
+    // destructors
+    Standard_EXPORT ~FEA_Analysis();
+
+public:
+
+    Standard_EXPORT virtual Standard_Boolean        Perform() = 0;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FEA_Analysis, Standard_Transient);
+
+};
 
 
+#endif // __FEA_Analysis_hxx__

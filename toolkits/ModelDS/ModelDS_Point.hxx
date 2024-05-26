@@ -20,54 +20,54 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_ElasticTruss_hxx__
-#define __Mech1d_ElasticTruss_hxx__
+#ifndef __ModelDS_Point_hxx__
+#define __ModelDS_Point_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <Mech1d_Truss.hxx>
+#include <gp_Pnt1d.hxx>
 
 // Forward declarations
-class Mech1d_ElasticTruss;
+class ModelDS_Point;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
+DEFINE_STANDARD_HANDLE(ModelDS_Point, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_ElasticTruss
+ *  \brief ModelDS_Point
 */
 // ============================================================================
-class Mech1d_ElasticTruss : public Mech1d_Truss
+class ModelDS_Point : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss();
-    Standard_EXPORT Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                        const Handle(FE1d_Node)& theNode2,
-                                        const Standard_Real theModulous,
-                                        const Standard_Real theArea);
+    Standard_EXPORT ModelDS_Point();
     // destructors
-    Standard_EXPORT ~Mech1d_ElasticTruss();
+    Standard_EXPORT ~ModelDS_Point();
 
 public:
 
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
-
-private:
-
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint1d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint2d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint3d() const;
+    virtual Standard_EXPORT const gp_Pnt1d&     Point1d() const;
+    virtual Standard_EXPORT const gp_Pnt2d&     Point2d() const;
+    virtual Standard_EXPORT const gp_Pnt&       Point3d() const;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    DEFINE_STANDARD_RTTIEXT(ModelDS_Point, Standard_Transient)
 
 };
 
 
-#endif // __Mech1d_ElasticTruss_hxx__
+#endif // __ModelDS_Point_hxx__

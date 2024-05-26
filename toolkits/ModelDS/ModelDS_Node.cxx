@@ -20,38 +20,28 @@
 // ============================================================================
 
 
-#ifndef __ModelDS_TModel_hxx__
-#define __ModelDS_TModel_hxx__
-
 // Spartacus
-#include <ModelDS_TObject.hxx>
-
-// Forward declarations
-class ModelDS_TModel;
-
-// Handles
-DEFINE_STANDARD_HANDLE(ModelDS_TModel, ModelDS_TObject)
+#include <ModelDS_Node.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelDS_TModel
+ *  \brief Constructor
 */
 // ============================================================================
-class ModelDS_TModel : public ModelDS_TObject
+ModelDS_Node::ModelDS_Node()
 {
 
-public:
-    // constructors
-    Standard_EXPORT ModelDS_TModel();
-    // destructors
-    Standard_EXPORT ~ModelDS_TModel();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+ModelDS_Node::~ModelDS_Node()
+{
 
-    DEFINE_STANDARD_RTTIEXT(ModelDS_TModel, ModelDS_TObject)
-
-};
+}
 
 
-#endif // __ModelDS_TModel_hxx__

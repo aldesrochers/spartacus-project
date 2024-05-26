@@ -36,6 +36,22 @@ Mech1d_ElasticTruss::Mech1d_ElasticTruss()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mech1d_ElasticTruss::Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
+                                         const Handle(FE1d_Node)& theNode2,
+                                         const Standard_Real theModulous,
+                                         const Standard_Real theArea)
+    : Mech1d_Truss(theNode1, theNode2),
+    myArea(theArea),
+    myModulous(theModulous)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -44,6 +60,45 @@ Mech1d_ElasticTruss::~Mech1d_ElasticTruss()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Area()
+*/
+// ============================================================================
+Standard_Real Mech1d_ElasticTruss::Area() const
+{
+    return myArea;
+}
+
+// ============================================================================
+/*!
+ *  \brief Modulous()
+*/
+// ============================================================================
+Standard_Real Mech1d_ElasticTruss::Modulous() const
+{
+    return myModulous;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetArea()
+*/
+// ============================================================================
+void Mech1d_ElasticTruss::SetArea(const Standard_Real theArea)
+{
+    myArea = theArea;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetModulous()
+*/
+// ============================================================================
+void Mech1d_ElasticTruss::SetModulous(const Standard_Real theModulous)
+{
+    myModulous = theModulous;
+}
 
 
 // ****************************************************************************

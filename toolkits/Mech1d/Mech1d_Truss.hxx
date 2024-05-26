@@ -24,13 +24,14 @@
 #define __Mech1d_Truss_hxx__
 
 // Spartacus
-#include <Mech1d_Element.hxx>
+#include <FE1d_Element.hxx>
+#include <FE1d_Node.hxx>
 
 // Forward declarations
 class Mech1d_Truss;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(Mech1d_Truss, FE1d_Element)
 
 
 // ============================================================================
@@ -38,18 +39,32 @@ DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
  *  \brief Mech1d_Truss
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class Mech1d_Truss : public FE1d_Element
 {
 
 public:
     // constructors
     Standard_EXPORT Mech1d_Truss();
+    Standard_EXPORT Mech1d_Truss(const Handle(FE1d_Node)& theNode1,
+                                 const Handle(FE1d_Node)& theNode2);
     // destructors
     Standard_EXPORT ~Mech1d_Truss();
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    Standard_EXPORT const Handle(FE1d_Node)&    Node1() const;
+    Standard_EXPORT const Handle(FE1d_Node)&    Node2() const;
+    Standard_EXPORT void                        SetNode1(const Handle(FE1d_Node)& theNode1);
+    Standard_EXPORT void                        SetNode2(const Handle(FE1d_Node)& theNode2);
+
+private:
+
+    Handle(FE1d_Node)   myNode1;
+    Handle(FE1d_Node)   myNode2;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, FE1d_Element);
 
 };
 

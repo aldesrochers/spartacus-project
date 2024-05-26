@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <ModelDS_Builder.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <FE1d_Node.hxx>
 
 
 // ============================================================================
@@ -30,7 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+FE1d_Node::FE1d_Node()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+FE1d_Node::FE1d_Node(const gp_Pnt1d& thePoint)
+    : myPoint(thePoint)
 {
 
 }
@@ -40,30 +50,34 @@ ModelDS_Builder::ModelDS_Builder()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+FE1d_Node::~FE1d_Node()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief Point()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+const gp_Pnt1d& FE1d_Node::Point() const
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+    return myPoint;
 }
 
 // ============================================================================
 /*!
- *  \brief MakeObject()
+ *  \brief SetPoint()
 */
 // ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
+void FE1d_Node::SetPoint(const gp_Pnt1d& thePoint)
 {
-    theObject.SetTObject(theTObject);
+    myPoint = thePoint;
 }
 
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FE1d_Node, Standard_Transient);
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Node, Standard_Transient);

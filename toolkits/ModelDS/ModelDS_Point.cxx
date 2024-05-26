@@ -21,7 +21,10 @@
 
 
 // Spartacus
-#include <ModelDS_Object.hxx>
+#include <ModelDS_Point.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -29,7 +32,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Object::ModelDS_Object()
+ModelDS_Point::ModelDS_Point()
 {
 
 }
@@ -39,68 +42,75 @@ ModelDS_Object::ModelDS_Object()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Object::~ModelDS_Object()
+ModelDS_Point::~ModelDS_Point()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief HashCode()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-Standard_Integer ModelDS_Object::HashCode (const Standard_Integer theUpperBound) const
+Standard_Boolean ModelDS_Point::IsPoint1d() const
 {
-    return ::HashCode(myTObject.get(), theUpperBound);
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief IsEqual()
+ *  \brief IsPoint2d()
 */
 // ============================================================================
-Standard_Boolean ModelDS_Object::IsEqual(const ModelDS_Object &theOther) const
+Standard_Boolean ModelDS_Point::IsPoint2d() const
 {
-    return (myTObject == theOther.TObject());
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief IsNull()
+ *  \brief IsPoint3d()
 */
 // ============================================================================
-Standard_Boolean ModelDS_Object::IsNull() const
+Standard_Boolean ModelDS_Point::IsPoint3d() const
 {
-    return myTObject.IsNull();
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Point1d()
 */
 // ============================================================================
-ModelAbs_TypeOfObject ModelDS_Object::ObjectType() const
+const gp_Pnt1d& ModelDS_Point::Point1d() const
 {
-    return myTObject->ObjectType();
+    throw Standard_DomainError("ModelDS_Point::Point1d()");
 }
 
 // ============================================================================
 /*!
- *  \brief SetTObject()
+ *  \brief Point2d()
 */
 // ============================================================================
-void ModelDS_Object::SetTObject(const Handle(ModelDS_TObject) &theTObject)
+const gp_Pnt2d& ModelDS_Point::Point2d() const
 {
-    myTObject = theTObject;
+    throw Standard_DomainError("ModelDS_Point::Point2d()");
 }
 
 // ============================================================================
 /*!
- *  \brief TObject()
+ *  \brief Point3d()
 */
 // ============================================================================
-const Handle(ModelDS_TObject)& ModelDS_Object::TObject() const
+const gp_Pnt& ModelDS_Point::Point3d() const
 {
-    return myTObject;
+    throw Standard_DomainError("ModelDS_Point::Point3d()");
 }
 
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_Point, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_Point, Standard_Transient)

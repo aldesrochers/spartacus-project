@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <ModelDS_Object.hxx>
+#include <ModelDS.hxx>
+#include <ModelDS_TDomain.hxx>
 
 
 // ============================================================================
@@ -29,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Object::ModelDS_Object()
+ModelDS_TDomain::ModelDS_TDomain()
 {
 
 }
@@ -39,39 +40,49 @@ ModelDS_Object::ModelDS_Object()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Object::~ModelDS_Object()
+ModelDS_TDomain::~ModelDS_TDomain()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief HashCode()
+ *  \brief Element()
 */
 // ============================================================================
-Standard_Integer ModelDS_Object::HashCode (const Standard_Integer theUpperBound) const
+const ModelDS_Element& ModelDS_TDomain::Element(const Standard_Integer theIndex) const
 {
-    return ::HashCode(myTObject.get(), theUpperBound);
+    return ModelDS::Element(myElements.Value(theIndex));
 }
 
 // ============================================================================
 /*!
- *  \brief IsEqual()
+ *  \brief NbElements()
 */
 // ============================================================================
-Standard_Boolean ModelDS_Object::IsEqual(const ModelDS_Object &theOther) const
+Standard_Integer ModelDS_TDomain::NbElements() const
 {
-    return (myTObject == theOther.TObject());
+    return myElements.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief IsNull()
+ *  \brief NbNodes()
 */
 // ============================================================================
-Standard_Boolean ModelDS_Object::IsNull() const
+Standard_Integer ModelDS_TDomain::NbNodes() const
 {
-    return myTObject.IsNull();
+    return myNodes.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const ModelDS_Node& ModelDS_TDomain::Node(const Standard_Integer theIndex) const
+{
+    return ModelDS::Node(myNodes.Value(theIndex));
 }
 
 // ============================================================================
@@ -79,28 +90,58 @@ Standard_Boolean ModelDS_Object::IsNull() const
  *  \brief ObjectType()
 */
 // ============================================================================
-ModelAbs_TypeOfObject ModelDS_Object::ObjectType() const
+ModelAbs_TypeOfObject ModelDS_TDomain::ObjectType() const
 {
-    return myTObject->ObjectType();
+    return ModelAbs_OBJ_Domain;
 }
 
 // ============================================================================
 /*!
- *  \brief SetTObject()
+ *  \brief ResizeElements()
 */
 // ============================================================================
-void ModelDS_Object::SetTObject(const Handle(ModelDS_TObject) &theTObject)
+void ModelDS_TDomain::ResizeElements(const Standard_Integer theNbElements,
+                                     const Standard_Boolean toCopyData)
 {
-    myTObject = theTObject;
+    myElements.Resize(1, theNbElements, toCopyData);
 }
 
 // ============================================================================
 /*!
- *  \brief TObject()
+ *  \brief ResizeNodes()
 */
 // ============================================================================
-const Handle(ModelDS_TObject)& ModelDS_Object::TObject() const
+void ModelDS_TDomain::ResizeNodes(const Standard_Integer theNbNodes,
+                                  const Standard_Boolean toCopyData)
 {
-    return myTObject;
+    myNodes.Resize(1, theNbNodes, toCopyData);
 }
 
+// ============================================================================
+/*!
+ *  \brief SetElement()
+*/
+// ============================================================================
+void ModelDS_TDomain::SetElement(const Standard_Integer theIndex,
+                                 const ModelDS_Element &theElement)
+{
+    myElements.SetValue(theIndex, theElement);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void ModelDS_TDomain::SetNode(const Standard_Integer theIndex,
+                              const ModelDS_Node &theNode)
+{
+    myNodes.SetValue(theIndex, theNode);
+}
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelDS_TDomain, ModelDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TDomain, ModelDS_TObject)

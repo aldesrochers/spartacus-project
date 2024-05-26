@@ -28,13 +28,9 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <ModelDS_Mesh.hxx>
+#include <ModelDS_Domain.hxx>
 #include <ModelDS_Object.hxx>
 #include <ModelDS_TObject.hxx>
-#include <PolyMesh_Mesh.hxx>
-#include <PolyMesh1d_Mesh.hxx>
-#include <PolyMesh2d_Mesh.hxx>
-#include <Poly_Triangulation.hxx>
 
 
 // ============================================================================
@@ -53,24 +49,7 @@ public:
 
 public:
 
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh) const;
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh,
-                                     const Handle(PolyMesh1d_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh,
-                                     const Handle(PolyMesh2d_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh,
-                                     const Handle(PolyMesh_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    MakeMesh(ModelDS_Mesh& theMesh,
-                                     const Handle(Poly_Triangulation)& theTriangulation) const;
-
-    Standard_EXPORT void    UpdateMesh(const ModelDS_Mesh& theMesh,
-                                       const Handle(PolyMesh1d_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    UpdateMesh(const ModelDS_Mesh& theMesh,
-                                       const Handle(PolyMesh2d_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    UpdateMesh(const ModelDS_Mesh& theMesh,
-                                       const Handle(PolyMesh_Mesh)& thePolyMesh) const;
-    Standard_EXPORT void    UpdateMesh(const ModelDS_Mesh& theMesh,
-                                       const Handle(Poly_Triangulation)& theTriangulation) const;
+    Standard_EXPORT void    MakeDomain(ModelDS_Domain& theDomain) const;
 
 protected:
 

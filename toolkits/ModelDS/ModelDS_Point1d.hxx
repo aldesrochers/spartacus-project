@@ -20,54 +20,47 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_ElasticTruss_hxx__
-#define __Mech1d_ElasticTruss_hxx__
+#ifndef __ModelDS_Point1d_hxx__
+#define __ModelDS_Point1d_hxx__
 
 // Spartacus
-#include <Mech1d_Truss.hxx>
+#include <ModelDS_Point.hxx>
 
 // Forward declarations
-class Mech1d_ElasticTruss;
+class ModelDS_Point1d;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
+DEFINE_STANDARD_HANDLE(ModelDS_Point1d, ModelDS_Point)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_ElasticTruss
+ *  \brief ModelDS_Point1d
 */
 // ============================================================================
-class Mech1d_ElasticTruss : public Mech1d_Truss
+class ModelDS_Point1d : public ModelDS_Point
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss();
-    Standard_EXPORT Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                        const Handle(FE1d_Node)& theNode2,
-                                        const Standard_Real theModulous,
-                                        const Standard_Real theArea);
+    Standard_EXPORT ModelDS_Point1d(const gp_Pnt1d& thePoint1d);
     // destructors
-    Standard_EXPORT ~Mech1d_ElasticTruss();
+    Standard_EXPORT ~ModelDS_Point1d();
 
 public:
 
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
+    Standard_EXPORT Standard_Boolean    IsPoint1d() const Standard_OVERRIDE;
+    Standard_EXPORT const gp_Pnt1d&     Point1d() const Standard_OVERRIDE;
 
 private:
 
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
+    gp_Pnt1d        myPoint1d;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    DEFINE_STANDARD_RTTIEXT(ModelDS_Point1d, ModelDS_Point)
 
 };
 
 
-#endif // __Mech1d_ElasticTruss_hxx__
+#endif // __ModelDS_Point1d_hxx__

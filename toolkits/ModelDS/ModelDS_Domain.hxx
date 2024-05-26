@@ -20,54 +20,28 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_ElasticTruss_hxx__
-#define __Mech1d_ElasticTruss_hxx__
+#ifndef __ModelDS_Domain_hxx__
+#define __ModelDS_Domain_hxx__
 
 // Spartacus
-#include <Mech1d_Truss.hxx>
-
-// Forward declarations
-class Mech1d_ElasticTruss;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
+#include <ModelDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_ElasticTruss
+ *  \brief ModelDS_Domain
 */
 // ============================================================================
-class Mech1d_ElasticTruss : public Mech1d_Truss
+class ModelDS_Domain : public ModelDS_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss();
-    Standard_EXPORT Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                        const Handle(FE1d_Node)& theNode2,
-                                        const Standard_Real theModulous,
-                                        const Standard_Real theArea);
+    Standard_EXPORT ModelDS_Domain();
     // destructors
-    Standard_EXPORT ~Mech1d_ElasticTruss();
-
-public:
-
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
-
-private:
-
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    Standard_EXPORT ~ModelDS_Domain();
 
 };
 
 
-#endif // __Mech1d_ElasticTruss_hxx__
+#endif // __ModelDS_Domain_hxx__

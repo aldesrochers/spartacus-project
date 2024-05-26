@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <ModelDS_Builder.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <FE_Analysis.hxx>
 
 
 // ============================================================================
@@ -30,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+FE_Analysis::FE_Analysis()
 {
 
 }
@@ -40,30 +39,17 @@ ModelDS_Builder::ModelDS_Builder()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+FE_Analysis::~FE_Analysis()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief MakeDomain()
-*/
-// ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
-{
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
-}
 
-// ============================================================================
-/*!
- *  \brief MakeObject()
-*/
-// ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
-{
-    theObject.SetTObject(theTObject);
-}
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FE_Analysis, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE_Analysis, Standard_Transient)
 

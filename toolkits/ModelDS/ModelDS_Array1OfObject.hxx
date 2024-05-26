@@ -20,42 +20,17 @@
 // ============================================================================
 
 
-#ifndef __FE1d_Element_hxx__
-#define __FE1d_Element_hxx__
+#ifndef __ModelDS_Array1OfObject_hxx__
+#define __ModelDS_Array1OfObject_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-#include <math_Matrix.hxx>
-#include <math_Vector.hxx>
+#include <NCollection_Array1.hxx>
 
-// Forward declarations
-class FE1d_Element;
+// Spartacus
+#include <ModelDS_Object.hxx>
 
-// Handles
-DEFINE_STANDARD_HANDLE(FE1d_Element, Standard_Transient);
+// Type definitions
+typedef NCollection_Array1<ModelDS_Object>      ModelDS_Array1OfObject;
 
 
-// ============================================================================
-/*!
- *  \brief FE1d_Element
-*/
-// ============================================================================
-class FE1d_Element : public Standard_Transient
-{
-
-public:
-    // constructors
-    Standard_EXPORT FE1d_Element();
-    // destructors
-    Standard_EXPORT ~FE1d_Element();
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE1d_Element, Standard_Transient);
-
-};
-
-
-#endif // __FE1d_Element_hxx__
+#endif // __ModelDS_Array1OfObject_hxx__

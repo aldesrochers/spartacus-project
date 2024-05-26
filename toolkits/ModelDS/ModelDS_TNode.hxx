@@ -20,54 +20,52 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_ElasticTruss_hxx__
-#define __Mech1d_ElasticTruss_hxx__
+#ifndef __ModelDS_TNode_hxx__
+#define __ModelDS_TNode_hxx__
 
 // Spartacus
-#include <Mech1d_Truss.hxx>
+#include <ModelDS_Point.hxx>
+#include <ModelDS_TObject.hxx>
 
 // Forward declarations
-class Mech1d_ElasticTruss;
+class ModelDS_TNode;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
+DEFINE_STANDARD_HANDLE(ModelDS_TNode, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_ElasticTruss
+ *  \brief ModelDS_TNode
 */
 // ============================================================================
-class Mech1d_ElasticTruss : public Mech1d_Truss
+class ModelDS_TNode : public ModelDS_TObject
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss();
-    Standard_EXPORT Mech1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                        const Handle(FE1d_Node)& theNode2,
-                                        const Standard_Real theModulous,
-                                        const Standard_Real theArea);
+    Standard_EXPORT ModelDS_TNode();
     // destructors
-    Standard_EXPORT ~Mech1d_ElasticTruss();
+    Standard_EXPORT ~ModelDS_TNode();
 
 public:
 
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
+    Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const Handle(ModelDS_Point)&    Point() const;
+    Standard_EXPORT void                            SetPoint(const Handle(ModelDS_Point)& thePoint);
 
 private:
 
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
+    Handle(ModelDS_Point)       myPoint;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TNode, ModelDS_TObject)
 
 };
 
 
-#endif // __Mech1d_ElasticTruss_hxx__
+#endif // __ModelDS_TNode_hxx__

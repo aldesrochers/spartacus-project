@@ -23,14 +23,24 @@
 #include <iostream>
 using namespace std;
 
+#include <FE1d_Node.hxx>
+#include <Mech1d_ElasticTruss.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Test_Model
 */
 // ============================================================================
 int main(int argc, char** argv)
 {
+
+    Handle(FE1d_Node) aNode1 = new FE1d_Node(gp_Pnt1d(0.));
+    Handle(FE1d_Node) aNode2 = new FE1d_Node(gp_Pnt1d(1.));
+
+    Handle(Mech1d_ElasticTruss) aTruss = new Mech1d_ElasticTruss(aNode1, aNode2, 2E11, 1E-4);
+
+
+
 
 }

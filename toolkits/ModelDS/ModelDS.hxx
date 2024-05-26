@@ -20,34 +20,49 @@
 // ============================================================================
 
 
+#ifndef __ModelDS_hxx__
+#define __ModelDS_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 // Spartacus
-#include <ModelDS_TModel.hxx>
+#include <ModelAbs_TypeOfObject.hxx>
+#include <ModelDS_Element.hxx>
+#include <ModelDS_Node.hxx>
+#include <ModelDS_Object.hxx>
+
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief ModelDS
 */
 // ============================================================================
-ModelDS_TModel::ModelDS_TModel()
+class ModelDS
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-ModelDS_TModel::~ModelDS_TModel()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+
+    static Standard_EXPORT const ModelDS_Element&   Element(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_Element&         Element(ModelDS_Object& theObject);
+
+    static Standard_EXPORT const ModelDS_Node&      Node(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_Node&            Node(ModelDS_Object& theObject);
+
+protected:
+
+    static Standard_EXPORT Standard_Boolean         TypeMismatch(const ModelDS_Object& theObject,
+                                                                 const ModelAbs_TypeOfObject theObjectType);
 
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(ModelDS_TModel, ModelDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TModel, ModelDS_TObject)
+};
+
+
+#endif // __ModelDS_hxx__

@@ -176,6 +176,32 @@ set(EleProp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : FE1d
+# =============================================================================
+
+set(FE1d_PKG_HEADERS
+    FE1d/FE1d_Element.hxx
+    FE1d/FE1d_Node.hxx
+)
+
+set(FE1d_PKG_SOURCES
+    FE1d/FE1d_Element.cxx
+    FE1d/FE1d_Node.cxx
+)
+
+# =============================================================================
+# Package : FE
+# =============================================================================
+
+set(FEA_PKG_HEADERS
+    FEA/FEA_Analysis.hxx
+)
+
+set(FEA_PKG_SOURCES
+    FEA/FEA_Analysis.cxx
+)
+
+# =============================================================================
 # Package : FEAbs
 # =============================================================================
 
@@ -252,12 +278,14 @@ set(material_PKG_SOURCES
 set(Mech1d_PKG_HEADERS
     Mech1d/Mech1d_ElasticTruss.hxx
     Mech1d/Mech1d_Element.hxx
+    Mech1d/Mech1d_Node.hxx
     Mech1d/Mech1d_Truss.hxx
 )
 
 set(Mech1d_PKG_SOURCES
     Mech1d/Mech1d_ElasticTruss.cxx
     Mech1d/Mech1d_Element.cxx
+    Mech1d/Mech1d_Node.cxx
     Mech1d/Mech1d_Truss.cxx
 )
 
@@ -544,6 +572,7 @@ set(ModelAbs_PKG_HEADERS
     ModelAbs/ModelAbs_Modelization.hxx
     ModelAbs/ModelAbs_Parameter.hxx
     ModelAbs/ModelAbs_Phenomenon.hxx
+    ModelAbs/ModelAbs_TypeOfObject.hxx
 )
 
 # =============================================================================
@@ -567,18 +596,37 @@ set(ModelBuilder_PKG_SOURCES
 # =============================================================================
 
 set(ModelDS_PKG_HEADERS
+    ModelDS/ModelDS.hxx
+    ModelDS/ModelDS_Array1OfObject.hxx
+    ModelDS/ModelDS_Builder.hxx
+    ModelDS/ModelDS_Domain.hxx
+    ModelDS/ModelDS_Element.hxx
+    ModelDS/ModelDS_Node.hxx
     ModelDS/ModelDS_Object.hxx
-    ModelDS/ModelDS_TFunction.hxx
-    ModelDS/ModelDS_TMaterial.hxx
-    ModelDS/ModelDS_TModel.hxx
+    ModelDS/ModelDS_Point.hxx
+    ModelDS/ModelDS_Point1d.hxx
+    ModelDS/ModelDS_Point2d.hxx
+    ModelDS/ModelDS_Point3d.hxx
+    ModelDS/ModelDS_TDomain.hxx
+    ModelDS/ModelDS_TElement.hxx
+    ModelDS/ModelDS_TNode.hxx
     ModelDS/ModelDS_TObject.hxx
 )
 
 set(ModelDS_PKG_SOURCES
+    ModelDS/ModelDS.cxx
+    ModelDS/ModelDS_Builder.cxx
+    ModelDS/ModelDS_Domain.cxx
+    ModelDS/ModelDS_Element.cxx
+    ModelDS/ModelDS_Node.cxx
     ModelDS/ModelDS_Object.cxx
-    ModelDS/ModelDS_TFunction.cxx
-    ModelDS/ModelDS_TMaterial.cxx
-    ModelDS/ModelDS_TModel.cxx
+    ModelDS/ModelDS_Point.cxx
+    ModelDS/ModelDS_Point1d.cxx
+    ModelDS/ModelDS_Point2d.cxx
+    ModelDS/ModelDS_Point3d.cxx
+    ModelDS/ModelDS_TDomain.cxx
+    ModelDS/ModelDS_TElement.cxx
+    ModelDS/ModelDS_TNode.cxx
     ModelDS/ModelDS_TObject.cxx
 )
 
@@ -875,12 +923,14 @@ set(Ceres_HEADERS
     #${cmp_PKG_HEADERS}
     #${cp_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
+    ${FE1d_PKG_HEADERS}
+    ${FEA_PKG_HEADERS}
     #${FEAbs_PKG_HEADERS}
     #${FEM_PKG_HEADERS}
     #${FEP_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     #${material_PKG_HEADERS}
-    #${Mech1d_PKG_HEADERS}
+    ${Mech1d_PKG_HEADERS}
     #${Mech2d_PKG_HEADERS}
     #${Mesh_PKG_HEADERS}
     #${Mesh1d_PKG_HEADERS}
@@ -926,11 +976,13 @@ set(Ceres_SOURCES
     #${cmp_PKG_SOURCES}
     #${cp_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
+    ${FE1d_PKG_SOURCES}
+    ${FEA_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
     #${FEP_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     #${material_PKG_SOURCES}
-    #${Mech1d_PKG_SOURCES}
+    ${Mech1d_PKG_SOURCES}
     #${Mech2d_PKG_SOURCES}
     #${Mesh_PKG_SOURCES}
     #${Mesh1d_PKG_SOURCES}
@@ -971,6 +1023,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/cp
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FE1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/FEA
     ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/FEM
     ${CMAKE_CURRENT_SOURCE_DIR}/FEP

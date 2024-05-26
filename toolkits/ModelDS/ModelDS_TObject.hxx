@@ -28,6 +28,9 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
+// Spartacus
+#include <ModelAbs_TypeOfObject.hxx>
+
 // Forward declarations
 class ModelDS_TObject;
 
@@ -48,6 +51,10 @@ public:
     Standard_EXPORT ModelDS_TObject();
     // destructors
     Standard_EXPORT ~ModelDS_TObject();
+
+public:
+
+    virtual Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const = 0;
 
 public:
 
