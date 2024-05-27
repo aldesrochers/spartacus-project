@@ -20,21 +20,21 @@
 // ============================================================================
 
 
-#ifndef __ModelBuilder_MakeNode1d_hxx__
-#define __ModelBuilder_MakeNode1d_hxx__
+#ifndef __ModelBuilder_MakeElement_hxx__
+#define __ModelBuilder_MakeElement_hxx__
 
 // Spartacus
 #include <ModelBuilder_Command.hxx>
 #include <ModelDS_Builder.hxx>
-
+#include <ModelDS_Node.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelBuilder_MakeNode1d
+ *  \brief ModelBuilder_MakeElement
 */
 // ============================================================================
-class ModelBuilder_MakeNode1d : public ModelBuilder_Command
+class ModelBuilder_MakeElement : public ModelBuilder_Command
 {
 
 public:
@@ -43,28 +43,14 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeNode1d();
-    Standard_EXPORT ModelBuilder_MakeNode1d(const gp_Pnt1d& thePoint);
-    Standard_EXPORT ModelBuilder_MakeNode1d(const Standard_Real theX);
+    Standard_EXPORT ModelBuilder_MakeElement(const ModelDS_Node& theNode1,
+                                             const ModelDS_Node& theNode2,
+                                             const Standard_Real theE,
+                                             const Standard_Real theA);
     // destructors
-    Standard_EXPORT ~ModelBuilder_MakeNode1d();
-
-public:
-
-    Standard_EXPORT const ModelDS_Node&     Node() const;
-    Standard_EXPORT operator                ModelDS_Node() const;
-
-protected:
-
-    Standard_EXPORT void        Initialize();
-    Standard_EXPORT void        Initialize(const gp_Pnt1d& thePoint);
-    Standard_EXPORT void        Initialize(const Standard_Real theX);
-
-private:
-
-    ModelDS_Node        myNode;
+    Standard_EXPORT ~ModelBuilder_MakeElement();
 
 };
 
 
-#endif // __ModelBuilder_MakeNode1d_hxx__
+#endif // __ModelBuilder_MakeElement_hxx__

@@ -23,8 +23,11 @@
 #ifndef __ModelDS_TNode_hxx__
 #define __ModelDS_TNode_hxx__
 
+// OpenCascade
+#include <gp_Pnt.hxx>
+
 // Spartacus
-#include <ModelDS_Point.hxx>
+#include <ModelDS_ListOfObject.hxx>
 #include <ModelDS_TObject.hxx>
 
 // Forward declarations
@@ -54,12 +57,15 @@ public:
 
 public:
 
-    Standard_EXPORT const Handle(ModelDS_Point)&    Point() const;
-    Standard_EXPORT void                            SetPoint(const Handle(ModelDS_Point)& thePoint);
+    Standard_EXPORT const ModelDS_ListOfObject& DegreesOfFreedom() const;
+    Standard_EXPORT ModelDS_ListOfObject&       DegreesOfFreedom();
+    Standard_EXPORT const gp_Pnt&               Point() const;
+    Standard_EXPORT void                        SetPoint(const gp_Pnt& thePoint);
 
 private:
 
-    Handle(ModelDS_Point)       myPoint;
+    ModelDS_ListOfObject    myDegreesOfFreedom;
+    gp_Pnt                  myPoint;
 
 public:
 

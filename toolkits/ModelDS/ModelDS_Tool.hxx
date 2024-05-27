@@ -29,7 +29,7 @@
 
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
+#include <gp_Pnt.hxx>
 #include <ModelDS_Node.hxx>
 
 
@@ -47,7 +47,7 @@ public:
 
 public:
 
-    static Standard_EXPORT gp_Pnt1d                         Point1d(const ModelDS_Node& theNode);
+    static Standard_EXPORT gp_Pnt       Point(const ModelDS_Node& theNode);
 
 };
 

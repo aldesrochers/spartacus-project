@@ -26,8 +26,7 @@
 // Spartacus
 #include <ModelBuilder_Command.hxx>
 #include <ModelDS_Builder.hxx>
-#include <DOF_DX.hxx>
-
+#include <DOF_DegreeOfFreedom.hxx>
 
 // ============================================================================
 /*!
@@ -43,13 +42,23 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom(const Handle(DOF_DX)& theDX);
+    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom();
+    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom(const Handle(DOF_DegreeOfFreedom)& theDOF);
     // destructors
     Standard_EXPORT ~ModelBuilder_MakeDegreeOfFreedom();
 
+public:
+
+    Standard_EXPORT const ModelDS_DegreeOfFreedom&  DegreeOfFreedom() const;
+    Standard_EXPORT operator                        ModelDS_DegreeOfFreedom() const;
+
 protected:
 
-    Standard_EXPORT void        Initialize(const Handle(DOF_DX)& theDX);
+    Standard_EXPORT void        Initialize(const Handle(DOF_DegreeOfFreedom)& theDOF);
+
+private:
+
+    ModelDS_DegreeOfFreedom     myDegreeOfFreedom;
 
 };
 

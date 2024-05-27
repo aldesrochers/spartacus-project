@@ -20,26 +20,20 @@
 // ============================================================================
 
 
-#ifndef __FE_DegreeOfFreedom_hxx__
-#define __FE_DegreeOfFreedom_hxx__
+#ifndef __ModelBuilder_MakeNode_hxx__
+#define __ModelBuilder_MakeNode_hxx__
 
 // Spartacus
-#include <FE_Component.hxx>
-#include <FE_TypeOfDegreeOfFreedom.hxx>
-
-// Forward declarations
-class FE_DegreeOfFreedom;
-
-// Handles
-DEFINE_STANDARD_HANDLE(FE_DegreeOfFreedom, FE_Component)
+#include <ModelBuilder_Command.hxx>
+#include <ModelDS_Builder.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief FE_DegreeOfFreedom
+ *  \brief ModelBuilder_MakeNode
 */
 // ============================================================================
-class FE_DegreeOfFreedom : public FE_Component
+class ModelBuilder_MakeNode : public ModelBuilder_Command
 {
 
 public:
@@ -48,25 +42,26 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT FE_DegreeOfFreedom();
+    Standard_EXPORT ModelBuilder_MakeNode();
+    Standard_EXPORT ModelBuilder_MakeNode(const gp_Pnt& thePoint);
     // destructors
-    Standard_EXPORT ~FE_DegreeOfFreedom();
+    Standard_EXPORT ~ModelBuilder_MakeNode();
 
 public:
 
-    Standard_EXPORT Standard_Boolean            IsValid() const;
-    Standard_EXPORT void                        SetType(const FE_TypeOfDegreeOfFreedom theType);
-    Standard_EXPORT FE_TypeOfDegreeOfFreedom    Type() const;
+    Standard_EXPORT const ModelDS_Node&     Node() const;
+    Standard_EXPORT operator                ModelDS_Node() const;
+
+protected:
+
+    Standard_EXPORT void        Initialize();
+    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint);
 
 private:
 
-    FE_TypeOfDegreeOfFreedom        myType;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE_DegreeOfFreedom, FE_Component);
+    ModelDS_Node        myNode;
 
 };
 
 
-#endif // __FE_DegreeOfFreedom_hxx__
+#endif // __ModelBuilder_MakeNode_hxx__

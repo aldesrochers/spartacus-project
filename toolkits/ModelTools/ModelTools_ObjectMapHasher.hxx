@@ -20,48 +20,38 @@
 // ============================================================================
 
 
-#ifndef __FE_Analysis_hxx__
-#define __FE_Analysis_hxx__
+#ifndef __ModelTools_ObjectMapHasher_hxx__
+#define __ModelTools_ObjectMapHasher_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#include <Standard_DefineAlloc.hxx>
 
-// Forward declarations
-class FE_Analysis;
-
-// Handles
-DEFINE_STANDARD_HANDLE(FE_Analysis, Standard_Transient)
+// Spartacus
+class ModelDS_Object;
 
 
 // ============================================================================
 /*!
- *  \brief FE_Analysis
+ *  \brief ModelTools_ObjectMapHasher
 */
 // ============================================================================
-class FE_Analysis : public Standard_Transient
+class ModelTools_ObjectMapHasher
 {
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT FE_Analysis();
-    // destructors
-    Standard_EXPORT ~FE_Analysis();
+    DEFINE_STANDARD_ALLOC
 
 public:
 
-    Standard_EXPORT virtual Standard_Boolean        Perform() = 0;
+    static Standard_Integer     HashCode(const ModelDS_Object& theObject,
+                                         Standard_Integer theUpperBound);
 
-public:
+    static Standard_Boolean     IsEqual(const ModelDS_Object& theObject1,
+                                        const ModelDS_Object& theObject2);
 
-    DEFINE_STANDARD_RTTIEXT(FE_Analysis, Standard_Transient);
 
 };
 
-
-#endif // __FE_Analysis_hxx__
+#endif // __ModelTools_ObjectMapHasher_hxx__

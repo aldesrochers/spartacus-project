@@ -20,44 +20,18 @@
 // ============================================================================
 
 
-#ifndef __FE_Domain_hxx__
-#define __FE_Domain_hxx__
+#ifndef __ModelDS_ListOfObject_hxx__
+#define __ModelDS_ListOfObject_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#include <NCollection_List.hxx>
 
-// Forward declarations
-class FE_Domain;
+// Spartacus
+#include <ModelDS_Object.hxx>
 
-// Handles
-DEFINE_STANDARD_HANDLE(FE_Domain, Standard_Transient)
-
-
-// ============================================================================
-/*!
- *  \brief FE_Domain
-*/
-// ============================================================================
-class FE_Domain : public Standard_Transient
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT FE_Domain();
-    // destructors
-    Standard_EXPORT ~FE_Domain();
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE_Domain, Standard_Transient);
-
-};
+// Type definitions
+typedef NCollection_List<ModelDS_Object>            ModelDS_ListOfObject;
+typedef NCollection_List<ModelDS_Object>::Iterator  ModelDS_ListIteratorOfListOfObject;
 
 
-#endif // __FE_Domain_hxx__
+#endif // __ModelDS_ListOfObject_hxx__

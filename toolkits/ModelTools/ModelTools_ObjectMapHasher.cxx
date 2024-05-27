@@ -21,35 +21,28 @@
 
 
 // Spartacus
-#include <FE_Analysis.hxx>
+#include <ModelDS_Object.hxx>
+#include <ModelTools_ObjectMapHasher.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief HashCode()
 */
 // ============================================================================
-FE_Analysis::FE_Analysis()
+Standard_Integer ModelTools_ObjectMapHasher::HashCode(const ModelDS_Object& theObject,
+                                                      const Standard_Integer theUpperBound)
 {
-
+    return theObject.HashCode(theUpperBound);
 }
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief IsEqual()
 */
 // ============================================================================
-FE_Analysis::~FE_Analysis()
+Standard_Boolean ModelTools_ObjectMapHasher::IsEqual(const ModelDS_Object &theObject1,
+                                                     const ModelDS_Object &theObject2)
 {
-
+    return theObject1.IsEqual(theObject2);
 }
-
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE_Analysis, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(FE_Analysis, Standard_Transient)
-

@@ -20,34 +20,21 @@
 // ============================================================================
 
 
-// Spartacus
-#include <FE_Domain.hxx>
+#ifndef __DOFAbs_TypeOfAxis_hxx__
+#define __DOFAbs_TypeOfAxis_hxx__
+
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief DOFAbs_TypeOfAxis
 */
 // ============================================================================
-FE_Domain::FE_Domain()
+enum DOFAbs_TypeOfAxis
 {
+    DOFAbs_TOA_X,
+    DOFAbs_TOA_Y,
+    DOFAbs_TOD_Z
+};
 
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-FE_Domain::~FE_Domain()
-{
-
-}
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE_Domain, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(FE_Domain, Standard_Transient)
+#endif // __DOFAbs_TypeOfAxis_hxx__

@@ -46,6 +46,26 @@ ModelDS_TNode::~ModelDS_TNode()
 
 // ============================================================================
 /*!
+ *  \brief DegreesOfFreedom()
+*/
+// ============================================================================
+const ModelDS_ListOfObject& ModelDS_TNode::DegreesOfFreedom() const
+{
+    return myDegreesOfFreedom;
+}
+
+// ============================================================================
+/*!
+ *  \brief DegreesOfFreedom()
+*/
+// ============================================================================
+ModelDS_ListOfObject& ModelDS_TNode::DegreesOfFreedom()
+{
+    return myDegreesOfFreedom;
+}
+
+// ============================================================================
+/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -59,7 +79,7 @@ ModelAbs_TypeOfObject ModelDS_TNode::ObjectType() const
  *  \brief Point()
 */
 // ============================================================================
-const Handle(ModelDS_Point)& ModelDS_TNode::Point() const
+const gp_Pnt& ModelDS_TNode::Point() const
 {
     return myPoint;
 }
@@ -69,7 +89,7 @@ const Handle(ModelDS_Point)& ModelDS_TNode::Point() const
  *  \brief SetPoint()
 */
 // ============================================================================
-void ModelDS_TNode::SetPoint(const Handle(ModelDS_Point) &thePoint)
+void ModelDS_TNode::SetPoint(const gp_Pnt &thePoint)
 {
     myPoint = thePoint;
 }

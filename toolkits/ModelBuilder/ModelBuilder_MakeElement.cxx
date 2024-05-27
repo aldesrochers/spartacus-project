@@ -20,52 +20,31 @@
 // ============================================================================
 
 
-#ifndef __ModelDS_TDegreeOfFreedom_hxx__
-#define __ModelDS_TDegreeOfFreedom_hxx__
-
 // Spartacus
-#include <DOF_DegreeOfFreedom.hxx>
-#include <ModelDS_TObject.hxx>
-
-// Forward declarations
-class ModelDS_TDegreeOfFreedom;
-
-// Handles
-DEFINE_STANDARD_HANDLE(ModelDS_TDegreeOfFreedom, ModelDS_TObject)
+#include <ModelBuilder_MakeElement.hxx>
+#include <ModelDS_Builder.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelDS_TDegreeOfFreedom
+ *  \brief Constructor
 */
 // ============================================================================
-class ModelDS_TDegreeOfFreedom : public ModelDS_TObject
+ModelBuilder_MakeElement::ModelBuilder_MakeElement(const ModelDS_Node& theNode1,
+                                                   const ModelDS_Node& theNode2,
+                                                   const Standard_Real theE,
+                                                   const Standard_Real theA)
 {
 
-public:
-    // constructors
-    Standard_EXPORT ModelDS_TDegreeOfFreedom();
-    // destructors
-    Standard_EXPORT ~ModelDS_TDegreeOfFreedom();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+ModelBuilder_MakeElement::~ModelBuilder_MakeElement()
+{
 
-    virtual Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
+}
 
-public:
-
-    Standard_EXPORT const Handle(DOF_DegreeOfFreedom)&  Representation() const;
-    Standard_EXPORT void                                SetRepresentation(const Handle(DOF_DegreeOfFreedom)& theRepresentation);
-
-private:
-
-    Handle(DOF_DegreeOfFreedom)     myRepresentation;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(ModelDS_TDegreeOfFreedom, ModelDS_TObject)
-
-};
-
-
-#endif // __ModelDS_TDegreeOfFreedom_hxx__

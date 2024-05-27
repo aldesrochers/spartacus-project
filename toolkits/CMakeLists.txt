@@ -149,14 +149,12 @@ set(cp_PKG_SOURCES
 
 set(DOF_PKG_HEADERS
     DOF/DOF_DegreeOfFreedom.hxx
-    DOF/DOF_DX.hxx
     DOF/DOF_Motion.hxx
     DOF/DOF_Translation.hxx
 )
 
 set(DOF_PKG_SOURCES
     DOF/DOF_DegreeOfFreedom.cxx
-    DOF/DOF_DX.cxx
     DOF/DOF_Motion.cxx
     DOF/DOF_Translation.cxx
 )
@@ -223,12 +221,12 @@ set(FE1d_PKG_SOURCES
 # Package : FE
 # =============================================================================
 
-set(FEA_PKG_HEADERS
-    FEA/FEA_Analysis.hxx
+set(FE_PKG_HEADERS
+    FE/FE_Node.hxx
 )
 
-set(FEA_PKG_SOURCES
-    FEA/FEA_Analysis.cxx
+set(FE_PKG_SOURCES
+    FE/FE_Node.cxx
 )
 
 # =============================================================================
@@ -613,13 +611,15 @@ set(ModelAbs_PKG_HEADERS
 set(ModelBuilder_PKG_HEADERS
     ModelBuilder/ModelBuilder_Command.hxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.hxx
-    ModelBuilder/ModelBuilder_MakeNode1d.hxx
+    ModelBuilder/ModelBuilder_MakeElement.hxx
+    ModelBuilder/ModelBuilder_MakeNode.hxx
 )
 
 set(ModelBuilder_PKG_SOURCES
     ModelBuilder/ModelBuilder_Command.cxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.cxx
-    ModelBuilder/ModelBuilder_MakeNode1d.cxx
+    ModelBuilder/ModelBuilder_MakeElement.cxx
+    ModelBuilder/ModelBuilder_MakeNode.cxx
 )
 
 # =============================================================================
@@ -633,6 +633,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_DegreeOfFreedom.hxx
     ModelDS/ModelDS_Domain.hxx
     ModelDS/ModelDS_Element.hxx
+    ModelDS/ModelDS_ListOfObject.hxx
     ModelDS/ModelDS_Node.hxx
     ModelDS/ModelDS_Object.hxx
     ModelDS/ModelDS_Point.hxx
@@ -679,6 +680,19 @@ set(ModelLib_PKG_HEADERS
 set(ModelLib_PKG_SOURCES
     ModelLib/ModelLib_Command.cxx
     ModelLib/ModelLib_MakeElementProperties.cxx
+)
+
+# =============================================================================
+# Package : ModelTools
+# =============================================================================
+
+set(ModelTools_PKG_HEADERS
+    ModelTools/ModelTools_ListOfObject.hxx
+    ModelTools/ModelTools_ObjectMapHasher.hxx
+)
+
+set(ModelTools_PKG_SOURCES
+    ModelTools/ModelTools_ObjectMapHasher.cxx
 )
 
 # =============================================================================
@@ -962,6 +976,7 @@ set(Ceres_HEADERS
     ${DOF_PKG_HEADERS}
     ${DOFAbs_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
+    ${FE_PKG_HEADERS}
     ${FE1d_PKG_HEADERS}
     ${FEA_PKG_HEADERS}
     #${FEAbs_PKG_HEADERS}
@@ -986,6 +1001,7 @@ set(Ceres_HEADERS
     ${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
+    ${ModelTools_PKG_HEADERS}
     #${mp_PKG_HEADERS}
     ${PolyMesh_PKG_HEADERS}
     #${PolyMesh1d_PKG_HEADERS}
@@ -1017,6 +1033,7 @@ set(Ceres_SOURCES
     ${DOF_PKG_SOURCES}
     ${DOFAbs_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
+    ${FE_PKG_SOURCES}
     ${FE1d_PKG_SOURCES}
     ${FEA_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
@@ -1038,6 +1055,7 @@ set(Ceres_SOURCES
     ${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
+    ${ModelTools_PKG_SOURCES}
     #${mp_PKG_SOURCES}
     ${PolyMesh_PKG_SOURCES}
     #${PolyMesh1d_PKG_SOURCES}
@@ -1066,6 +1084,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/DOFAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
+    ${CMAKE_CURRENT_SOURCE_DIR}/FE
     ${CMAKE_CURRENT_SOURCE_DIR}/FE1d
     ${CMAKE_CURRENT_SOURCE_DIR}/FEA
     ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
@@ -1090,6 +1109,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
+    ${CMAKE_CURRENT_SOURCE_DIR}/ModelTools
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh1d

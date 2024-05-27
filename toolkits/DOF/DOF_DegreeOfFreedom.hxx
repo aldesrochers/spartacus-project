@@ -62,7 +62,6 @@ public:
     virtual Standard_EXPORT void                CommitState() = 0;
     virtual Standard_EXPORT void                RevertToInitialState() = 0;
     virtual Standard_EXPORT void                RevertToPreviousState() = 0;
-    virtual Standard_EXPORT DOFAbs_TypeOfDOF    Type() const = 0;
 
 public:
 

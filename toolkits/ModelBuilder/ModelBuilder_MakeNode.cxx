@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
+#include <ModelBuilder_MakeNode.hxx>
 #include <ModelDS_Builder.hxx>
 
 
@@ -30,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d()
+ModelBuilder_MakeNode::ModelBuilder_MakeNode()
 {
     Initialize();
 }
@@ -40,19 +40,9 @@ ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d()
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d(const gp_Pnt1d& thePoint)
+ModelBuilder_MakeNode::ModelBuilder_MakeNode(const gp_Pnt& thePoint)
 {
     Initialize(thePoint);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d(const Standard_Real theX)
-{
-    Initialize(theX);
 }
 
 // ============================================================================
@@ -60,7 +50,7 @@ ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d(const Standard_Real theX)
  *  \brief Destructor
 */
 // ============================================================================
-ModelBuilder_MakeNode1d::~ModelBuilder_MakeNode1d()
+ModelBuilder_MakeNode::~ModelBuilder_MakeNode()
 {
 
 }
@@ -70,9 +60,9 @@ ModelBuilder_MakeNode1d::~ModelBuilder_MakeNode1d()
  *  \brief Initialize()
 */
 // ============================================================================
-void ModelBuilder_MakeNode1d::Initialize()
+void ModelBuilder_MakeNode::Initialize()
 {
-    Initialize(0.);
+    Initialize(gp_Pnt(0.,0.,0.));
 }
 
 // ============================================================================
@@ -80,7 +70,7 @@ void ModelBuilder_MakeNode1d::Initialize()
  *  \brief Initialize()
 */
 // ============================================================================
-void ModelBuilder_MakeNode1d::Initialize(const gp_Pnt1d& thePoint)
+void ModelBuilder_MakeNode::Initialize(const gp_Pnt& thePoint)
 {
     ModelDS_Builder aBuilder;
     aBuilder.MakeNode(myNode, thePoint);
@@ -89,20 +79,10 @@ void ModelBuilder_MakeNode1d::Initialize(const gp_Pnt1d& thePoint)
 
 // ============================================================================
 /*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void ModelBuilder_MakeNode1d::Initialize(const Standard_Real theX)
-{
-    Initialize(gp_Pnt1d(theX));
-}
-
-// ============================================================================
-/*!
  *  \brief Node()
 */
 // ============================================================================
-const ModelDS_Node& ModelBuilder_MakeNode1d::Node() const
+const ModelDS_Node& ModelBuilder_MakeNode::Node() const
 {
     return myNode;
 }
@@ -112,7 +92,7 @@ const ModelDS_Node& ModelBuilder_MakeNode1d::Node() const
  *  \brief operator ModelDS_Node()
 */
 // ============================================================================
-ModelBuilder_MakeNode1d::operator ModelDS_Node() const
+ModelBuilder_MakeNode::operator ModelDS_Node() const
 {
     return Node();
 }

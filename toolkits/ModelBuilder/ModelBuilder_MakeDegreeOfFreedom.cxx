@@ -30,9 +30,19 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeDegreeOfFreedom::ModelBuilder_MakeDegreeOfFreedom(const Handle(DOF_DX)& theDX)
+ModelBuilder_MakeDegreeOfFreedom::ModelBuilder_MakeDegreeOfFreedom()
 {
-    Initialize(theDX);
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+ModelBuilder_MakeDegreeOfFreedom::ModelBuilder_MakeDegreeOfFreedom(const Handle(DOF_DegreeOfFreedom)& theDOF)
+{
+    Initialize(theDOF);
 }
 
 // ============================================================================
@@ -47,10 +57,31 @@ ModelBuilder_MakeDegreeOfFreedom::~ModelBuilder_MakeDegreeOfFreedom()
 
 // ============================================================================
 /*!
+ *  \brief DegreeOfFreedom()
+*/
+// ============================================================================
+const ModelDS_DegreeOfFreedom& ModelBuilder_MakeDegreeOfFreedom::DegreeOfFreedom() const
+{
+    return myDegreeOfFreedom;
+}
+
+// ============================================================================
+/*!
  *  \brief Initialize()
 */
 // ============================================================================
-void ModelBuilder_MakeDegreeOfFreedom::Initialize(const Handle(DOF_DX) &theDX)
+void ModelBuilder_MakeDegreeOfFreedom::Initialize(const Handle(DOF_DegreeOfFreedom)& theDOF)
 {
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeDegreeOfFreedom(myDegreeOfFreedom, theDOF);
+}
 
+// ============================================================================
+/*!
+ *  \brief operator ModelDS_DegreeOfFreedom()
+*/
+// ============================================================================
+ModelBuilder_MakeDegreeOfFreedom::operator ModelDS_DegreeOfFreedom() const
+{
+    return DegreeOfFreedom();
 }

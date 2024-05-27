@@ -20,27 +20,17 @@
 // ============================================================================
 
 
-#ifndef __FE_TypeOfDegreeOfFreedom_hxx__
-#define __FE_TypeOfDegreeOfFreedom_hxx__
+#ifndef __ModelTools_ListOfObject_hxx__
+#define __ModelTools_ListOfObject_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
+#include <NCollection_List.hxx>
 
+// Spartacus
+#include <ModelDS_Object.hxx>
 
-// ============================================================================
-/*!
- *  \brief FE_TypeOfDegreeOfFreedom
-*/
-// ============================================================================
-enum FE_TypeOfDegreeOfFreedom
-{
-    FE_DOF_NONE,
-    FE_DOF_DRX,
-    FE_DOF_DRY,
-    FE_DOF_DRZ,
-    FE_DOF_DX,
-    FE_DOF_DY,
-    FE_DOF_DZ
-};
+// Type definitions
+typedef NCollection_List<ModelDS_Object>            ModelTools_ListOfObject;
+typedef NCollection_List<ModelDS_Object>::Iterator  ModelTools_ListIteratorOfListOfObject;
 
-#endif // __FE_TypeOfDegreeOfFreedom_hxx__
+#endif  // __ModelTools_ListOfObject_hxx__

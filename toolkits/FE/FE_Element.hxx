@@ -20,25 +20,27 @@
 // ============================================================================
 
 
-#ifndef __FE_Element_hxx__
-#define __FE_Element_hxx__
+#ifndef __FE_Node_hxx__
+#define __FE_Node_hxx__
 
-// Spartacus
-#include <FE_Component.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Forward declarations
-class FE_Element;
+class FE_Node;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE_Element, FE_Component)
+DEFINE_STANDARD_HANDLE(FE_Node, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief FE_Element
+ *  \brief FE_Node
 */
 // ============================================================================
-class FE_Element : public FE_Component
+class FE_Node : public Standard_Transient
 {
 
 public:
@@ -47,15 +49,15 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT FE_Element();
+    Standard_EXPORT FE_Node();
     // destructors
-    Standard_EXPORT ~FE_Element();
+    Standard_EXPORT ~FE_Node();
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(FE_Element, FE_Component);
+    DEFINE_STANDARD_RTTIEXT(FE_Node, Standard_Transient);
 
 };
 
 
-#endif // __FE_Element_hxx__
+#endif // __FE_Node_hxx__

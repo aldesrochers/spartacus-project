@@ -32,18 +32,14 @@
 
 // ============================================================================
 /*!
- *  \brief Point1d()
+ *  \brief Point()
 */
 // ============================================================================
-gp_Pnt1d ModelDS_Tool::Point1d(const ModelDS_Node& theNode)
+gp_Pnt ModelDS_Tool::Point(const ModelDS_Node& theNode)
 {
     const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
     if(aTNode == 0)
         throw Standard_NullObject("ModelDS_Tool::Point()->Invalid node.");
-    const Handle(ModelDS_Point)& aPoint = aTNode->Point();
-    if(!aPoint->IsPoint1d())
-        throw Standard_DomainError("ModelDS_Node::Point()->Not a 1d point.");
-    const Handle(ModelDS_Point1d)& aPoint1d = Handle(ModelDS_Point1d)::DownCast(aPoint);
-    return aPoint1d->Point1d();
+    return aTNode->Point();
 }
 

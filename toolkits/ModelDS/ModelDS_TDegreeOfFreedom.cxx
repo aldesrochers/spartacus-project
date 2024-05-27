@@ -44,6 +44,35 @@ ModelDS_TDegreeOfFreedom::~ModelDS_TDegreeOfFreedom()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief ObjectType()
+*/
+// ============================================================================
+ModelAbs_TypeOfObject ModelDS_TDegreeOfFreedom::ObjectType() const
+{
+    return ModelAbs_OBJ_DegreeOfFreedom;
+}
+
+// ============================================================================
+/*!
+ *  \brief Representation()
+*/
+// ============================================================================
+const Handle(DOF_DegreeOfFreedom)& ModelDS_TDegreeOfFreedom::Representation() const
+{
+    return myRepresentation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetRepresentation()
+*/
+// ============================================================================
+void ModelDS_TDegreeOfFreedom::SetRepresentation(const Handle(DOF_DegreeOfFreedom) &theRepresentation)
+{
+    myRepresentation = theRepresentation;
+}
 
 
 // ****************************************************************************

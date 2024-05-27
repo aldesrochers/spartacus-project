@@ -26,6 +26,8 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Spartacus
 #include <ModelDS_DegreeOfFreedom.hxx>
@@ -53,6 +55,9 @@ public:
 
 public:
 
+    Standard_EXPORT void    AddDegreeOfFreedom(ModelDS_Node& theNode,
+                                               const ModelDS_DegreeOfFreedom& theDegreeOfFreedom) const;
+
     Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom) const;
     Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
                                                 const Handle(DOF_DegreeOfFreedom)& theDOF) const;
@@ -61,13 +66,13 @@ public:
 
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
-                                     const gp_Pnt1d& thePoint) const;
+                                     const gp_Pnt& thePoint) const;
 
     Standard_EXPORT void    UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
                                                   const Handle(DOF_DegreeOfFreedom)& theDOF) const;
 
     Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
-                                       const gp_Pnt1d& thePoint) const;
+                                       const gp_Pnt& thePoint) const;
 
 protected:
 

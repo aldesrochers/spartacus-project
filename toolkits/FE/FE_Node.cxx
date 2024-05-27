@@ -50,6 +50,6 @@ FE_Node::~FE_Node()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE_Node, FE_Component)
-IMPLEMENT_STANDARD_RTTIEXT(FE_Node, FE_Component)
+IMPLEMENT_STANDARD_HANDLE(FE_Node, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE_Node, Standard_Transient)
 
