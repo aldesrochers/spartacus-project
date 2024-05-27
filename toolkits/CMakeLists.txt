@@ -144,6 +144,36 @@ set(cp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : DOF
+# =============================================================================
+
+set(DOF_PKG_HEADERS
+    DOF/DOF_DegreeOfFreedom.hxx
+    DOF/DOF_DX.hxx
+    DOF/DOF_Motion.hxx
+    DOF/DOF_Translation.hxx
+)
+
+set(DOF_PKG_SOURCES
+    DOF/DOF_DegreeOfFreedom.cxx
+    DOF/DOF_DX.cxx
+    DOF/DOF_Motion.cxx
+    DOF/DOF_Translation.cxx
+)
+
+# =============================================================================
+# Package : DOFAbs
+# =============================================================================
+
+set(DOFAbs_PKG_HEADERS
+    DOFAbs/DOFAbs_TypeOfDOF.hxx
+)
+
+set(DOFAbs_PKG_SOURCES
+
+)
+
+# =============================================================================
 # Package : ElePRep
 # =============================================================================
 
@@ -572,6 +602,7 @@ set(ModelAbs_PKG_HEADERS
     ModelAbs/ModelAbs_Modelization.hxx
     ModelAbs/ModelAbs_Parameter.hxx
     ModelAbs/ModelAbs_Phenomenon.hxx
+    ModelAbs/ModelAbs_TypeOfDegreeOfFreedom.hxx
     ModelAbs/ModelAbs_TypeOfObject.hxx
 )
 
@@ -581,14 +612,14 @@ set(ModelAbs_PKG_HEADERS
 
 set(ModelBuilder_PKG_HEADERS
     ModelBuilder/ModelBuilder_Command.hxx
-    ModelBuilder/ModelBuilder_MakeMesh.hxx
-    ModelBuilder/ModelBuilder_MakeModel.hxx
+    ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.hxx
+    ModelBuilder/ModelBuilder_MakeNode1d.hxx
 )
 
 set(ModelBuilder_PKG_SOURCES
     ModelBuilder/ModelBuilder_Command.cxx
-    ModelBuilder/ModelBuilder_MakeMesh.cxx
-    ModelBuilder/ModelBuilder_MakeModel.cxx
+    ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.cxx
+    ModelBuilder/ModelBuilder_MakeNode1d.cxx
 )
 
 # =============================================================================
@@ -599,6 +630,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS.hxx
     ModelDS/ModelDS_Array1OfObject.hxx
     ModelDS/ModelDS_Builder.hxx
+    ModelDS/ModelDS_DegreeOfFreedom.hxx
     ModelDS/ModelDS_Domain.hxx
     ModelDS/ModelDS_Element.hxx
     ModelDS/ModelDS_Node.hxx
@@ -607,15 +639,18 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_Point1d.hxx
     ModelDS/ModelDS_Point2d.hxx
     ModelDS/ModelDS_Point3d.hxx
+    ModelDS/ModelDS_TDegreeOfFreedom.hxx
     ModelDS/ModelDS_TDomain.hxx
     ModelDS/ModelDS_TElement.hxx
     ModelDS/ModelDS_TNode.hxx
     ModelDS/ModelDS_TObject.hxx
+    ModelDS/ModelDS_Tool.hxx
 )
 
 set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS.cxx
     ModelDS/ModelDS_Builder.cxx
+    ModelDS/ModelDS_DegreeOfFreedom.cxx
     ModelDS/ModelDS_Domain.cxx
     ModelDS/ModelDS_Element.cxx
     ModelDS/ModelDS_Node.cxx
@@ -624,10 +659,12 @@ set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS_Point1d.cxx
     ModelDS/ModelDS_Point2d.cxx
     ModelDS/ModelDS_Point3d.cxx
+    ModelDS/ModelDS_TDegreeOfFreedom.cxx
     ModelDS/ModelDS_TDomain.cxx
     ModelDS/ModelDS_TElement.cxx
     ModelDS/ModelDS_TNode.cxx
     ModelDS/ModelDS_TObject.cxx
+    ModelDS/ModelDS_Tool.cxx
 )
 
 # =============================================================================
@@ -922,6 +959,8 @@ set(Ceres_HEADERS
     #${CM_PKG_HEADERS}
     #${cmp_PKG_HEADERS}
     #${cp_PKG_HEADERS}
+    ${DOF_PKG_HEADERS}
+    ${DOFAbs_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
     ${FE1d_PKG_HEADERS}
     ${FEA_PKG_HEADERS}
@@ -944,7 +983,7 @@ set(Ceres_HEADERS
     ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
-    #${ModelBuilder_PKG_HEADERS}
+    ${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
     #${mp_PKG_HEADERS}
@@ -975,6 +1014,8 @@ set(Ceres_SOURCES
     #${CM_PKG_SOURCES}
     #${cmp_PKG_SOURCES}
     #${cp_PKG_SOURCES}
+    ${DOF_PKG_SOURCES}
+    ${DOFAbs_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
     ${FE1d_PKG_SOURCES}
     ${FEA_PKG_SOURCES}
@@ -994,7 +1035,7 @@ set(Ceres_SOURCES
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
-    #${ModelBuilder_PKG_SOURCES}
+    ${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
     #${mp_PKG_SOURCES}
@@ -1021,6 +1062,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/CM
     ${CMAKE_CURRENT_SOURCE_DIR}/cmp
     ${CMAKE_CURRENT_SOURCE_DIR}/cp
+    ${CMAKE_CURRENT_SOURCE_DIR}/DOF
+    ${CMAKE_CURRENT_SOURCE_DIR}/DOFAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
     ${CMAKE_CURRENT_SOURCE_DIR}/FE1d

@@ -53,10 +53,9 @@ public:
 
 public:
 
-    Standard_EXPORT void                CommitState() Standard_OVERRIDE;
-    Standard_EXPORT void                RevertToInitialState() Standard_OVERRIDE;
-    Standard_EXPORT void                RevertToPreviousState() Standard_OVERRIDE;
-    Standard_EXPORT DOFAbs_TypeOfDOF    Type() const Standard_OVERRIDE;
+    Standard_EXPORT void            CommitState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToPreviousState() Standard_OVERRIDE;
 
 public:
 
@@ -88,7 +87,6 @@ private:
     Standard_Real       myCurrentVelocity;
 
     Standard_Real       myInitialAcceleration;
-
     Standard_Real       myInitialForce;
     Standard_Real       myInitialTranslation;
     Standard_Real       myInitialVelocity;

@@ -207,15 +207,6 @@ void DOF_Translation::RevertToPreviousState()
     myCurrentVelocity = myPreviousVelocity;
 }
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-DOFAbs_TypeOfDOF DOF_Translation::Type() const
-{
-    return DOFAbs_DOF_Translation;
-}
 
 
 // ****************************************************************************

@@ -20,24 +20,44 @@
 // ============================================================================
 
 
-#ifndef __DOFAbs_TypeOfDOF_hxx__
-#define __DOFAbs_TypeOfDOF_hxx__
-
+// Spartacus
+#include <DOF_DX.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief DOFAbs_TypeOfDOF
+ *  \brief Constructor
 */
 // ============================================================================
-enum DOFAbs_TypeOfDOF
+DOF_DX::DOF_DX()
 {
-    DOFAbs_DX,
-    DOFAbs_DY,
-    DOFAbs_DZ,
-    DOFAbs_DRX,
-    DOFAbs_DRY,
-    DOFAbs_DRZ
-};
 
-#endif // __DOFAbs_TypeOfDOF_hxx__
+}
+
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+DOF_DX::~DOF_DX()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Type()
+*/
+// ============================================================================
+DOFAbs_TypeOfDOF DOF_DX::Type() const
+{
+    return DOFAbs_DX;
+}
+
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(DOF_DX, DOF_Translation)
+IMPLEMENT_STANDARD_RTTIEXT(DOF_DX, DOF_Translation)

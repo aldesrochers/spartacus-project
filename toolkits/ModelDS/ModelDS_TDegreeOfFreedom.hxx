@@ -20,28 +20,43 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __ModelDS_TDegreeOfFreedom_hxx__
+#define __ModelDS_TDegreeOfFreedom_hxx__
 
 // Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
-#include <ModelDS_Tool.hxx>
-#include <DOF_DX.hxx>
+#include <DOF_DegreeOfFreedom.hxx>
+#include <ModelDS_TObject.hxx>
+
+// Forward declarations
+class ModelDS_TDegreeOfFreedom;
+
+// Handles
+DEFINE_STANDARD_HANDLE(ModelDS_TDegreeOfFreedom, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief ModelDS_TDegreeOfFreedom
 */
 // ============================================================================
-int main(int argc, char** argv)
+class ModelDS_TDegreeOfFreedom : public ModelDS_TObject
 {
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(0.).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(1.).Node();
+public:
+    // constructors
+    Standard_EXPORT ModelDS_TDegreeOfFreedom();
+    // destructors
+    Standard_EXPORT ~ModelDS_TDegreeOfFreedom();
+
+private:
+
+    Handle(DOF_DegreeOfFreedom)     myRepresentation;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TDegreeOfFreedom, ModelDS_TObject)
+
+};
 
 
-    Handle(DOF_DX) DX1 = new DOF_DX();
-    cout << DX1->InitialTranslation() << endl;
-    cout << DX1->Type() << endl;
-}
+#endif // __ModelDS_TDegreeOfFreedom_hxx__

@@ -20,28 +20,25 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
-// Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
-#include <ModelDS_Tool.hxx>
-#include <DOF_DX.hxx>
+#ifndef __ModelAbs_TypeOfDegreeOfFreedom_hxx__
+#define __ModelAbs_TypeOfDegreeOfFreedom_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief ModelAbs_TypeOfDegreeOfFreedom
 */
 // ============================================================================
-int main(int argc, char** argv)
+enum ModelAbs_TypeOfDegreeOfFreedom
 {
+    ModelAbs_DOF_Undefined,
+    ModelAbs_DOF_DX,
+    ModelAbs_DOF_DY,
+    ModelAbs_DOF_DZ,
+    ModelAbs_DOF_DRX,
+    ModelAbs_DOF_DRY,
+    ModelAbs_DOF_DRZ
+};
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(0.).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(1.).Node();
 
-
-    Handle(DOF_DX) DX1 = new DOF_DX();
-    cout << DX1->InitialTranslation() << endl;
-    cout << DX1->Type() << endl;
-}
+#endif // __ModelAbs_TypeOfDegreeOfFreedom_hxx__

@@ -20,24 +20,46 @@
 // ============================================================================
 
 
-#ifndef __DOFAbs_TypeOfDOF_hxx__
-#define __DOFAbs_TypeOfDOF_hxx__
+#ifndef __DOF_DX_hxx__
+#define __DOF_DX_hxx__
 
+// Spartacus
+#include <DOF_Translation.hxx>
+
+// Forward declarations
+class DOF_DX;
+
+// Handles
+DEFINE_STANDARD_HANDLE(DOF_DX, DOF_Translation)
 
 
 // ============================================================================
 /*!
- *  \brief DOFAbs_TypeOfDOF
+ *  \brief DOF_DX
 */
 // ============================================================================
-enum DOFAbs_TypeOfDOF
+class DOF_DX : public DOF_Translation
 {
-    DOFAbs_DX,
-    DOFAbs_DY,
-    DOFAbs_DZ,
-    DOFAbs_DRX,
-    DOFAbs_DRY,
-    DOFAbs_DRZ
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT DOF_DX();
+    // destructors
+    Standard_EXPORT ~DOF_DX();
+
+public:
+
+    Standard_EXPORT DOFAbs_TypeOfDOF        Type() const Standard_OVERRIDE;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(DOF_DX, DOF_Translation);
+
 };
 
-#endif // __DOFAbs_TypeOfDOF_hxx__
+
+#endif // __DOF_DX_hxx__

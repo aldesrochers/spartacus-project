@@ -28,9 +28,13 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
+#include <ModelDS_DegreeOfFreedom.hxx>
 #include <ModelDS_Domain.hxx>
+#include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
 #include <ModelDS_TObject.hxx>
+#include <DOF_DegreeOfFreedom.hxx>
+#include <gp_Pnt1d.hxx>
 
 
 // ============================================================================
@@ -49,7 +53,21 @@ public:
 
 public:
 
+    Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom) const;
+    Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
+                                                const Handle(DOF_DegreeOfFreedom)& theDOF) const;
+
     Standard_EXPORT void    MakeDomain(ModelDS_Domain& theDomain) const;
+
+    Standard_EXPORT void    MakeNode(ModelDS_Node& theNode) const;
+    Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
+                                     const gp_Pnt1d& thePoint) const;
+
+    Standard_EXPORT void    UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
+                                                  const Handle(DOF_DegreeOfFreedom)& theDOF) const;
+
+    Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
+                                       const gp_Pnt1d& thePoint) const;
 
 protected:
 

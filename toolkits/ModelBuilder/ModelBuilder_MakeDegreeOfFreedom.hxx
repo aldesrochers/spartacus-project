@@ -20,24 +20,38 @@
 // ============================================================================
 
 
-#ifndef __DOFAbs_TypeOfDOF_hxx__
-#define __DOFAbs_TypeOfDOF_hxx__
+#ifndef __ModelBuilder_MakeDegreeOfFreedom_hxx__
+#define __ModelBuilder_MakeDegreeOfFreedom_hxx__
 
+// Spartacus
+#include <ModelBuilder_Command.hxx>
+#include <ModelDS_Builder.hxx>
+#include <DOF_DX.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief DOFAbs_TypeOfDOF
+ *  \brief ModelBuilder_MakeDegreeOfFreedom
 */
 // ============================================================================
-enum DOFAbs_TypeOfDOF
+class ModelBuilder_MakeDegreeOfFreedom : public ModelBuilder_Command
 {
-    DOFAbs_DX,
-    DOFAbs_DY,
-    DOFAbs_DZ,
-    DOFAbs_DRX,
-    DOFAbs_DRY,
-    DOFAbs_DRZ
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom(const Handle(DOF_DX)& theDX);
+    // destructors
+    Standard_EXPORT ~ModelBuilder_MakeDegreeOfFreedom();
+
+protected:
+
+    Standard_EXPORT void        Initialize(const Handle(DOF_DX)& theDX);
+
 };
 
-#endif // __DOFAbs_TypeOfDOF_hxx__
+
+#endif // __ModelBuilder_MakeDegreeOfFreedom_hxx__

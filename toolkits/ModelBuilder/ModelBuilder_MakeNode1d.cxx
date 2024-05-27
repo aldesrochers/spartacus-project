@@ -21,11 +21,8 @@
 
 
 // Spartacus
+#include <ModelBuilder_MakeNode1d.hxx>
 #include <ModelDS_Builder.hxx>
-#include <ModelDS_Point1d.hxx>
-#include <ModelDS_TDegreeOfFreedom.hxx>
-#include <ModelDS_TDomain.hxx>
-#include <ModelDS_TNode.hxx>
 
 
 // ============================================================================
@@ -33,9 +30,29 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_Builder::ModelDS_Builder()
+ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d()
 {
+    Initialize();
+}
 
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d(const gp_Pnt1d& thePoint)
+{
+    Initialize(thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+ModelBuilder_MakeNode1d::ModelBuilder_MakeNode1d(const Standard_Real theX)
+{
+    Initialize(theX);
 }
 
 // ============================================================================
@@ -43,76 +60,59 @@ ModelDS_Builder::ModelDS_Builder()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_Builder::~ModelDS_Builder()
+ModelBuilder_MakeNode1d::~ModelBuilder_MakeNode1d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief Initialize()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+void ModelBuilder_MakeNode1d::Initialize()
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+    Initialize(0.);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeNode()
+ *  \brief Initialize()
 */
 // ============================================================================
-void ModelDS_Builder::MakeNode(ModelDS_Node &theNode) const
+void ModelBuilder_MakeNode1d::Initialize(const gp_Pnt1d& thePoint)
 {
-    Handle(ModelDS_TNode) aTNode = new ModelDS_TNode();
-    MakeObject(theNode, aTNode);
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeNode(myNode, thePoint);
+    SetDone();
 }
 
 // ============================================================================
 /*!
- *  \brief MakeNode()
+ *  \brief Initialize()
 */
 // ============================================================================
-void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
-                               const gp_Pnt1d &thePoint) const
+void ModelBuilder_MakeNode1d::Initialize(const Standard_Real theX)
 {
-    MakeNode(theNode);
-    UpdateNode(theNode, thePoint);
+    Initialize(gp_Pnt1d(theX));
 }
 
 // ============================================================================
 /*!
- *  \brief MakeObject()
+ *  \brief Node()
 */
 // ============================================================================
-void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
-                                 const Handle(ModelDS_TObject) &theTObject) const
+const ModelDS_Node& ModelBuilder_MakeNode1d::Node() const
 {
-    theObject.SetTObject(theTObject);
+    return myNode;
 }
 
 // ============================================================================
 /*!
- *  \brief UpdateDegreeOfFreedom()
+ *  \brief operator ModelDS_Node()
 */
 // ============================================================================
-void ModelDS_Builder::UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom &theDegreeOfFreedom,
-                                            const Handle(DOF_DegreeOfFreedom) &theDOF) const
+ModelBuilder_MakeNode1d::operator ModelDS_Node() const
 {
-    const Handle(ModelDS_TDegreeOfFreedom)& aTDegreeOfFreedom = *((Handle(ModelDS_TDegreeOfFreedom)*) &theDegreeOfFreedom.TObject());
-}
-
-// ============================================================================
-/*!
- *  \brief UpdateNode()
-*/
-// ============================================================================
-void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
-                                 const gp_Pnt1d &thePoint) const
-{
-    const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
-    Handle(ModelDS_Point1d) aPoint1d = new ModelDS_Point1d(thePoint);
-    aTNode->SetPoint(aPoint1d);
+    return Node();
 }

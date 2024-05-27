@@ -20,28 +20,36 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __ModelDS_Tool_hxx__
+#define __ModelDS_Tool_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 
 // Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
-#include <ModelDS_Tool.hxx>
-#include <DOF_DX.hxx>
+#include <gp_Pnt1d.hxx>
+#include <ModelDS_Node.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief ModelDS_Tool
 */
 // ============================================================================
-int main(int argc, char** argv)
+class ModelDS_Tool
 {
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(0.).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(1.).Node();
+public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
+
+    static Standard_EXPORT gp_Pnt1d                         Point1d(const ModelDS_Node& theNode);
+
+};
 
 
-    Handle(DOF_DX) DX1 = new DOF_DX();
-    cout << DX1->InitialTranslation() << endl;
-    cout << DX1->Type() << endl;
-}
+#endif // __ModelDS_Tool_hxx__

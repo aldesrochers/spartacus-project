@@ -20,28 +20,30 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
 // Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
+#include <ModelDS_Point1d.hxx>
+#include <ModelDS_TNode.hxx>
 #include <ModelDS_Tool.hxx>
-#include <DOF_DX.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
+#include <Standard_NullObject.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief Point1d()
 */
 // ============================================================================
-int main(int argc, char** argv)
+gp_Pnt1d ModelDS_Tool::Point1d(const ModelDS_Node& theNode)
 {
-
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(0.).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(1.).Node();
-
-
-    Handle(DOF_DX) DX1 = new DOF_DX();
-    cout << DX1->InitialTranslation() << endl;
-    cout << DX1->Type() << endl;
+    const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
+    if(aTNode == 0)
+        throw Standard_NullObject("ModelDS_Tool::Point()->Invalid node.");
+    const Handle(ModelDS_Point)& aPoint = aTNode->Point();
+    if(!aPoint->IsPoint1d())
+        throw Standard_DomainError("ModelDS_Node::Point()->Not a 1d point.");
+    const Handle(ModelDS_Point1d)& aPoint1d = Handle(ModelDS_Point1d)::DownCast(aPoint);
+    return aPoint1d->Point1d();
 }
+

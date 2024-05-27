@@ -20,28 +20,28 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
+#ifndef __ModelDS_DegreeOfFreedom_hxx__
+#define __ModelDS_DegreeOfFreedom_hxx__
 
 // Spartacus
-#include <ModelBuilder_MakeNode1d.hxx>
-#include <ModelDS_Tool.hxx>
-#include <DOF_DX.hxx>
+#include <ModelDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief ModelDS_DegreeOfFreedom
 */
 // ============================================================================
-int main(int argc, char** argv)
+class ModelDS_DegreeOfFreedom : public ModelDS_Object
 {
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(0.).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(1.).Node();
+public:
+    // constructors
+    Standard_EXPORT ModelDS_DegreeOfFreedom();
+    // destructors
+    Standard_EXPORT ~ModelDS_DegreeOfFreedom();
+
+};
 
 
-    Handle(DOF_DX) DX1 = new DOF_DX();
-    cout << DX1->InitialTranslation() << endl;
-    cout << DX1->Type() << endl;
-}
+#endif // __ModelDS_DegreeOfFreedom_hxx__
