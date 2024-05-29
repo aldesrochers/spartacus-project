@@ -32,9 +32,9 @@
 // ============================================================================
 enum DOFAbs_TypeOfAxis
 {
-    DOFAbs_TOA_X,
-    DOFAbs_TOA_Y,
-    DOFAbs_TOD_Z
+    DOFAbs_XAxis,
+    DOFAbs_YAxis,
+    DOFAbs_ZAxis
 };
 
 #endif // __DOFAbs_TypeOfAxis_hxx__

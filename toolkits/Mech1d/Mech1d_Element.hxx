@@ -53,8 +53,12 @@ public:
 
 public:
 
-    virtual Standard_EXPORT math_Vector     CurrentDisplacements() const = 0;
-    virtual Standard_EXPORT math_Vector     CurrentForces() const = 0;
+
+    virtual Standard_EXPORT math_Matrix         InitialStiffness() const = 0;
+    virtual Standard_EXPORT Standard_Boolean    SetTrialDisplacements(const math_Vector& theDisplacements) = 0;
+    virtual Standard_EXPORT math_Vector         TrialDisplacements() const = 0;
+    virtual Standard_EXPORT math_Matrix         TrialStiffness() const = 0;
+    virtual Standard_EXPORT math_Vector         TrialForces() const = 0;
 
 public:
 

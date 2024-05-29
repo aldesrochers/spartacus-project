@@ -20,49 +20,50 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_Truss_hxx__
-#define __Mech1d_Truss_hxx__
+#ifndef __ModelRep_DOF_hxx__
+#define __ModelRep_DOF_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Spartacus
-#include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+#include <DOF_Translation.hxx>
+#include <DOFAbs_TypeOfAxis.hxx>
 
 // Forward declarations
-class Mech1d_Truss;
+class ModelRep_DOF;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_Truss
+ *  \brief ModelRep_DOF
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class ModelRep_DOF : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
+    Standard_EXPORT ModelRep_DOF();
     // destructors
-    Standard_EXPORT ~Mech1d_Truss();
+    Standard_EXPORT ~ModelRep_DOF();
 
 public:
 
-    Standard_EXPORT Standard_Real       InitialLength() const;
-
-private:
-
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
+    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
+    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
+    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
 
 };
 
 
-#endif // __Mech1d_Truss_hxx__
+#endif // __ModelRep_DOF_hxx__

@@ -20,49 +20,40 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_Truss_hxx__
-#define __Mech1d_Truss_hxx__
+#ifndef __Model_DOF_hxx__
+#define __Model_DOF_hxx__
 
-// Spartacus
-#include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Forward declarations
-class Mech1d_Truss;
+class Model_DOF;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(Model_DOF, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_Truss
+ *  \brief Model_DOF
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class Model_DOF : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
+    Standard_EXPORT Model_DOF();
     // destructors
-    Standard_EXPORT ~Mech1d_Truss();
+    Standard_EXPORT ~Model_DOF();
 
 public:
 
-    Standard_EXPORT Standard_Real       InitialLength() const;
-
-private:
-
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    DEFINE_STANDARD_RTTIEXT(Model_DOF, Standard_Transient)
 
 };
 
 
-#endif // __Mech1d_Truss_hxx__
+#endif // __Model_DOF_hxx__

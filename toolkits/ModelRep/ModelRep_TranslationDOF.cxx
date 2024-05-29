@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <Mech1d_ElasticTruss.hxx>
-
+#include <ModelRep_TranslationDOF.hxx>
 
 
 // ============================================================================
@@ -30,14 +29,18 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
-                                         const gp_Pnt1d& thePoint2,
-                                         const Standard_Real theModulous,
-                                         const Standard_Real theArea)
-    : Mech1d_Truss(thePoint1, thePoint2),
-    myArea(theArea),
-    myModulous(theModulous),
-    myTrialDisplacements(1, 2, 0.)
+ModelRep_TranslationDOF::ModelRep_TranslationDOF()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+ModelRep_TranslationDOF::ModelRep_TranslationDOF(const Handle(DOF_Translation)& theTranslation)
+    : myTranslation(theTranslation)
 {
 
 }
@@ -47,71 +50,33 @@ Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
  *  \brief Destructor
 */
 // ============================================================================
-Mech1d_ElasticTruss::~Mech1d_ElasticTruss()
+ModelRep_TranslationDOF::~ModelRep_TranslationDOF()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief InitialStiffness()
+ *  \brief IsTranslation()
 */
 // ============================================================================
-math_Matrix Mech1d_ElasticTruss::InitialStiffness() const
+Standard_Boolean ModelRep_TranslationDOF::IsTranslation() const
 {
-    Standard_Real Ke = myModulous * myArea / InitialLength();
-    math_Matrix K(1, 2, 1, 2, 0.);
-    K(1,1) = Ke;
-    K(1,2) = -Ke;
-    K(2,1) = -Ke;
-    K(2,2) = Ke;
-    return K;
-}
-
-// ============================================================================
-/*!
- *  \brief SetTrialDisplacements()
-*/
-// ============================================================================
-Standard_Boolean Mech1d_ElasticTruss::SetTrialDisplacements(const math_Vector& theDisplacements)
-{
-    myTrialDisplacements = theDisplacements;
     return Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialDisplacements()
+ *  \brief Translation()
 */
 // ============================================================================
-math_Vector Mech1d_ElasticTruss::TrialDisplacements() const
+const Handle(DOF_Translation)& ModelRep_TranslationDOF::Translation() const
 {
-    return myTrialDisplacements;
+    return myTranslation;
 }
-
-// ============================================================================
-/*!
- *  \brief TrialForces()
-*/
-// ============================================================================
-math_Vector Mech1d_ElasticTruss::TrialForces() const
-{
-    return TrialStiffness() * myTrialDisplacements;
-}
-
-// ============================================================================
-/*!
- *  \brief TrialStiffness()
-*/
-// ============================================================================
-math_Matrix Mech1d_ElasticTruss::TrialStiffness() const
-{
-    return InitialStiffness();
-}
-
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelRep_TranslationDOF, ModelRep_TranslationDOF);
+IMPLEMENT_STANDARD_RTTIEXT(ModelRep_TranslationDOF, ModelRep_TranslationDOF);

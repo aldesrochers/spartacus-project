@@ -31,7 +31,6 @@
 // ============================================================================
 enum ModelAbs_TypeOfDegreeOfFreedom
 {
-    ModelAbs_DOF_Undefined,
     ModelAbs_DOF_DX,
     ModelAbs_DOF_DY,
     ModelAbs_DOF_DZ,

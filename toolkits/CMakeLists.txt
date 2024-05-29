@@ -164,6 +164,7 @@ set(DOF_PKG_SOURCES
 # =============================================================================
 
 set(DOFAbs_PKG_HEADERS
+    DOFAbs/DOFAbs_TypeOfAxis.hxx
     DOFAbs/DOFAbs_TypeOfDOF.hxx
 )
 
@@ -576,6 +577,7 @@ set(MeshTools_PKG_SOURCES
 
 set(Model_PKG_HEADERS
     Model/Model_Attribute.hxx
+    Model/Model_DOF.hxx
     Model/Model_Element.hxx
     Model/Model_Material.hxx
     Model/Model_Modelization.cxx
@@ -585,6 +587,7 @@ set(Model_PKG_HEADERS
 
 set(Model_PKG_SOURCES
     Model/Model_Attribute.cxx
+    Model/Model_DOF.cxx
     Model/Model_Element.cxx
     Model/Model_Material.cxx
     Model/Model_Modelization.hxx
@@ -630,6 +633,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS.hxx
     ModelDS/ModelDS_Array1OfObject.hxx
     ModelDS/ModelDS_Builder.hxx
+    ModelDS/ModelDS_DataMapOfIntegerObject.hxx
     ModelDS/ModelDS_DegreeOfFreedom.hxx
     ModelDS/ModelDS_Domain.hxx
     ModelDS/ModelDS_Element.hxx
@@ -680,6 +684,28 @@ set(ModelLib_PKG_HEADERS
 set(ModelLib_PKG_SOURCES
     ModelLib/ModelLib_Command.cxx
     ModelLib/ModelLib_MakeElementProperties.cxx
+)
+
+# =============================================================================
+# Package : ModelRep
+# =============================================================================
+
+set(ModelRep_PKG_HEADERS
+    ModelRep/ModelRep_DOF.hxx
+    ModelRep/ModelRep_Point.hxx
+    ModelRep/ModelRep_Point1d.hxx
+    ModelRep/ModelRep_Point2d.hxx
+    ModelRep/ModelRep_Point3d.hxx
+    ModelRep/ModelRep_TranslationDOF.hxx
+)
+
+set(ModelRep_PKG_SOURCES
+    ModelRep/ModelRep_DOF.cxx
+    ModelRep/ModelRep_Point.cxx
+    ModelRep/ModelRep_Point1d.cxx
+    ModelRep/ModelRep_Point2d.cxx
+    ModelRep/ModelRep_Point3d.cxx
+    ModelRep/ModelRep_TranslationDOF.cxx
 )
 
 # =============================================================================
@@ -1001,6 +1027,7 @@ set(Ceres_HEADERS
     ${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
     #${ModelLib_PKG_HEADERS}
+    ${ModelRep_PKG_HEADERS}
     ${ModelTools_PKG_HEADERS}
     #${mp_PKG_HEADERS}
     ${PolyMesh_PKG_HEADERS}
@@ -1055,6 +1082,7 @@ set(Ceres_SOURCES
     ${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
     #${ModelLib_PKG_SOURCES}
+    ${ModelRep_PKG_SOURCES}
     ${ModelTools_PKG_SOURCES}
     #${mp_PKG_SOURCES}
     ${PolyMesh_PKG_SOURCES}
@@ -1109,6 +1137,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
+    ${CMAKE_CURRENT_SOURCE_DIR}/ModelRep
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelTools
     ${CMAKE_CURRENT_SOURCE_DIR}/mp
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh

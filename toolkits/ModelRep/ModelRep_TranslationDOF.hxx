@@ -20,49 +20,49 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_Truss_hxx__
-#define __Mech1d_Truss_hxx__
+#ifndef __ModelRep_TranslationDOF_hxx__
+#define __ModelRep_TranslationDOF_hxx__
 
 // Spartacus
-#include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+#include <DOF_Translation.hxx>
+#include <ModelRep_DOF.hxx>
 
 // Forward declarations
-class Mech1d_Truss;
+class ModelRep_TranslationDOF;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(ModelRep_TranslationDOF, ModelRep_DOF)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_Truss
+ *  \brief ModelRep_TranslationDOF
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class ModelRep_TranslationDOF : public ModelRep_DOF
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
+    Standard_EXPORT ModelRep_TranslationDOF();
+    Standard_EXPORT ModelRep_TranslationDOF(const Handle(DOF_Translation)& theTranslation);
     // destructors
-    Standard_EXPORT ~Mech1d_Truss();
+    Standard_EXPORT ~ModelRep_TranslationDOF();
 
 public:
 
-    Standard_EXPORT Standard_Real       InitialLength() const;
+    Standard_EXPORT Standard_Boolean                IsTranslation() const Standard_OVERRIDE;
+    Standard_EXPORT const Handle(DOF_Translation)&  Translation() const Standard_OVERRIDE;
 
 private:
 
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
+    Handle(DOF_Translation)     myTranslation;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    DEFINE_STANDARD_RTTIEXT(ModelRep_TranslationDOF, ModelRep_DOF)
 
 };
 
 
-#endif // __Mech1d_Truss_hxx__
+#endif // __ModelRep_TranslationDOF_hxx__

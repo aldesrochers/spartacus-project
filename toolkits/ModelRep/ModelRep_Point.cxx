@@ -21,8 +21,10 @@
 
 
 // Spartacus
-#include <Mech1d_ElasticTruss.hxx>
+#include <ModelRep_Point.hxx>
 
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -30,14 +32,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
-                                         const gp_Pnt1d& thePoint2,
-                                         const Standard_Real theModulous,
-                                         const Standard_Real theArea)
-    : Mech1d_Truss(thePoint1, thePoint2),
-    myArea(theArea),
-    myModulous(theModulous),
-    myTrialDisplacements(1, 2, 0.)
+ModelRep_Point::ModelRep_Point()
 {
 
 }
@@ -47,71 +42,75 @@ Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
  *  \brief Destructor
 */
 // ============================================================================
-Mech1d_ElasticTruss::~Mech1d_ElasticTruss()
+ModelRep_Point::~ModelRep_Point()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief InitialStiffness()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-math_Matrix Mech1d_ElasticTruss::InitialStiffness() const
+Standard_Boolean ModelRep_Point::IsPoint1d() const
 {
-    Standard_Real Ke = myModulous * myArea / InitialLength();
-    math_Matrix K(1, 2, 1, 2, 0.);
-    K(1,1) = Ke;
-    K(1,2) = -Ke;
-    K(2,1) = -Ke;
-    K(2,2) = Ke;
-    return K;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief SetTrialDisplacements()
+ *  \brief IsPoint2d()
 */
 // ============================================================================
-Standard_Boolean Mech1d_ElasticTruss::SetTrialDisplacements(const math_Vector& theDisplacements)
+Standard_Boolean ModelRep_Point::IsPoint2d() const
 {
-    myTrialDisplacements = theDisplacements;
-    return Standard_True;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialDisplacements()
+ *  \brief IsPoint3d()
 */
 // ============================================================================
-math_Vector Mech1d_ElasticTruss::TrialDisplacements() const
+Standard_Boolean ModelRep_Point::IsPoint3d() const
 {
-    return myTrialDisplacements;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialForces()
+ *  \brief Point1d()
 */
 // ============================================================================
-math_Vector Mech1d_ElasticTruss::TrialForces() const
+const gp_Pnt1d& ModelRep_Point::Point1d() const
 {
-    return TrialStiffness() * myTrialDisplacements;
+    throw Standard_DomainError("ModelRep_Point::Point1d()");
 }
 
 // ============================================================================
 /*!
- *  \brief TrialStiffness()
+ *  \brief Point2d()
 */
 // ============================================================================
-math_Matrix Mech1d_ElasticTruss::TrialStiffness() const
+const gp_Pnt2d& ModelRep_Point::Point2d() const
 {
-    return InitialStiffness();
+    throw Standard_DomainError("ModelRep_Point::Point2d()");
 }
+
+// ============================================================================
+/*!
+ *  \brief Point3d()
+*/
+// ============================================================================
+const gp_Pnt& ModelRep_Point::Point3d() const
+{
+    throw Standard_DomainError("ModelRep_Point::Point3d()");
+}
+
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_ElasticTruss, Mech1d_Truss)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(ModelRep_Point, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(ModelRep_Point, Standard_Transient)

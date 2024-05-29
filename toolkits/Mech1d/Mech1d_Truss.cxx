@@ -29,19 +29,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mech1d_Truss::Mech1d_Truss()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mech1d_Truss::Mech1d_Truss(const Handle(FE1d_Node)& theNode1,
-                           const Handle(FE1d_Node)& theNode2)
-    : myNode1(theNode1), myNode2(theNode2)
+Mech1d_Truss::Mech1d_Truss(const gp_Pnt1d& thePoint1,
+                           const gp_Pnt1d& thePoint2)
+    : myPoint1(thePoint1), myPoint2(thePoint2)
 {
 
 }
@@ -58,47 +48,16 @@ Mech1d_Truss::~Mech1d_Truss()
 
 // ============================================================================
 /*!
- *  \brief Node1()
+ *  \brief InitialLength()
 */
 // ============================================================================
-const Handle(FE1d_Node)& Mech1d_Truss::Node1() const
+Standard_Real Mech1d_Truss::InitialLength() const
 {
-    return myNode1;
+    return myPoint1.Distance(myPoint2);
 }
-
-// ============================================================================
-/*!
- *  \brief Node2()
-*/
-// ============================================================================
-const Handle(FE1d_Node)& Mech1d_Truss::Node2() const
-{
-    return myNode2;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode1()
-*/
-// ============================================================================
-void Mech1d_Truss::SetNode1(const Handle(FE1d_Node) &theNode1)
-{
-    myNode1 = theNode1;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode2()
-*/
-// ============================================================================
-void Mech1d_Truss::SetNode2(const Handle(FE1d_Node) &theNode2)
-{
-    myNode2 = theNode2;
-}
-
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_Truss, FE1d_Element)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Truss, FE1d_Element)
+IMPLEMENT_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element)

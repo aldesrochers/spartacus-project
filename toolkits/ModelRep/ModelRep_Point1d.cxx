@@ -21,8 +21,10 @@
 
 
 // Spartacus
-#include <ModelDS.hxx>
-#include <ModelDS_TNode.hxx>
+#include <ModelRep_Point1d.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -30,7 +32,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelDS_TNode::ModelDS_TNode()
+ModelRep_Point1d::ModelRep_Point1d(const gp_Pnt1d& thePoint1d)
+    : myPoint1d(thePoint1d)
 {
 
 }
@@ -40,75 +43,36 @@ ModelDS_TNode::ModelDS_TNode()
  *  \brief Destructor
 */
 // ============================================================================
-ModelDS_TNode::~ModelDS_TNode()
+ModelRep_Point1d::~ModelRep_Point1d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief DegreeOfFreedom()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-const ModelDS_DegreeOfFreedom& ModelDS_TNode::DegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType) const
+Standard_Boolean ModelRep_Point1d::IsPoint1d() const
 {
-    return ModelDS::DegreeOfFreedom(myDegreesOfFreedom(theType));
+    return Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief NbDegreesOfFreedom()
+ *  \brief Point1d()
 */
 // ============================================================================
-Standard_Integer ModelDS_TNode::NbDegreesOfFreedom() const
+const gp_Pnt1d& ModelRep_Point1d::Point1d() const
 {
-    return myDegreesOfFreedom.Size();
+    return myPoint1d;
 }
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-ModelAbs_TypeOfObject ModelDS_TNode::ObjectType() const
-{
-    return ModelAbs_OBJ_Node;
-}
 
-// ============================================================================
-/*!
- *  \brief Point()
-*/
-// ============================================================================
-const gp_Pnt& ModelDS_TNode::Point() const
-{
-    return myPoint;
-}
-
-// ============================================================================
-/*!
- *  \brief SetDegreeOfFreedom()
-*/
-// ============================================================================
-void ModelDS_TNode::SetDegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType,
-                                       const ModelDS_DegreeOfFreedom &theDegreeOfFreedom)
-{
-    myDegreesOfFreedom.Bind(theType, theDegreeOfFreedom);
-}
-
-// ============================================================================
-/*!
- *  \brief SetPoint()
-*/
-// ============================================================================
-void ModelDS_TNode::SetPoint(const gp_Pnt &thePoint)
-{
-    myPoint = thePoint;
-}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(ModelDS_TNode, ModelDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(ModelDS_TNode, ModelDS_TObject)
+IMPLEMENT_STANDARD_HANDLE(ModelRep_Point1d, ModelRep_Point)
+IMPLEMENT_STANDARD_RTTIEXT(ModelRep_Point1d, ModelRep_Point)

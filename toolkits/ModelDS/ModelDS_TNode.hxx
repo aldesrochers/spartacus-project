@@ -27,7 +27,9 @@
 #include <gp_Pnt.hxx>
 
 // Spartacus
-#include <ModelDS_ListOfObject.hxx>
+#include <ModelAbs_TypeOfDegreeOfFreedom.hxx>
+#include <ModelDS_DataMapOfIntegerObject.hxx>
+#include <ModelDS_DegreeOfFreedom.hxx>
 #include <ModelDS_TObject.hxx>
 
 // Forward declarations
@@ -57,15 +59,17 @@ public:
 
 public:
 
-    Standard_EXPORT const ModelDS_ListOfObject& DegreesOfFreedom() const;
-    Standard_EXPORT ModelDS_ListOfObject&       DegreesOfFreedom();
-    Standard_EXPORT const gp_Pnt&               Point() const;
-    Standard_EXPORT void                        SetPoint(const gp_Pnt& thePoint);
+    Standard_EXPORT const ModelDS_DegreeOfFreedom&  DegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType) const;
+    Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
+    Standard_EXPORT const gp_Pnt&                   Point() const;
+    Standard_EXPORT void                            SetDegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType,
+                                                                       const ModelDS_DegreeOfFreedom& theDegreeOfFreedom);
+    Standard_EXPORT void                            SetPoint(const gp_Pnt& thePoint);
 
 private:
 
-    ModelDS_ListOfObject    myDegreesOfFreedom;
-    gp_Pnt                  myPoint;
+    ModelDS_DataMapOfIntegerObject  myDegreesOfFreedom;
+    gp_Pnt                          myPoint;
 
 public:
 

@@ -20,49 +20,18 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_Truss_hxx__
-#define __Mech1d_Truss_hxx__
+#ifndef __ModelDS_DataMapOfIntegerObject_hxx__
+#define __ModelDS_DataMapOfIntegerObject_hxx__
+
+// OpenCascade
+#include <NCollection_DataMap.hxx>
+#include <TColStd_MapIntegerHasher.hxx>
 
 // Spartacus
-#include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+#include <ModelDS_Object.hxx>
 
-// Forward declarations
-class Mech1d_Truss;
+// Type definitions
+typedef NCollection_DataMap<Standard_Integer, ModelDS_Object, TColStd_MapIntegerHasher>             ModelDS_DataMapOfIntegerObject;
+typedef NCollection_DataMap<Standard_Integer, ModelDS_Object, TColStd_MapIntegerHasher>::Iterator   ModelDS_DataMapIteratorOfDataMapOfIntegerObject;
 
-// Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
-
-
-// ============================================================================
-/*!
- *  \brief Mech1d_Truss
-*/
-// ============================================================================
-class Mech1d_Truss : public Mech1d_Element
-{
-
-public:
-    // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
-    // destructors
-    Standard_EXPORT ~Mech1d_Truss();
-
-public:
-
-    Standard_EXPORT Standard_Real       InitialLength() const;
-
-private:
-
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
-
-};
-
-
-#endif // __Mech1d_Truss_hxx__
+#endif // __ModelDS_DataMapOfIntegerObject_hxx__

@@ -24,10 +24,7 @@
 using namespace std;
 
 // Spartacus
-#include <ModelBuilder_MakeDegreeOfFreedom.hxx>
-#include <ModelBuilder_MakeNode.hxx>
-#include <ModelDS_Tool.hxx>
-#include <DOF_Translation.hxx>
+#include <Mech1d_ElasticTruss.hxx>
 
 
 // ============================================================================
@@ -38,14 +35,10 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode(gp_Pnt(0,0,0)).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode(gp_Pnt(1,0,0)).Node();
-
-
-    gp_Pnt aPoint = ModelDS_Tool::Point(aNode2);
-    cout << aPoint.X() << endl;
-
-
+    Handle(Mech1d_ElasticTruss) aTruss = new Mech1d_ElasticTruss(gp_Pnt1d(0.), gp_Pnt1d(1.), 2E11, 1E-4);
+    cout << aTruss->InitialLength() << endl;
+    cout << aTruss->InitialStiffness() << endl;
+    cout << aTruss->TrialStiffness() << endl;
 
 
 }

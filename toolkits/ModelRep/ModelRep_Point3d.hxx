@@ -20,49 +20,47 @@
 // ============================================================================
 
 
-#ifndef __Mech1d_Truss_hxx__
-#define __Mech1d_Truss_hxx__
+#ifndef __ModelRep_Point3d_hxx__
+#define __ModelRep_Point3d_hxx__
 
 // Spartacus
-#include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+#include <ModelRep_Point.hxx>
 
 // Forward declarations
-class Mech1d_Truss;
+class ModelRep_Point3d;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(ModelRep_Point3d, ModelRep_Point)
 
 
 // ============================================================================
 /*!
- *  \brief Mech1d_Truss
+ *  \brief ModelRep_Point3d
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class ModelRep_Point3d : public ModelRep_Point
 {
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
+    Standard_EXPORT ModelRep_Point3d(const gp_Pnt& thePoint3d);
     // destructors
-    Standard_EXPORT ~Mech1d_Truss();
+    Standard_EXPORT ~ModelRep_Point3d();
 
 public:
 
-    Standard_EXPORT Standard_Real       InitialLength() const;
+    Standard_EXPORT Standard_Boolean    IsPoint3d() const Standard_OVERRIDE;
+    Standard_EXPORT const gp_Pnt&       Point3d() const Standard_OVERRIDE;
 
 private:
 
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
+    gp_Pnt          myPoint3d;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    DEFINE_STANDARD_RTTIEXT(ModelRep_Point3d, ModelRep_Point)
 
 };
 
 
-#endif // __Mech1d_Truss_hxx__
+#endif // __ModelRep_Point3d_hxx__

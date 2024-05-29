@@ -29,8 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-DOF_Translation::DOF_Translation(const DOFAbs_TypeOfAxis theAxis)
-    : DOF_Motion(theAxis)
+DOF_Translation::DOF_Translation()
 {
 
 }

@@ -29,6 +29,31 @@
 
 // ============================================================================
 /*!
+ *  \brief DegreeOfFreedom()
+*/
+// ============================================================================
+const ModelDS_DegreeOfFreedom& ModelDS::DegreeOfFreedom(const ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DegreeOfFreedom),
+                                   "ModelDS::DegreeOfFreedom()->Type mismatch.");
+    return *(ModelDS_DegreeOfFreedom*) &theObject;
+}
+
+
+// ============================================================================
+/*!
+ *  \brief DegreeOfFreedom()
+*/
+// ============================================================================
+ModelDS_DegreeOfFreedom& ModelDS::DegreeOfFreedom(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DegreeOfFreedom),
+                                   "ModelDS::DegreeOfFreedom()->Type mismatch.");
+    return *(ModelDS_DegreeOfFreedom*) &theObject;
+}
+
+// ============================================================================
+/*!
  *  \brief Element()
 */
 // ============================================================================

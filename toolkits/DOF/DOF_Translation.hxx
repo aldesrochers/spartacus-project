@@ -47,7 +47,7 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT DOF_Translation(const DOFAbs_TypeOfAxis theAxis = DOFAbs_TOA_X);
+    Standard_EXPORT DOF_Translation();
     // destructors
     Standard_EXPORT ~DOF_Translation();
 
