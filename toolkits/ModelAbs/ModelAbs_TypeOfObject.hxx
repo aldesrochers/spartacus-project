@@ -32,6 +32,7 @@
 enum ModelAbs_TypeOfObject
 {
     ModelAbs_OBJ_DegreeOfFreedom,
+    ModelAbs_OBJ_DOF,
     ModelAbs_OBJ_Domain,
     ModelAbs_OBJ_Element,
     ModelAbs_OBJ_Node

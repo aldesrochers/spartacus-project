@@ -20,49 +20,52 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#ifndef __ModelDS_TDOF_hxx__
+#define __ModelDS_TDOF_hxx__
 
 // Spartacus
-#include <DOF_Translation.hxx>
+#include <DOF_DegreeOfFreedom.hxx>
+#include <ModelDS_TObject.hxx>
 
 // Forward declarations
-class ModelRep_DOF;
+class ModelDS_TDOF;
 
 // Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
+DEFINE_STANDARD_HANDLE(ModelDS_TDOF, ModelDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief ModelRep_DOF
+ *  \brief ModelDS_TDOF
 */
 // ============================================================================
-class ModelRep_DOF : public Standard_Transient
+class ModelDS_TDOF : public ModelDS_TObject
 {
 
 public:
     // constructors
-    Standard_EXPORT ModelRep_DOF();
+    Standard_EXPORT ModelDS_TDOF();
     // destructors
-    Standard_EXPORT ~ModelRep_DOF();
+    Standard_EXPORT ~ModelDS_TDOF();
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
+    virtual Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
+    Standard_EXPORT const Handle(DOF_DegreeOfFreedom)&  Representation() const;
+    Standard_EXPORT void                                SetRepresentation(const Handle(DOF_DegreeOfFreedom)& theRepresentation);
+
+private:
+
+    Handle(DOF_DegreeOfFreedom)     myRepresentation;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(ModelDS_TDOF, ModelDS_TObject)
 
 };
 
 
-#endif // __ModelRep_DOF_hxx__
+#endif // __ModelDS_TDOF_hxx__

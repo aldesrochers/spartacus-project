@@ -1,3 +1,4 @@
 DOF
 
-This package contains implementation of degrees of freedom.
+This package contains implementation of degrees of freedom for use
+with finite elements.

@@ -20,46 +20,20 @@
 // ============================================================================
 
 
-#ifndef __DOF_DX_hxx__
-#define __DOF_DX_hxx__
+#ifndef __DOFAbs_TypeOfMotion_hxx__
+#define __DOFAbs_TypeOfMotion_hxx__
 
-// Spartacus
-#include <DOF_Translation.hxx>
-
-// Forward declarations
-class DOF_DX;
-
-// Handles
-DEFINE_STANDARD_HANDLE(DOF_DX, DOF_Translation)
 
 
 // ============================================================================
 /*!
- *  \brief DOF_DX
+ *  \brief DOFAbs_TypeOfMotion
 */
 // ============================================================================
-class DOF_DX : public DOF_Translation
+enum DOFAbs_TypeOfMotion
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
-    // constructors
-    Standard_EXPORT DOF_DX();
-    // destructors
-    Standard_EXPORT ~DOF_DX();
-
-public:
-
-    Standard_EXPORT DOFAbs_TypeOfDOF        Type() const Standard_OVERRIDE;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(DOF_DX, DOF_Translation);
-
+    DOFAbs_TOM_Rotation,
+    DOFAbs_TOM_Translation
 };
 
-
-#endif // __DOF_DX_hxx__
+#endif // __DOFAbs_TypeOfMotion_hxx__

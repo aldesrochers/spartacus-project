@@ -20,54 +20,50 @@
 // ============================================================================
 
 
-#ifndef __DOF_DegreeOfFreedom_hxx__
-#define __DOF_DegreeOfFreedom_hxx__
+#ifndef __DOF_RotationState_hxx__
+#define __DOF_RotationState_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
-// Spartacus
-#include <DOFAbs_TypeOfDOF.hxx>
-
-// Forward declarations
-class DOF_DegreeOfFreedom;
-
-// Handles
-DEFINE_STANDARD_HANDLE(DOF_DegreeOfFreedom, Standard_Transient)
-
+#include <Standard_DefineAlloc.hxx>
 
 // ============================================================================
 /*!
- *  \brief DOF_DegreeOfFreedom
- *  Class implementation of a base object for the package.
+ *  \brief DOF_RotationState
 */
 // ============================================================================
-class DOF_DegreeOfFreedom : public Standard_Transient
+class DOF_RotationState
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
     // constructors
-    Standard_EXPORT DOF_DegreeOfFreedom();
+    Standard_EXPORT DOF_RotationState();
     // destructors
-    Standard_EXPORT ~DOF_DegreeOfFreedom();
+    Standard_EXPORT ~DOF_RotationState();
 
 public:
 
-    virtual DOFAbs_TypeOfDOF                    DOFType() const = 0;
+    Standard_EXPORT Standard_Real   AngularAcceleration() const;
+    Standard_EXPORT Standard_Real   AngularVelocity() const;
+    Standard_EXPORT Standard_Real   Moment() const;
+    Standard_EXPORT Standard_Real   RotationAngle() const;
+    Standard_EXPORT void            SetAngularAcceleration(const Standard_Real theAngularAcceleration);
+    Standard_EXPORT void            SetAngularVelocity(const Standard_Real theAngularVelocity);
+    Standard_EXPORT void            SetMoment(const Standard_Real theMoment);
+    Standard_EXPORT void            SetRotationAngle(const Standard_Real theRotationAngle);
 
-public:
+private:
 
-    virtual Standard_EXPORT void                CommitState() = 0;
-    virtual Standard_EXPORT void                RevertToCommitState() = 0;
-    virtual Standard_EXPORT void                RevertToInitialState() = 0;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(DOF_DegreeOfFreedom, Standard_Transient)
+    Standard_Real   myAngularAcceleration;
+    Standard_Real   myAngularVelocity;
+    Standard_Real   myMoment;
+    Standard_Real   myRotationAngle;
 
 };
 
 
-#endif // __DOF_DegreeOfFreedom_hxx__
+#endif // __DOF_RotationState_hxx__

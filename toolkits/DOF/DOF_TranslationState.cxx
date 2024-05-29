@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <DOF_Rotation.hxx>
+#include <DOF_TranslationState.hxx>
 
 
 // ============================================================================
@@ -29,18 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-DOF_Rotation::DOF_Rotation()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-DOF_Rotation::DOF_Rotation(const DOF_RotationState& theInitialState)
-    : myInitialState(theInitialState)
+DOF_TranslationState::DOF_TranslationState()
 {
 
 }
@@ -50,96 +39,87 @@ DOF_Rotation::DOF_Rotation(const DOF_RotationState& theInitialState)
  *  \brief Destructor
 */
 // ============================================================================
-DOF_Rotation::~DOF_Rotation()
+DOF_TranslationState::~DOF_TranslationState()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief CommitState()
+ *  \brief Acceleration()
 */
 // ============================================================================
-void DOF_Rotation::CommitState()
+Standard_Real DOF_TranslationState::Acceleration() const
 {
-    myCommitedState = myTrialState;
+    return myAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief CommitedState()
+ *  \brief Displacement()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::CommitedState() const
+Standard_Real DOF_TranslationState::Displacement() const
 {
-    return myCommitedState;
+    return myDisplacement;
 }
 
 // ============================================================================
 /*!
- *  \brief InitialState()
+ *  \brief Force()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::InitialState() const
+Standard_Real DOF_TranslationState::Force() const
 {
-    return myInitialState;
+    return myForce;
 }
 
 // ============================================================================
 /*!
- *  \brief MotionType()
+ *  \brief SetAcceleration()
 */
 // ============================================================================
-DOFAbs_TypeOfMotion DOF_Rotation::MotionType() const
+void DOF_TranslationState::SetAcceleration(const Standard_Real theAcceleration)
 {
-    return DOFAbs_TOM_Rotation;
+    myAcceleration = theAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief RevertToCommitState()
+ *  \brief SetDisplacement()
 */
 // ============================================================================
-void DOF_Rotation::RevertToCommitState()
+void DOF_TranslationState::SetDisplacement(const Standard_Real theDisplacement)
 {
-    myTrialState = myCommitedState;
+    myDisplacement = theDisplacement;
 }
 
 // ============================================================================
 /*!
- *  \brief RevertToInitialState()
+ *  \brief SetForce()
 */
 // ============================================================================
-void DOF_Rotation::RevertToInitialState()
+void DOF_TranslationState::SetForce(const Standard_Real theForce)
 {
-    myCommitedState = myInitialState;
-    myTrialState = myInitialState;
+    myForce = theForce;
 }
 
 // ============================================================================
 /*!
- *  \brief SetTrialState()
+ *  \brief SetVelocity()
 */
 // ============================================================================
-void DOF_Rotation::SetTrialState(const DOF_RotationState &theTrialState)
+void DOF_TranslationState::SetVelocity(const Standard_Real theVelocity)
 {
-    myTrialState = theTrialState;
+    myVelocity = theVelocity;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialState()
+ *  \brief Velocity()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::TrialState() const
+Standard_Real DOF_TranslationState::Velocity() const
 {
-    return myTrialState;
+    return myVelocity;
 }
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(DOF_Rotation, DOF_Motion)
-IMPLEMENT_STANDARD_RTTIEXT(DOF_Rotation, DOF_Motion)

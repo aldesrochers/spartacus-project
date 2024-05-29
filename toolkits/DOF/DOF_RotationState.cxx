@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <DOF_Rotation.hxx>
+#include <DOF_RotationState.hxx>
 
 
 // ============================================================================
@@ -29,18 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-DOF_Rotation::DOF_Rotation()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-DOF_Rotation::DOF_Rotation(const DOF_RotationState& theInitialState)
-    : myInitialState(theInitialState)
+DOF_RotationState::DOF_RotationState()
 {
 
 }
@@ -50,96 +39,87 @@ DOF_Rotation::DOF_Rotation(const DOF_RotationState& theInitialState)
  *  \brief Destructor
 */
 // ============================================================================
-DOF_Rotation::~DOF_Rotation()
+DOF_RotationState::~DOF_RotationState()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief CommitState()
+ *  \brief AngularAcceleration()
 */
 // ============================================================================
-void DOF_Rotation::CommitState()
+Standard_Real DOF_RotationState::AngularAcceleration() const
 {
-    myCommitedState = myTrialState;
+    return myAngularAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief CommitedState()
+ *  \brief AngularVelocity()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::CommitedState() const
+Standard_Real DOF_RotationState::AngularVelocity() const
 {
-    return myCommitedState;
+    return myAngularVelocity;
 }
 
 // ============================================================================
 /*!
- *  \brief InitialState()
+ *  \brief Moment()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::InitialState() const
+Standard_Real DOF_RotationState::Moment() const
 {
-    return myInitialState;
+    return myMoment;
 }
 
 // ============================================================================
 /*!
- *  \brief MotionType()
+ *  \brief RotationAngle()
 */
 // ============================================================================
-DOFAbs_TypeOfMotion DOF_Rotation::MotionType() const
+Standard_Real DOF_RotationState::RotationAngle() const
 {
-    return DOFAbs_TOM_Rotation;
+    return myRotationAngle;
 }
 
 // ============================================================================
 /*!
- *  \brief RevertToCommitState()
+ *  \brief SetAngularAcceleration()
 */
 // ============================================================================
-void DOF_Rotation::RevertToCommitState()
+void DOF_RotationState::SetAngularAcceleration(const Standard_Real theAngularAcceleration)
 {
-    myTrialState = myCommitedState;
+    myAngularAcceleration = theAngularAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief RevertToInitialState()
+ *  \brief SetAngularVelocity()
 */
 // ============================================================================
-void DOF_Rotation::RevertToInitialState()
+void DOF_RotationState::SetAngularVelocity(const Standard_Real theAngularVelocity)
 {
-    myCommitedState = myInitialState;
-    myTrialState = myInitialState;
+    myAngularVelocity = theAngularVelocity;
 }
 
 // ============================================================================
 /*!
- *  \brief SetTrialState()
+ *  \brief SetMoment()
 */
 // ============================================================================
-void DOF_Rotation::SetTrialState(const DOF_RotationState &theTrialState)
+void DOF_RotationState::SetMoment(const Standard_Real theMoment)
 {
-    myTrialState = theTrialState;
+    myMoment = theMoment;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialState()
+ *  \brief SetRotationAngle()
 */
 // ============================================================================
-const DOF_RotationState& DOF_Rotation::TrialState() const
+void DOF_RotationState::SetRotationAngle(const Standard_Real theRotationAngle)
 {
-    return myTrialState;
+    myRotationAngle = theRotationAngle;
 }
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(DOF_Rotation, DOF_Motion)
-IMPLEMENT_STANDARD_RTTIEXT(DOF_Rotation, DOF_Motion)

@@ -23,19 +23,15 @@
 #ifndef __FE1d_Node_hxx__
 #define __FE1d_Node_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
 // Spartacus
+#include <FE1d_Object.hxx>
 #include <gp_Pnt1d.hxx>
 
 // Forward declarations
 class FE1d_Node;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE1d_Node, Standard_Transient);
+DEFINE_STANDARD_HANDLE(FE1d_Node, FE1d_Object)
 
 
 // ============================================================================
@@ -43,7 +39,7 @@ DEFINE_STANDARD_HANDLE(FE1d_Node, Standard_Transient);
  *  \brief FE1d_Node
 */
 // ============================================================================
-class FE1d_Node : public Standard_Transient
+class FE1d_Node : public FE1d_Object
 {
 
 public:
@@ -64,7 +60,7 @@ private:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(FE1d_Node, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(FE1d_Node, FE1d_Object)
 
 };
 

@@ -20,8 +20,8 @@
 // ============================================================================
 
 
-#ifndef __DOF_DegreeOfFreedom_hxx__
-#define __DOF_DegreeOfFreedom_hxx__
+#ifndef __FE1d_Object_hxx__
+#define __FE1d_Object_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
@@ -29,45 +29,34 @@
 #include <Standard_Transient.hxx>
 
 // Spartacus
-#include <DOFAbs_TypeOfDOF.hxx>
+#include <gp_Pnt1d.hxx>
 
 // Forward declarations
-class DOF_DegreeOfFreedom;
+class FE1d_Object;
 
 // Handles
-DEFINE_STANDARD_HANDLE(DOF_DegreeOfFreedom, Standard_Transient)
+DEFINE_STANDARD_HANDLE(FE1d_Object, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief DOF_DegreeOfFreedom
- *  Class implementation of a base object for the package.
+ *  \brief FE1d_Object
 */
 // ============================================================================
-class DOF_DegreeOfFreedom : public Standard_Transient
+class FE1d_Object : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT DOF_DegreeOfFreedom();
+    Standard_EXPORT FE1d_Object();
     // destructors
-    Standard_EXPORT ~DOF_DegreeOfFreedom();
+    Standard_EXPORT ~FE1d_Object();
 
 public:
 
-    virtual DOFAbs_TypeOfDOF                    DOFType() const = 0;
-
-public:
-
-    virtual Standard_EXPORT void                CommitState() = 0;
-    virtual Standard_EXPORT void                RevertToCommitState() = 0;
-    virtual Standard_EXPORT void                RevertToInitialState() = 0;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(DOF_DegreeOfFreedom, Standard_Transient)
+    DEFINE_STANDARD_RTTIEXT(FE1d_Object, Standard_Transient)
 
 };
 
 
-#endif // __DOF_DegreeOfFreedom_hxx__
+#endif // __FE1d_Object_hxx__

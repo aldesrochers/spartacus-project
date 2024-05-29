@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <DOF_Motion.hxx>
+#include <DOF_RotationState.hxx>
 
 // Forward declarations
 class DOF_Rotation;
@@ -42,64 +43,38 @@ class DOF_Rotation : public DOF_Motion
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT DOF_Rotation();
+    Standard_EXPORT DOF_Rotation(const DOF_RotationState& theInitialState);
     // destructors
     Standard_EXPORT ~DOF_Rotation();
 
 public:
 
-    Standard_EXPORT void                CommitState() Standard_OVERRIDE;
-    Standard_EXPORT void                RevertToInitialState() Standard_OVERRIDE;
-    Standard_EXPORT void                RevertToPreviousState() Standard_OVERRIDE;
-    Standard_EXPORT DOFAbs_TypeOfDOF    Type() const Standard_OVERRIDE;
+    Standard_EXPORT DOFAbs_TypeOfMotion     MotionType() const Standard_OVERRIDE;
 
 public:
 
-    Standard_EXPORT Standard_Real   CurrentAngularAcceleration() const;
-    Standard_EXPORT Standard_Real   CurrentAngularVelocity() const;
-    Standard_EXPORT Standard_Real   CurrentMoment() const;
-    Standard_EXPORT Standard_Real   CurrentRotation() const;
+    Standard_EXPORT void            CommitState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToCommitState() Standard_OVERRIDE;
 
-    Standard_EXPORT Standard_Real   InitialAngularAcceleration() const;
-    Standard_EXPORT Standard_Real   InitialAngularVelocity() const;
-    Standard_EXPORT Standard_Real   InitialMoment() const;
-    Standard_EXPORT Standard_Real   InitialRotation() const;
+public:
 
-    Standard_EXPORT Standard_Real   PreviousAngularAcceleration() const;
-    Standard_EXPORT Standard_Real   PreviousAngularVelocity() const;
-    Standard_EXPORT Standard_Real   PreviousMoment() const;
-    Standard_EXPORT Standard_Real   PreviousRotation() const;
-
-    Standard_EXPORT void            SetCurrentAngularAcceleration(const Standard_Real theAngularAcceleration);
-    Standard_EXPORT void            SetCurrentRotation(const Standard_Real theRotation);
-    Standard_EXPORT void            SetCurrentMoment(const Standard_Real theMoment);
-    Standard_EXPORT void            SetCurrentAngularVelocity(const Standard_Real theAngularVelocity);
+    Standard_EXPORT const DOF_RotationState&    CommitedState() const;
+    Standard_EXPORT const DOF_RotationState&    InitialState() const;
+    Standard_EXPORT void                        SetTrialState(const DOF_RotationState& theTrialState);
+    Standard_EXPORT const DOF_RotationState&    TrialState() const;
 
 private:
 
-    Standard_Real       myCurrentAngularAcceleration;
-    Standard_Real       myCurrentAngularVelocity;
-    Standard_Real       myCurrentMoment;
-    Standard_Real       myCurrentRotation;
-
-    Standard_Real       myInitialAngularAcceleration;
-    Standard_Real       myInitialAngularVelocity;
-    Standard_Real       myInitialMoment;
-    Standard_Real       myInitialRotation;
-
-    Standard_Real       myPreviousAngularAcceleration;
-    Standard_Real       myPreviousAngularVelocity;
-    Standard_Real       myPreviousMoment;
-    Standard_Real       myPreviousRotation;
+    DOF_RotationState    myCommitedState;
+    DOF_RotationState    myInitialState;
+    DOF_RotationState    myTrialState;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(DOF_Rotation, DOF_Motion);
+    DEFINE_STANDARD_RTTIEXT(DOF_Rotation, DOF_Motion)
 
 };
 

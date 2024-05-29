@@ -20,49 +20,56 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
 // Spartacus
-#include <DOF_Translation.hxx>
-
-// Forward declarations
-class ModelRep_DOF;
-
-// Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
+#include <DOF_XRotation.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief ModelRep_DOF
+ *  \brief Constructor
 */
 // ============================================================================
-class ModelRep_DOF : public Standard_Transient
+DOF_XRotation::DOF_XRotation()
 {
 
-public:
-    // constructors
-    Standard_EXPORT ModelRep_DOF();
-    // destructors
-    Standard_EXPORT ~ModelRep_DOF();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+DOF_XRotation::DOF_XRotation(const DOF_RotationState& theInitialState)
+    : DOF_Rotation(theInitialState)
+{
 
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+DOF_XRotation::~DOF_XRotation()
+{
 
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
+}
 
-};
+// ============================================================================
+/*!
+ *  \brief DOFType()
+*/
+// ============================================================================
+DOFAbs_TypeOfDOF DOF_XRotation::DOFType() const
+{
+    return DOFAbs_DOF_DRX;
+}
 
 
-#endif // __ModelRep_DOF_hxx__
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(DOF_XRotation, DOF_Rotation)
+IMPLEMENT_STANDARD_RTTIEXT(DOF_XRotation, DOF_Rotation)

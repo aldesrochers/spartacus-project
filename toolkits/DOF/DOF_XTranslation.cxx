@@ -20,32 +20,56 @@
 // ============================================================================
 
 
-#include <iostream>
-using namespace std;
-
 // Spartacus
 #include <DOF_XTranslation.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Test_Model
+ *  \brief Constructor
 */
 // ============================================================================
-int main(int argc, char** argv)
+DOF_XTranslation::DOF_XTranslation()
 {
 
-    Handle(DOF_XTranslation) DX1 = new DOF_XTranslation();
-    Handle(DOF_XTranslation) DX2 = new DOF_XTranslation();
-
-
-    DOF_TranslationState aState = DX1->InitialState();
-    aState.SetDisplacement(0.1);
-    cout << aState.Acceleration() << endl;
-    cout << aState.Displacement() << endl;
-    cout << aState.Force() << endl;
-    cout << aState.Velocity() << endl;
-
-    DOF_TranslationState aState1 = DX1->InitialState();
-    cout << aState1.Displacement() << endl;
 }
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+DOF_XTranslation::DOF_XTranslation(const DOF_TranslationState& theInitialState)
+    : DOF_Translation(theInitialState)
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+DOF_XTranslation::~DOF_XTranslation()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief DOFType()
+*/
+// ============================================================================
+DOFAbs_TypeOfDOF DOF_XTranslation::DOFType() const
+{
+    return DOFAbs_DOF_DX;
+}
+
+
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(DOF_XTranslation, DOF_Translation)
+IMPLEMENT_STANDARD_RTTIEXT(DOF_XTranslation, DOF_Translation)

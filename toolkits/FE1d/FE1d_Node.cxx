@@ -79,5 +79,5 @@ void FE1d_Node::SetPoint(const gp_Pnt1d& thePoint)
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE1d_Node, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(FE1d_Node, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(FE1d_Node, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Node, Standard_Transient)

@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <DOF_Motion.hxx>
+#include <DOF_TranslationState.hxx>
 
 // Forward declarations
 class DOF_Translation;
@@ -42,63 +43,38 @@ class DOF_Translation : public DOF_Motion
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
     Standard_EXPORT DOF_Translation();
+    Standard_EXPORT DOF_Translation(const DOF_TranslationState& theInitialState);
     // destructors
     Standard_EXPORT ~DOF_Translation();
 
 public:
 
-    Standard_EXPORT void            CommitState() Standard_OVERRIDE;
-    Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
-    Standard_EXPORT void            RevertToPreviousState() Standard_OVERRIDE;
+    Standard_EXPORT DOFAbs_TypeOfMotion     MotionType() const Standard_OVERRIDE;
 
 public:
 
-    Standard_EXPORT Standard_Real   CurrentAcceleration() const;
-    Standard_EXPORT Standard_Real   CurrentForce() const;
-    Standard_EXPORT Standard_Real   CurrentTranslation() const;
-    Standard_EXPORT Standard_Real   CurrentVelocity() const;
+    Standard_EXPORT void            CommitState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
+    Standard_EXPORT void            RevertToCommitState() Standard_OVERRIDE;
 
-    Standard_EXPORT Standard_Real   InitialAcceleration() const;
-    Standard_EXPORT Standard_Real   InitialForce() const;
-    Standard_EXPORT Standard_Real   InitialTranslation() const;
-    Standard_EXPORT Standard_Real   InitialVelocity() const;
+public:
 
-    Standard_EXPORT Standard_Real   PreviousAcceleration() const;
-    Standard_EXPORT Standard_Real   PreviousForce() const;
-    Standard_EXPORT Standard_Real   PreviousTranslation() const;
-    Standard_EXPORT Standard_Real   PreviousVelocity() const;
-
-    Standard_EXPORT void            SetCurrentAcceleration(const Standard_Real theAcceleration);
-    Standard_EXPORT void            SetCurrentForce(const Standard_Real theForce);
-    Standard_EXPORT void            SetCurrentTranslation(const Standard_Real theTranslation);
-    Standard_EXPORT void            SetCurrentVelocity(const Standard_Real theVelocity);
+    Standard_EXPORT const DOF_TranslationState&     CommitedState() const;
+    Standard_EXPORT const DOF_TranslationState&     InitialState() const;
+    Standard_EXPORT void                            SetTrialState(const DOF_TranslationState& theTrialState);
+    Standard_EXPORT const DOF_TranslationState&     TrialState() const;
 
 private:
 
-    Standard_Real       myCurrentAcceleration;
-    Standard_Real       myCurrentForce;
-    Standard_Real       myCurrentTranslation;
-    Standard_Real       myCurrentVelocity;
-
-    Standard_Real       myInitialAcceleration;
-    Standard_Real       myInitialForce;
-    Standard_Real       myInitialTranslation;
-    Standard_Real       myInitialVelocity;
-
-    Standard_Real       myPreviousAcceleration;
-    Standard_Real       myPreviousForce;
-    Standard_Real       myPreviousTranslation;
-    Standard_Real       myPreviousVelocity;
+    DOF_TranslationState    myCommitedState;
+    DOF_TranslationState    myInitialState;
+    DOF_TranslationState    myTrialState;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(DOF_Translation, DOF_Motion);
+    DEFINE_STANDARD_RTTIEXT(DOF_Translation, DOF_Motion)
 
 };
 

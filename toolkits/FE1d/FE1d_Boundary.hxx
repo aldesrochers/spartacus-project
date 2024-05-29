@@ -20,49 +20,38 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#ifndef __FE1d_Boundary_hxx__
+#define __FE1d_Boundary_hxx__
 
 // Spartacus
-#include <DOF_Translation.hxx>
+#include <FE1d_Object.hxx>
 
 // Forward declarations
-class ModelRep_DOF;
+class FE1d_Boundary;
 
 // Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
+DEFINE_STANDARD_HANDLE(FE1d_Boundary, FE1d_Object)
 
 
 // ============================================================================
 /*!
- *  \brief ModelRep_DOF
+ *  \brief FE1d_Boundary
 */
 // ============================================================================
-class ModelRep_DOF : public Standard_Transient
+class FE1d_Boundary : public FE1d_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT ModelRep_DOF();
+    Standard_EXPORT FE1d_Boundary();
     // destructors
-    Standard_EXPORT ~ModelRep_DOF();
+    Standard_EXPORT ~FE1d_Boundary();
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
+    DEFINE_STANDARD_RTTIEXT(FE1d_Boundary, FE1d_Object)
 
 };
 
 
-#endif // __ModelRep_DOF_hxx__
+#endif // __FE1d_Boundary_hxx__

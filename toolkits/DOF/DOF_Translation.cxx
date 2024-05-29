@@ -36,6 +36,17 @@ DOF_Translation::DOF_Translation()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+DOF_Translation::DOF_Translation(const DOF_TranslationState& theInitialState)
+    : myInitialState(theInitialState)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -51,130 +62,47 @@ DOF_Translation::~DOF_Translation()
 // ============================================================================
 void DOF_Translation::CommitState()
 {
-    myPreviousAcceleration = myCurrentAcceleration;
-    myPreviousForce = myCurrentForce;
-    myPreviousTranslation = myCurrentTranslation;
-    myPreviousVelocity = myCurrentVelocity;
+    myCommitedState = myTrialState;
 }
 
 // ============================================================================
 /*!
- *  \brief CurrentAcceleration()
+ *  \brief CommitedState()
 */
 // ============================================================================
-Standard_Real DOF_Translation::CurrentAcceleration() const
+const DOF_TranslationState& DOF_Translation::CommitedState() const
 {
-    return myCurrentAcceleration;
+    return myCommitedState;
 }
 
 // ============================================================================
 /*!
- *  \brief CurrentForce()
+ *  \brief InitialState()
 */
 // ============================================================================
-Standard_Real DOF_Translation::CurrentForce() const
+const DOF_TranslationState& DOF_Translation::InitialState() const
 {
-    return myCurrentForce;
+    return myInitialState;
 }
 
 // ============================================================================
 /*!
- *  \brief CurrentTranslation()
+ *  \brief MotionType()
 */
 // ============================================================================
-Standard_Real DOF_Translation::CurrentTranslation() const
+DOFAbs_TypeOfMotion DOF_Translation::MotionType() const
 {
-    return myCurrentTranslation;
+    return DOFAbs_TOM_Translation;
 }
 
 // ============================================================================
 /*!
- *  \brief CurrentVelocity()
+ *  \brief RevertToCommitState()
 */
 // ============================================================================
-Standard_Real DOF_Translation::CurrentVelocity() const
+void DOF_Translation::RevertToCommitState()
 {
-    return myCurrentVelocity;
-}
-
-// ============================================================================
-/*!
- *  \brief InitialAcceleration()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::InitialAcceleration() const
-{
-    return myInitialAcceleration;
-}
-
-// ============================================================================
-/*!
- *  \brief InitialForce()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::InitialForce() const
-{
-    return myInitialForce;
-}
-
-// ============================================================================
-/*!
- *  \brief InitialTranslation()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::InitialTranslation() const
-{
-    return myInitialTranslation;
-}
-
-// ============================================================================
-/*!
- *  \brief InitialVelocity()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::InitialVelocity() const
-{
-    return myInitialVelocity;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousAcceleration()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::PreviousAcceleration() const
-{
-    return myPreviousAcceleration;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousForce()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::PreviousForce() const
-{
-    return myPreviousForce;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousTranslation()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::PreviousTranslation() const
-{
-    return myPreviousTranslation;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousVelocity()
-*/
-// ============================================================================
-Standard_Real DOF_Translation::PreviousVelocity() const
-{
-    return myPreviousVelocity;
+    myTrialState = myCommitedState;
 }
 
 // ============================================================================
@@ -184,27 +112,28 @@ Standard_Real DOF_Translation::PreviousVelocity() const
 // ============================================================================
 void DOF_Translation::RevertToInitialState()
 {
-    myPreviousAcceleration = myInitialAcceleration;
-    myPreviousForce = myInitialForce;
-    myPreviousTranslation = myInitialTranslation;
-    myPreviousVelocity = myInitialVelocity;
-    myInitialAcceleration = myInitialAcceleration;
-    myInitialForce = myInitialForce;
-    myInitialTranslation = myInitialTranslation;
-    myInitialVelocity = myInitialVelocity;
+    myCommitedState = myInitialState;
+    myTrialState = myInitialState;
 }
 
 // ============================================================================
 /*!
- *  \brief RevertToPreviousState()
+ *  \brief SetTrialState()
 */
 // ============================================================================
-void DOF_Translation::RevertToPreviousState()
+void DOF_Translation::SetTrialState(const DOF_TranslationState &theTrialState)
 {
-    myCurrentAcceleration = myPreviousAcceleration;
-    myCurrentForce = myPreviousForce;
-    myCurrentTranslation = myPreviousTranslation;
-    myCurrentVelocity = myPreviousVelocity;
+    myTrialState = theTrialState;
+}
+
+// ============================================================================
+/*!
+ *  \brief TrialState()
+*/
+// ============================================================================
+const DOF_TranslationState& DOF_Translation::TrialState() const
+{
+    return myTrialState;
 }
 
 

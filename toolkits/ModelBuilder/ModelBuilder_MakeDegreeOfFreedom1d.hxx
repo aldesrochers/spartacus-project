@@ -20,54 +20,47 @@
 // ============================================================================
 
 
-#ifndef __DOF_DegreeOfFreedom_hxx__
-#define __DOF_DegreeOfFreedom_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#ifndef __ModelBuilder_MakeDegreeOfFreedom1d_hxx__
+#define __ModelBuilder_MakeDegreeOfFreedom1d_hxx__
 
 // Spartacus
-#include <DOFAbs_TypeOfDOF.hxx>
-
-// Forward declarations
-class DOF_DegreeOfFreedom;
-
-// Handles
-DEFINE_STANDARD_HANDLE(DOF_DegreeOfFreedom, Standard_Transient)
+#include <DOF_Translation.hxx>
+#include <DOFAbs_TypeOfAxis1d.hxx>
+#include <DOFAbs_TypeOfDOF1d.hxx>
+#include <ModelBuilder_MakeObject.hxx>
+#include <ModelDS_DegreeOfFreedom.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief DOF_DegreeOfFreedom
- *  Class implementation of a base object for the package.
+ *  \brief ModelBuilder_MakeDegreeOfFreedom1d
 */
 // ============================================================================
-class DOF_DegreeOfFreedom : public Standard_Transient
+class ModelBuilder_MakeDegreeOfFreedom1d : public ModelBuilder_MakeObject
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
     // constructors
-    Standard_EXPORT DOF_DegreeOfFreedom();
+    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom1d(const DOFAbs_TypeOfDOF1d theType);
+    Standard_EXPORT ModelBuilder_MakeDegreeOfFreedom1d(const DOFAbs_TypeOfAxis1d,
+                                                       const Handle(DOF_Translation)& theTranslation);
     // destructors
-    Standard_EXPORT ~DOF_DegreeOfFreedom();
+    Standard_EXPORT ~ModelBuilder_MakeDegreeOfFreedom1d();
 
 public:
 
-    virtual DOFAbs_TypeOfDOF                    DOFType() const = 0;
+    Standard_EXPORT const ModelDS_DegreeOfFreedom&  DegreeOfFreedom() const;
+    Standard_EXPORT operator                        ModelDS_DegreeOfFreedom() const;
 
-public:
+protected:
 
-    virtual Standard_EXPORT void                CommitState() = 0;
-    virtual Standard_EXPORT void                RevertToCommitState() = 0;
-    virtual Standard_EXPORT void                RevertToInitialState() = 0;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(DOF_DegreeOfFreedom, Standard_Transient)
+    Standard_EXPORT void        Initialize(const DOFAbs_TypeOfDOF1d theType);
 
 };
 
 
-#endif // __DOF_DegreeOfFreedom_hxx__
+#endif // __ModelBuilder_MakeDegreeOfFreedom1d_hxx__

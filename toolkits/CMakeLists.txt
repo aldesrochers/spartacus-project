@@ -150,13 +150,31 @@ set(cp_PKG_SOURCES
 set(DOF_PKG_HEADERS
     DOF/DOF_DegreeOfFreedom.hxx
     DOF/DOF_Motion.hxx
+    DOF/DOF_Rotation.hxx
+    DOF/DOF_RotationState.hxx
     DOF/DOF_Translation.hxx
+    DOF/DOF_TranslationState.hxx
+    DOF/DOF_XRotation.hxx
+    DOF/DOF_XTranslation.hxx
+    DOF/DOF_YRotation.hxx
+    DOF/DOF_YTranslation.hxx
+    DOF/DOF_ZRotation.hxx
+    DOF/DOF_ZTranslation.hxx
 )
 
 set(DOF_PKG_SOURCES
     DOF/DOF_DegreeOfFreedom.cxx
     DOF/DOF_Motion.cxx
+    DOF/DOF_Rotation.cxx
+    DOF/DOF_RotationState.cxx
     DOF/DOF_Translation.cxx
+    DOF/DOF_TranslationState.cxx
+    DOF/DOF_XRotation.cxx
+    DOF/DOF_XTranslation.cxx
+    DOF/DOF_YRotation.cxx
+    DOF/DOF_YTranslation.cxx
+    DOF/DOF_ZRotation.cxx
+    DOF/DOF_ZTranslation.cxx
 )
 
 # =============================================================================
@@ -164,8 +182,8 @@ set(DOF_PKG_SOURCES
 # =============================================================================
 
 set(DOFAbs_PKG_HEADERS
-    DOFAbs/DOFAbs_TypeOfAxis.hxx
     DOFAbs/DOFAbs_TypeOfDOF.hxx
+    DOFAbs/DOFAbs_TypeOfMotion.hxx
 )
 
 set(DOFAbs_PKG_SOURCES
@@ -209,13 +227,19 @@ set(EleProp_PKG_SOURCES
 # =============================================================================
 
 set(FE1d_PKG_HEADERS
+    FE1d/FE1d_Boundary.hxx
     FE1d/FE1d_Element.hxx
+    FE1d/FE1d_Load.hxx
     FE1d/FE1d_Node.hxx
+    FE1d/FE1d_Object.hxx
 )
 
 set(FE1d_PKG_SOURCES
+    FE1d/FE1d_Boundary.cxx
     FE1d/FE1d_Element.cxx
+    FE1d/FE1d_Load.cxx
     FE1d/FE1d_Node.cxx
+    FE1d/FE1d_Object.cxx
 )
 
 # =============================================================================
@@ -614,15 +638,19 @@ set(ModelAbs_PKG_HEADERS
 set(ModelBuilder_PKG_HEADERS
     ModelBuilder/ModelBuilder_Command.hxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.hxx
+    #ModelBuilder/ModelBuilder_MakeDegreeOfFreedom1d.hxx
     ModelBuilder/ModelBuilder_MakeElement.hxx
     ModelBuilder/ModelBuilder_MakeNode.hxx
+    ModelBuilder/ModelBuilder_MakeObject.hxx
 )
 
 set(ModelBuilder_PKG_SOURCES
     ModelBuilder/ModelBuilder_Command.cxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.cxx
+    #ModelBuilder/ModelBuilder_MakeDegreeOfFreedom1d.cxx
     ModelBuilder/ModelBuilder_MakeElement.cxx
     ModelBuilder/ModelBuilder_MakeNode.cxx
+    ModelBuilder/ModelBuilder_MakeObject.cxx
 )
 
 # =============================================================================
@@ -644,6 +672,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_Point1d.hxx
     ModelDS/ModelDS_Point2d.hxx
     ModelDS/ModelDS_Point3d.hxx
+    ModelDS/ModelDS_TDOF.hxx
     ModelDS/ModelDS_TDegreeOfFreedom.hxx
     ModelDS/ModelDS_TDomain.hxx
     ModelDS/ModelDS_TElement.hxx
@@ -665,6 +694,7 @@ set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS_Point2d.cxx
     ModelDS/ModelDS_Point3d.cxx
     ModelDS/ModelDS_TDegreeOfFreedom.cxx
+    ModelDS/ModelDS_TDOF.cxx
     ModelDS/ModelDS_TDomain.cxx
     ModelDS/ModelDS_TElement.cxx
     ModelDS/ModelDS_TNode.cxx

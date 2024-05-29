@@ -20,54 +20,45 @@
 // ============================================================================
 
 
-#ifndef __DOF_DegreeOfFreedom_hxx__
-#define __DOF_DegreeOfFreedom_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#ifndef __ModelBuilder_MakeObject_hxx__
+#define __ModelBuilder_MakeObject_hxx__
 
 // Spartacus
-#include <DOFAbs_TypeOfDOF.hxx>
-
-// Forward declarations
-class DOF_DegreeOfFreedom;
-
-// Handles
-DEFINE_STANDARD_HANDLE(DOF_DegreeOfFreedom, Standard_Transient)
-
+#include <ModelBuilder_Command.hxx>
+#include <ModelDS_Object.hxx>
 
 // ============================================================================
 /*!
- *  \brief DOF_DegreeOfFreedom
- *  Class implementation of a base object for the package.
+ *  \brief ModelBuilder_MakeObject
 */
 // ============================================================================
-class DOF_DegreeOfFreedom : public Standard_Transient
+class ModelBuilder_MakeObject : public ModelBuilder_Command
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC;
+
+public:
     // constructors
-    Standard_EXPORT DOF_DegreeOfFreedom();
+    Standard_EXPORT ModelBuilder_MakeObject();
     // destructors
-    Standard_EXPORT ~DOF_DegreeOfFreedom();
+    Standard_EXPORT ~ModelBuilder_MakeObject();
 
 public:
 
-    virtual DOFAbs_TypeOfDOF                    DOFType() const = 0;
+    virtual Standard_EXPORT void            Build();
 
 public:
 
-    virtual Standard_EXPORT void                CommitState() = 0;
-    virtual Standard_EXPORT void                RevertToCommitState() = 0;
-    virtual Standard_EXPORT void                RevertToInitialState() = 0;
+    Standard_EXPORT const ModelDS_Object&   Object() const;
+    Standard_EXPORT operator                ModelDS_Object() const;
 
-public:
+protected:
 
-    DEFINE_STANDARD_RTTIEXT(DOF_DegreeOfFreedom, Standard_Transient)
+    ModelDS_Object        myObject;
 
 };
 
 
-#endif // __DOF_DegreeOfFreedom_hxx__
+#endif // __ModelBuilder_MakeObject_hxx__

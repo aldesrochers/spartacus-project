@@ -20,38 +20,34 @@
 // ============================================================================
 
 
-#ifndef __DOF_hxx__
-#define __DOF_hxx__
-
 // Spartacus
-#include <DOF_Rotation.hxx>
-#include <DOF_Translation.hxx>
+#include <FE1d_Boundary.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief DOF
- *  Class implementation of utility methods for the package.
+ *  \brief Constructor
 */
 // ============================================================================
-class DOF
+FE1d_Boundary::FE1d_Boundary()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+FE1d_Boundary::~FE1d_Boundary()
+{
 
-public:
-
-    static Standard_EXPORT Handle(DOF_Rotation)     Rotation(const Handle(DOF_DegreeOfFreedom)& theDOF);
-    static Standard_EXPORT Handle(DOF_Translation)  Translation(const Handle(DOF_DegreeOfFreedom)& theDOF);
-
-protected:
-
-    static Standard_EXPORT Standard_Boolean     TypeMismatch(const Handle(DOF_DegreeOfFreedom)& theDOF,
-                                                             const DOFAbs_TypeOfDOF theType);
-
-};
+}
 
 
-#endif // __DOF_hxx__
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FE1d_Boundary, FE1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Boundary, FE1d_Object)

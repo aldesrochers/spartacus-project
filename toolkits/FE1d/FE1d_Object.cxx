@@ -21,43 +21,32 @@
 
 
 // Spartacus
-#include <DOF.hxx>
-
-// OpenCascade
-#include <Standard_TypeMismatch.hxx>
+#include <FE1d_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Rotation()
+ *  \brief Constructor
 */
 // ============================================================================
-Handle(DOF_Rotation) DOF::Rotation(const Handle(DOF_DegreeOfFreedom)& theDOF)
+FE1d_Object::FE1d_Object()
 {
-    Standard_TypeMismatch_Raise_if(DOF::TypeMismatch(theDOF, DOFAbs_DOF_Rotation),
-                                   "DOF::Rotation()");
-    return Handle(DOF_Rotation)::DownCast(theDOF);
+
 }
 
 // ============================================================================
 /*!
- *  \brief Translation()
+ *  \brief Destructor
 */
 // ============================================================================
-Handle(DOF_Translation) DOF::Translation(const Handle(DOF_DegreeOfFreedom)& theDOF)
+FE1d_Object::~FE1d_Object()
 {
-    Standard_TypeMismatch_Raise_if(DOF::TypeMismatch(theDOF, DOFAbs_DOF_Translation),
-                                   "DOF::Translation()");
-    return Handle(DOF_Translation)::DownCast(theDOF);
+
 }
 
-// ============================================================================
-/*!
- *  \brief TypeMismatch()
-*/
-// ============================================================================
-Standard_Boolean DOF::TypeMismatch(const Handle(DOF_DegreeOfFreedom) &theDOF,
-                                   const DOFAbs_TypeOfDOF theType)
-{
-    return theDOF.IsNull() ? Standard_False : theDOF->Type() != theType;
-}
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(FE1d_Object, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Object, Standard_Transient)

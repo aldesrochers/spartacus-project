@@ -20,21 +20,43 @@
 // ============================================================================
 
 
-#ifndef __DOFAbs_TypeOfAxis_hxx__
-#define __DOFAbs_TypeOfAxis_hxx__
+#ifndef __DOF_ZRotation_hxx__
+#define __DOF_ZRotation_hxx__
 
+// Spartacus
+#include <DOF_Rotation.hxx>
+
+// Forward declarations
+class DOF_ZRotation;
+
+// Handles
+DEFINE_STANDARD_HANDLE(DOF_ZRotation, DOF_Rotation)
 
 
 // ============================================================================
 /*!
- *  \brief DOFAbs_TypeOfAxis
+ *  \brief DOF_ZRotation
 */
 // ============================================================================
-enum DOFAbs_TypeOfAxis
+class DOF_ZRotation : public DOF_Rotation
 {
-    DOFAbs_XAxis,
-    DOFAbs_YAxis,
-    DOFAbs_ZAxis
+
+public:
+    // constructors
+    Standard_EXPORT DOF_ZRotation();
+    Standard_EXPORT DOF_ZRotation(const DOF_RotationState& theInitialState);
+    // destructors
+    Standard_EXPORT ~DOF_ZRotation();
+
+public:
+
+    Standard_EXPORT DOFAbs_TypeOfDOF        DOFType() const Standard_OVERRIDE;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(DOF_ZRotation, DOF_Rotation)
+
 };
 
-#endif // __DOFAbs_TypeOfAxis_hxx__
+
+#endif // __DOF_ZRotation_hxx__

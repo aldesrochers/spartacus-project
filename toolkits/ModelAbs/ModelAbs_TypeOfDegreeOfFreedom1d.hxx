@@ -20,49 +20,20 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
-// Spartacus
-#include <DOF_Translation.hxx>
-
-// Forward declarations
-class ModelRep_DOF;
-
-// Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
+#ifndef __ModelAbs_TypeOfDegreeOfFreedom1d_hxx__
+#define __ModelAbs_TypeOfDegreeOfFreedom1d_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief ModelRep_DOF
+ *  \brief ModelAbs_TypeOfDegreeOfFreedom1d
 */
 // ============================================================================
-class ModelRep_DOF : public Standard_Transient
+enum ModelAbs_TypeOfDegreeOfFreedom1d
 {
-
-public:
-    // constructors
-    Standard_EXPORT ModelRep_DOF();
-    // destructors
-    Standard_EXPORT ~ModelRep_DOF();
-
-public:
-
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
-
+    ModelAbs_DOF1d_DX,
+    ModelAbs_DOF1d_TEMP
 };
 
 
-#endif // __ModelRep_DOF_hxx__
+#endif // __ModelAbs_TypeOfDegreeOfFreedom1d_hxx__

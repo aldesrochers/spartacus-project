@@ -32,12 +32,12 @@
 // ============================================================================
 enum DOFAbs_TypeOfDOF
 {
-    DOFAbs_DX,
-    DOFAbs_DY,
-    DOFAbs_DZ,
-    DOFAbs_DRX,
-    DOFAbs_DRY,
-    DOFAbs_DRZ
+    DOFAbs_DOF_DX,
+    DOFAbs_DOF_DY,
+    DOFAbs_DOF_DZ,
+    DOFAbs_DOF_DRX,
+    DOFAbs_DOF_DRY,
+    DOFAbs_DOF_DRZ
 };
 
 #endif // __DOFAbs_TypeOfDOF_hxx__

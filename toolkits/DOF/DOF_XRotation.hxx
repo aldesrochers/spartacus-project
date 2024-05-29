@@ -20,49 +20,43 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#ifndef __DOF_XRotation_hxx__
+#define __DOF_XRotation_hxx__
 
 // Spartacus
-#include <DOF_Translation.hxx>
+#include <DOF_Rotation.hxx>
 
 // Forward declarations
-class ModelRep_DOF;
+class DOF_XRotation;
 
 // Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
+DEFINE_STANDARD_HANDLE(DOF_XRotation, DOF_Rotation)
 
 
 // ============================================================================
 /*!
- *  \brief ModelRep_DOF
+ *  \brief DOF_XRotation
 */
 // ============================================================================
-class ModelRep_DOF : public Standard_Transient
+class DOF_XRotation : public DOF_Rotation
 {
 
 public:
     // constructors
-    Standard_EXPORT ModelRep_DOF();
+    Standard_EXPORT DOF_XRotation();
+    Standard_EXPORT DOF_XRotation(const DOF_RotationState& theInitialState);
     // destructors
-    Standard_EXPORT ~ModelRep_DOF();
+    Standard_EXPORT ~DOF_XRotation();
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
+    Standard_EXPORT DOFAbs_TypeOfDOF        DOFType() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
+    DEFINE_STANDARD_RTTIEXT(DOF_XRotation, DOF_Rotation)
 
 };
 
 
-#endif // __ModelRep_DOF_hxx__
+#endif // __DOF_XRotation_hxx__

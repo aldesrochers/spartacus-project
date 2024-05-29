@@ -20,49 +20,18 @@
 // ============================================================================
 
 
-#ifndef __ModelRep_DOF_hxx__
-#define __ModelRep_DOF_hxx__
+#ifndef __TColDOF_DataMapOfIntegerTranslation_hxx__
+#define __TColDOF_DataMapOfIntegerTranslation_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#include <NCollection_DataMap.hxx>
+#include <TColStd_MapIntegerHasher.hxx>
 
 // Spartacus
 #include <DOF_Translation.hxx>
 
-// Forward declarations
-class ModelRep_DOF;
+// Type definitions
+typedef NCollection_DataMap<Standard_Integer, Handle(DOF_Translation), TColStd_MapIntegerHasher>             TColDOF_DataMapOfIntegerTranslation;
+typedef NCollection_DataMap<Standard_Integer, Handle(DOF_Translation), TColStd_MapIntegerHasher>::Iterator   TColDOF_DataMapIteratorOfDataMapOfIntegerTranslation;
 
-// Handles
-DEFINE_STANDARD_HANDLE(ModelRep_DOF, Standard_Transient)
-
-
-// ============================================================================
-/*!
- *  \brief ModelRep_DOF
-*/
-// ============================================================================
-class ModelRep_DOF : public Standard_Transient
-{
-
-public:
-    // constructors
-    Standard_EXPORT ModelRep_DOF();
-    // destructors
-    Standard_EXPORT ~ModelRep_DOF();
-
-public:
-
-    virtual Standard_EXPORT Standard_Boolean                IsRotation() const;
-    virtual Standard_EXPORT Standard_Boolean                IsTranslation() const;
-    virtual Standard_EXPORT const Handle(DOF_Translation)&  Translation() const;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(ModelRep_DOF, Standard_Transient)
-
-};
-
-
-#endif // __ModelRep_DOF_hxx__
+#endif // __TColDOF_DataMapOfIntegerTranslation_hxx__

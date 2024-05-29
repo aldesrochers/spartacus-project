@@ -20,44 +20,50 @@
 // ============================================================================
 
 
-// Spartacus
-#include <DOF_DX.hxx>
+#ifndef __DOF_TranslationState_hxx__
+#define __DOF_TranslationState_hxx__
 
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-DOF_DX::DOF_DX()
-{
-
-}
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief DOF_TranslationState
 */
 // ============================================================================
-DOF_DX::~DOF_DX()
+class DOF_TranslationState
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Type()
-*/
-// ============================================================================
-DOFAbs_TypeOfDOF DOF_DX::Type() const
-{
-    return DOFAbs_DX;
-}
+    DEFINE_STANDARD_ALLOC;
+
+public:
+    // constructors
+    Standard_EXPORT DOF_TranslationState();
+    // destructors
+    Standard_EXPORT ~DOF_TranslationState();
+
+public:
+
+    Standard_EXPORT Standard_Real   Acceleration() const;
+    Standard_EXPORT Standard_Real   Displacement() const;
+    Standard_EXPORT Standard_Real   Force() const;
+    Standard_EXPORT void            SetAcceleration(const Standard_Real theValue);
+    Standard_EXPORT void            SetDisplacement(const Standard_Real theValue);
+    Standard_EXPORT void            SetForce(const Standard_Real theValue);
+    Standard_EXPORT void            SetVelocity(const Standard_Real theValue);
+    Standard_EXPORT Standard_Real   Velocity() const;
+
+private:
+
+    Standard_Real   myAcceleration;
+    Standard_Real   myDisplacement;
+    Standard_Real   myForce;
+    Standard_Real   myVelocity;
+
+};
 
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(DOF_DX, DOF_Translation)
-IMPLEMENT_STANDARD_RTTIEXT(DOF_DX, DOF_Translation)
+#endif // __DOF_TranslationState_hxx__
