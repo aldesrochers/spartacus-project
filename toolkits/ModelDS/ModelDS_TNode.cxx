@@ -47,26 +47,6 @@ ModelDS_TNode::~ModelDS_TNode()
 
 // ============================================================================
 /*!
- *  \brief DegreeOfFreedom()
-*/
-// ============================================================================
-const ModelDS_DegreeOfFreedom& ModelDS_TNode::DegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType) const
-{
-    return ModelDS::DegreeOfFreedom(myDegreesOfFreedom(theType));
-}
-
-// ============================================================================
-/*!
- *  \brief NbDegreesOfFreedom()
-*/
-// ============================================================================
-Standard_Integer ModelDS_TNode::NbDegreesOfFreedom() const
-{
-    return myDegreesOfFreedom.Size();
-}
-
-// ============================================================================
-/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -75,36 +55,6 @@ ModelAbs_TypeOfObject ModelDS_TNode::ObjectType() const
     return ModelAbs_OBJ_Node;
 }
 
-// ============================================================================
-/*!
- *  \brief Point()
-*/
-// ============================================================================
-const gp_Pnt& ModelDS_TNode::Point() const
-{
-    return myPoint;
-}
-
-// ============================================================================
-/*!
- *  \brief SetDegreeOfFreedom()
-*/
-// ============================================================================
-void ModelDS_TNode::SetDegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType,
-                                       const ModelDS_DegreeOfFreedom &theDegreeOfFreedom)
-{
-    myDegreesOfFreedom.Bind(theType, theDegreeOfFreedom);
-}
-
-// ============================================================================
-/*!
- *  \brief SetPoint()
-*/
-// ============================================================================
-void ModelDS_TNode::SetPoint(const gp_Pnt &thePoint)
-{
-    myPoint = thePoint;
-}
 
 
 // ****************************************************************************

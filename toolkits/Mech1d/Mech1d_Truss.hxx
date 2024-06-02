@@ -25,7 +25,7 @@
 
 // Spartacus
 #include <Mech1d_Element.hxx>
-#include <FE1d_Node.hxx>
+#include <Mech1d_Node.hxx>
 
 // Forward declarations
 class Mech1d_Truss;
@@ -44,23 +44,29 @@ class Mech1d_Truss : public Mech1d_Element
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_Truss(const gp_Pnt1d& thePoint1,
-                                 const gp_Pnt1d& thePoint2);
+    Standard_EXPORT Mech1d_Truss(const Handle(Mech1d_Node)& theNode1,
+                                 const Handle(Mech1d_Node)& theNode2);
     // destructors
     Standard_EXPORT ~Mech1d_Truss();
 
 public:
 
-    Standard_EXPORT Standard_Real       InitialLength() const;
-
-private:
-
-    gp_Pnt1d    myPoint1;
-    gp_Pnt1d    myPoint2;
+    Standard_EXPORT TColDOF_SequenceOfDOF       Connectivity() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element);
+    Standard_EXPORT Standard_Real               InitialLength() const;
+    Standard_EXPORT const Handle(Mech1d_Node)&  Node1() const;
+    Standard_EXPORT const Handle(Mech1d_Node)&  Node2() const;
+
+protected:
+
+    Handle(Mech1d_Node)     myNode1;
+    Handle(Mech1d_Node)     myNode2;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element)
 
 };
 

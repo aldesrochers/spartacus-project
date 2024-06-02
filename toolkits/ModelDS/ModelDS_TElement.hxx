@@ -24,6 +24,7 @@
 #define __ModelDS_TElement_hxx__
 
 // Spartacus
+#include <ModelDS_Array1OfObject.hxx>
 #include <ModelDS_TObject.hxx>
 
 // Forward declarations
@@ -50,6 +51,15 @@ public:
 public:
 
     Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const ModelDS_Array1OfObject&   DOFs() const;
+    Standard_EXPORT ModelDS_Array1OfObject&         DOFs();
+
+private:
+
+    ModelDS_Array1OfObject      myDOFs;
 
 public:
 

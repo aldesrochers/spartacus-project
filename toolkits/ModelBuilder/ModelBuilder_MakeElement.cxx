@@ -23,6 +23,7 @@
 // Spartacus
 #include <ModelBuilder_MakeElement.hxx>
 #include <ModelDS_Builder.hxx>
+#include <ModelDS_Tool.hxx>
 
 
 // ============================================================================
@@ -35,6 +36,11 @@ ModelBuilder_MakeElement::ModelBuilder_MakeElement(const ModelDS_Node& theNode1,
                                                    const Standard_Real theE,
                                                    const Standard_Real theA)
 {
+    gp_Pnt aPoint1 = ModelDS_Tool::Point(theNode1);
+    gp_Pnt aPoint2 = ModelDS_Tool::Point(theNode2);
+
+
+
 
 }
 

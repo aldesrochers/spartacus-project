@@ -24,7 +24,7 @@
 using namespace std;
 
 // Spartacus
-#include <DOF_XTranslation.hxx>
+#include <Mech1d_ElasticTruss.hxx>
 
 
 // ============================================================================
@@ -35,17 +35,12 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    Handle(DOF_XTranslation) DX1 = new DOF_XTranslation();
-    Handle(DOF_XTranslation) DX2 = new DOF_XTranslation();
+    Handle(Mech1d_Node) aNode1 = new Mech1d_Node(gp_Pnt1d(0.));
+    Handle(Mech1d_Node) aNode2 = new Mech1d_Node(gp_Pnt1d(1.));
+    Handle(Mech1d_ElasticTruss) aTruss = new Mech1d_ElasticTruss(aNode1, aNode2, 2E11, 1E-4);
 
 
-    DOF_TranslationState aState = DX1->InitialState();
-    aState.SetDisplacement(0.1);
-    cout << aState.Acceleration() << endl;
-    cout << aState.Displacement() << endl;
-    cout << aState.Force() << endl;
-    cout << aState.Velocity() << endl;
+    cout << aTruss->TrialStiffness() << endl;
+    cout << aTruss->TrialDisplacements() << endl;
 
-    DOF_TranslationState aState1 = DX1->InitialState();
-    cout << aState1.Displacement() << endl;
 }

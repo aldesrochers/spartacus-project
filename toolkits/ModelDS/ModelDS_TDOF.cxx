@@ -51,7 +51,17 @@ ModelDS_TDOF::~ModelDS_TDOF()
 // ============================================================================
 ModelAbs_TypeOfObject ModelDS_TDOF::ObjectType() const
 {
-    return ModelAbs_OBJ_DegreeOfFreedom;
+    return ModelAbs_OBJ_DOF;
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const ModelDS_Node& ModelDS_TDOF::Node() const
+{
+    return myNode;
 }
 
 // ============================================================================
@@ -59,9 +69,19 @@ ModelAbs_TypeOfObject ModelDS_TDOF::ObjectType() const
  *  \brief Representation()
 */
 // ============================================================================
-const Handle(DOF_DegreeOfFreedom)& ModelDS_TDOF::Representation() const
+const Handle(ModelRep_DOF)& ModelDS_TDOF::Representation() const
 {
     return myRepresentation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void ModelDS_TDOF::SetNode(const ModelDS_Node &theNode)
+{
+    myNode = theNode;
 }
 
 // ============================================================================
@@ -69,7 +89,7 @@ const Handle(DOF_DegreeOfFreedom)& ModelDS_TDOF::Representation() const
  *  \brief SetRepresentation()
 */
 // ============================================================================
-void ModelDS_TDOF::SetRepresentation(const Handle(DOF_DegreeOfFreedom) &theRepresentation)
+void ModelDS_TDOF::SetRepresentation(const Handle(ModelRep_DOF) &theRepresentation)
 {
     myRepresentation = theRepresentation;
 }

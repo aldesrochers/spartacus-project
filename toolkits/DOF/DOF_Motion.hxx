@@ -50,10 +50,6 @@ public:
 
 public:
 
-    virtual Standard_EXPORT DOFAbs_TypeOfMotion     MotionType() const = 0;
-
-public:
-
     DEFINE_STANDARD_RTTIEXT(DOF_Motion, DOF_DegreeOfFreedom)
 
 };

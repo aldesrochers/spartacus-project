@@ -32,6 +32,7 @@
 // Spartacus
 #include <ModelDS_DegreeOfFreedom.hxx>
 #include <ModelDS_Domain.hxx>
+#include <ModelDS_Element.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
 #include <ModelDS_TObject.hxx>
@@ -63,6 +64,8 @@ public:
                                                 const Handle(DOF_DegreeOfFreedom)& theDOF) const;
 
     Standard_EXPORT void    MakeDomain(ModelDS_Domain& theDomain) const;
+
+    Standard_EXPORT void    MakeElement(ModelDS_Element& theElement) const;
 
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,

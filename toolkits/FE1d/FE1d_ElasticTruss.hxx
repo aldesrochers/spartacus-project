@@ -31,7 +31,7 @@
 class FE1d_ElasticTruss;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE1d_ElasticTruss, FE1d_Truss);
+DEFINE_STANDARD_HANDLE(FE1d_ElasticTruss, FE1d_Truss)
 
 
 // ============================================================================
@@ -45,12 +45,34 @@ class FE1d_ElasticTruss : public FE1d_Truss
 public:
     // constructors
     Standard_EXPORT FE1d_ElasticTruss();
+    Standard_EXPORT FE1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
+                                      const Handle(FE1d_Node)& theNode2,
+                                      const Standard_Real theModulous,
+                                      const Standard_Real theArea);
     // destructors
     Standard_EXPORT ~FE1d_ElasticTruss();
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(FE1d_ElasticTruss, FE1d_Truss);
+    Standard_EXPORT math_Matrix         CommitedDerivatives() const Standard_OVERRIDE;
+    Standard_EXPORT math_Matrix         InitialDerivatives() const Standard_OVERRIDE;
+    Standard_EXPORT math_Matrix         TrialDerivatives() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Real       Area() const;
+    Standard_EXPORT Standard_Real       Modulous() const;
+    Standard_EXPORT void                SetArea(const Standard_Real theArea);
+    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
+
+private:
+
+    Standard_Real       myArea;
+    Standard_Real       myModulous;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FE1d_ElasticTruss, FE1d_Truss)
 
 };
 

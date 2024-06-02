@@ -36,6 +36,17 @@ Mech1d_Node::Mech1d_Node()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mech1d_Node::Mech1d_Node(const gp_Pnt1d& thePoint)
+    : FE1d_Node(thePoint)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -46,26 +57,26 @@ Mech1d_Node::~Mech1d_Node()
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief DX()
 */
 // ============================================================================
-const gp_Pnt1d& Mech1d_Node::Point() const
+const Handle(DOF_Translation)& Mech1d_Node::DX() const
 {
-    return myPoint;
+    return myDX;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief SetDX()
 */
 // ============================================================================
-void Mech1d_Node::SetPoint(const gp_Pnt1d &thePoint)
+void Mech1d_Node::SetDX(const Handle(DOF_Translation) &theDX)
 {
-    myPoint = thePoint;
+    myDX = theDX;
 }
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_Node, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Node, Standard_Transient)
+IMPLEMENT_STANDARD_HANDLE(Mech1d_Node, FE1d_Node)
+IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Node, FE1d_Node)

@@ -49,5 +49,5 @@ Mech1d_Element::~Mech1d_Element()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_Element, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Element, Standard_Transient)
+IMPLEMENT_STANDARD_HANDLE(Mech1d_Element, FE1d_Element)
+IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Element, FE1d_Element)

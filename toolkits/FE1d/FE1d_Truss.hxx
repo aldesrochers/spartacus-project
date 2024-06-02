@@ -30,7 +30,7 @@
 class FE1d_Truss;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE1d_Truss, FE1d_Element);
+DEFINE_STANDARD_HANDLE(FE1d_Truss, FE1d_Element)
 
 
 // ============================================================================
@@ -44,14 +44,31 @@ class FE1d_Truss : public FE1d_Element
 public:
     // constructors
     Standard_EXPORT FE1d_Truss();
+    Standard_EXPORT FE1d_Truss(const Handle(FE1d_Node)& theNode1,
+                               const Handle(FE1d_Node)& theNode2);
     // destructors
     Standard_EXPORT ~FE1d_Truss();
 
+public:
 
+    Standard_EXPORT TColDOF_SequenceOfDOF       Connectivity() const Standard_OVERRIDE;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(FE1d_Truss, FE1d_Element);
+    Standard_EXPORT Standard_Real               InitialLength() const;
+    Standard_EXPORT const Handle(FE1d_Node)&    Node1() const;
+    Standard_EXPORT const Handle(FE1d_Node)&    Node2() const;
+    Standard_EXPORT void                        SetNode1(const Handle(FE1d_Node)& theNode1);
+    Standard_EXPORT void                        SetNode2(const Handle(FE1d_Node)& theNode2);
+
+private:
+
+    Handle(FE1d_Node)       myNode1;
+    Handle(FE1d_Node)       myNode2;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(FE1d_Truss, FE1d_Element)
 
 };
 

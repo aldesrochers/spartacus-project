@@ -24,7 +24,13 @@
 #define __FE1d_Element_hxx__
 
 // Spartacus
+#include <FE1d_Node.hxx>
 #include <FE1d_Object.hxx>
+#include <TColDOF_SequenceOfDOF.hxx>
+
+// OpenCascade
+#include <math_Matrix.hxx>
+#include <math_Vector.hxx>
 
 // Forward declarations
 class FE1d_Element;
@@ -46,6 +52,10 @@ public:
     Standard_EXPORT FE1d_Element();
     // destructors
     Standard_EXPORT ~FE1d_Element();
+
+public:
+
+    virtual Standard_EXPORT TColDOF_SequenceOfDOF   Connectivity() const = 0;
 
 public:
 

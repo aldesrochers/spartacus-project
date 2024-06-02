@@ -23,19 +23,16 @@
 #ifndef __Mech1d_Node_hxx__
 #define __Mech1d_Node_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-
 // Spartacus
+#include <DOF_Translation.hxx>
+#include <FE1d_Node.hxx>
 #include <gp_Pnt1d.hxx>
 
 // Forward declarations
 class Mech1d_Node;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Node, Standard_Transient)
+DEFINE_STANDARD_HANDLE(Mech1d_Node, FE1d_Node)
 
 
 // ============================================================================
@@ -43,27 +40,28 @@ DEFINE_STANDARD_HANDLE(Mech1d_Node, Standard_Transient)
  *  \brief Mech1d_Node
 */
 // ============================================================================
-class Mech1d_Node : public Standard_Transient
+class Mech1d_Node : public FE1d_Node
 {
 
 public:
     // constructors
     Standard_EXPORT Mech1d_Node();
-    // destructors
+    Standard_EXPORT Mech1d_Node(const gp_Pnt1d& thePoint);
+    // destructorsgeom
     Standard_EXPORT ~Mech1d_Node();
 
 public:
 
-    Standard_EXPORT const gp_Pnt1d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
+    Standard_EXPORT const Handle(DOF_Translation)&  DX() const;
+    Standard_EXPORT void                            SetDX(const Handle(DOF_Translation)& theDX);
 
 private:
 
-    gp_Pnt1d        myPoint;
+    Handle(DOF_Translation)     myDX;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Node, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Node, FE1d_Node)
 
 };
 

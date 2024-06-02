@@ -1,0 +1,4 @@
+Test_MeshLib_autogen/timestamp: \
+	/home/alexis/Projects/spartacus-project/tests/CMakeLists.txt \
+	/home/alexis/Projects/spartacus-project/tests/Test_MeshLib.cxx \
+	/usr/bin/cmake

@@ -24,8 +24,10 @@
 #define __FE1d_Node_hxx__
 
 // Spartacus
+#include <DOFAbs_TypeOfDOF1d.hxx>
 #include <FE1d_Object.hxx>
 #include <gp_Pnt1d.hxx>
+#include <TColDOF_DataMapOfIntegerDOF.hxx>
 
 // Forward declarations
 class FE1d_Node;
@@ -51,12 +53,12 @@ public:
 
 public:
 
-    Standard_EXPORT const gp_Pnt1d&     Point() const;
-    Standard_EXPORT void                SetPoint(const gp_Pnt1d& thePoint);
+    Standard_EXPORT const gp_Pnt1d&                     Point() const;
+    Standard_EXPORT void                                SetPoint(const gp_Pnt1d& thePoint);
 
 private:
 
-    gp_Pnt1d        myPoint;
+    gp_Pnt1d    myPoint;
 
 public:
 

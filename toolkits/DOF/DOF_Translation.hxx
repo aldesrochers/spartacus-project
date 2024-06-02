@@ -25,7 +25,6 @@
 
 // Spartacus
 #include <DOF_Motion.hxx>
-#include <DOF_TranslationState.hxx>
 
 // Forward declarations
 class DOF_Translation;
@@ -45,13 +44,9 @@ class DOF_Translation : public DOF_Motion
 public:
     // constructors
     Standard_EXPORT DOF_Translation();
-    Standard_EXPORT DOF_Translation(const DOF_TranslationState& theInitialState);
     // destructors
     Standard_EXPORT ~DOF_Translation();
 
-public:
-
-    Standard_EXPORT DOFAbs_TypeOfMotion     MotionType() const Standard_OVERRIDE;
 
 public:
 
@@ -59,18 +54,38 @@ public:
     Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
     Standard_EXPORT void            RevertToCommitState() Standard_OVERRIDE;
 
+
 public:
 
-    Standard_EXPORT const DOF_TranslationState&     CommitedState() const;
-    Standard_EXPORT const DOF_TranslationState&     InitialState() const;
-    Standard_EXPORT void                            SetTrialState(const DOF_TranslationState& theTrialState);
-    Standard_EXPORT const DOF_TranslationState&     TrialState() const;
+    Standard_EXPORT Standard_Real   CommitedAcceleration() const;
+    Standard_EXPORT Standard_Real   CommitedDisplacement() const;
+    Standard_EXPORT Standard_Real   CommitedForce() const;
+    Standard_EXPORT Standard_Real   CommitedVelocity() const;
+
+    Standard_EXPORT Standard_Real   InitialAcceleration() const;
+    Standard_EXPORT Standard_Real   InitialDisplacement() const;
+    Standard_EXPORT Standard_Real   InitialForce() const;
+    Standard_EXPORT Standard_Real   InitialVelocity() const;
+
+    Standard_EXPORT Standard_Real   TrialAcceleration() const;
+    Standard_EXPORT Standard_Real   TrialDisplacement() const;
+    Standard_EXPORT Standard_Real   TrialForce() const;
+    Standard_EXPORT Standard_Real   TrialVelocity() const;
 
 private:
 
-    DOF_TranslationState    myCommitedState;
-    DOF_TranslationState    myInitialState;
-    DOF_TranslationState    myTrialState;
+    Standard_Real       myCommitedAcceleration;
+    Standard_Real       myCommitedDisplacement;
+    Standard_Real       myCommitedForce;
+    Standard_Real       myCommitedVelocity;
+    Standard_Real       myInitialAcceleration;
+    Standard_Real       myInitialDisplacement;
+    Standard_Real       myInitialForce;
+    Standard_Real       myInitialVelocity;
+    Standard_Real       myTrialAcceleration;
+    Standard_Real       myTrialDisplacement;
+    Standard_Real       myTrialForce;
+    Standard_Real       myTrialVelocity;
 
 public:
 

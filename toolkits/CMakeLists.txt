@@ -150,31 +150,31 @@ set(cp_PKG_SOURCES
 set(DOF_PKG_HEADERS
     DOF/DOF_DegreeOfFreedom.hxx
     DOF/DOF_Motion.hxx
-    DOF/DOF_Rotation.hxx
-    DOF/DOF_RotationState.hxx
+    #DOF/DOF_Rotation.hxx
+    #DOF/DOF_RotationState.hxx
     DOF/DOF_Translation.hxx
-    DOF/DOF_TranslationState.hxx
-    DOF/DOF_XRotation.hxx
-    DOF/DOF_XTranslation.hxx
-    DOF/DOF_YRotation.hxx
-    DOF/DOF_YTranslation.hxx
-    DOF/DOF_ZRotation.hxx
-    DOF/DOF_ZTranslation.hxx
+    #DOF/DOF_TranslationState.hxx
+    #DOF/DOF_XRotation.hxx
+    #DOF/DOF_XTranslation.hxx
+    #DOF/DOF_YRotation.hxx
+    #DOF/DOF_YTranslation.hxx
+    #DOF/DOF_ZRotation.hxx
+    #DOF/DOF_ZTranslation.hxx
 )
 
 set(DOF_PKG_SOURCES
     DOF/DOF_DegreeOfFreedom.cxx
     DOF/DOF_Motion.cxx
-    DOF/DOF_Rotation.cxx
-    DOF/DOF_RotationState.cxx
+    #DOF/DOF_Rotation.cxx
+    #DOF/DOF_RotationState.cxx
     DOF/DOF_Translation.cxx
-    DOF/DOF_TranslationState.cxx
-    DOF/DOF_XRotation.cxx
-    DOF/DOF_XTranslation.cxx
-    DOF/DOF_YRotation.cxx
-    DOF/DOF_YTranslation.cxx
-    DOF/DOF_ZRotation.cxx
-    DOF/DOF_ZTranslation.cxx
+    #DOF/DOF_TranslationState.cxx
+    #DOF/DOF_XRotation.cxx
+    #DOF/DOF_XTranslation.cxx
+    #DOF/DOF_YRotation.cxx
+    #DOF/DOF_YTranslation.cxx
+    #DOF/DOF_ZRotation.cxx
+    #DOF/DOF_ZTranslation.cxx
 )
 
 # =============================================================================
@@ -183,6 +183,7 @@ set(DOF_PKG_SOURCES
 
 set(DOFAbs_PKG_HEADERS
     DOFAbs/DOFAbs_TypeOfDOF.hxx
+    DOFAbs/DOFAbs_TypeOfDOF1d.hxx
     DOFAbs/DOFAbs_TypeOfMotion.hxx
 )
 
@@ -628,6 +629,7 @@ set(ModelAbs_PKG_HEADERS
     ModelAbs/ModelAbs_Parameter.hxx
     ModelAbs/ModelAbs_Phenomenon.hxx
     ModelAbs/ModelAbs_TypeOfDegreeOfFreedom.hxx
+    ModelAbs/ModelAbs_TypeOfDOF.hxx
     ModelAbs/ModelAbs_TypeOfObject.hxx
 )
 
@@ -722,6 +724,7 @@ set(ModelLib_PKG_SOURCES
 
 set(ModelRep_PKG_HEADERS
     ModelRep/ModelRep_DOF.hxx
+    ModelRep/ModelRep_MotionDOF.hxx
     ModelRep/ModelRep_Point.hxx
     ModelRep/ModelRep_Point1d.hxx
     ModelRep/ModelRep_Point2d.hxx
@@ -731,6 +734,7 @@ set(ModelRep_PKG_HEADERS
 
 set(ModelRep_PKG_SOURCES
     ModelRep/ModelRep_DOF.cxx
+    ModelRep/ModelRep_MotionDOF.cxx
     ModelRep/ModelRep_Point.cxx
     ModelRep/ModelRep_Point1d.cxx
     ModelRep/ModelRep_Point2d.cxx
@@ -841,6 +845,18 @@ set(pmp_PKG_HEADERS
 
 set(pmp_PKG_SOURCES
     pmp/pmp_LinearLine.cxx
+)
+
+# =============================================================================
+# Package : TColDOF
+# =============================================================================
+
+set(TColDOF_PKG_HEADERS
+    TColDOF/TColDOF_Array1OfDOF.hxx
+    TColDOF/TColDOF_DataMapOfIntegerDOF.hxx
+    TColDOF/TColDOF_ListIteratorOfListOfDOF.hxx
+    TColDOF/TColDOF_ListOfDOF.hxx
+    TColDOF/TColDOF_SequenceOfDOF.hxx
 )
 
 # =============================================================================
@@ -1065,6 +1081,7 @@ set(Ceres_HEADERS
     #${PolyMesh2d_PKG_HEADERS}
     #${PolyMeshAbs_PKG_HEADERS}
     ${pmp_PKG_HEADERS}
+    ${TColDOF_PKG_HEADERS}
     #${TColgp_PKG_HEADERS}
     #${TColMesh1d_PKG_HEADERS}
     #${TColmp_PKG_HEADERS}
@@ -1175,6 +1192,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh2d
     ${CMAKE_CURRENT_SOURCE_DIR}/PolyMeshAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/pmp
+    ${CMAKE_CURRENT_SOURCE_DIR}/TColDOF
     ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
     ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/TColmp

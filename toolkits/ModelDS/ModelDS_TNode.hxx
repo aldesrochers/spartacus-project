@@ -27,10 +27,8 @@
 #include <gp_Pnt.hxx>
 
 // Spartacus
-#include <ModelAbs_TypeOfDegreeOfFreedom.hxx>
-#include <ModelDS_DataMapOfIntegerObject.hxx>
-#include <ModelDS_DegreeOfFreedom.hxx>
 #include <ModelDS_TObject.hxx>
+#include <ModelRep_Point.hxx>
 
 // Forward declarations
 class ModelDS_TNode;
@@ -57,19 +55,9 @@ public:
 
     Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
 
-public:
-
-    Standard_EXPORT const ModelDS_DegreeOfFreedom&  DegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType) const;
-    Standard_EXPORT Standard_Integer                NbDegreesOfFreedom() const;
-    Standard_EXPORT const gp_Pnt&                   Point() const;
-    Standard_EXPORT void                            SetDegreeOfFreedom(const ModelAbs_TypeOfDegreeOfFreedom theType,
-                                                                       const ModelDS_DegreeOfFreedom& theDegreeOfFreedom);
-    Standard_EXPORT void                            SetPoint(const gp_Pnt& thePoint);
-
 private:
 
-    ModelDS_DataMapOfIntegerObject  myDegreesOfFreedom;
-    gp_Pnt                          myPoint;
+    Handle(ModelRep_Point)      myPoint;
 
 public:
 

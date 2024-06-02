@@ -43,8 +43,8 @@ class Mech1d_ElasticTruss : public Mech1d_Truss
 
 public:
     // constructors
-    Standard_EXPORT Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
-                                        const gp_Pnt1d& thePoint2,
+    Standard_EXPORT Mech1d_ElasticTruss(const Handle(Mech1d_Node)& theNode1,
+                                        const Handle(Mech1d_Node)& theNode2,
                                         const Standard_Real theModulous,
                                         const Standard_Real theArea);
     // destructors
@@ -52,17 +52,20 @@ public:
 
 public:
 
+    Standard_EXPORT math_Matrix         CommitedStiffness() const Standard_OVERRIDE;
     Standard_EXPORT math_Matrix         InitialStiffness() const Standard_OVERRIDE;
-    Standard_EXPORT Standard_Boolean    SetTrialDisplacements(const math_Vector& theDisplacements) Standard_OVERRIDE;
     Standard_EXPORT math_Vector         TrialDisplacements() const Standard_OVERRIDE;
-    Standard_EXPORT math_Vector         TrialForces() const Standard_OVERRIDE;
     Standard_EXPORT math_Matrix         TrialStiffness() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Real       Area() const;
+    Standard_EXPORT Standard_Real       Modulous() const;
 
 private:
 
-    Standard_Real   myArea;
-    Standard_Real   myModulous;
-    math_Vector     myTrialDisplacements;
+    Standard_Real       myArea;
+    Standard_Real       myModulous;
 
 public:
 

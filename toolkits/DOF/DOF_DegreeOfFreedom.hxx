@@ -55,10 +55,6 @@ public:
 
 public:
 
-    virtual DOFAbs_TypeOfDOF                    DOFType() const = 0;
-
-public:
-
     virtual Standard_EXPORT void                CommitState() = 0;
     virtual Standard_EXPORT void                RevertToCommitState() = 0;
     virtual Standard_EXPORT void                RevertToInitialState() = 0;

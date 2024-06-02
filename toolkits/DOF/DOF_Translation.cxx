@@ -36,17 +36,6 @@ DOF_Translation::DOF_Translation()
 
 // ============================================================================
 /*!
- *  \brief Constructor
-*/
-// ============================================================================
-DOF_Translation::DOF_Translation(const DOF_TranslationState& theInitialState)
-    : myInitialState(theInitialState)
-{
-
-}
-
-// ============================================================================
-/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -62,37 +51,89 @@ DOF_Translation::~DOF_Translation()
 // ============================================================================
 void DOF_Translation::CommitState()
 {
-    myCommitedState = myTrialState;
+    myCommitedAcceleration = myTrialAcceleration;
+    myCommitedDisplacement = myTrialDisplacement;
+    myCommitedVelocity = myTrialVelocity;
 }
 
 // ============================================================================
 /*!
- *  \brief CommitedState()
+ *  \brief CommitedAcceleration()
 */
 // ============================================================================
-const DOF_TranslationState& DOF_Translation::CommitedState() const
+Standard_Real DOF_Translation::CommitedAcceleration() const
 {
-    return myCommitedState;
+    return myCommitedAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief InitialState()
+ *  \brief CommitedDisplacement()
 */
 // ============================================================================
-const DOF_TranslationState& DOF_Translation::InitialState() const
+Standard_Real DOF_Translation::CommitedDisplacement() const
 {
-    return myInitialState;
+    return myCommitedDisplacement;
 }
 
 // ============================================================================
 /*!
- *  \brief MotionType()
+ *  \brief CommitedForce()
 */
 // ============================================================================
-DOFAbs_TypeOfMotion DOF_Translation::MotionType() const
+Standard_Real DOF_Translation::CommitedForce() const
 {
-    return DOFAbs_TOM_Translation;
+    return myCommitedForce;
+}
+
+// ============================================================================
+/*!
+ *  \brief CommitedVelocity()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::CommitedVelocity() const
+{
+    return myCommitedVelocity;
+}
+
+// ============================================================================
+/*!
+ *  \brief InitialAcceleration()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::InitialAcceleration() const
+{
+    return myInitialAcceleration;
+}
+
+// ============================================================================
+/*!
+ *  \brief InitialDisplacement()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::InitialDisplacement() const
+{
+    return myInitialDisplacement;
+}
+
+// ============================================================================
+/*!
+ *  \brief InitialForce()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::InitialForce() const
+{
+    return myInitialForce;
+}
+
+// ============================================================================
+/*!
+ *  \brief InitialVelocity()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::InitialVelocity() const
+{
+    return myInitialVelocity;
 }
 
 // ============================================================================
@@ -102,7 +143,9 @@ DOFAbs_TypeOfMotion DOF_Translation::MotionType() const
 // ============================================================================
 void DOF_Translation::RevertToCommitState()
 {
-    myTrialState = myCommitedState;
+    myTrialAcceleration = myCommitedAcceleration;
+    myTrialDisplacement = myCommitedDisplacement;
+    myTrialVelocity = myCommitedVelocity;
 }
 
 // ============================================================================
@@ -112,30 +155,53 @@ void DOF_Translation::RevertToCommitState()
 // ============================================================================
 void DOF_Translation::RevertToInitialState()
 {
-    myCommitedState = myInitialState;
-    myTrialState = myInitialState;
+    myCommitedAcceleration = myInitialAcceleration;
+    myCommitedDisplacement = myInitialDisplacement;
+    myCommitedVelocity = myInitialVelocity;
+    myTrialAcceleration = myInitialAcceleration;
+    myTrialDisplacement = myInitialDisplacement;
+    myTrialVelocity = myInitialVelocity;
 }
 
 // ============================================================================
 /*!
- *  \brief SetTrialState()
+ *  \brief TrialAcceleration()
 */
 // ============================================================================
-void DOF_Translation::SetTrialState(const DOF_TranslationState &theTrialState)
+Standard_Real DOF_Translation::TrialAcceleration() const
 {
-    myTrialState = theTrialState;
+    return myTrialAcceleration;
 }
 
 // ============================================================================
 /*!
- *  \brief TrialState()
+ *  \brief TrialDisplacement()
 */
 // ============================================================================
-const DOF_TranslationState& DOF_Translation::TrialState() const
+Standard_Real DOF_Translation::TrialDisplacement() const
 {
-    return myTrialState;
+    return myTrialDisplacement;
 }
 
+// ============================================================================
+/*!
+ *  \brief TrialForce()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::TrialForce() const
+{
+    return myTrialForce;
+}
+
+// ============================================================================
+/*!
+ *  \brief TrialVelocity()
+*/
+// ============================================================================
+Standard_Real DOF_Translation::TrialVelocity() const
+{
+    return myTrialVelocity;
+}
 
 
 // ****************************************************************************

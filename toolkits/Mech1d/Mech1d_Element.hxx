@@ -23,18 +23,14 @@
 #ifndef __Mech1d_Element_hxx__
 #define __Mech1d_Element_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
-#include <math_Matrix.hxx>
-#include <math_Vector.hxx>
+// Spartacus
+#include <FE1d_Element.hxx>
 
 // Forward declarations
 class Mech1d_Element;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Element, Standard_Transient)
+DEFINE_STANDARD_HANDLE(Mech1d_Element, FE1d_Element)
 
 
 // ============================================================================
@@ -42,7 +38,7 @@ DEFINE_STANDARD_HANDLE(Mech1d_Element, Standard_Transient)
  *  \brief Mech1d_Element
 */
 // ============================================================================
-class Mech1d_Element : public Standard_Transient
+class Mech1d_Element : public FE1d_Element
 {
 
 public:
@@ -53,16 +49,14 @@ public:
 
 public:
 
-
+    virtual Standard_EXPORT math_Matrix         CommitedStiffness() const = 0;
     virtual Standard_EXPORT math_Matrix         InitialStiffness() const = 0;
-    virtual Standard_EXPORT Standard_Boolean    SetTrialDisplacements(const math_Vector& theDisplacements) = 0;
     virtual Standard_EXPORT math_Vector         TrialDisplacements() const = 0;
     virtual Standard_EXPORT math_Matrix         TrialStiffness() const = 0;
-    virtual Standard_EXPORT math_Vector         TrialForces() const = 0;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Element, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Element, FE1d_Element);
 
 };
 

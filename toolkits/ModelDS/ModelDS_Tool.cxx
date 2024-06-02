@@ -40,6 +40,6 @@ gp_Pnt ModelDS_Tool::Point(const ModelDS_Node& theNode)
     const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
     if(aTNode == 0)
         throw Standard_NullObject("ModelDS_Tool::Point()->Invalid node.");
-    return aTNode->Point();
+    //return aTNode->Point();
 }
 

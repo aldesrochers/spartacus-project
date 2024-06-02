@@ -28,6 +28,7 @@ using namespace std;
 #include <ModelDS_Point2d.hxx>
 #include <ModelDS_Point3d.hxx>
 #include <ModelDS_TDegreeOfFreedom.hxx>
+#include <ModelDS_TElement.hxx>
 #include <ModelDS_TDomain.hxx>
 #include <ModelDS_TNode.hxx>
 
@@ -102,6 +103,17 @@ void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
 
 // ============================================================================
 /*!
+ *  \brief MakeElement()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeElement(ModelDS_Element &theElement) const
+{
+    Handle(ModelDS_TElement) aTElement = new ModelDS_TElement();
+    MakeObject(theElement, aTElement);
+}
+
+// ============================================================================
+/*!
  *  \brief MakeNode()
 */
 // ============================================================================
@@ -155,5 +167,5 @@ void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
                                  const gp_Pnt &thePoint) const
 {
     const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
-    aTNode->SetPoint(thePoint);
+    //aTNode->SetPoint(thePoint);
 }

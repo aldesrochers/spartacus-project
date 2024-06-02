@@ -24,8 +24,9 @@
 #define __ModelDS_TDOF_hxx__
 
 // Spartacus
-#include <DOF_DegreeOfFreedom.hxx>
+#include <ModelDS_Node.hxx>
 #include <ModelDS_TObject.hxx>
+#include <ModelRep_DOF.hxx>
 
 // Forward declarations
 class ModelDS_TDOF;
@@ -54,12 +55,15 @@ public:
 
 public:
 
-    Standard_EXPORT const Handle(DOF_DegreeOfFreedom)&  Representation() const;
-    Standard_EXPORT void                                SetRepresentation(const Handle(DOF_DegreeOfFreedom)& theRepresentation);
+    Standard_EXPORT const ModelDS_Node&             Node() const;
+    Standard_EXPORT const Handle(ModelRep_DOF)&     Representation() const;
+    Standard_EXPORT void                            SetNode(const ModelDS_Node& theNode);
+    Standard_EXPORT void                            SetRepresentation(const Handle(ModelRep_DOF)& theRepresentation);
 
 private:
 
-    Handle(DOF_DegreeOfFreedom)     myRepresentation;
+    ModelDS_Node            myNode;
+    Handle(ModelRep_DOF)    myRepresentation;
 
 public:
 
