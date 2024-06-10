@@ -30,11 +30,11 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mech1d_ElasticTruss::Mech1d_ElasticTruss(const Handle(Mech1d_Node)& theNode1,
-                                         const Handle(Mech1d_Node)& theNode2,
+Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
+                                         const gp_Pnt1d& thePoint2,
                                          const Standard_Real theModulous,
                                          const Standard_Real theArea)
-    : Mech1d_Truss(theNode1, theNode2),
+    : Mech1d_Truss(thePoint1, thePoint2),
     myArea(theArea),
     myModulous(theModulous)
 {
@@ -105,8 +105,8 @@ Standard_Real Mech1d_ElasticTruss::Modulous() const
 math_Vector Mech1d_ElasticTruss::TrialDisplacements() const
 {
     math_Vector aVector(1,2,0.);
-    aVector(1) = myNode1->DX()->TrialDisplacement();
-    //aVector(2) = myNode2->DX()->TrialDisplacement();
+    //aVector(1) = myPoint1->DX()->TrialDisplacement();
+    //aVector(2) = myPoint2->DX()->TrialDisplacement();
     return aVector;
 }
 

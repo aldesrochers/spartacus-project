@@ -23,27 +23,8 @@
 // Spartacus
 #include <MeshBuilder_MakeNode.hxx>
 #include <MeshDS_Builder.hxx>
+#include <MeshDS.hxx>
 
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshBuilder_MakeNode::MeshBuilder_MakeNode(const gp_Pnt1d& thePoint)
-{
-    Initialize(thePoint);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshBuilder_MakeNode::MeshBuilder_MakeNode(const gp_Pnt2d& thePoint)
-{
-    Initialize(thePoint);
-}
 
 // ============================================================================
 /*!
@@ -70,34 +51,10 @@ MeshBuilder_MakeNode::~MeshBuilder_MakeNode()
  *  \brief Initialize()
 */
 // ============================================================================
-void MeshBuilder_MakeNode::Initialize(const gp_Pnt1d &thePoint)
-{
-    MeshDS_Builder aBuilder;
-    aBuilder.MakeNode(myNode, thePoint);
-    SetDone();
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void MeshBuilder_MakeNode::Initialize(const gp_Pnt2d &thePoint)
-{
-    MeshDS_Builder aBuilder;
-    aBuilder.MakeNode(myNode, thePoint);
-    SetDone();
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
 void MeshBuilder_MakeNode::Initialize(const gp_Pnt &thePoint)
 {
     MeshDS_Builder aBuilder;
-    aBuilder.MakeNode(myNode, thePoint);
+    aBuilder.MakeNode(MeshDS::Node(myObject), thePoint);
     SetDone();
 }
 
@@ -108,10 +65,7 @@ void MeshBuilder_MakeNode::Initialize(const gp_Pnt &thePoint)
 // ============================================================================
 const MeshDS_Node& MeshBuilder_MakeNode::Node() const
 {
-    if (!IsDone()) {
-        Check();
-    }
-    return myNode;
+    return MeshDS::Node(Object());
 }
 
 // ============================================================================

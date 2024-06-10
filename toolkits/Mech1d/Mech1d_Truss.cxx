@@ -29,9 +29,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mech1d_Truss::Mech1d_Truss(const Handle(Mech1d_Node)& theNode1,
-                           const Handle(Mech1d_Node)& theNode2)
-    : myNode1(theNode1), myNode2(theNode2)
+Mech1d_Truss::Mech1d_Truss(const gp_Pnt1d& thePoint1,
+                           const gp_Pnt1d& thePoint2)
+    : myPoint1(thePoint1), myPoint2(thePoint2)
 {
 
 }
@@ -48,45 +48,32 @@ Mech1d_Truss::~Mech1d_Truss()
 
 // ============================================================================
 /*!
- *  \brief Connectivity()
-*/
-// ============================================================================
-TColDOF_SequenceOfDOF Mech1d_Truss::Connectivity() const
-{
-    TColDOF_SequenceOfDOF aSequence;
-    aSequence.Append(myNode1->DX());
-    aSequence.Append(myNode2->DX());
-    return aSequence;
-}
-
-// ============================================================================
-/*!
  *  \brief InitialLength()
 */
 // ============================================================================
 Standard_Real Mech1d_Truss::InitialLength() const
 {
-    return myNode1->Point().Distance(myNode2->Point());
+    return myPoint1.Distance(myPoint2);
 }
 
 // ============================================================================
 /*!
- *  \brief Node1()
+ *  \brief Point1()
 */
 // ============================================================================
-const Handle(Mech1d_Node)& Mech1d_Truss::Node1() const
+const gp_Pnt1d& Mech1d_Truss::Point1() const
 {
-    return myNode1;
+    return myPoint1;
 }
 
 // ============================================================================
 /*!
- *  \brief Node2()
+ *  \brief Point2()
 */
 // ============================================================================
-const Handle(Mech1d_Node)& Mech1d_Truss::Node2() const
+const gp_Pnt1d& Mech1d_Truss::Point2() const
 {
-    return myNode2;
+    return myPoint2;
 }
 
 

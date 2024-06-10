@@ -47,82 +47,42 @@ MeshDS_TMesh::~MeshDS_TMesh()
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief Cells()
 */
 // ============================================================================
-const MeshDS_Cell& MeshDS_TMesh::Cell(const Standard_Integer theIndex) const
+const MeshDS_ListOfObject& MeshDS_TMesh::Cells() const
 {
-    return MeshDS::Cell(myCells.Value(theIndex));
+    return myCells;
 }
 
 // ============================================================================
 /*!
- *  \brief Group()
+ *  \brief Cells()
 */
 // ============================================================================
-const MeshDS_Group& MeshDS_TMesh::Group(const Standard_Integer theIndex) const
+MeshDS_ListOfObject& MeshDS_TMesh::Cells()
 {
-    return MeshDS::Group(myGroups.Value(theIndex));
+    return myCells;
 }
 
 // ============================================================================
 /*!
- *  \brief NbCells()
+ *  \brief Groups()
 */
 // ============================================================================
-Standard_Integer MeshDS_TMesh::NbCells() const
+const MeshDS_ListOfObject& MeshDS_TMesh::Groups() const
 {
-    return myCells.Size();
+    return myGroups;
 }
 
 // ============================================================================
 /*!
- *  \brief NbGroups()
+ *  \brief Groups()
 */
 // ============================================================================
-Standard_Integer MeshDS_TMesh::NbGroups() const
+MeshDS_ListOfObject& MeshDS_TMesh::Groups()
 {
-    return myGroups.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbNodes()
-*/
-// ============================================================================
-Standard_Integer MeshDS_TMesh::NbNodes() const
-{
-    return myNodes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief Node()
-*/
-// ============================================================================
-const MeshDS_Node& MeshDS_TMesh::Node(const Standard_Integer theIndex) const
-{
-    return MeshDS::Node(myNodes.Value(theIndex));
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-const MeshDS_Array1OfObject& MeshDS_TMesh::Nodes() const
-{
-    return myNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-MeshDS_Array1OfObject& MeshDS_TMesh::Nodes()
-{
-    return myNodes;
+    return myGroups;
 }
 
 // ============================================================================
@@ -135,81 +95,11 @@ MeshAbs_TypeOfObject MeshDS_TMesh::ObjectType() const
     return MeshAbs_OBJ_Mesh;
 }
 
-// ============================================================================
-/*!
- *  \brief ResizeCells()
-*/
-// ============================================================================
-void MeshDS_TMesh::ResizeCells(const Standard_Integer theNbCells,
-                               const Standard_Boolean toCopyData)
-{
-    if(theNbCells < 1)
-        return;
-    myCells.Resize(1, theNbCells, toCopyData);
-}
 
-// ============================================================================
-/*!
- *  \brief ResizeGroups()
-*/
-// ============================================================================
-void MeshDS_TMesh::ResizeGroups(const Standard_Integer theNbGroups,
-                                const Standard_Boolean toCopyData)
-{
-    if(theNbGroups < 1)
-        return;
-    myGroups.Resize(1, theNbGroups, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeNodes()
-*/
-// ============================================================================
-void MeshDS_TMesh::ResizeNodes(const Standard_Integer theNbNodes,
-                               const Standard_Boolean toCopyData)
-{
-    if(theNbNodes < 1)
-        return;
-    myNodes.Resize(1, theNbNodes, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief SetCell()
-*/
-// ============================================================================
-void MeshDS_TMesh::SetCell(const Standard_Integer theIndex,
-                           const MeshDS_Cell &theCell)
-{
-    myCells.SetValue(theIndex, theCell);
-}
-
-// ============================================================================
-/*!
- *  \brief SetGroup()
-*/
-// ============================================================================
-void MeshDS_TMesh::SetGroup(const Standard_Integer theIndex,
-                            const MeshDS_Group &theGroup)
-{
-    myGroups.SetValue(theIndex, theGroup);
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void MeshDS_TMesh::SetNode(const Standard_Integer theIndex,
-                           const MeshDS_Node &theNode)
-{
-    myNodes.SetValue(theIndex, theNode);
-}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TMesh, MeshDS_TObject);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TMesh, MeshDS_TObject);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TMesh, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TMesh, MeshDS_TObject)

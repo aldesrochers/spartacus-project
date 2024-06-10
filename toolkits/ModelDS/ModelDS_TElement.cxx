@@ -49,7 +49,7 @@ ModelDS_TElement::~ModelDS_TElement()
  *  \brief DOFs()
 */
 // ============================================================================
-const ModelDS_Array1OfObject& ModelDS_TElement::DOFs() const
+const ModelDS_SequenceOfObject& ModelDS_TElement::DOFs() const
 {
     return myDOFs;
 }
@@ -59,7 +59,7 @@ const ModelDS_Array1OfObject& ModelDS_TElement::DOFs() const
  *  \brief DOFs()
 */
 // ============================================================================
-ModelDS_Array1OfObject& ModelDS_TElement::DOFs()
+ModelDS_SequenceOfObject& ModelDS_TElement::DOFs()
 {
     return myDOFs;
 }
@@ -73,6 +73,7 @@ ModelAbs_TypeOfObject ModelDS_TElement::ObjectType() const
 {
     return ModelAbs_OBJ_Element;
 }
+
 
 
 // ****************************************************************************

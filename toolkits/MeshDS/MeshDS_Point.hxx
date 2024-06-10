@@ -23,21 +23,21 @@
 #ifndef __MeshDS_Point_hxx__
 #define __MeshDS_Point_hxx__
 
-// OpenCascade
+// Spartacus
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
+#include <gp_Pnt1d.hxx>
+
+// OpenCascade
 #include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
-
-// Spartacus
-#include <gp_Pnt1d.hxx>
 
 // Forward declarations
 class MeshDS_Point;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_Point, Standard_Transient);
+DEFINE_STANDARD_HANDLE(MeshDS_Point, Standard_Transient)
 
 
 // ============================================================================
@@ -59,13 +59,13 @@ public:
     virtual Standard_EXPORT Standard_Boolean    IsPoint1d() const;
     virtual Standard_EXPORT Standard_Boolean    IsPoint2d() const;
     virtual Standard_EXPORT Standard_Boolean    IsPoint3d() const;
-    virtual const gp_Pnt1d&                     Point1d() const;
-    virtual const gp_Pnt2d&                     Point2d() const;
-    virtual const gp_Pnt&                       Point3d() const;
+    virtual Standard_EXPORT const gp_Pnt1d&     Point1d() const;
+    virtual Standard_EXPORT const gp_Pnt2d&     Point2d() const;
+    virtual Standard_EXPORT const gp_Pnt&       Point3d() const;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient)
 
 };
 

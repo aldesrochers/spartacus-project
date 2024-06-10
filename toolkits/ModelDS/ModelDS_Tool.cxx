@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <ModelDS_Point1d.hxx>
+#include <ModelDS_TElement.hxx>
+#include <ModelDS_TModel.hxx>
 #include <ModelDS_TNode.hxx>
 #include <ModelDS_Tool.hxx>
 
@@ -32,14 +33,40 @@
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief DOFs()
 */
 // ============================================================================
-gp_Pnt ModelDS_Tool::Point(const ModelDS_Node& theNode)
+const ModelDS_SequenceOfObject& ModelDS_Tool::DOFs(const ModelDS_Element& theElement)
+{
+    const ModelDS_TElement* aTElement = static_cast<const ModelDS_TElement*>(theElement.TObject().get());
+    if(aTElement == 0)
+        throw Standard_NullObject("ModelDS_Tool::DOFs()->Invalid element.");
+    return aTElement->DOFs();
+}
+
+// ============================================================================
+/*!
+ *  \brief Elements()
+*/
+// ============================================================================
+const ModelDS_ListOfObject& ModelDS_Tool::Elements(const ModelDS_Model& theModel)
+{
+    const ModelDS_TModel* aTModel = static_cast<const ModelDS_TModel*>(theModel.TObject().get());
+    if(aTModel == 0)
+        throw Standard_NullObject("ModelDS_Tool::Elements()->Invalid model.");
+    return aTModel->Elements();
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const MeshDS_Vertex& ModelDS_Tool::Vertex(const ModelDS_Node& theNode)
 {
     const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
     if(aTNode == 0)
-        throw Standard_NullObject("ModelDS_Tool::Point()->Invalid node.");
-    //return aTNode->Point();
+        throw Standard_NullObject("ModelDS_Tool::Vertex()->Invalid node.");
+    return aTNode->Vertex();
 }
 

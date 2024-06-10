@@ -30,7 +30,7 @@
 class MeshDS_Point3d;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_Point3d, MeshDS_Point);
+DEFINE_STANDARD_HANDLE(MeshDS_Point3d, MeshDS_Point)
 
 
 // ============================================================================
@@ -44,7 +44,7 @@ class MeshDS_Point3d : public MeshDS_Point
 public:
     // constructors
     Standard_EXPORT MeshDS_Point3d();
-    Standard_EXPORT MeshDS_Point3d(const gp_Pnt& thePoint3d);
+    Standard_EXPORT MeshDS_Point3d(const gp_Pnt& thePoint);
     // destructors
     Standard_EXPORT ~MeshDS_Point3d();
 
@@ -55,11 +55,11 @@ public:
 
 private:
 
-    gp_Pnt          myPoint3d;
+    gp_Pnt      myPoint;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_Point3d, MeshDS_Point);
+    DEFINE_STANDARD_RTTIEXT(MeshDS_Point3d, MeshDS_Point)
 
 };
 

@@ -24,7 +24,6 @@
 #define __FE1d_Node_hxx__
 
 // Spartacus
-#include <DOFAbs_TypeOfDOF1d.hxx>
 #include <FE1d_Object.hxx>
 #include <gp_Pnt1d.hxx>
 #include <TColDOF_DataMapOfIntegerDOF.hxx>

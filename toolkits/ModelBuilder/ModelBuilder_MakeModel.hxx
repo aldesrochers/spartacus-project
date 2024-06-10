@@ -24,7 +24,8 @@
 #define __ModelBuilder_MakeModel_hxx__
 
 // Spartacus
-#include <ModelBuilder_Command.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <ModelBuilder_MakeObject.hxx>
 #include <ModelDS_Builder.hxx>
 #include <ModelDS_Model.hxx>
 
@@ -34,7 +35,7 @@
  *  \brief ModelBuilder_MakeModel
 */
 // ============================================================================
-class ModelBuilder_MakeModel : public ModelBuilder_Command
+class ModelBuilder_MakeModel : public ModelBuilder_MakeObject
 {
 
 public:
@@ -49,13 +50,13 @@ public:
 
 public:
 
+    Standard_EXPORT const MeshDS_Mesh&      Mesh() const;
+    Standard_EXPORT void                    SetMesh(const MeshDS_Mesh& theMesh);
+
+public:
+
     Standard_EXPORT const ModelDS_Model&    Model() const;
     Standard_EXPORT operator                ModelDS_Model() const;
-
-private:
-
-    ModelDS_Builder     myBuilder;
-    ModelDS_Model       myModel;
 
 };
 

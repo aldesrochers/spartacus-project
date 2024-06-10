@@ -58,6 +58,18 @@ pmp_LinearLine::~pmp_LinearLine()
 
 // ============================================================================
 /*!
+ *  \brief Get()
+*/
+// ============================================================================
+void pmp_LinearLine::Get(Standard_Integer &theNode1,
+                         Standard_Integer &theNode2) const
+{
+    theNode1 = myNode1;
+    theNode2 = myNode2;
+}
+
+// ============================================================================
+/*!
  *  \brief Node1()
 */
 // ============================================================================
@@ -74,6 +86,18 @@ Standard_Integer pmp_LinearLine::Node1() const
 Standard_Integer pmp_LinearLine::Node2() const
 {
     return myNode2;
+}
+
+// ============================================================================
+/*!
+ *  \brief Set()
+*/
+// ============================================================================
+void pmp_LinearLine::Set(const Standard_Integer theNode1,
+                         const Standard_Integer theNode2)
+{
+    myNode1 = theNode1;
+    myNode2 = theNode2;
 }
 
 // ============================================================================

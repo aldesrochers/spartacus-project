@@ -55,6 +55,13 @@ public:
     Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1);
     Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2);
 
+public:
+
+    Standard_EXPORT void                    Get(Standard_Integer& theNode1,
+                                                Standard_Integer& theNode2) const;
+    Standard_EXPORT void                    Set(const Standard_Integer theNode1,
+                                                const Standard_Integer theNode2);
+
 private:
 
     Standard_Integer        myNode1;

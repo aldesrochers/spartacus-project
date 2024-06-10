@@ -39,8 +39,8 @@ MeshDS_Point2d::MeshDS_Point2d()
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_Point2d::MeshDS_Point2d(const gp_Pnt2d& thePoint2d)
-    : myPoint2d(thePoint2d)
+MeshDS_Point2d::MeshDS_Point2d(const gp_Pnt2d& thePoint)
+    : myPoint(thePoint)
 {
 
 }
@@ -72,7 +72,7 @@ Standard_Boolean MeshDS_Point2d::IsPoint2d() const
 // ============================================================================
 const gp_Pnt2d& MeshDS_Point2d::Point2d() const
 {
-    return myPoint2d;
+    return myPoint;
 }
 
 
@@ -80,5 +80,5 @@ const gp_Pnt2d& MeshDS_Point2d::Point2d() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_Point2d, MeshDS_Point);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point2d, MeshDS_Point);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point2d, MeshDS_Point)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point2d, MeshDS_Point)

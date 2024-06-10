@@ -22,9 +22,14 @@
 #include <iostream>
 using namespace std;
 
+
 // Spartacus
 #include <MeshBuilder_MakeMesh.hxx>
-
+#include <MeshBuilder_MakeNode.hxx>
+#include <MeshBuilder_MakeTriangle.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Tool.hxx>
+#include <MeshTools_Array1OfObject.hxx>
 
 
 // ============================================================================
@@ -33,6 +38,7 @@ using namespace std;
 */
 // ============================================================================
 MeshBuilder_MakeMesh::MeshBuilder_MakeMesh()
+    : myError(MeshBuilder_MeshNoError)
 {
 
 }
@@ -47,17 +53,15 @@ MeshBuilder_MakeMesh::~MeshBuilder_MakeMesh()
 
 }
 
+
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief Error()
 */
 // ============================================================================
-void MeshBuilder_MakeMesh::Build()
+MeshBuilder_MeshError MeshBuilder_MakeMesh::Error() const
 {
-
-    cout << "OK" << endl;
-
-
+    return myError;
 }
 
 // ============================================================================
@@ -67,11 +71,7 @@ void MeshBuilder_MakeMesh::Build()
 // ============================================================================
 const MeshDS_Mesh& MeshBuilder_MakeMesh::Mesh() const
 {
-    if (!IsDone()) {
-        ((MeshBuilder_MakeMesh*) (void*) this)->Build();
-        Check();
-    }
-    return myMesh;
+    return MeshDS::Mesh(Object());
 }
 
 // ============================================================================
@@ -82,4 +82,14 @@ const MeshDS_Mesh& MeshBuilder_MakeMesh::Mesh() const
 MeshBuilder_MakeMesh::operator MeshDS_Mesh() const
 {
     return Mesh();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetError()
+*/
+// ============================================================================
+void MeshBuilder_MakeMesh::SetError(const MeshBuilder_MeshError theError)
+{
+    myError = theError;
 }

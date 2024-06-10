@@ -46,6 +46,16 @@ ModelDS_TDOF::~ModelDS_TDOF()
 
 // ============================================================================
 /*!
+ *  \brief DOFType()
+*/
+// ============================================================================
+ModelAbs_TypeOfDOF ModelDS_TDOF::DOFType() const
+{
+    return myDOFType;
+}
+
+// ============================================================================
+/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -56,42 +66,12 @@ ModelAbs_TypeOfObject ModelDS_TDOF::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief SetDOFType()
 */
 // ============================================================================
-const ModelDS_Node& ModelDS_TDOF::Node() const
+void ModelDS_TDOF::SetDOFType(const ModelAbs_TypeOfDOF theDOFType)
 {
-    return myNode;
-}
-
-// ============================================================================
-/*!
- *  \brief Representation()
-*/
-// ============================================================================
-const Handle(ModelRep_DOF)& ModelDS_TDOF::Representation() const
-{
-    return myRepresentation;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void ModelDS_TDOF::SetNode(const ModelDS_Node &theNode)
-{
-    myNode = theNode;
-}
-
-// ============================================================================
-/*!
- *  \brief SetRepresentation()
-*/
-// ============================================================================
-void ModelDS_TDOF::SetRepresentation(const Handle(ModelRep_DOF) &theRepresentation)
-{
-    myRepresentation = theRepresentation;
+    myDOFType = theDOFType;
 }
 
 

@@ -24,28 +24,18 @@
 # =============================================================================
 
 set(BRepCell_PKG_HEADERS
-    BRepCell/BRepCell_MakeBiQuadraticTriangle.hxx
+    BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_Error.hxx
-    BRepCell/BRepCell_MakeEdge.hxx
-    BRepCell/BRepCell_MakeFace.hxx
-    BRepCell/BRepCell_MakeLinearLine.hxx
-    BRepCell/BRepCell_MakeLinearTriangle.hxx
-    BRepCell/BRepCell_MakeQuadraticLine.hxx
-    BRepCell/BRepCell_MakeQuadraticTriangle.hxx
-    BRepCell/BRepCell_MakeShape.hxx
-    BRepCell/BRepCell_MakeSolid.hxx
+    BRepCell/BRepCell_MakeCell.hxx
+    BRepCell/BRepCell_MakeLine.hxx
+    BRepCell/BRepCell_MakeTriangle.hxx
 )
 
 set(BRepCell_PKG_SOURCES
-    BRepCell/BRepCell_MakeBiQuadraticTriangle.cxx
-    BRepCell/BRepCell_MakeEdge.cxx
-    BRepCell/BRepCell_MakeFace.cxx
-    BRepCell/BRepCell_MakeLinearLine.cxx
-    BRepCell/BRepCell_MakeLinearTriangle.cxx
-    BRepCell/BRepCell_MakeQuadraticLine.cxx
-    BRepCell/BRepCell_MakeQuadraticTriangle.cxx
-    BRepCell/BRepCell_MakeShape.cxx
-    BRepCell/BRepCell_MakeSolid.cxx
+    BRepCell/BRepCell_Command.cxx
+    BRepCell/BRepCell_MakeCell.cxx
+    BRepCell/BRepCell_MakeLine.cxx
+    BRepCell/BRepCell_MakeTriangle.cxx
 )
 
 # =============================================================================
@@ -150,31 +140,13 @@ set(cp_PKG_SOURCES
 set(DOF_PKG_HEADERS
     DOF/DOF_DegreeOfFreedom.hxx
     DOF/DOF_Motion.hxx
-    #DOF/DOF_Rotation.hxx
-    #DOF/DOF_RotationState.hxx
     DOF/DOF_Translation.hxx
-    #DOF/DOF_TranslationState.hxx
-    #DOF/DOF_XRotation.hxx
-    #DOF/DOF_XTranslation.hxx
-    #DOF/DOF_YRotation.hxx
-    #DOF/DOF_YTranslation.hxx
-    #DOF/DOF_ZRotation.hxx
-    #DOF/DOF_ZTranslation.hxx
 )
 
 set(DOF_PKG_SOURCES
     DOF/DOF_DegreeOfFreedom.cxx
     DOF/DOF_Motion.cxx
-    #DOF/DOF_Rotation.cxx
-    #DOF/DOF_RotationState.cxx
     DOF/DOF_Translation.cxx
-    #DOF/DOF_TranslationState.cxx
-    #DOF/DOF_XRotation.cxx
-    #DOF/DOF_XTranslation.cxx
-    #DOF/DOF_YRotation.cxx
-    #DOF/DOF_YTranslation.cxx
-    #DOF/DOF_ZRotation.cxx
-    #DOF/DOF_ZTranslation.cxx
 )
 
 # =============================================================================
@@ -182,8 +154,7 @@ set(DOF_PKG_SOURCES
 # =============================================================================
 
 set(DOFAbs_PKG_HEADERS
-    DOFAbs/DOFAbs_TypeOfDOF.hxx
-    DOFAbs/DOFAbs_TypeOfDOF1d.hxx
+    DOFAbs/DOFAbs_TypeOfAxis.hxx
     DOFAbs/DOFAbs_TypeOfMotion.hxx
 )
 
@@ -264,6 +235,20 @@ set(FEAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : FEA
+# =============================================================================
+
+set(FEA_PKG_HEADERS
+    FEA/FEA_Analysis.hxx
+    FEA/FEA_LinearAnalysis.hxx
+)
+
+set(FEA_PKG_SOURCES
+    FEA/FEA_Analysis.cxx
+    FEA/FEA_LinearAnalysis.cxx
+)
+
+# =============================================================================
 # Package : FEM
 # =============================================================================
 
@@ -278,23 +263,17 @@ set(FEM_PKG_SOURCES
 )
 
 # =============================================================================
-# Package : FEP
+# Package : fep
 # =============================================================================
 
-set(FEP_PKG_HEADERS
-    FEP/FEP_Attribute.hxx
-    FEP/FEP_BooleanAttribute.hxx
-    FEP/FEP_IntegerAttribute.hxx
-    FEP/FEP_Object.hxx
-    FEP/FEP_RealAttribute.hxx
+set(fep_PKG_HEADERS
+    fep/fep_Rotation.hxx
+    fep/fep_Translation.hxx
 )
 
-set(FEP_PKG_SOURCES
-    FEP/FEP_Attribute.cxx
-    FEP/FEP_BooleanAttribute.cxx
-    FEP/FEP_IntegerAttribute.cxx
-    FEP/FEP_Object.cxx
-    FEP/FEP_RealAttribute.cxx
+set(fep_PKG_SOURCES
+    fep/fep_Rotation.cxx
+    fep/fep_Translation.cxx
 )
 
 # =============================================================================
@@ -314,6 +293,22 @@ set(gp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : load
+# =============================================================================
+
+set(load_PKG_HEADERS
+    load/load_Force.hxx
+    load/load_Force1d.hxx
+    load/load_Force2d.hxx
+)
+
+set(load_PKG_SOURCES
+    load/load_Force.cxx
+    load/load_Force1d.cxx
+    load/load_Force2d.cxx
+)
+
+# =============================================================================
 # Package : material
 # =============================================================================
 
@@ -330,16 +325,20 @@ set(material_PKG_SOURCES
 # =============================================================================
 
 set(Mech1d_PKG_HEADERS
+    Mech1d/Mech1d_Boundary.hxx
     Mech1d/Mech1d_ElasticTruss.hxx
     Mech1d/Mech1d_Element.hxx
-    Mech1d/Mech1d_Node.hxx
+    Mech1d/Mech1d_Load.hxx
+    Mech1d/Mech1d_Object.hxx
     Mech1d/Mech1d_Truss.hxx
 )
 
 set(Mech1d_PKG_SOURCES
+    Mech1d/Mech1d_Boundary.cxx
     Mech1d/Mech1d_ElasticTruss.cxx
     Mech1d/Mech1d_Element.cxx
-    Mech1d/Mech1d_Node.cxx
+    Mech1d/Mech1d_Load.cxx
+    Mech1d/Mech1d_Object.cxx
     Mech1d/Mech1d_Truss.cxx
 )
 
@@ -380,23 +379,13 @@ set(Mesh_PKG_SOURCES
 # =============================================================================
 
 set(Mesh1d_PKG_HEADERS
-    Mesh1d/Mesh1d_Array1OfCell.hxx
-    Mesh1d/Mesh1d_Array1OfGroup.hxx
-    Mesh1d/Mesh1d_Array1OfNode.hxx
-    Mesh1d/Mesh1d_Cell.hxx
-    Mesh1d/Mesh1d_Grid.hxx
-    Mesh1d/Mesh1d_Group.hxx
-    Mesh1d/Mesh1d_Node.hxx
-    Mesh1d/Mesh1d_Object.hxx
-    Mesh1d/Mesh1d_TypeOfCell.hxx
+    Mesh1d/Mesh1d_Builder.hxx
+    Mesh1d/Mesh1d_Point.hxx
 )
 
 set(Mesh1d_PKG_SOURCES
-    Mesh1d/Mesh1d_Cell.cxx
-    Mesh1d/Mesh1d_Grid.cxx
-    Mesh1d/Mesh1d_Group.cxx
-    Mesh1d/Mesh1d_Node.cxx
-    Mesh1d/Mesh1d_Object.cxx
+    Mesh1d/Mesh1d_Builder.cxx
+    Mesh1d/Mesh1d_Point.cxx
 )
 
 # =============================================================================
@@ -447,7 +436,6 @@ set(Mesh_PKG_SOURCES
 
 set(MeshAbs_PKG_HEADERS
     MeshAbs/MeshAbs_TypeOfCell.hxx
-    MeshAbs/MeshAbs_TypeOfDimensionality.hxx
     MeshAbs/MeshAbs_TypeOfObject.hxx
 )
 
@@ -457,10 +445,32 @@ set(MeshAbs_PKG_HEADERS
 
 set(MeshBuilder_PKG_HEADERS
     MeshBuilder/MeshBuilder_Command.hxx
+    MeshBuilder/MeshBuilder_MakeCell.hxx
+    MeshBuilder/MeshBuilder_MakeGroup.hxx
+    MeshBuilder/MeshBuilder_MakeLine.hxx
+    MeshBuilder/MeshBuilder_MakeMesh.hxx
+    MeshBuilder/MeshBuilder_MakeMesh1d.hxx
+    MeshBuilder/MeshBuilder_MakeNode.hxx
+    #MeshBuilder/MeshBuilder_MakeNode1d.hxx
+    MeshBuilder/MeshBuilder_MakeObject.hxx
+    MeshBuilder/MeshBuilder_MakeTriangle.hxx
+    MeshBuilder/MeshBuilder_MeshFromPolyMesh.hxx
+    MeshBuilder/MeshBuilder_MeshFromTriangulation.hxx
 )
 
 set(MeshBuilder_PKG_SOURCES
     MeshBuilder/MeshBuilder_Command.cxx
+    MeshBuilder/MeshBuilder_MakeCell.cxx
+    MeshBuilder/MeshBuilder_MakeGroup.cxx
+    MeshBuilder/MeshBuilder_MakeLine.cxx
+    MeshBuilder/MeshBuilder_MakeMesh.cxx
+    MeshBuilder/MeshBuilder_MakeMesh1d.cxx
+    MeshBuilder/MeshBuilder_MakeNode.cxx
+    #MeshBuilder/MeshBuilder_MakeNode1d.cxx
+    MeshBuilder/MeshBuilder_MakeObject.cxx
+    MeshBuilder/MeshBuilder_MakeTriangle.cxx
+    MeshBuilder/MeshBuilder_MeshFromPolyMesh.cxx
+    MeshBuilder/MeshBuilder_MeshFromTriangulation.cxx
 )
 
 # =============================================================================
@@ -469,26 +479,24 @@ set(MeshBuilder_PKG_SOURCES
 
 set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS.hxx
-    MeshDS/MeshDS_Array1OfObject.hxx
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
     MeshDS/MeshDS_Group.hxx
     MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
-    MeshDS/MeshDS_MeshEntity.hxx
-    MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
     MeshDS/MeshDS_Point.hxx
     MeshDS/MeshDS_Point1d.hxx
     MeshDS/MeshDS_Point2d.hxx
     MeshDS/MeshDS_Point3d.hxx
+    MeshDS/MeshDS_SequenceOfObject.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
-    MeshDS/MeshDS_TMeshEntity.hxx
-    MeshDS/MeshDS_TNode.hxx
     MeshDS/MeshDS_TObject.hxx
     MeshDS/MeshDS_Tool.hxx
+    MeshDS/MeshDS_TVertex.hxx
+    MeshDS/MeshDS_Vertex.hxx
 )
 
 set(MeshDS_PKG_SOURCES
@@ -497,8 +505,6 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Cell.cxx
     MeshDS/MeshDS_Group.cxx
     MeshDS/MeshDS_Mesh.cxx
-    MeshDS/MeshDS_MeshEntity.cxx
-    MeshDS/MeshDS_Node.cxx
     MeshDS/MeshDS_Object.cxx
     MeshDS/MeshDS_Point.cxx
     MeshDS/MeshDS_Point1d.cxx
@@ -507,74 +513,10 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
-    MeshDS/MeshDS_TMeshEntity.cxx
-    MeshDS/MeshDS_TNode.cxx
     MeshDS/MeshDS_TObject.cxx
     MeshDS/MeshDS_Tool.cxx
-)
-
-# =============================================================================
-# Package : MeshExp
-# =============================================================================
-
-set(MeshExp_PKG_HEADERS
-    MeshExp/MeshExp.hxx
-)
-
-set(MeshExp_PKG_SOURCES
-    MeshExp/MeshExp.cxx
-)
-
-# =============================================================================
-# Package : MeshLib
-# =============================================================================
-
-set(MeshLib_PKG_HEADERS
-    MeshLib/MeshLib_Command.hxx
-    MeshLib/MeshLib_MakeCell.hxx
-    MeshLib/MeshLib_MakeGroup.hxx
-    MeshLib/MeshLib_MakeLinearLine.hxx
-    MeshLib/MeshLib_MakeMesh.hxx
-    MeshLib/MeshLib_MakeNode.hxx
-    MeshLib/MeshLib_MakeObject.hxx
-)
-
-set(MeshLib_PKG_SOURCES
-    MeshLib/MeshLib_Command.cxx
-    MeshLib/MeshLib_MakeCell.cxx
-    MeshLib/MeshLib_MakeGroup.cxx
-    MeshLib/MeshLib_MakeLinearLine.cxx
-    MeshLib/MeshLib_MakeMesh.cxx
-    MeshLib/MeshLib_MakeNode.cxx
-    MeshLib/MeshLib_MakeObject.cxx
-)
-
-# =============================================================================
-# Package : MeshDS
-# =============================================================================
-
-set(MeshRep_PKG_HEADERS
-    MeshRep/MeshRep_Cell.hxx
-    MeshRep/MeshRep_Cell1d.hxx
-    MeshRep/MeshRep_Cell2d.hxx
-    MeshRep/MeshRep_Cell3d.hxx
-    MeshRep/MeshRep_Node.hxx
-    MeshRep/MeshRep_Node1d.hxx
-    MeshRep/MeshRep_Node2d.hxx
-    MeshRep/MeshRep_Node3d.hxx
-    MeshRep/MeshRep_Representation.hxx
-)
-
-set(MeshRep_PKG_SOURCES
-    MeshRep/MeshRep_Cell.cxx
-    MeshRep/MeshRep_Cell1d.cxx
-    MeshRep/MeshRep_Cell2d.cxx
-    MeshRep/MeshRep_Cell3d.cxx
-    MeshRep/MeshRep_Node.cxx
-    MeshRep/MeshRep_Node1d.cxx
-    MeshRep/MeshRep_Node2d.cxx
-    MeshRep/MeshRep_Node3d.cxx
-    MeshRep/MeshRep_Representation.cxx
+    MeshDS/MeshDS_TVertex.cxx
+    MeshDS/MeshDS_Vertex.cxx
 )
 
 # =============================================================================
@@ -587,9 +529,9 @@ set(MeshTools_PKG_HEADERS
     MeshTools/MeshTools_DataMapOfIntegerObject.hxx
     MeshTools/MeshTools_IndexedMapOfObject.hxx
     MeshTools/MeshTools_ListIteratorOfListOfObject.hxx
-    MeshTools/MeshTools_ListOfCell.hxx
     MeshTools/MeshTools_ListOfObject.hxx
     MeshTools/MeshTools_ObjectMapHasher.hxx
+    MeshTools/MeshTools_SequenceOfObject.hxx
 )
 
 set(MeshTools_PKG_SOURCES
@@ -634,6 +576,22 @@ set(ModelAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : ModelAlgo
+# =============================================================================
+
+set(ModelAlgo_PKG_HEADERS
+    ModelAlgo/ModelAlgo_Command.hxx
+    ModelAlgo/ModelAlgo_ElementaryMatrices.hxx
+    ModelAlgo/ModelAlgo_Numberer.hxx
+)
+
+set(ModelAlgo_PKG_SOURCES
+    ModelAlgo/ModelAlgo_Command.cxx
+    ModelAlgo/ModelAlgo_ElementaryMatrices.cxx
+    ModelAlgo/ModelAlgo_Numberer.cxx
+)
+
+# =============================================================================
 # Package : ModelBuilder
 # =============================================================================
 
@@ -641,7 +599,9 @@ set(ModelBuilder_PKG_HEADERS
     ModelBuilder/ModelBuilder_Command.hxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.hxx
     #ModelBuilder/ModelBuilder_MakeDegreeOfFreedom1d.hxx
+    ModelBuilder/ModelBuilder_MakeDomain.hxx
     ModelBuilder/ModelBuilder_MakeElement.hxx
+    ModelBuilder/ModelBuilder_MakeModel.hxx
     ModelBuilder/ModelBuilder_MakeNode.hxx
     ModelBuilder/ModelBuilder_MakeObject.hxx
 )
@@ -650,7 +610,9 @@ set(ModelBuilder_PKG_SOURCES
     ModelBuilder/ModelBuilder_Command.cxx
     ModelBuilder/ModelBuilder_MakeDegreeOfFreedom.cxx
     #ModelBuilder/ModelBuilder_MakeDegreeOfFreedom1d.cxx
+    ModelBuilder/ModelBuilder_MakeDomain.cxx
     ModelBuilder/ModelBuilder_MakeElement.cxx
+    ModelBuilder/ModelBuilder_MakeModel.cxx
     ModelBuilder/ModelBuilder_MakeNode.cxx
     ModelBuilder/ModelBuilder_MakeObject.cxx
 )
@@ -661,23 +623,26 @@ set(ModelBuilder_PKG_SOURCES
 
 set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS.hxx
-    ModelDS/ModelDS_Array1OfObject.hxx
+    ModelDS/ModelDS_Boundary.hxx
     ModelDS/ModelDS_Builder.hxx
-    ModelDS/ModelDS_DataMapOfIntegerObject.hxx
-    ModelDS/ModelDS_DegreeOfFreedom.hxx
-    ModelDS/ModelDS_Domain.hxx
+    ModelDS/ModelDS_DOF.hxx
     ModelDS/ModelDS_Element.hxx
+    ModelDS/ModelDS_Equation.hxx
     ModelDS/ModelDS_ListOfObject.hxx
+    ModelDS/ModelDS_Load.hxx
+    ModelDS/ModelDS_Loading.hxx
+    ModelDS/ModelDS_Mapping.hxx
+    ModelDS/ModelDS_Model.hxx
     ModelDS/ModelDS_Node.hxx
     ModelDS/ModelDS_Object.hxx
-    ModelDS/ModelDS_Point.hxx
-    ModelDS/ModelDS_Point1d.hxx
-    ModelDS/ModelDS_Point2d.hxx
-    ModelDS/ModelDS_Point3d.hxx
+    ModelDS/ModelDS_TBoundary.hxx
     ModelDS/ModelDS_TDOF.hxx
-    ModelDS/ModelDS_TDegreeOfFreedom.hxx
-    ModelDS/ModelDS_TDomain.hxx
     ModelDS/ModelDS_TElement.hxx
+    ModelDS/ModelDS_TEquation.hxx
+    ModelDS/ModelDS_TLoad.hxx
+    ModelDS/ModelDS_TLoading.hxx
+    ModelDS/ModelDS_TMapping.hxx
+    ModelDS/ModelDS_TModel.hxx
     ModelDS/ModelDS_TNode.hxx
     ModelDS/ModelDS_TObject.hxx
     ModelDS/ModelDS_Tool.hxx
@@ -685,20 +650,25 @@ set(ModelDS_PKG_HEADERS
 
 set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS.cxx
+    ModelDS/ModelDS_Boundary.cxx
     ModelDS/ModelDS_Builder.cxx
-    ModelDS/ModelDS_DegreeOfFreedom.cxx
-    ModelDS/ModelDS_Domain.cxx
+    ModelDS/ModelDS_DOF.cxx
     ModelDS/ModelDS_Element.cxx
+    ModelDS/ModelDS_Equation.cxx
+    ModelDS/ModelDS_Mapping.cxx
+    ModelDS/ModelDS_Model.cxx
+    ModelDS/ModelDS_Load.cxx
+    ModelDS/ModelDS_Loading.cxx
     ModelDS/ModelDS_Node.cxx
     ModelDS/ModelDS_Object.cxx
-    ModelDS/ModelDS_Point.cxx
-    ModelDS/ModelDS_Point1d.cxx
-    ModelDS/ModelDS_Point2d.cxx
-    ModelDS/ModelDS_Point3d.cxx
-    ModelDS/ModelDS_TDegreeOfFreedom.cxx
+    ModelDS/ModelDS_TBoundary.cxx
     ModelDS/ModelDS_TDOF.cxx
-    ModelDS/ModelDS_TDomain.cxx
     ModelDS/ModelDS_TElement.cxx
+    ModelDS/ModelDS_TEquation.cxx
+    ModelDS/ModelDS_TLoad.cxx
+    ModelDS/ModelDS_TLoading.cxx
+    ModelDS/ModelDS_TMapping.cxx
+    ModelDS/ModelDS_TModel.cxx
     ModelDS/ModelDS_TNode.cxx
     ModelDS/ModelDS_TObject.cxx
     ModelDS/ModelDS_Tool.cxx
@@ -710,12 +680,10 @@ set(ModelDS_PKG_SOURCES
 
 set(ModelLib_PKG_HEADERS
     ModelLib/ModelLib_Command.hxx
-    ModelLib/ModelLib_MakeElementProperties.hxx
 )
 
 set(ModelLib_PKG_SOURCES
     ModelLib/ModelLib_Command.cxx
-    ModelLib/ModelLib_MakeElementProperties.cxx
 )
 
 # =============================================================================
@@ -724,6 +692,8 @@ set(ModelLib_PKG_SOURCES
 
 set(ModelRep_PKG_HEADERS
     ModelRep/ModelRep_DOF.hxx
+    ModelRep/ModelRep_Element.hxx
+    ModelRep/ModelRep_MechElement1d.hxx
     ModelRep/ModelRep_MotionDOF.hxx
     ModelRep/ModelRep_Point.hxx
     ModelRep/ModelRep_Point1d.hxx
@@ -734,6 +704,8 @@ set(ModelRep_PKG_HEADERS
 
 set(ModelRep_PKG_SOURCES
     ModelRep/ModelRep_DOF.cxx
+    ModelRep/ModelRep_Element.cxx
+    ModelRep/ModelRep_MechElement1d.cxx
     ModelRep/ModelRep_MotionDOF.cxx
     ModelRep/ModelRep_Point.cxx
     ModelRep/ModelRep_Point1d.cxx
@@ -747,8 +719,12 @@ set(ModelRep_PKG_SOURCES
 # =============================================================================
 
 set(ModelTools_PKG_HEADERS
+    ModelTools/ModelTools_Array1OfObject.hxx
+    ModelTools/ModelTools_DataMapOfIntegerObject.hxx
+    ModelTools/ModelTools_IndexedMapOfObject.hxx
     ModelTools/ModelTools_ListOfObject.hxx
     ModelTools/ModelTools_ObjectMapHasher.hxx
+    ModelTools/ModelTools_SequenceOfObject.hxx
 )
 
 set(ModelTools_PKG_SOURCES
@@ -1038,7 +1014,7 @@ set(xsp_PKG_SOURCES
 
 # header files
 set(Ceres_HEADERS
-    #${BRepCell_PKG_HEADERS}
+    ${BRepCell_PKG_HEADERS}
     #${BRepCellAPI_PKG_HEADERS}
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
@@ -1053,8 +1029,9 @@ set(Ceres_HEADERS
     ${FEA_PKG_HEADERS}
     #${FEAbs_PKG_HEADERS}
     #${FEM_PKG_HEADERS}
-    #${FEP_PKG_HEADERS}
+    ${fep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
+    ${load_PKG_HEADERS}
     #${material_PKG_HEADERS}
     ${Mech1d_PKG_HEADERS}
     #${Mech2d_PKG_HEADERS}
@@ -1065,14 +1042,14 @@ set(Ceres_HEADERS
     #${MeshBuilder_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
     ${MeshExp_PKG_HEADERS}
-    ${MeshLib_PKG_HEADERS}
     #${MeshRep_PKG_HEADERS}
     ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
-    ${ModelBuilder_PKG_HEADERS}
+    ${ModelAlgo_PKG_HEADERS}
+    #${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
-    #${ModelLib_PKG_HEADERS}
+    ${ModelLib_PKG_HEADERS}
     ${ModelRep_PKG_HEADERS}
     ${ModelTools_PKG_HEADERS}
     #${mp_PKG_HEADERS}
@@ -1097,7 +1074,7 @@ set(Ceres_HEADERS
 
 # source files
 set(Ceres_SOURCES
-    #${BRepCell_PKG_SOURCES}
+    ${BRepCell_PKG_SOURCES}
     #${BRepCellAPI_PKG_SOURCES}
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
@@ -1111,8 +1088,9 @@ set(Ceres_SOURCES
     ${FE1d_PKG_SOURCES}
     ${FEA_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
-    #${FEP_PKG_SOURCES}
+    ${fep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
+    ${load_PKG_SOURCES}
     #${material_PKG_SOURCES}
     ${Mech1d_PKG_SOURCES}
     #${Mech2d_PKG_SOURCES}
@@ -1122,13 +1100,13 @@ set(Ceres_SOURCES
     #${MeshBuilder_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
     ${MeshExp_PKG_SOURCES}
-    ${MeshLib_PKG_SOURCES}
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
-    ${ModelBuilder_PKG_SOURCES}
+    ${ModelAlgo_PKG_SOURCES}
+    #${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
-    #${ModelLib_PKG_SOURCES}
+    ${ModelLib_PKG_SOURCES}
     ${ModelRep_PKG_SOURCES}
     ${ModelTools_PKG_SOURCES}
     #${mp_PKG_SOURCES}
@@ -1164,20 +1142,19 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/FEA
     ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/FEM
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEP
+    ${CMAKE_CURRENT_SOURCE_DIR}/fep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
+    ${CMAKE_CURRENT_SOURCE_DIR}/load
     ${CMAKE_CURRENT_SOURCE_DIR}/material
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech1d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh2d
+    #${CMAKE_CURRENT_SOURCE_DIR}/Mesh
+    #${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
+    #${CMAKE_CURRENT_SOURCE_DIR}/Mesh2d
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/ModelAlgo
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshExp
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshRep
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
     ${CMAKE_CURRENT_SOURCE_DIR}/Model
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs

@@ -86,16 +86,6 @@ MeshAbs_TypeOfObject MeshDS_TGroup::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief SetCells()
-*/
-// ============================================================================
-void MeshDS_TGroup::SetCells(const MeshDS_ListOfObject &theCells)
-{
-    myCells = theCells;
-}
-
-// ============================================================================
-/*!
  *  \brief SetName()
 */
 // ============================================================================
@@ -108,5 +98,5 @@ void MeshDS_TGroup::SetName(const TCollection_AsciiString &theName)
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TMeshEntity)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TMeshEntity)
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TGroup, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TGroup, MeshDS_TObject)

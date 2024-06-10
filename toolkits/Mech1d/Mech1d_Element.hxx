@@ -24,13 +24,17 @@
 #define __Mech1d_Element_hxx__
 
 // Spartacus
-#include <FE1d_Element.hxx>
+#include <Mech1d_Object.hxx>
+
+// OpenCascade
+#include <math_Matrix.hxx>
+#include <math_Vector.hxx>
 
 // Forward declarations
 class Mech1d_Element;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Element, FE1d_Element)
+DEFINE_STANDARD_HANDLE(Mech1d_Element, Mech1d_Object)
 
 
 // ============================================================================
@@ -38,7 +42,7 @@ DEFINE_STANDARD_HANDLE(Mech1d_Element, FE1d_Element)
  *  \brief Mech1d_Element
 */
 // ============================================================================
-class Mech1d_Element : public FE1d_Element
+class Mech1d_Element : public Mech1d_Object
 {
 
 public:
@@ -56,7 +60,7 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Element, FE1d_Element);
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Element, Mech1d_Object)
 
 };
 

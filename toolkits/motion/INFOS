@@ -1,0 +1,9 @@
+gp
+g -> geometric
+p -> processor
+
+This package contains additionals class used to described geometric
+objects in parametric space.
+See OpenCascade gp package.
+
+Maintainer : Alexis L. Desrochers

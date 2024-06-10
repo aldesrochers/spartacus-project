@@ -26,18 +26,21 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-#include <gp_Pnt.hxx>
-#include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <ModelDS_DegreeOfFreedom.hxx>
-#include <ModelDS_Domain.hxx>
+#include <MeshDS_Vertex.hxx>
+#include <ModelAbs_TypeOfDOF.hxx>
+#include <ModelDS_Boundary.hxx>
+#include <ModelDS_DOF.hxx>
 #include <ModelDS_Element.hxx>
+#include <ModelDS_Load.hxx>
+#include <ModelDS_Loading.hxx>
+#include <ModelDS_Model.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
 #include <ModelDS_TObject.hxx>
-#include <DOF_DegreeOfFreedom.hxx>
-#include <gp_Pnt1d.hxx>
+
+
 
 
 // ============================================================================
@@ -56,26 +59,47 @@ public:
 
 public:
 
-    Standard_EXPORT void    AddDegreeOfFreedom(ModelDS_Node& theNode,
-                                               const ModelDS_DegreeOfFreedom& theDegreeOfFreedom) const;
+    Standard_EXPORT void    AddBoundary(const ModelDS_Loading& theLoading,
+                                        const ModelDS_Boundary& theBoundary) const;
 
-    Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom) const;
-    Standard_EXPORT void    MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
-                                                const Handle(DOF_DegreeOfFreedom)& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Boundary& theBoundary,
+                                   const ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Element& theElement,
+                                   const ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Load& theLoad,
+                                   const ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Node& theNode,
+                                   const ModelDS_DOF& theDOF) const;
 
-    Standard_EXPORT void    MakeDomain(ModelDS_Domain& theDomain) const;
+    Standard_EXPORT void    AddElement(const ModelDS_Model& theModel,
+                                       const ModelDS_Element& theElement) const;
+
+    Standard_EXPORT void    AddLoad(const ModelDS_Loading& theLoading,
+                                    const ModelDS_Load& theLoad) const;
+
+    Standard_EXPORT void    MakeBoundary(ModelDS_Boundary& theBoundary) const;
+
+    Standard_EXPORT void    MakeDOF(ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    MakeDOF(ModelDS_DOF& theDOF,
+                                    const ModelAbs_TypeOfDOF theDOFType) const;
 
     Standard_EXPORT void    MakeElement(ModelDS_Element& theElement) const;
 
+    Standard_EXPORT void    MakeLoad(ModelDS_Load& theLoad) const;
+
+    Standard_EXPORT void    MakeLoading(ModelDS_Loading& theLoading) const;
+
+    Standard_EXPORT void    MakeModel(ModelDS_Model& theModel) const;
+
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
-                                     const gp_Pnt& thePoint) const;
+                                     const MeshDS_Vertex& theVertex) const;
 
-    Standard_EXPORT void    UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom& theDegreeOfFreedom,
-                                                  const Handle(DOF_DegreeOfFreedom)& theDOF) const;
+    Standard_EXPORT void    UpdateDOF(const ModelDS_DOF& theDOF,
+                                      const ModelAbs_TypeOfDOF theDOFType) const;
 
     Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
-                                       const gp_Pnt& thePoint) const;
+                                       const MeshDS_Vertex& theVertex) const;
 
 protected:
 

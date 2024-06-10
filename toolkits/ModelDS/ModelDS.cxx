@@ -29,27 +29,26 @@
 
 // ============================================================================
 /*!
- *  \brief DegreeOfFreedom()
+ *  \brief DOF()
 */
 // ============================================================================
-const ModelDS_DegreeOfFreedom& ModelDS::DegreeOfFreedom(const ModelDS_Object& theObject)
+const ModelDS_DOF& ModelDS::DOF(const ModelDS_Object& theObject)
 {
-    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DegreeOfFreedom),
-                                   "ModelDS::DegreeOfFreedom()->Type mismatch.");
-    return *(ModelDS_DegreeOfFreedom*) &theObject;
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DOF),
+                                   "ModelDS::DOF()->Type mismatch.");
+    return *(ModelDS_DOF*) &theObject;
 }
-
 
 // ============================================================================
 /*!
- *  \brief DegreeOfFreedom()
+ *  \brief DOF()
 */
 // ============================================================================
-ModelDS_DegreeOfFreedom& ModelDS::DegreeOfFreedom(ModelDS_Object& theObject)
+ModelDS_DOF& ModelDS::DOF(ModelDS_Object& theObject)
 {
-    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DegreeOfFreedom),
-                                   "ModelDS::DegreeOfFreedom()->Type mismatch.");
-    return *(ModelDS_DegreeOfFreedom*) &theObject;
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_DOF),
+                                   "ModelDS::DOF()->Type mismatch.");
+    return *(ModelDS_DOF*) &theObject;
 }
 
 // ============================================================================
@@ -63,7 +62,6 @@ const ModelDS_Element& ModelDS::Element(const ModelDS_Object& theObject)
                                    "ModelDS::Element()->Type mismatch.");
     return *(ModelDS_Element*) &theObject;
 }
-
 
 // ============================================================================
 /*!
@@ -79,6 +77,30 @@ ModelDS_Element& ModelDS::Element(ModelDS_Object& theObject)
 
 // ============================================================================
 /*!
+ *  \brief Model()
+*/
+// ============================================================================
+const ModelDS_Model& ModelDS::Model(const ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Model),
+                                   "ModelDS::Model()->Type mismatch.");
+    return *(ModelDS_Model*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Model()
+*/
+// ============================================================================
+ModelDS_Model& ModelDS::Model(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Model),
+                                   "ModelDS::Model()->Type mismatch.");
+    return *(ModelDS_Model*) &theObject;
+}
+
+// ============================================================================
+/*!
  *  \brief Node()
 */
 // ============================================================================
@@ -88,7 +110,6 @@ const ModelDS_Node& ModelDS::Node(const ModelDS_Object& theObject)
                                    "ModelDS::Node()->Type mismatch.");
     return *(ModelDS_Node*) &theObject;
 }
-
 
 // ============================================================================
 /*!

@@ -104,27 +104,27 @@ MeshDS_Mesh& MeshDS::Mesh(MeshDS_Object& theObject)
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief Vertex()
 */
 // ============================================================================
-const MeshDS_Node& MeshDS::Node(const MeshDS_Object& theObject)
+const MeshDS_Vertex& MeshDS::Vertex(const MeshDS_Object& theObject)
 {
-    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Node),
-                                   "MeshDS::Node()->Type mismatch.");
-    return *(MeshDS_Node*) &theObject;
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Vertex),
+                                   "MeshDS::Vertex()->Type mismatch.");
+    return *(MeshDS_Vertex*) &theObject;
 }
 
 
 // ============================================================================
 /*!
- *  \brief Node()
+ *  \brief Vertex()
 */
 // ============================================================================
-MeshDS_Node& MeshDS::Node(MeshDS_Object& theObject)
+MeshDS_Vertex& MeshDS::Vertex(MeshDS_Object& theObject)
 {
-    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Node),
-                                   "MeshDS::Node()->Type mismatch.");
-    return *(MeshDS_Node*) &theObject;
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Vertex),
+                                   "MeshDS::Vertex()->Type mismatch.");
+    return *(MeshDS_Vertex*) &theObject;
 }
 
 // ============================================================================

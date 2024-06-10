@@ -25,7 +25,6 @@
 
 // Spartacus
 #include <DOF_Motion.hxx>
-#include <DOF_RotationState.hxx>
 
 // Forward declarations
 class DOF_Rotation;

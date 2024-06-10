@@ -1,0 +1,284 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						5,
+						6
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "tests",
+					"jsonFile" : "directory-tests-Debug-b01f6abb0ab61427ef3b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tests",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "thirdparty",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty-Debug-ca18efa0333c95a683e3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "thirdparty"
+				},
+				{
+					"build" : "thirdparty/tetgen",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty.tetgen-Debug-903cd997015e97a2bea3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "thirdparty/tetgen",
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				},
+				{
+					"build" : "thirdparty/triangle",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-thirdparty.triangle-Debug-276dd72bd5f99464aca7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 0,
+					"source" : "thirdparty/triangle",
+					"targetIndexes" : 
+					[
+						12,
+						13,
+						14
+					]
+				},
+				{
+					"build" : "toolkits",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-toolkits-Debug-99cef86a3c642bea4fce.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "toolkits",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				},
+				{
+					"build" : "tools",
+					"jsonFile" : "directory-tools-Debug-f9645b0170a45a75eff2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tools"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					],
+					"name" : "SpartacusProject",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "Ceres::@b85f33924dfb88888063",
+					"jsonFile" : "target-Ceres-Debug-2a51afd5a480f970ec51.json",
+					"name" : "Ceres",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Ceres_autogen::@b85f33924dfb88888063",
+					"jsonFile" : "target-Ceres_autogen-Debug-473a17111cc717b1ebb9.json",
+					"name" : "Ceres_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "Ceres_autogen_timestamp_deps::@b85f33924dfb88888063",
+					"jsonFile" : "target-Ceres_autogen_timestamp_deps-Debug-3717eafb43b9fe21ca55.json",
+					"name" : "Ceres_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Mesh::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Mesh-Debug-caea3f93ee67a8542239.json",
+					"name" : "Test_Mesh",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Mesh_autogen::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Mesh_autogen-Debug-2bdba92ba2988c917fcc.json",
+					"name" : "Test_Mesh_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Mesh_autogen_timestamp_deps::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Mesh_autogen_timestamp_deps-Debug-7cddd39af512746be435.json",
+					"name" : "Test_Mesh_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Model::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Model-Debug-79c6d7db80d0f780bc66.json",
+					"name" : "Test_Model",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Model_autogen::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Model_autogen-Debug-e5f9cff1a4c21ca48a22.json",
+					"name" : "Test_Model_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "Test_Model_autogen_timestamp_deps::@a44f0ac069e85531cdee",
+					"jsonFile" : "target-Test_Model_autogen_timestamp_deps-Debug-f02743093e7a3a645be9.json",
+					"name" : "Test_Model_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "tetgen::@6db2fed64787c2954025",
+					"jsonFile" : "target-tetgen-Debug-d2aa27df0ef4658b19aa.json",
+					"name" : "tetgen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "tetgen_autogen::@6db2fed64787c2954025",
+					"jsonFile" : "target-tetgen_autogen-Debug-d502a2b127faab597493.json",
+					"name" : "tetgen_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "tetgen_autogen_timestamp_deps::@6db2fed64787c2954025",
+					"jsonFile" : "target-tetgen_autogen_timestamp_deps-Debug-03fc709f2cd31c3bbb4b.json",
+					"name" : "tetgen_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "triangle::@4038f03cc110a5e3a145",
+					"jsonFile" : "target-triangle-Debug-072044545c0c6a7b4eb0.json",
+					"name" : "triangle",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "triangle_autogen::@4038f03cc110a5e3a145",
+					"jsonFile" : "target-triangle_autogen-Debug-81c552d874e0e39a106c.json",
+					"name" : "triangle_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "triangle_autogen_timestamp_deps::@4038f03cc110a5e3a145",
+					"jsonFile" : "target-triangle_autogen_timestamp_deps-Debug-9de053ddf38a32496504.json",
+					"name" : "triangle_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/alexis/Projects/spartacus-project/build/Desktop-Debug",
+		"source" : "/home/alexis/Projects/spartacus-project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

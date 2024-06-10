@@ -25,15 +25,17 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshDS_Array1OfObject.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_TMeshEntity.hxx>
+#include <MeshDS_SequenceOfObject.hxx>
+#include <MeshDS_TObject.hxx>
+
+// OpenCascade
+#include <TopoDS_Shape.hxx>
 
 // Forward declarations
 class MeshDS_TCell;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TMeshEntity)
+DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject)
 
 
 // ============================================================================
@@ -41,7 +43,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TMeshEntity)
  *  \brief MeshDS_TCell
 */
 // ============================================================================
-class MeshDS_TCell : public MeshDS_TMeshEntity
+class MeshDS_TCell : public MeshDS_TObject
 {
 
 public:
@@ -57,24 +59,21 @@ public:
 public:
 
     Standard_EXPORT MeshAbs_TypeOfCell              CellType() const;
-    Standard_EXPORT Standard_Integer                NbNodes() const;
-    Standard_EXPORT const MeshDS_Node&              Node(const Standard_Integer theIndex) const;
-    Standard_EXPORT const MeshDS_Array1OfObject&    Nodes() const;
-    Standard_EXPORT MeshDS_Array1OfObject&          Nodes();
-    Standard_EXPORT void                            ResizeNodes(const Standard_Integer theNbNodes,
-                                                                const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theCellType);
-    Standard_EXPORT void                            SetNode(const Standard_Integer theIndex,
-                                                            const MeshDS_Node& theNode);
+    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theType);
+    Standard_EXPORT void                            SetShape(const TopoDS_Shape& theShape);
+    Standard_EXPORT const TopoDS_Shape&             Shape() const;
+    Standard_EXPORT const MeshDS_SequenceOfObject&  Vertices() const;
+    Standard_EXPORT MeshDS_SequenceOfObject&        Vertices();
 
 private:
 
-    MeshAbs_TypeOfCell      myCellType;
-    MeshDS_Array1OfObject   myNodes;
+    MeshAbs_TypeOfCell          myCellType;
+    TopoDS_Shape                myShape;
+    MeshDS_SequenceOfObject     myVertices;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TMeshEntity)
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject)
 
 };
 

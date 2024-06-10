@@ -25,7 +25,10 @@
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
-#include <MeshBuilder_MakeMesh.hxx>
+#include <MeshBuilder_MakeObject.hxx>
+#include <MeshBuilder_MeshError.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshTools_DataMapOfIntegerObject.hxx>
 
 
 // ============================================================================
@@ -33,7 +36,7 @@
  *  \brief MeshBuilder_MakeMesh1d
 */
 // ============================================================================
-class MeshBuilder_MakeMesh1d : public MeshBuilder_MakeMesh
+class MeshBuilder_MakeMesh1d : public MeshBuilder_MakeObject
 {
 
 public:
@@ -48,14 +51,23 @@ public:
 
 public:
 
-    Standard_EXPORT MeshDS_Cell         AddLinearLine(const MeshDS_Node& theNode1,
-                                                      const MeshDS_Node& theNode2);
+    Standard_EXPORT const MeshDS_Mesh&      Mesh() const;
+    Standard_EXPORT operator                MeshDS_Mesh() const;
 
-    Standard_EXPORT MeshDS_Node         AddNode(const gp_Pnt1d& thePoint);
+public:
 
-    Standard_EXPORT MeshDS_Cell         AddQuadraticLine(const MeshDS_Node& theNode1,
-                                                         const MeshDS_Node& theNode2,
-                                                         const MeshDS_Node& theNode3);
+    Standard_EXPORT Standard_Integer        Add(const gp_Pnt1d& thePoint);
+    Standard_EXPORT MeshBuilder_MeshError   Error() const;
+
+
+protected:
+
+    Standard_EXPORT void        SetError(const MeshBuilder_MeshError theError);
+
+private:
+
+    MeshBuilder_MeshError               myError;
+    MeshTools_DataMapOfIntegerObject    myNodes;
 
 };
 

@@ -28,9 +28,6 @@
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
 
-// Spartacus
-#include <DOFAbs_TypeOfDOF.hxx>
-
 // Forward declarations
 class DOF_DegreeOfFreedom;
 

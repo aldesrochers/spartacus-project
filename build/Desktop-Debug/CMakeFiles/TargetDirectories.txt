@@ -4,7 +4,7 @@
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/CMakeFiles/install.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/CMakeFiles/install/local.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/CMakeFiles/install/strip.dir
-/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_MeshLib.dir
+/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Mesh.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Model.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/edit_cache.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/rebuild_cache.dir
@@ -12,8 +12,8 @@
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/install.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/install/local.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/install/strip.dir
-/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_MeshLib_autogen_timestamp_deps.dir
-/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_MeshLib_autogen.dir
+/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Mesh_autogen_timestamp_deps.dir
+/home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Mesh_autogen.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Model_autogen_timestamp_deps.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/CMakeFiles/Test_Model_autogen.dir
 /home/alexis/Projects/spartacus-project/build/Desktop-Debug/thirdparty/CMakeFiles/edit_cache.dir

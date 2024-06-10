@@ -22,6 +22,7 @@
 
 // Spartacus
 #include <ModelBuilder_MakeModel.hxx>
+#include <ModelDS.hxx>
 
 
 // ============================================================================
@@ -51,8 +52,7 @@ ModelBuilder_MakeModel::~ModelBuilder_MakeModel()
 // ============================================================================
 const ModelDS_Model& ModelBuilder_MakeModel::Model() const
 {
-    Check();
-    return myModel;
+    return ModelDS::Model(Object());
 }
 
 // ============================================================================

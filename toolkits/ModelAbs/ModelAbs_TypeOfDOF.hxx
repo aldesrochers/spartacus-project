@@ -32,6 +32,11 @@
 enum ModelAbs_TypeOfDOF
 {
     ModelAbs_DOF_DX,
+    ModelAbs_DOF_DY,
+    ModelAbs_DOF_DZ,
+    ModelAbs_DOF_DRX,
+    ModelAbs_DOF_DRY,
+    ModelAbs_DOF_DRZ,
     ModelAbs_DOF_TEMP
 };
 

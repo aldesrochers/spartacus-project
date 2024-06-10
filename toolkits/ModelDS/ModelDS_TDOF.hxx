@@ -24,9 +24,8 @@
 #define __ModelDS_TDOF_hxx__
 
 // Spartacus
-#include <ModelDS_Node.hxx>
+#include <ModelAbs_TypeOfDOF.hxx>
 #include <ModelDS_TObject.hxx>
-#include <ModelRep_DOF.hxx>
 
 // Forward declarations
 class ModelDS_TDOF;
@@ -55,15 +54,12 @@ public:
 
 public:
 
-    Standard_EXPORT const ModelDS_Node&             Node() const;
-    Standard_EXPORT const Handle(ModelRep_DOF)&     Representation() const;
-    Standard_EXPORT void                            SetNode(const ModelDS_Node& theNode);
-    Standard_EXPORT void                            SetRepresentation(const Handle(ModelRep_DOF)& theRepresentation);
+    Standard_EXPORT ModelAbs_TypeOfDOF  DOFType() const;
+    Standard_EXPORT void                SetDOFType(const ModelAbs_TypeOfDOF theDOFType);
 
 private:
 
-    ModelDS_Node            myNode;
-    Handle(ModelRep_DOF)    myRepresentation;
+    ModelAbs_TypeOfDOF      myDOFType;
 
 public:
 

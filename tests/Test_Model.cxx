@@ -23,8 +23,7 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <Mech1d_ElasticTruss.hxx>
+
 
 
 // ============================================================================
@@ -35,12 +34,10 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    Handle(Mech1d_Node) aNode1 = new Mech1d_Node(gp_Pnt1d(0.));
-    Handle(Mech1d_Node) aNode2 = new Mech1d_Node(gp_Pnt1d(1.));
-    Handle(Mech1d_ElasticTruss) aTruss = new Mech1d_ElasticTruss(aNode1, aNode2, 2E11, 1E-4);
 
 
-    cout << aTruss->TrialStiffness() << endl;
-    cout << aTruss->TrialDisplacements() << endl;
+
+
+
 
 }

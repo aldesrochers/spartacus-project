@@ -23,14 +23,11 @@
 #ifndef __dof_Translation_hxx__
 #define __dof_Translation_hxx__
 
-// Spartacus
-#include <DOF_Motion.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
-// Forward declarations
-class dof_Translation;
 
-// Handles
-DEFINE_STANDARD_HANDLE(dof_Translation, DOF_Motion)
 
 
 // ============================================================================
@@ -38,8 +35,12 @@ DEFINE_STANDARD_HANDLE(dof_Translation, DOF_Motion)
  *  \brief dof_Translation
 */
 // ============================================================================
-class dof_Translation : public DOF_Motion
+class dof_Translation
 {
+
+public:
+
+    DEFINE_STANDARD_ALLOC;
 
 public:
     // constructors
@@ -49,7 +50,18 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(dof_Translation, DOF_Motion)
+    Standard_EXPORT Standard_Real   Acceleration() const;
+    Standard_EXPORT Standard_Real   Displacement() const;
+    Standard_EXPORT void            SetAcceleration(const Standard_Real theAcceleration);
+    Standard_EXPORT void            SetDisplacement(const Standard_Real theDisplacement);
+    Standard_EXPORT void            SetVelocity(const Standard_Real theVelocity);
+    Standard_EXPORT Standard_Real   Velocity() const;
+
+private:
+
+    Standard_Real   myAcceleration;
+    Standard_Real   myDisplacement;
+    Standard_Real   myVelocity;
 
 };
 

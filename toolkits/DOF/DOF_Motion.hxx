@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <DOF_DegreeOfFreedom.hxx>
+#include <DOFAbs_TypeOfAxis.hxx>
 #include <DOFAbs_TypeOfMotion.hxx>
 
 // Forward declarations
@@ -45,8 +46,22 @@ class DOF_Motion : public DOF_DegreeOfFreedom
 public:
     // constructors
     Standard_EXPORT DOF_Motion();
+    Standard_EXPORT DOF_Motion(const DOFAbs_TypeOfAxis theAxisType);
     // destructors
     Standard_EXPORT ~DOF_Motion();
+
+public:
+
+    virtual DOFAbs_TypeOfMotion         MotionType() const = 0;
+
+public:
+
+    Standard_EXPORT DOFAbs_TypeOfAxis   AxisType() const;
+    Standard_EXPORT void                SetAxisType(const DOFAbs_TypeOfAxis theAxisType);
+
+private:
+
+    DOFAbs_TypeOfAxis       myAxisType;
 
 public:
 

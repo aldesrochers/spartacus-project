@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <ModelDS_Object.hxx>
+#include <ModelRep_Element.hxx>
 
 
 // ============================================================================

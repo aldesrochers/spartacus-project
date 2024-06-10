@@ -28,18 +28,17 @@
 #include <gp_Pnt2d.hxx>
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-
+#include <TopoDS_Shape.hxx>
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshAbs_TypeOfDimensionality.hxx>
-#include <MeshDS_Array1OfObject.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
+#include <MeshDS_SequenceOfObject.hxx>
+#include <MeshDS_Vertex.hxx>
 
 
 // ============================================================================
@@ -56,16 +55,30 @@ public:
 
 public:
 
+    static Standard_EXPORT const MeshDS_ListOfObject&       Cells(const MeshDS_Group& theGroup);
+
     static Standard_EXPORT MeshAbs_TypeOfCell               CellType(const MeshDS_Cell& theCell);
-    static Standard_EXPORT MeshAbs_TypeOfDimensionality     Dimensionality(const MeshDS_Cell& theCell);
-    static Standard_EXPORT MeshAbs_TypeOfDimensionality     Dimensionality(const MeshDS_Node& theNode);
-    static Standard_EXPORT const MeshDS_Array1OfObject&     Nodes(const MeshDS_Cell& theCell);
-    static Standard_EXPORT const MeshDS_Array1OfObject&     Nodes(const MeshDS_Mesh& theMesh);
-    static Standard_EXPORT gp_Pnt                           Point(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt1d                         Point1d(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt2d                         Point2d(const MeshDS_Node& theNode);
-    static Standard_EXPORT gp_Pnt                           Point3d(const MeshDS_Node& theNode);
-    static Standard_EXPORT const MeshDS_ListOfObject&       ListOfCells(const MeshDS_Group& theGroup);
+
+    static Standard_EXPORT const MeshDS_ListOfObject&       Groups(const MeshDS_Mesh& theMesh);
+
+    static Standard_EXPORT Standard_Boolean                 IsPoint1d(const MeshDS_Vertex& theVertex);
+    static Standard_EXPORT Standard_Boolean                 IsPoint2d(const MeshDS_Vertex& theVertex);
+    static Standard_EXPORT Standard_Boolean                 IsPoint3d(const MeshDS_Vertex& theVertex);
+
+    static Standard_EXPORT Standard_Integer                 NbCells(const MeshDS_Group& theGroup);
+    static Standard_EXPORT Standard_Integer                 NbGroups(const MeshDS_Mesh& theMesh);
+    static Standard_EXPORT Standard_Integer                 NbVertices(const MeshDS_Cell& theCell);
+
+    static Standard_EXPORT const gp_Pnt1d&                  Point1d(const MeshDS_Vertex& theVertex);
+    static Standard_EXPORT const gp_Pnt2d&                  Point2d(const MeshDS_Vertex& theVertex);
+    static Standard_EXPORT const gp_Pnt&                    Point3d(const MeshDS_Vertex& theVertex);
+
+    static Standard_EXPORT const TopoDS_Shape&              Shape(const MeshDS_Cell& theCell);
+
+    static Standard_EXPORT const MeshDS_Vertex&             Vertex(const MeshDS_Cell& theCell,
+                                                                   const Standard_Integer theIndex);
+
+    static Standard_EXPORT const MeshDS_SequenceOfObject&   Vertices(const MeshDS_Cell& theCell);
 
 };
 

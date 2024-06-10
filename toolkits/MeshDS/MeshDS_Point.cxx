@@ -23,6 +23,9 @@
 // Spartacus
 #include <MeshDS_Point.hxx>
 
+// OpenCascade
+#include <Standard_DomainError.hxx>
+
 
 // ============================================================================
 /*!
@@ -109,5 +112,5 @@ const gp_Pnt& MeshDS_Point::Point3d() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_Point, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient)

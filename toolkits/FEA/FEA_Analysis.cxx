@@ -44,12 +44,12 @@ FEA_Analysis::~FEA_Analysis()
 
 }
 
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FEA_Analysis, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(FEA_Analysis, Standard_Transient)
-
+// ============================================================================
+/*!
+ *  \brief SetModel()
+*/
+// ============================================================================
+void FEA_Analysis::SetModel(const ModelDS_Model &theModel)
+{
+    myModel = theModel;
+}

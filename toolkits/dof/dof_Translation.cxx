@@ -44,3 +44,63 @@ dof_Translation::~dof_Translation()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Acceleration()
+*/
+// ============================================================================
+Standard_Real dof_Translation::Acceleration() const
+{
+    return myAcceleration;
+}
+
+// ============================================================================
+/*!
+ *  \brief Displacement()
+*/
+// ============================================================================
+Standard_Real dof_Translation::Displacement() const
+{
+    return myDisplacement;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetAcceleration()
+*/
+// ============================================================================
+void dof_Translation::SetAcceleration(const Standard_Real theAcceleration)
+{
+    myAcceleration = theAcceleration;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetDisplacement()
+*/
+// ============================================================================
+void dof_Translation::SetDisplacement(const Standard_Real theDisplacement)
+{
+    myDisplacement = theDisplacement;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetVelocity()
+*/
+// ============================================================================
+void dof_Translation::SetVelocity(const Standard_Real theVelocity)
+{
+    myVelocity = theVelocity;
+}
+
+// ============================================================================
+/*!
+ *  \brief Velocity()
+*/
+// ============================================================================
+Standard_Real dof_Translation::Velocity() const
+{
+    return myVelocity;
+}
+

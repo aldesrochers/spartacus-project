@@ -46,12 +46,32 @@ PolyMesh_Mesh1d::~PolyMesh_Mesh1d()
 
 // ============================================================================
 /*!
+ *  \brief GroupOfLinearLines()
+*/
+// ============================================================================
+const TColStd_ListOfInteger& PolyMesh_Mesh1d::GroupOfLinearLines(const Standard_Integer theIndex) const
+{
+    return myGroupsOfLinearLines.Value(theIndex);
+}
+
+// ============================================================================
+/*!
  *  \brief LinearLine()
 */
 // ============================================================================
 const pmp_LinearLine& PolyMesh_Mesh1d::LinearLine(const Standard_Integer theIndex) const
 {
     return myLinearLines.Value(theIndex);
+}
+
+// ============================================================================
+/*!
+ *  \brief NbGroupsOfLinearLines()
+*/
+// ============================================================================
+Standard_Integer PolyMesh_Mesh1d::NbGroupsOfLinearLines() const
+{
+    return myGroupsOfLinearLines.Size();
 }
 
 // ============================================================================
@@ -86,6 +106,17 @@ const gp_Pnt1d& PolyMesh_Mesh1d::Point(const Standard_Integer theIndex) const
 
 // ============================================================================
 /*!
+ *  \brief ResizeGroupsOfLinearLines()
+*/
+// ============================================================================
+void PolyMesh_Mesh1d::ResizeGroupsOfLinearLines(const Standard_Integer theNbGroups,
+                                                const Standard_Boolean toCopyData)
+{
+    myGroupsOfLinearLines.Resize(1, theNbGroups, toCopyData);
+}
+
+// ============================================================================
+/*!
  *  \brief ResizeLinearLines()
 */
 // ============================================================================
@@ -104,6 +135,17 @@ void PolyMesh_Mesh1d::ResizePoints(const Standard_Integer theNbPoints,
                                    const Standard_Boolean toCopyData)
 {
     myPoints.Resize(1, theNbPoints, toCopyData);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetGroupOfLinearLines()
+*/
+// ============================================================================
+void PolyMesh_Mesh1d::SetGroupOfLinearLine(const Standard_Integer theIndex,
+                                           const TColStd_ListOfInteger &theList)
+{
+    myGroupsOfLinearLines.SetValue(theIndex, theList);
 }
 
 // ============================================================================

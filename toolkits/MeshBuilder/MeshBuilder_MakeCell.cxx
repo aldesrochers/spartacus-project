@@ -22,6 +22,7 @@
 
 // Spartacus
 #include <MeshBuilder_MakeCell.hxx>
+#include <MeshDS.hxx>
 
 
 // ============================================================================
@@ -30,6 +31,7 @@
 */
 // ============================================================================
 MeshBuilder_MakeCell::MeshBuilder_MakeCell()
+    : myError(MeshBuilder_CellNoError)
 {
 
 }
@@ -51,10 +53,17 @@ MeshBuilder_MakeCell::~MeshBuilder_MakeCell()
 // ============================================================================
 const MeshDS_Cell& MeshBuilder_MakeCell::Cell() const
 {
-    if (!IsDone()) {
-        Check();
-    }
-    return myCell;
+    return MeshDS::Cell(Object());
+}
+
+// ============================================================================
+/*!
+ *  \brief Error()
+*/
+// ============================================================================
+MeshBuilder_CellError MeshBuilder_MakeCell::Error() const
+{
+    return myError;
 }
 
 // ============================================================================
@@ -65,4 +74,14 @@ const MeshDS_Cell& MeshBuilder_MakeCell::Cell() const
 MeshBuilder_MakeCell::operator MeshDS_Cell() const
 {
     return Cell();
+}
+
+// ============================================================================
+/*!
+ *  \brief SetError()
+*/
+// ============================================================================
+void MeshBuilder_MakeCell::SetError(const MeshBuilder_CellError theError)
+{
+    myError = theError;
 }

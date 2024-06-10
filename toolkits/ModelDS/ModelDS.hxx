@@ -29,8 +29,9 @@
 
 // Spartacus
 #include <ModelAbs_TypeOfObject.hxx>
-#include <ModelDS_DegreeOfFreedom.hxx>
+#include <ModelDS_DOF.hxx>
 #include <ModelDS_Element.hxx>
+#include <ModelDS_Model.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
 
@@ -50,11 +51,15 @@ public:
 
 public:
 
-    static Standard_EXPORT const ModelDS_DegreeOfFreedom&   DegreeOfFreedom(const ModelDS_Object& theObject);
-    static Standard_EXPORT ModelDS_DegreeOfFreedom&         DegreeOfFreedom(ModelDS_Object& theObject);
+
+    static Standard_EXPORT const ModelDS_DOF&               DOF(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_DOF&                     DOF(ModelDS_Object& theObject);
 
     static Standard_EXPORT const ModelDS_Element&           Element(const ModelDS_Object& theObject);
     static Standard_EXPORT ModelDS_Element&                 Element(ModelDS_Object& theObject);
+
+    static Standard_EXPORT const ModelDS_Model&             Model(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_Model&                   Model(ModelDS_Object& theObject);
 
     static Standard_EXPORT const ModelDS_Node&              Node(const ModelDS_Object& theObject);
     static Standard_EXPORT ModelDS_Node&                    Node(ModelDS_Object& theObject);

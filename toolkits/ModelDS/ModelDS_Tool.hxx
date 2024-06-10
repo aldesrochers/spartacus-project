@@ -27,10 +27,13 @@
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
 
-
 // Spartacus
-#include <gp_Pnt.hxx>
+#include <MeshDS_Vertex.hxx>
+#include <ModelDS_Element.hxx>
+#include <ModelDS_ListOfObject.hxx>
 #include <ModelDS_Node.hxx>
+#include <ModelDS_Model.hxx>
+#include <ModelDS_SequenceOfObject.hxx>
 
 
 // ============================================================================
@@ -47,7 +50,11 @@ public:
 
 public:
 
-    static Standard_EXPORT gp_Pnt       Point(const ModelDS_Node& theNode);
+    static Standard_EXPORT const ModelDS_SequenceOfObject&  DOFs(const ModelDS_Element& theElement);
+
+    static Standard_EXPORT const ModelDS_ListOfObject&      Elements(const ModelDS_Model& theModel);
+
+    static Standard_EXPORT const MeshDS_Vertex&             Vertex(const ModelDS_Node& theNode);
 
 };
 

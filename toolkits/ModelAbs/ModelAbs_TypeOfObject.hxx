@@ -31,10 +31,15 @@
 // ============================================================================
 enum ModelAbs_TypeOfObject
 {
+    ModelAbs_OBJ_Boundary,
     ModelAbs_OBJ_DegreeOfFreedom,
     ModelAbs_OBJ_DOF,
-    ModelAbs_OBJ_Domain,
     ModelAbs_OBJ_Element,
+    ModelAbs_OBJ_Equation,
+    ModelAbs_OBJ_Mapping,
+    ModelAbs_OBJ_Model,
+    ModelAbs_OBJ_Load,
+    ModelAbs_OBJ_Loading,
     ModelAbs_OBJ_Node
 };
 

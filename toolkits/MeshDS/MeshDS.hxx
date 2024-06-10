@@ -32,9 +32,8 @@
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
-
+#include <MeshDS_Vertex.hxx>
 
 
 // ============================================================================
@@ -60,15 +59,13 @@ public:
     static Standard_EXPORT const MeshDS_Mesh&   Mesh(const MeshDS_Object& theObject);
     static Standard_EXPORT MeshDS_Mesh&         Mesh(MeshDS_Object& theObject);
 
-    static Standard_EXPORT const MeshDS_Node&   Node(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Node&         Node(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Vertex& Vertex(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Vertex&       Vertex(MeshDS_Object& theObject);
 
 protected:
 
     static Standard_EXPORT Standard_Boolean     TypeMismatch(const MeshDS_Object& theObject,
                                                              const MeshAbs_TypeOfObject theObjectType);
-
-
 
 };
 

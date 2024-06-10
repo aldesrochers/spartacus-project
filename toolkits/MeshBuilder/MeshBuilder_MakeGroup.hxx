@@ -24,7 +24,7 @@
 #define __MeshBuilder_MakeGroup_hxx__
 
 // Spartacus
-#include <MeshBuilder_Command.hxx>
+#include <MeshBuilder_MakeObject.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshTools_ListOfObject.hxx>
@@ -35,7 +35,7 @@
  *  \brief MeshBuilder_MakeGroup
 */
 // ============================================================================
-class MeshBuilder_MakeGroup : public MeshBuilder_Command
+class MeshBuilder_MakeGroup : public MeshBuilder_MakeObject
 {
 
 public:
@@ -62,7 +62,10 @@ public:
 
 protected:
 
-    MeshTools_ListOfObject  myCells;
+    Standard_EXPORT void                Initialize();
+
+protected:
+
     MeshDS_Group            myGroup;
 
 };

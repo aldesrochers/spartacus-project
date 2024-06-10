@@ -24,7 +24,7 @@
 #define __ModelDS_TElement_hxx__
 
 // Spartacus
-#include <ModelDS_Array1OfObject.hxx>
+#include <ModelDS_SequenceOfObject.hxx>
 #include <ModelDS_TObject.hxx>
 
 // Forward declarations
@@ -54,12 +54,12 @@ public:
 
 public:
 
-    Standard_EXPORT const ModelDS_Array1OfObject&   DOFs() const;
-    Standard_EXPORT ModelDS_Array1OfObject&         DOFs();
+    Standard_EXPORT const ModelDS_SequenceOfObject& DOFs() const;
+    Standard_EXPORT ModelDS_SequenceOfObject&       DOFs();
 
 private:
 
-    ModelDS_Array1OfObject      myDOFs;
+    ModelDS_SequenceOfObject    myDOFs;
 
 public:
 

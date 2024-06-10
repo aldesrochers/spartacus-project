@@ -28,8 +28,9 @@
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TGroup.hxx>
 #include <MeshDS_TMesh.hxx>
-#include <MeshDS_TNode.hxx>
-
+#include <MeshDS_Tool.hxx>
+#include <MeshDS_TVertex.hxx>
+#include <MeshDS.hxx>
 
 // ============================================================================
 /*!
@@ -39,10 +40,35 @@
 void MeshDS_Builder::AddCell(const MeshDS_Group &theGroup,
                              const MeshDS_Cell &theCell) const
 {
-    // add cell to group
     const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
     MeshDS_ListOfObject& aList = aTGroup->Cells();
     aList.Append(theCell);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddGroup()
+*/
+// ============================================================================
+void MeshDS_Builder::AddGroup(const MeshDS_Mesh &theMesh,
+                              const MeshDS_Group &theGroup) const
+{
+    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
+    MeshDS_ListOfObject& aList = aTMesh->Groups();
+    aList.Append(theGroup);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddVertex()
+*/
+// ============================================================================
+void MeshDS_Builder::AddVertex(const MeshDS_Cell &theCell,
+                               const MeshDS_Vertex &theVertex) const
+{
+    const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
+    MeshDS_SequenceOfObject& aSequence = aTCell->Vertices();
+    aSequence.Append(theVertex);
 }
 
 // ============================================================================
@@ -62,11 +88,10 @@ void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell) const
 */
 // ============================================================================
 void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell,
-                              const MeshAbs_TypeOfCell theCellType,
-                              const Standard_Integer theNbNodes) const
+                              const MeshAbs_TypeOfCell theCellType) const
 {
     MakeCell(theCell);
-    UpdateCell(theCell, theCellType, theNbNodes);
+    UpdateCell(theCell, theCellType);
 }
 
 // ============================================================================
@@ -105,63 +130,49 @@ void MeshDS_Builder::MakeMesh(MeshDS_Mesh &theMesh) const
 
 // ============================================================================
 /*!
- *  \brief MakeMesh()
+ *  \brief MakeVertex()
 */
 // ============================================================================
-void MeshDS_Builder::MakeMesh(MeshDS_Mesh &theMesh,
-                              const Standard_Integer theNbNodes,
-                              const Standard_Integer theNbCells,
-                              const Standard_Integer theNbGroups) const
+void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex) const
 {
-    MakeMesh(theMesh);
-    ResizeMesh(theMesh, theNbNodes, theNbCells, theNbGroups);
+    Handle(MeshDS_TVertex) aTVertex = new MeshDS_TVertex();
+    MakeObject(theVertex, aTVertex);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeNode()
+ *  \brief MakeVertex()
 */
 // ============================================================================
-void MeshDS_Builder::MakeNode(MeshDS_Node &theNode) const
+void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
+                                const gp_Pnt1d& thePoint) const
 {
-    Handle(MeshDS_TNode) aTNode = new MeshDS_TNode();
-    MakeObject(theNode, aTNode);
+    MakeVertex(theVertex);
+    UpdateVertex(theVertex, thePoint);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeNode()
+ *  \brief MakeVertex()
 */
 // ============================================================================
-void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
-                              const gp_Pnt1d &thePoint) const
+void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
+                                const gp_Pnt2d& thePoint) const
 {
-    MakeNode(theNode);
-    UpdateNode(theNode, thePoint);
+    MakeVertex(theVertex);
+    UpdateVertex(theVertex, thePoint);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeNode()
+ *  \brief MakeVertex()
 */
 // ============================================================================
-void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
-                              const gp_Pnt2d &thePoint) const
+void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
+                              const gp_Pnt& thePoint) const
 {
-    MakeNode(theNode);
-    UpdateNode(theNode, thePoint);
-}
-
-// ============================================================================
-/*!
- *  \brief MakeNode()
-*/
-// ============================================================================
-void MeshDS_Builder::MakeNode(MeshDS_Node &theNode,
-                              const gp_Pnt &thePoint) const
-{
-    MakeNode(theNode);
-    UpdateNode(theNode, thePoint);
+    MakeVertex(theVertex);
+    UpdateVertex(theVertex, thePoint);
 }
 
 // ============================================================================
@@ -177,91 +188,14 @@ void MeshDS_Builder::MakeObject(MeshDS_Object &theObject,
 
 // ============================================================================
 /*!
- *  \brief ResizeMesh()
+ *  \brief UpdateCell()
 */
 // ============================================================================
-void MeshDS_Builder::ResizeMesh(const MeshDS_Mesh &theMesh,
-                                const Standard_Integer theNbNodes,
-                                const Standard_Integer theNbCells,
-                                const Standard_Integer theNbGroups) const
+void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
+                                const MeshAbs_TypeOfCell theCellType) const
 {
-    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
-    aTMesh->ResizeNodes(theNbNodes);
-    aTMesh->ResizeCells(theNbCells);
-    aTMesh->ResizeGroups(theNbGroups);
-}
-
-// ============================================================================
-/*!
- *  \brief SetCell()
-*/
-// ============================================================================
-void MeshDS_Builder::SetCell(const MeshDS_Mesh &theMesh,
-                             const Standard_Integer theIndex,
-                             const MeshDS_Cell &theCell) const
-{
-    // bind Cell to mesh
-    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
-    aTMesh->SetCell(theIndex, theCell);
-
-    // set Cell parent mesh
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
-    aTCell->SetMesh(theMesh);
-}
-
-// ============================================================================
-/*!
- *  \brief SetGroup()
-*/
-// ============================================================================
-void MeshDS_Builder::SetGroup(const MeshDS_Mesh &theMesh,
-                              const Standard_Integer theIndex,
-                              const MeshDS_Group &theGroup) const
-{
-    // bind Group to mesh
-    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
-    aTMesh->SetGroup(theIndex, theGroup);
-
-    // set Group parent mesh
-    const Handle(MeshDS_TGroup)& aTGroup = *((Handle(MeshDS_TGroup)*) &theGroup.TObject());
-    aTGroup->SetMesh(theMesh);
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void MeshDS_Builder::SetNode(const MeshDS_Mesh &theMesh,
-                             const Standard_Integer theIndex,
-                             const MeshDS_Node &theNode) const
-{
-    // bind node to mesh
-    const Handle(MeshDS_TMesh)& aTMesh = *((Handle(MeshDS_TMesh)*) &theMesh.TObject());
-    aTMesh->SetNode(theIndex, theNode);
-
-    // set node parent mesh
-    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
-    aTNode->SetMesh(theMesh);
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void MeshDS_Builder::SetNode(const MeshDS_Cell &theCell,
-                             const Standard_Integer theIndex,
-                             const MeshDS_Node &theNode) const
-{
-    // Add node to cell definition
-    const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
-    aTCell->SetNode(theIndex, theNode);
-
-    // Link cell to node
-    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
-    MeshDS_ListOfObject& aList = aTNode->LinkedCells();
-    aList.Append(theCell);
+    aTCell->SetCellType(theCellType);
 }
 
 // ============================================================================
@@ -270,12 +204,23 @@ void MeshDS_Builder::SetNode(const MeshDS_Cell &theCell,
 */
 // ============================================================================
 void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
-                                const MeshAbs_TypeOfCell theCellType,
-                                const Standard_Integer theNbNodes) const
+                                const TopoDS_Shape& theShape) const
 {
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
-    aTCell->SetCellType(theCellType);
-    aTCell->ResizeNodes(theNbNodes, Standard_False);
+    aTCell->SetShape(theShape);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateCell()
+*/
+// ============================================================================
+void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
+                                const MeshDS_SequenceOfObject& theVertices) const
+{
+    const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
+    MeshDS_SequenceOfObject& aSequence = aTCell->Vertices();
+    aSequence = theVertices;
 }
 
 // ============================================================================
@@ -292,39 +237,39 @@ void MeshDS_Builder::UpdateGroup(const MeshDS_Group &theGroup,
 
 // ============================================================================
 /*!
- *  \brief UpdateNode()
+ *  \brief UpdateVertex()
 */
 // ============================================================================
-void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
-                                const gp_Pnt1d& thePoint) const
+void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
+                                  const gp_Pnt1d& thePoint) const
 {
-    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(MeshDS_Point1d) aPoint1d = new MeshDS_Point1d(thePoint);
-    aTNode->SetPoint(aPoint1d);
+    aTVertex->SetPoint(aPoint1d);
 }
 
 // ============================================================================
 /*!
- *  \brief UpdateNode()
+ *  \brief UpdateVertex()
 */
 // ============================================================================
-void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
-                                const gp_Pnt2d& thePoint) const
+void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
+                                  const gp_Pnt2d& thePoint) const
 {
-    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(MeshDS_Point2d) aPoint2d = new MeshDS_Point2d(thePoint);
-    aTNode->SetPoint(aPoint2d);
+    aTVertex->SetPoint(aPoint2d);
 }
 
 // ============================================================================
 /*!
- *  \brief UpdateNode()
+ *  \brief UpdateVertex()
 */
 // ============================================================================
-void MeshDS_Builder::UpdateNode(const MeshDS_Node &theNode,
-                                const gp_Pnt& thePoint) const
+void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
+                                  const gp_Pnt& thePoint) const
 {
-    const Handle(MeshDS_TNode)& aTNode = *((Handle(MeshDS_TNode)*) &theNode.TObject());
+    const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(MeshDS_Point3d) aPoint3d = new MeshDS_Point3d(thePoint);
-    aTNode->SetPoint(aPoint3d);
+    aTVertex->SetPoint(aPoint3d);
 }

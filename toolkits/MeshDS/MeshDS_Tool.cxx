@@ -21,19 +21,33 @@
 
 
 // Spartacus
+#include <MeshDS.hxx>
 #include <MeshDS_Point1d.hxx>
 #include <MeshDS_Point2d.hxx>
 #include <MeshDS_Point3d.hxx>
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TGroup.hxx>
 #include <MeshDS_TMesh.hxx>
-#include <MeshDS_TNode.hxx>
 #include <MeshDS_Tool.hxx>
+#include <MeshDS_TVertex.hxx>
 
 // OpenCascade
 #include <Standard_DomainError.hxx>
 #include <Standard_NullObject.hxx>
 
+
+// ============================================================================
+/*!
+ *  \brief Cells()
+*/
+// ============================================================================
+const MeshDS_ListOfObject& MeshDS_Tool::Cells(const MeshDS_Group& theGroup)
+{
+    const MeshDS_TGroup* aTGroup = static_cast<const MeshDS_TGroup*>(theGroup.TObject().get());
+    if(aTGroup == 0)
+        throw Standard_NullObject("MeshDS_Tool::Cells()->Invalid group.");
+    return aTGroup->Cells();
+}
 
 // ============================================================================
 /*!
@@ -44,115 +58,105 @@ MeshAbs_TypeOfCell MeshDS_Tool::CellType(const MeshDS_Cell& theCell)
 {
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
-        throw Standard_NullObject("MeshDS_Tool::Dimensionality()->Invalid cell.");
+        throw Standard_NullObject("MeshDS_Tool::CellType()->Invalid cell.");
     return aTCell->CellType();
 }
 
 // ============================================================================
 /*!
- *  \brief Dimensionality()
+ *  \brief Groups()
 */
 // ============================================================================
-MeshAbs_TypeOfDimensionality MeshDS_Tool::Dimensionality(const MeshDS_Cell& theCell)
-{
-    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
-    if(aTCell == 0)
-        throw Standard_NullObject("MeshDS_Tool::Dimensionality()->Invalid cell.");
-    MeshAbs_TypeOfDimensionality aDimensionality = MeshAbs_DIM_0D;
-    for(Standard_Integer i=1; i<=aTCell->NbNodes(); i++) {
-        MeshDS_Node aNode = aTCell->Node(i);
-        MeshAbs_TypeOfDimensionality aNodeDimensionality = MeshDS_Tool::Dimensionality(aNode);
-        if(aNodeDimensionality > aDimensionality)
-            aDimensionality = aNodeDimensionality;
-    }
-    return aDimensionality;
-}
-
-// ============================================================================
-/*!
- *  \brief Dimensionality()
-*/
-// ============================================================================
-MeshAbs_TypeOfDimensionality MeshDS_Tool::Dimensionality(const MeshDS_Node& theNode)
-{
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Dimensionality()->Invalid node.");
-    const Handle(MeshDS_Point)& aPoint = aTNode->Point();
-    if(aPoint->IsPoint1d())
-        return MeshAbs_DIM_1D;
-    else if(aPoint->IsPoint2d())
-        return MeshAbs_DIM_2D;
-    else if(aPoint->IsPoint3d())
-        return MeshAbs_DIM_3D;
-    else
-        return MeshAbs_DIM_0D;
-}
-
-// ============================================================================
-/*!
- *  \brief ListOfCells()
-*/
-// ============================================================================
-const MeshDS_ListOfObject& MeshDS_Tool::ListOfCells(const MeshDS_Group &theGroup)
-{
-    const MeshDS_TGroup* aTGroup = static_cast<const MeshDS_TGroup*>(theGroup.TObject().get());
-    if(aTGroup == 0)
-        throw Standard_NullObject("MeshDS_Tool::ListOfCells()->Invalid group.");
-    return aTGroup->Cells();
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-const MeshDS_Array1OfObject& MeshDS_Tool::Nodes(const MeshDS_Cell &theCell)
-{
-    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
-    if(aTCell == 0)
-        throw Standard_NullObject("MeshDS_Tool::Nodes()->Invalid cell.");
-    return aTCell->Nodes();
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-const MeshDS_Array1OfObject& MeshDS_Tool::Nodes(const MeshDS_Mesh &theMesh)
+const MeshDS_ListOfObject& MeshDS_Tool::Groups(const MeshDS_Mesh& theMesh)
 {
     const MeshDS_TMesh* aTMesh = static_cast<const MeshDS_TMesh*>(theMesh.TObject().get());
     if(aTMesh == 0)
-        throw Standard_NullObject("MeshDS_Tool::Nodes()->Invalid mesh.");
-    return aTMesh->Nodes();
+        throw Standard_NullObject("MeshDS_Tool::Groups()->Invalid mesh.");
+    return aTMesh->Groups();
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-gp_Pnt MeshDS_Tool::Point(const MeshDS_Node& theNode)
+Standard_Boolean MeshDS_Tool::IsPoint1d(const MeshDS_Vertex& theVertex)
 {
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid node.");
-    const Handle(MeshDS_Point)& aPoint = aTNode->Point();
-    if(aPoint->IsPoint1d()) {
-        const Handle(MeshDS_Point1d)& aPoint = Handle(MeshDS_Point1d)::DownCast(aPoint);
-        const gp_Pnt1d& aPoint1d = aPoint->Point1d();
-        return gp_Pnt(aPoint1d.X(), 0., 0.);
-    } else if(aPoint->IsPoint2d()) {
-        const Handle(MeshDS_Point2d)& aPoint = Handle(MeshDS_Point2d)::DownCast(aPoint);
-        const gp_Pnt2d& aPoint2d = aPoint->Point2d();
-        return gp_Pnt(aPoint2d.X(), aPoint2d.Y(), 0.);
-    } else if(aPoint->IsPoint3d()) {
-        const Handle(MeshDS_Point3d)& aPoint = Handle(MeshDS_Point3d)::DownCast(aPoint);
-        return aPoint->Point3d();
-    } else {
-        return gp_Pnt(0., 0., 0.);
-    }
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint1d()->Invalid vertex.");
+    const Handle(MeshDS_Point)& aPoint = aTVertex->Point();
+    return aPoint->IsPoint1d();
+}
+
+// ============================================================================
+/*!
+ *  \brief IsPoint2d()
+*/
+// ============================================================================
+Standard_Boolean MeshDS_Tool::IsPoint2d(const MeshDS_Vertex& theVertex)
+{
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint2d()->Invalid vertex.");
+    const Handle(MeshDS_Point)& aPoint = aTVertex->Point();
+    return aPoint->IsPoint2d();
+}
+
+// ============================================================================
+/*!
+ *  \brief IsPoint3d()
+*/
+// ============================================================================
+Standard_Boolean MeshDS_Tool::IsPoint3d(const MeshDS_Vertex& theVertex)
+{
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint3d()->Invalid vertex.");
+    const Handle(MeshDS_Point)& aPoint = aTVertex->Point();
+    return aPoint->IsPoint3d();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbCells()
+*/
+// ============================================================================
+Standard_Integer MeshDS_Tool::NbCells(const MeshDS_Group& theGroup)
+{
+    const MeshDS_TGroup* aTGroup = static_cast<const MeshDS_TGroup*>(theGroup.TObject().get());
+    if(aTGroup == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsCell()->Invalid group.");
+    const MeshDS_ListOfObject& aList = aTGroup->Cells();
+    return aList.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbGroups()
+*/
+// ============================================================================
+Standard_Integer MeshDS_Tool::NbGroups(const MeshDS_Mesh& theMesh)
+{
+    const MeshDS_TMesh* aTMesh = static_cast<const MeshDS_TMesh*>(theMesh.TObject().get());
+    if(aTMesh == 0)
+        throw Standard_NullObject("MeshDS_Tool::NbGroups()->Invalid mesh.");
+    const MeshDS_ListOfObject& aList = aTMesh->Groups();
+    return aList.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbVertices()
+*/
+// ============================================================================
+Standard_Integer MeshDS_Tool::NbVertices(const MeshDS_Cell& theCell)
+{
+    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
+    if(aTCell == 0)
+        throw Standard_NullObject("MeshDS_Tool::NbVertices()->Invalid cell.");
+    const MeshDS_SequenceOfObject& aSequence = aTCell->Vertices();
+    return aSequence.Size();
 }
 
 // ============================================================================
@@ -160,15 +164,13 @@ gp_Pnt MeshDS_Tool::Point(const MeshDS_Node& theNode)
  *  \brief Point1d()
 */
 // ============================================================================
-gp_Pnt1d MeshDS_Tool::Point1d(const MeshDS_Node& theNode)
+const gp_Pnt1d& MeshDS_Tool::Point1d(const MeshDS_Vertex& theVertex)
 {
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid node.");
-    const Handle(MeshDS_Point)& aPoint = aTNode->Point();
-    if(!aPoint->IsPoint1d())
-        throw Standard_DomainError("MeshDS_Node::Point()->Not a 1d point.");
-    const Handle(MeshDS_Point1d)& aPoint1d = Handle(MeshDS_Point1d)::DownCast(aPoint);
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint3d()->Invalid vertex.");
+    const Handle(MeshDS_Point1d)& aPoint1d =
+        Handle(MeshDS_Point1d)::DownCast(aTVertex->Point());
     return aPoint1d->Point1d();
 }
 
@@ -177,15 +179,13 @@ gp_Pnt1d MeshDS_Tool::Point1d(const MeshDS_Node& theNode)
  *  \brief Point2d()
 */
 // ============================================================================
-gp_Pnt2d MeshDS_Tool::Point2d(const MeshDS_Node& theNode)
+const gp_Pnt2d& MeshDS_Tool::Point2d(const MeshDS_Vertex& theVertex)
 {
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid node.");
-    const Handle(MeshDS_Point)& aPoint = aTNode->Point();
-    if(!aPoint->IsPoint2d())
-        throw Standard_DomainError("MeshDS_Node::Point()->Not a 2d point.");
-    const Handle(MeshDS_Point2d)& aPoint2d = Handle(MeshDS_Point2d)::DownCast(aPoint);
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint3d()->Invalid vertex.");
+    const Handle(MeshDS_Point2d)& aPoint2d =
+        Handle(MeshDS_Point2d)::DownCast(aTVertex->Point());
     return aPoint2d->Point2d();
 }
 
@@ -194,15 +194,56 @@ gp_Pnt2d MeshDS_Tool::Point2d(const MeshDS_Node& theNode)
  *  \brief Point3d()
 */
 // ============================================================================
-gp_Pnt MeshDS_Tool::Point3d(const MeshDS_Node& theNode)
+const gp_Pnt& MeshDS_Tool::Point3d(const MeshDS_Vertex& theVertex)
 {
-    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
-    if(aTNode == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid node.");
-    const Handle(MeshDS_Point)& aPoint = aTNode->Point();
-    if(!aPoint->IsPoint3d())
-        throw Standard_DomainError("MeshDS_Node::Point()->Not a 3d point.");
-    const Handle(MeshDS_Point3d)& aPoint3d = Handle(MeshDS_Point3d)::DownCast(aPoint);
+    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
+    if(aTVertex == 0)
+        throw Standard_NullObject("MeshDS_Tool::IsPoint3d()->Invalid vertex.");
+    const Handle(MeshDS_Point3d)& aPoint3d =
+        Handle(MeshDS_Point3d)::DownCast(aTVertex->Point());
     return aPoint3d->Point3d();
 }
 
+// ============================================================================
+/*!
+ *  \brief Shape
+*/
+// ============================================================================
+const TopoDS_Shape& MeshDS_Tool::Shape(const MeshDS_Cell& theCell)
+{
+    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
+    if(aTCell == 0)
+        throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
+    const TopoDS_Shape& aShape = aTCell->Shape();
+    return aShape;
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const MeshDS_Vertex& MeshDS_Tool::Vertex(const MeshDS_Cell& theCell,
+                                         const Standard_Integer theIndex)
+{
+    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
+    if(aTCell == 0)
+        throw Standard_NullObject("MeshDS_Tool::NbVertices()->Invalid cell.");
+    const MeshDS_SequenceOfObject& aSequence = aTCell->Vertices();
+    const MeshDS_Vertex& aVertex = MeshDS::Vertex(aSequence.Value(theIndex));
+    return aVertex;
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertices()
+*/
+// ============================================================================
+const MeshDS_SequenceOfObject& MeshDS_Tool::Vertices(const MeshDS_Cell& theCell)
+{
+    const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
+    if(aTCell == 0)
+        throw Standard_NullObject("MeshDS_Tool::Vertices()->Invalid cell.");
+    const MeshDS_SequenceOfObject& aSequence = aTCell->Vertices();
+    return aSequence;
+}

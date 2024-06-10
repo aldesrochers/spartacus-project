@@ -24,12 +24,12 @@ using namespace std;
 
 // Spartacus
 #include <ModelDS_Builder.hxx>
-#include <ModelDS_Point1d.hxx>
-#include <ModelDS_Point2d.hxx>
-#include <ModelDS_Point3d.hxx>
-#include <ModelDS_TDegreeOfFreedom.hxx>
+#include <ModelDS_TBoundary.hxx>
 #include <ModelDS_TElement.hxx>
-#include <ModelDS_TDomain.hxx>
+#include <ModelDS_TDOF.hxx>
+#include <ModelDS_TLoad.hxx>
+#include <ModelDS_TLoading.hxx>
+#include <ModelDS_TModel.hxx>
 #include <ModelDS_TNode.hxx>
 
 
@@ -55,50 +55,127 @@ ModelDS_Builder::~ModelDS_Builder()
 
 // ============================================================================
 /*!
- *  \brief AddDegreeofFreedom()
+ *  \brief AddBoundary()
 */
 // ============================================================================
-void ModelDS_Builder::AddDegreeOfFreedom(ModelDS_Node &theNode,
-                                         const ModelDS_DegreeOfFreedom &theDegreeOfFreedom) const
+void ModelDS_Builder::AddBoundary(const ModelDS_Loading &theLoading,
+                                  const ModelDS_Boundary& theBoundary) const
+{
+    const Handle(ModelDS_TLoading)& aTLoading = *((Handle(ModelDS_TLoading)*) &theLoading.TObject());
+    ModelDS_ListOfObject& aList = aTLoading->Boundaries();
+    aList.Append(theBoundary);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Boundary &theBoundary,
+                             const ModelDS_DOF& theDOF) const
+{
+    const Handle(ModelDS_TBoundary)& aTBoundary = *((Handle(ModelDS_TBoundary)*) &theBoundary.TObject());
+    ModelDS_ListOfObject& aList = aTBoundary->DOFs();
+    aList.Append(theDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Element &theElement,
+                             const ModelDS_DOF& theDOF) const
+{
+    const Handle(ModelDS_TElement)& aTElement = *((Handle(ModelDS_TElement)*) &theElement.TObject());
+    ModelDS_SequenceOfObject& aSequence = aTElement->DOFs();
+    aSequence.Append(theDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Load &theLoad,
+                             const ModelDS_DOF& theDOF) const
+{
+    const Handle(ModelDS_TLoad)& aTLoad = *((Handle(ModelDS_TLoad)*) &theLoad.TObject());
+    ModelDS_ListOfObject& aList = aTLoad->DOFs();
+    aList.Append(theDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Node &theNode,
+                             const ModelDS_DOF& theDOF) const
 {
     const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
-
-
-    cout << "OK" << endl;
+    ModelDS_ListOfObject& aList = aTNode->DOFs();
+    aList.Append(theDOF);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDegreeOfFreedom()
+ *  \brief AddElement()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom &theDegreeOfFreedom) const
+void ModelDS_Builder::AddElement(const ModelDS_Model &theModel,
+                                 const ModelDS_Element& theElement) const
 {
-    Handle(ModelDS_TDegreeOfFreedom) aTDegreeOfFreedom = new ModelDS_TDegreeOfFreedom();
-    MakeObject(theDegreeOfFreedom, aTDegreeOfFreedom);
+    const Handle(ModelDS_TModel)& aTModel = *((Handle(ModelDS_TModel)*) &theModel.TObject());
+    ModelDS_ListOfObject& aList = aTModel->Elements();
+    aList.Append(theElement);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDegreeOfFreedom()
+ *  \brief AddLoad()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDegreeOfFreedom(ModelDS_DegreeOfFreedom &theDegreeOfFreedom,
-                                          const Handle(DOF_DegreeOfFreedom)& theDOF) const
+void ModelDS_Builder::AddLoad(const ModelDS_Loading &theLoading,
+                              const ModelDS_Load& theLoad) const
 {
-    MakeDegreeOfFreedom(theDegreeOfFreedom);
-    UpdateDegreeOfFreedom(theDegreeOfFreedom, theDOF);
+    const Handle(ModelDS_TLoading)& aTLoading = *((Handle(ModelDS_TLoading)*) &theLoading.TObject());
+    ModelDS_ListOfObject& aList = aTLoading->Loads();
+    aList.Append(theLoad);
 }
 
 // ============================================================================
 /*!
- *  \brief MakeDomain()
+ *  \brief MakeBoundary()
 */
 // ============================================================================
-void ModelDS_Builder::MakeDomain(ModelDS_Domain &theDomain) const
+void ModelDS_Builder::MakeBoundary(ModelDS_Boundary &theBoundary) const
 {
-    Handle(ModelDS_TDomain) aTDomain = new ModelDS_TDomain();
-    MakeObject(theDomain, aTDomain);
+    Handle(ModelDS_TBoundary) aTBoundary = new ModelDS_TBoundary();
+    MakeObject(theBoundary, aTBoundary);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeDOF(ModelDS_DOF &theDOF) const
+{
+    Handle(ModelDS_TDOF) aTDOF = new ModelDS_TDOF();
+    MakeObject(theDOF, aTDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeDOF(ModelDS_DOF &theDOF,
+                              const ModelAbs_TypeOfDOF theDOFType) const
+{
+    MakeDOF(theDOF);
+    UpdateDOF(theDOF, theDOFType);
 }
 
 // ============================================================================
@@ -110,6 +187,39 @@ void ModelDS_Builder::MakeElement(ModelDS_Element &theElement) const
 {
     Handle(ModelDS_TElement) aTElement = new ModelDS_TElement();
     MakeObject(theElement, aTElement);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeLoad()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeLoad(ModelDS_Load &theLoad) const
+{
+    Handle(ModelDS_TLoad) aTLoad = new ModelDS_TLoad();
+    MakeObject(theLoad, aTLoad);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeLoading()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeLoading(ModelDS_Loading &theLoading) const
+{
+    Handle(ModelDS_TLoading) aTLoading = new ModelDS_TLoading();
+    MakeObject(theLoading, aTLoading);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeModel()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeModel(ModelDS_Model &theModel) const
+{
+    Handle(ModelDS_TModel) aTModel = new ModelDS_TModel();
+    MakeObject(theModel, aTModel);
 }
 
 // ============================================================================
@@ -129,10 +239,10 @@ void ModelDS_Builder::MakeNode(ModelDS_Node &theNode) const
 */
 // ============================================================================
 void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
-                               const gp_Pnt &thePoint) const
+                               const MeshDS_Vertex &theVertex) const
 {
     MakeNode(theNode);
-    UpdateNode(theNode, thePoint);
+    UpdateNode(theNode, theVertex);
 }
 
 // ============================================================================
@@ -148,14 +258,14 @@ void ModelDS_Builder::MakeObject(ModelDS_Object &theObject,
 
 // ============================================================================
 /*!
- *  \brief UpdateDegreeOfFreedom()
+ *  \brief UpdateDOF()
 */
 // ============================================================================
-void ModelDS_Builder::UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom &theDegreeOfFreedom,
-                                            const Handle(DOF_DegreeOfFreedom) &theDOF) const
+void ModelDS_Builder::UpdateDOF(const ModelDS_DOF &theDOF,
+                                const ModelAbs_TypeOfDOF theDOFType) const
 {
-    const Handle(ModelDS_TDegreeOfFreedom)& aTDegreeOfFreedom = *((Handle(ModelDS_TDegreeOfFreedom)*) &theDegreeOfFreedom.TObject());
-    aTDegreeOfFreedom->SetRepresentation(theDOF);
+    const Handle(ModelDS_TDOF)& aTDOF = *((Handle(ModelDS_TDOF)*) &theDOF.TObject());
+    aTDOF->SetDOFType(theDOFType);
 }
 
 // ============================================================================
@@ -164,8 +274,8 @@ void ModelDS_Builder::UpdateDegreeOfFreedom(const ModelDS_DegreeOfFreedom &theDe
 */
 // ============================================================================
 void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
-                                 const gp_Pnt &thePoint) const
+                                 const MeshDS_Vertex &theVertex) const
 {
     const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
-    //aTNode->SetPoint(thePoint);
+    aTNode->SetVertex(theVertex);
 }

@@ -19,10 +19,17 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
+
 
 // Spartacus
 #include <MeshBuilder_MakeMesh1d.hxx>
-
+#include <MeshBuilder_MakeNode.hxx>
+#include <MeshBuilder_MakeTriangle.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Tool.hxx>
+#include <MeshTools_Array1OfObject.hxx>
 
 
 // ============================================================================
@@ -31,6 +38,7 @@
 */
 // ============================================================================
 MeshBuilder_MakeMesh1d::MeshBuilder_MakeMesh1d()
+    : myError(MeshBuilder_MeshNoError)
 {
 
 }
@@ -45,53 +53,43 @@ MeshBuilder_MakeMesh1d::~MeshBuilder_MakeMesh1d()
 
 }
 
+
 // ============================================================================
 /*!
- *  \brief AddLinearLine()
+ *  \brief Error()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddLinearLine(const MeshDS_Node& theNode1,
-                                                  const MeshDS_Node& theNode2)
+MeshBuilder_MeshError MeshBuilder_MakeMesh1d::Error() const
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_LinearLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+    return myError;
 }
 
 // ============================================================================
 /*!
- *  \brief AddNode()
+ *  \brief Mesh()
 */
 // ============================================================================
-MeshDS_Node MeshBuilder_MakeMesh1d::AddNode(const gp_Pnt1d &thePoint)
+const MeshDS_Mesh& MeshBuilder_MakeMesh1d::Mesh() const
 {
-    MeshDS_Node aNode;
-    myBuilder.MakeNode(aNode, thePoint);
-    myNodes.Add(aNode);
-    return aNode;
+    return MeshDS::Mesh(Object());
 }
 
 // ============================================================================
 /*!
- *  \brief AddQuadraticLine()
+ *  \brief operator MeshDS_Mesh()
 */
 // ============================================================================
-MeshDS_Cell MeshBuilder_MakeMesh1d::AddQuadraticLine(const MeshDS_Node& theNode1,
-                                                     const MeshDS_Node& theNode2,
-                                                     const MeshDS_Node& theNode3)
+MeshBuilder_MakeMesh1d::operator MeshDS_Mesh() const
 {
-    TColStd_SequenceOfInteger aConnectivity;
-    aConnectivity.Append(myNodes.FindIndex(theNode1));
-    aConnectivity.Append(myNodes.FindIndex(theNode2));
-    aConnectivity.Append(myNodes.FindIndex(theNode3));
+    return Mesh();
+}
 
-    MeshDS_Cell aCell;
-    //myBuilder.MakeCell(aCell, MeshAbs_CT_QuadraticLine1d, aConnectivity);
-    myCells.Add(aCell);
-    return aCell;
+// ============================================================================
+/*!
+ *  \brief SetError()
+*/
+// ============================================================================
+void MeshBuilder_MakeMesh1d::SetError(const MeshBuilder_MeshError theError)
+{
+    myError = theError;
 }

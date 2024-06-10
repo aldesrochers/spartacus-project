@@ -56,18 +56,24 @@ public:
 
 public:
 
-    Standard_EXPORT const pmp_LinearLine&   LinearLine(const Standard_Integer theIndex) const;
-    Standard_EXPORT Standard_Integer        NbLinearLines() const;
-    Standard_EXPORT Standard_Integer        NbPoints() const;
-    Standard_EXPORT const gp_Pnt1d&         Point(const Standard_Integer theIndex) const;
-    Standard_EXPORT void                    ResizeLinearLines(const Standard_Integer theNbLinearLines,
-                                                              const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                    ResizePoints(const Standard_Integer theNbPoints,
-                                                         const Standard_Boolean toCopyData = Standard_True);
-    Standard_EXPORT void                    SetLinearLine(const Standard_Integer theIndex,
-                                                          const pmp_LinearLine& theLinearLine);
-    Standard_EXPORT void                    SetPoint(const Standard_Integer theIndex,
-                                                     const gp_Pnt1d& thePoint);
+    Standard_EXPORT const TColStd_ListOfInteger&    GroupOfLinearLines(const Standard_Integer theIndex) const;
+    Standard_EXPORT const pmp_LinearLine&           LinearLine(const Standard_Integer theIndex) const;
+    Standard_EXPORT Standard_Integer                NbGroupsOfLinearLines() const;
+    Standard_EXPORT Standard_Integer                NbLinearLines() const;
+    Standard_EXPORT Standard_Integer                NbPoints() const;
+    Standard_EXPORT const gp_Pnt1d&                 Point(const Standard_Integer theIndex) const;
+    Standard_EXPORT void                            ResizeGroupsOfLinearLines(const Standard_Integer theNbGroups,
+                                                                              const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                            ResizeLinearLines(const Standard_Integer theNbLinearLines,
+                                                                      const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                            ResizePoints(const Standard_Integer theNbPoints,
+                                                                 const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                            SetGroupOfLinearLine(const Standard_Integer theIndex,
+                                                                         const TColStd_ListOfInteger& theList);
+    Standard_EXPORT void                            SetLinearLine(const Standard_Integer theIndex,
+                                                                  const pmp_LinearLine& theLinearLine);
+    Standard_EXPORT void                            SetPoint(const Standard_Integer theIndex,
+                                                             const gp_Pnt1d& thePoint);
 
 private:
 

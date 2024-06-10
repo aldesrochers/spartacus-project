@@ -22,6 +22,8 @@
 
 // Spartacus
 #include <MeshBuilder_MakeGroup.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
@@ -31,7 +33,7 @@
 // ============================================================================
 MeshBuilder_MakeGroup::MeshBuilder_MakeGroup()
 {
-
+    Initialize();
 }
 
 // ============================================================================
@@ -51,7 +53,8 @@ MeshBuilder_MakeGroup::~MeshBuilder_MakeGroup()
 // ============================================================================
 void MeshBuilder_MakeGroup::Add(const MeshDS_Cell &theCell)
 {
-    myCells.Append(theCell);
+    MeshDS_Builder aBuilder;
+    aBuilder.AddCell(MeshDS::Group(myObject), theCell);
 }
 
 // ============================================================================
@@ -61,10 +64,18 @@ void MeshBuilder_MakeGroup::Add(const MeshDS_Cell &theCell)
 // ============================================================================
 const MeshDS_Group& MeshBuilder_MakeGroup::Group() const
 {
-    if (!IsDone()) {
-        Check();
-    }
-    return myGroup;
+    return MeshDS::Group(Object());
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshBuilder_MakeGroup::Initialize()
+{
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeGroup(MeshDS::Group(myObject));
 }
 
 // ============================================================================

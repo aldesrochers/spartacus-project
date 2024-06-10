@@ -44,16 +44,16 @@ class DOF_Translation : public DOF_Motion
 public:
     // constructors
     Standard_EXPORT DOF_Translation();
+    Standard_EXPORT DOF_Translation(const DOFAbs_TypeOfAxis theAxisType);
     // destructors
     Standard_EXPORT ~DOF_Translation();
 
-
 public:
 
-    Standard_EXPORT void            CommitState() Standard_OVERRIDE;
-    Standard_EXPORT void            RevertToInitialState() Standard_OVERRIDE;
-    Standard_EXPORT void            RevertToCommitState() Standard_OVERRIDE;
-
+    Standard_EXPORT void                    CommitState() Standard_OVERRIDE;
+    Standard_EXPORT DOFAbs_TypeOfMotion     MotionType() const Standard_OVERRIDE;
+    Standard_EXPORT void                    RevertToInitialState() Standard_OVERRIDE;
+    Standard_EXPORT void                    RevertToCommitState() Standard_OVERRIDE;
 
 public:
 

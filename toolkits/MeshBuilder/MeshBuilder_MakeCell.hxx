@@ -24,7 +24,8 @@
 #define __MeshBuilder_MakeCell_hxx__
 
 // Spartacus
-#include <MeshBuilder_Command.hxx>
+#include <MeshBuilder_CellError.hxx>
+#include <MeshBuilder_MakeObject.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Node.hxx>
 
@@ -34,7 +35,7 @@
  *  \brief MeshBuilder_MakeCell
 */
 // ============================================================================
-class MeshBuilder_MakeCell : public MeshBuilder_Command
+class MeshBuilder_MakeCell : public MeshBuilder_MakeObject
 {
 
 public:
@@ -49,15 +50,20 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_Cell&  Cell() const;
+    Standard_EXPORT const MeshDS_Cell&      Cell() const;
+    Standard_EXPORT operator                MeshDS_Cell() const;
 
 public:
 
-    Standard_EXPORT operator            MeshDS_Cell() const;
+    Standard_EXPORT MeshBuilder_CellError   Error() const;
 
 protected:
 
-    MeshDS_Cell     myCell;
+    Standard_EXPORT void                    SetError(const MeshBuilder_CellError theError);
+
+private:
+
+    MeshBuilder_CellError   myError;
 
 };
 

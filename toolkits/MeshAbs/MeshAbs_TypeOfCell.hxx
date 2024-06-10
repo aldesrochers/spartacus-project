@@ -31,9 +31,30 @@
 // ============================================================================
 enum MeshAbs_TypeOfCell
 {
+    MeshAbs_CELL_BiQuadraticHexahedron,
+    MeshAbs_CELL_BiQuadraticTetrahedron,
+    MeshAbs_CELL_LinearHexahedron,
     MeshAbs_CELL_LinearLine,
-    MeshAbs_CELL_QuadraticLine
+    MeshAbs_CELL_LinearLine1d,
+    MeshAbs_CELL_LinearLine2d,
+    MeshAbs_CELL_LinearPentahedron,
+    MeshAbs_CELL_LinearPyramid,
+    MeshAbs_CELL_LinearQuadrangle,
+    MeshAbs_CELL_LinearQuadrangle2d,
+    MeshAbs_CELL_LinearTetrahedron,
+    MeshAbs_CELL_LinearTriangle,
+    MeshAbs_CELL_LinearTriangle2d,
+    MeshAbs_CELL_QuadraticHexahedron,
+    MeshAbs_CELL_QuadraticLine,
+    MeshAbs_CELL_QuadraticLine1d,
+    MeshAbs_CELL_QuadraticLine2d,
+    MeshAbs_CELL_QuadraticPentahedron,
+    MeshAbs_CELL_QuadraticPyramid,
+    MeshAbs_CELL_QuadraticQuadrangle,
+    MeshAbs_CELL_QuadraticQuadrangle2d,
+    MeshAbs_CELL_QuadraticTetrahedron,
+    MeshAbs_CELL_QuadraticTriangle,
+    MeshAbs_CELL_QuadraticTriangle2d
 };
-
 
 #endif // __MeshAbs_TypeOfCell_hxx__

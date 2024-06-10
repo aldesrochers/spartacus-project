@@ -24,13 +24,10 @@
 #define __MeshBuilder_MakeMesh_hxx__
 
 // Spartacus
-#include <MeshBuilder_Command.hxx>
-#include <MeshDS_Builder.hxx>
-#include <MeshDS_Cell.hxx>
+#include <MeshBuilder_MakeObject.hxx>
+#include <MeshBuilder_MeshError.hxx>
 #include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshTools_IndexedMapOfObject.hxx>
+
 
 
 // ============================================================================
@@ -38,7 +35,7 @@
  *  \brief MeshBuilder_MakeMesh
 */
 // ============================================================================
-class MeshBuilder_MakeMesh : public MeshBuilder_Command
+class MeshBuilder_MakeMesh : public MeshBuilder_MakeObject
 {
 
 public:
@@ -53,22 +50,20 @@ public:
 
 public:
 
-    virtual Standard_EXPORT void        Build();
+    Standard_EXPORT const MeshDS_Mesh&      Mesh() const;
+    Standard_EXPORT operator                MeshDS_Mesh() const;
 
 public:
 
-    Standard_EXPORT const MeshDS_Mesh&  Mesh() const;
-
-public:
-
-    Standard_EXPORT operator            MeshDS_Mesh() const;
+    Standard_EXPORT MeshBuilder_MeshError   Error() const;
 
 protected:
 
-    MeshDS_Builder                      myBuilder;
-    MeshTools_IndexedMapOfObject        myCells;
-    MeshDS_Mesh                         myMesh;
-    MeshTools_IndexedMapOfObject        myNodes;
+    Standard_EXPORT void        SetError(const MeshBuilder_MeshError theError);
+
+private:
+
+    MeshBuilder_MeshError       myError;
 
 };
 

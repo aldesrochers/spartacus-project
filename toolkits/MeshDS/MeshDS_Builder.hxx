@@ -28,14 +28,17 @@
 #include <Standard_DefineAlloc.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
+#include <TopoDS_Shape.hxx>
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
+#include <MeshAbs_TypeOfCell.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
-#include <MeshDS_Node.hxx>
 #include <MeshDS_Object.hxx>
+#include <MeshDS_SequenceOfObject.hxx>
+#include <MeshDS_Vertex.hxx>
 #include <MeshDS_TObject.hxx>
 
 
@@ -56,63 +59,46 @@ public:
     Standard_EXPORT void    AddCell(const MeshDS_Group& theGroup,
                                     const MeshDS_Cell& theCell) const;
 
+    Standard_EXPORT void    AddGroup(const MeshDS_Mesh& theMesh,
+                                     const MeshDS_Group& theGroup) const;
+
+    Standard_EXPORT void    AddVertex(const MeshDS_Cell& theCell,
+                                      const MeshDS_Vertex& theVertex) const;
+
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell) const;
     Standard_EXPORT void    MakeCell(MeshDS_Cell& theCell,
-                                     const MeshAbs_TypeOfCell theCellType,
-                                     const Standard_Integer theNbNodes) const;
+                                     const MeshAbs_TypeOfCell theCellType) const;
 
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup,
                                       const TCollection_AsciiString& theName) const;
 
     Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh) const;
-    Standard_EXPORT void    MakeMesh(MeshDS_Mesh& theMesh,
-                                     const Standard_Integer theNbNodes,
-                                     const Standard_Integer theNbCells,
-                                     const Standard_Integer theNbGroups) const;
 
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode) const;
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
-                                     const gp_Pnt1d& thePoint) const;
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
-                                     const gp_Pnt2d& thePoint) const;
-    Standard_EXPORT void    MakeNode(MeshDS_Node& theNode,
-                                     const gp_Pnt& thePoint) const;
-
-    Standard_EXPORT void    ResizeMesh(const MeshDS_Mesh& theMesh,
-                                       const Standard_Integer theNbNodes,
-                                       const Standard_Integer theNbCells,
-                                       const Standard_Integer theNbGroups) const;
-
-    Standard_EXPORT void    SetCell(const MeshDS_Mesh& theMesh,
-                                    const Standard_Integer theIndex,
-                                    const MeshDS_Cell& theCell) const;
-
-    Standard_EXPORT void    SetGroup(const MeshDS_Mesh& theMesh,
-                                     const Standard_Integer theIndex,
-                                     const MeshDS_Group& theGroup) const;
-
-    Standard_EXPORT void    SetNode(const MeshDS_Cell& theCell,
-                                    const Standard_Integer theIndex,
-                                    const MeshDS_Node& theNode) const;
-    Standard_EXPORT void    SetNode(const MeshDS_Mesh& theMesh,
-                                    const Standard_Integer theIndex,
-                                    const MeshDS_Node& theNode) const;
+    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex) const;
+    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
+                                       const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
+                                       const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
+                                       const gp_Pnt& thePoint) const;
 
     Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
-                                       const MeshAbs_TypeOfCell theCellType,
-                                       const Standard_Integer theNbNodes) const;
+                                       const MeshAbs_TypeOfCell theCellType) const;
+    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
+                                       const TopoDS_Shape& theShape) const;
+    Standard_EXPORT void    UpdateCell(const MeshDS_Cell& theCell,
+                                       const MeshDS_SequenceOfObject& theVertices) const;
 
     Standard_EXPORT void    UpdateGroup(const MeshDS_Group& theGroup,
                                         const TCollection_AsciiString& theName) const;
 
-    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
-                                       const gp_Pnt1d& thePoint) const;
-    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
-                                       const gp_Pnt2d& thePoint) const;
-    Standard_EXPORT void    UpdateNode(const MeshDS_Node& theNode,
-                                       const gp_Pnt& thePoint) const;
-
+    Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
+                                         const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
+                                         const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
+                                         const gp_Pnt& thePoint) const;
 
 protected:
 

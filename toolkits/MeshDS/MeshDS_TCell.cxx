@@ -19,10 +19,15 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
 #include <MeshDS.hxx>
 #include <MeshDS_TCell.hxx>
+
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -57,46 +62,6 @@ MeshAbs_TypeOfCell MeshDS_TCell::CellType() const
 
 // ============================================================================
 /*!
- *  \brief NbNodes()
-*/
-// ============================================================================
-Standard_Integer MeshDS_TCell::NbNodes() const
-{
-    return myNodes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief Node()
-*/
-// ============================================================================
-const MeshDS_Node& MeshDS_TCell::Node(const Standard_Integer theIndex) const
-{
-    return MeshDS::Node(myNodes.Value(theIndex));
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-const MeshDS_Array1OfObject& MeshDS_TCell::Nodes() const
-{
-    return myNodes;
-}
-
-// ============================================================================
-/*!
- *  \brief Nodes()
-*/
-// ============================================================================
-MeshDS_Array1OfObject& MeshDS_TCell::Nodes()
-{
-    return myNodes;
-}
-
-// ============================================================================
-/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -107,41 +72,57 @@ MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief ResizeNodes()
-*/
-// ============================================================================
-void MeshDS_TCell::ResizeNodes(const Standard_Integer theNbNodes,
-                               const Standard_Boolean toCopyData)
-{
-    myNodes.Resize(1, theNbNodes, toCopyData);
-}
-
-// ============================================================================
-/*!
  *  \brief SetCellType()
 */
 // ============================================================================
-void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theCellType)
+void MeshDS_TCell::SetCellType(const MeshAbs_TypeOfCell theType)
 {
-    myCellType = theCellType;
+    myCellType = theType;
 }
 
 // ============================================================================
 /*!
- *  \brief SetNode()
+ *  \brief SetShape()
 */
 // ============================================================================
-void MeshDS_TCell::SetNode(const Standard_Integer theIndex,
-                           const MeshDS_Node& theNode)
+void MeshDS_TCell::SetShape(const TopoDS_Shape &theShape)
 {
-    myNodes.SetValue(theIndex, theNode);
+    myShape = theShape;
 }
 
+// ============================================================================
+/*!
+ *  \brief Shape()
+*/
+// ============================================================================
+const TopoDS_Shape& MeshDS_TCell::Shape() const
+{
+    return myShape;
+}
 
+// ============================================================================
+/*!
+ *  \brief Vertices()
+*/
+// ============================================================================
+const MeshDS_SequenceOfObject& MeshDS_TCell::Vertices() const
+{
+    return myVertices;
+}
+
+// ============================================================================
+/*!
+ *  \brief Vertices()
+*/
+// ============================================================================
+MeshDS_SequenceOfObject& MeshDS_TCell::Vertices()
+{
+    return myVertices;
+}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TMeshEntity)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TMeshEntity)
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject)

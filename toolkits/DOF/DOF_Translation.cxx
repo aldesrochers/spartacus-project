@@ -36,6 +36,17 @@ DOF_Translation::DOF_Translation()
 
 // ============================================================================
 /*!
+ *  \brief Constructor
+*/
+// ============================================================================
+DOF_Translation::DOF_Translation(const DOFAbs_TypeOfAxis theAxisType)
+    : DOF_Motion(theAxisType)
+{
+
+}
+
+// ============================================================================
+/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -134,6 +145,16 @@ Standard_Real DOF_Translation::InitialForce() const
 Standard_Real DOF_Translation::InitialVelocity() const
 {
     return myInitialVelocity;
+}
+
+// ============================================================================
+/*!
+ *  \brief MotionType()
+*/
+// ============================================================================
+DOFAbs_TypeOfMotion DOF_Translation::MotionType() const
+{
+    return DOFAbs_TOM_Translation;
 }
 
 // ============================================================================

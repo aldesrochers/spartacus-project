@@ -25,14 +25,10 @@
 
 // OpenCascade
 #include <Standard.hxx>
-#include <Standard_DefineHandle.hxx>
-#include <Standard_Transient.hxx>
+#include <Standard_DefineAlloc.hxx>
 
-// Forward declarations
-class FEA_Analysis;
-
-// Handles
-DEFINE_STANDARD_HANDLE(FEA_Analysis, Standard_Transient)
+// Spartacus
+#include <ModelDS_Model.hxx>
 
 
 // ============================================================================
@@ -40,7 +36,7 @@ DEFINE_STANDARD_HANDLE(FEA_Analysis, Standard_Transient)
  *  \brief FEA_Analysis
 */
 // ============================================================================
-class FEA_Analysis : public Standard_Transient
+class FEA_Analysis
 {
 
 public:
@@ -59,7 +55,11 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(FEA_Analysis, Standard_Transient);
+    Standard_EXPORT void        SetModel(const ModelDS_Model& theModel);
+
+private:
+
+    ModelDS_Model       myModel;
 
 };
 

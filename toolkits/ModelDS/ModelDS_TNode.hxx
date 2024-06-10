@@ -23,12 +23,10 @@
 #ifndef __ModelDS_TNode_hxx__
 #define __ModelDS_TNode_hxx__
 
-// OpenCascade
-#include <gp_Pnt.hxx>
-
 // Spartacus
+#include <MeshDS_Vertex.hxx>
+#include <ModelDS_ListOfObject.hxx>
 #include <ModelDS_TObject.hxx>
-#include <ModelRep_Point.hxx>
 
 // Forward declarations
 class ModelDS_TNode;
@@ -55,9 +53,17 @@ public:
 
     Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
 
+public:
+
+    Standard_EXPORT const ModelDS_ListOfObject& DOFs() const;
+    Standard_EXPORT ModelDS_ListOfObject&       DOFs();
+    Standard_EXPORT void                        SetVertex(const MeshDS_Vertex& theVertex);
+    Standard_EXPORT const MeshDS_Vertex&        Vertex() const;
+
 private:
 
-    Handle(ModelRep_Point)      myPoint;
+    ModelDS_ListOfObject        myDOFs;
+    MeshDS_Vertex               myVertex;
 
 public:
 

@@ -1,0 +1,4 @@
+ModelAlgo
+
+This packages contains classes that describes algorithms used to operate
+on finite element models.
