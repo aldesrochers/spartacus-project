@@ -26,12 +26,15 @@ using namespace std;
 // Spartacus
 #include <DOF_Translation.hxx>
 #include <FEA_LinearAnalysis.hxx>
-#include <Mech1d_ElasticTruss.hxx>
 #include <MeshDS_Builder.hxx>
 #include <MeshDS_Tool.hxx>
 #include <ModelDS_Builder.hxx>
 #include <ModelDS_Tool.hxx>
-#include <ModelAlgo_Numberer.hxx>
+#include <ModelAlgo_ElementaryMatrices.hxx>
+#include <ModelAlgo_PlainNumberer.hxx>
+#include <ModelRep_MechElement1d.hxx>
+
+#include <UCM_Elastic.hxx>
 
 
 // ============================================================================
@@ -68,6 +71,9 @@ int main(int argc, char** argv)
     aModelBuilder.AddDOF(N1, DX1);
     aModelBuilder.AddDOF(N2, DX2);
 
+    //Handle(Mech1d_ElasticTruss) aTruss = new Mech1d_ElasticTruss(gp_Pnt1d(0), gp_Pnt1d(1), 2E11, 1E-4);
+    //Handle(ModelRep_MechElement1d) aTrussModel = new ModelRep_MechElement1d(aTruss);
+
     ModelDS_Element E1;
     aModelBuilder.MakeElement(E1);
     aModelBuilder.AddDOF(E1, DX1);
@@ -79,6 +85,7 @@ int main(int argc, char** argv)
 
     ModelDS_Boundary aBoundary;
     aModelBuilder.MakeBoundary(aBoundary);
+    aModelBuilder.AddDOF(aBoundary, DX1);
 
     ModelDS_Load aLoad;
     aModelBuilder.MakeLoad(aLoad);
@@ -88,12 +95,22 @@ int main(int argc, char** argv)
     aModelBuilder.AddBoundary(aLoading, aBoundary);
     aModelBuilder.AddLoad(aLoading, aLoad);
 
-    ModelAlgo_Numberer aNumberer;
-    aNumberer.SetLoading(aLoading);
-    aNumberer.SetModel(aModel);
-    aNumberer.Perform();
+
+    ModelAlgo_ElementaryMatrices anAlgo;
+    anAlgo.SetModel(aModel);
+    //cout << anAlgo.Perform() << endl;
 
 
+    cmp_Elastic aMaterial(2E11, 1E-4);
+    Handle(UCM_Elastic) aModel2 = new UCM_Elastic(aMaterial);
+
+    math_Vector VV1(1,2,0.);
+    VV1(1) = 1E-3;
+    VV1(2) = 0;
+
+    aModel2->SetTrialVariables(VV1);
+    cout << aModel2->TrialDerivatives() << endl;
+    cout << aModel2->TrialValues() << endl;
 
     return 0;
 }

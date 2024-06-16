@@ -81,5 +81,5 @@ const gp_Pnt1d& Mech1d_Truss::Point2() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
-IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element)
+IMPLEMENT_STANDARD_HANDLE(Mech1d_Truss, FE_Element)
+IMPLEMENT_STANDARD_RTTIEXT(Mech1d_Truss, FE_Element)

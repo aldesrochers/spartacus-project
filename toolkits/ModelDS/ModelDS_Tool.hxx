@@ -29,9 +29,13 @@
 
 // Spartacus
 #include <MeshDS_Vertex.hxx>
+#include <ModelDS_Boundary.hxx>
 #include <ModelDS_Element.hxx>
+#include <ModelDS_Equation.hxx>
 #include <ModelDS_ListOfObject.hxx>
+#include <ModelDS_Loading.hxx>
 #include <ModelDS_Node.hxx>
+#include <ModelDS_Mapping.hxx>
 #include <ModelDS_Model.hxx>
 #include <ModelDS_SequenceOfObject.hxx>
 
@@ -50,9 +54,16 @@ public:
 
 public:
 
+    static Standard_EXPORT const ModelDS_ListOfObject&      Boundaries(const ModelDS_Loading& theLoading);
+
+    static Standard_EXPORT const ModelDS_ListOfObject&      DOFs(const ModelDS_Boundary& theBoundary);
     static Standard_EXPORT const ModelDS_SequenceOfObject&  DOFs(const ModelDS_Element& theElement);
+    static Standard_EXPORT const ModelDS_SequenceOfObject&  DOFs(const ModelDS_Mapping& theMapping);
 
     static Standard_EXPORT const ModelDS_ListOfObject&      Elements(const ModelDS_Model& theModel);
+
+    static Standard_EXPORT Standard_Boolean                 IsFree(const ModelDS_Equation& theEquation);
+    static Standard_EXPORT Standard_Boolean                 IsFixed(const ModelDS_Equation& theEquation);
 
     static Standard_EXPORT const MeshDS_Vertex&             Vertex(const ModelDS_Node& theNode);
 

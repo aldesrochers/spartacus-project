@@ -53,9 +53,13 @@ public:
 
 public:
 
+    virtual Standard_EXPORT math_Vector         CommitedDisplacements() const = 0;
+    virtual Standard_EXPORT math_Vector         CommitedForces() const = 0;
     virtual Standard_EXPORT math_Matrix         CommitedStiffness() const = 0;
     virtual Standard_EXPORT math_Matrix         InitialStiffness() const = 0;
+    virtual Standard_EXPORT void                SetTrialDisplacements(const math_Vector& theDisplacements) = 0;
     virtual Standard_EXPORT math_Vector         TrialDisplacements() const = 0;
+    virtual Standard_EXPORT math_Vector         TrialForces() const = 0;
     virtual Standard_EXPORT math_Matrix         TrialStiffness() const = 0;
 
 public:

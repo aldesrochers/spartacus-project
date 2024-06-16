@@ -56,10 +56,13 @@ public:
 
     Standard_EXPORT const ModelDS_ListOfObject&     DOFs() const;
     Standard_EXPORT ModelDS_ListOfObject&           DOFs();
+    Standard_EXPORT Standard_Boolean                IsFixed() const;
+    Standard_EXPORT void                            SetFixed(const Standard_Boolean isFixed);
 
 private:
 
     ModelDS_ListOfObject        myDOFs;
+    Standard_Boolean            myIsFixed;
 
 public:
 

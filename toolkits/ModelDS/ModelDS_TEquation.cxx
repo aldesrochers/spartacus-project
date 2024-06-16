@@ -66,12 +66,32 @@ ModelDS_ListOfObject& ModelDS_TEquation::DOFs()
 
 // ============================================================================
 /*!
+ *  \brief IsFixed()
+*/
+// ============================================================================
+Standard_Boolean ModelDS_TEquation::IsFixed() const
+{
+    return myIsFixed;
+}
+
+// ============================================================================
+/*!
  *  \brief ObjectType()
 */
 // ============================================================================
 ModelAbs_TypeOfObject ModelDS_TEquation::ObjectType() const
 {
     return ModelAbs_OBJ_Equation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetFixed()
+*/
+// ============================================================================
+void ModelDS_TEquation::SetFixed(const Standard_Boolean isFixed)
+{
+    myIsFixed = isFixed;
 }
 
 

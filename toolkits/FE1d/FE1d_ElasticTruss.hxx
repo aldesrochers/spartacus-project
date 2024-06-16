@@ -20,61 +20,40 @@
 // ============================================================================
 
 
-#ifndef __FE1d_ElasticTruss_hxx__
-#define __FE1d_ElasticTruss_hxx__
+#ifndef __FE1d_Truss_hxx__
+#define __FE1d_Truss_hxx__
+
 
 // Spartacus
-#include <cmp_Elastic.hxx>
-#include <FE1d_Truss.hxx>
+#include <FE1d_Element.hxx>
+
 
 // Forward declarations
-class FE1d_ElasticTruss;
+class FE1d_Truss;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE1d_ElasticTruss, FE1d_Truss)
+DEFINE_STANDARD_HANDLE(FE1d_Truss, FE1d_Element)
 
 
 // ============================================================================
 /*!
- *  \brief FE1d_ElasticTruss
+ *  \brief FE1d_Truss
 */
 // ============================================================================
-class FE1d_ElasticTruss : public FE1d_Truss
+class FE1d_Truss : public FE1d_Element
 {
 
 public:
     // constructors
-    Standard_EXPORT FE1d_ElasticTruss();
-    Standard_EXPORT FE1d_ElasticTruss(const Handle(FE1d_Node)& theNode1,
-                                      const Handle(FE1d_Node)& theNode2,
-                                      const Standard_Real theModulous,
-                                      const Standard_Real theArea);
+    Standard_EXPORT FE1d_Truss();
     // destructors
-    Standard_EXPORT ~FE1d_ElasticTruss();
+    Standard_EXPORT ~FE1d_Truss();
 
 public:
 
-    Standard_EXPORT math_Matrix         CommitedDerivatives() const Standard_OVERRIDE;
-    Standard_EXPORT math_Matrix         InitialDerivatives() const Standard_OVERRIDE;
-    Standard_EXPORT math_Matrix         TrialDerivatives() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-    Standard_EXPORT void                SetArea(const Standard_Real theArea);
-    Standard_EXPORT void                SetModulous(const Standard_Real theModulous);
-
-private:
-
-    Standard_Real       myArea;
-    Standard_Real       myModulous;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE1d_ElasticTruss, FE1d_Truss)
+    DEFINE_STANDARD_RTTIEXT(FE1d_Truss, FE1d_Element)
 
 };
 
 
-#endif // __FE1d_ElasticTruss_hxx__
+#endif // __FE1d_Truss_hxx__

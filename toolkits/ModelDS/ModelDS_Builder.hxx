@@ -33,8 +33,10 @@
 #include <ModelDS_Boundary.hxx>
 #include <ModelDS_DOF.hxx>
 #include <ModelDS_Element.hxx>
+#include <ModelDS_Equation.hxx>
 #include <ModelDS_Load.hxx>
 #include <ModelDS_Loading.hxx>
+#include <ModelDS_Mapping.hxx>
 #include <ModelDS_Model.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
@@ -66,7 +68,11 @@ public:
                                    const ModelDS_DOF& theDOF) const;
     Standard_EXPORT void    AddDOF(const ModelDS_Element& theElement,
                                    const ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Equation& theEquation,
+                                   const ModelDS_DOF& theDOF) const;
     Standard_EXPORT void    AddDOF(const ModelDS_Load& theLoad,
+                                   const ModelDS_DOF& theDOF) const;
+    Standard_EXPORT void    AddDOF(const ModelDS_Mapping& theMapping,
                                    const ModelDS_DOF& theDOF) const;
     Standard_EXPORT void    AddDOF(const ModelDS_Node& theNode,
                                    const ModelDS_DOF& theDOF) const;
@@ -85,9 +91,15 @@ public:
 
     Standard_EXPORT void    MakeElement(ModelDS_Element& theElement) const;
 
+    Standard_EXPORT void    MakeEquation(ModelDS_Equation& theEquation) const;
+    Standard_EXPORT void    MakeEquation(ModelDS_Equation& theEquation,
+                                         const Standard_Boolean isFixed) const;
+
     Standard_EXPORT void    MakeLoad(ModelDS_Load& theLoad) const;
 
     Standard_EXPORT void    MakeLoading(ModelDS_Loading& theLoading) const;
+
+    Standard_EXPORT void    MakeMapping(ModelDS_Mapping& theMapping) const;
 
     Standard_EXPORT void    MakeModel(ModelDS_Model& theModel) const;
 
@@ -97,6 +109,9 @@ public:
 
     Standard_EXPORT void    UpdateDOF(const ModelDS_DOF& theDOF,
                                       const ModelAbs_TypeOfDOF theDOFType) const;
+
+    Standard_EXPORT void    UpdateEquation(const ModelDS_Equation& theEquation,
+                                           const Standard_Boolean isFixed) const;
 
     Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
                                        const MeshDS_Vertex& theVertex) const;

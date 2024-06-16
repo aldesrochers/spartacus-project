@@ -46,22 +46,22 @@ ModelDS_TMapping::~ModelDS_TMapping()
 
 // ============================================================================
 /*!
- *  \brief Equations()
+ *  \brief DOFs()
 */
 // ============================================================================
-const ModelDS_SequenceOfObject& ModelDS_TMapping::Equations() const
+const ModelDS_SequenceOfObject& ModelDS_TMapping::DOFs() const
 {
-    return myEquations;
+    return myDOFs;
 }
 
 // ============================================================================
 /*!
- *  \brief Equations()
+ *  \brief DOFs()
 */
 // ============================================================================
-ModelDS_SequenceOfObject& ModelDS_TMapping::Equations()
+ModelDS_SequenceOfObject& ModelDS_TMapping::DOFs()
 {
-    return myEquations;
+    return myDOFs;
 }
 
 // ============================================================================

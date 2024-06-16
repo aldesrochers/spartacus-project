@@ -23,20 +23,20 @@
 #ifndef __FE1d_Element_hxx__
 #define __FE1d_Element_hxx__
 
-// Spartacus
-#include <FE1d_Node.hxx>
-#include <FE1d_Object.hxx>
-#include <TColDOF_SequenceOfDOF.hxx>
 
 // OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 #include <math_Matrix.hxx>
 #include <math_Vector.hxx>
+
 
 // Forward declarations
 class FE1d_Element;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE1d_Element, FE1d_Object)
+DEFINE_STANDARD_HANDLE(FE1d_Element, Standard_Transient)
 
 
 // ============================================================================
@@ -44,7 +44,7 @@ DEFINE_STANDARD_HANDLE(FE1d_Element, FE1d_Object)
  *  \brief FE1d_Element
 */
 // ============================================================================
-class FE1d_Element : public FE1d_Object
+class FE1d_Element : public Standard_Transient
 {
 
 public:
@@ -55,11 +55,7 @@ public:
 
 public:
 
-    virtual Standard_EXPORT TColDOF_SequenceOfDOF   Connectivity() const = 0;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE1d_Element, FE1d_Object)
+    DEFINE_STANDARD_RTTIEXT(FE1d_Element, Standard_Transient)
 
 };
 

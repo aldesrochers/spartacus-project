@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <UXSM_Section.hxx>
+#include <XSM_Section.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-UXSM_Section::UXSM_Section()
+XSM_Section::XSM_Section()
 {
 
 }
@@ -39,244 +39,15 @@ UXSM_Section::UXSM_Section()
  *  \brief Destructor
 */
 // ============================================================================
-UXSM_Section::~UXSM_Section()
+XSM_Section::~XSM_Section()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief CommitState()
-*/
-// ============================================================================
-Standard_Boolean UXSM_Section::CommitState()
-{
-    myPreviousStiffness = myCurrentStiffness;
-    myPreviousStrain = myCurrentStrain;
-    myPreviousForce = myCurrentForce;
-    myPreviousTemperature = myCurrentTemperature;
-    myPreviousTime = myCurrentTime;
-    return Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief CurrentForce()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::CurrentForce() const
-{
-    return myCurrentForce;
-}
-
-// ============================================================================
-/*!
- *  \brief CurrentStiffness()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::CurrentStiffness() const
-{
-    return myCurrentStiffness;
-}
-
-// ============================================================================
-/*!
- *  \brief CurrentStrain()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::CurrentStrain() const
-{
-    return myCurrentStrain;
-}
-
-// ============================================================================
-/*!
- *  \brief CurrentTemperature()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::CurrentTemperature() const
-{
-    return myCurrentTemperature;
-}
-
-// ============================================================================
-/*!
- *  \brief CurrentTime()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::CurrentTime() const
-{
-    return myCurrentTime;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousForce()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::PreviousForce() const
-{
-    return myPreviousForce;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousStiffness()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::PreviousStiffness() const
-{
-    return myPreviousStiffness;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousStrain()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::PreviousStrain() const
-{
-    return myPreviousStrain;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousTemperature()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::PreviousTemperature() const
-{
-    return myPreviousTemperature;
-}
-
-// ============================================================================
-/*!
- *  \brief PreviousTime()
-*/
-// ============================================================================
-Standard_Real UXSM_Section::PreviousTime() const
-{
-    return myPreviousTime;
-}
-
-// ============================================================================
-/*!
- *  \brief RevertToPreviousState()
-*/
-// ============================================================================
-Standard_Boolean UXSM_Section::RevertToPreviousState()
-{
-    myCurrentStiffness = myPreviousStiffness;
-    myCurrentStrain = myPreviousStrain;
-    myCurrentForce = myPreviousForce;
-    myCurrentTemperature = myPreviousTemperature;
-    myCurrentTime = myPreviousTime;
-    return Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCurrentForce()
-*/
-// ============================================================================
-void UXSM_Section::SetCurrentForce(const Standard_Real theForce)
-{
-    myCurrentForce = theForce;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCurrentStiffness()
-*/
-// ============================================================================
-void UXSM_Section::SetCurrentStiffness(const Standard_Real theStiffness)
-{
-    myCurrentStiffness = theStiffness;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCurrentStrain()
-*/
-// ============================================================================
-void UXSM_Section::SetCurrentStrain(const Standard_Real theStrain)
-{
-    myCurrentStrain = theStrain;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCurrentTemperature()
-*/
-// ============================================================================
-void UXSM_Section::SetCurrentTemperature(const Standard_Real theTemperature)
-{
-    myCurrentTemperature = theTemperature;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCurrentTime()
-*/
-// ============================================================================
-void UXSM_Section::SetCurrentTime(const Standard_Real theTime)
-{
-    myCurrentTime = theTime;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPreviousForce()
-*/
-// ============================================================================
-void UXSM_Section::SetPreviousForce(const Standard_Real theForce)
-{
-    myPreviousForce = theForce;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPreviousStiffness()
-*/
-// ============================================================================
-void UXSM_Section::SetPreviousStiffness(const Standard_Real theStiffness)
-{
-    myPreviousStiffness = theStiffness;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPreviousStrain()
-*/
-// ============================================================================
-void UXSM_Section::SetPreviousStrain(const Standard_Real theStrain)
-{
-    myPreviousStrain = theStrain;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPreviousTemperature()
-*/
-// ============================================================================
-void UXSM_Section::SetPreviousTemperature(const Standard_Real theTemperature)
-{
-    myPreviousTemperature = theTemperature;
-}
-
-// ============================================================================
-/*!
- *  \brief SetPreviousTime()
-*/
-// ============================================================================
-void UXSM_Section::SetPreviousTime(const Standard_Real theTime)
-{
-    myPreviousTime = theTime;
-}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(UXSM_Section, Standard_Transient);
-IMPLEMENT_STANDARD_RTTIEXT(UXSM_Section, Standard_Transient);
+IMPLEMENT_STANDARD_HANDLE(XSM_Section, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(XSM_Section, Standard_Transient)

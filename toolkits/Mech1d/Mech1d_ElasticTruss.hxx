@@ -24,6 +24,7 @@
 #define __Mech1d_ElasticTruss_hxx__
 
 // Spartacus
+#include <material_Elastic.hxx>
 #include <Mech1d_Truss.hxx>
 
 // Forward declarations
@@ -45,31 +46,19 @@ public:
     // constructors
     Standard_EXPORT Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
                                         const gp_Pnt1d& thePoint2,
-                                        const Standard_Real theModulous,
+                                        const material_Elastic& theMaterial,
                                         const Standard_Real theArea);
     // destructors
     Standard_EXPORT ~Mech1d_ElasticTruss();
 
-public:
-
-    Standard_EXPORT math_Matrix         CommitedStiffness() const Standard_OVERRIDE;
-    Standard_EXPORT math_Matrix         InitialStiffness() const Standard_OVERRIDE;
-    Standard_EXPORT math_Vector         TrialDisplacements() const Standard_OVERRIDE;
-    Standard_EXPORT math_Matrix         TrialStiffness() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT Standard_Real       Area() const;
-    Standard_EXPORT Standard_Real       Modulous() const;
-
 private:
 
     Standard_Real       myArea;
-    Standard_Real       myModulous;
+    material_Elastic    myMaterial;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss);
+    DEFINE_STANDARD_RTTIEXT(Mech1d_ElasticTruss, Mech1d_Truss)
 
 };
 

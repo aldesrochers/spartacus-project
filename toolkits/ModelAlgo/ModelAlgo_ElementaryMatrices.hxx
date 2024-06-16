@@ -24,8 +24,10 @@
 #define __ModelAlgo_ElementaryMatrices_hxx__
 
 // Spartacus
+#include <ModelAbs_TypeOfMatrix.hxx>
+#include <ModelAbs_TypeOfNumberer.hxx>
 #include <ModelAlgo_Command.hxx>
-
+#include <ModelDS_Model.hxx>
 
 // ============================================================================
 /*!
@@ -45,6 +47,16 @@ public:
     // destructors
     Standard_EXPORT ~ModelAlgo_ElementaryMatrices();
 
+public:
+
+    Standard_EXPORT Standard_Boolean    Perform();
+    Standard_EXPORT void                SetModel(const ModelDS_Model& theModel);
+
+private:
+
+    ModelAbs_TypeOfMatrix       myMatrixType;
+    ModelDS_Model               myModel;
+    ModelAbs_TypeOfNumberer     myNumbererType;
 
 };
 

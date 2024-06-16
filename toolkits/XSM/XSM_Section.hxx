@@ -20,87 +20,58 @@
 // ============================================================================
 
 
-#ifndef __UXSM_Section_hxx__
-#define __UXSM_Section_hxx__
+#ifndef __XSM_Section_hxx__
+#define __XSM_Section_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineHandle.hxx>
 #include <Standard_Transient.hxx>
+#include <math_Matrix.hxx>
+#include <math_Vector.hxx>
 
 // Forward declarations
-class UXSM_Section;
+class XSM_Section;
 
 // Handles
-DEFINE_STANDARD_HANDLE(UXSM_Section, Standard_Transient);
+DEFINE_STANDARD_HANDLE(XSM_Section, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief UXSM_Section
- *  Base class implementation of all uniaxial section models.
+ *  \brief XSM_Section
 */
 // ============================================================================
-class UXSM_Section : public Standard_Transient
+class XSM_Section : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT UXSM_Section();
+    Standard_EXPORT XSM_Section();
     // destructors
-    Standard_EXPORT ~UXSM_Section();
+    Standard_EXPORT ~XSM_Section();
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean    CommitState();
-    virtual Standard_EXPORT Standard_Boolean    RevertToPreviousState();
-    virtual Standard_EXPORT Standard_Boolean    UpdateState() = 0;
-
-
-public:
-
-    Standard_EXPORT Standard_Real   CurrentForce() const;
-    Standard_EXPORT Standard_Real   CurrentStiffness() const;
-    Standard_EXPORT Standard_Real   CurrentStrain() const;
-    Standard_EXPORT Standard_Real   CurrentTemperature() const;
-    Standard_EXPORT Standard_Real   CurrentTime() const;
-    Standard_EXPORT Standard_Real   PreviousForce() const;
-    Standard_EXPORT Standard_Real   PreviousStiffness() const;
-    Standard_EXPORT Standard_Real   PreviousStrain() const;
-    Standard_EXPORT Standard_Real   PreviousTemperature() const;
-    Standard_EXPORT Standard_Real   PreviousTime() const;
-    Standard_EXPORT void            SetCurrentStrain(const Standard_Real theStrain);
-    Standard_EXPORT void            SetCurrentTemperature(const Standard_Real theTemperature);
-    Standard_EXPORT void            SetCurrentTime(const Standard_Real theTime);
-
-protected:
-
-    Standard_EXPORT void            SetCurrentForce(const Standard_Real theForce);
-    Standard_EXPORT void            SetCurrentStiffness(const Standard_Real theStiffness);
-    Standard_EXPORT void            SetPreviousForce(const Standard_Real theForce);
-    Standard_EXPORT void            SetPreviousStiffness(const Standard_Real theStiffness);
-    Standard_EXPORT void            SetPreviousStrain(const Standard_Real theStrain);
-    Standard_EXPORT void            SetPreviousTemperature(const Standard_Real theTemperature);
-    Standard_EXPORT void            SetPreviousTime(const Standard_Real theTime);
-
-protected:
-
-    Standard_Real       myCurrentStiffness;
-    Standard_Real       myCurrentStrain;
-    Standard_Real       myCurrentForce;
-    Standard_Real       myCurrentTemperature;
-    Standard_Real       myCurrentTime;
-    Standard_Real       myPreviousStiffness;
-    Standard_Real       myPreviousStrain;
-    Standard_Real       myPreviousForce;
-    Standard_Real       myPreviousTemperature;
-    Standard_Real       myPreviousTime;
+    virtual Standard_EXPORT math_Matrix     CommitedDerivatives() const = 0;
+    virtual Standard_EXPORT math_Vector     CommitedValues() const = 0;
+    virtual Standard_EXPORT math_Vector     CommitedVariables() const = 0;
+    virtual Standard_EXPORT void            CommitState() = 0;
+    virtual Standard_EXPORT math_Matrix     InitialDerivatives() const = 0;
+    virtual Standard_EXPORT math_Vector     InitialValues() const = 0;
+    virtual Standard_EXPORT math_Vector     InitialVariables() const = 0;
+    virtual Standard_EXPORT void            RevertToCommitState() = 0;
+    virtual Standard_EXPORT void            RevertToInitialState() = 0;
+    virtual Standard_EXPORT void            SetTrialVariables(const math_Vector& theVariables) = 0;
+    virtual Standard_EXPORT math_Matrix     TrialDerivatives() const = 0;
+    virtual Standard_EXPORT math_Vector     TrialValues() const = 0;
+    virtual Standard_EXPORT math_Vector     TrialVariables() const = 0;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(UXSM_Section, Standard_Transient);
+    DEFINE_STANDARD_RTTIEXT(XSM_Section, Standard_Transient)
 
 };
 
 
-#endif // __UXSM_Section_hxx__
+#endif // __XSM_Section_hxx__

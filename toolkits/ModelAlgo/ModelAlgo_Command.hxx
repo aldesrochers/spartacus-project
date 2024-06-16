@@ -50,6 +50,11 @@ public:
 
     Standard_EXPORT Standard_Boolean        IsDone() const;
 
+protected:
+
+    Standard_EXPORT void        SetDone();
+    Standard_EXPORT void        SetNotDone();
+
 private:
 
     Standard_Boolean        myIsDone;

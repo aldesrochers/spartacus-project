@@ -29,8 +29,10 @@
 
 // Spartacus
 #include <ModelAbs_TypeOfObject.hxx>
+#include <ModelDS_Boundary.hxx>
 #include <ModelDS_DOF.hxx>
 #include <ModelDS_Element.hxx>
+#include <ModelDS_Equation.hxx>
 #include <ModelDS_Model.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelDS_Object.hxx>
@@ -51,12 +53,17 @@ public:
 
 public:
 
+    static Standard_EXPORT const ModelDS_Boundary&          Boundary(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_Boundary&                Boundary(ModelDS_Object& theObject);
 
     static Standard_EXPORT const ModelDS_DOF&               DOF(const ModelDS_Object& theObject);
     static Standard_EXPORT ModelDS_DOF&                     DOF(ModelDS_Object& theObject);
 
     static Standard_EXPORT const ModelDS_Element&           Element(const ModelDS_Object& theObject);
     static Standard_EXPORT ModelDS_Element&                 Element(ModelDS_Object& theObject);
+
+    static Standard_EXPORT const ModelDS_Equation&          Equation(const ModelDS_Object& theObject);
+    static Standard_EXPORT ModelDS_Equation&                Equation(ModelDS_Object& theObject);
 
     static Standard_EXPORT const ModelDS_Model&             Model(const ModelDS_Object& theObject);
     static Standard_EXPORT ModelDS_Model&                   Model(ModelDS_Object& theObject);

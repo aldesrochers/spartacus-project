@@ -37,10 +37,13 @@ enum ModelAbs_TypeOfObject
     ModelAbs_OBJ_Element,
     ModelAbs_OBJ_Equation,
     ModelAbs_OBJ_Mapping,
+    ModelAbs_OBJ_Material,
+    ModelAbs_OBJ_Matrix,
     ModelAbs_OBJ_Model,
     ModelAbs_OBJ_Load,
     ModelAbs_OBJ_Loading,
-    ModelAbs_OBJ_Node
+    ModelAbs_OBJ_Node,
+    ModelAbs_OBJ_Section
 };
 
 

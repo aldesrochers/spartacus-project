@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <FE1d_ElasticTruss.hxx>
+#include <FE1d_Truss.hxx>
 
 
 // ============================================================================
@@ -29,115 +29,25 @@
  *  \brief Constructor
 */
 // ============================================================================
-FE1d_ElasticTruss::FE1d_ElasticTruss()
+FE1d_Truss::FE1d_Truss()
 {
 
 }
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-FE1d_ElasticTruss::FE1d_ElasticTruss(const Handle(FE1d_Node) &theNode1,
-                                     const Handle(FE1d_Node) &theNode2,
-                                     const Standard_Real theModulous,
-                                     const Standard_Real theArea)
-    : FE1d_Truss(theNode1, theNode2),
-    myArea(theArea), myModulous(theModulous)
-{
-
-}
-
 
 // ============================================================================
 /*!
  *  \brief Destructor
 */
 // ============================================================================
-FE1d_ElasticTruss::~FE1d_ElasticTruss()
+FE1d_Truss::~FE1d_Truss()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief Area()
-*/
-// ============================================================================
-Standard_Real FE1d_ElasticTruss::Area() const
-{
-    return myArea;
-}
 
-// ============================================================================
-/*!
- *  \brief CommitedDerivatives()
-*/
-// ============================================================================
-math_Matrix FE1d_ElasticTruss::CommitedDerivatives() const
-{
-    return InitialDerivatives();
-}
-
-// ============================================================================
-/*!
- *  \brief InitialDerivatives()
-*/
-// ============================================================================
-math_Matrix FE1d_ElasticTruss::InitialDerivatives() const
-{
-    Standard_Real Ke = myArea * myModulous / InitialLength();
-    math_Matrix K(1,2,1,2,0.);
-    K(1,1) = Ke;
-    K(1,2) = -Ke;
-    K(2,1) = -Ke;
-    K(2,2) = Ke;
-    return K;
-}
-
-// ============================================================================
-/*!
- *  \brief Modulous()
-*/
-// ============================================================================
-Standard_Real FE1d_ElasticTruss::Modulous() const
-{
-    return myModulous;
-}
-
-// ============================================================================
-/*!
- *  \brief SetArea()
-*/
-// ============================================================================
-void FE1d_ElasticTruss::SetArea(const Standard_Real theArea)
-{
-    myArea = theArea;
-}
-
-// ============================================================================
-/*!
- *  \brief SetModulous()
-*/
-// ============================================================================
-void FE1d_ElasticTruss::SetModulous(const Standard_Real theModulous)
-{
-    myModulous = theModulous;
-}
-
-// ============================================================================
-/*!
- *  \brief TrialDerivatives()
-*/
-// ============================================================================
-math_Matrix FE1d_ElasticTruss::TrialDerivatives() const
-{
-    return InitialDerivatives();
-}
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE1d_ElasticTruss, FE1d_Truss)
-IMPLEMENT_STANDARD_RTTIEXT(FE1d_ElasticTruss, FE1d_Truss)
+IMPLEMENT_STANDARD_HANDLE(FE1d_Truss, FE1d_Element)
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Truss, FE1d_Element)

@@ -24,11 +24,11 @@
 #define __ModelAlgo_Numberer_hxx__
 
 // Spartacus
+#include <ModelAbs_TypeOfNumberer.hxx>
 #include <ModelAlgo_Command.hxx>
-#include <ModelDS_Loading.hxx>
 #include <ModelDS_Mapping.hxx>
 #include <ModelDS_Model.hxx>
-#include <ModelTools_IndexedMapOfObject.hxx>
+
 
 
 // ============================================================================
@@ -45,28 +45,23 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelAlgo_Numberer();
+    Standard_EXPORT ModelAlgo_Numberer(const ModelDS_Model& theModel,
+                                       const ModelAbs_TypeOfNumberer theNumbererType);
     // destructors
     Standard_EXPORT ~ModelAlgo_Numberer();
 
 public:
 
-    Standard_EXPORT const ModelDS_Mapping&   Mapping() const;
-
-public:
-
-    Standard_EXPORT Standard_Boolean        Perform();
-
-public:
-
-    Standard_EXPORT void        SetLoading(const ModelDS_Loading& theLoading);
-    Standard_EXPORT void        SetModel(const ModelDS_Model& theModel);
+    Standard_EXPORT const ModelDS_Mapping&  Mapping() const;
+    Standard_EXPORT operator                ModelDS_Mapping() const;
 
 private:
 
-    ModelDS_Mapping     myMapping;
-    ModelDS_Loading     myLoading;
-    ModelDS_Model       myModel;
+    Standard_EXPORT void    PlainNumerer(const ModelDS_Model& theModel);
+
+protected:
+
+    ModelDS_Mapping                 myMapping;
 
 };
 

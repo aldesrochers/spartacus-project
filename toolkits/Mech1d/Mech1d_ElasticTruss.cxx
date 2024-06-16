@@ -21,6 +21,7 @@
 
 
 // Spartacus
+#include <FEAbs_TypeOfQuantity.hxx>
 #include <Mech1d_ElasticTruss.hxx>
 
 
@@ -32,11 +33,11 @@
 // ============================================================================
 Mech1d_ElasticTruss::Mech1d_ElasticTruss(const gp_Pnt1d& thePoint1,
                                          const gp_Pnt1d& thePoint2,
-                                         const Standard_Real theModulous,
+                                         const material_Elastic& theMaterial,
                                          const Standard_Real theArea)
     : Mech1d_Truss(thePoint1, thePoint2),
     myArea(theArea),
-    myModulous(theModulous)
+    myMaterial(theMaterial)
 {
 
 }
@@ -51,74 +52,6 @@ Mech1d_ElasticTruss::~Mech1d_ElasticTruss()
 
 }
 
-// ============================================================================
-/*!
- *  \brief Area()
-*/
-// ============================================================================
-Standard_Real Mech1d_ElasticTruss::Area() const
-{
-    return myArea;
-}
-
-// ============================================================================
-/*!
- *  \brief CommitedStiffness()
-*/
-// ============================================================================
-math_Matrix Mech1d_ElasticTruss::CommitedStiffness() const
-{
-    return InitialStiffness();
-}
-
-// ============================================================================
-/*!
- *  \brief InitialStiffness()
-*/
-// ============================================================================
-math_Matrix Mech1d_ElasticTruss::InitialStiffness() const
-{
-    Standard_Real Ke = myArea * myModulous / InitialLength();
-    math_Matrix K(1,2,1,2,0.);
-    K(1,1) = Ke;
-    K(1,2) = -Ke;
-    K(2,1) = -Ke;
-    K(2,2) = Ke;
-    return K;
-}
-
-// ============================================================================
-/*!
- *  \brief Modulous()
-*/
-// ============================================================================
-Standard_Real Mech1d_ElasticTruss::Modulous() const
-{
-    return myModulous;
-}
-
-// ============================================================================
-/*!
- *  \brief TrialDisplacements()
-*/
-// ============================================================================
-math_Vector Mech1d_ElasticTruss::TrialDisplacements() const
-{
-    math_Vector aVector(1,2,0.);
-    //aVector(1) = myPoint1->DX()->TrialDisplacement();
-    //aVector(2) = myPoint2->DX()->TrialDisplacement();
-    return aVector;
-}
-
-// ============================================================================
-/*!
- *  \brief TrialStiffness()
-*/
-// ============================================================================
-math_Matrix Mech1d_ElasticTruss::TrialStiffness() const
-{
-    return InitialStiffness();
-}
 
 
 // ****************************************************************************

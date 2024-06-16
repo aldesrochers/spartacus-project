@@ -49,5 +49,5 @@ FE1d_Element::~FE1d_Element()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE1d_Element, FE1d_Object)
-IMPLEMENT_STANDARD_RTTIEXT(FE1d_Element, FE1d_Object)
+IMPLEMENT_STANDARD_HANDLE(FE1d_Element, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE1d_Element, Standard_Transient)

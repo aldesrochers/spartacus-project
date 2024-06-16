@@ -74,6 +74,25 @@ ModelAbs_TypeOfObject ModelDS_TElement::ObjectType() const
     return ModelAbs_OBJ_Element;
 }
 
+// ============================================================================
+/*!
+ *  \brief Representation()
+*/
+// ============================================================================
+const Handle(ModelRep_Element)& ModelDS_TElement::Representation() const
+{
+    return myRepresentation;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetRepresentation()
+*/
+// ============================================================================
+void ModelDS_TElement::SetRepresentation(const Handle(ModelRep_Element) &theRepresentation)
+{
+    myRepresentation = theRepresentation;
+}
 
 
 // ****************************************************************************

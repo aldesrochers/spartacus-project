@@ -54,3 +54,25 @@ Standard_Boolean ModelAlgo_Command::IsDone() const
     return myIsDone;
 }
 
+// ============================================================================
+/*!
+ *  \brief SetDone()
+*/
+// ============================================================================
+void ModelAlgo_Command::SetDone()
+{
+    myIsDone = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotDone()
+*/
+// ============================================================================
+void ModelAlgo_Command::SetNotDone()
+{
+    myIsDone = Standard_False;
+}
+
+
+

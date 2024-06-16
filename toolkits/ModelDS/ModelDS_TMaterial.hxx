@@ -49,6 +49,10 @@ public:
 
 public:
 
+    Standard_EXPORT ModelAbs_TypeOfObject   ObjectType() const Standard_OVERRIDE;
+
+public:
+
     DEFINE_STANDARD_RTTIEXT(ModelDS_TMaterial, ModelDS_TObject)
 
 };

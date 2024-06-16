@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <FE_Node.hxx>
+#include <FE_Element.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-FE_Node::FE_Node()
+FE_Element::FE_Element()
 {
 
 }
@@ -39,7 +39,7 @@ FE_Node::FE_Node()
  *  \brief Destructor
 */
 // ============================================================================
-FE_Node::~FE_Node()
+FE_Element::~FE_Element()
 {
 
 }
@@ -50,6 +50,6 @@ FE_Node::~FE_Node()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE_Node, Standard_Transient)
-IMPLEMENT_STANDARD_RTTIEXT(FE_Node, Standard_Transient)
+IMPLEMENT_STANDARD_HANDLE(FE_Element, FE_Function)
+IMPLEMENT_STANDARD_RTTIEXT(FE_Element, FE_Function)
 

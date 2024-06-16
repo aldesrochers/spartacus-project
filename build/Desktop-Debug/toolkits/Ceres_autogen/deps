@@ -17,32 +17,15 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/DOF/DOF_Translation.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/DOFAbs/DOFAbs_TypeOfAxis.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/DOFAbs/DOFAbs_TypeOfMotion.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Node.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Node.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Boundary.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Boundary.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Element.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Element.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Load.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Load.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Node.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Node.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Object.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FE1d/FE1d_Object.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FEA/FEA_Analysis.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FEA/FEA_Analysis.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FEA/FEA_LinearAnalysis.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/FEA/FEA_LinearAnalysis.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Boundary.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Boundary.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Element.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Element.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Function.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Function.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Object.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FE/FE_Object.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/FEAbs/FEAbs_TypeOfQuantity.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_ElasticTruss.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_ElasticTruss.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Element.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Element.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Load.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Load.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Object.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Object.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Truss.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/Mech1d/Mech1d_Truss.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/MeshAbs/MeshAbs_TypeOfCell.hxx \
@@ -92,30 +75,17 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/MeshTools/MeshTools_ObjectMapHasher.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/MeshTools/MeshTools_ObjectMapHasher.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/MeshTools/MeshTools_SequenceOfObject.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Attribute.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Attribute.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_DOF.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_DOF.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Element.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Element.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Material.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Material.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Modelization.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Modelization.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Object.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_Object.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_RealAttribute.cxx \
-	/home/alexis/Projects/spartacus-project/toolkits/Model/Model_RealAttribute.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_Modelization.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_Parameter.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_Phenomenon.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfDOF.hxx \
-	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfDegreeOfFreedom.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfMatrix.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfModelization.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfObject.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelAbs/ModelAbs_TypeOfPhenomenon.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_Command.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_Command.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_ElementaryMatrices.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_ElementaryMatrices.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_LinearAnalysis.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_LinearAnalysis.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_Numberer.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelAlgo/ModelAlgo_Numberer.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS.cxx \
@@ -137,6 +107,8 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Loading.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Mapping.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Mapping.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Matrix.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Matrix.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Model.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Model.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Node.cxx \
@@ -157,12 +129,18 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TLoading.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMapping.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMapping.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMaterial.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMaterial.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMatrix.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TMatrix.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TModel.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TModel.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TNode.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TNode.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TObject.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TObject.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TSection.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_TSection.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Tool.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelDS/ModelDS_Tool.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelLib/ModelLib_Command.cxx \
@@ -171,6 +149,8 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_DOF.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_Element.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_Element.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_Material.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_Material.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_MechElement1d.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_MechElement1d.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/ModelRep/ModelRep_MotionDOF.cxx \
@@ -200,6 +180,16 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/TColDOF/TColDOF_ListOfDOF.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/TColDOF/TColDOF_SequenceOfDOF.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/TColpmp/TColpmp_Array1OfLinearLine.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/UCM/UCM_Elastic.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/UCM/UCM_Elastic.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/UCM/UCM_Material.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/UCM/UCM_Material.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/XSM/XSM_Section.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/XSM/XSM_Section.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/cmf/cmf_Elastic1d.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/cmf/cmf_Elastic1d.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/cmp/cmp_Elastic.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/cmp/cmp_Elastic.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/fep/fep_Rotation.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/fep/fep_Rotation.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/fep/fep_Translation.cxx \
@@ -216,6 +206,12 @@ Ceres_autogen/timestamp: \
 	/home/alexis/Projects/spartacus-project/toolkits/load/load_Force1d.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/load/load_Force2d.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/load/load_Force2d.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/material/material_Elastic.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/material/material_Elastic.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/math/math_HysteresisFunction.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/math/math_HysteresisFunction.hxx \
 	/home/alexis/Projects/spartacus-project/toolkits/pmp/pmp_LinearLine.cxx \
 	/home/alexis/Projects/spartacus-project/toolkits/pmp/pmp_LinearLine.hxx \
+	/home/alexis/Projects/spartacus-project/toolkits/xsf/xsf_Elastic1d.cxx \
+	/home/alexis/Projects/spartacus-project/toolkits/xsf/xsf_Elastic1d.hxx \
 	/usr/bin/cmake

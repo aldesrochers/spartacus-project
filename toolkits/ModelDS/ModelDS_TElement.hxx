@@ -26,6 +26,7 @@
 // Spartacus
 #include <ModelDS_SequenceOfObject.hxx>
 #include <ModelDS_TObject.hxx>
+#include <ModelRep_Element.hxx>
 
 // Forward declarations
 class ModelDS_TElement;
@@ -56,10 +57,13 @@ public:
 
     Standard_EXPORT const ModelDS_SequenceOfObject& DOFs() const;
     Standard_EXPORT ModelDS_SequenceOfObject&       DOFs();
+    Standard_EXPORT const Handle(ModelRep_Element)& Representation() const;
+    Standard_EXPORT void                            SetRepresentation(const Handle(ModelRep_Element)& theRepresentation);
 
 private:
 
     ModelDS_SequenceOfObject    myDOFs;
+    Handle(ModelRep_Element)    myRepresentation;
 
 public:
 

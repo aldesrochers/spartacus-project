@@ -23,8 +23,10 @@
 #ifndef __FE1d_Truss_hxx__
 #define __FE1d_Truss_hxx__
 
+
 // Spartacus
 #include <FE1d_Element.hxx>
+
 
 // Forward declarations
 class FE1d_Truss;
@@ -44,27 +46,8 @@ class FE1d_Truss : public FE1d_Element
 public:
     // constructors
     Standard_EXPORT FE1d_Truss();
-    Standard_EXPORT FE1d_Truss(const Handle(FE1d_Node)& theNode1,
-                               const Handle(FE1d_Node)& theNode2);
     // destructors
     Standard_EXPORT ~FE1d_Truss();
-
-public:
-
-    Standard_EXPORT TColDOF_SequenceOfDOF       Connectivity() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT Standard_Real               InitialLength() const;
-    Standard_EXPORT const Handle(FE1d_Node)&    Node1() const;
-    Standard_EXPORT const Handle(FE1d_Node)&    Node2() const;
-    Standard_EXPORT void                        SetNode1(const Handle(FE1d_Node)& theNode1);
-    Standard_EXPORT void                        SetNode2(const Handle(FE1d_Node)& theNode2);
-
-private:
-
-    Handle(FE1d_Node)       myNode1;
-    Handle(FE1d_Node)       myNode2;
 
 public:
 

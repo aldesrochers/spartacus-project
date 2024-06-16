@@ -19,9 +19,15 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
 #include <ModelAlgo_ElementaryMatrices.hxx>
+#include <ModelAlgo_Numberer.hxx>
+#include <ModelDS.hxx>
+#include <ModelDS_Tool.hxx>
+#include <ModelTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
@@ -30,6 +36,8 @@
 */
 // ============================================================================
 ModelAlgo_ElementaryMatrices::ModelAlgo_ElementaryMatrices()
+    : myMatrixType(ModelAbs_MATRIX_MechanicStiffness),
+      myNumbererType(ModelAbs_NUMBERER_Plain)
 {
 
 }
@@ -44,3 +52,60 @@ ModelAlgo_ElementaryMatrices::~ModelAlgo_ElementaryMatrices()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Perform()
+*/
+// ============================================================================
+Standard_Boolean ModelAlgo_ElementaryMatrices::Perform()
+{
+
+    ModelTools_IndexedMapOfObject aMap;
+    ModelDS_Mapping aMapping = ModelAlgo_Numberer(myModel, myNumbererType).Mapping();
+    const ModelDS_SequenceOfObject& aSequence = ModelDS_Tool::DOFs(aMapping);
+    for(Standard_Integer i=1; i<=aSequence.Size(); i++) {
+        ModelDS_DOF aDOF = ModelDS::DOF(aSequence.Value(i));
+        aMap.Add(aDOF);
+    }
+
+    Standard_Integer nbDOFs = aMap.Size();
+    math_Matrix aMatrix(1, nbDOFs, 1, nbDOFs, 0.);
+
+    const ModelDS_ListOfObject& aList = ModelDS_Tool::Elements(myModel);
+    ModelDS_ListIteratorOfListOfObject anIterator(aList);
+    for(; anIterator.More(); anIterator.Next()) {
+        ModelDS_Element anElement = ModelDS::Element(anIterator.Value());
+        math_Matrix K(1,2,1,2,0.);
+        K(1,1) = 1;
+        K(1,2) = -1;
+        K(2,1) = -1;
+        K(2,2) = 1;
+
+        const ModelDS_SequenceOfObject& aSequence = ModelDS_Tool::DOFs(anElement);
+        for(Standard_Integer i=1; i<=aSequence.Size(); i++) {
+            for(Standard_Integer j=1; j<=aSequence.Size(); j++) {
+                ModelDS_DOF aDOF1 = ModelDS::DOF(aSequence.Value(i));
+                ModelDS_DOF aDOF2 = ModelDS::DOF(aSequence.Value(j));
+                Standard_Integer II = aMap.FindIndex(aDOF1);
+                Standard_Integer JJ = aMap.FindIndex(aDOF2);
+                aMatrix(II,JJ) += K(i,j);
+            }
+        }
+
+
+
+    }
+
+
+    cout << aMatrix << endl;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetModel()
+*/
+// ============================================================================
+void ModelAlgo_ElementaryMatrices::SetModel(const ModelDS_Model &theModel)
+{
+    myModel = theModel;
+}

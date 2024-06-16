@@ -641,7 +641,7 @@ DOXYGEN_DOT_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
 //Details about finding Doxygen
-FIND_PACKAGE_MESSAGE_DETAILS_Doxygen:INTERNAL=[/usr/bin/doxygen][cfound components: doxygen dot ][v1.10.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Doxygen:INTERNAL=[/usr/bin/doxygen][cfound components: doxygen dot ][v1.11.0()]
 //Details about finding OpenGL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[/usr/lib/libOpenGL.so][/usr/lib/libGLX.so][/usr/include][c ][v()]
 //Details about finding Threads
@@ -935,6 +935,8 @@ QT_FEATURE_eglfs_viv_wl:INTERNAL=OFF
 QT_FEATURE_eglfs_vsp2:INTERNAL=OFF
 //Qt feature: eglfs_x11 (from target Qt6::Gui)
 QT_FEATURE_eglfs_x11:INTERNAL=ON
+//Qt feature: elf_private_full_version (from target Qt6::Core)
+QT_FEATURE_elf_private_full_version:INTERNAL=OFF
 //Qt feature: enable_new_dtags (from target Qt6::Core)
 QT_FEATURE_enable_new_dtags:INTERNAL=ON
 //Qt feature: errormessage (from target Qt6::Widgets)

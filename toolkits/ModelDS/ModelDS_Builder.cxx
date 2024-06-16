@@ -26,9 +26,11 @@ using namespace std;
 #include <ModelDS_Builder.hxx>
 #include <ModelDS_TBoundary.hxx>
 #include <ModelDS_TElement.hxx>
+#include <ModelDS_TEquation.hxx>
 #include <ModelDS_TDOF.hxx>
 #include <ModelDS_TLoad.hxx>
 #include <ModelDS_TLoading.hxx>
+#include <ModelDS_TMapping.hxx>
 #include <ModelDS_TModel.hxx>
 #include <ModelDS_TNode.hxx>
 
@@ -97,12 +99,38 @@ void ModelDS_Builder::AddDOF(const ModelDS_Element &theElement,
  *  \brief AddDOF()
 */
 // ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Equation &theEquation,
+                             const ModelDS_DOF& theDOF) const
+{
+    const Handle(ModelDS_TEquation)& aTEquation = *((Handle(ModelDS_TEquation)*) &theEquation.TObject());
+    ModelDS_ListOfObject& aList = aTEquation->DOFs();
+    aList.Append(theDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
 void ModelDS_Builder::AddDOF(const ModelDS_Load &theLoad,
                              const ModelDS_DOF& theDOF) const
 {
     const Handle(ModelDS_TLoad)& aTLoad = *((Handle(ModelDS_TLoad)*) &theLoad.TObject());
     ModelDS_ListOfObject& aList = aTLoad->DOFs();
     aList.Append(theDOF);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+void ModelDS_Builder::AddDOF(const ModelDS_Mapping &theMapping,
+                             const ModelDS_DOF& theDOF) const
+{
+    const Handle(ModelDS_TMapping)& aTMapping = *((Handle(ModelDS_TMapping)*) &theMapping.TObject());
+    ModelDS_SequenceOfObject& aSequence = aTMapping->DOFs();
+    aSequence.Append(theDOF);
 }
 
 // ============================================================================
@@ -191,6 +219,29 @@ void ModelDS_Builder::MakeElement(ModelDS_Element &theElement) const
 
 // ============================================================================
 /*!
+ *  \brief MakeEquation()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeEquation(ModelDS_Equation &theEquation) const
+{
+    Handle(ModelDS_TEquation) aTEquation = new ModelDS_TEquation();
+    MakeObject(theEquation, aTEquation);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeEquation()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeEquation(ModelDS_Equation &theEquation,
+                                   const Standard_Boolean isFixed) const
+{
+    MakeEquation(theEquation);
+    UpdateEquation(theEquation, isFixed);
+}
+
+// ============================================================================
+/*!
  *  \brief MakeLoad()
 */
 // ============================================================================
@@ -209,6 +260,17 @@ void ModelDS_Builder::MakeLoading(ModelDS_Loading &theLoading) const
 {
     Handle(ModelDS_TLoading) aTLoading = new ModelDS_TLoading();
     MakeObject(theLoading, aTLoading);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeMapping()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeMapping(ModelDS_Mapping &theMapping) const
+{
+    Handle(ModelDS_TMapping) aTMapping = new ModelDS_TMapping();
+    MakeObject(theMapping, aTMapping);
 }
 
 // ============================================================================
@@ -266,6 +328,18 @@ void ModelDS_Builder::UpdateDOF(const ModelDS_DOF &theDOF,
 {
     const Handle(ModelDS_TDOF)& aTDOF = *((Handle(ModelDS_TDOF)*) &theDOF.TObject());
     aTDOF->SetDOFType(theDOFType);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateEquation()
+*/
+// ============================================================================
+void ModelDS_Builder::UpdateEquation(const ModelDS_Equation &theEquation,
+                                     const Standard_Boolean isFixed) const
+{
+    const Handle(ModelDS_TEquation)& aTEquation = *((Handle(ModelDS_TEquation)*) &theEquation.TObject());
+    aTEquation->SetFixed(isFixed);
 }
 
 // ============================================================================

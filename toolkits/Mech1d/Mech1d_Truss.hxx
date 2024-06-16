@@ -25,13 +25,13 @@
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
-#include <Mech1d_Element.hxx>
+#include <FE_Element.hxx>
 
 // Forward declarations
 class Mech1d_Truss;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
+DEFINE_STANDARD_HANDLE(Mech1d_Truss, FE_Element)
 
 
 // ============================================================================
@@ -39,7 +39,7 @@ DEFINE_STANDARD_HANDLE(Mech1d_Truss, Mech1d_Element)
  *  \brief Mech1d_Truss
 */
 // ============================================================================
-class Mech1d_Truss : public Mech1d_Element
+class Mech1d_Truss : public FE_Element
 {
 
 public:
@@ -62,7 +62,7 @@ protected:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, Mech1d_Element)
+    DEFINE_STANDARD_RTTIEXT(Mech1d_Truss, FE_Element)
 
 };
 

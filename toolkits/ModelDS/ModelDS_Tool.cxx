@@ -21,7 +21,11 @@
 
 
 // Spartacus
+#include <ModelDS_TBoundary.hxx>
 #include <ModelDS_TElement.hxx>
+#include <ModelDS_TEquation.hxx>
+#include <ModelDS_TLoading.hxx>
+#include <ModelDS_TMapping.hxx>
 #include <ModelDS_TModel.hxx>
 #include <ModelDS_TNode.hxx>
 #include <ModelDS_Tool.hxx>
@@ -30,6 +34,32 @@
 #include <Standard_DomainError.hxx>
 #include <Standard_NullObject.hxx>
 
+
+// ============================================================================
+/*!
+ *  \brief Boundaries()
+*/
+// ============================================================================
+const ModelDS_ListOfObject& ModelDS_Tool::Boundaries(const ModelDS_Loading& theLoading)
+{
+    const ModelDS_TLoading* aTLoading = static_cast<const ModelDS_TLoading*>(theLoading.TObject().get());
+    if(aTLoading == 0)
+        throw Standard_NullObject("ModelDS_Tool::Boundaries()->Invalid loading.");
+    return aTLoading->Boundaries();
+}
+
+// ============================================================================
+/*!
+ *  \brief DOFs()
+*/
+// ============================================================================
+const ModelDS_ListOfObject& ModelDS_Tool::DOFs(const ModelDS_Boundary& theBoundary)
+{
+    const ModelDS_TBoundary* aTBoundary = static_cast<const ModelDS_TBoundary*>(theBoundary.TObject().get());
+    if(aTBoundary == 0)
+        throw Standard_NullObject("ModelDS_Tool::DOFs()->Invalid boundary.");
+    return aTBoundary->DOFs();
+}
 
 // ============================================================================
 /*!
@@ -46,6 +76,19 @@ const ModelDS_SequenceOfObject& ModelDS_Tool::DOFs(const ModelDS_Element& theEle
 
 // ============================================================================
 /*!
+ *  \brief DOFs()
+*/
+// ============================================================================
+const ModelDS_SequenceOfObject& ModelDS_Tool::DOFs(const ModelDS_Mapping& theMapping)
+{
+    const ModelDS_TMapping* aTMapping = static_cast<const ModelDS_TMapping*>(theMapping.TObject().get());
+    if(aTMapping == 0)
+        throw Standard_NullObject("ModelDS_Tool::DOFs()->Invalid mapping.");
+    return aTMapping->DOFs();
+}
+
+// ============================================================================
+/*!
  *  \brief Elements()
 */
 // ============================================================================
@@ -55,6 +98,29 @@ const ModelDS_ListOfObject& ModelDS_Tool::Elements(const ModelDS_Model& theModel
     if(aTModel == 0)
         throw Standard_NullObject("ModelDS_Tool::Elements()->Invalid model.");
     return aTModel->Elements();
+}
+
+// ============================================================================
+/*!
+ *  \brief IsFree()
+*/
+// ============================================================================
+Standard_Boolean ModelDS_Tool::IsFree(const ModelDS_Equation& theEquation)
+{
+    return !IsFixed(theEquation);
+}
+
+// ============================================================================
+/*!
+ *  \brief IsFixed()
+*/
+// ============================================================================
+Standard_Boolean ModelDS_Tool::IsFixed(const ModelDS_Equation& theEquation)
+{
+    const ModelDS_TEquation* aTEquation = static_cast<const ModelDS_TEquation*>(theEquation.TObject().get());
+    if(aTEquation == 0)
+        throw Standard_NullObject("ModelDS_Tool::Vertex()->Invalid equation.");
+    return aTEquation->IsFixed();
 }
 
 // ============================================================================

@@ -29,6 +29,30 @@
 
 // ============================================================================
 /*!
+ *  \brief Boundary()
+*/
+// ============================================================================
+const ModelDS_Boundary& ModelDS::Boundary(const ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Boundary),
+                                   "ModelDS::Boundary()->Type mismatch.");
+    return *(ModelDS_Boundary*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Boundary()
+*/
+// ============================================================================
+ModelDS_Boundary& ModelDS::Boundary(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Boundary),
+                                   "ModelDS::Boundary()->Type mismatch.");
+    return *(ModelDS_Boundary*) &theObject;
+}
+
+// ============================================================================
+/*!
  *  \brief DOF()
 */
 // ============================================================================
@@ -73,6 +97,30 @@ ModelDS_Element& ModelDS::Element(ModelDS_Object& theObject)
     Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Element),
                                    "ModelDS::Element()->Type mismatch.");
     return *(ModelDS_Element*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Equation()
+*/
+// ============================================================================
+const ModelDS_Equation& ModelDS::Equation(const ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Equation),
+                                   "ModelDS::Equation()->Type mismatch.");
+    return *(ModelDS_Equation*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Equation()
+*/
+// ============================================================================
+ModelDS_Equation& ModelDS::Equation(ModelDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(ModelDS::TypeMismatch(theObject, ModelAbs_OBJ_Equation),
+                                   "ModelDS::Equation()->Type mismatch.");
+    return *(ModelDS_Equation*) &theObject;
 }
 
 // ============================================================================

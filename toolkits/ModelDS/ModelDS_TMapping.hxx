@@ -54,12 +54,12 @@ public:
 
 public:
 
-    Standard_EXPORT const ModelDS_SequenceOfObject& Equations() const;
-    Standard_EXPORT ModelDS_SequenceOfObject&       Equations();
+    Standard_EXPORT const ModelDS_SequenceOfObject& DOFs() const;
+    Standard_EXPORT ModelDS_SequenceOfObject&       DOFs();
 
 private:
 
-    ModelDS_SequenceOfObject        myEquations;
+    ModelDS_SequenceOfObject        myDOFs;
 
 public:
 

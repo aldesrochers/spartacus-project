@@ -109,6 +109,18 @@ set(CM_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : cmf
+# =============================================================================
+
+set(cmf_PKG_HEADERS
+    cmf/cmf_Elastic1d.hxx
+)
+
+set(cmf_PKG_SOURCES
+    cmf/cmf_Elastic1d.cxx
+)
+
+# =============================================================================
 # Package : cmp
 # =============================================================================
 
@@ -199,19 +211,14 @@ set(EleProp_PKG_SOURCES
 # =============================================================================
 
 set(FE1d_PKG_HEADERS
-    FE1d/FE1d_Boundary.hxx
+    FE1d/FE1d_ElasticTruss.hxx
     FE1d/FE1d_Element.hxx
-    FE1d/FE1d_Load.hxx
-    FE1d/FE1d_Node.hxx
-    FE1d/FE1d_Object.hxx
+    FE1d/FE1d_Truss.hxx
 )
 
 set(FE1d_PKG_SOURCES
-    FE1d/FE1d_Boundary.cxx
     FE1d/FE1d_Element.cxx
-    FE1d/FE1d_Load.cxx
-    FE1d/FE1d_Node.cxx
-    FE1d/FE1d_Object.cxx
+    FE1d/FE1d_Truss.cxx
 )
 
 # =============================================================================
@@ -219,11 +226,15 @@ set(FE1d_PKG_SOURCES
 # =============================================================================
 
 set(FE_PKG_HEADERS
-    FE/FE_Node.hxx
+    FE/FE_Element.hxx
+    FE/FE_Function.hxx
+    FE/FE_Object.hxx
 )
 
 set(FE_PKG_SOURCES
-    FE/FE_Node.cxx
+    FE/FE_Element.cxx
+    FE/FE_Function.cxx
+    FE/FE_Object.cxx
 )
 
 # =============================================================================
@@ -231,7 +242,7 @@ set(FE_PKG_SOURCES
 # =============================================================================
 
 set(FEAbs_PKG_HEADERS
-    FEAbs/FEAbs_TypeOfPhenomenon.hxx
+    FEAbs/FEAbs_TypeOfQuantity.hxx
 )
 
 # =============================================================================
@@ -321,24 +332,28 @@ set(material_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : math
+# =============================================================================
+
+set(math_PKG_HEADERS
+    math/math_HysteresisFunction.hxx
+)
+
+set(math_PKG_SOURCES
+    math/math_HysteresisFunction.cxx
+)
+
+# =============================================================================
 # Package : Mech1d
 # =============================================================================
 
 set(Mech1d_PKG_HEADERS
-    Mech1d/Mech1d_Boundary.hxx
     Mech1d/Mech1d_ElasticTruss.hxx
-    Mech1d/Mech1d_Element.hxx
-    Mech1d/Mech1d_Load.hxx
-    Mech1d/Mech1d_Object.hxx
     Mech1d/Mech1d_Truss.hxx
 )
 
 set(Mech1d_PKG_SOURCES
-    Mech1d/Mech1d_Boundary.cxx
     Mech1d/Mech1d_ElasticTruss.cxx
-    Mech1d/Mech1d_Element.cxx
-    Mech1d/Mech1d_Load.cxx
-    Mech1d/Mech1d_Object.cxx
     Mech1d/Mech1d_Truss.cxx
 )
 
@@ -567,11 +582,10 @@ set(Model_PKG_SOURCES
 # =============================================================================
 
 set(ModelAbs_PKG_HEADERS
-    ModelAbs/ModelAbs_Modelization.hxx
-    ModelAbs/ModelAbs_Parameter.hxx
-    ModelAbs/ModelAbs_Phenomenon.hxx
-    ModelAbs/ModelAbs_TypeOfDegreeOfFreedom.hxx
     ModelAbs/ModelAbs_TypeOfDOF.hxx
+    ModelAbs/ModelAbs_TypeOfMatrix.hxx
+    ModelAbs/ModelAbs_TypeOfModelization.hxx
+    ModelAbs/ModelAbs_TypeOfPhenomenon.hxx
     ModelAbs/ModelAbs_TypeOfObject.hxx
 )
 
@@ -582,12 +596,14 @@ set(ModelAbs_PKG_HEADERS
 set(ModelAlgo_PKG_HEADERS
     ModelAlgo/ModelAlgo_Command.hxx
     ModelAlgo/ModelAlgo_ElementaryMatrices.hxx
+    ModelAlgo/ModelAlgo_LinearAnalysis.hxx
     ModelAlgo/ModelAlgo_Numberer.hxx
 )
 
 set(ModelAlgo_PKG_SOURCES
     ModelAlgo/ModelAlgo_Command.cxx
     ModelAlgo/ModelAlgo_ElementaryMatrices.cxx
+    ModelAlgo/ModelAlgo_LinearAnalysis.cxx
     ModelAlgo/ModelAlgo_Numberer.cxx
 )
 
@@ -632,6 +648,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_Load.hxx
     ModelDS/ModelDS_Loading.hxx
     ModelDS/ModelDS_Mapping.hxx
+    ModelDS/ModelDS_Matrix.hxx
     ModelDS/ModelDS_Model.hxx
     ModelDS/ModelDS_Node.hxx
     ModelDS/ModelDS_Object.hxx
@@ -642,10 +659,13 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_TLoad.hxx
     ModelDS/ModelDS_TLoading.hxx
     ModelDS/ModelDS_TMapping.hxx
+    ModelDS/ModelDS_TMaterial.hxx
+    ModelDS/ModelDS_TMatrix.hxx
     ModelDS/ModelDS_TModel.hxx
     ModelDS/ModelDS_TNode.hxx
     ModelDS/ModelDS_TObject.hxx
     ModelDS/ModelDS_Tool.hxx
+    ModelDS/ModelDS_TSection.hxx
 )
 
 set(ModelDS_PKG_SOURCES
@@ -656,6 +676,7 @@ set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS_Element.cxx
     ModelDS/ModelDS_Equation.cxx
     ModelDS/ModelDS_Mapping.cxx
+    ModelDS/ModelDS_Matrix.cxx
     ModelDS/ModelDS_Model.cxx
     ModelDS/ModelDS_Load.cxx
     ModelDS/ModelDS_Loading.cxx
@@ -668,10 +689,13 @@ set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS_TLoad.cxx
     ModelDS/ModelDS_TLoading.cxx
     ModelDS/ModelDS_TMapping.cxx
+    ModelDS/ModelDS_TMaterial.cxx
+    ModelDS/ModelDS_TMatrix.cxx
     ModelDS/ModelDS_TModel.cxx
     ModelDS/ModelDS_TNode.cxx
     ModelDS/ModelDS_TObject.cxx
     ModelDS/ModelDS_Tool.cxx
+    ModelDS/ModelDS_TSection.cxx
 )
 
 # =============================================================================
@@ -693,6 +717,7 @@ set(ModelLib_PKG_SOURCES
 set(ModelRep_PKG_HEADERS
     ModelRep/ModelRep_DOF.hxx
     ModelRep/ModelRep_Element.hxx
+    ModelRep/ModelRep_Material.hxx
     ModelRep/ModelRep_MechElement1d.hxx
     ModelRep/ModelRep_MotionDOF.hxx
     ModelRep/ModelRep_Point.hxx
@@ -705,6 +730,7 @@ set(ModelRep_PKG_HEADERS
 set(ModelRep_PKG_SOURCES
     ModelRep/ModelRep_DOF.cxx
     ModelRep/ModelRep_Element.cxx
+    ModelRep/ModelRep_Material.cxx
     ModelRep/ModelRep_MechElement1d.cxx
     ModelRep/ModelRep_MotionDOF.cxx
     ModelRep/ModelRep_Point.cxx
@@ -928,12 +954,12 @@ set(Trsf2d_PKG_SOURCES
 
 set(UCM_PKG_HEADERS
     UCM/UCM_Elastic.hxx
-    UCM/UCM_Model.hxx
+    UCM/UCM_Material.hxx
 )
 
 set(UCM_PKG_SOURCES
     UCM/UCM_Elastic.cxx
-    UCM/UCM_Model.cxx
+    UCM/UCM_Material.cxx
 )
 
 # =============================================================================
@@ -975,17 +1001,29 @@ set(XSAbs_PKG_HEADERS
 )
 
 # =============================================================================
-# Package : XSM2d
+# Package : xsf
 # =============================================================================
 
-set(XSM2d_PKG_HEADERS
-    XSM2d/XSM2d_Elastic.hxx
-    XSM2d/XSM2d_Section.hxx
+set(xsf_PKG_HEADERS
+    xsf/xsf_Elastic1d.hxx
 )
 
-set(XSM2d_PKG_SOURCES
-    XSM2d/XSM2d_Elastic.cxx
-    XSM2d/XSM2d_Section.cxx
+set(xsf_PKG_SOURCES
+    xsf/xsf_Elastic1d.cxx
+)
+
+# =============================================================================
+# Package : XSM
+# =============================================================================
+
+set(XSM_PKG_HEADERS
+    XSM/XSM_Section.hxx
+    #XSM/XSM_Uniaxial.hxx
+)
+
+set(XSM_PKG_SOURCES
+    XSM/XSM_Section.cxx
+    #XSM/XSM_Uniaxial.cxx
 )
 
 # =============================================================================
@@ -1019,20 +1057,20 @@ set(Ceres_HEADERS
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
     #${CM_PKG_HEADERS}
-    #${cmp_PKG_HEADERS}
+    ${cmf_PKG_HEADERS}
+    ${cmp_PKG_HEADERS}
     #${cp_PKG_HEADERS}
     ${DOF_PKG_HEADERS}
     ${DOFAbs_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
     ${FE_PKG_HEADERS}
-    ${FE1d_PKG_HEADERS}
-    ${FEA_PKG_HEADERS}
-    #${FEAbs_PKG_HEADERS}
+    ${FEAbs_PKG_HEADERS}
     #${FEM_PKG_HEADERS}
     ${fep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
     ${load_PKG_HEADERS}
-    #${material_PKG_HEADERS}
+    ${material_PKG_HEADERS}
+    ${math_PKG_HEADERS}
     ${Mech1d_PKG_HEADERS}
     #${Mech2d_PKG_HEADERS}
     #${Mesh_PKG_HEADERS}
@@ -1044,7 +1082,7 @@ set(Ceres_HEADERS
     ${MeshExp_PKG_HEADERS}
     #${MeshRep_PKG_HEADERS}
     ${MeshTools_PKG_HEADERS}
-    ${Model_PKG_HEADERS}
+    #${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
     ${ModelAlgo_PKG_HEADERS}
     #${ModelBuilder_PKG_HEADERS}
@@ -1064,11 +1102,13 @@ set(Ceres_HEADERS
     #${TColmp_PKG_HEADERS}
     ${TColpmp_PKG_HEADERS}
     #${Trsf2d_PKG_HEADERS}
-    #${UCM_PKG_HEADERS}
+    ${UCM_PKG_HEADERS}
     #${UCMF_PKG_HEADERS}
     #${XS_PKG_HEADERS}
     #${XSAbs_PKG_HEADERS}
+    ${xsf_PKG_HEADERS}
     #${xsp_PKG_HEADERS}
+    ${XSM_PKG_HEADERS}
     #${XSM2d_PKG_HEADERS}
 )
 
@@ -1079,19 +1119,19 @@ set(Ceres_SOURCES
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
     #${CM_PKG_SOURCES}
-    #${cmp_PKG_SOURCES}
+    ${cmf_PKG_SOURCES}
+    ${cmp_PKG_SOURCES}
     #${cp_PKG_SOURCES}
     ${DOF_PKG_SOURCES}
     ${DOFAbs_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
     ${FE_PKG_SOURCES}
-    ${FE1d_PKG_SOURCES}
-    ${FEA_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
     ${fep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
     ${load_PKG_SOURCES}
-    #${material_PKG_SOURCES}
+    ${material_PKG_SOURCES}
+    ${math_PKG_SOURCES}
     ${Mech1d_PKG_SOURCES}
     #${Mech2d_PKG_SOURCES}
     #${Mesh_PKG_SOURCES}
@@ -1102,7 +1142,7 @@ set(Ceres_SOURCES
     ${MeshExp_PKG_SOURCES}
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
-    ${Model_PKG_SOURCES}
+    #${Model_PKG_SOURCES}
     ${ModelAlgo_PKG_SOURCES}
     #${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
@@ -1115,10 +1155,12 @@ set(Ceres_SOURCES
     #${PolyMesh2d_PKG_SOURCES}
     ${pmp_PKG_SOURCES}
     #${Trsf2d_PKG_SOURCES}
-    #${UCM_PKG_SOURCES}
+    ${UCM_PKG_SOURCES}
     #${UCMF_PKG_SOURCES}
     #${XS_PKG_SOURCES}
+    ${xsf_PKG_SOURCES}
     #${xsp_PKG_SOURCES}
+    ${XSM_PKG_SOURCES}
     #${XSM2d_PKG_SOURCES}
 )
 
@@ -1131,6 +1173,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPoly
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
     ${CMAKE_CURRENT_SOURCE_DIR}/CM
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmf
     ${CMAKE_CURRENT_SOURCE_DIR}/cmp
     ${CMAKE_CURRENT_SOURCE_DIR}/cp
     ${CMAKE_CURRENT_SOURCE_DIR}/DOF
@@ -1146,6 +1189,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
     ${CMAKE_CURRENT_SOURCE_DIR}/load
     ${CMAKE_CURRENT_SOURCE_DIR}/material
+    ${CMAKE_CURRENT_SOURCE_DIR}/math
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech1d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mech2d
     #${CMAKE_CURRENT_SOURCE_DIR}/Mesh
@@ -1156,7 +1200,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/Model
+    #${CMAKE_CURRENT_SOURCE_DIR}/Model
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
@@ -1177,10 +1221,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/Trsf2d
     ${CMAKE_CURRENT_SOURCE_DIR}/UCM
     ${CMAKE_CURRENT_SOURCE_DIR}/UCMF
-    ${CMAKE_CURRENT_SOURCE_DIR}/XS
-    ${CMAKE_CURRENT_SOURCE_DIR}/XSAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/xsp
-    ${CMAKE_CURRENT_SOURCE_DIR}/XSM2d
+    ${CMAKE_CURRENT_SOURCE_DIR}/xsf
+    ${CMAKE_CURRENT_SOURCE_DIR}/XSM
     ${OpenCASCADE_INCLUDE_DIR}
     ${Triangle_INCLUDE_DIRS}
 )

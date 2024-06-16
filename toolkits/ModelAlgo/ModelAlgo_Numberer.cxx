@@ -26,7 +26,10 @@ using namespace std;
 #include <ModelAlgo_Numberer.hxx>
 #include <ModelDS.hxx>
 #include <ModelDS_DOF.hxx>
+#include <ModelDS_Boundary.hxx>
+#include <ModelDS_Builder.hxx>
 #include <ModelDS_Tool.hxx>
+#include <ModelTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
@@ -34,9 +37,11 @@ using namespace std;
  *  \brief Constructor
 */
 // ============================================================================
-ModelAlgo_Numberer::ModelAlgo_Numberer()
+ModelAlgo_Numberer::ModelAlgo_Numberer(const ModelDS_Model& theModel,
+                                       const ModelAbs_TypeOfNumberer theNumbererType)
 {
-
+    if(theNumbererType == ModelAbs_NUMBERER_Plain)
+        PlainNumerer(theModel);
 }
 
 // ============================================================================
@@ -51,49 +56,52 @@ ModelAlgo_Numberer::~ModelAlgo_Numberer()
 
 // ============================================================================
 /*!
- *  \brief Perform()
+ *  \brief Mapping()
 */
 // ============================================================================
-Standard_Boolean ModelAlgo_Numberer::Perform()
+const ModelDS_Mapping& ModelAlgo_Numberer::Mapping() const
 {
+    return myMapping;
+}
 
-    ModelTools_IndexedMapOfObject myDOFs;
+// ============================================================================
+/*!
+ *  \brief operator ModelDS_Mapping()
+*/
+// ============================================================================
+ModelAlgo_Numberer::operator ModelDS_Mapping() const
+{
+    return Mapping();
+}
 
-    // retrieve all elements from model
-    const ModelDS_ListOfObject& aList = ModelDS_Tool::Elements(myModel);
+// ============================================================================
+/*!
+ *  \brief PlainNumberer()
+*/
+// ============================================================================
+void ModelAlgo_Numberer::PlainNumerer(const ModelDS_Model &theModel)
+{
+    // loop elements in model sequencially. get all dofs from elements,
+    // add to unique map of dofs
+    ModelTools_IndexedMapOfObject aMap;
+    ModelDS_ListOfObject aList = ModelDS_Tool::Elements(theModel);
     ModelDS_ListIteratorOfListOfObject anIterator(aList);
     for(; anIterator.More(); anIterator.Next()) {
         ModelDS_Element anElement = ModelDS::Element(anIterator.Value());
         ModelDS_SequenceOfObject aSequence = ModelDS_Tool::DOFs(anElement);
-        ModelDS_SequenceIteratorOfSequenceOfObject anIterator2(aSequence);
-        for(; anIterator2.More(); anIterator2.Next()) {
-            ModelDS_DOF aDOF = ModelDS::DOF(anIterator2.Value());
-            myDOFs.Add(aDOF);
+        for(Standard_Integer i=1; i<=aSequence.Size(); i++) {
+            ModelDS_DOF aDOF = ModelDS::DOF(aSequence.Value(i));
+            aMap.Add(aDOF);
         }
     }
 
-    cout << aList.Size() << endl;
-    cout << myDOFs.Size() << endl;
+    // populate a mapping object
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeMapping(myMapping);
+    for(Standard_Integer i=1; i<=aMap.Size(); i++) {
+        ModelDS_DOF aDOF = ModelDS::DOF(aMap.FindKey(i));
+        aBuilder.AddDOF(myMapping, aDOF);
+    }
 
-    return Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief SetLoading()
-*/
-// ============================================================================
-void ModelAlgo_Numberer::SetLoading(const ModelDS_Loading &theLoading)
-{
-    myLoading = theLoading;
-}
-
-// ============================================================================
-/*!
- *  \brief SetModel()
-*/
-// ============================================================================
-void ModelAlgo_Numberer::SetModel(const ModelDS_Model &theModel)
-{
-    myModel = theModel;
+    SetDone();
 }
