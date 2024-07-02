@@ -109,7 +109,8 @@ include(SetupZSTD)
 ###
 
 #add_subdirectory(cmakes)
+add_subdirectory(doc)
+add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(thirdparty)
-add_subdirectory(toolkits)
 add_subdirectory(tools)

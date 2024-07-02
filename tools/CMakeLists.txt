@@ -18,3 +18,5 @@
 # Alexis L. Desrochers (alexisdesrochers@gmail.com)
 #
 # =============================================================================
+
+add_subdirectory(MeshBuilder)

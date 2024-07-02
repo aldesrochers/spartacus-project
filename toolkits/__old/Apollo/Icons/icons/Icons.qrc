@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>DB_Connection.png</file>
-        <file>Login.png</file>
-        <file>Exit.png</file>
-    </qresource>
-</RCC>

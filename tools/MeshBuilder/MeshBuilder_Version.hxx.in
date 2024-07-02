@@ -25,7 +25,7 @@
 
 // Version
 #define MeshBuilder_VERSION_MAJOR   "@Spartacus_VERSION_MAJOR@"
-#define MeshBuilder_VERSION_MINOR   "@Spartacus_VERSION_MINOR"
+#define MeshBuilder_VERSION_MINOR   "@Spartacus_VERSION_MINOR@"
 #define MeshBuilder_VERSION_PATCH   "@Spartacus_VERSION_PATCH@"
 #define MeshBuilder_VERSION_STRING  "@Spartacus_VERSION_MAJOR@.@Spartacus_VERSION_MINOR@.@Spartacus_VERSION_PATCH@"
 

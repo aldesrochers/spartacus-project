@@ -23,6 +23,8 @@
 #include <iostream>
 using namespace std;
 
+// Spartacus
+#include <Mesh1d_LinearLine.hxx>
 
 
 // ============================================================================
@@ -33,6 +35,9 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
+    Handle(Mesh1d_Vertex) aVertex1 = new Mesh1d_Vertex(0.);
+    Handle(Mesh1d_Vertex) aVertex2 = new Mesh1d_Vertex(1.);
+    Handle(Mesh1d_LinearLine) aCell = new Mesh1d_LinearLine(aVertex1, aVertex2);
 
 
 }

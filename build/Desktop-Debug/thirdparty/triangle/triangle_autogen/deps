@@ -1,5 +1,0 @@
-triangle_autogen/timestamp: \
-	/home/alexis/Projects/spartacus-project/thirdparty/triangle/CMakeLists.txt \
-	/home/alexis/Projects/spartacus-project/thirdparty/triangle/triangle-1.6/triangle.cpp \
-	/home/alexis/Projects/spartacus-project/thirdparty/triangle/triangle-1.6/triangle.h \
-	/usr/bin/cmake

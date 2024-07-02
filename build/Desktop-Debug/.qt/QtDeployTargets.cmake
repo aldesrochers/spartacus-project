@@ -1,5 +1,0 @@
-set(__QT_DEPLOY_TARGET_Test_Mesh_FILE /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/Test_Mesh)
-set(__QT_DEPLOY_TARGET_Test_Model_FILE /home/alexis/Projects/spartacus-project/build/Desktop-Debug/tests/Test_Model)
-set(__QT_DEPLOY_TARGET_tetgen_FILE /home/alexis/Projects/spartacus-project/build/Desktop-Debug/thirdparty/tetgen/libtetgen.so)
-set(__QT_DEPLOY_TARGET_triangle_FILE /home/alexis/Projects/spartacus-project/build/Desktop-Debug/thirdparty/triangle/libtriangle.so)
-set(__QT_DEPLOY_TARGET_Ceres_FILE /home/alexis/Projects/spartacus-project/build/Desktop-Debug/toolkits/libCeres.so)

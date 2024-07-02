@@ -1,6 +1,0 @@
-Geom2d
-
-This package contains class implemented of 2d geometry objects. It has
-a role identical to OpenCascade 'Geom2d' package.
-
-Maintainer : Alexis L. Desrochers

@@ -1,7 +1,0 @@
-GC
-
-This package contains direct geometry constructors for transient
-geometric objects in 3d space.
-It has a behaviour identical to OpenCascade 'GC' package.
-
-Maintainer : Alexis L. Desrochers

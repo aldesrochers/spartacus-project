@@ -23,14 +23,27 @@
 #include <iostream>
 using namespace std;
 
+// Spartacus
+#include <FEC1d_MakeDOF.hxx>
+#include <FEC1d_MakeNode.hxx>
+
 
 // ============================================================================
 /*!
- *  \brief Test_Kernel
+ *  \brief Test_FE1d
 */
 // ============================================================================
 int main(int argc, char** argv)
 {
+
+    Handle(FE1d_DOF) aDX1 = FEC1d_MakeDOF(FEAbs_DOF1d_DX).DOF();
+    FEC1d_MakeNode aBuilder(gp_Pnt1d(1.));
+    aBuilder.AddDOF(aDX1);
+
+    Handle(FE1d_Node) aNode = aBuilder.Node();
+
+    cout << aNode->X() << endl;
+
 
 
 }

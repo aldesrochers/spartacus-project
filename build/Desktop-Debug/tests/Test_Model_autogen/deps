@@ -1,4 +1,0 @@
-Test_Model_autogen/timestamp: \
-	/home/alexis/Projects/spartacus-project/tests/CMakeLists.txt \
-	/home/alexis/Projects/spartacus-project/tests/Test_Model.cxx \
-	/usr/bin/cmake

@@ -37,12 +37,13 @@ set(Test_SOURCES
     #Test_BRepPoly.cxx
     #Test_BRepPolyAPI.cxx
     #Test_Discrete.cxx
-    #Test_FE1d.cxx
+    Test_FE1d.cxx
     #Test_FE2d.cxx
-    #Test_Mesh1d.cxx
+    Test_Mesh1d.cxx
     #Test_MeshBuilder.cxx
     #Test_MeshDS.cxx
     #Test_MeshLib.cxx
+    #Test_Mech1d.cxx
     Test_Mesh.cxx
     Test_Model.cxx
     #Test_mp.cxx

@@ -1,7 +1,0 @@
-gce
-
-This package contains direct constructors of simple
-geometric objects. This package has the same role as
-OpenCascade 'gce' package.
-
-Maintainer : Alexis L. Desrochers

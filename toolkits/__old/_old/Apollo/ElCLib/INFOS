@@ -1,9 +1,0 @@
-ElCLib
-El -> Elementary
-C -> Curve
-Lib - > Library
-
-This package contains implementation of elementary curves. This package is
-complementary to standard OpenCascade 'ElCLib' package.
-
-Maintainer : Alexis L. Desrochers
