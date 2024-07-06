@@ -34,6 +34,7 @@ enum MeshAbs_TypeOfObject
     MeshAbs_OBJ_Cell,
     MeshAbs_OBJ_Group,
     MeshAbs_OBJ_Mesh,
+    MeshAbs_OBJ_Node,
     MeshAbs_OBJ_Vertex
 };
 

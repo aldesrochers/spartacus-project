@@ -23,9 +23,9 @@
 using namespace std;
 
 // Spartacus
-#include <Model_DOF.hxx>
-#include <Model_MechElement1d.hxx>
 #include <Model_Point1d.hxx>
+#include <Model_Point2d.hxx>
+#include <Model_Point3d.hxx>
 #include <ModelDS_Builder.hxx>
 #include <ModelDS_TBoundary.hxx>
 #include <ModelDS_TDOF.hxx>
@@ -199,9 +199,11 @@ void ModelDS_Builder::AddLoad(const ModelDS_Loading &theLoading,
 void ModelDS_Builder::AddModelization(const ModelDS_Element &theElement,
                               const ModelDS_Modelization& theModelization) const
 {
+    /*
     const Handle(ModelDS_TElement)& aTElement = *((Handle(ModelDS_TElement)*) &theElement.TObject());
     ModelDS_ListOfObject& aList = aTElement->Modelizations();
     aList.Append(theModelization);
+    */
 }
 
 // ============================================================================
@@ -237,19 +239,6 @@ void ModelDS_Builder::MakeDOF(ModelDS_DOF &theDOF,
     MakeDOF(theDOF);
     UpdateDOF(theDOF, theDOFType);
 }
-
-// ============================================================================
-/*!
- *  \brief MakeDOF()
-*/
-// ============================================================================
-void ModelDS_Builder::MakeDOF(ModelDS_DOF &theDOF,
-                              const Handle(DOF_DegreeOfFreedom)& theModel) const
-{
-    MakeDOF(theDOF);
-    UpdateDOF(theDOF, theModel);
-}
-
 
 // ============================================================================
 /*!
@@ -404,10 +393,10 @@ void ModelDS_Builder::MakeNode(ModelDS_Node &theNode) const
 */
 // ============================================================================
 void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
-                                  const MeshDS_Vertex& theVertex) const
+                               const gp_Pnt1d& thePoint) const
 {
     MakeNode(theNode);
-    UpdateNode(theNode, theVertex);
+    UpdateNode(theNode, thePoint);
 }
 
 // ============================================================================
@@ -416,7 +405,19 @@ void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
 */
 // ============================================================================
 void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
-                               const gp_Pnt1d& thePoint) const
+                               const gp_Pnt2d& thePoint) const
+{
+    MakeNode(theNode);
+    UpdateNode(theNode, thePoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeNode()
+*/
+// ============================================================================
+void ModelDS_Builder::MakeNode(ModelDS_Node &theNode,
+                               const gp_Pnt& thePoint) const
 {
     MakeNode(theNode);
     UpdateNode(theNode, thePoint);
@@ -442,7 +443,7 @@ void ModelDS_Builder::UpdateDOF(const ModelDS_DOF &theDOF,
                                 const ModelAbs_TypeOfDOF theDOFType) const
 {
     const Handle(ModelDS_TDOF)& aTDOF = *((Handle(ModelDS_TDOF)*) &theDOF.TObject());
-    //aTDOF->SetDOFType(theDOFType);
+    aTDOF->SetDOFType(theDOFType);
 }
 
 // ============================================================================
@@ -451,10 +452,10 @@ void ModelDS_Builder::UpdateDOF(const ModelDS_DOF &theDOF,
 */
 // ============================================================================
 void ModelDS_Builder::UpdateDOF(const ModelDS_DOF &theDOF,
-                                const Handle(DOF_DegreeOfFreedom)& theModel) const
+                                const ModelDS_Node& theNode) const
 {
     const Handle(ModelDS_TDOF)& aTDOF = *((Handle(ModelDS_TDOF)*) &theDOF.TObject());
-    aTDOF->SetModel(theModel);
+    aTDOF->SetNode(theNode);
 }
 
 // ============================================================================
@@ -477,8 +478,8 @@ void ModelDS_Builder::UpdateDOFGroup(const ModelDS_DOFGroup &theDOFGroup,
 void ModelDS_Builder::UpdateElement(const ModelDS_Element &theElement,
                                     const MeshDS_Cell& theCell) const
 {
-    const Handle(ModelDS_TElement)& aTElement = *((Handle(ModelDS_TElement)*) &theElement.TObject());
-    aTElement->SetCell(theCell);
+    //const Handle(ModelDS_TElement)& aTElement = *((Handle(ModelDS_TElement)*) &theElement.TObject());
+    //aTElement->SetCell(theCell);
 }
 
 // ============================================================================
@@ -502,20 +503,8 @@ void ModelDS_Builder::UpdateModelization(const ModelDS_Modelization &theModeliza
                                          const Handle(Mech1d_Model)& theModel) const
 {
     const Handle(ModelDS_TModelization)& aTModelization = *((Handle(ModelDS_TModelization)*) &theModelization.TObject());
-    Handle(Model_MechElement1d) aModel = new Model_MechElement1d(theModel);
-    aTModelization->SetModel(aModel);
-}
-
-// ============================================================================
-/*!
- *  \brief UpdateNode()
-*/
-// ============================================================================
-void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
-                                 const MeshDS_Vertex& theVertex) const
-{
-    const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
-    //aTNode->SetVertex(theVertex);
+    //Handle(Model_MechElement1d) aModel = new Model_MechElement1d(theModel);
+    //aTModelization->SetModel(aModel);
 }
 
 // ============================================================================
@@ -528,6 +517,32 @@ void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
 {
     const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
     Handle(Model_Point1d) aPoint = new Model_Point1d(thePoint);
+    aTNode->SetPoint(aPoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateNode()
+*/
+// ============================================================================
+void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
+                                 const gp_Pnt2d& thePoint) const
+{
+    const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
+    Handle(Model_Point2d) aPoint = new Model_Point2d(thePoint);
+    aTNode->SetPoint(aPoint);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateNode()
+*/
+// ============================================================================
+void ModelDS_Builder::UpdateNode(const ModelDS_Node &theNode,
+                                 const gp_Pnt& thePoint) const
+{
+    const Handle(ModelDS_TNode)& aTNode = *((Handle(ModelDS_TNode)*) &theNode.TObject());
+    Handle(Model_Point3d) aPoint = new Model_Point3d(thePoint);
     aTNode->SetPoint(aPoint);
 }
 

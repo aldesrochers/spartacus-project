@@ -31,10 +31,9 @@
 // ============================================================================
 enum ModelBuilder_ElementError
 {
-    ModelBuilder_ElementInvalidCellError,
     ModelBuilder_ElementNoError,
-    ModelBuilder_ElementNodeDimensionError,
-    ModelBuilder_ElementNotImplementedError
+    ModelBuilder_ElementNodeDOFError,
+    ModelBuilder_ElementNodeDimensionError
 };
 
 #endif // __ModelBuilder_ElementError_hxx__

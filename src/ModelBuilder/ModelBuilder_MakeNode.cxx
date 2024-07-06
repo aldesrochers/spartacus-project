@@ -21,12 +21,13 @@
 
 
 // Spartacus
-#include <MeshDS_Tool.hxx>
+#include <ModelAdaptor_Point.hxx>
 #include <ModelBuilder_MakeDOF.hxx>
 #include <ModelBuilder_MakeNode.hxx>
 #include <ModelDS.hxx>
 #include <ModelDS_Builder.hxx>
 #include <ModelDS_Tool.hxx>
+#include <ModelExp.hxx>
 
 
 // ============================================================================
@@ -34,11 +35,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeNode::ModelBuilder_MakeNode(const MeshDS_Vertex& theVertex)
-    : myError(ModelBuilder_NodeNoError),
-    myVertex(theVertex)
+ModelBuilder_MakeNode::ModelBuilder_MakeNode(const gp_Pnt1d& thePoint)
 {
-
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -53,80 +52,101 @@ ModelBuilder_MakeNode::~ModelBuilder_MakeNode()
 
 // ============================================================================
 /*!
- *  \brief Add()
+ *  \brief AddDOF()
 */
 // ============================================================================
-void ModelBuilder_MakeNode::Add(const ModelDS_DOF &theDOF)
+void ModelBuilder_MakeNode::AddDOF(const ModelDS_DOF &theDOF)
 {
-    /*
-    // retrieve mesh dimensionality
-    MeshAbs_TypeOfDimensionality aDimensionalityType = MeshDS_Tool::DimensionalityType(myVertex);
 
-    // retrieve dof type
-    ModelAbs_TypeOfDOF aDOFType = ModelDS_Tool::DOFType(theDOF);
+    // retrieve DOF type
+    ModelAbs_TypeOfDOF aType = ModelDS_Tool::DOFType(theDOF);
 
-    // check if valid dof
-    if(aDimensionalityType == MeshAbs_DIM_0D) {
+    // list DOFs bounded to node
+    ModelTools_ListOfObject aList;
+    ModelExp::ListDOFs(Node(), aList);
+
+    // check if DOF of same type is already bounded to node
+    ModelTools_ListIteratorOfListOfObject anIterator(aList);
+    for(; anIterator.More(); anIterator.Next()) {
+        ModelDS_DOF iDOF = ModelDS::DOF(anIterator.Value());
+        ModelAbs_TypeOfDOF iType = ModelDS_Tool::DOFType(iDOF);
+        if(iType == aType) {
+            myError = ModelBuilder_NodeExistingDOFError;
+            SetNotDone();
+            return;
+        }
+    }
+
+    // check if DOF type is supported on node geometry
+    const Handle(Model_Point)& aPoint  = ModelDS_Tool::Point(Node());
+    ModelAdaptor_Point anAdaptor(aPoint);
+    ModelAbs_TypeOfDimensionality aDimensionality = anAdaptor.Dimensionality();
+
+    // process compatibility
+    bool isValid = Standard_False;
+    if(aDimensionality == ModelAbs_DIM_1d) {
+        if(aType == ModelAbs_DOF_DX) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_TEMP) {
+            isValid = Standard_True;
+        } else {
+            isValid = Standard_False;
+        }
+    } else if(aDimensionality == ModelAbs_DIM_2d) {
+        if(aType == ModelAbs_DOF_DX) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DY) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DRZ) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_TEMP) {
+            isValid = Standard_True;
+        } else {
+            isValid = Standard_False;
+        }
+    } else if(aDimensionality == ModelAbs_DIM_3d) {
+        if(aType == ModelAbs_DOF_DX) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DY) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DZ) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DRX) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DRY) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_DRZ) {
+            isValid = Standard_True;
+        } else if(aType == ModelAbs_DOF_TEMP) {
+            isValid = Standard_True;
+        } else {
+            isValid = Standard_False;
+        }
+    }
+
+    // check if valid DOF, set proper error
+    if(!isValid) {
         myError = ModelBuilder_NodeUnsupportedDOFError;
-        return;
-    } else if(aDimensionalityType == MeshAbs_DIM_1D) {
-        if(aDOFType == ModelAbs_DOF_DX) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_TEMP) {
-            myDOFs.Add(theDOF);
-        }
-    } else if(aDimensionalityType == MeshAbs_DIM_2D) {
-        if(aDOFType == ModelAbs_DOF_DX) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DY) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DRZ) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_TEMP) {
-            myDOFs.Add(theDOF);
-        }
-    } else if(aDimensionalityType == MeshAbs_DIM_3D) {
-        if(aDOFType == ModelAbs_DOF_DX) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DY) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DZ) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DRX) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DRY) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_DRZ) {
-            myDOFs.Add(theDOF);
-        } else if(aDOFType == ModelAbs_DOF_TEMP) {
-            myDOFs.Add(theDOF);
-        }
-    } else {
-        myError = ModelBuilder_NodeUnsupportedDOFError;
+        SetNotDone();
         return;
     }
-    */
+
+    // add DOF to node, link node to DOF
+    ModelDS_Builder aBuilder;
+    aBuilder.AddDOF(ModelDS::Node(myObject), theDOF);
+    aBuilder.UpdateDOF(theDOF, Node());
+    SetDone();
 }
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief AddDOF()
 */
 // ============================================================================
-void ModelBuilder_MakeNode::Build()
+void ModelBuilder_MakeNode::AddDOF(const ModelAbs_TypeOfDOF theDOFType)
 {
-
-    // initialize node data structure
-    ModelDS_Builder aBuilder;
-    aBuilder.MakeNode(ModelDS::Node(myObject), myVertex);
-
-    // loop each successfully added dof, add to node data structure
-    for(Standard_Integer i=1; i<=myDOFs.Size(); i++) {
-        ModelDS_DOF aDOF = ModelDS::DOF(myDOFs.FindKey(i));
-        aBuilder.AddDOF(ModelDS::Node(myObject), aDOF);
-    }
-
-    SetDone();
+    ModelDS_DOF aDOF = ModelBuilder_MakeDOF(theDOFType).DOF();
+    AddDOF(aDOF);
 }
 
 // ============================================================================
@@ -141,12 +161,41 @@ ModelBuilder_NodeError ModelBuilder_MakeNode::Error() const
 
 // ============================================================================
 /*!
- *  \brief NbDOFs()
+ *  \brief Initialize()
 */
 // ============================================================================
-Standard_Integer ModelBuilder_MakeNode::NbDOFs() const
+void ModelBuilder_MakeNode::Initialize(const gp_Pnt1d &thePoint)
 {
-    return myDOFs.Size();
+    myError = ModelBuilder_NodeNoError;
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeNode(ModelDS::Node(myObject), thePoint);
+    SetDone();
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void ModelBuilder_MakeNode::Initialize(const gp_Pnt2d &thePoint)
+{
+    myError = ModelBuilder_NodeNoError;
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeNode(ModelDS::Node(myObject), thePoint);
+    SetDone();
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void ModelBuilder_MakeNode::Initialize(const gp_Pnt &thePoint)
+{
+    myError = ModelBuilder_NodeNoError;
+    ModelDS_Builder aBuilder;
+    aBuilder.MakeNode(ModelDS::Node(myObject), thePoint);
+    SetDone();
 }
 
 // ============================================================================
@@ -169,12 +218,3 @@ ModelBuilder_MakeNode::operator ModelDS_Node() const
     return Node();
 }
 
-// ============================================================================
-/*!
- *  \brief Vertex()
-*/
-// ============================================================================
-const MeshDS_Vertex& ModelBuilder_MakeNode::Vertex() const
-{
-    return myVertex;
-}

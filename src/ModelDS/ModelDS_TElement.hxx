@@ -25,8 +25,8 @@
 
 // Spartacus
 #include <MeshDS_Cell.hxx>
-#include <ModelDS_ListOfObject.hxx>
-#include <ModelDS_SequenceOfObject.hxx>
+#include <Model_Element.hxx>
+#include <ModelDS_Array1OfObject.hxx>
 #include <ModelDS_TObject.hxx>
 
 // Forward declarations
@@ -56,18 +56,18 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_Cell&              Cell() const;
-    Standard_EXPORT const ModelDS_ListOfObject&     Modelizations() const;
-    Standard_EXPORT ModelDS_ListOfObject&           Modelizations();
-    Standard_EXPORT const ModelDS_SequenceOfObject& Nodes() const;
-    Standard_EXPORT ModelDS_SequenceOfObject&       Nodes();
-    Standard_EXPORT void                            SetCell(const MeshDS_Cell& theCell);
+    Standard_EXPORT const ModelDS_Array1OfObject&   DOFs() const;
+    Standard_EXPORT ModelDS_Array1OfObject&         DOFs();
+    Standard_EXPORT const Handle(Model_Element)&    Model() const;
+    Standard_EXPORT const ModelDS_Array1OfObject&   Nodes() const;
+    Standard_EXPORT ModelDS_Array1OfObject&         Nodes();
+    Standard_EXPORT void                            SetModel(const Handle(Model_Element)& theModel);
 
 private:
 
-    MeshDS_Cell                 myCell;
-    ModelDS_ListOfObject        myModelizations;
-    ModelDS_SequenceOfObject    myNodes;
+    ModelDS_Array1OfObject    myDOFs;
+    Handle(Model_Element)       myModel;
+    ModelDS_Array1OfObject    myNodes;
 
 public:
 

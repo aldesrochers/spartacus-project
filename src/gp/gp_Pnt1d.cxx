@@ -70,6 +70,18 @@ Standard_Real gp_Pnt1d::Distance(const gp_Pnt1d &theOther) const
 
 // ============================================================================
 /*!
+ *  \brief IsEqual()
+*/
+// ============================================================================
+Standard_Boolean gp_Pnt1d::IsEqual(const gp_Pnt1d &theOther, const Standard_Real theLinearTolerance) const
+{
+    if(Distance(theOther) <= theLinearTolerance)
+        return Standard_True;
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
  *  \brief SetX()
 */
 // ============================================================================

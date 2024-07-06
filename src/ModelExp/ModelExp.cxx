@@ -29,6 +29,21 @@
 
 // ============================================================================
 /*!
+ *  \brief ListDOFs()
+*/
+// ============================================================================
+void ModelExp::ListDOFs(const ModelDS_Node &theNode,
+                        ModelTools_ListOfObject &theList)
+{
+    const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
+    const ModelDS_ListOfObject& aList = aTNode->DOFs();
+    ModelDS_ListIteratorOfListOfObject anIterator(aList);
+    for(; anIterator.More(); anIterator.Next())
+        theList.Append(anIterator.Value());
+}
+
+// ============================================================================
+/*!
  *  \brief MapDOFs()
 */
 // ============================================================================
@@ -50,10 +65,12 @@ void ModelExp::MapDOFs(const ModelDS_Node &theNode,
 void ModelExp::MapModelizations(const ModelDS_Element &theElement,
                                 ModelTools_IndexedMapOfObject &theMap)
 {
+    /*
     const ModelDS_TElement* aTElement = static_cast<const ModelDS_TElement*>(theElement.TObject().get());
     const ModelDS_ListOfObject& aList = aTElement->Modelizations();
     ModelDS_ListIteratorOfListOfObject anIterator(aList);
     for(; anIterator.More(); anIterator.Next())
         theMap.Add(anIterator.Value());
+    */
 }
 

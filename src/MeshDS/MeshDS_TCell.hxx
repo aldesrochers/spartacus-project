@@ -30,7 +30,7 @@
 #include <MeshAbs_TypeOfShape.hxx>
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_SequenceOfObject.hxx>
-#include <MeshDS_TEntity.hxx>
+#include <MeshDS_TObject.hxx>
 
 // OpenCascade
 #include <TopoDS_Shape.hxx>
@@ -39,7 +39,7 @@
 class MeshDS_TCell;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TEntity)
+DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject)
 
 
 // ============================================================================
@@ -47,7 +47,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TEntity)
  *  \brief MeshDS_TCell
 */
 // ============================================================================
-class MeshDS_TCell : public MeshDS_TEntity
+class MeshDS_TCell : public MeshDS_TObject
 {
 
 public:
@@ -89,7 +89,7 @@ private:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TEntity)
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject)
 
 };
 

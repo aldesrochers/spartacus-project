@@ -21,12 +21,10 @@
 
 
 // Spartacus
-#include <MeshDS_Tool.hxx>
 #include <ModelBuilder_MakeElement.hxx>
-#include <ModelBuilder_MakeModelization.hxx>
 #include <ModelDS.hxx>
-#include <ModelDS_Builder.hxx>
 #include <ModelDS_Tool.hxx>
+#include <ModelExp.hxx>
 
 
 // ============================================================================
@@ -47,6 +45,32 @@ ModelBuilder_MakeElement::ModelBuilder_MakeElement()
 ModelBuilder_MakeElement::~ModelBuilder_MakeElement()
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief AddDOF()
+*/
+// ============================================================================
+Standard_Boolean ModelBuilder_MakeElement::AddDOF(const ModelDS_Node &theNode,
+                                                  const ModelAbs_TypeOfDOF theDOFType)
+{
+    // list DOFs bounded to node
+    ModelTools_ListOfObject aList;
+    ModelExp::ListDOFs(theNode, aList);
+
+    // check if DOF exists with type exists. if so, add to internal map
+    ModelTools_ListIteratorOfListOfObject anIterator(aList);
+    for(; anIterator.More(); anIterator.Next()) {
+        ModelDS_DOF iDOF = ModelDS::DOF(anIterator.Value());
+        ModelAbs_TypeOfDOF iType = ModelDS_Tool::DOFType(iDOF);
+        if(iType == theDOFType) {
+            myDOFs.Add(iDOF);
+            return Standard_True;
+        }
+    }
+
+    return Standard_False;
 }
 
 // ============================================================================

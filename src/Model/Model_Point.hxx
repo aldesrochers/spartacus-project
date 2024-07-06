@@ -25,7 +25,12 @@
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
+#include <ModelAbs_TypeOfDimensionality.hxx>
 #include <Model_Object.hxx>
+
+// OpenCascade
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Forward declarations
 class Model_Point;
@@ -51,7 +56,11 @@ public:
 public:
 
     virtual Standard_EXPORT Standard_Boolean    IsPoint1d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint2d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint3d() const;
     virtual Standard_EXPORT const gp_Pnt1d&     Point1d() const;
+    virtual Standard_EXPORT const gp_Pnt2d&     Point2d() const;
+    virtual Standard_EXPORT const gp_Pnt&       Point3d() const;
 
 public:
 

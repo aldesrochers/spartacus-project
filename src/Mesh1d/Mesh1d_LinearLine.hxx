@@ -24,6 +24,7 @@
 #define __Mesh1d_LinearLine_hxx__
 
 // Spartacus
+#include <gp_Pnt1d.hxx>
 #include <Mesh1d_Cell.hxx>
 
 // Forward declarations
@@ -43,10 +44,15 @@ class Mesh1d_LinearLine : public Mesh1d_Cell
 
 public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT Mesh1d_LinearLine(const gp_Pnt1d& thePoint1,
+                                      const gp_Pnt1d& thePoint2);
     // destructors
     Standard_EXPORT ~Mesh1d_LinearLine();
+
+public:
+
+    Standard_EXPORT void    Initialize(const gp_Pnt1d& thePoint1,
+                                       const gp_Pnt1d& thePoint2);
 
 public:
 

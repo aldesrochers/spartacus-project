@@ -65,7 +65,7 @@ void MeshDS_Builder::AddCell(const MeshDS_Mesh &theMesh,
     aSequence.Append(theCell);
     // link Mesh to Cell
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
-    aTCell->SetMesh(theMesh);
+    //aTCell->SetMesh(theMesh);
 }
 
 // ============================================================================
@@ -114,7 +114,7 @@ void MeshDS_Builder::AddVertex(const MeshDS_Mesh &theMesh,
     aSequence.Append(theVertex);
     // link Mesh to Vertex
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    aTVertex->SetMesh(theMesh);
+    //aTVertex->SetMesh(theMesh);
 }
 
 // ============================================================================
@@ -284,7 +284,7 @@ void MeshDS_Builder::RemoveCell(const MeshDS_Mesh &theMesh,
     // unlink Mesh from cell
     const Handle(MeshDS_TCell)& aTCell = *((Handle(MeshDS_TCell)*) &theCell.TObject());
     MeshDS_Mesh aMesh;
-    aTCell->SetMesh(aMesh);
+    //aTCell->SetMesh(aMesh);
 }
 
 // ============================================================================
@@ -356,7 +356,7 @@ void MeshDS_Builder::RemoveVertex(const MeshDS_Mesh &theMesh,
     // unlink Mesh from Vertex
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     MeshDS_Mesh aMesh;
-    aTVertex->SetMesh(aMesh);
+    //aTVertex->SetMesh(aMesh);
 }
 
 // ============================================================================
@@ -401,7 +401,7 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(Mesh_Point1d) aPoint = new Mesh_Point1d(thePoint);
-    aTVertex->SetPoint(aPoint);
+    //aTVertex->SetPoint(aPoint);
 }
 
 // ============================================================================
@@ -414,7 +414,7 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(Mesh_Point2d) aPoint = new Mesh_Point2d(thePoint);
-    aTVertex->SetPoint(aPoint);
+    //aTVertex->SetPoint(aPoint);
 }
 
 // ============================================================================
@@ -427,7 +427,7 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
     Handle(Mesh_Point3d) aPoint = new Mesh_Point3d(thePoint);
-    aTVertex->SetPoint(aPoint);
+    //aTVertex->SetPoint(aPoint);
 }
 
 

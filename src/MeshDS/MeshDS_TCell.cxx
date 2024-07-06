@@ -201,5 +201,5 @@ MeshAbs_TypeOfShape MeshDS_TCell::ShapeType() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TEntity)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TEntity)
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject)

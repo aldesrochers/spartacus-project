@@ -33,7 +33,6 @@
 // ============================================================================
 /*!
  *  \brief load_Force1d
- *  Class implementation of a uniformly distributed load pattern.
 */
 // ============================================================================
 class load_Force1d
@@ -41,7 +40,7 @@ class load_Force1d
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors

@@ -41,15 +41,11 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeLine(const MeshDS_Vertex& theVertex1,
-                                         const MeshDS_Vertex& theVertex2);
+    Standard_EXPORT MeshBuilder_MakeLine();
     // destructors
     Standard_EXPORT ~MeshBuilder_MakeLine();
 
-public:
 
-    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVertex1,
-                                       const MeshDS_Vertex& theVertex2);
 
 };
 

@@ -59,12 +59,52 @@ Standard_Boolean Model_Point::IsPoint1d() const
 
 // ============================================================================
 /*!
+ *  \brief IsPoint2d()
+*/
+// ============================================================================
+Standard_Boolean Model_Point::IsPoint2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsPoint3d()
+*/
+// ============================================================================
+Standard_Boolean Model_Point::IsPoint3d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
  *  \brief Point1d()
 */
 // ============================================================================
 const gp_Pnt1d& Model_Point::Point1d() const
 {
     throw Standard_DomainError("Model_Point::Point1d()");
+}
+
+// ============================================================================
+/*!
+ *  \brief Point2d()
+*/
+// ============================================================================
+const gp_Pnt2d& Model_Point::Point2d() const
+{
+    throw Standard_DomainError("Model_Point::Point2d()");
+}
+
+// ============================================================================
+/*!
+ *  \brief Point3d()
+*/
+// ============================================================================
+const gp_Pnt& Model_Point::Point3d() const
+{
+    throw Standard_DomainError("Model_Point::Point3d()");
 }
 
 

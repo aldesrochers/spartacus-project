@@ -24,7 +24,7 @@
 #define __ModelBuilder_MakeDOF_hxx__
 
 // Spartacus
-#include <DOF_DegreeOfFreedom.hxx>
+#include <ModelAbs_TypeOfDOF.hxx>
 #include <ModelBuilder_MakeObject.hxx>
 #include <ModelDS_DOF.hxx>
 
@@ -43,7 +43,7 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeDOF(const Handle(DOF_DegreeOfFreedom)& theModel);
+    Standard_EXPORT ModelBuilder_MakeDOF(const ModelAbs_TypeOfDOF theDOFType);
     // destructors
     Standard_EXPORT ~ModelBuilder_MakeDOF();
 
@@ -54,7 +54,7 @@ public:
 
 private:
 
-    Standard_EXPORT void        Initialize(const Handle(DOF_DegreeOfFreedom)& theModel);
+    Standard_EXPORT void        Initialize(const ModelAbs_TypeOfDOF theDOFType);
 
 };
 

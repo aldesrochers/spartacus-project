@@ -48,5 +48,5 @@ Mesh1d_Object::~Mesh1d_Object()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_Object, Mesh1d_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Object, Mesh1d_Object)
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_Object, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Object, Standard_Transient)

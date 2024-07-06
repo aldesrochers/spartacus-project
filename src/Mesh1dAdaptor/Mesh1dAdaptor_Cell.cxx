@@ -22,8 +22,6 @@
 
 // Spartacus
 #include <Mesh1dAdaptor_Cell.hxx>
-#include <Mesh1d_LinearLine.hxx>
-#include <Mesh1d_QuadraticLine.hxx>
 
 
 // ============================================================================
@@ -38,17 +36,6 @@ Mesh1dAdaptor_Cell::Mesh1dAdaptor_Cell()
 
 // ============================================================================
 /*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh1dAdaptor_Cell::Mesh1dAdaptor_Cell(const Handle(Mesh1d_Cell)& theCell)
-    : myCell(theCell)
-{
-
-}
-
-// ============================================================================
-/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -56,41 +43,4 @@ Mesh1dAdaptor_Cell::~Mesh1dAdaptor_Cell()
 {
 
 }
-
-// ============================================================================
-/*!
- *  \brief Cell()
-*/
-// ============================================================================
-const Handle(Mesh1d_Cell)& Mesh1dAdaptor_Cell::Cell() const
-{
-    return myCell;
-}
-
-// ============================================================================
-/*!
- *  \brief CellType()
-*/
-// ============================================================================
-MeshAbs_TypeOfCell Mesh1dAdaptor_Cell::CellType() const
-{
-    Handle(Standard_Type) aType = myCell->DynamicType();
-    if(aType == STANDARD_TYPE(Mesh1d_LinearLine)) {
-        return MeshAbs_CELL_LinearLine;
-    } else if(aType == STANDARD_TYPE(Mesh1d_QuadraticLine)) {
-        return MeshAbs_CELL_QuadraticLine;
-    }
-    return MeshAbs_CELL_Invalid;
-}
-
-// ============================================================================
-/*!
- *  \brief SetCell()
-*/
-// ============================================================================
-void Mesh1dAdaptor_Cell::SetCell(const Handle(Mesh1d_Cell) &theCell)
-{
-    myCell = theCell;
-}
-
 

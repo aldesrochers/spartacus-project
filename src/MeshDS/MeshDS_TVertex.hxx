@@ -24,15 +24,18 @@
 #define __MeshDS_TVertex_hxx__
 
 // Spartacus
-#include <Mesh_Point.hxx>
 #include <MeshDS_ListOfObject.hxx>
-#include <MeshDS_TEntity.hxx>
+#include <MeshDS_Mesh.hxx>
+#include <MeshDS_TObject.hxx>
+
+// OpenCascade
+#include <TopoDS_Vertex.hxx>
 
 // Forward declarations
 class MeshDS_TVertex;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TEntity)
+DEFINE_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TObject)
 
 
 // ============================================================================
@@ -40,7 +43,7 @@ DEFINE_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TEntity)
  *  \brief MeshDS_TVertex
 */
 // ============================================================================
-class MeshDS_TVertex : public MeshDS_TEntity
+class MeshDS_TVertex : public MeshDS_TObject
 {
 
 public:
@@ -57,17 +60,20 @@ public:
 
     Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
     Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
-    Standard_EXPORT const Handle(Mesh_Point)&   Point() const;
-    Standard_EXPORT void                        SetPoint(const Handle(Mesh_Point)& thePoint);
+    Standard_EXPORT const MeshDS_Mesh&          Mesh() const;
+    Standard_EXPORT void                        SetMesh(const MeshDS_Mesh& theMesh);
+    Standard_EXPORT void                        SetVertex(const TopoDS_Vertex& theVertex);
+    Standard_EXPORT const TopoDS_Vertex&        Vertex() const;
 
 private:
 
     MeshDS_ListOfObject     myLinkedCells;
-    Handle(Mesh_Point)      myPoint;
+    MeshDS_Mesh             myMesh;
+    TopoDS_Vertex           myVertex;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TEntity)
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TObject)
 
 };
 

@@ -43,7 +43,7 @@ class BRepCell_Command
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors

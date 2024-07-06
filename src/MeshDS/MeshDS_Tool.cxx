@@ -104,8 +104,8 @@ Standard_Boolean MeshDS_Tool::IsPoint1d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::IsPoint1d()->Invalid vertex.");
-    const Handle(Mesh_Point)& aPoint = aTVertex->Point();
-    return aPoint->IsPoint1d();
+    //const Handle(Mesh_Point)& aPoint = aTVertex->Point();
+    //return aPoint->IsPoint1d();
 }
 
 // ============================================================================
@@ -118,8 +118,8 @@ Standard_Boolean MeshDS_Tool::IsPoint2d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::IsPoint2d()->Invalid vertex.");
-    const Handle(Mesh_Point)& aPoint = aTVertex->Point();
-    return aPoint->IsPoint2d();
+    //const Handle(Mesh_Point)& aPoint = aTVertex->Point();
+    //return aPoint->IsPoint2d();
 }
 
 // ============================================================================
@@ -132,8 +132,8 @@ Standard_Boolean MeshDS_Tool::IsPoint3d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::IsPoint3d()->Invalid vertex.");
-    const Handle(Mesh_Point)& aPoint = aTVertex->Point();
-    return aPoint->IsPoint3d();
+    //const Handle(Mesh_Point)& aPoint = aTVertex->Point();
+    //return aPoint->IsPoint3d();
 }
 
 // ============================================================================
@@ -156,6 +156,7 @@ TCollection_AsciiString MeshDS_Tool::Name(const MeshDS_Group &theGroup)
 // ============================================================================
 gp_Pnt MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
 {
+    /*
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::Point()->Invalid Vertex.");
@@ -178,6 +179,7 @@ gp_Pnt MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
         aPnt.SetX(aPnt3d.Z());
     }
     return aPnt;
+*/
 }
 
 // ============================================================================
@@ -190,9 +192,9 @@ gp_Pnt1d MeshDS_Tool::Point1d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::Point()->Invalid Vertex.");
-    const Handle(Mesh_Point1d)& aPoint1d =
-        Handle(Mesh_Point1d)::DownCast(aTVertex->Point());
-    return aPoint1d->Point1d();
+    //const Handle(Mesh_Point1d)& aPoint1d =
+    //    Handle(Mesh_Point1d)::DownCast(aTVertex->Point());
+    //return aPoint1d->Point1d();
 }
 
 // ============================================================================
@@ -205,9 +207,9 @@ gp_Pnt2d MeshDS_Tool::Point2d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::Point2d()->Invalid Vertex.");
-    const Handle(Mesh_Point2d)& aPoint2d =
-        Handle(Mesh_Point2d)::DownCast(aTVertex->Point());
-    return aPoint2d->Point2d();
+    //const Handle(Mesh_Point2d)& aPoint2d =
+    //    Handle(Mesh_Point2d)::DownCast(aTVertex->Point());
+    //return aPoint2d->Point2d();
 }
 
 // ============================================================================
@@ -220,9 +222,9 @@ gp_Pnt MeshDS_Tool::Point3d(const MeshDS_Vertex &theVertex)
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
         throw Standard_NullObject("MeshDS_Tool::Point3d()->Invalid Vertex.");
-    const Handle(Mesh_Point3d)& aPoint3d =
-        Handle(Mesh_Point3d)::DownCast(aTVertex->Point());
-    return aPoint3d->Point3d();
+    //const Handle(Mesh_Point3d)& aPoint3d =
+    //    Handle(Mesh_Point3d)::DownCast(aTVertex->Point());
+    //return aPoint3d->Point3d();
 }
 
 // ============================================================================
@@ -250,5 +252,4 @@ MeshAbs_TypeOfShape MeshDS_Tool::ShapeType(const MeshDS_Cell &theCell)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
     return aTCell->ShapeType();
 }
-
 

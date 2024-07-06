@@ -37,7 +37,7 @@ class BRepCell_MakeLine : public BRepCell_MakeCell
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors

@@ -24,10 +24,8 @@
 using namespace std;
 
 // Spartacus
-#include <DOF_Translation.hxx>
-#include <ModelBuilder_MakeDOF.hxx>
-#include <ModelBuilder_MakeNode1d.hxx>
-#include <ModelBuilder_MakeTruss1d.hxx>
+#include <Cell1d_LinearLine.hxx>
+
 
 // ============================================================================
 /*!
@@ -37,19 +35,15 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    Handle(DOF_Translation) DX1 = new DOF_Translation(DOFAbs_AXIS_X);
-    Handle(DOF_Translation) DX2 = new DOF_Translation(DOFAbs_AXIS_X);
+    Handle(Cell1d_LinearLine) aCell = new Cell1d_LinearLine(gp_Pnt1d(0.), gp_Pnt1d(1.));
 
-    ModelDS_DOF aDX1 = ModelBuilder_MakeDOF(DX1).DOF();
-    ModelDS_DOF aDX2 = ModelBuilder_MakeDOF(DX2).DOF();
+    cout << aCell->NbEdges() << endl;
+    cout << aCell->NbPoints() << endl;
+    cout << aCell->NbVertices() << endl;
 
-    ModelDS_Node aNode1 = ModelBuilder_MakeNode1d(gp_Pnt1d(0.), aDX1).Node();
-    ModelDS_Node aNode2 = ModelBuilder_MakeNode1d(gp_Pnt1d(1.), aDX2).Node();
+    cout << aCell->IsDegenerated() << endl;
 
-    material_Elastic aMaterial(2E11, 1E-4);
-    ModelDS_Element anElement = ModelBuilder_MakeTruss1d(aNode1, aNode2, aMaterial, 1E-3);
 
-    //cout << anElement.ObjectType() << endl;
 
 
     cout << "Test_MakeModel" << endl;

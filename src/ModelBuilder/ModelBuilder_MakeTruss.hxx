@@ -43,15 +43,18 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeTruss(const MeshDS_Cell& theCell,
+    Standard_EXPORT ModelBuilder_MakeTruss(const ModelDS_Node& theNode1,
+                                           const ModelDS_Node& theNode2,
                                            const material_Elastic& theMaterial,
                                            const Standard_Real theArea);
+
     // destructors
     Standard_EXPORT ~ModelBuilder_MakeTruss();
 
 private:
 
-    Standard_EXPORT void        Initialize(const MeshDS_Cell& theCell,
+    Standard_EXPORT void        Initialize(const ModelDS_Node& theNode1,
+                                           const ModelDS_Node& theNode2,
                                            const material_Elastic& theMaterial,
                                            const Standard_Real theArea);
 

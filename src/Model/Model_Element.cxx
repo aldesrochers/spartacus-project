@@ -23,8 +23,6 @@
 // Spartacus
 #include <Model_Element.hxx>
 
-// OpenCascade
-#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -47,75 +45,6 @@ Model_Element::~Model_Element()
 
 }
 
-// ============================================================================
-/*!
- *  \brief IsMechanical1d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsMechanical1d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief IsMechanical2d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsMechanical2d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief IsMechanical3d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsMechanical3d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief IsThermal1d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsThermal1d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief IsThermal2d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsThermal2d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief IsThermal3d()
-*/
-// ============================================================================
-Standard_Boolean Model_Element::IsThermal3d() const
-{
-    return Standard_False;
-}
-
-// ============================================================================
-/*!
- *  \brief Mechanical1d()
-*/
-// ============================================================================
-const Handle(Mech1d_Model)& Model_Element::Mechanical1d() const
-{
-    throw Standard_DomainError("Model_Element::Mechanical1d()");
-}
 
 
 

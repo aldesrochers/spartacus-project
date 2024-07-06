@@ -92,6 +92,7 @@ void BRepCell_MakeTriangle::Initialize(const TopoDS_Vertex &theVertex1,
                                        const TopoDS_Vertex &theVertex2,
                                        const TopoDS_Vertex &theVertex3)
 {
+    /*
     myVertices.Append(theVertex1);
     myVertices.Append(theVertex2);
     myVertices.Append(theVertex3);
@@ -133,4 +134,5 @@ void BRepCell_MakeTriangle::Initialize(const TopoDS_Vertex &theVertex1,
 
     SetShape(aFace);
     SetDone();
+*/
 }

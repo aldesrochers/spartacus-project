@@ -46,12 +46,22 @@ ModelDS_TDOF::~ModelDS_TDOF()
 
 // ============================================================================
 /*!
- *  \brief Model()
+ *  \brief DOFType()
 */
 // ============================================================================
-const Handle(DOF_DegreeOfFreedom)& ModelDS_TDOF::Model() const
+ModelAbs_TypeOfDOF ModelDS_TDOF::DOFType() const
 {
-    return myModel;
+    return myDOFType;
+}
+
+// ============================================================================
+/*!
+ *  \brief Node()
+*/
+// ============================================================================
+const ModelDS_Node& ModelDS_TDOF::Node() const
+{
+    return myNode;
 }
 
 // ============================================================================
@@ -66,14 +76,23 @@ ModelAbs_TypeOfObject ModelDS_TDOF::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief SetModel()
+ *  \brief SetDOFType()
 */
 // ============================================================================
-void ModelDS_TDOF::SetModel(const Handle(DOF_DegreeOfFreedom) &theModel)
+void ModelDS_TDOF::SetDOFType(const ModelAbs_TypeOfDOF theDOFType)
 {
-    myModel = theModel;
+    myDOFType = theDOFType;
 }
 
+// ============================================================================
+/*!
+ *  \brief SetNode()
+*/
+// ============================================================================
+void ModelDS_TDOF::SetNode(const ModelDS_Node &theNode)
+{
+    myNode = theNode;
+}
 
 
 // ****************************************************************************

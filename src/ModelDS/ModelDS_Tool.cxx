@@ -53,33 +53,6 @@ const ModelDS_ListOfObject& ModelDS_Tool::Boundaries(const ModelDS_Loading& theL
 
 // ============================================================================
 /*!
- *  \brief Cell()
-*/
-// ============================================================================
-const MeshDS_Cell& ModelDS_Tool::Cell(const ModelDS_Element& theElement)
-{
-    const ModelDS_TElement* aTElement = static_cast<const ModelDS_TElement*>(theElement.TObject().get());
-    if(aTElement == 0)
-        throw Standard_NullObject("ModelDS_Tool::Cell()->Invalid element.");
-    return aTElement->Cell();
-}
-
-
-// ============================================================================
-/*!
- *  \brief DegreeOfFreedom()
-*/
-// ============================================================================
-const Handle(DOF_DegreeOfFreedom)& ModelDS_Tool::DegreeOfFreedom(const ModelDS_DOF& theDOF)
-{
-    const ModelDS_TDOF* aTDOF = static_cast<const ModelDS_TDOF*>(theDOF.TObject().get());
-    if(aTDOF == 0)
-        throw Standard_NullObject("ModelDS_Tool::DegreeOfFreedom()->Invalid DOF.");
-    return aTDOF->Model();
-}
-
-// ============================================================================
-/*!
  *  \brief DOFs()
 */
 // ============================================================================
@@ -177,8 +150,8 @@ Standard_Boolean ModelDS_Tool::IsMechanical1d(const ModelDS_Modelization& theMod
     const ModelDS_TModelization* aTModelization = static_cast<const ModelDS_TModelization*>(theModelization.TObject().get());
     if(aTModelization == 0)
         throw Standard_NullObject("ModelDS_Tool::Vertex()->Invalid modelization.");
-    const Handle(Model_Element)& aModel = aTModelization->Model();
-    return aModel->IsMechanical1d();
+    //const Handle(Model_Element)& aModel = aTModelization->Model();
+    //return aModel->IsMechanical1d();
 }
 
 // ============================================================================
@@ -191,8 +164,8 @@ const Handle(Mech1d_Model)& ModelDS_Tool::Mechanical1d(const ModelDS_Modelizatio
     const ModelDS_TModelization* aTModelization = static_cast<const ModelDS_TModelization*>(theModelization.TObject().get());
     if(aTModelization == 0)
         throw Standard_NullObject("ModelDS_Tool::Vertex()->Invalid modelization.");
-    const Handle(Model_Element)& aModel = aTModelization->Model();
-    return aModel->Mechanical1d();
+    //const Handle(Model_Element)& aModel = aTModelization->Model();
+    //return aModel->Mechanical1d();
 }
 
 // ============================================================================
@@ -211,14 +184,15 @@ const gp_Pnt1d& ModelDS_Tool::Point1d(const ModelDS_Node &theNode)
 
 // ============================================================================
 /*!
- *  \brief Vertex()
+ *  \brief Point()
 */
 // ============================================================================
-const MeshDS_Vertex& ModelDS_Tool::Vertex(const ModelDS_Node &theNode)
+const Handle(Model_Point)& ModelDS_Tool::Point(const ModelDS_Node &theNode)
 {
     const ModelDS_TNode* aTNode = static_cast<const ModelDS_TNode*>(theNode.TObject().get());
     if(aTNode == 0)
-        throw Standard_NullObject("ModelDS_Tool::Vertex()->Invalid node.");
-    //return aTNode->Vertex();
+        throw Standard_NullObject("ModelDS_Tool::Point1d()->Invalid node.");
+    const Handle(Model_Point)& aPoint = aTNode->Point();
+    return aPoint;
 }
 

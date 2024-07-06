@@ -59,12 +59,72 @@ void BRepCell_MakeCell::Build()
 
 // ============================================================================
 /*!
- *  \brief SetShape()
+ *  \brief NbEdges()
 */
 // ============================================================================
-void BRepCell_MakeCell::SetShape(const TopoDS_Shape &theShape)
+Standard_Integer BRepCell_MakeCell::NbEdges() const
 {
-    myShape = theShape;
+    return myEdges.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbFaces()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbFaces() const
+{
+    return myFaces.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbShells()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbShells() const
+{
+    return myShells.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbSolids()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbSolids() const
+{
+    return mySolids.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbVertices()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbVertices() const
+{
+    return myVertices.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief NbWires()
+*/
+// ============================================================================
+Standard_Integer BRepCell_MakeCell::NbWires() const
+{
+    return myWires.Size();
+}
+
+// ============================================================================
+/*!
+ *  \brief operator TopoDS_Shape()
+*/
+// ============================================================================
+BRepCell_MakeCell::operator TopoDS_Shape() const
+{
+    return Shape();
 }
 
 // ============================================================================
@@ -79,16 +139,6 @@ const TopoDS_Shape& BRepCell_MakeCell::Shape() const
         Check();
     }
     return myShape;
-}
-
-// ============================================================================
-/*!
- *  \brief operator TopoDS_Shape()
-*/
-// ============================================================================
-BRepCell_MakeCell::operator TopoDS_Shape() const
-{
-    return Shape();
 }
 
 

@@ -31,10 +31,10 @@
 // ============================================================================
 enum ModelAbs_TypeOfDimensionality
 {
-    ModelAbs_DIM_0D,
-    ModelAbs_DIM_1D,
-    ModelAbs_DIM_2D,
-    ModelAbs_DIM_3D
+    ModelAbs_DIM_0d,
+    ModelAbs_DIM_1d,
+    ModelAbs_DIM_2d,
+    ModelAbs_DIM_3d
 };
 
 

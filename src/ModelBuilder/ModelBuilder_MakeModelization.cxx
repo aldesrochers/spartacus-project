@@ -32,7 +32,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeModelization::ModelBuilder_MakeModelization(const Handle(Mech1d_Model)& theModel)
+ModelBuilder_MakeModelization::ModelBuilder_MakeModelization(const Handle(Mech1d_Element)& theModel)
     : myError(ModelBuilder_ModelizationNoError)
 {
     Initialize(theModel);
@@ -63,7 +63,7 @@ ModelBuilder_ModelizationError ModelBuilder_MakeModelization::Error() const
  *  \brief Initialize()
 */
 // ============================================================================
-void ModelBuilder_MakeModelization::Initialize(const Handle(Mech1d_Model)& theModel)
+void ModelBuilder_MakeModelization::Initialize(const Handle(Mech1d_Element)& theModel)
 {
     ModelDS_Builder aBuilder;
     aBuilder.MakeModelization(ModelDS::Modelization(myObject), theModel);

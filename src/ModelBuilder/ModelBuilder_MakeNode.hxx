@@ -24,13 +24,16 @@
 #define __ModelBuilder_MakeNode_hxx__
 
 // Spartacus
-#include <MeshDS_Vertex.hxx>
+#include <gp_Pnt1d.hxx>
 #include <ModelAbs_TypeOfDOF.hxx>
 #include <ModelBuilder_MakeObject.hxx>
 #include <ModelBuilder_NodeError.hxx>
 #include <ModelDS_DOF.hxx>
 #include <ModelDS_Node.hxx>
-#include <ModelTools_IndexedMapOfObject.hxx>
+
+// OpenCascade
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 
 // ============================================================================
@@ -47,13 +50,9 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeNode(const MeshDS_Vertex& theVertex);
+    Standard_EXPORT ModelBuilder_MakeNode(const gp_Pnt1d& thePoint);
     // destructors
     Standard_EXPORT ~ModelBuilder_MakeNode();
-
-public:
-
-    Standard_EXPORT void                    Build() Standard_OVERRIDE;
 
 public:
 
@@ -62,17 +61,19 @@ public:
 
 public:
 
-    Standard_EXPORT void                    Add(const ModelDS_DOF& theDOF);
-    Standard_EXPORT void                    Add(const ModelAbs_TypeOfDOF theDOFType);
+    Standard_EXPORT void                    AddDOF(const ModelDS_DOF& theDOF);
+    Standard_EXPORT void                    AddDOF(const ModelAbs_TypeOfDOF theDOFType);
     Standard_EXPORT ModelBuilder_NodeError  Error() const;
-    Standard_EXPORT Standard_Integer        NbDOFs() const;
-    Standard_EXPORT const MeshDS_Vertex&    Vertex() const;
 
-private:
+protected:
 
-    ModelTools_IndexedMapOfObject   myDOFs;
-    ModelBuilder_NodeError          myError;
-    MeshDS_Vertex                   myVertex;
+    Standard_EXPORT void        Initialize(const gp_Pnt1d& thePoint);
+    Standard_EXPORT void        Initialize(const gp_Pnt2d& thePoint);
+    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint);
+
+protected:
+
+    ModelBuilder_NodeError      myError;
 
 };
 

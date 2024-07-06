@@ -60,6 +60,7 @@ ModelBuilder_MakeModel::~ModelBuilder_MakeModel()
 // ============================================================================
 void ModelBuilder_MakeModel::AddNode(const ModelDS_Node &theNode)
 {
+    /*
     // check if node is defined on a vertex that is contained within mesh
     const MeshDS_Vertex& aVertex = ModelDS_Tool::Vertex(theNode);
     if(!myVertices.Contains(aVertex)) {
@@ -71,6 +72,7 @@ void ModelBuilder_MakeModel::AddNode(const ModelDS_Node &theNode)
     Standard_Integer anIndex = myVertices.FindIndex(aVertex);
     myNodes.Bind(anIndex, theNode);
     SetDone();
+**/
 }
 
 // ============================================================================

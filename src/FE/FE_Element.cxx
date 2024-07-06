@@ -36,18 +36,6 @@ FE_Element::FE_Element()
 
 // ============================================================================
 /*!
- *  \brief Constructor
-*/
-// ============================================================================
-FE_Element::FE_Element(const Standard_Integer theNbNodes,
-                       const Standard_Integer theNbDOFs)
-{
-    myDOFs.Resize(1, theNbDOFs, Standard_False);
-    myNodes.Resize(1, theNbDOFs, Standard_False);
-}
-
-// ============================================================================
-/*!
  *  \brief Destructor
 */
 // ============================================================================
@@ -56,114 +44,11 @@ FE_Element::~FE_Element()
 
 }
 
-// ============================================================================
-/*!
- *  \brief DOF()
-*/
-// ============================================================================
-Handle(FE_DOF) FE_Element::DOF(const Standard_Integer theIndex) const
-{
-    return Handle(FE_DOF)::DownCast(myDOFs.Value(theIndex));
-}
-
-// ============================================================================
-/*!
- *  \brief Model()
-*/
-// ============================================================================
-Handle(FE_ElementModel) FE_Element::Model() const
-{
-    return myModel;
-}
-
-// ============================================================================
-/*!
- *  \brief NbDOFs()
-*/
-// ============================================================================
-Standard_Integer FE_Element::NbDOFs() const
-{
-    return myDOFs.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbNodes()
-*/
-// ============================================================================
-Standard_Integer FE_Element::NbNodes() const
-{
-    return myNodes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief Node()
-*/
-// ============================================================================
-Handle(FE_Node) FE_Element::Node(const Standard_Integer theIndex) const
-{
-    return Handle(FE_Node)::DownCast(myNodes.Value(theIndex));
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeDOFs()
-*/
-// ============================================================================
-void FE_Element::ResizeDOFs(const Standard_Integer theNbDOFs,
-                            const Standard_Boolean toCopyData)
-{
-    myDOFs.Resize(1, theNbDOFs, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeNodes()
-*/
-// ============================================================================
-void FE_Element::ResizeNodes(const Standard_Integer theNbNodes,
-                            const Standard_Boolean toCopyData)
-{
-    myNodes.Resize(1, theNbNodes, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief SetDOF()
-*/
-// ============================================================================
-void FE_Element::SetDOF(const Standard_Integer theIndex,
-                        const Handle(FE_DOF) &theDOF)
-{
-    myDOFs.SetValue(theIndex, theDOF);
-}
-
-// ============================================================================
-/*!
- *  \brief SetModel()
-*/
-// ============================================================================
-void FE_Element::SetModel(const Handle(FE_ElementModel) &theModel)
-{
-    myModel = theModel;
-}
-
-// ============================================================================
-/*!
- *  \brief SetNode()
-*/
-// ============================================================================
-void FE_Element::SetNode(const Standard_Integer theIndex,
-                         const Handle(FE_Node) &theNode)
-{
-    myNodes.SetValue(theIndex, theNode);
-}
 
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(FE_Element, FE_Object)
-IMPLEMENT_STANDARD_RTTIEXT(FE_Element, FE_Object)
+IMPLEMENT_STANDARD_HANDLE(FE_Element, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(FE_Element, Standard_Transient)

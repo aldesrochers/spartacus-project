@@ -46,32 +46,32 @@ ModelDS_TElement::~ModelDS_TElement()
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief DOFs()
 */
 // ============================================================================
-const MeshDS_Cell& ModelDS_TElement::Cell() const
+const ModelDS_Array1OfObject& ModelDS_TElement::DOFs() const
 {
-    return myCell;
+    return myDOFs;
 }
 
 // ============================================================================
 /*!
- *  \brief Modelizations()
+ *  \brief DOFs()
 */
 // ============================================================================
-const ModelDS_ListOfObject& ModelDS_TElement::Modelizations() const
+ModelDS_Array1OfObject& ModelDS_TElement::DOFs()
 {
-    return myModelizations;
+    return myDOFs;
 }
 
 // ============================================================================
 /*!
- *  \brief Modelizations()
+ *  \brief Model()
 */
 // ============================================================================
-ModelDS_ListOfObject& ModelDS_TElement::Modelizations()
+const Handle(Model_Element)& ModelDS_TElement::Model() const
 {
-    return myModelizations;
+    return myModel;
 }
 
 // ============================================================================
@@ -79,7 +79,7 @@ ModelDS_ListOfObject& ModelDS_TElement::Modelizations()
  *  \brief Nodes()
 */
 // ============================================================================
-const ModelDS_SequenceOfObject& ModelDS_TElement::Nodes() const
+const ModelDS_Array1OfObject& ModelDS_TElement::Nodes() const
 {
     return myNodes;
 }
@@ -89,7 +89,7 @@ const ModelDS_SequenceOfObject& ModelDS_TElement::Nodes() const
  *  \brief Nodes()
 */
 // ============================================================================
-ModelDS_SequenceOfObject& ModelDS_TElement::Nodes()
+ModelDS_Array1OfObject& ModelDS_TElement::Nodes()
 {
     return myNodes;
 }
@@ -106,15 +106,13 @@ ModelAbs_TypeOfObject ModelDS_TElement::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief SetCell()
+ *  \brief SetModel()
 */
 // ============================================================================
-void ModelDS_TElement::SetCell(const MeshDS_Cell &theCell)
+void ModelDS_TElement::SetModel(const Handle(Model_Element) &theModel)
 {
-    myCell = theCell;
+    myModel = theModel;
 }
-
-
 
 
 // ****************************************************************************

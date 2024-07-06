@@ -50,6 +50,8 @@ public:
 public:
 
     Standard_EXPORT Standard_Real       Distance(const gp_Pnt1d& theOther) const;
+    Standard_EXPORT Standard_Boolean    IsEqual(const gp_Pnt1d& theOther,
+                                                const Standard_Real theLinearTolerance) const;
     Standard_EXPORT void                SetX(const Standard_Real theX);
     Standard_EXPORT Standard_Real       X() const;
 

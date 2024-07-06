@@ -25,7 +25,8 @@
 
 // Spartacus
 #include <BRepCell_Command.hxx>
-#include <TopTools_SequenceOfShape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
+
 
 // ============================================================================
 /*!
@@ -37,7 +38,7 @@ class BRepCell_MakeCell : public BRepCell_Command
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors
@@ -54,17 +55,24 @@ public:
     Standard_EXPORT const TopoDS_Shape&     Shape() const;
     Standard_EXPORT operator                TopoDS_Shape() const;
 
+public:
+
+    Standard_EXPORT Standard_Integer        NbEdges() const;
+    Standard_EXPORT Standard_Integer        NbFaces() const;
+    Standard_EXPORT Standard_Integer        NbShells() const;
+    Standard_EXPORT Standard_Integer        NbSolids() const;
+    Standard_EXPORT Standard_Integer        NbVertices() const;
+    Standard_EXPORT Standard_Integer        NbWires() const;
+
 protected:
 
-    Standard_EXPORT void        SetShape(const TopoDS_Shape& theShape);
-
-protected:
-
-    TopTools_SequenceOfShape    myEdges;
-    TopTools_SequenceOfShape    myFaces;
+    TopTools_IndexedMapOfShape  myEdges;
+    TopTools_IndexedMapOfShape  myFaces;
+    TopTools_IndexedMapOfShape  myShells;
+    TopTools_IndexedMapOfShape  mySolids;
     TopoDS_Shape                myShape;
-    TopTools_SequenceOfShape    myVertices;
-    TopTools_SequenceOfShape    myWires;
+    TopTools_IndexedMapOfShape  myVertices;
+    TopTools_IndexedMapOfShape  myWires;
 
 };
 

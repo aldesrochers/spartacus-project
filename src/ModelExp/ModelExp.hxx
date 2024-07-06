@@ -31,6 +31,7 @@
 #include <ModelDS_Element.hxx>
 #include <ModelDS_Node.hxx>
 #include <ModelTools_IndexedMapOfObject.hxx>
+#include <ModelTools_ListOfObject.hxx>
 
 
 // ============================================================================
@@ -46,6 +47,9 @@ public:
     DEFINE_STANDARD_ALLOC
 
 public:
+
+    static Standard_EXPORT void     ListDOFs(const ModelDS_Node& theNode,
+                                             ModelTools_ListOfObject& theList);
 
     static Standard_EXPORT void     MapDOFs(const ModelDS_Node& theNode,
                                             ModelTools_IndexedMapOfObject& theMap);

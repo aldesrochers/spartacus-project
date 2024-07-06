@@ -24,7 +24,7 @@
 #include <Mesh1d_LinearLine.hxx>
 
 // OpenCascade
-#include <Standard_RangeError.hxx>
+#include <BRepCell_MakeLine.hxx>
 
 
 // ============================================================================
@@ -32,10 +32,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                     const Handle(Mesh1d_Vertex)& theVertex2)
+Mesh1d_LinearLine::Mesh1d_LinearLine(const gp_Pnt1d& thePoint1,
+                                     const gp_Pnt1d& thePoint2)
 {
-
+    Initialize(thePoint1, thePoint2);
 }
 
 // ============================================================================
@@ -48,6 +48,16 @@ Mesh1d_LinearLine::~Mesh1d_LinearLine()
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void Mesh1d_LinearLine::Initialize(const gp_Pnt1d &thePoint1,
+                                   const gp_Pnt1d &thePoint2)
+{
+
+}
 
 
 // ****************************************************************************

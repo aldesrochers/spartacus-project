@@ -19,8 +19,6 @@
 //
 // ============================================================================
 
-#include <iostream>
-using namespace std;
 
 // Spartacus
 #include <ModelBuilder_MakeDOF.hxx>
@@ -32,9 +30,9 @@ using namespace std;
  *  \brief Constructor
 */
 // ============================================================================
-ModelBuilder_MakeDOF::ModelBuilder_MakeDOF(const Handle(DOF_DegreeOfFreedom)& theModel)
+ModelBuilder_MakeDOF::ModelBuilder_MakeDOF(const ModelAbs_TypeOfDOF theDOFType)
 {
-    Initialize(theModel);
+    Initialize(theDOFType);
 }
 
 // ============================================================================
@@ -62,11 +60,11 @@ const ModelDS_DOF& ModelBuilder_MakeDOF::DOF() const
  *  \brief Initialize()
 */
 // ============================================================================
-void ModelBuilder_MakeDOF::Initialize(const Handle(DOF_DegreeOfFreedom) &theModel)
+void ModelBuilder_MakeDOF::Initialize(const ModelAbs_TypeOfDOF theDOFType)
 {
     // make DOF
     ModelDS_Builder aBuilder;
-    aBuilder.MakeDOF(ModelDS::DOF(myObject), theModel);
+    aBuilder.MakeDOF(ModelDS::DOF(myObject), theDOFType);
     SetDone();
 }
 

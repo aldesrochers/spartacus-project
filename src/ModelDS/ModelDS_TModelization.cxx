@@ -23,6 +23,9 @@
 // Spartacus
 #include <ModelDS_TModelization.hxx>
 
+// OpenCascade
+#include <math_Vector.hxx>
+
 
 // ============================================================================
 /*!
@@ -69,7 +72,7 @@ ModelDS_SequenceOfObject& ModelDS_TModelization::DOFs()
  *  \brief Model()
 */
 // ============================================================================
-const Handle(Model_Element)& ModelDS_TModelization::Model() const
+const Handle(FE_Element)& ModelDS_TModelization::Model() const
 {
     return myModel;
 }
@@ -89,10 +92,11 @@ ModelAbs_TypeOfObject ModelDS_TModelization::ObjectType() const
  *  \brief SetModel()
 */
 // ============================================================================
-void ModelDS_TModelization::SetModel(const Handle(Model_Element) &theModel)
+void ModelDS_TModelization::SetModel(const Handle(FE_Element) &theModel)
 {
     myModel = theModel;
 }
+
 
 
 // ****************************************************************************

@@ -28,7 +28,6 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <Mesh1d_Cell.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
 
 // Forward declarations
@@ -48,19 +47,9 @@ class Mesh1dAdaptor_Cell
 public:
     // constructors
     Standard_EXPORT Mesh1dAdaptor_Cell();
-    Standard_EXPORT Mesh1dAdaptor_Cell(const Handle(Mesh1d_Cell)& theCell);
     // destructors
     Standard_EXPORT ~Mesh1dAdaptor_Cell();
 
-public:
-
-    Standard_EXPORT const Handle(Mesh1d_Cell)&  Cell() const;
-    Standard_EXPORT MeshAbs_TypeOfCell          CellType() const;
-    Standard_EXPORT void                        SetCell(const Handle(Mesh1d_Cell)& theCell);
-
-private:
-
-    Handle(Mesh1d_Cell)  myCell;
 
 };
 

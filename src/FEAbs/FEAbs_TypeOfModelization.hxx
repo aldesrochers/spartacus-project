@@ -32,9 +32,9 @@
 // ============================================================================
 enum FEAbs_TypeOfModelization
 {
-    FEAbs_MOD_Truss1d,
-    FEAbs_MOD_Truss2d,
-    FEAbs_MOD_Truss3d
+    FEAbs_MOD_ElasticTruss1d,
+    FEAbs_MOD_ElasticTruss2d,
+    FEAbs_MOD_ElasticTruss3d
 };
 
 #endif // __FEAbs_TypeOfModelization_hxx__

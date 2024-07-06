@@ -50,17 +50,6 @@ public:
 
 public:
 
-    virtual Standard_EXPORT Standard_Boolean                IsMechanical1d() const;
-    virtual Standard_EXPORT Standard_Boolean                IsMechanical2d() const;
-    virtual Standard_EXPORT Standard_Boolean                IsMechanical3d() const;
-    virtual Standard_EXPORT Standard_Boolean                IsThermal1d() const;
-    virtual Standard_EXPORT Standard_Boolean                IsThermal2d() const;
-    virtual Standard_EXPORT Standard_Boolean                IsThermal3d() const;
-
-    virtual Standard_EXPORT const Handle(Mech1d_Model)&   Mechanical1d() const;
-
-public:
-
     DEFINE_STANDARD_RTTIEXT(Model_Element, Model_Object)
 
 };

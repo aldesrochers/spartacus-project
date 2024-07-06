@@ -24,10 +24,13 @@
 #define __ModelBuilder_MakeElement_hxx__
 
 // Spartacus
+#include <Model_Element.hxx>
+#include <ModelAbs_TypeOfDOF.hxx>
 #include <ModelBuilder_ElementError.hxx>
 #include <ModelBuilder_MakeObject.hxx>
 #include <ModelDS_Element.hxx>
 #include <ModelDS_Node.hxx>
+#include <ModelTools_IndexedMapOfObject.hxx>
 
 
 // ============================================================================
@@ -59,7 +62,15 @@ public:
 
 protected:
 
+    Standard_EXPORT Standard_Boolean            AddDOF(const ModelDS_Node& theNode,
+                                                       const ModelAbs_TypeOfDOF theDOFType);
+
+protected:
+
+    ModelTools_IndexedMapOfObject   myDOFs;
     ModelBuilder_ElementError       myError;
+    ModelTools_IndexedMapOfObject   myNodes;
+    Handle(Model_Element)           myModel;
 
 };
 

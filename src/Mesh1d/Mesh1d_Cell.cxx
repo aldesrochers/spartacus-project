@@ -45,10 +45,8 @@ Mesh1d_Cell::~Mesh1d_Cell()
 }
 
 
-
-
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Entity)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Entity)
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Object)

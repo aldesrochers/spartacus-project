@@ -28,11 +28,8 @@
 #include <Standard_DefineAlloc.hxx>
 
 // Spartacus
-#include <DOF_DegreeOfFreedom.hxx>
 #include <gp_Pnt1d.hxx>
-#include <Mech1d_Model.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_Vertex.hxx>
+#include <Model_Point.hxx>
 #include <ModelAbs_TypeOfDimensionality.hxx>
 #include <ModelAbs_TypeOfDOF.hxx>
 #include <ModelAbs_TypeOfModelization.hxx>
@@ -65,11 +62,8 @@ public:
 
 public:
 
-    static const Handle(DOF_DegreeOfFreedom)&               DegreeOfFreedom(const ModelDS_DOF& theDOF);
 
     static Standard_EXPORT const ModelDS_ListOfObject&      Boundaries(const ModelDS_Loading& theLoading);
-
-    static Standard_EXPORT const MeshDS_Cell&               Cell(const ModelDS_Element& theElement);
 
     static Standard_EXPORT const ModelDS_ListOfObject&      DOFs(const ModelDS_Boundary& theBoundary);
     static Standard_EXPORT const ModelDS_SequenceOfObject&  DOFs(const ModelDS_Mapping& theMapping);
@@ -89,7 +83,7 @@ public:
 
     static Standard_EXPORT const gp_Pnt1d&                  Point1d(const ModelDS_Node& theNode);
 
-    static Standard_EXPORT const MeshDS_Vertex&             Vertex(const ModelDS_Node& theNode);
+    static Standard_EXPORT const Handle(Model_Point)&       Point(const ModelDS_Node& theNode);
 
 };
 

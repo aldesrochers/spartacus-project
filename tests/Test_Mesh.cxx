@@ -24,13 +24,12 @@
 using namespace std;
 
 // Spartacus
-#include <MeshBuilder_MakeGroup.hxx>
+#include <Cell1d_LinearLine.hxx>
 #include <MeshBuilder_MakeLine.hxx>
-#include <MeshBuilder_MakeMesh.hxx>
-#include <MeshBuilder_MakeVertex.hxx>
 #include <MeshDS_Tool.hxx>
-#include <MeshExp.hxx>
 
+// OpenCascade
+#include <BRep_Tool.hxx>
 
 
 // ============================================================================
@@ -41,27 +40,22 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    MeshDS_Vertex aVertex1 = MeshBuilder_MakeVertex(1).Vertex();
-    MeshDS_Vertex aVertex2 = MeshBuilder_MakeVertex(2).Vertex();
-    MeshDS_Vertex aVertex3 = MeshBuilder_MakeVertex(3).Vertex();
-    MeshDS_Cell aCell1 = MeshBuilder_MakeLine(aVertex1, aVertex2).Cell();
-    MeshDS_Cell aCell2 = MeshBuilder_MakeLine(aVertex2, aVertex3).Cell();
+
+    Handle(Cell1d_LinearLine) aLine = new Cell1d_LinearLine(gp_Pnt1d(0.), gp_Pnt1d(1.));
 
 
-    MeshBuilder_MakeMesh aBuilder;
-    aBuilder.AddCell(aCell1);
-    aBuilder.AddCell(aCell2);
-    MeshDS_Mesh aMesh = aBuilder.Mesh();
+    cout << aLine->IsDegenerated() << endl;
+    cout << aLine->IsModified() << endl;
+    aLine->SetPoint(1, gp_Pnt1d(2.));
+    cout << aLine->IsDegenerated() << endl;
+    cout << aLine->IsModified() << endl;
+    cout << aLine->MustBeUpdated() << endl;
+    cout << aLine->Update() << endl;
+    cout << aLine->IsDegenerated() << endl;
+    cout << aLine->IsModified() << endl;
+    cout << aLine->MustBeUpdated() << endl;
 
 
-    cout << aBuilder.NbCells() << endl;
-    cout << aBuilder.NbGroups() << endl;
-    cout << aBuilder.NbVertices() << endl;
-
-    cout << MeshDS_Tool::IsPoint1d(aVertex1) << endl;
-
-
-
-
+    //cout << "Test_Mesh" << endl;
     return 0;
 }

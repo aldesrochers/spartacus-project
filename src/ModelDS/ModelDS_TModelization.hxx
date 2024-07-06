@@ -24,7 +24,7 @@
 #define __ModelDS_TModelization_hxx__
 
 // Spartacus
-#include <Model_Element.hxx>
+#include <FE_Element.hxx>
 #include <ModelDS_TObject.hxx>
 #include <ModelDS_SequenceOfObject.hxx>
 
@@ -57,13 +57,13 @@ public:
 
     Standard_EXPORT const ModelDS_SequenceOfObject& DOFs()  const;
     Standard_EXPORT ModelDS_SequenceOfObject&       DOFs();
-    Standard_EXPORT const Handle(Model_Element)&    Model() const;
-    Standard_EXPORT void                            SetModel(const Handle(Model_Element)& theModel);
+    Standard_EXPORT const Handle(FE_Element)&         Model() const;
+    Standard_EXPORT void                            SetModel(const Handle(FE_Element)& theModel);
 
 private:
 
     ModelDS_SequenceOfObject    myDOFs;
-    Handle(Model_Element)       myModel;
+    Handle(FE_Element)            myModel;
 
 public:
 

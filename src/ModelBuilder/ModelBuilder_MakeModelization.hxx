@@ -24,7 +24,7 @@
 #define __ModelBuilder_MakeModelization_hxx__
 
 // Spartacus
-#include <Mech1d_Model.hxx>
+#include <Mech1d_Element.hxx>
 #include <ModelBuilder_MakeObject.hxx>
 #include <ModelBuilder_ModelizationError.hxx>
 #include <ModelDS_Modelization.hxx>
@@ -44,7 +44,7 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT ModelBuilder_MakeModelization(const Handle(Mech1d_Model)& theModel);
+    Standard_EXPORT ModelBuilder_MakeModelization(const Handle(Mech1d_Element)& theModel);
     // destructors
     Standard_EXPORT ~ModelBuilder_MakeModelization();
 
@@ -59,7 +59,7 @@ public:
 
 public:
 
-    Standard_EXPORT void        Initialize(const Handle(Mech1d_Model)& theModel);
+    Standard_EXPORT void        Initialize(const Handle(Mech1d_Element)& theModel);
 
 private:
 

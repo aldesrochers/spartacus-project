@@ -127,7 +127,7 @@ void MeshExp::MapVertices(const MeshDS_Cell &theCell,
 const MeshDS_Mesh& MeshExp::Mesh(const MeshDS_Cell &theCell)
 {
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
-    return aTCell->Mesh();
+    //return aTCell->Mesh();
 }
 
 // ============================================================================
@@ -149,5 +149,5 @@ const MeshDS_Mesh& MeshExp::Mesh(const MeshDS_Group &theGroup)
 const MeshDS_Mesh& MeshExp::Mesh(const MeshDS_Vertex &theVertex)
 {
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
-    return aTVertex->Mesh();
+    //return aTVertex->Mesh();
 }

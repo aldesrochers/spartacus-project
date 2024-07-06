@@ -68,6 +68,16 @@ MeshDS_ListOfObject& MeshDS_TVertex::LinkedCells()
 
 // ============================================================================
 /*!
+ *  \brief Mesh()
+*/
+// ============================================================================
+const MeshDS_Mesh& MeshDS_TVertex::Mesh() const
+{
+    return myMesh;
+}
+
+// ============================================================================
+/*!
  *  \brief ObjectType()
 */
 // ============================================================================
@@ -78,27 +88,39 @@ MeshAbs_TypeOfObject MeshDS_TVertex::ObjectType() const
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief SetMesh()
 */
 // ============================================================================
-const Handle(Mesh_Point)& MeshDS_TVertex::Point() const
+void MeshDS_TVertex::SetMesh(const MeshDS_Mesh& theMesh)
 {
-    return myPoint;
+    myMesh = theMesh;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief SetVertex()
 */
 // ============================================================================
-void MeshDS_TVertex::SetPoint(const Handle(Mesh_Point)& thePoint)
+void MeshDS_TVertex::SetVertex(const TopoDS_Vertex &theVertex)
 {
-    myPoint = thePoint;
+    myVertex = theVertex;
 }
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const TopoDS_Vertex& MeshDS_TVertex::Vertex() const
+{
+    return myVertex;
+}
+
+
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TEntity)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TEntity)
+IMPLEMENT_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TObject)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TObject)

@@ -24,20 +24,16 @@
 #define __FE_Element_hxx__
 
 
-// Spartacus
-#include <FE_DOF.hxx>
-#include <FE_ElementModel.hxx>
-#include <FE_Node.hxx>
-#include <FE_Object.hxx>
-
 // OpenCascade
-#include <TColStd_Array1OfTransient.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Forward declarations
 class FE_Element;
 
 // Handles
-DEFINE_STANDARD_HANDLE(FE_Element, FE_Object)
+DEFINE_STANDARD_HANDLE(FE_Element, Standard_Transient)
 
 
 // ============================================================================
@@ -45,45 +41,18 @@ DEFINE_STANDARD_HANDLE(FE_Element, FE_Object)
  *  \brief FE_Element
 */
 // ============================================================================
-class FE_Element : public FE_Object
+class FE_Element : public Standard_Transient
 {
 
 public:
     // constructors
     Standard_EXPORT FE_Element();
-    Standard_EXPORT FE_Element(const Standard_Integer theNbNodes,
-                               const Standard_Integer theNbDOFs);
     // destructors
     Standard_EXPORT ~FE_Element();
 
 public:
 
-    Standard_EXPORT Handle(FE_DOF)          DOF(const Standard_Integer theIndex) const;
-    Standard_EXPORT Handle(FE_ElementModel) Model() const;
-    Standard_EXPORT Standard_Integer        NbDOFs() const;
-    Standard_EXPORT Standard_Integer        NbNodes() const;
-    Standard_EXPORT Handle(FE_Node)         Node(const Standard_Integer theIndex) const;
-    Standard_EXPORT void                    ResizeDOFs(const Standard_Integer theNbDOFs,
-                                                       const Standard_Boolean toCopyData = Standard_False);
-    Standard_EXPORT void                    ResizeNodes(const Standard_Integer theNbNodes,
-                                                        const Standard_Boolean toCopyData = Standard_False);
-    Standard_EXPORT void                    SetDOF(const Standard_Integer theIndex,
-                                                   const Handle(FE_DOF)& theDOF);
-    Standard_EXPORT void                    SetModel(const Handle(FE_ElementModel)& theModel);
-    Standard_EXPORT void                    SetNode(const Standard_Integer theIndex,
-                                                    const Handle(FE_Node)& theNode);
-
-
-private:
-
-    TColStd_Array1OfTransient   myDOFs;
-    Handle(FE_ElementModel)     myModel;
-    TColStd_Array1OfTransient   myNodes;
-
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(FE_Element, FE_Object)
+    DEFINE_STANDARD_RTTIEXT(FE_Element, Standard_Transient)
 
 };
 

@@ -31,7 +31,7 @@
 // ============================================================================
 enum MeshBuilder_CellError
 {
-    MeshBuilder_CellDimensionalityError,
+    MeshBuilder_CellLineThroughIdenticPoints,
     MeshBuilder_CellNoError,
     MeshBuilder_CellShapeError
 };

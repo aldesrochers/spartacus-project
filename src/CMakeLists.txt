@@ -34,6 +34,7 @@ set(BRepCell_PKG_HEADERS
     BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_Error.hxx
     BRepCell/BRepCell_MakeCell.hxx
+    BRepCell/BRepCell_MakeLinearLine.hxx
     BRepCell/BRepCell_MakeLine.hxx
     BRepCell/BRepCell_MakeTriangle.hxx
 )
@@ -41,6 +42,7 @@ set(BRepCell_PKG_HEADERS
 set(BRepCell_PKG_SOURCES
     BRepCell/BRepCell_Command.cxx
     BRepCell/BRepCell_MakeCell.cxx
+    BRepCell/BRepCell_MakeLinearLine.cxx
     BRepCell/BRepCell_MakeLine.cxx
     BRepCell/BRepCell_MakeTriangle.cxx
 )
@@ -104,16 +106,47 @@ set(BRepPolyAPI_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : Cell
+# =============================================================================
+
+set(Cell_PKG_HEADERS
+    Cell/Cell_LinearLine.hxx
+    Cell/Cell_Shape.hxx
+)
+
+set(Cell_PKG_SOURCES
+    Cell/Cell_LinearLine.cxx
+    Cell/Cell_Shape.cxx
+)
+
+# =============================================================================
 # Package : Cell1d
 # =============================================================================
 
 set(Cell1d_PKG_HEADERS
+    Cell1d/Cell1d_LinearLine.hxx
     Cell1d/Cell1d_Shape.hxx
 )
 
 set(Cell1d_PKG_SOURCES
+    Cell1d/Cell1d_LinearLine.cxx
     Cell1d/Cell1d_Shape.cxx
 )
+
+# =============================================================================
+# Package : Cell2d
+# =============================================================================
+
+set(Cell2d_PKG_HEADERS
+    Cell2d/Cell2d_LinearLine.hxx
+    Cell2d/Cell2d_Shape.hxx
+)
+
+set(Cell2d_PKG_SOURCES
+    Cell2d/Cell2d_LinearLine.cxx
+    Cell2d/Cell2d_Shape.cxx
+)
+
 
 # =============================================================================
 # Package : CM
@@ -243,97 +276,23 @@ set(EleProp_PKG_SOURCES
 # =============================================================================
 
 set(FE_PKG_HEADERS
-    FE/FE_Boundary.hxx
-    FE/FE_DOF.hxx
+    FE/FE_Acoustical.hxx
     FE/FE_Element.hxx
-    FE/FE_ElementModel.hxx
-    FE/FE_MechanicalElement.hxx
-    FE/FE_MechanicalModel1d.hxx
-    FE/FE_Node.hxx
-    FE/FE_Object.hxx
-    FE/FE_Point.hxx
-    FE/FE_Point1d.hxx
-    FE/FE_Point2d.hxx
-    FE/FE_Point3d.hxx
-    FE/FE_ThermalElement.hxx
+    FE/FE_Mechanical.hxx
+    FE/FE_Mechanical1d.hxx
+    FE/FE_Mechanical2d.hxx
+    FE/FE_Mechanical3d.hxx
+    FE/FE_Thermal.hxx
 )
 
 set(FE_PKG_SOURCES
-    FE/FE_Boundary.cxx
-    FE/FE_DOF.cxx
+    FE/FE_Acoustical.cxx
     FE/FE_Element.cxx
-    FE/FE_ElementModel.cxx
-    FE/FE_MechanicalElement.cxx
-    FE/FE_MechanicalModel1d.cxx
-    FE/FE_Node.cxx
-    FE/FE_Object.cxx
-    FE/FE_Point.cxx
-    FE/FE_Point1d.cxx
-    FE/FE_Point2d.cxx
-    FE/FE_Point3d.cxx
-    FE/FE_ThermalElement.cxx
-)
-
-# =============================================================================
-# Package : FEC
-# =============================================================================
-
-set(FEC_PKG_HEADERS
-    FEC/FEC_MakeElement.hxx
-    FEC/FEC_MakeObject.hxx
-    FEC/FEC_MakeTrussElement.hxx
-)
-
-set(FEC_PKG_SOURCES
-    FEC/FEC_MakeElement.cxx
-    FEC/FEC_MakeObject.cxx
-    FEC/FEC_MakeTrussElement.cxx
-)
-
-# =============================================================================
-# Package : FE1d
-# =============================================================================
-
-set(FE1d_PKG_HEADERS
-    FE1d/FE1d_DOF.hxx
-    FE1d/FE1d_Element.hxx
-    FE1d/FE1d_MechElement.hxx
-    FE1d/FE1d_Node.hxx
-    FE1d/FE1d_Object.hxx
-)
-
-set(FE1d_PKG_SOURCES
-    FE1d/FE1d_DOF.cxx
-    FE1d/FE1d_Element.cxx
-    FE1d/FE1d_MechElement.cxx
-    FE1d/FE1d_Node.cxx
-    FE1d/FE1d_Object.cxx
-)
-
-# =============================================================================
-# Package : FE1dBuilder
-# =============================================================================
-
-set(FE1dBuilder_PKG_HEADERS
-    FE1dBuilder/FE1dBuilder_MakeObject.hxx
-)
-
-set(FE1dBuilder_PKG_SOURCES
-    FE1dBuilder/FE1dBuilder_MakeObject.cxx
-)
-
-# =============================================================================
-# Package : FE2d
-# =============================================================================
-
-set(FE2d_PKG_HEADERS
-    FE2d/FE2d_Element.hxx
-    FE2d/FE2d_Object.hxx
-)
-
-set(FE2d_PKG_SOURCES
-    FE2d/FE2d_Element.cxx
-    FE2d/FE2d_Object.cxx
+    FE/FE_Mechanical.cxx
+    FE/FE_Mechanical1d.cxx
+    FE/FE_Mechanical2d.cxx
+    FE/FE_Mechanical3d.cxx
+    FE/FE_Thermal.cxx
 )
 
 # =============================================================================
@@ -345,38 +304,17 @@ set(FEAbs_PKG_HEADERS
 )
 
 # =============================================================================
-# Package : FEA
+# Package : FEAdaptor
 # =============================================================================
 
-set(FEA_PKG_HEADERS
-    FEA/FEA_Analysis.hxx
-    FEA/FEA_LinearAnalysis.hxx
+set(FEAdaptor_PKG_HEADERS
+    FEAdaptor/FEAdaptor_Model.hxx
 )
 
-set(FEA_PKG_SOURCES
-    FEA/FEA_Analysis.cxx
-    FEA/FEA_LinearAnalysis.cxx
+set(FEAdaptor_PKG_SOURCES
+    FEAdaptor/FEAdaptor_Model.cxx
 )
 
-# =============================================================================
-# Package : FEC1d
-# =============================================================================
-
-set(FEC1d_PKG_HEADERS
-    FEC1d/FEC1d_MakeDOF.hxx
-    FEC1d/FEC1d_MakeElement.hxx
-    FEC1d/FEC1d_MakeNode.hxx
-    FEC1d/FEC1d_Root.hxx
-    FEC1d/FEC1d_MakeTrussElement.hxx
-)
-
-set(FEC1d_PKG_SOURCES
-    FEC1d/FEC1d_MakeDOF.cxx
-    FEC1d/FEC1d_MakeElement.cxx
-    FEC1d/FEC1d_MakeNode.cxx
-    FEC1d/FEC1d_Root.cxx
-    FEC1d/FEC1d_MakeTrussElement.cxx
-)
 
 # =============================================================================
 # Package : FEM
@@ -524,37 +462,21 @@ set(Mech2d_PKG_SOURCES
 )
 
 # =============================================================================
-# Package : Mesh
-# =============================================================================
-
-set(Mesh_PKG_HEADERS
-    Mesh/Mesh_Point.hxx
-)
-
-set(Mesh_PKG_SOURCES
-    Mesh/Mesh_Point.cxx
-)
-
-# =============================================================================
 # Package : Mesh1d
 # =============================================================================
 
 set(Mesh1d_PKG_HEADERS
     Mesh1d/Mesh1d_Cell.hxx
-    Mesh1d/Mesh1d_Entity.hxx
     Mesh1d/Mesh1d_LinearLine.hxx
+    Mesh1d/Mesh1d_Node.hxx
     Mesh1d/Mesh1d_Object.hxx
-    Mesh1d/Mesh1d_QuadraticLine.hxx
-    Mesh1d/Mesh1d_Vertex.hxx
 )
 
 set(Mesh1d_PKG_SOURCES
     Mesh1d/Mesh1d_Cell.cxx
-    Mesh1d/Mesh1d_Entity.cxx
     Mesh1d/Mesh1d_LinearLine.cxx
+    Mesh1d/Mesh1d_Node.cxx
     Mesh1d/Mesh1d_Object.cxx
-    Mesh1d/Mesh1d_QuadraticLine.cxx
-    Mesh1d/Mesh1d_Vertex.cxx
 )
 
 # =============================================================================
@@ -592,6 +514,8 @@ set(Mesh2d_PKG_SOURCES
 # =============================================================================
 
 set(Mesh_PKG_HEADERS
+    Mesh/Mesh_Cell.hxx
+    Mesh/Mesh_Cell1d.hxx
     Mesh/Mesh_Object.hxx
     Mesh/Mesh_Point.hxx
     Mesh/Mesh_Point1d.hxx
@@ -600,6 +524,8 @@ set(Mesh_PKG_HEADERS
 )
 
 set(Mesh_PKG_SOURCES
+    Mesh/Mesh_Cell.cxx
+    Mesh/Mesh_Cell1d.cxx
     Mesh/Mesh_Object.cxx
     Mesh/Mesh_Point.cxx
     Mesh/Mesh_Point1d.cxx
@@ -657,10 +583,13 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Object.hxx
     MeshDS/MeshDS_TCell.hxx
+    MeshDS/MeshDS_TEdge.hxx
     MeshDS/MeshDS_TEntity.hxx
+    MeshDS/MeshDS_TFace.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
     MeshDS/MeshDS_TObject.hxx
+    MeshDS/MeshDS_TPolygon.hxx
     MeshDS/MeshDS_Tool.hxx
     MeshDS/MeshDS_TVertex.hxx
     MeshDS/MeshDS_Vertex.hxx
@@ -674,10 +603,13 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Mesh.cxx
     MeshDS/MeshDS_Object.cxx
     MeshDS/MeshDS_TCell.cxx
+    MeshDS/MeshDS_TEdge.cxx
     MeshDS/MeshDS_TEntity.cxx
+    MeshDS/MeshDS_TFace.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
     MeshDS/MeshDS_TObject.cxx
+    MeshDS/MeshDS_TPolygon.cxx
     MeshDS/MeshDS_Tool.cxx
     MeshDS/MeshDS_TVertex.cxx
     MeshDS/MeshDS_Vertex.cxx
@@ -719,25 +651,25 @@ set(MeshTools_PKG_SOURCES
 # =============================================================================
 
 set(Model_PKG_HEADERS
-    Model/Model_DOF.hxx
     Model/Model_Element.hxx
-    Model/Model_MechElement1d.hxx
+    Model/Model_MechanicalElement.hxx
+    Model/Model_MechanicalElement1d.hxx
     Model/Model_Object.hxx
     Model/Model_Point.hxx
     Model/Model_Point1d.hxx
-    Model/Model_RotationDOF.hxx
-    Model/Model_TranslationDOF.hxx
+    Model/Model_Point2d.hxx
+    Model/Model_Point3d.hxx
 )
 
 set(Model_PKG_SOURCES
-    Model/Model_DOF.cxx
     Model/Model_Element.cxx
-    Model/Model_MechElement1d.cxx
+    Model/Model_MechanicalElement.cxx
+    Model/Model_MechanicalElement1d.cxx
     Model/Model_Object.cxx
     Model/Model_Point.cxx
     Model/Model_Point1d.cxx
-    Model/Model_RotationDOF.cxx
-    Model/Model_TranslationDOF.cxx
+    Model/Model_Point2d.cxx
+    Model/Model_Point3d.cxx
 )
 
 # =============================================================================
@@ -751,6 +683,20 @@ set(ModelAbs_PKG_HEADERS
     ModelAbs/ModelAbs_TypeOfModelization.hxx
     ModelAbs/ModelAbs_TypeOfPhenomenon.hxx
     ModelAbs/ModelAbs_TypeOfObject.hxx
+)
+
+# =============================================================================
+# Package : ModelAdaptor
+# =============================================================================
+
+set(ModelAdaptor_PKG_HEADERS
+    ModelAdaptor/ModelAdaptor_Element.hxx
+    ModelAdaptor/ModelAdaptor_Point.hxx
+)
+
+set(ModelAdaptor_PKG_SOURCES
+    ModelAdaptor/ModelAdaptor_Element.cxx
+    ModelAdaptor/ModelAdaptor_Point.cxx
 )
 
 # =============================================================================
@@ -779,26 +725,18 @@ set(ModelBuilder_PKG_HEADERS
     ModelBuilder/ModelBuilder_Command.hxx
     ModelBuilder/ModelBuilder_MakeDOF.hxx
     ModelBuilder/ModelBuilder_MakeElement.hxx
-    ModelBuilder/ModelBuilder_MakeModel.hxx
-    ModelBuilder/ModelBuilder_MakeModelization.hxx
     ModelBuilder/ModelBuilder_MakeNode.hxx
-    ModelBuilder/ModelBuilder_MakeNode1d.hxx
     ModelBuilder/ModelBuilder_MakeObject.hxx
     ModelBuilder/ModelBuilder_MakeTruss.hxx
-    ModelBuilder/ModelBuilder_MakeTruss1d.hxx
 )
 
 set(ModelBuilder_PKG_SOURCES
     ModelBuilder/ModelBuilder_Command.cxx
     ModelBuilder/ModelBuilder_MakeDOF.cxx
     ModelBuilder/ModelBuilder_MakeElement.cxx
-    ModelBuilder/ModelBuilder_MakeModel.cxx
-    ModelBuilder/ModelBuilder_MakeModelization.cxx
     ModelBuilder/ModelBuilder_MakeNode.cxx
-    ModelBuilder/ModelBuilder_MakeNode1d.cxx
     ModelBuilder/ModelBuilder_MakeObject.cxx
     ModelBuilder/ModelBuilder_MakeTruss.cxx
-    ModelBuilder/ModelBuilder_MakeTruss1d.cxx
 )
 
 # =============================================================================
@@ -834,6 +772,7 @@ set(ModelDS_PKG_HEADERS
     ModelDS/ModelDS_TMapping.hxx
     ModelDS/ModelDS_TMaterial.hxx
     ModelDS/ModelDS_TMatrix.hxx
+    ModelDS/ModelDS_TMechanicalElement.hxx
     ModelDS/ModelDS_TMesh.hxx
     ModelDS/ModelDS_TModel.hxx
     ModelDS/ModelDS_TModelization.hxx
@@ -871,6 +810,7 @@ set(ModelDS_PKG_SOURCES
     ModelDS/ModelDS_TMapping.cxx
     ModelDS/ModelDS_TMaterial.cxx
     ModelDS/ModelDS_TMatrix.cxx
+    ModelDS/ModelDS_TMechanicalElement.cxx
     ModelDS/ModelDS_TMesh.cxx
     ModelDS/ModelDS_TModel.cxx
     ModelDS/ModelDS_TModelization.cxx
@@ -1076,6 +1016,7 @@ set(TColfep_PKG_HEADERS
 
 set(TColgp_PKG_HEADERS
     TColgp/TColgp_Array1OfPnt1d.hxx
+    TColgp/TColgp_HArray1OfPnt1d.hxx
     TColgp/TColgp_SequenceOfPnt1d.hxx
 )
 
@@ -1279,7 +1220,9 @@ set(Ceres_HEADERS
     #${BRepCellAPI_PKG_HEADERS}
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
+    ${Cell_PKG_HEADERS}
     ${Cell1d_PKG_HEADERS}
+    ${Cell2d_PKG_HEADERS}
     #${CM_PKG_HEADERS}
     ${cmf_PKG_HEADERS}
     ${cmp_PKG_HEADERS}
@@ -1289,12 +1232,8 @@ set(Ceres_HEADERS
     ${DOFAbs_PKG_HEADERS}
     #${EleProp_PKG_HEADERS}
     ${FE_PKG_HEADERS}
-    ${FEC_PKG_HEADERS}
-    ${FE1d_PKG_HEADERS}
-    ${FE1dBuilder_PKG_HEADERS}
-    ${FE2d_PKG_HEADERS}
     ${FEAbs_PKG_HEADERS}
-    ${FEC1d_PKG_HEADERS}
+    ${FEAdaptor_PKG_HEADERS}
     #${FEM_PKG_HEADERS}
     ${fep_PKG_HEADERS}
     ${gp_PKG_HEADERS}
@@ -1316,6 +1255,7 @@ set(Ceres_HEADERS
     ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
     ${ModelAbs_PKG_HEADERS}
+    ${ModelAdaptor_PKG_HEADERS}
     ${ModelAlgo_PKG_HEADERS}
     ${ModelBuilder_PKG_HEADERS}
     ${ModelDS_PKG_HEADERS}
@@ -1353,7 +1293,9 @@ set(Ceres_SOURCES
     #${BRepCellAPI_PKG_SOURCES}
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
+    ${Cell_PKG_SOURCES}
     ${Cell1d_PKG_SOURCES}
+    ${Cell2d_PKG_SOURCES}
     #${CM_PKG_SOURCES}
     ${cmf_PKG_SOURCES}
     ${cmp_PKG_SOURCES}
@@ -1363,11 +1305,7 @@ set(Ceres_SOURCES
     ${DOFAdaptor_PKG_SOURCES}
     #${EleProp_PKG_SOURCES}
     ${FE_PKG_SOURCES}
-    ${FEC_PKG_SOURCES}
-    ${FE1d_PKG_SOURCES}
-    ${FE1dBuilder_PKG_SOURCES}
-    ${FE2d_PKG_SOURCES}
-    ${FEC1d_PKG_SOURCES}
+    ${FEAdaptor_PKG_SOURCES}
     #${FEM_PKG_SOURCES}
     ${fep_PKG_SOURCES}
     ${gp_PKG_SOURCES}
@@ -1387,6 +1325,7 @@ set(Ceres_SOURCES
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
+    ${ModelAdaptor_PKG_SOURCES}
     ${ModelAlgo_PKG_SOURCES}
     ${ModelBuilder_PKG_SOURCES}
     ${ModelDS_PKG_SOURCES}
@@ -1418,7 +1357,9 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPoly
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
+    ${CMAKE_CURRENT_SOURCE_DIR}/Cell
     ${CMAKE_CURRENT_SOURCE_DIR}/Cell1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/Cell2d
     ${CMAKE_CURRENT_SOURCE_DIR}/CM
     ${CMAKE_CURRENT_SOURCE_DIR}/cmf
     ${CMAKE_CURRENT_SOURCE_DIR}/cmp
@@ -1429,13 +1370,8 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
     ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
     ${CMAKE_CURRENT_SOURCE_DIR}/FE
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEC
-    ${CMAKE_CURRENT_SOURCE_DIR}/FE1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/FE1dBuilder
-    ${CMAKE_CURRENT_SOURCE_DIR}/FE2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEA
     ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEC1d
+    ${CMAKE_CURRENT_SOURCE_DIR}/FEAdaptor
     ${CMAKE_CURRENT_SOURCE_DIR}/FEM
     ${CMAKE_CURRENT_SOURCE_DIR}/fep
     ${CMAKE_CURRENT_SOURCE_DIR}/gp
@@ -1458,6 +1394,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
     ${CMAKE_CURRENT_SOURCE_DIR}/Model
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/ModelAdaptor
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelExp

@@ -30,6 +30,7 @@
 #include <Standard_DefineAlloc.hxx>
 #include <TCollection_AsciiString.hxx>
 #include <TopoDS_Shape.hxx>
+#include <TopoDS_Vertex.hxx>
 
 // Spartacus
 #include <gp_Pnt1d.hxx>
@@ -78,6 +79,8 @@ public:
     static Standard_EXPORT TopoDS_Shape                 Shape(const MeshDS_Cell& theCell);
 
     static Standard_EXPORT MeshAbs_TypeOfShape          ShapeType(const MeshDS_Cell& theCell);
+
+
 
 };
 

@@ -68,6 +68,7 @@ ModelBuilder_MakeNode1d::~ModelBuilder_MakeNode1d()
 // ============================================================================
 void ModelBuilder_MakeNode1d::AddDOF(const ModelDS_DOF &theDOF)
 {
+    /*
     // retrieve type of DOF
     const Handle(DOF_DegreeOfFreedom)& aDegreeOfFreedom1 = ModelDS_Tool::DegreeOfFreedom(theDOF);
     DOFAdaptor_DOF anAdaptor1(aDegreeOfFreedom1);
@@ -94,6 +95,7 @@ void ModelBuilder_MakeNode1d::AddDOF(const ModelDS_DOF &theDOF)
     // if here, dof is valid, add to internal map
     myDOFs.Add(theDOF);
     SetDone();
+*/
 }
 
 // ============================================================================

@@ -24,18 +24,16 @@
 #define __Mech2d_Element_hxx__
 
 
-// Spartacus
-#include <FE2d_Element.hxx>
-
 // OpenCascade
-#include <math_Matrix.hxx>
-#include <math_Vector.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Forward declarations
 class Mech2d_Element;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mech2d_Element, FE2d_Element)
+DEFINE_STANDARD_HANDLE(Mech2d_Element, Standard_Transient)
 
 
 // ============================================================================
@@ -43,7 +41,7 @@ DEFINE_STANDARD_HANDLE(Mech2d_Element, FE2d_Element)
  *  \brief Mech2d_Element
 */
 // ============================================================================
-class Mech2d_Element : public FE2d_Element
+class Mech2d_Element : public Standard_Transient
 {
 
 public:
@@ -54,18 +52,7 @@ public:
 
 public:
 
-    //virtual Standard_EXPORT math_Vector         CommitedDisplacements() const = 0;
-    //virtual Standard_EXPORT math_Vector         CommitedForces() const = 0;
-    //virtual Standard_EXPORT math_Matrix         CommitedStiffness() const = 0;
-    //virtual Standard_EXPORT math_Matrix         InitialStiffness() const = 0;
-    //virtual Standard_EXPORT void                SetTrialDisplacements(const math_Vector& theDisplacements) = 0;
-    //virtual Standard_EXPORT math_Vector         TrialDisplacements() const = 0;
-    //virtual Standard_EXPORT math_Vector         TrialForces() const = 0;
-    //virtual Standard_EXPORT math_Matrix         TrialStiffness() const = 0;fe2d
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mech2d_Element, FE2d_Element)
+    DEFINE_STANDARD_RTTIEXT(Mech2d_Element, Standard_Transient)
 
 };
 

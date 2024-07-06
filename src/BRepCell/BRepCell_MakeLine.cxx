@@ -83,6 +83,7 @@ void BRepCell_MakeLine::Initialize(const gp_Pnt &thePoint1,
 void BRepCell_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
                                    const TopoDS_Vertex &theVertex2)
 {
+    /*
     myVertices.Append(theVertex1);
     myVertices.Append(theVertex2);
 
@@ -95,4 +96,5 @@ void BRepCell_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
 
     SetShape(anEdge);
     SetDone();
+*/
 }

@@ -104,8 +104,6 @@ public:
     Standard_EXPORT void    MakeDOF(ModelDS_DOF& theDOF) const;
     Standard_EXPORT void    MakeDOF(ModelDS_DOF& theDOF,
                                     const ModelAbs_TypeOfDOF theDOFType) const;
-    Standard_EXPORT void    MakeDOF(ModelDS_DOF& theDOF,
-                                    const Handle(DOF_DegreeOfFreedom)& theModel) const;
 
     Standard_EXPORT void    MakeDOFGroup(ModelDS_DOFGroup& theDOFGroup) const;
     Standard_EXPORT void    MakeDOFGroup(ModelDS_DOFGroup& theDOFGroup,
@@ -129,9 +127,11 @@ public:
 
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode) const;
     Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
-                                     const MeshDS_Vertex& theVertex) const;
-    Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
                                      const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
+                                     const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    MakeNode(ModelDS_Node& theNode,
+                                     const gp_Pnt& thePoint) const;
 
     Standard_EXPORT void    MakeModelization(ModelDS_Modelization& theModelization) const;
     Standard_EXPORT void    MakeModelization(ModelDS_Modelization& theModelization,
@@ -141,7 +141,7 @@ public:
                                       const ModelAbs_TypeOfDOF theDOFType) const;
 
     Standard_EXPORT void    UpdateDOF(const ModelDS_DOF& theDOF,
-                                      const Handle(DOF_DegreeOfFreedom)& theModel) const;
+                                      const ModelDS_Node& theNode) const;
 
     Standard_EXPORT void    UpdateElement(const ModelDS_Element& theElement,
                                           const MeshDS_Cell& theCell) const;
@@ -156,10 +156,11 @@ public:
                                                const Handle(Mech1d_Model)& theModel) const;
 
     Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
-                                       const MeshDS_Vertex& theVertex) const;
-
-    Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
                                        const gp_Pnt1d& thePoint) const;
+    Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
+                                       const gp_Pnt2d& thePoint) const;
+    Standard_EXPORT void    UpdateNode(const ModelDS_Node& theNode,
+                                       const gp_Pnt& thePoint) const;
 
 protected:
 

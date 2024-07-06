@@ -24,14 +24,18 @@
 #define __Mesh1d_Cell_hxx__
 
 // Spartacus
-#include <Mesh1d_Entity.hxx>
-#include <Mesh1d_Vertex.hxx>
+#include <Mesh1d_Object.hxx>
+#include <TColgp_HArray1OfPnt1d.hxx>
+
+// OpenCascade
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Vertex.hxx>
 
 // Forward declarations
 class Mesh1d_Cell;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Entity)
+DEFINE_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Object)
 
 
 // ============================================================================
@@ -39,7 +43,7 @@ DEFINE_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Entity)
  *  \brief Mesh1d_Cell
 */
 // ============================================================================
-class Mesh1d_Cell : public Mesh1d_Entity
+class Mesh1d_Cell : public Mesh1d_Object
 {
 
 public:
@@ -50,7 +54,14 @@ public:
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Entity)
+    virtual Standard_EXPORT const TopoDS_Edge&      Edge(const Standard_Integer theIndex) const = 0;
+    virtual Standard_EXPORT Standard_Integer        NbEdges() const = 0;
+    virtual Standard_EXPORT Standard_Integer        NbVertices() const = 0;
+    virtual Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const = 0;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Object)
 
 };
 

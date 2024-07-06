@@ -25,7 +25,7 @@
 
 // Spartacus
 #include <Mech1d_Model.hxx>
-#include <Mesh1d_LinearLine.hxx>
+#include <gp_Pnt1d.hxx>
 
 // Forward declarations
 class Mech1d_Truss;
