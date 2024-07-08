@@ -20,52 +20,56 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_Node_hxx__
-#define __Mesh1d_Node_hxx__
-
 // Spartacus
-#include <gp_Pnt1d.hxx>
-#include <Mesh1d_Object.hxx>
-
-// OpenCascade
-#include <TopoDS_Vertex.hxx>
-
-// Forward declarations
-class Mesh1d_Node;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_Node, Mesh1d_Object)
+#include <Mesh1d_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_Node
+ *  \brief Constructor
 */
 // ============================================================================
-class Mesh1d_Node : public Mesh1d_Object
+Mesh1d_Edge::Mesh1d_Edge()
 {
 
-public:
-    // constructors
-    Standard_EXPORT Mesh1d_Node();
-    // destructors
-    Standard_EXPORT ~Mesh1d_Node();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+Mesh1d_Edge::~Mesh1d_Edge()
+{
 
-    Standard_EXPORT const gp_Pnt1d&         Point() const;
-    Standard_EXPORT void                    SetPoint(const gp_Pnt1d& thePoint);
-    Standard_EXPORT const TopoDS_Vertex&    Vertex() const;
+}
 
-private:
-
-    TopoDS_Vertex   myVertex;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_Node, Mesh1d_Object)
-
-};
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const TopoDS_Edge& Mesh1d_Edge::Edge() const
+{
+    return myEdge;
+}
 
 
-#endif // __Mesh1d_Node_hxx__
+// ============================================================================
+/*!
+ *  \brief IsDeprecated()
+*/
+// ============================================================================
+Standard_Boolean Mesh1d_Edge::IsDeprecated() const
+{
+    if(myEdge.IsNull())
+        return Standard_True;
+    return Standard_False;
+}
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_Edge, Mesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Edge, Mesh1d_Object)

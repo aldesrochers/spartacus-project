@@ -33,13 +33,13 @@
 #include <TopoDS_Vertex.hxx>
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
 #include <MeshAbs_TypeOfDimensionality.hxx>
 #include <MeshAbs_TypeOfInterpolation.hxx>
 #include <MeshAbs_TypeOfShape.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
+#include <MeshDS_Point.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Vertex.hxx>
 
@@ -71,10 +71,7 @@ public:
 
     static Standard_EXPORT TCollection_AsciiString      Name(const MeshDS_Group& theGroup);
 
-    static Standard_EXPORT gp_Pnt                       Point(const MeshDS_Vertex& theVertex);
-    static Standard_EXPORT gp_Pnt1d                     Point1d(const MeshDS_Vertex& theVertex);
-    static Standard_EXPORT gp_Pnt2d                     Point2d(const MeshDS_Vertex& theVertex);
-    static Standard_EXPORT gp_Pnt                       Point3d(const MeshDS_Vertex& theVertex);
+    static Standard_EXPORT const Handle(MeshDS_Point)&  Point(const MeshDS_Vertex& theVertex);
 
     static Standard_EXPORT TopoDS_Shape                 Shape(const MeshDS_Cell& theCell);
 

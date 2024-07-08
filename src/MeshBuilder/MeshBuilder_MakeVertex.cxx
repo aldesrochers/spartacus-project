@@ -59,78 +59,12 @@ MeshBuilder_MakeVertex::MeshBuilder_MakeVertex(const gp_Pnt& thePoint)
 
 // ============================================================================
 /*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshBuilder_MakeVertex::MeshBuilder_MakeVertex(const Standard_Real theX)
-{
-    Initialize(theX);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshBuilder_MakeVertex::MeshBuilder_MakeVertex(const Standard_Real theX,
-                                               const Standard_Real theY)
-{
-    Initialize(theX, theY);
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshBuilder_MakeVertex::MeshBuilder_MakeVertex(const Standard_Real theX,
-                                               const Standard_Real theY,
-                                               const Standard_Real theZ)
-{
-    Initialize(theX, theY, theZ);
-}
-
-// ============================================================================
-/*!
  *  \brief Destructor
 */
 // ============================================================================
 MeshBuilder_MakeVertex::~MeshBuilder_MakeVertex()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void MeshBuilder_MakeVertex::Initialize(const Standard_Real theX)
-{
-    Initialize(gp_Pnt1d(theX));
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void MeshBuilder_MakeVertex::Initialize(const Standard_Real theX,
-                                        const Standard_Real theY)
-{
-    Initialize(gp_Pnt2d(theX, theY));
-}
-
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void MeshBuilder_MakeVertex::Initialize(const Standard_Real theX,
-                                        const Standard_Real theY,
-                                        const Standard_Real theZ)
-{
-    Initialize(gp_Pnt(theX, theY, theZ));
 }
 
 // ============================================================================

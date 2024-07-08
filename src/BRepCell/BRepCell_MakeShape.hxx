@@ -23,14 +23,11 @@
 #ifndef __BRepCell_MakeShape_hxx__
 #define __BRepCell_MakeShape_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopTools_Array1OfShape.hxx>
 
 // Spartacus
-#include <BRepCell_Error.hxx>
+#include <BRepCell_Command.hxx>
+#include <TopoDS_Shape.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 
 
 // ============================================================================
@@ -38,12 +35,12 @@
  *  \brief BRepCell_MakeShape
 */
 // ============================================================================
-class BRepCell_MakeShape
+class BRepCell_MakeShape : public BRepCell_Command
 {
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors
@@ -53,34 +50,16 @@ public:
 
 public:
 
-    Standard_EXPORT BRepCell_Error          Error() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-    Standard_EXPORT Standard_Integer        NbVertices() const;
-    Standard_EXPORT const TopoDS_Shape&     Shape() const;
-    Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const;
+    virtual Standard_EXPORT void            Build();
 
 public:
 
+    Standard_EXPORT const TopoDS_Shape&     Shape() const;
     Standard_EXPORT operator                TopoDS_Shape() const;
 
 protected:
 
-    Standard_EXPORT void    ResizeVertices(const Standard_Integer theNbVertices,
-                                           const Standard_Boolean toCopyData = Standard_False);
-    Standard_EXPORT void    SetDone();
-    Standard_EXPORT void    SetError(const BRepCell_Error& theError);
-    Standard_EXPORT void    SetNotDone();
-    Standard_EXPORT void    SetShape(const TopoDS_Shape& theShape);
-    Standard_EXPORT void    SetVertex(const Standard_Integer theIndex,
-                                      const TopoDS_Vertex& theVertex);
-
-
-protected:
-
-    BRepCell_Error          myError;
-    Standard_Boolean        myIsDone;
-    TopoDS_Shape            myShape;
-    TopTools_Array1OfShape  myVertices;
+    TopoDS_Shape    myShape;
 
 };
 

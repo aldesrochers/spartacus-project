@@ -33,18 +33,16 @@ configure_file(Toolkit/Toolkit_Configuration.hxx.in Toolkit_Configuration.hxx)
 set(BRepCell_PKG_HEADERS
     BRepCell/BRepCell_Command.hxx
     BRepCell/BRepCell_Error.hxx
-    BRepCell/BRepCell_MakeCell.hxx
-    BRepCell/BRepCell_MakeLinearLine.hxx
+    BRepCell/BRepCell_MakeEdge.hxx
     BRepCell/BRepCell_MakeLine.hxx
-    BRepCell/BRepCell_MakeTriangle.hxx
+    BRepCell/BRepCell_MakeShape.hxx
 )
 
 set(BRepCell_PKG_SOURCES
     BRepCell/BRepCell_Command.cxx
-    BRepCell/BRepCell_MakeCell.cxx
-    BRepCell/BRepCell_MakeLinearLine.cxx
+    BRepCell/BRepCell_MakeEdge.cxx
     BRepCell/BRepCell_MakeLine.cxx
-    BRepCell/BRepCell_MakeTriangle.cxx
+    BRepCell/BRepCell_MakeShape.cxx
 )
 
 # =============================================================================
@@ -124,13 +122,15 @@ set(Cell_PKG_SOURCES
 # =============================================================================
 
 set(Cell1d_PKG_HEADERS
-    Cell1d/Cell1d_LinearLine.hxx
-    Cell1d/Cell1d_Shape.hxx
+    #Cell1d/Cell1d_LinearLine.hxx
+    Cell1d/Cell1d_Object.hxx
+    #Cell1d/Cell1d_Shape.hxx
 )
 
 set(Cell1d_PKG_SOURCES
-    Cell1d/Cell1d_LinearLine.cxx
-    Cell1d/Cell1d_Shape.cxx
+    #Cell1d/Cell1d_LinearLine.cxx
+    Cell1d/Cell1d_Object.cxx
+    #Cell1d/Cell1d_Shape.cxx
 )
 
 # =============================================================================
@@ -466,17 +466,17 @@ set(Mech2d_PKG_SOURCES
 # =============================================================================
 
 set(Mesh1d_PKG_HEADERS
-    Mesh1d/Mesh1d_Cell.hxx
+    Mesh1d/Mesh1d_Edge.hxx
     Mesh1d/Mesh1d_LinearLine.hxx
-    Mesh1d/Mesh1d_Node.hxx
     Mesh1d/Mesh1d_Object.hxx
+    Mesh1d/Mesh1d_Vertex.hxx
 )
 
 set(Mesh1d_PKG_SOURCES
-    Mesh1d/Mesh1d_Cell.cxx
+    Mesh1d/Mesh1d_Edge.cxx
     Mesh1d/Mesh1d_LinearLine.cxx
-    Mesh1d/Mesh1d_Node.cxx
     Mesh1d/Mesh1d_Object.cxx
+    Mesh1d/Mesh1d_Vertex.cxx
 )
 
 # =============================================================================
@@ -546,6 +546,18 @@ set(MeshAbs_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : MeshAdaptor
+# =============================================================================
+
+set(MeshAdaptor_PKG_HEADERS
+    MeshAdaptor/MeshAdaptor_Vertex.hxx
+)
+
+set(MeshAdaptor_PKG_SOURCES
+    MeshAdaptor/MeshAdaptor_Vertex.cxx
+)
+
+# =============================================================================
 # Package : MeshBuilder
 # =============================================================================
 
@@ -553,8 +565,10 @@ set(MeshBuilder_PKG_HEADERS
     MeshBuilder/MeshBuilder_CellError.hxx
     MeshBuilder/MeshBuilder_Command.hxx
     MeshBuilder/MeshBuilder_MakeCell.hxx
+    MeshBuilder/MeshBuilder_MakeEdge.hxx
     MeshBuilder/MeshBuilder_MakeGroup.hxx
     MeshBuilder/MeshBuilder_MakeLine.hxx
+    MeshBuilder/MeshBuilder_MakeLinearLine.hxx
     MeshBuilder/MeshBuilder_MakeMesh.hxx
     MeshBuilder/MeshBuilder_MakeObject.hxx
     MeshBuilder/MeshBuilder_MakeVertex.hxx
@@ -563,8 +577,10 @@ set(MeshBuilder_PKG_HEADERS
 set(MeshBuilder_PKG_SOURCES
     MeshBuilder/MeshBuilder_Command.cxx
     MeshBuilder/MeshBuilder_MakeCell.cxx
+    MeshBuilder/MeshBuilder_MakeEdge.cxx
     MeshBuilder/MeshBuilder_MakeGroup.cxx
     MeshBuilder/MeshBuilder_MakeLine.cxx
+    MeshBuilder/MeshBuilder_MakeLinearLine.cxx
     MeshBuilder/MeshBuilder_MakeMesh.cxx
     MeshBuilder/MeshBuilder_MakeObject.cxx
     MeshBuilder/MeshBuilder_MakeVertex.cxx
@@ -578,10 +594,15 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS.hxx
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
+    MeshDS/MeshDS_Edge.hxx
     MeshDS/MeshDS_Group.hxx
     MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Object.hxx
+    MeshDS/MeshDS_Point.hxx
+    MeshDS/MeshDS_Point1d.hxx
+    MeshDS/MeshDS_Point2d.hxx
+    MeshDS/MeshDS_Point3d.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TEdge.hxx
     MeshDS/MeshDS_TEntity.hxx
@@ -599,9 +620,14 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS.cxx
     MeshDS/MeshDS_Builder.cxx
     MeshDS/MeshDS_Cell.cxx
+    MeshDS/MeshDS_Edge.cxx
     MeshDS/MeshDS_Group.cxx
     MeshDS/MeshDS_Mesh.cxx
     MeshDS/MeshDS_Object.cxx
+    MeshDS/MeshDS_Point.cxx
+    MeshDS/MeshDS_Point1d.cxx
+    MeshDS/MeshDS_Point2d.cxx
+    MeshDS/MeshDS_Point3d.cxx
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TEdge.cxx
     MeshDS/MeshDS_TEntity.cxx
@@ -1220,9 +1246,9 @@ set(Ceres_HEADERS
     #${BRepCellAPI_PKG_HEADERS}
     #${BRepPoly_PKG_HEADERS}
     #${BRepPolyAPI_PKG_HEADERS}
-    ${Cell_PKG_HEADERS}
+    #${Cell_PKG_HEADERS}
     ${Cell1d_PKG_HEADERS}
-    ${Cell2d_PKG_HEADERS}
+    #${Cell2d_PKG_HEADERS}
     #${CM_PKG_HEADERS}
     ${cmf_PKG_HEADERS}
     ${cmp_PKG_HEADERS}
@@ -1248,6 +1274,7 @@ set(Ceres_HEADERS
     ${Mesh1d_PKG_HEADERS}
     ${Mesh1dAdaptor_PKG_HEADERS}
     ${MeshAbs_PKG_HEADERS}
+    ${MeshAdaptor_PKG_HEADERS}
     ${MeshBuilder_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
     ${MeshExp_PKG_HEADERS}
@@ -1293,9 +1320,9 @@ set(Ceres_SOURCES
     #${BRepCellAPI_PKG_SOURCES}
     #${BRepPoly_PKG_SOURCES}
     #${BRepPolyAPI_PKG_SOURCES}
-    ${Cell_PKG_SOURCES}
+    #${Cell_PKG_SOURCES}
     ${Cell1d_PKG_SOURCES}
-    ${Cell2d_PKG_SOURCES}
+    #${Cell2d_PKG_SOURCES}
     #${CM_PKG_SOURCES}
     ${cmf_PKG_SOURCES}
     ${cmp_PKG_SOURCES}
@@ -1319,6 +1346,7 @@ set(Ceres_SOURCES
     ${Mesh_PKG_SOURCES}
     ${Mesh1d_PKG_SOURCES}
     ${Mesh1dAdaptor_PKG_SOURCES}
+    ${MeshAdaptor_PKG_SOURCES}
     ${MeshBuilder_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
     ${MeshExp_PKG_SOURCES}
@@ -1387,6 +1415,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1dAdaptor
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshAdaptor
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAlgo
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS

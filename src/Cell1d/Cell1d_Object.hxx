@@ -20,60 +20,40 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TVertex_hxx__
-#define __MeshDS_TVertex_hxx__
+#ifndef __Cell1d_Object_hxx__
+#define __Cell1d_Object_hxx__
 
-// Spartacus
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshDS_Point.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_TObject.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
 // Forward declarations
-class MeshDS_TVertex;
+class Cell1d_Object;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(Cell1d_Object, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TVertex
+ *  \brief Cell1d_Object
 */
 // ============================================================================
-class MeshDS_TVertex : public MeshDS_TObject
+class Cell1d_Object : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TVertex();
+    Standard_EXPORT Cell1d_Object();
     // destructors
-    Standard_EXPORT ~MeshDS_TVertex();
+    Standard_EXPORT ~Cell1d_Object();
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
-    Standard_EXPORT const MeshDS_Mesh&          Mesh() const;
-    Standard_EXPORT const Handle(MeshDS_Point)& Point() const;
-    Standard_EXPORT void                        SetMesh(const MeshDS_Mesh& theMesh);
-    Standard_EXPORT void                        SetPoint(const Handle(MeshDS_Point)& thePoint);
-
-private:
-
-    MeshDS_ListOfObject     myLinkedCells;
-    MeshDS_Mesh             myMesh;
-    Handle(MeshDS_Point)    myPoint;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TObject)
+    DEFINE_STANDARD_RTTIEXT(Cell1d_Object, Standard_Transient)
 
 };
 
 
-#endif // __MeshDS_TVertex_hxx__
+#endif // __Cell1d_Object_hxx__

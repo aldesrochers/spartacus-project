@@ -23,8 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <Cell1d_LinearLine.hxx>
 
 
 // ============================================================================
@@ -34,14 +32,6 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
-
-    Handle(Cell1d_LinearLine) aCell = new Cell1d_LinearLine(gp_Pnt1d(0.), gp_Pnt1d(1.));
-
-    cout << aCell->NbEdges() << endl;
-    cout << aCell->NbPoints() << endl;
-    cout << aCell->NbVertices() << endl;
-
-    cout << aCell->IsDegenerated() << endl;
 
 
 

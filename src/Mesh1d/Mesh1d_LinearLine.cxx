@@ -23,8 +23,7 @@
 // Spartacus
 #include <Mesh1d_LinearLine.hxx>
 
-// OpenCascade
-#include <BRepCell_MakeLine.hxx>
+
 
 
 // ============================================================================
@@ -32,10 +31,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const gp_Pnt1d& thePoint1,
-                                     const gp_Pnt1d& thePoint2)
+Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
+                                     const Handle(Mesh1d_Vertex)& theVertex2)
 {
-    Initialize(thePoint1, thePoint2);
+    Initialize(theVertex1, theVertex2);
 }
 
 // ============================================================================
@@ -53,8 +52,8 @@ Mesh1d_LinearLine::~Mesh1d_LinearLine()
  *  \brief Initialize()
 */
 // ============================================================================
-void Mesh1d_LinearLine::Initialize(const gp_Pnt1d &thePoint1,
-                                   const gp_Pnt1d &thePoint2)
+void Mesh1d_LinearLine::Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
+                                   const Handle(Mesh1d_Vertex)& theVertex2)
 {
 
 }
@@ -63,5 +62,5 @@ void Mesh1d_LinearLine::Initialize(const gp_Pnt1d &thePoint1,
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Edge)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Edge)

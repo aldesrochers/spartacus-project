@@ -31,10 +31,10 @@
 // ============================================================================
 enum MeshAbs_TypeOfDimensionality
 {
-    MeshAbs_DIM_0D,
-    MeshAbs_DIM_1D,
-    MeshAbs_DIM_2D,
-    MeshAbs_DIM_3D
+    MeshAbs_DIM_0d,
+    MeshAbs_DIM_1d,
+    MeshAbs_DIM_2d,
+    MeshAbs_DIM_3d
 };
 
 #endif // __MeshAbs_TypeOfDimensionality_hxx__

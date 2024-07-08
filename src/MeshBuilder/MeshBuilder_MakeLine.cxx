@@ -21,15 +21,8 @@
 
 
 // Spartacus
+#include <BRepCell_MakeLine.hxx>
 #include <MeshBuilder_MakeLine.hxx>
-#include <MeshDS.hxx>
-#include <MeshDS_Builder.hxx>
-#include <MeshDS_Tool.hxx>
-
-// OpenCascade
-#include <BRepBuilderAPI_MakeEdge.hxx>
-#include <TopoDS_Edge.hxx>
-#include <Standard_NotImplemented.hxx>
 
 
 // ============================================================================
@@ -37,9 +30,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshBuilder_MakeLine::MeshBuilder_MakeLine()
+MeshBuilder_MakeLine::MeshBuilder_MakeLine(const MeshDS_Vertex& theVertex1,
+                                           const MeshDS_Vertex& theVertex2)
 {
-
+    Initialize(theVertex1, theVertex2);
 }
 
 // ============================================================================
@@ -48,6 +42,17 @@ MeshBuilder_MakeLine::MeshBuilder_MakeLine()
 */
 // ============================================================================
 MeshBuilder_MakeLine::~MeshBuilder_MakeLine()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshBuilder_MakeLine::Initialize(const MeshDS_Vertex &theVertex1,
+                                      const MeshDS_Vertex &theVertex2)
 {
 
 }

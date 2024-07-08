@@ -20,60 +20,52 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TVertex_hxx__
-#define __MeshDS_TVertex_hxx__
+#ifndef __Mesh1d_Vertex_hxx__
+#define __Mesh1d_Vertex_hxx__
 
 // Spartacus
-#include <MeshDS_ListOfObject.hxx>
-#include <MeshDS_Point.hxx>
-#include <MeshDS_Mesh.hxx>
-#include <MeshDS_TObject.hxx>
+#include <gp_Pnt1d.hxx>
+#include <Mesh1d_Object.hxx>
+
+// OpenCascade
+#include <TopoDS_Vertex.hxx>
 
 // Forward declarations
-class MeshDS_TVertex;
+class Mesh1d_Vertex;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TVertex, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(Mesh1d_Vertex, Mesh1d_Object)
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TVertex
+ *  \brief Mesh1d_Vertex
 */
 // ============================================================================
-class MeshDS_TVertex : public MeshDS_TObject
+class Mesh1d_Vertex : public Mesh1d_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TVertex();
+    Standard_EXPORT Mesh1d_Vertex();
+    Standard_EXPORT Mesh1d_Vertex(const gp_Pnt1d& thePoint);
     // destructors
-    Standard_EXPORT ~MeshDS_TVertex();
+    Standard_EXPORT ~Mesh1d_Vertex();
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-public:
-
-    Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
-    Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
-    Standard_EXPORT const MeshDS_Mesh&          Mesh() const;
-    Standard_EXPORT const Handle(MeshDS_Point)& Point() const;
-    Standard_EXPORT void                        SetMesh(const MeshDS_Mesh& theMesh);
-    Standard_EXPORT void                        SetPoint(const Handle(MeshDS_Point)& thePoint);
+    Standard_EXPORT void                    Initialize(const gp_Pnt1d& thePoint);
+    Standard_EXPORT const TopoDS_Vertex&    Vertex() const;
 
 private:
 
-    MeshDS_ListOfObject     myLinkedCells;
-    MeshDS_Mesh             myMesh;
-    Handle(MeshDS_Point)    myPoint;
+    TopoDS_Vertex   myVertex;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TVertex, MeshDS_TObject)
+    DEFINE_STANDARD_RTTIEXT(Mesh1d_Vertex, Mesh1d_Object)
 
 };
 
 
-#endif // __MeshDS_TVertex_hxx__
+#endif // __Mesh1d_Vertex_hxx__

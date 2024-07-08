@@ -88,6 +88,16 @@ MeshAbs_TypeOfObject MeshDS_TVertex::ObjectType() const
 
 // ============================================================================
 /*!
+ *  \brief Point()
+*/
+// ============================================================================
+const Handle(MeshDS_Point)& MeshDS_TVertex::Point() const
+{
+    return myPoint;
+}
+
+// ============================================================================
+/*!
  *  \brief SetMesh()
 */
 // ============================================================================
@@ -98,23 +108,14 @@ void MeshDS_TVertex::SetMesh(const MeshDS_Mesh& theMesh)
 
 // ============================================================================
 /*!
- *  \brief SetVertex()
+ *  \brief SetPoint()
 */
 // ============================================================================
-void MeshDS_TVertex::SetVertex(const TopoDS_Vertex &theVertex)
+void MeshDS_TVertex::SetPoint(const Handle(MeshDS_Point) &thePoint)
 {
-    myVertex = theVertex;
+    myPoint = thePoint;
 }
 
-// ============================================================================
-/*!
- *  \brief Vertex()
-*/
-// ============================================================================
-const TopoDS_Vertex& MeshDS_TVertex::Vertex() const
-{
-    return myVertex;
-}
 
 
 

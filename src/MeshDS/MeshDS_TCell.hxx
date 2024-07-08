@@ -62,29 +62,23 @@ public:
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfCell              CellType() const;
-    Standard_EXPORT MeshAbs_TypeOfDimensionality    DimensionalityType() const;
-    Standard_EXPORT MeshAbs_TypeOfInterpolation     InterpolationType() const;
+    Standard_EXPORT const MeshDS_SequenceOfObject&  Edges() const;
+    Standard_EXPORT MeshDS_SequenceOfObject&        Edges();
+    Standard_EXPORT const MeshDS_SequenceOfObject&  Faces() const;
+    Standard_EXPORT MeshDS_SequenceOfObject&        Faces();
     Standard_EXPORT const MeshDS_ListOfObject&      LinkedGroups() const;
     Standard_EXPORT MeshDS_ListOfObject&            LinkedGroups();
-    Standard_EXPORT void                            SetCellType(const MeshAbs_TypeOfCell theCellType);
-    Standard_EXPORT void                            SetDimensionalityType(const MeshAbs_TypeOfDimensionality theDimensionalityType);
-    Standard_EXPORT void                            SetInterpolationType(const MeshAbs_TypeOfInterpolation theInterpolationType);
-    Standard_EXPORT void                            SetShape(const TopoDS_Shape& theShape);
-    Standard_EXPORT void                            SetShapeType(const MeshAbs_TypeOfShape theShapeType);
-    Standard_EXPORT const TopoDS_Shape&             Shape() const;
-    Standard_EXPORT MeshAbs_TypeOfShape             ShapeType() const;
+    Standard_EXPORT const MeshDS_SequenceOfObject&  Polygons() const;
+    Standard_EXPORT MeshDS_SequenceOfObject&        Polygons();
     Standard_EXPORT const MeshDS_SequenceOfObject&  Vertices() const;
     Standard_EXPORT MeshDS_SequenceOfObject&        Vertices();
 
 private:
 
-    MeshAbs_TypeOfCell              myCellType;
-    MeshAbs_TypeOfDimensionality    myDimensionalityType;
-    MeshAbs_TypeOfInterpolation     myInterpolationType;
+    MeshDS_SequenceOfObject         myEdges;
+    MeshDS_SequenceOfObject         myFaces;
     MeshDS_ListOfObject             myLinkedGroups;
-    TopoDS_Shape                    myShape;
-    MeshAbs_TypeOfShape             myShapeType;
+    MeshDS_SequenceOfObject         myPolygons;
     MeshDS_SequenceOfObject         myVertices;
 
 public:

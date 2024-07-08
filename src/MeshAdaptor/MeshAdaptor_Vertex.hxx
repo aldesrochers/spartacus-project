@@ -20,61 +20,56 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeCell_hxx__
-#define __BRepCell_MakeCell_hxx__
+#ifndef __MeshAdaptor_Vertex_hxx__
+#define __MeshAdaptor_Vertex_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+#include <TopoDS_Vertex.hxx>
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Spartacus
-#include <BRepCell_Command.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#include <gp_Pnt1d.hxx>
+#include <MeshAbs_TypeOfDimensionality.hxx>
+#include <MeshDS_Vertex.hxx>
+
+// Forward declarations
+class MeshAdaptor_Vertex;
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeCell
+ *  \brief MeshAdaptor_Vertex
 */
 // ============================================================================
-class BRepCell_MakeCell : public BRepCell_Command
+class MeshAdaptor_Vertex
 {
-
-public:
 
     DEFINE_STANDARD_ALLOC
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeCell();
+    Standard_EXPORT MeshAdaptor_Vertex();
+    Standard_EXPORT MeshAdaptor_Vertex(const MeshDS_Vertex& theVertex);
     // destructors
-    Standard_EXPORT ~BRepCell_MakeCell();
+    Standard_EXPORT ~MeshAdaptor_Vertex();
 
 public:
 
-    virtual Standard_EXPORT void            Build();
+    Standard_EXPORT MeshAbs_TypeOfDimensionality    Dimensionality() const;
+    Standard_EXPORT void                            Initialize(const MeshDS_Vertex& theVertex);
+    Standard_EXPORT const gp_Pnt1d&                 Point1d() const;
+    Standard_EXPORT const gp_Pnt2d&                 Point2d() const;
+    Standard_EXPORT const gp_Pnt&                   Point3d() const;
+    Standard_EXPORT const TopoDS_Vertex&            Vertex() const;
 
-public:
+private:
 
-    Standard_EXPORT const TopoDS_Shape&     Shape() const;
-    Standard_EXPORT operator                TopoDS_Shape() const;
-
-public:
-
-    Standard_EXPORT Standard_Integer        NbEdges() const;
-    Standard_EXPORT Standard_Integer        NbFaces() const;
-    Standard_EXPORT Standard_Integer        NbShells() const;
-    Standard_EXPORT Standard_Integer        NbSolids() const;
-    Standard_EXPORT Standard_Integer        NbVertices() const;
-    Standard_EXPORT Standard_Integer        NbWires() const;
-
-protected:
-
-    TopTools_IndexedMapOfShape  myEdges;
-    TopTools_IndexedMapOfShape  myFaces;
-    TopTools_IndexedMapOfShape  myShells;
-    TopTools_IndexedMapOfShape  mySolids;
-    TopoDS_Shape                myShape;
-    TopTools_IndexedMapOfShape  myVertices;
-    TopTools_IndexedMapOfShape  myWires;
+    MeshDS_Vertex       myVertex;
 
 };
 
 
-#endif // __BRepCell_MakeCell_hxx__
+#endif // __MeshAdaptor_Vertex_hxx__

@@ -21,13 +21,8 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLine.hxx>
+#include <Cell1d_Object.hxx>
 
-// OpenCascade
-#include <BRepBuilderAPI_MakeEdge.hxx>
-#include <BRepBuilderAPI_MakeVertex.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
 
 
 // ============================================================================
@@ -35,10 +30,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
-                                     const TopoDS_Vertex &theVertex2)
+Cell1d_Object::Cell1d_Object()
 {
-    Initialize(theVertex1, theVertex2);
+
 }
 
 // ============================================================================
@@ -46,31 +40,14 @@ BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLine::~BRepCell_MakeLine()
+Cell1d_Object::~Cell1d_Object()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief Initialize()
-*/
-// ============================================================================
-void BRepCell_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
-                                   const TopoDS_Vertex &theVertex2)
-{
-    // build edge
-    BRepBuilderAPI_MakeEdge anEdgeBuilder(theVertex1, theVertex2);
-    if(!anEdgeBuilder.IsDone()) {
-        SetNotDone();
-        return;
-    }
-    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
 
-    // populate internal containers
-    myVertices.Add(theVertex1);
-    myVertices.Add(theVertex2);
-    myShape = anEdge;
-
-    SetDone();
-}
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Cell1d_Object, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(Cell1d_Object, Standard_Transient)

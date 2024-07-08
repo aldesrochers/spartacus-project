@@ -19,12 +19,16 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
-#include <BRepCell_MakeShape.hxx>
+#include <MeshAdaptor_Vertex.hxx>
+#include <MeshBuilder_MakeLinearLine.hxx>
 
 // OpenCascade
-#include <TopoDS.hxx>
+#include <BRepBuilderAPI_MakeEdge.hxx>
+#include <TopoDS_Edge.hxx>
 
 
 // ============================================================================
@@ -32,9 +36,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeShape::BRepCell_MakeShape()
+MeshBuilder_MakeLinearLine::MeshBuilder_MakeLinearLine(const MeshDS_Vertex& theVertex1,
+                                                       const MeshDS_Vertex& theVertex2)
 {
-
+    Initialize(theVertex1, theVertex2);
 }
 
 // ============================================================================
@@ -42,43 +47,46 @@ BRepCell_MakeShape::BRepCell_MakeShape()
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeShape::~BRepCell_MakeShape()
+MeshBuilder_MakeLinearLine::~MeshBuilder_MakeLinearLine()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeShape::Build()
+void MeshBuilder_MakeLinearLine::Initialize(const MeshDS_Vertex &theVertex1,
+                                            const MeshDS_Vertex &theVertex2)
 {
+    MeshAdaptor_Vertex anAdaptor1(theVertex1);
+    MeshAdaptor_Vertex anAdaptor2(theVertex2);
 
-}
-
-// ============================================================================
-/*!
- *  \brief operator TopoDS_Shape()
-*/
-// ============================================================================
-BRepCell_MakeShape::operator TopoDS_Shape() const
-{
-    return Shape();
-}
-
-// ============================================================================
-/*!
- *  \brief Shape()
-*/
-// ============================================================================
-const TopoDS_Shape& BRepCell_MakeShape::Shape() const
-{
-    if (!IsDone()) {
-        ((BRepCell_MakeShape*) (void*) this)->Build();
-        Check();
+    // check if valid dimensionality
+    if(anAdaptor1.Dimensionality() != anAdaptor2.Dimensionality()) {
+        myError = MeshBuilder_CellDimensionalityError;
+        return;
     }
-    return myShape;
+
+    // retrieve vertices coordinates in 3d space
+    TopoDS_Vertex aVertex1 = anAdaptor1.Vertex();
+    TopoDS_Vertex aVertex2 = anAdaptor2.Vertex();
+
+    // make edge topology
+    BRepBuilderAPI_MakeEdge anEdgeBuilder(aVertex1, aVertex2);
+    if(!anEdgeBuilder.IsDone()) {
+        myError = MeshBuilder_CellTopologyError;
+        SetNotDone();
+        return;
+    }
+    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
+
+    // make mesh edge
+
+
+
+
+
+
 }
-
-

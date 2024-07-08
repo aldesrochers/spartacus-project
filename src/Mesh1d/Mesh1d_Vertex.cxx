@@ -21,13 +21,11 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLine.hxx>
+#include <Mesh1d_Vertex.hxx>
 
 // OpenCascade
-#include <BRepBuilderAPI_MakeEdge.hxx>
 #include <BRepBuilderAPI_MakeVertex.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
+#include <BRep_Tool.hxx>
 
 
 // ============================================================================
@@ -35,10 +33,19 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
-                                     const TopoDS_Vertex &theVertex2)
+Mesh1d_Vertex::Mesh1d_Vertex()
 {
-    Initialize(theVertex1, theVertex2);
+    Initialize(gp_Pnt1d(0.));
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh1d_Vertex::Mesh1d_Vertex(const gp_Pnt1d& thePoint)
+{
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -46,7 +53,7 @@ BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLine::~BRepCell_MakeLine()
+Mesh1d_Vertex::~Mesh1d_Vertex()
 {
 
 }
@@ -56,21 +63,24 @@ BRepCell_MakeLine::~BRepCell_MakeLine()
  *  \brief Initialize()
 */
 // ============================================================================
-void BRepCell_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
-                                   const TopoDS_Vertex &theVertex2)
+void Mesh1d_Vertex::Initialize(const gp_Pnt1d &thePoint)
 {
-    // build edge
-    BRepBuilderAPI_MakeEdge anEdgeBuilder(theVertex1, theVertex2);
-    if(!anEdgeBuilder.IsDone()) {
-        SetNotDone();
-        return;
-    }
-    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
-
-    // populate internal containers
-    myVertices.Add(theVertex1);
-    myVertices.Add(theVertex2);
-    myShape = anEdge;
-
-    SetDone();
+    const gp_Pnt& aPoint = gp_Pnt(thePoint.X(), 0., 0.);
+    myVertex = BRepBuilderAPI_MakeVertex(aPoint).Vertex();
 }
+
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const TopoDS_Vertex& Mesh1d_Vertex::Vertex() const
+{
+    return myVertex;
+}
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_Vertex, Mesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Vertex, Mesh1d_Object)

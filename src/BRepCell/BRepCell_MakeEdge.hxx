@@ -20,19 +20,21 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeLine_hxx__
-#define __MeshBuilder_MakeLine_hxx__
+#ifndef __BRepCell_MakeEdge_hxx__
+#define __BRepCell_MakeEdge_hxx__
 
 // Spartacus
-#include <MeshBuilder_MakeEdge.hxx>
+#include <BRepCell_MakeShape.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopTools_IndexedMapOfShape.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeLine
+ *  \brief BRepCell_MakeEdge
 */
 // ============================================================================
-class MeshBuilder_MakeLine : public MeshBuilder_MakeEdge
+class BRepCell_MakeEdge : public BRepCell_MakeShape
 {
 
 public:
@@ -41,17 +43,29 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeLine(const MeshDS_Vertex& theVertex1,
-                                         const MeshDS_Vertex& theVertex2);
+    Standard_EXPORT BRepCell_MakeEdge();
     // destructors
-    Standard_EXPORT ~MeshBuilder_MakeLine();
+    Standard_EXPORT ~BRepCell_MakeEdge();
 
 public:
 
-    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVertex1,
-                                       const MeshDS_Vertex& theVertex2);
+    virtual Standard_EXPORT void            Build();
+
+public:
+
+    Standard_EXPORT const TopoDS_Edge&      Edge() const;
+    Standard_EXPORT operator                TopoDS_Edge() const;
+
+public:
+
+    Standard_EXPORT Standard_Integer        NbVertices() const;
+
+
+protected:
+
+    TopTools_IndexedMapOfShape  myVertices;
 
 };
 
 
-#endif // __MeshBuilder_MakeLine_hxx__
+#endif // __BRepCell_MakeEdge_hxx__

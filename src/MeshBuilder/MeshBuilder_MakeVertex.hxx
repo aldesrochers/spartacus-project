@@ -51,13 +51,6 @@ public:
     Standard_EXPORT MeshBuilder_MakeVertex(const gp_Pnt1d& thePoint);
     Standard_EXPORT MeshBuilder_MakeVertex(const gp_Pnt2d& thePoint);
     Standard_EXPORT MeshBuilder_MakeVertex(const gp_Pnt& thePoint);
-    Standard_EXPORT MeshBuilder_MakeVertex(const Standard_Real theX);
-    Standard_EXPORT MeshBuilder_MakeVertex(const Standard_Real theX,
-                                           const Standard_Real theY);
-    Standard_EXPORT MeshBuilder_MakeVertex(const Standard_Real theX,
-                                           const Standard_Real theY,
-                                           const Standard_Real theZ);
-
     // destructors
     Standard_EXPORT ~MeshBuilder_MakeVertex();
 
@@ -71,12 +64,6 @@ public:
     Standard_EXPORT void        Initialize(const gp_Pnt1d& thePoint);
     Standard_EXPORT void        Initialize(const gp_Pnt2d& thePoint);
     Standard_EXPORT void        Initialize(const gp_Pnt& thePoint);
-    Standard_EXPORT void        Initialize(const Standard_Real theX);
-    Standard_EXPORT void        Initialize(const Standard_Real theX,
-                                           const Standard_Real theY);
-    Standard_EXPORT void        Initialize(const Standard_Real theX,
-                                           const Standard_Real theY,
-                                           const Standard_Real theZ);
 
 };
 

@@ -20,45 +20,32 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __MeshDS_Edge_hxx__
+#define __MeshDS_Edge_hxx__
 
 // Spartacus
-#include <Mesh1d_Edge.hxx>
-#include <Mesh1d_Vertex.hxx>
-
-// Forward declarations
-class Mesh1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Edge)
+#include <MeshDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief MeshDS_Edge
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Edge
+class MeshDS_Edge : public MeshDS_Object
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC
+
+public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT MeshDS_Edge();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
-
-public:
-
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Edge)
+    Standard_EXPORT ~MeshDS_Edge();
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __MeshDS_Edge_hxx__

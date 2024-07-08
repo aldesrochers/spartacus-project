@@ -27,6 +27,7 @@
 #include <MeshBuilder_CellError.hxx>
 #include <MeshBuilder_MakeObject.hxx>
 #include <MeshDS_Cell.hxx>
+#include <MeshDS_Vertex.hxx>
 
 
 // ============================================================================

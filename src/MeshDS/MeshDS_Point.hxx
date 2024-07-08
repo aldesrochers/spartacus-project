@@ -20,50 +20,54 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_Cell_hxx__
-#define __Mesh1d_Cell_hxx__
-
-// Spartacus
-#include <Mesh1d_Object.hxx>
-#include <TColgp_HArray1OfPnt1d.hxx>
+#ifndef __MeshDS_Point_hxx__
+#define __MeshDS_Point_hxx__
 
 // OpenCascade
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Vertex.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+#include <gp_Pnt1d.hxx>
+
+// Spartacus
+#include <gp_Pnt.hxx>
+#include <gp_Pnt2d.hxx>
 
 // Forward declarations
-class Mesh1d_Cell;
+class MeshDS_Point;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Object)
+DEFINE_STANDARD_HANDLE(MeshDS_Point, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_Cell
+ *  \brief MeshDS_Point
 */
 // ============================================================================
-class Mesh1d_Cell : public Mesh1d_Object
+class MeshDS_Point : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mesh1d_Cell();
+    Standard_EXPORT MeshDS_Point();
     // destructors
-    Standard_EXPORT ~Mesh1d_Cell();
+    Standard_EXPORT ~MeshDS_Point();
 
 public:
 
-    virtual Standard_EXPORT const TopoDS_Edge&      Edge(const Standard_Integer theIndex) const = 0;
-    virtual Standard_EXPORT Standard_Integer        NbEdges() const = 0;
-    virtual Standard_EXPORT Standard_Integer        NbVertices() const = 0;
-    virtual Standard_EXPORT const TopoDS_Vertex&    Vertex(const Standard_Integer theIndex) const = 0;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint1d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint2d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsPoint3d() const;
+    virtual Standard_EXPORT const gp_Pnt1d&     Point1d() const;
+    virtual Standard_EXPORT const gp_Pnt2d&     Point2d() const;
+    virtual Standard_EXPORT const gp_Pnt&       Point3d() const;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Object)
+    DEFINE_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient)
 
 };
 
 
-#endif // __Mesh1d_Cell_hxx__
+#endif // __MeshDS_Point_hxx__

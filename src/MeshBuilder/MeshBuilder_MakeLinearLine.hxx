@@ -20,19 +20,19 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeLine_hxx__
-#define __MeshBuilder_MakeLine_hxx__
+#ifndef __MeshBuilder_MakeLinearLine_hxx__
+#define __MeshBuilder_MakeLinearLine_hxx__
 
 // Spartacus
-#include <MeshBuilder_MakeEdge.hxx>
+#include <MeshBuilder_MakeCell.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeLine
+ *  \brief MeshBuilder_MakeLinearLine
 */
 // ============================================================================
-class MeshBuilder_MakeLine : public MeshBuilder_MakeEdge
+class MeshBuilder_MakeLinearLine : public MeshBuilder_MakeCell
 {
 
 public:
@@ -41,17 +41,17 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshBuilder_MakeLine(const MeshDS_Vertex& theVertex1,
-                                         const MeshDS_Vertex& theVertex2);
+    Standard_EXPORT MeshBuilder_MakeLinearLine(const MeshDS_Vertex& theVertex1,
+                                               const MeshDS_Vertex& theVertex2);
     // destructors
-    Standard_EXPORT ~MeshBuilder_MakeLine();
+    Standard_EXPORT ~MeshBuilder_MakeLinearLine();
 
 public:
 
-    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVertex1,
-                                       const MeshDS_Vertex& theVertex2);
+    Standard_EXPORT void        Initialize(const MeshDS_Vertex& theVertex1,
+                                           const MeshDS_Vertex& theVertex2);
 
 };
 
 
-#endif // __MeshBuilder_MakeLine_hxx__
+#endif // __MeshBuilder_MakeLinearLine_hxx__

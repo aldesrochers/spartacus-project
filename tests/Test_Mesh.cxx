@@ -24,12 +24,8 @@
 using namespace std;
 
 // Spartacus
-#include <Cell1d_LinearLine.hxx>
-#include <MeshBuilder_MakeLine.hxx>
-#include <MeshDS_Tool.hxx>
-
-// OpenCascade
-#include <BRep_Tool.hxx>
+#include <MeshBuilder_MakeLinearLine.hxx>
+#include <MeshBuilder_MakeVertex.hxx>
 
 
 // ============================================================================
@@ -40,20 +36,12 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
+    MeshDS_Vertex aVertex1 = MeshBuilder_MakeVertex(gp_Pnt1d(0.)).Vertex();
+    MeshDS_Vertex aVertex2 = MeshBuilder_MakeVertex(gp_Pnt1d(1.)).Vertex();
+    MeshDS_Cell aCell = MeshBuilder_MakeLinearLine(aVertex1, aVertex2).Cell();
 
-    Handle(Cell1d_LinearLine) aLine = new Cell1d_LinearLine(gp_Pnt1d(0.), gp_Pnt1d(1.));
 
 
-    cout << aLine->IsDegenerated() << endl;
-    cout << aLine->IsModified() << endl;
-    aLine->SetPoint(1, gp_Pnt1d(2.));
-    cout << aLine->IsDegenerated() << endl;
-    cout << aLine->IsModified() << endl;
-    cout << aLine->MustBeUpdated() << endl;
-    cout << aLine->Update() << endl;
-    cout << aLine->IsDegenerated() << endl;
-    cout << aLine->IsModified() << endl;
-    cout << aLine->MustBeUpdated() << endl;
 
 
     //cout << "Test_Mesh" << endl;

@@ -20,19 +20,21 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeTriangle_hxx__
-#define __BRepCell_MakeTriangle_hxx__
+#ifndef __MeshBuilder_MakeEdge_hxx__
+#define __MeshBuilder_MakeEdge_hxx__
 
 // Spartacus
-#include <BRepCell_MakeCell.hxx>
+#include <MeshBuilder_MakeObject.hxx>
+#include <MeshDS_Edge.hxx>
+#include <MeshDS_Vertex.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeTriangle
+ *  \brief MeshBuilder_MakeEdge
 */
 // ============================================================================
-class BRepCell_MakeTriangle : public BRepCell_MakeCell
+class MeshBuilder_MakeEdge : public MeshBuilder_MakeObject
 {
 
 public:
@@ -41,25 +43,18 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeTriangle(const gp_Pnt& thePoint1,
-                                          const gp_Pnt& thePoint2,
-                                          const gp_Pnt& thePoint3);
-    Standard_EXPORT BRepCell_MakeTriangle(const TopoDS_Vertex& theVertex1,
-                                          const TopoDS_Vertex& theVertex2,
-                                          const TopoDS_Vertex& theVertex3);
+    Standard_EXPORT MeshBuilder_MakeEdge();
     // destructors
-    Standard_EXPORT ~BRepCell_MakeTriangle();
+    Standard_EXPORT ~MeshBuilder_MakeEdge();
 
-protected:
+public:
 
-    Standard_EXPORT void        Initialize(const gp_Pnt& thePoint1,
-                                           const gp_Pnt& thePoint2,
-                                           const gp_Pnt& thePoint3);
-    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
-                                           const TopoDS_Vertex& theVertex2,
-                                           const TopoDS_Vertex& theVertex3);
+    Standard_EXPORT const MeshDS_Edge&      Edge();
+    Standard_EXPORT operator                MeshDS_Edge();
+
+
 
 };
 
 
-#endif // __BRepCell_MakeTriangle_hxx__
+#endif // __MeshBuilder_MakeEdge_hxx__

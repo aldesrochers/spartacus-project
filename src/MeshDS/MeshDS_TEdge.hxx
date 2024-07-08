@@ -58,16 +58,13 @@ public:
 
 public:
 
-    Standard_EXPORT const MeshDS_Cell&              Cell() const;
     Standard_EXPORT const TopoDS_Edge&              Edge() const;
-    Standard_EXPORT void                            SetCell(const MeshDS_Cell& theCell);
     Standard_EXPORT void                            SetEdge(const TopoDS_Edge& theEdge);
     Standard_EXPORT const MeshDS_SequenceOfObject&  Vertices() const;
     Standard_EXPORT MeshDS_SequenceOfObject&        Vertices();
 
 private:
 
-    MeshDS_Cell                 myCell;
     TopoDS_Edge                 myEdge;
     MeshDS_SequenceOfObject     myVertices;
 

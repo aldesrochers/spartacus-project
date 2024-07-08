@@ -54,6 +54,30 @@ MeshDS_Cell& MeshDS::Cell(MeshDS_Object& theObject)
 
 // ============================================================================
 /*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const MeshDS_Edge& MeshDS::Edge(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Edge),
+                                   "MeshDS::Edge()->Type mismatch.");
+    return *(MeshDS_Edge*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+MeshDS_Edge& MeshDS::Edge(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Edge),
+                                   "MeshDS::Edge()->Type mismatch.");
+    return *(MeshDS_Edge*) &theObject;
+}
+
+// ============================================================================
+/*!
  *  \brief Group()
 */
 // ============================================================================

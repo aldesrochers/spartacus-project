@@ -49,7 +49,7 @@ MeshAbs_TypeOfCell MeshDS_Tool::CellType(const MeshDS_Cell& theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
-    return aTCell->CellType();
+    //return aTCell->CellType();
 }
 
 // ============================================================================
@@ -62,7 +62,7 @@ MeshAbs_TypeOfDimensionality MeshDS_Tool::DimensionalityType(const MeshDS_Cell &
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
-    return aTCell->DimensionalityType();
+    //return aTCell->DimensionalityType();
 }
 
 // ============================================================================
@@ -73,12 +73,12 @@ MeshAbs_TypeOfDimensionality MeshDS_Tool::DimensionalityType(const MeshDS_Cell &
 MeshAbs_TypeOfDimensionality MeshDS_Tool::DimensionalityType(const MeshDS_Vertex &theVertex)
 {
     if(IsPoint1d(theVertex))
-        return MeshAbs_DIM_1D;
+        return MeshAbs_DIM_1d;
     else if(IsPoint2d(theVertex))
-        return MeshAbs_DIM_2D;
+        return MeshAbs_DIM_2d;
     else if(IsPoint3d(theVertex))
-        return MeshAbs_DIM_3D;
-    return MeshAbs_DIM_0D;
+        return MeshAbs_DIM_3d;
+    return MeshAbs_DIM_0d;
 }
 
 // ============================================================================
@@ -91,7 +91,7 @@ MeshAbs_TypeOfInterpolation MeshDS_Tool::InterpolationType(const MeshDS_Cell &th
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
-    return aTCell->InterpolationType();
+    //return aTCell->InterpolationType();
 }
 
 // ============================================================================
@@ -154,77 +154,12 @@ TCollection_AsciiString MeshDS_Tool::Name(const MeshDS_Group &theGroup)
  *  \brief Point()
 */
 // ============================================================================
-gp_Pnt MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
-{
-    /*
-    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
-    if(aTVertex == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid Vertex.");
-    const Handle(Mesh_Point)& aPoint = aTVertex->Point();
-    gp_Pnt aPnt;
-    if(aPoint->IsPoint1d()) {
-        const Handle(Mesh_Point1d)& aPoint1d = Handle(Mesh_Point1d)::DownCast(aPoint);
-        const gp_Pnt1d& aPnt1d = aPoint1d->Point1d();
-        aPnt.SetX(aPnt1d.X());
-    } else if(aPoint->IsPoint2d()) {
-        const Handle(Mesh_Point2d)& aPoint2d = Handle(Mesh_Point2d)::DownCast(aPoint);
-        const gp_Pnt2d& aPnt2d = aPoint2d->Point2d();
-        aPnt.SetX(aPnt2d.X());
-        aPnt.SetY(aPnt2d.Y());
-    } else if(aPoint->IsPoint3d()) {
-        const Handle(Mesh_Point3d)& aPoint3d = Handle(Mesh_Point3d)::DownCast(aPoint);
-        const gp_Pnt& aPnt3d = aPoint3d->Point3d();
-        aPnt.SetX(aPnt3d.X());
-        aPnt.SetX(aPnt3d.Y());
-        aPnt.SetX(aPnt3d.Z());
-    }
-    return aPnt;
-*/
-}
-
-// ============================================================================
-/*!
- *  \brief Point1d()
-*/
-// ============================================================================
-gp_Pnt1d MeshDS_Tool::Point1d(const MeshDS_Vertex &theVertex)
+const Handle(MeshDS_Point)& MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
 {
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid Vertex.");
-    //const Handle(Mesh_Point1d)& aPoint1d =
-    //    Handle(Mesh_Point1d)::DownCast(aTVertex->Point());
-    //return aPoint1d->Point1d();
-}
-
-// ============================================================================
-/*!
- *  \brief Point2d()
-*/
-// ============================================================================
-gp_Pnt2d MeshDS_Tool::Point2d(const MeshDS_Vertex &theVertex)
-{
-    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
-    if(aTVertex == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point2d()->Invalid Vertex.");
-    //const Handle(Mesh_Point2d)& aPoint2d =
-    //    Handle(Mesh_Point2d)::DownCast(aTVertex->Point());
-    //return aPoint2d->Point2d();
-}
-
-// ============================================================================
-/*!
- *  \brief Point3d()
-*/
-// ============================================================================
-gp_Pnt MeshDS_Tool::Point3d(const MeshDS_Vertex &theVertex)
-{
-    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
-    if(aTVertex == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point3d()->Invalid Vertex.");
-    //const Handle(Mesh_Point3d)& aPoint3d =
-    //    Handle(Mesh_Point3d)::DownCast(aTVertex->Point());
-    //return aPoint3d->Point3d();
+        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid vertex.");
+    return aTVertex->Point();
 }
 
 // ============================================================================
@@ -237,7 +172,7 @@ TopoDS_Shape MeshDS_Tool::Shape(const MeshDS_Cell& theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
-    return aTCell->Shape();
+    //return aTCell->Shape();
 }
 
 // ============================================================================
@@ -250,6 +185,6 @@ MeshAbs_TypeOfShape MeshDS_Tool::ShapeType(const MeshDS_Cell &theCell)
     const MeshDS_TCell* aTCell = static_cast<const MeshDS_TCell*>(theCell.TObject().get());
     if(aTCell == 0)
         throw Standard_NullObject("MeshDS_Tool::Shape()->Invalid cell.");
-    return aTCell->ShapeType();
+    //return aTCell->ShapeType();
 }
 

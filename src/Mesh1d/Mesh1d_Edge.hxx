@@ -20,33 +20,50 @@
 // ============================================================================
 
 
+#ifndef __Mesh1d_Edge_hxx__
+#define __Mesh1d_Edge_hxx__
+
 // Spartacus
-#include <Mesh1d_Cell.hxx>
+#include <Mesh1d_Object.hxx>
 
+// OpenCascade
+#include <TopoDS_Edge.hxx>
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh1d_Cell::Mesh1d_Cell()
-{
+// Forward declarations
+class Mesh1d_Edge;
 
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh1d_Cell::~Mesh1d_Cell()
-{
-
-}
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Object)
+DEFINE_STANDARD_HANDLE(Mesh1d_Edge, Mesh1d_Object)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh1d_Edge
+*/
+// ============================================================================
+class Mesh1d_Edge : public Mesh1d_Object
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh1d_Edge();
+    // destructors
+    Standard_EXPORT ~Mesh1d_Edge();
+
+public:
+
+    Standard_EXPORT const TopoDS_Edge&      Edge() const;
+    Standard_EXPORT Standard_Boolean        IsDeprecated() const;
+
+protected:
+
+    TopoDS_Edge     myEdge;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh1d_Edge, Mesh1d_Object)
+
+};
+
+
+#endif // __Mesh1d_Edge_hxx__

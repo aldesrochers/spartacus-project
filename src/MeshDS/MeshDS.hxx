@@ -30,6 +30,7 @@
 // Spartacus
 #include <MeshAbs_TypeOfObject.hxx>
 #include <MeshDS_Cell.hxx>
+#include <MeshDS_Edge.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Object.hxx>
@@ -51,6 +52,9 @@ public:
 
     static Standard_EXPORT const MeshDS_Cell&   Cell(const MeshDS_Object& theObject);
     static Standard_EXPORT MeshDS_Cell&         Cell(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Edge&   Edge(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Edge&         Edge(MeshDS_Object& theObject);
 
     static Standard_EXPORT const MeshDS_Group&  Group(const MeshDS_Object& theObject);
     static Standard_EXPORT MeshDS_Group&        Group(MeshDS_Object& theObject);

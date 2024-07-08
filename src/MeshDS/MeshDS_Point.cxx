@@ -19,10 +19,9 @@
 //
 // ============================================================================
 
-// Spartacus
-#include <MeshDS.hxx>
-#include <MeshDS_TCell.hxx>
 
+// Spartacus
+#include <MeshDS_Point.hxx>
 
 
 // ============================================================================
@@ -30,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TCell::MeshDS_TCell()
+MeshDS_Point::MeshDS_Point()
 {
 
 }
@@ -40,124 +39,77 @@ MeshDS_TCell::MeshDS_TCell()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TCell::~MeshDS_TCell()
+MeshDS_Point::~MeshDS_Point()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Edges()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-const MeshDS_SequenceOfObject& MeshDS_TCell::Edges() const
+Standard_Boolean MeshDS_Point::IsPoint1d() const
 {
-    return myEdges;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Edges()
+ *  \brief IsPoint2d()
 */
 // ============================================================================
-MeshDS_SequenceOfObject& MeshDS_TCell::Edges()
+Standard_Boolean MeshDS_Point::IsPoint2d() const
 {
-    return myEdges;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Faces()
+ *  \brief IsPoint3d()
 */
 // ============================================================================
-const MeshDS_SequenceOfObject& MeshDS_TCell::Faces() const
+Standard_Boolean MeshDS_Point::IsPoint3d() const
 {
-    return myFaces;
+    return Standard_False;
 }
 
 // ============================================================================
 /*!
- *  \brief Faces()
+ *  \brief Point1d()
 */
 // ============================================================================
-MeshDS_SequenceOfObject& MeshDS_TCell::Faces()
+const gp_Pnt1d& MeshDS_Point::Point1d() const
 {
-    return myFaces;
+    throw Standard_DomainError("MeshDS_Point::Point1d()");
 }
 
 // ============================================================================
 /*!
- *  \brief LinkedGroups()
+ *  \brief Point2d()
 */
 // ============================================================================
-const MeshDS_ListOfObject& MeshDS_TCell::LinkedGroups() const
+const gp_Pnt2d& MeshDS_Point::Point2d() const
 {
-    return myLinkedGroups;
+    throw Standard_DomainError("MeshDS_Point::Point2d()");
 }
 
 // ============================================================================
 /*!
- *  \brief LinkedGroups()
+ *  \brief Point3d()
 */
 // ============================================================================
-MeshDS_ListOfObject& MeshDS_TCell::LinkedGroups()
+const gp_Pnt& MeshDS_Point::Point3d() const
 {
-    return myLinkedGroups;
+    throw Standard_DomainError("MeshDS_Point::Point3d()");
 }
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TCell::ObjectType() const
-{
-    return MeshAbs_OBJ_Cell;
-}
 
-// ============================================================================
-/*!
- *  \brief Polygons()
-*/
-// ============================================================================
-const MeshDS_SequenceOfObject& MeshDS_TCell::Polygons() const
-{
-    return myPolygons;
-}
 
-// ============================================================================
-/*!
- *  \brief Polygons()
-*/
-// ============================================================================
-MeshDS_SequenceOfObject& MeshDS_TCell::Polygons()
-{
-    return myPolygons;
-}
-
-// ============================================================================
-/*!
- *  \brief Vertices()
-*/
-// ============================================================================
-const MeshDS_SequenceOfObject& MeshDS_TCell::Vertices() const
-{
-    return myVertices;
-}
-
-// ============================================================================
-/*!
- *  \brief Vertices()
-*/
-// ============================================================================
-MeshDS_SequenceOfObject& MeshDS_TCell::Vertices()
-{
-    return myVertices;
-}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TCell, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TCell, MeshDS_TObject)
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point, Standard_Transient)

@@ -20,44 +20,27 @@
 // ============================================================================
 
 
-#ifndef __Cell1d_LinearLine_hxx__
-#define __Cell1d_LinearLine_hxx__
-
 // Spartacus
-#include <Cell1d_Shape.hxx>
-
-// Forward declarations
-class Cell1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Cell1d_LinearLine, Cell1d_Shape)
+#include <MeshDS_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Cell1d_LinearLine
+ *  \brief Constructor
 */
 // ============================================================================
-class Cell1d_LinearLine : public Cell1d_Shape
+MeshDS_Edge::MeshDS_Edge()
 {
 
-public:
-    // constructors
-    Standard_EXPORT Cell1d_LinearLine();
-    Standard_EXPORT Cell1d_LinearLine(const gp_Pnt1d& thePoint1,
-                                      const gp_Pnt1d& thePoint2);
-    // destructors
-    Standard_EXPORT ~Cell1d_LinearLine();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshDS_Edge::~MeshDS_Edge()
+{
 
-    Standard_EXPORT Standard_Boolean    Build() Standard_OVERRIDE;
+}
 
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Cell1d_LinearLine, Cell1d_Shape)
-
-};
-
-
-#endif // __Cell1d_LinearLine_hxx__

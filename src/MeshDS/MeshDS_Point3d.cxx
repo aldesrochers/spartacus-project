@@ -21,13 +21,7 @@
 
 
 // Spartacus
-#include <BRepCell_MakeLine.hxx>
-
-// OpenCascade
-#include <BRepBuilderAPI_MakeEdge.hxx>
-#include <BRepBuilderAPI_MakeVertex.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Edge.hxx>
+#include <MeshDS_Point3d.hxx>
 
 
 // ============================================================================
@@ -35,10 +29,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
-                                     const TopoDS_Vertex &theVertex2)
+MeshDS_Point3d::MeshDS_Point3d(const gp_Pnt& thePoint)
+    : myPoint(thePoint)
 {
-    Initialize(theVertex1, theVertex2);
+
 }
 
 // ============================================================================
@@ -46,31 +40,34 @@ BRepCell_MakeLine::BRepCell_MakeLine(const TopoDS_Vertex &theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeLine::~BRepCell_MakeLine()
+MeshDS_Point3d::~MeshDS_Point3d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Initialize()
+ *  \brief IsPoint3d()
 */
 // ============================================================================
-void BRepCell_MakeLine::Initialize(const TopoDS_Vertex &theVertex1,
-                                   const TopoDS_Vertex &theVertex2)
+Standard_Boolean MeshDS_Point3d::IsPoint3d() const
 {
-    // build edge
-    BRepBuilderAPI_MakeEdge anEdgeBuilder(theVertex1, theVertex2);
-    if(!anEdgeBuilder.IsDone()) {
-        SetNotDone();
-        return;
-    }
-    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
-
-    // populate internal containers
-    myVertices.Add(theVertex1);
-    myVertices.Add(theVertex2);
-    myShape = anEdge;
-
-    SetDone();
+    return Standard_True;
 }
+
+// ============================================================================
+/*!
+ *  \brief Point3d()
+*/
+// ============================================================================
+const gp_Pnt& MeshDS_Point3d::Point3d() const
+{
+    return myPoint;
+}
+
+
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point3d, MeshDS_Point)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point3d, MeshDS_Point)

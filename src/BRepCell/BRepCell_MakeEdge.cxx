@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <BRepCell_MakeCell.hxx>
+#include <BRepCell_MakeEdge.hxx>
 
 // OpenCascade
 #include <TopoDS.hxx>
@@ -32,7 +32,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-BRepCell_MakeCell::BRepCell_MakeCell()
+BRepCell_MakeEdge::BRepCell_MakeEdge()
 {
 
 }
@@ -42,7 +42,7 @@ BRepCell_MakeCell::BRepCell_MakeCell()
  *  \brief Destructor
 */
 // ============================================================================
-BRepCell_MakeCell::~BRepCell_MakeCell()
+BRepCell_MakeEdge::~BRepCell_MakeEdge()
 {
 
 }
@@ -52,49 +52,9 @@ BRepCell_MakeCell::~BRepCell_MakeCell()
  *  \brief Build()
 */
 // ============================================================================
-void BRepCell_MakeCell::Build()
+void BRepCell_MakeEdge::Build()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief NbEdges()
-*/
-// ============================================================================
-Standard_Integer BRepCell_MakeCell::NbEdges() const
-{
-    return myEdges.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbFaces()
-*/
-// ============================================================================
-Standard_Integer BRepCell_MakeCell::NbFaces() const
-{
-    return myFaces.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbShells()
-*/
-// ============================================================================
-Standard_Integer BRepCell_MakeCell::NbShells() const
-{
-    return myShells.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief NbSolids()
-*/
-// ============================================================================
-Standard_Integer BRepCell_MakeCell::NbSolids() const
-{
-    return mySolids.Size();
 }
 
 // ============================================================================
@@ -102,43 +62,29 @@ Standard_Integer BRepCell_MakeCell::NbSolids() const
  *  \brief NbVertices()
 */
 // ============================================================================
-Standard_Integer BRepCell_MakeCell::NbVertices() const
+Standard_Integer BRepCell_MakeEdge::NbVertices() const
 {
     return myVertices.Size();
 }
 
 // ============================================================================
 /*!
- *  \brief NbWires()
+ *  \brief operator TopoDS_Edge()
 */
 // ============================================================================
-Standard_Integer BRepCell_MakeCell::NbWires() const
+BRepCell_MakeEdge::operator TopoDS_Edge() const
 {
-    return myWires.Size();
+    return Edge();
 }
 
 // ============================================================================
 /*!
- *  \brief operator TopoDS_Shape()
+ *  \brief Edge()
 */
 // ============================================================================
-BRepCell_MakeCell::operator TopoDS_Shape() const
+const TopoDS_Edge& BRepCell_MakeEdge::Edge() const
 {
-    return Shape();
-}
-
-// ============================================================================
-/*!
- *  \brief Shape()
-*/
-// ============================================================================
-const TopoDS_Shape& BRepCell_MakeCell::Shape() const
-{
-    if (!IsDone()) {
-        ((BRepCell_MakeCell*) (void*) this)->Build();
-        Check();
-    }
-    return myShape;
+    return TopoDS::Edge(Shape());
 }
 
 

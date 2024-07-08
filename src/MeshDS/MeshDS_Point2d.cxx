@@ -19,13 +19,9 @@
 //
 // ============================================================================
 
-#include <iostream>
-using namespace std;
 
 // Spartacus
-#include <BRepCell_MakeLine.hxx>
-#include <Cell1d_LinearLine.hxx>
-
+#include <MeshDS_Point2d.hxx>
 
 
 // ============================================================================
@@ -33,22 +29,10 @@ using namespace std;
  *  \brief Constructor
 */
 // ============================================================================
-Cell1d_LinearLine::Cell1d_LinearLine()
+MeshDS_Point2d::MeshDS_Point2d(const gp_Pnt2d& thePoint)
+    : myPoint(thePoint)
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Cell1d_LinearLine::Cell1d_LinearLine(const gp_Pnt1d& thePoint1,
-                                     const gp_Pnt1d& thePoint2)
-{
-    myPoints.Append(thePoint1);
-    myPoints.Append(thePoint2);
-    Build();
 }
 
 // ============================================================================
@@ -56,35 +40,34 @@ Cell1d_LinearLine::Cell1d_LinearLine(const gp_Pnt1d& thePoint1,
  *  \brief Destructor
 */
 // ============================================================================
-Cell1d_LinearLine::~Cell1d_LinearLine()
+MeshDS_Point2d::~MeshDS_Point2d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Build()
+ *  \brief IsPoint2d()
 */
 // ============================================================================
-Standard_Boolean Cell1d_LinearLine::Build()
+Standard_Boolean MeshDS_Point2d::IsPoint2d() const
 {
-    gp_Pnt aPoint1(Point(1).X(), 0., 0.);
-    gp_Pnt aPoint2(Point(2).X(), 0., 0.);
-    BRepCell_MakeLine aBuilder(aPoint1, aPoint2);
-    if(!aBuilder.IsDone())
-        return Standard_False;
-    myEdges = aBuilder.Edges();
-    myVertices = aBuilder.Vertices();
-    myShape = aBuilder.Shape();
-    SetNotModified();
     return Standard_True;
 }
 
-
+// ============================================================================
+/*!
+ *  \brief Point2d()
+*/
+// ============================================================================
+const gp_Pnt2d& MeshDS_Point2d::Point2d() const
+{
+    return myPoint;
+}
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Cell1d_LinearLine, Cell1d_Shape)
-IMPLEMENT_STANDARD_RTTIEXT(Cell1d_LinearLine, Cell1d_Shape)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point2d, MeshDS_Point)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point2d, MeshDS_Point)

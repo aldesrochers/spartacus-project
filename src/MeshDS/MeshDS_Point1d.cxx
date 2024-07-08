@@ -21,11 +21,7 @@
 
 
 // Spartacus
-#include <Mesh1d_Node.hxx>
-
-// OpenCascade
-#include <BRepBuilderAPI_MakeVertex.hxx>
-#include <BRep_Tool.hxx>
+#include <MeshDS_Point1d.hxx>
 
 
 // ============================================================================
@@ -33,7 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_Node::Mesh1d_Node()
+MeshDS_Point1d::MeshDS_Point1d(const gp_Pnt1d& thePoint)
+    : myPoint(thePoint)
 {
 
 }
@@ -43,46 +40,34 @@ Mesh1d_Node::Mesh1d_Node()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh1d_Node::~Mesh1d_Node()
+MeshDS_Point1d::~MeshDS_Point1d()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Point()
+ *  \brief IsPoint1d()
 */
 // ============================================================================
-const gp_Pnt1d& Mesh1d_Node::Point() const
+Standard_Boolean MeshDS_Point1d::IsPoint1d() const
 {
-    const gp_Pnt& aPoint = BRep_Tool::Pnt(myVertex);
-    const gp_Pnt1d& aPoint1d = gp_Pnt1d(aPoint.X());
-    return aPoint1d;
+    return Standard_True;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief Point1d()
 */
 // ============================================================================
-void Mesh1d_Node::SetPoint(const gp_Pnt1d &thePoint)
+const gp_Pnt1d& MeshDS_Point1d::Point1d() const
 {
-    const gp_Pnt& aPoint3d = gp_Pnt(thePoint.X(), 0., 0.);
-    myVertex = BRepBuilderAPI_MakeVertex(aPoint3d);
+    return myPoint;
 }
 
-// ============================================================================
-/*!
- *  \brief Vertex()
-*/
-// ============================================================================
-const TopoDS_Vertex& Mesh1d_Node::Vertex() const
-{
-    return myVertex;
-}
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_Node, Mesh1d_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Node, Mesh1d_Object)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(MeshDS_Point1d, MeshDS_Point)
+IMPLEMENT_STANDARD_RTTIEXT(MeshDS_Point1d, MeshDS_Point)

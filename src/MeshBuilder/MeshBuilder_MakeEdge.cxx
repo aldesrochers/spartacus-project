@@ -20,38 +20,49 @@
 // ============================================================================
 
 
-#ifndef __MeshBuilder_MakeLine_hxx__
-#define __MeshBuilder_MakeLine_hxx__
-
 // Spartacus
 #include <MeshBuilder_MakeEdge.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshBuilder_MakeLine
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshBuilder_MakeLine : public MeshBuilder_MakeEdge
+MeshBuilder_MakeEdge::MeshBuilder_MakeEdge()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshBuilder_MakeEdge::~MeshBuilder_MakeEdge()
+{
 
-public:
-    // constructors
-    Standard_EXPORT MeshBuilder_MakeLine(const MeshDS_Vertex& theVertex1,
-                                         const MeshDS_Vertex& theVertex2);
-    // destructors
-    Standard_EXPORT ~MeshBuilder_MakeLine();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const MeshDS_Edge& MeshBuilder_MakeEdge::Edge()
+{
+    return MeshDS::Edge(Object());
+}
 
-    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVertex1,
-                                       const MeshDS_Vertex& theVertex2);
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Edge()
+*/
+// ============================================================================
+MeshBuilder_MakeEdge::operator MeshDS_Edge()
+{
+    return Edge();
+}
 
-};
-
-
-#endif // __MeshBuilder_MakeLine_hxx__
