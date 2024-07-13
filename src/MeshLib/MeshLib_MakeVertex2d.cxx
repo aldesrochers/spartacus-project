@@ -21,9 +21,9 @@
 
 
 // Spartacus
-#include <Mesh1d_LinearLine.hxx>
-
-
+#include <MeshLib_MakeVertex2d.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
@@ -31,10 +31,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                     const Handle(Mesh1d_Vertex)& theVertex2)
+MeshLib_MakeVertex2d::MeshLib_MakeVertex2d(const gp_Pnt2d& thePoint)
 {
-    Initialize(theVertex1, theVertex2);
+    Initialize(thePoint);
 }
 
 // ============================================================================
@@ -42,7 +41,7 @@ Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-Mesh1d_LinearLine::~Mesh1d_LinearLine()
+MeshLib_MakeVertex2d::~MeshLib_MakeVertex2d()
 {
 
 }
@@ -52,15 +51,29 @@ Mesh1d_LinearLine::~Mesh1d_LinearLine()
  *  \brief Initialize()
 */
 // ============================================================================
-void Mesh1d_LinearLine::Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                   const Handle(Mesh1d_Vertex)& theVertex2)
+void MeshLib_MakeVertex2d::Initialize(const gp_Pnt2d &thePoint)
 {
-
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeVertex(MeshDS::Vertex(myObject), thePoint);
+    SetDone();
 }
 
+// ============================================================================
+/*!
+ *  \brief Vertex2d()
+*/
+// ============================================================================
+const MeshDS_Vertex& MeshLib_MakeVertex2d::Vertex()
+{
+    return MeshDS::Vertex(Object());
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Vertex()
+*/
+// ============================================================================
+MeshLib_MakeVertex2d::operator MeshDS_Vertex()
+{
+    return Vertex();
+}

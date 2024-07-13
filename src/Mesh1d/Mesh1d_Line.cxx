@@ -20,45 +20,56 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
-
 // Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
-
-// Forward declarations
-class Mesh1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+#include <Mesh1d_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief Constructor
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+Mesh1d_Edge::Mesh1d_Edge()
 {
 
-public:
-    // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
-    // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+Mesh1d_Edge::~Mesh1d_Edge()
+{
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const TopoDS_Edge& Mesh1d_Edge::Edge() const
+{
+    return myEdge;
+}
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
 
-};
+// ============================================================================
+/*!
+ *  \brief IsDeprecated()
+*/
+// ============================================================================
+Standard_Boolean Mesh1d_Edge::IsDeprecated() const
+{
+    if(myEdge.IsNull())
+        return Standard_True;
+    return Standard_False;
+}
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh1d_Edge, Mesh1d_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_Edge, Mesh1d_Object)

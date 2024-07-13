@@ -21,9 +21,10 @@
 
 
 // Spartacus
-#include <Mesh1d_LinearLine.hxx>
+#include <Mesh_Curve.hxx>
 
-
+// OpenCascade
+#include <Standard_DomainError.hxx>
 
 
 // ============================================================================
@@ -31,10 +32,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                     const Handle(Mesh1d_Vertex)& theVertex2)
+Mesh_Curve::Mesh_Curve()
 {
-    Initialize(theVertex1, theVertex2);
+
 }
 
 // ============================================================================
@@ -42,25 +42,64 @@ Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-Mesh1d_LinearLine::~Mesh1d_LinearLine()
+Mesh_Curve::~Mesh_Curve()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Initialize()
+ *  \brief IsCurve1d()
 */
 // ============================================================================
-void Mesh1d_LinearLine::Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                   const Handle(Mesh1d_Vertex)& theVertex2)
+Standard_Boolean Mesh_Curve::IsCurve1d() const
 {
+    return Standard_False;
+}
 
+// ============================================================================
+/*!
+ *  \brief IsCurve2d()
+*/
+// ============================================================================
+Standard_Boolean Mesh_Curve::IsCurve2d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsCurve3d()
+*/
+// ============================================================================
+Standard_Boolean Mesh_Curve::IsCurve3d() const
+{
+    return Standard_False;
+}
+
+// ============================================================================
+/*!
+ *  \brief Curve2d()
+*/
+// ============================================================================
+const Handle(Geom2d_Curve)& Mesh_Curve::Curve2d() const
+{
+    throw Standard_DomainError("Mesh_Curve::Curve2d()");
+}
+
+// ============================================================================
+/*!
+ *  \brief Curve3d()
+*/
+// ============================================================================
+const Handle(Geom_Curve)& Mesh_Curve::Curve3d() const
+{
+    throw Standard_DomainError("Mesh_Curve::Curve3d()");
 }
 
 
 // ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Mesh_Curve, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_Curve, Standard_Transient)

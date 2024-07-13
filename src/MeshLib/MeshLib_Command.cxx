@@ -21,9 +21,10 @@
 
 
 // Spartacus
-#include <Mesh1d_LinearLine.hxx>
+#include <MeshLib_Command.hxx>
 
-
+// OpenCascade
+#include <StdFail_NotDone.hxx>
 
 
 // ============================================================================
@@ -31,10 +32,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                     const Handle(Mesh1d_Vertex)& theVertex2)
+MeshLib_Command::MeshLib_Command()
+    : myIsDone(Standard_False)
 {
-    Initialize(theVertex1, theVertex2);
+
 }
 
 // ============================================================================
@@ -42,25 +43,51 @@ Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-Mesh1d_LinearLine::~Mesh1d_LinearLine()
+MeshLib_Command::~MeshLib_Command()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Initialize()
+ *  \brief Check()
 */
 // ============================================================================
-void Mesh1d_LinearLine::Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                   const Handle(Mesh1d_Vertex)& theVertex2)
+void MeshLib_Command::Check()const
 {
+    if (!myIsDone)
+        throw StdFail_NotDone("MeshLib_Command::Check() -> Command not done");
+}
 
+// ============================================================================
+/*!
+ *  \brief IsDone()
+*/
+// ============================================================================
+Standard_Boolean MeshLib_Command::IsDone() const
+{
+    return myIsDone;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetDone()
+*/
+// ============================================================================
+void MeshLib_Command::SetDone()
+{
+    myIsDone = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotDone()
+*/
+// ============================================================================
+void MeshLib_Command::SetNotDone()
+{
+    myIsDone = Standard_False;
 }
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+

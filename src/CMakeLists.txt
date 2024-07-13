@@ -466,6 +466,7 @@ set(Mech2d_PKG_SOURCES
 # =============================================================================
 
 set(Mesh1d_PKG_HEADERS
+    Mesh1d/Mesh1d_Cell.hxx
     Mesh1d/Mesh1d_Edge.hxx
     Mesh1d/Mesh1d_LinearLine.hxx
     Mesh1d/Mesh1d_Object.hxx
@@ -473,6 +474,7 @@ set(Mesh1d_PKG_HEADERS
 )
 
 set(Mesh1d_PKG_SOURCES
+    Mesh1d/Mesh1d_Cell.cxx
     Mesh1d/Mesh1d_Edge.cxx
     Mesh1d/Mesh1d_LinearLine.cxx
     Mesh1d/Mesh1d_Object.cxx
@@ -516,6 +518,10 @@ set(Mesh2d_PKG_SOURCES
 set(Mesh_PKG_HEADERS
     Mesh/Mesh_Cell.hxx
     Mesh/Mesh_Cell1d.hxx
+    Mesh/Mesh_Curve.hxx
+    Mesh/Mesh_Curve1d.hxx
+    Mesh/Mesh_Curve2d.hxx
+    Mesh/Mesh_Curve3d.hxx
     Mesh/Mesh_Object.hxx
     Mesh/Mesh_Point.hxx
     Mesh/Mesh_Point1d.hxx
@@ -526,6 +532,10 @@ set(Mesh_PKG_HEADERS
 set(Mesh_PKG_SOURCES
     Mesh/Mesh_Cell.cxx
     Mesh/Mesh_Cell1d.cxx
+    Mesh/Mesh_Curve.cxx
+    Mesh/Mesh_Curve1d.cxx
+    Mesh/Mesh_Curve2d.cxx
+    Mesh/Mesh_Curve3d.cxx
     Mesh/Mesh_Object.cxx
     Mesh/Mesh_Point.cxx
     Mesh/Mesh_Point1d.cxx
@@ -651,6 +661,24 @@ set(MeshExp_PKG_HEADERS
 
 set(MeshExp_PKG_SOURCES
     MeshExp/MeshExp.cxx
+)
+
+# =============================================================================
+# Package : MeshLib
+# =============================================================================
+
+set(MeshLib_PKG_HEADERS
+    MeshLib/MeshLib_Command.hxx
+    MeshLib/MeshLib_MakeLine2d.hxx
+    MeshLib/MeshLib_MakeObject.hxx
+    MeshLib/MeshLib_MakeVertex2d.hxx
+)
+
+set(MeshLib_PKG_SOURCES
+    MeshLib/MeshLib_Command.cxx
+    MeshLib/MeshLib_MakeLine2d.cxx
+    MeshLib/MeshLib_MakeObject.cxx
+    MeshLib/MeshLib_MakeVertex2d.cxx
 )
 
 # =============================================================================
@@ -1278,6 +1306,7 @@ set(Ceres_HEADERS
     ${MeshBuilder_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
     ${MeshExp_PKG_HEADERS}
+    ${MeshLib_PKG_HEADERS}
     #${MeshRep_PKG_HEADERS}
     ${MeshTools_PKG_HEADERS}
     ${Model_PKG_HEADERS}
@@ -1350,6 +1379,7 @@ set(Ceres_SOURCES
     ${MeshBuilder_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
     ${MeshExp_PKG_SOURCES}
+    ${MeshLib_PKG_SOURCES}
     #${MeshRep_PKG_SOURCES}
     ${MeshTools_PKG_SOURCES}
     ${Model_PKG_SOURCES}
@@ -1420,6 +1450,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshExp
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
     ${CMAKE_CURRENT_SOURCE_DIR}/Model
     ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs

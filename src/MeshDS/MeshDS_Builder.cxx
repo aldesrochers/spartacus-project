@@ -28,6 +28,7 @@ using namespace std;
 #include <MeshDS_Point2d.hxx>
 #include <MeshDS_Point3d.hxx>
 #include <MeshDS_TCell.hxx>
+#include <MeshDS_TEdge.hxx>
 #include <MeshDS_TGroup.hxx>
 #include <MeshDS_TMesh.hxx>
 #include <MeshDS_Tool.hxx>
@@ -142,6 +143,29 @@ void MeshDS_Builder::MakeCell(MeshDS_Cell &theCell,
 {
     MakeCell(theCell);
     UpdateCell(theCell, theShape, theDimensionalityType, theShapeType, theInterpolationType, theCellType);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeEdge()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeEdge(MeshDS_Edge &theEdge) const
+{
+    Handle(MeshDS_TEdge) aTEdge = new MeshDS_TEdge();
+    MakeObject(theEdge, aTEdge);
+}
+
+// ============================================================================
+/*!
+ *  \brief MakeEdge()
+*/
+// ============================================================================
+void MeshDS_Builder::MakeEdge(MeshDS_Edge &theEdge,
+                              const TopoDS_Edge& theTopology) const
+{
+    MakeEdge(theEdge);
+    UpdateEdge(theEdge, theTopology);
 }
 
 // ============================================================================
@@ -377,6 +401,18 @@ void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
     //aTCell->SetInterpolationType(theInterpolationType);
     //aTCell->SetShape(theShape);
     //aTCell->SetShapeType(theShapeType);
+}
+
+// ============================================================================
+/*!
+ *  \brief UpdateEdge()
+*/
+// ============================================================================
+void MeshDS_Builder::UpdateEdge(const MeshDS_Edge &theEdge,
+                                const TopoDS_Edge &theTopology) const
+{
+    const Handle(MeshDS_TEdge)& aTEdge = *((Handle(MeshDS_TEdge)*) &theEdge.TObject());
+    aTEdge->SetEdge(theTopology);
 }
 
 // ============================================================================

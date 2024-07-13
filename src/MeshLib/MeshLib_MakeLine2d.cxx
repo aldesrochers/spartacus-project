@@ -20,45 +20,48 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
-
 // Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
-
-// Forward declarations
-class Mesh1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+#include <MeshLib_MakeLine2d.hxx>
+#include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief Constructor
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+MeshLib_MakeLine2d::MeshLib_MakeLine2d()
 {
 
-public:
-    // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
-    // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_MakeLine2d::~MeshLib_MakeLine2d()
+{
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const MeshDS_Edge& MeshLib_MakeLine2d::Edge()
+{
+    return MeshDS::Edge(Object());
+}
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
-
-};
-
-
-#endif // __Mesh1d_LinearLine_hxx__
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Edge()
+*/
+// ============================================================================
+MeshLib_MakeLine2d::operator MeshDS_Edge()
+{
+    return Edge();
+}

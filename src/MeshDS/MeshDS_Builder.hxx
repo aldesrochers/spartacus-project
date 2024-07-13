@@ -87,6 +87,10 @@ public:
                                      const MeshAbs_TypeOfInterpolation theInterpolationType,
                                      const MeshAbs_TypeOfCell theCellType) const;
 
+    Standard_EXPORT void    MakeEdge(MeshDS_Edge& theEdge) const;
+    Standard_EXPORT void    MakeEdge(MeshDS_Edge& theEdge,
+                                     const TopoDS_Edge& theTopology) const;
+
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup,
                                       const TCollection_AsciiString& theName) const;

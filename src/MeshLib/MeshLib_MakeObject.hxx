@@ -20,45 +20,46 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __MeshLib_MakeObject_hxx__
+#define __MeshLib_MakeObject_hxx__
 
 // Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
-
-// Forward declarations
-class Mesh1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+#include <MeshLib_Command.hxx>
+#include <MeshDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief MeshLib_MakeObject
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+class MeshLib_MakeObject : public MeshLib_Command
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC
+
+public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT MeshLib_MakeObject();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+    Standard_EXPORT ~MeshLib_MakeObject();
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
+    virtual Standard_EXPORT void            Build();
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+    Standard_EXPORT const MeshDS_Object&    Object();
+    Standard_EXPORT operator                MeshDS_Object();
+
+protected:
+
+    MeshDS_Object       myObject;
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __MeshLib_MakeObject_hxx__

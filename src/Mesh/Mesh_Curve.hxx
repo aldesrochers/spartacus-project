@@ -20,45 +20,50 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __Mesh_Curve_hxx__
+#define __Mesh_Curve_hxx__
 
-// Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+#include <Geom_Curve.hxx>
+#include <Geom2d_Curve.hxx>
 
 // Forward declarations
-class Mesh1d_LinearLine;
+class Mesh_Curve;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+DEFINE_STANDARD_HANDLE(Mesh_Curve, Standard_Transient)
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief Mesh_Curve
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+class Mesh_Curve : public Standard_Transient
 {
 
 public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT Mesh_Curve();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+    Standard_EXPORT ~Mesh_Curve();
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
+    virtual const Handle(Geom2d_Curve)&         Curve2d() const;
+    virtual const Handle(Geom_Curve)&           Curve3d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsCurve1d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsCurve2d() const;
+    virtual Standard_EXPORT Standard_Boolean    IsCurve3d() const;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+    DEFINE_STANDARD_RTTIEXT(Mesh_Curve, Standard_Transient)
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __Mesh_Curve_hxx__

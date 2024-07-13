@@ -20,45 +20,38 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __Mesh_Curve2d_hxx__
+#define __Mesh_Curve2d_hxx__
 
 // Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
+#include <Mesh_Curve.hxx>
 
 // Forward declarations
-class Mesh1d_LinearLine;
+class Mesh_Curve2d;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+DEFINE_STANDARD_HANDLE(Mesh_Curve2d, Mesh_Curve)
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief Mesh_Curve2d
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+class Mesh_Curve2d : public Mesh_Curve
 {
 
 public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT Mesh_Curve2d();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+    Standard_EXPORT ~Mesh_Curve2d();
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+    DEFINE_STANDARD_RTTIEXT(Mesh_Curve2d, Mesh_Curve)
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __Mesh_Curve2d_hxx__

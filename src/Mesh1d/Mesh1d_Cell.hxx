@@ -20,45 +20,38 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __Mesh1d_Cell_hxx__
+#define __Mesh1d_Cell_hxx__
 
 // Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
+#include <Mesh1d_Object.hxx>
 
 // Forward declarations
-class Mesh1d_LinearLine;
+class Mesh1d_Cell;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
+DEFINE_STANDARD_HANDLE(Mesh1d_Cell, Mesh1d_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief Mesh1d_Cell
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+class Mesh1d_Cell : public Mesh1d_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT Mesh1d_Cell();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+    Standard_EXPORT ~Mesh1d_Cell();
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+    DEFINE_STANDARD_RTTIEXT(Mesh1d_Cell, Mesh1d_Object)
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __Mesh1d_Cell_hxx__

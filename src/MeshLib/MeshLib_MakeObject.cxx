@@ -21,9 +21,8 @@
 
 
 // Spartacus
-#include <Mesh1d_LinearLine.hxx>
-
-
+#include <MeshLib_MakeObject.hxx>
+#include <MeshDS_Builder.hxx>
 
 
 // ============================================================================
@@ -31,10 +30,9 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                     const Handle(Mesh1d_Vertex)& theVertex2)
+MeshLib_MakeObject::MeshLib_MakeObject()
 {
-    Initialize(theVertex1, theVertex2);
+
 }
 
 // ============================================================================
@@ -42,25 +40,41 @@ Mesh1d_LinearLine::Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
  *  \brief Destructor
 */
 // ============================================================================
-Mesh1d_LinearLine::~Mesh1d_LinearLine()
+MeshLib_MakeObject::~MeshLib_MakeObject()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Initialize()
+ *  \brief Build()
 */
 // ============================================================================
-void Mesh1d_LinearLine::Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                   const Handle(Mesh1d_Vertex)& theVertex2)
+void MeshLib_MakeObject::Build()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Object()
+*/
+// ============================================================================
+const MeshDS_Object& MeshLib_MakeObject::Object()
+{
+    if (!IsDone()) {
+        ((MeshLib_MakeObject*) (void*) this)->Build();
+        Check();
+    }
+    return myObject;
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+// ============================================================================
+/*!
+ *  \brief operator ObjectDS_Object()
+*/
+// ============================================================================
+MeshLib_MakeObject::operator MeshDS_Object()
+{
+    return Object();
+}

@@ -20,45 +20,48 @@
 // ============================================================================
 
 
-#ifndef __Mesh1d_LinearLine_hxx__
-#define __Mesh1d_LinearLine_hxx__
+#ifndef __MeshLib_Command_hxx__
+#define __MeshLib_Command_hxx__
 
-// Spartacus
-#include <Mesh1d_Cell.hxx>
-#include <Mesh1d_Vertex.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
-// Forward declarations
-class Mesh1d_LinearLine;
-
-// Handles
-DEFINE_STANDARD_HANDLE(Mesh1d_LinearLine, Mesh1d_Cell)
 
 
 // ============================================================================
 /*!
- *  \brief Mesh1d_LinearLine
+ *  \brief MeshLib_Command
 */
 // ============================================================================
-class Mesh1d_LinearLine : public Mesh1d_Cell
+class MeshLib_Command
 {
 
 public:
+
+    DEFINE_STANDARD_ALLOC
+
+public:
     // constructors
-    Standard_EXPORT Mesh1d_LinearLine(const Handle(Mesh1d_Vertex)& theVertex1,
-                                      const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT MeshLib_Command();
     // destructors
-    Standard_EXPORT ~Mesh1d_LinearLine();
+    Standard_EXPORT ~MeshLib_Command();
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Mesh1d_Vertex)& theVertex1,
-                                       const Handle(Mesh1d_Vertex)& theVertex2);
+    Standard_EXPORT void                Check() const;
+    Standard_EXPORT Standard_Boolean    IsDone() const;
 
-public:
+protected:
 
-    DEFINE_STANDARD_RTTIEXT(Mesh1d_LinearLine, Mesh1d_Cell)
+    Standard_EXPORT void                SetDone();
+    Standard_EXPORT void                SetNotDone();
+
+protected:
+
+    Standard_Boolean        myIsDone;
 
 };
 
 
-#endif // __Mesh1d_LinearLine_hxx__
+#endif // __MeshLib_Command_hxx__

@@ -25,6 +25,7 @@ using namespace std;
 // Spartacus
 #include <MeshAdaptor_Vertex.hxx>
 #include <MeshBuilder_MakeLinearLine.hxx>
+#include <MeshDS_Builder.hxx>
 
 // OpenCascade
 #include <BRepBuilderAPI_MakeEdge.hxx>
@@ -83,7 +84,9 @@ void MeshBuilder_MakeLinearLine::Initialize(const MeshDS_Vertex &theVertex1,
     TopoDS_Edge anEdge = anEdgeBuilder.Edge();
 
     // make mesh edge
-
+    MeshDS_Edge anEdge2;
+    MeshDS_Builder aBuilder;
+    aBuilder.MakeEdge(anEdge2, anEdge);
 
 
 
