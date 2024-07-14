@@ -26,6 +26,9 @@
 // Spartacus
 #include <Mesh_Curve.hxx>
 
+// OpenCascade
+#include <Geom2d_Curve.hxx>
+
 // Forward declarations
 class Mesh_Curve2d;
 
@@ -43,9 +46,18 @@ class Mesh_Curve2d : public Mesh_Curve
 
 public:
     // constructors
-    Standard_EXPORT Mesh_Curve2d();
+    Standard_EXPORT Mesh_Curve2d(const Handle(Geom2d_Curve)& theCurve);
     // destructors
     Standard_EXPORT ~Mesh_Curve2d();
+
+public:
+
+    Standard_EXPORT const Handle(Geom2d_Curve)& Curve2d() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Boolean            IsCurve2d() const Standard_OVERRIDE;
+
+private:
+
+    Handle(Geom2d_Curve)    myCurve;
 
 public:
 

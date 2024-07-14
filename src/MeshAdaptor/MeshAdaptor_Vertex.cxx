@@ -22,9 +22,9 @@
 
 // Spartacus
 #include <MeshAdaptor_Vertex.hxx>
-#include <MeshDS_Point1d.hxx>
-#include <MeshDS_Point2d.hxx>
-#include <MeshDS_Point3d.hxx>
+#include <Mesh_Point1d.hxx>
+#include <Mesh_Point2d.hxx>
+#include <Mesh_Point3d.hxx>
 #include <MeshDS_Tool.hxx>
 
 // OpenCascade
@@ -68,13 +68,13 @@ MeshAdaptor_Vertex::~MeshAdaptor_Vertex()
 // ============================================================================
 MeshAbs_TypeOfDimensionality MeshAdaptor_Vertex::Dimensionality() const
 {
-    const Handle(MeshDS_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
     Handle(Standard_Type) aType = aPoint->DynamicType();
-    if(aType == STANDARD_TYPE(MeshDS_Point1d)) {
+    if(aType == STANDARD_TYPE(Mesh_Point1d)) {
         return MeshAbs_DIM_1d;
-    } else if(aType == STANDARD_TYPE(MeshDS_Point2d)) {
+    } else if(aType == STANDARD_TYPE(Mesh_Point2d)) {
         return MeshAbs_DIM_2d;
-    } else if(aType == STANDARD_TYPE(MeshDS_Point3d)) {
+    } else if(aType == STANDARD_TYPE(Mesh_Point3d)) {
         return MeshAbs_DIM_3d;
     } else {
         return MeshAbs_DIM_0d;
@@ -98,9 +98,9 @@ void MeshAdaptor_Vertex::Initialize(const MeshDS_Vertex &theVertex)
 // ============================================================================
 const gp_Pnt1d& MeshAdaptor_Vertex::Point1d() const
 {
-    const Handle(MeshDS_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
     if(aPoint->IsPoint1d()) {
-        const Handle(MeshDS_Point1d)& aPoint1d  = Handle(MeshDS_Point1d)::DownCast(aPoint);
+        const Handle(Mesh_Point1d)& aPoint1d  = Handle(Mesh_Point1d)::DownCast(aPoint);
         return aPoint1d->Point1d();
     }
     throw Standard_DomainError("MeshAdaptor_Vertex::Point1d()");
@@ -113,9 +113,9 @@ const gp_Pnt1d& MeshAdaptor_Vertex::Point1d() const
 // ============================================================================
 const gp_Pnt2d& MeshAdaptor_Vertex::Point2d() const
 {
-    const Handle(MeshDS_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
     if(aPoint->IsPoint2d()) {
-        const Handle(MeshDS_Point2d)& aPoint2d  = Handle(MeshDS_Point2d)::DownCast(aPoint);
+        const Handle(Mesh_Point2d)& aPoint2d  = Handle(Mesh_Point2d)::DownCast(aPoint);
         return aPoint2d->Point2d();
     }
     throw Standard_DomainError("MeshAdaptor_Vertex::Point2d()");
@@ -128,9 +128,9 @@ const gp_Pnt2d& MeshAdaptor_Vertex::Point2d() const
 // ============================================================================
 const gp_Pnt& MeshAdaptor_Vertex::Point3d() const
 {
-    const Handle(MeshDS_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
     if(aPoint->IsPoint3d()) {
-        const Handle(MeshDS_Point3d)& aPoint3d  = Handle(MeshDS_Point3d)::DownCast(aPoint);
+        const Handle(Mesh_Point3d)& aPoint3d  = Handle(Mesh_Point3d)::DownCast(aPoint);
         return aPoint3d->Point3d();
     }
     throw Standard_DomainError("MeshAdaptor_Vertex::Point3d()");
@@ -143,19 +143,19 @@ const gp_Pnt& MeshAdaptor_Vertex::Point3d() const
 // ============================================================================
 const TopoDS_Vertex& MeshAdaptor_Vertex::Vertex() const
 {
-    const Handle(MeshDS_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
     gp_Pnt aPnt;
     if(aPoint->IsPoint1d()) {
-        const Handle(MeshDS_Point1d)& aPoint1d  = Handle(MeshDS_Point1d)::DownCast(aPoint);
+        const Handle(Mesh_Point1d)& aPoint1d  = Handle(Mesh_Point1d)::DownCast(aPoint);
         const gp_Pnt1d aPnt1d = aPoint1d->Point1d();
         aPnt.SetX(aPnt1d.X());
     } else if(aPoint->IsPoint2d()) {
-        const Handle(MeshDS_Point2d)& aPoint2d  = Handle(MeshDS_Point2d)::DownCast(aPoint);
+        const Handle(Mesh_Point2d)& aPoint2d  = Handle(Mesh_Point2d)::DownCast(aPoint);
         const gp_Pnt2d aPnt2d = aPoint2d->Point2d();
         aPnt.SetX(aPnt2d.X());
         aPnt.SetY(aPnt2d.Y());
     } else if(aPoint->IsPoint3d()) {
-        const Handle(MeshDS_Point3d)& aPoint3d  = Handle(MeshDS_Point3d)::DownCast(aPoint);
+        const Handle(Mesh_Point3d)& aPoint3d  = Handle(Mesh_Point3d)::DownCast(aPoint);
         const gp_Pnt aPnt3d = aPoint3d->Point3d();
         aPnt.SetX(aPnt3d.X());
         aPnt.SetY(aPnt3d.Y());

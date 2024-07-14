@@ -20,60 +20,28 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TEdge_hxx__
-#define __MeshDS_TEdge_hxx__
-
 // Spartacus
-#include <Mesh_Curve.hxx>
-#include <MeshDS_Cell.hxx>
-#include <MeshDS_TObject.hxx>
-#include <MeshDS_SequenceOfObject.hxx>
-
-// OpenCascade
-#include <TopoDS_Edge.hxx>
-
-// Forward declarations
-class MeshDS_TEdge;
-
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
+#include <MeshDS.hxx>
+#include <MeshLib_MakeLine.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TEdge
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshDS_TEdge : public MeshDS_TObject
+MeshLib_MakeLine::MeshLib_MakeLine()
 {
 
-public:
-    // constructors
-    Standard_EXPORT MeshDS_TEdge();
-    // destructors
-    Standard_EXPORT ~MeshDS_TEdge();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_MakeLine::~MeshLib_MakeLine()
+{
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+}
 
-public:
-
-    Standard_EXPORT const Handle(Mesh_Curve)&       Curve() const;
-    Standard_EXPORT void                            SetCurve(const Handle(Mesh_Curve)& theCurve);
-    Standard_EXPORT const MeshDS_SequenceOfObject&  Vertices() const;
-    Standard_EXPORT MeshDS_SequenceOfObject&        Vertices();
-
-private:
-
-    Handle(Mesh_Curve)          myCurve;
-    MeshDS_SequenceOfObject     myVertices;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
-
-};
-
-
-#endif // __MeshDS_TEdge_hxx__

@@ -48,12 +48,12 @@ MeshDS_TEdge::~MeshDS_TEdge()
 
 // ============================================================================
 /*!
- *  \brief Edge()
+ *  \brief Curve()
 */
 // ============================================================================
-const TopoDS_Edge& MeshDS_TEdge::Edge() const
+const Handle(Mesh_Curve)& MeshDS_TEdge::Curve() const
 {
-    return myEdge;
+    return myCurve;
 }
 
 // ============================================================================
@@ -63,17 +63,17 @@ const TopoDS_Edge& MeshDS_TEdge::Edge() const
 // ============================================================================
 MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
 {
-    return MeshAbs_OBJ_Vertex;
+    return MeshAbs_OBJ_Edge;
 }
 
 // ============================================================================
 /*!
- *  \brief SetEdge()
+ *  \brief SetCurve()
 */
 // ============================================================================
-void MeshDS_TEdge::SetEdge(const TopoDS_Edge &theEdge)
+void MeshDS_TEdge::SetCurve(const Handle(Mesh_Curve)& theCurve)
 {
-    myEdge = theEdge;
+    myCurve = theCurve;
 }
 
 // ============================================================================

@@ -24,6 +24,7 @@
 #define __MeshLib_MakeLine2d_hxx__
 
 // Spartacus
+#include <MeshLib_LineError.hxx>
 #include <MeshLib_MakeObject.hxx>
 #include <MeshDS_Edge.hxx>
 #include <MeshDS_Vertex.hxx>
@@ -54,6 +55,15 @@ public:
 
     Standard_EXPORT const MeshDS_Edge&      Edge();
     Standard_EXPORT operator                MeshDS_Edge();
+
+private:
+
+    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVertex1,
+                                       const MeshDS_Vertex& theVertex2);
+
+private:
+
+    MeshLib_LineError       myError;
 
 };
 

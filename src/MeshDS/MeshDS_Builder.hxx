@@ -26,6 +26,7 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <Geom2d_Curve.hxx>
 #include <gp_Pnt.hxx>
 #include <gp_Pnt2d.hxx>
 #include <TColStd_SequenceOfReal.hxx>
@@ -72,6 +73,9 @@ public:
     Standard_EXPORT void    AddGroup(const MeshDS_Mesh& theMesh,
                                      const MeshDS_Group& theGroup) const;
 
+    Standard_EXPORT void    AddVertex(const MeshDS_Edge& theEdge,
+                                      const MeshDS_Vertex& theVertex) const;
+
     Standard_EXPORT void    AddVertex(const MeshDS_Cell& theCell,
                                     const MeshDS_Vertex& theVertex) const;
 
@@ -89,7 +93,7 @@ public:
 
     Standard_EXPORT void    MakeEdge(MeshDS_Edge& theEdge) const;
     Standard_EXPORT void    MakeEdge(MeshDS_Edge& theEdge,
-                                     const TopoDS_Edge& theTopology) const;
+                                     const Handle(Geom2d_Curve)& theCurve) const;
 
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup) const;
     Standard_EXPORT void    MakeGroup(MeshDS_Group& theGroup,
@@ -128,7 +132,7 @@ public:
                                        const MeshAbs_TypeOfCell theCellType) const;
 
     Standard_EXPORT void    UpdateEdge(const MeshDS_Edge& theEdge,
-                                       const TopoDS_Edge& theTopology) const;
+                                       const Handle(Geom2d_Curve)& theCurve) const;
 
     Standard_EXPORT void    UpdateGroup(const MeshDS_Group& theGroup,
                                         const TCollection_AsciiString& theName) const;

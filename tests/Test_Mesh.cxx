@@ -24,8 +24,8 @@
 using namespace std;
 
 // Spartacus
-#include <MeshBuilder_MakeLinearLine.hxx>
-#include <MeshBuilder_MakeVertex.hxx>
+#include <MeshLib_MakeLine2d.hxx>
+#include <MeshLib_MakeVertex2d.hxx>
 
 
 // ============================================================================
@@ -36,11 +36,9 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    MeshDS_Vertex aVertex1 = MeshBuilder_MakeVertex(gp_Pnt1d(0.)).Vertex();
-    MeshDS_Vertex aVertex2 = MeshBuilder_MakeVertex(gp_Pnt1d(1.)).Vertex();
-    MeshDS_Cell aCell = MeshBuilder_MakeLinearLine(aVertex1, aVertex2).Cell();
-
-
+    MeshDS_Vertex aVertex1 = MeshLib_MakeVertex2d(gp_Pnt2d(0,0)).Vertex();
+    MeshDS_Vertex aVertex2 = MeshLib_MakeVertex2d(gp_Pnt2d(1,0)).Vertex();
+    MeshDS_Edge anEdge1 = MeshLib_MakeLine2d(aVertex1, aVertex2).Edge();
 
 
 

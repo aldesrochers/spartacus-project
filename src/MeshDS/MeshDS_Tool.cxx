@@ -154,7 +154,7 @@ TCollection_AsciiString MeshDS_Tool::Name(const MeshDS_Group &theGroup)
  *  \brief Point()
 */
 // ============================================================================
-const Handle(MeshDS_Point)& MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
+const Handle(Mesh_Point)& MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
 {
     const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
     if(aTVertex == 0)

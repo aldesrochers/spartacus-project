@@ -23,10 +23,13 @@
 using namespace std;
 
 // Spartacus
+#include <Mesh_Curve1d.hxx>
+#include <Mesh_Curve2d.hxx>
+#include <Mesh_Curve3d.hxx>
+#include <Mesh_Point1d.hxx>
+#include <Mesh_Point2d.hxx>
+#include <Mesh_Point3d.hxx>
 #include <MeshDS_Builder.hxx>
-#include <MeshDS_Point1d.hxx>
-#include <MeshDS_Point2d.hxx>
-#include <MeshDS_Point3d.hxx>
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TEdge.hxx>
 #include <MeshDS_TGroup.hxx>
@@ -107,6 +110,19 @@ void MeshDS_Builder::AddVertex(const MeshDS_Cell &theCell,
  *  \brief AddVertex()
 */
 // ============================================================================
+void MeshDS_Builder::AddVertex(const MeshDS_Edge &theEdge,
+                               const MeshDS_Vertex& theVertex) const
+{
+    const Handle(MeshDS_TEdge)& aTEdge = *((Handle(MeshDS_TEdge)*) &theEdge.TObject());
+    MeshDS_SequenceOfObject& aSequence = aTEdge->Vertices();
+    aSequence.Append(theVertex);
+}
+
+// ============================================================================
+/*!
+ *  \brief AddVertex()
+*/
+// ============================================================================
 void MeshDS_Builder::AddVertex(const MeshDS_Mesh &theMesh,
                              const MeshDS_Vertex& theVertex) const
 {
@@ -162,10 +178,10 @@ void MeshDS_Builder::MakeEdge(MeshDS_Edge &theEdge) const
 */
 // ============================================================================
 void MeshDS_Builder::MakeEdge(MeshDS_Edge &theEdge,
-                              const TopoDS_Edge& theTopology) const
+                              const Handle(Geom2d_Curve)& theCurve) const
 {
     MakeEdge(theEdge);
-    UpdateEdge(theEdge, theTopology);
+    UpdateEdge(theEdge, theCurve);
 }
 
 // ============================================================================
@@ -409,10 +425,11 @@ void MeshDS_Builder::UpdateCell(const MeshDS_Cell &theCell,
 */
 // ============================================================================
 void MeshDS_Builder::UpdateEdge(const MeshDS_Edge &theEdge,
-                                const TopoDS_Edge &theTopology) const
+                                const Handle(Geom2d_Curve)& theCurve) const
 {
     const Handle(MeshDS_TEdge)& aTEdge = *((Handle(MeshDS_TEdge)*) &theEdge.TObject());
-    aTEdge->SetEdge(theTopology);
+    Handle(Mesh_Curve2d) aCurve2d = new Mesh_Curve2d(theCurve);
+
 }
 
 // ============================================================================
@@ -436,7 +453,7 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
                                   const gp_Pnt1d& thePoint) const
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(MeshDS_Point1d) aPoint = new MeshDS_Point1d(thePoint);
+    Handle(Mesh_Point1d) aPoint = new Mesh_Point1d(thePoint);
     aTVertex->SetPoint(aPoint);
 }
 
@@ -449,7 +466,7 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
                                   const gp_Pnt2d& thePoint) const
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(MeshDS_Point2d) aPoint = new MeshDS_Point2d(thePoint);
+    Handle(Mesh_Point2d) aPoint = new Mesh_Point2d(thePoint);
     aTVertex->SetPoint(aPoint);
 }
 
@@ -462,6 +479,6 @@ void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
                                   const gp_Pnt& thePoint) const
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(MeshDS_Point3d) aPoint = new MeshDS_Point3d(thePoint);
+    Handle(Mesh_Point3d) aPoint = new Mesh_Point3d(thePoint);
     aTVertex->SetPoint(aPoint);
 }

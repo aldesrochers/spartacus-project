@@ -20,46 +20,47 @@
 // ============================================================================
 
 
-#ifndef __MeshLib_MakeLine2d_hxx__
-#define __MeshLib_MakeLine2d_hxx__
-
 // Spartacus
-#include <MeshLib_MakeObject.hxx>
-#include <MeshDS_Edge.hxx>
-#include <MeshDS_Vertex.hxx>
+#include <MeshDS.hxx>
+#include <MeshLib_MakeCell.hxx>
 
-// OpenCascade
-#include <gp_Pnt2d.hxx>
 
 // ============================================================================
 /*!
- *  \brief MeshLib_MakeLine2d
+ *  \brief Constructor
 */
 // ============================================================================
-class MeshLib_MakeLine2d : public MeshLib_MakeObject
+MeshLib_MakeCell::MeshLib_MakeCell()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_MakeCell::~MeshLib_MakeCell()
+{
 
-public:
-    // constructors
-    Standard_EXPORT MeshLib_MakeLine2d(const MeshDS_Vertex& theVertex1,
-                                       const MeshDS_Vertex& theVertex2);
-    // destructors
-    Standard_EXPORT ~MeshLib_MakeLine2d();
+}
 
-public:
+// ============================================================================
+/*!
+ *  \brief Cell()
+*/
+// ============================================================================
+const MeshDS_Cell& MeshLib_MakeCell::Cell()
+{
+    return MeshDS::Cell(Object());
+}
 
-    Standard_EXPORT const MeshDS_Edge&      Edge();
-    Standard_EXPORT operator                MeshDS_Edge();
-    
-public:
-    
-    Standard_EXPORT void    Initialize(const MeshDS_Vertex& theVerte)
-    
-};
-
-
-#endif // __MeshLib_MakeLine2d_hxx__
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Cell()
+*/
+// ============================================================================
+MeshLib_MakeCell::operator MeshDS_Cell()
+{
+    return Cell();
+}

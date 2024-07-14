@@ -669,6 +669,8 @@ set(MeshExp_PKG_SOURCES
 
 set(MeshLib_PKG_HEADERS
     MeshLib/MeshLib_Command.hxx
+    MeshLib/MeshLib_MakeCell.hxx
+    MeshLib/MeshLib_MakeLine.hxx
     MeshLib/MeshLib_MakeLine2d.hxx
     MeshLib/MeshLib_MakeObject.hxx
     MeshLib/MeshLib_MakeVertex2d.hxx
@@ -676,6 +678,8 @@ set(MeshLib_PKG_HEADERS
 
 set(MeshLib_PKG_SOURCES
     MeshLib/MeshLib_Command.cxx
+    MeshLib/MeshLib_MakeCell.cxx
+    MeshLib/MeshLib_MakeLine.cxx
     MeshLib/MeshLib_MakeLine2d.cxx
     MeshLib/MeshLib_MakeObject.cxx
     MeshLib/MeshLib_MakeVertex2d.cxx

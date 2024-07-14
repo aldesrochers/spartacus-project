@@ -86,7 +86,7 @@ void MeshBuilder_MakeLinearLine::Initialize(const MeshDS_Vertex &theVertex1,
     // make mesh edge
     MeshDS_Edge anEdge2;
     MeshDS_Builder aBuilder;
-    aBuilder.MakeEdge(anEdge2, anEdge);
+    //aBuilder.MakeEdge(anEdge2, anEdge);
 
 
 

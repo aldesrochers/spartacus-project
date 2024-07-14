@@ -29,7 +29,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Curve2d::Mesh_Curve2d()
+Mesh_Curve2d::Mesh_Curve2d(const Handle(Geom2d_Curve)& theCurve)
+    : myCurve(theCurve)
 {
 
 }
@@ -42,6 +43,26 @@ Mesh_Curve2d::Mesh_Curve2d()
 Mesh_Curve2d::~Mesh_Curve2d()
 {
 
+}
+
+// ============================================================================
+/*!
+ *  \brief Curve2d()
+*/
+// ============================================================================
+const Handle(Geom2d_Curve)& Mesh_Curve2d::Curve2d() const
+{
+    return myCurve;
+}
+
+// ============================================================================
+/*!
+ *  \brief IsCurve2d()
+*/
+// ============================================================================
+Standard_Boolean Mesh_Curve2d::IsCurve2d() const
+{
+    return Standard_True;
 }
 
 
