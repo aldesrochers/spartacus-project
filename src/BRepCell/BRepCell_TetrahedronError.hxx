@@ -20,52 +20,35 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeEdge_hxx__
-#define __BRepCell_MakeEdge_hxx__
-
-// Spartacus
-#include <BRepCell_MakeShape.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#ifndef __BRepCell_TetrahedronError_hxx__
+#define __BRepCell_TetrahedronError_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeEdge
+ *  \brief BRepCell_Tetrahedron
 */
 // ============================================================================
-class BRepCell_MakeEdge : public BRepCell_MakeShape
+enum BRepCell_TetrahedronError
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-    // constructors
-    Standard_EXPORT BRepCell_MakeEdge();
-    // destructors
-    Standard_EXPORT ~BRepCell_MakeEdge();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-    Standard_EXPORT const TopoDS_Edge&      Edge() const;
-    Standard_EXPORT operator                TopoDS_Edge() const;
-
-public:
-
-    Standard_EXPORT Standard_Integer        NbVertices() const;
-
-
-protected:
-
-    TopTools_IndexedMapOfShape  myVertices;
-
+    BRepCell_TetrahedronEdge1Error,
+    BRepCell_TetrahedronEdge2Error,
+    BRepCell_TetrahedronEdge3Error,
+    BRepCell_TetrahedronEdge4Error,
+    BRepCell_TetrahedronEdge5Error,
+    BRepCell_TetrahedronEdge6Error,
+    BRepCell_TetrahedronFace1Error,
+    BRepCell_TetrahedronFace2Error,
+    BRepCell_TetrahedronFace3Error,
+    BRepCell_TetrahedronFace4Error,
+    BRepCell_TetrahedronSolidError,
+    BRepCell_TetrahedronWire1Error,
+    BRepCell_TetrahedronWire2Error,
+    BRepCell_TetrahedronWire3Error,
+    BRepCell_TetrahedronWire4Error,
+    BRepCell_TetrahedronNoError
 };
 
 
-#endif // __BRepCell_MakeEdge_hxx__
+
+#endif // __BRepCell_TetrahedronError_hxx__

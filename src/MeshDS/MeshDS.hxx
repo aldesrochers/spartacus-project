@@ -31,9 +31,11 @@
 #include <MeshAbs_TypeOfObject.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Edge.hxx>
+#include <MeshDS_Face.hxx>
 #include <MeshDS_Group.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Object.hxx>
+#include <MeshDS_Polygon.hxx>
 #include <MeshDS_Vertex.hxx>
 
 // ============================================================================
@@ -50,20 +52,26 @@ public:
 
 public:
 
-    static Standard_EXPORT const MeshDS_Cell&   Cell(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Cell&         Cell(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Cell&       Cell(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Cell&             Cell(MeshDS_Object& theObject);
 
-    static Standard_EXPORT const MeshDS_Edge&   Edge(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Edge&         Edge(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Edge&       Edge(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Edge&             Edge(MeshDS_Object& theObject);
 
-    static Standard_EXPORT const MeshDS_Group&  Group(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Group&        Group(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Face&       Face(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Face&             Face(MeshDS_Object& theObject);
 
-    static Standard_EXPORT const MeshDS_Mesh&   Mesh(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Mesh&         Mesh(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Group&      Group(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Group&            Group(MeshDS_Object& theObject);
 
-    static Standard_EXPORT const MeshDS_Vertex& Vertex(const MeshDS_Object& theObject);
-    static Standard_EXPORT MeshDS_Vertex&       Vertex(MeshDS_Object& theObject);
+    static Standard_EXPORT const MeshDS_Polygon&    Polygon(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Polygon&          Polygon(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Mesh&       Mesh(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Mesh&             Mesh(MeshDS_Object& theObject);
+
+    static Standard_EXPORT const MeshDS_Vertex&     Vertex(const MeshDS_Object& theObject);
+    static Standard_EXPORT MeshDS_Vertex&           Vertex(MeshDS_Object& theObject);
 
 protected:
 

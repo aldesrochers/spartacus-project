@@ -20,26 +20,47 @@
 // ============================================================================
 
 
-#ifndef __Discrete_Function_hxx__
-#define __Discrete_Function_hxx__
-
-// OpenCascade
-#include <math_FunctionSetWithDerivatives.hxx>
+// Spartacus
+#include <MeshDS.hxx>
+#include <MeshLib_MakeEdge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Discrete_Function
+ *  \brief Constructor
 */
 // ============================================================================
-class Discrete_Function : public math_FunctionSetWithDerivatives
+MeshLib_MakeEdge::MeshLib_MakeEdge()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC;
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_MakeEdge::~MeshLib_MakeEdge()
+{
 
+}
 
-};
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const MeshDS_Edge& MeshLib_MakeEdge::Edge()
+{
+    return MeshDS::Edge(Object());
+}
 
-#endif // __Discrete_Function_hxx__
+// ============================================================================
+/*!
+ *  \brief operator MeshDS_Edge()
+*/
+// ============================================================================
+MeshLib_MakeEdge::operator MeshDS_Edge()
+{
+    return Edge();
+}

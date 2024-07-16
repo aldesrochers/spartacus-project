@@ -23,11 +23,9 @@
 #ifndef __Discrete_FunctionCurveNbSegments_hxx__
 #define __Discrete_FunctionCurveNbSegments_hxx__
 
-// Spartacus
-#include <Discrete_Function.hxx>
-
 // OpenCascade
 #include <Adaptor3d_Curve.hxx>
+#include <math_FunctionSetWithDerivatives.hxx>
 
 
 // ============================================================================
@@ -41,7 +39,7 @@
  *  mid-points of parameter U is X-1.
 */
 // ============================================================================
-class Discrete_FunctionCurveNbSegments : public Discrete_Function
+class Discrete_FunctionCurveNbSegments : public math_FunctionSetWithDerivatives
 {
 
 public:

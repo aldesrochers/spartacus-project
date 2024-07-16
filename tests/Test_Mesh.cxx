@@ -23,9 +23,6 @@
 #include <iostream>
 using namespace std;
 
-// Spartacus
-#include <MeshLib_MakeLine2d.hxx>
-#include <MeshLib_MakeVertex2d.hxx>
 
 
 // ============================================================================
@@ -36,9 +33,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    MeshDS_Vertex aVertex1 = MeshLib_MakeVertex2d(gp_Pnt2d(0,0)).Vertex();
-    MeshDS_Vertex aVertex2 = MeshLib_MakeVertex2d(gp_Pnt2d(1,0)).Vertex();
-    MeshDS_Edge anEdge1 = MeshLib_MakeLine2d(aVertex1, aVertex2).Edge();
+
 
 
 

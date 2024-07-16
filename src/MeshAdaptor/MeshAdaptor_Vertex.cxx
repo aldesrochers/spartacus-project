@@ -93,6 +93,39 @@ void MeshAdaptor_Vertex::Initialize(const MeshDS_Vertex &theVertex)
 
 // ============================================================================
 /*!
+ *  \brief IsPoint1d()
+*/
+// ============================================================================
+Standard_Boolean MeshAdaptor_Vertex::IsPoint1d() const
+{
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    return aPoint->IsPoint1d();
+}
+
+// ============================================================================
+/*!
+ *  \brief IsPoint2d()
+*/
+// ============================================================================
+Standard_Boolean MeshAdaptor_Vertex::IsPoint2d() const
+{
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    return aPoint->IsPoint2d();
+}
+
+// ============================================================================
+/*!
+ *  \brief IsPoint3d()
+*/
+// ============================================================================
+Standard_Boolean MeshAdaptor_Vertex::IsPoint3d() const
+{
+    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
+    return aPoint->IsPoint3d();
+}
+
+// ============================================================================
+/*!
  *  \brief Point1d()
 */
 // ============================================================================
@@ -141,28 +174,7 @@ const gp_Pnt& MeshAdaptor_Vertex::Point3d() const
  *  \brief Vertex()
 */
 // ============================================================================
-const TopoDS_Vertex& MeshAdaptor_Vertex::Vertex() const
+const MeshDS_Vertex& MeshAdaptor_Vertex::Vertex() const
 {
-    const Handle(Mesh_Point)& aPoint = MeshDS_Tool::Point(myVertex);
-    gp_Pnt aPnt;
-    if(aPoint->IsPoint1d()) {
-        const Handle(Mesh_Point1d)& aPoint1d  = Handle(Mesh_Point1d)::DownCast(aPoint);
-        const gp_Pnt1d aPnt1d = aPoint1d->Point1d();
-        aPnt.SetX(aPnt1d.X());
-    } else if(aPoint->IsPoint2d()) {
-        const Handle(Mesh_Point2d)& aPoint2d  = Handle(Mesh_Point2d)::DownCast(aPoint);
-        const gp_Pnt2d aPnt2d = aPoint2d->Point2d();
-        aPnt.SetX(aPnt2d.X());
-        aPnt.SetY(aPnt2d.Y());
-    } else if(aPoint->IsPoint3d()) {
-        const Handle(Mesh_Point3d)& aPoint3d  = Handle(Mesh_Point3d)::DownCast(aPoint);
-        const gp_Pnt aPnt3d = aPoint3d->Point3d();
-        aPnt.SetX(aPnt3d.X());
-        aPnt.SetY(aPnt3d.Y());
-        aPnt.SetZ(aPnt3d.Z());
-    } else {
-        throw Standard_DomainError("MeshAdaptor_Vertex::Vertex()");
-    }
-    const TopoDS_Vertex& aVertex = BRepBuilderAPI_MakeVertex(aPnt).Vertex();
-    return aVertex;
+    return myVertex;
 }

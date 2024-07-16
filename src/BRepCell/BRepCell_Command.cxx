@@ -33,8 +33,7 @@
 */
 // ============================================================================
 BRepCell_Command::BRepCell_Command()
-    : myError(BRepCell_NoError),
-    myIsDone(Standard_False)
+    : myIsDone(Standard_False)
 {
 
 }
@@ -62,16 +61,6 @@ void BRepCell_Command::Check()const
 
 // ============================================================================
 /*!
- *  \brief Error()
-*/
-// ============================================================================
-BRepCell_Error BRepCell_Command::Error() const
-{
-    return myError;
-}
-
-// ============================================================================
-/*!
  *  \brief IsDone()
 */
 // ============================================================================
@@ -88,16 +77,6 @@ Standard_Boolean BRepCell_Command::IsDone() const
 void BRepCell_Command::SetDone()
 {
     myIsDone = Standard_True;
-}
-
-// ============================================================================
-/*!
- *  \brief SetError()
-*/
-// ============================================================================
-void BRepCell_Command::SetError(const BRepCell_Error &theError)
-{
-    myError = theError;
 }
 
 // ============================================================================

@@ -19,6 +19,19 @@
 //
 // ============================================================================
 
-// Spartacus
-#include <Discrete_Function.hxx>
 
+#ifndef __MeshLib_CellError_hxx__
+#define __MeshLib_CellError_hxx__
+
+// ============================================================================
+/*!
+ *  \brief MeshLib_CellError
+*/
+// ============================================================================
+enum MeshLib_CellError
+{
+    MeshLib_CellEdgeGeometryError,
+    MeshLib_CellNoError
+};
+
+#endif // __MeshLib_CellError_hxx__

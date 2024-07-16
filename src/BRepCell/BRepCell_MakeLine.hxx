@@ -24,12 +24,8 @@
 #define __BRepCell_MakeLine_hxx__
 
 // Spartacus
-#include <BRepCell_MakeEdge.hxx>
-#include <gp_Pnt1d.hxx>
-
-// OpenCascade
-#include <gp_Pnt.hxx>
-#include <gp_Pnt2d.hxx>
+#include <BRepCell_LineError.hxx>
+#include <BRepCell_MakeCell.hxx>
 
 
 // ============================================================================
@@ -37,7 +33,7 @@
  *  \brief BRepCell_MakeLine
 */
 // ============================================================================
-class BRepCell_MakeLine : public BRepCell_MakeEdge
+class BRepCell_MakeLine : public BRepCell_MakeCell
 {
 
 public:
@@ -46,17 +42,28 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT BRepCell_MakeLine(const gp_Pnt1d& thePoint1,
-                                      const gp_Pnt1d& thePoint2);
     Standard_EXPORT BRepCell_MakeLine(const TopoDS_Vertex& theVertex1,
                                       const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT BRepCell_MakeLine(const TopoDS_Vertex& theVertex1,
+                                      const TopoDS_Vertex& theVertex2,
+                                      const TopoDS_Vertex& theVertex3);
     // destructors
     Standard_EXPORT ~BRepCell_MakeLine();
 
 public:
 
+    Standard_EXPORT BRepCell_LineError      Error() const;
+
+public:
+
     Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
                                            const TopoDS_Vertex& theVertex2);
+    Standard_EXPORT void        Initialize(const TopoDS_Vertex& theVertex1,
+                                           const TopoDS_Vertex& theVertex2,
+                                           const TopoDS_Vertex& theVertex3);
+private:
+
+    BRepCell_LineError          myError;
 
 };
 

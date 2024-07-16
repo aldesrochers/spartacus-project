@@ -26,11 +26,6 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-#include <TopoDS_Vertex.hxx>
-#include <TopTools_Array1OfShape.hxx>
-
-// Spartacus
-#include <BRepCell_Error.hxx>
 
 
 // ============================================================================
@@ -54,18 +49,15 @@ public:
 public:
 
     Standard_EXPORT void                    Check() const;
-    Standard_EXPORT BRepCell_Error          Error() const;
     Standard_EXPORT Standard_Boolean        IsDone() const;
 
 protected:
 
     Standard_EXPORT void    SetDone();
-    Standard_EXPORT void    SetError(const BRepCell_Error& theError);
     Standard_EXPORT void    SetNotDone();
 
 protected:
 
-    BRepCell_Error          myError;
     Standard_Boolean        myIsDone;
 
 };

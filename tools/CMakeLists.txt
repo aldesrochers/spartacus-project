@@ -19,4 +19,4 @@
 #
 # =============================================================================
 
-#add_subdirectory(MeshBuilder)
+add_subdirectory(MeshBuilder)

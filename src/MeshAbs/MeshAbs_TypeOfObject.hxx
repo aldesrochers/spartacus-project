@@ -33,8 +33,10 @@ enum MeshAbs_TypeOfObject
 {
     MeshAbs_OBJ_Cell,
     MeshAbs_OBJ_Edge,
+    MeshAbs_OBJ_Face,
     MeshAbs_OBJ_Group,
     MeshAbs_OBJ_Mesh,
+    MeshAbs_OBJ_Polygon,
     MeshAbs_OBJ_Vertex
 };
 

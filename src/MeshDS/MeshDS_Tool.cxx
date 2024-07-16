@@ -30,6 +30,7 @@ using namespace std;
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TGroup.hxx>
 #include <MeshDS_TMesh.hxx>
+#include <MeshDS_TNode.hxx>
 #include <MeshDS_Tool.hxx>
 #include <MeshDS_TVertex.hxx>
 
@@ -188,3 +189,15 @@ MeshAbs_TypeOfShape MeshDS_Tool::ShapeType(const MeshDS_Cell &theCell)
     //return aTCell->ShapeType();
 }
 
+// ============================================================================
+/*!
+ *  \brief Vertex()
+*/
+// ============================================================================
+const TopoDS_Vertex& MeshDS_Tool::Vertex(const MeshDS_Node &theNode)
+{
+    const MeshDS_TNode* aTNode = static_cast<const MeshDS_TNode*>(theNode.TObject().get());
+    if(aTNode == 0)
+        throw Standard_NullObject("MeshDS_Tool::Vertex()->Invalid node.");
+    return aTNode->Vertex();
+}

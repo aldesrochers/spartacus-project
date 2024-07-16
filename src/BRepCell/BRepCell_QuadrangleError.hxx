@@ -20,25 +20,26 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_Error_hxx__
-#define __BRepCell_Error_hxx__
+#ifndef __BRepCell_QuadrangleError_hxx__
+#define __BRepCell_QuadrangleError_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_Error
+ *  \brief BRepCell_Quadrangle
 */
 // ============================================================================
-enum BRepCell_Error
+enum BRepCell_QuadrangleError
 {
-    BRepCell_NoError,
-    BRepCell_UnknownError,
-    BRepCell_FaceNotPlanarError,
-    BRepCell_LineThroughIdenticPointsError,
-    BRepCell_PointNotOnEdgeError,
-    BRepCell_PointNotOnFaceError
+    BRepCell_QuadrangleEdge1Error,
+    BRepCell_QuadrangleEdge2Error,
+    BRepCell_QuadrangleEdge3Error,
+    BRepCell_QuadrangleEdge4Error,
+    BRepCell_QuadrangleFaceError,
+    BRepCell_QuadrangleWireError,
+    BRepCell_QuadrangleNoError
 };
 
 
 
-#endif // __BRepCell_Error_hxx__
+#endif // __BRepCell_QuadrangleError_hxx__

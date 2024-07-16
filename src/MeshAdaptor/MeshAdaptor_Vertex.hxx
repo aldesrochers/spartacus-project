@@ -60,10 +60,13 @@ public:
 
     Standard_EXPORT MeshAbs_TypeOfDimensionality    Dimensionality() const;
     Standard_EXPORT void                            Initialize(const MeshDS_Vertex& theVertex);
+    Standard_EXPORT Standard_Boolean                IsPoint1d() const;
+    Standard_EXPORT Standard_Boolean                IsPoint2d() const;
+    Standard_EXPORT Standard_Boolean                IsPoint3d() const;
     Standard_EXPORT const gp_Pnt1d&                 Point1d() const;
     Standard_EXPORT const gp_Pnt2d&                 Point2d() const;
     Standard_EXPORT const gp_Pnt&                   Point3d() const;
-    Standard_EXPORT const TopoDS_Vertex&            Vertex() const;
+    Standard_EXPORT const MeshDS_Vertex&            Vertex() const;
 
 private:
 

@@ -25,24 +25,20 @@ set(MeshBuilder_INCLUDE_DIRS
     ${QtCore_INCLUDE_DIRS}
     ${QtGui_INCLUDE_DIRS}
     ${QtWidgets_INCLUDE_DIRS}
-    ${CMAKE_CURRENT_SOURCE_DIR}/app
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # configure version
 configure_file(MeshBuilder_Version.hxx.in MeshBuilder_Version.hxx)
 
-
-# ****
-# app
-# ****
-
+# sources
 set(MeshBuilder_HEADERS
-    app/MeshBuilder_Desktop.hxx
+    src/MeshBuilder_Desktop.hxx
 )
 
 set(MeshBuilder_SOURCES
-    app/MeshBuilder_Desktop.cxx
-    app/MeshBuilder_Main.cxx
+    src/MeshBuilder_Desktop.cxx
+    src/MeshBuilder_Main.cxx
 )
 
 set(MeshBuilder_LINKED_LIBRARIES
@@ -52,7 +48,7 @@ set(MeshBuilder_LINKED_LIBRARIES
 )
 
 qt_add_resources(MeshBuilder_RESOURCES
-    icons/Icons.qrc
+    res/icons/Icons.qrc
 )
 
 # rules

@@ -20,48 +20,25 @@
 // ============================================================================
 
 
-#ifndef __BRepCell_MakeShape_hxx__
-#define __BRepCell_MakeShape_hxx__
-
-
-// Spartacus
-#include <BRepCell_Command.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopTools_IndexedMapOfShape.hxx>
+#ifndef __BRepCell_TriangleError_hxx__
+#define __BRepCell_TriangleError_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief BRepCell_MakeShape
+ *  \brief BRepCell_Triangle
 */
 // ============================================================================
-class BRepCell_MakeShape : public BRepCell_Command
+enum BRepCell_TriangleError
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-    // constructors
-    Standard_EXPORT BRepCell_MakeShape();
-    // destructors
-    Standard_EXPORT ~BRepCell_MakeShape();
-
-public:
-
-    virtual Standard_EXPORT void            Build();
-
-public:
-
-    Standard_EXPORT const TopoDS_Shape&     Shape() const;
-    Standard_EXPORT operator                TopoDS_Shape() const;
-
-protected:
-
-    TopoDS_Shape    myShape;
-
+    BRepCell_TriangleEdge1Error,
+    BRepCell_TriangleEdge2Error,
+    BRepCell_TriangleEdge3Error,
+    BRepCell_TriangleFaceError,
+    BRepCell_TriangleWireError,
+    BRepCell_TriangleNoError
 };
 
 
-#endif // __BRepCell_MakeShape_hxx__
+
+#endif // __BRepCell_TriangleError_hxx__

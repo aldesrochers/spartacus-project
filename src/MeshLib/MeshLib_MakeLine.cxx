@@ -22,7 +22,12 @@
 
 // Spartacus
 #include <MeshDS.hxx>
+#include <MeshDS_Builder.hxx>
+#include <MeshDS_Tool.hxx>
 #include <MeshLib_MakeLine.hxx>
+
+// OpenCascade
+#include <BRepBuilderAPI_MakeEdge.hxx>
 
 
 // ============================================================================
@@ -30,9 +35,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshLib_MakeLine::MeshLib_MakeLine()
+MeshLib_MakeLine::MeshLib_MakeLine(const MeshDS_Node& theNode1,
+                                   const MeshDS_Node& theNode2)
 {
-
+    Initialize(theNode1, theNode2);
 }
 
 // ============================================================================
@@ -44,4 +50,25 @@ MeshLib_MakeLine::~MeshLib_MakeLine()
 {
 
 }
+
+// ============================================================================
+/*!
+ *  \brief Initialize()
+*/
+// ============================================================================
+void MeshLib_MakeLine::Initialize(const MeshDS_Node &theNode1,
+                                  const MeshDS_Node &theNode2)
+{
+    TopoDS_Vertex aVertex1 = MeshDS_Tool::Vertex(theNode1);
+    TopoDS_Vertex aVertex2 = MeshDS_Tool::Vertex(theNode2);
+
+    // make edge topology
+    BRepBuilderAPI_MakeEdge anEdgeBuilder(aVertex1, aVertex2);
+    if(!anEdgeBuilder.IsDone()) {
+        myError = MeshLib_CellEdgeGeometryError;
+        return;
+    }
+    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
+}
+
 

@@ -25,9 +25,6 @@
 
 // Spartacus
 #include <MeshAbs_TypeOfCell.hxx>
-#include <MeshAbs_TypeOfDimensionality.hxx>
-#include <MeshAbs_TypeOfInterpolation.hxx>
-#include <MeshAbs_TypeOfShape.hxx>
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_SequenceOfObject.hxx>
 #include <MeshDS_TObject.hxx>

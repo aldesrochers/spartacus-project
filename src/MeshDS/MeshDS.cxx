@@ -78,6 +78,30 @@ MeshDS_Edge& MeshDS::Edge(MeshDS_Object& theObject)
 
 // ============================================================================
 /*!
+ *  \brief Face()
+*/
+// ============================================================================
+const MeshDS_Face& MeshDS::Face(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Face),
+                                   "MeshDS::Face()->Type mismatch.");
+    return *(MeshDS_Face*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Face()
+*/
+// ============================================================================
+MeshDS_Face& MeshDS::Face(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Face),
+                                   "MeshDS::Face()->Type mismatch.");
+    return *(MeshDS_Face*) &theObject;
+}
+
+// ============================================================================
+/*!
  *  \brief Group()
 */
 // ============================================================================
@@ -122,6 +146,30 @@ MeshDS_Mesh& MeshDS::Mesh(MeshDS_Object& theObject)
     Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Mesh),
                                    "MeshDS::Mesh()->Type mismatch.");
     return *(MeshDS_Mesh*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Polygon()
+*/
+// ============================================================================
+const MeshDS_Polygon& MeshDS::Polygon(const MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Polygon),
+                                   "MeshDS::Polygon()->Type mismatch.");
+    return *(MeshDS_Polygon*) &theObject;
+}
+
+// ============================================================================
+/*!
+ *  \brief Polygon()
+*/
+// ============================================================================
+MeshDS_Polygon& MeshDS::Polygon(MeshDS_Object& theObject)
+{
+    Standard_TypeMismatch_Raise_if(MeshDS::TypeMismatch(theObject, MeshAbs_OBJ_Polygon),
+                                   "MeshDS::Polygon()->Type mismatch.");
+    return *(MeshDS_Polygon*) &theObject;
 }
 
 // ============================================================================

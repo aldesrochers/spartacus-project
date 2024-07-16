@@ -70,23 +70,6 @@ void MeshBuilder_MakeLinearLine::Initialize(const MeshDS_Vertex &theVertex1,
         return;
     }
 
-    // retrieve vertices coordinates in 3d space
-    TopoDS_Vertex aVertex1 = anAdaptor1.Vertex();
-    TopoDS_Vertex aVertex2 = anAdaptor2.Vertex();
-
-    // make edge topology
-    BRepBuilderAPI_MakeEdge anEdgeBuilder(aVertex1, aVertex2);
-    if(!anEdgeBuilder.IsDone()) {
-        myError = MeshBuilder_CellTopologyError;
-        SetNotDone();
-        return;
-    }
-    TopoDS_Edge anEdge = anEdgeBuilder.Edge();
-
-    // make mesh edge
-    MeshDS_Edge anEdge2;
-    MeshDS_Builder aBuilder;
-    //aBuilder.MakeEdge(anEdge2, anEdge);
 
 
 

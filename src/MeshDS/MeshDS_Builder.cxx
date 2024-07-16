@@ -114,8 +114,8 @@ void MeshDS_Builder::AddVertex(const MeshDS_Edge &theEdge,
                                const MeshDS_Vertex& theVertex) const
 {
     const Handle(MeshDS_TEdge)& aTEdge = *((Handle(MeshDS_TEdge)*) &theEdge.TObject());
-    MeshDS_SequenceOfObject& aSequence = aTEdge->Vertices();
-    aSequence.Append(theVertex);
+    //MeshDS_SequenceOfObject& aSequence = aTEdge->Vertices();
+    //aSequence.Append(theVertex);
 }
 
 // ============================================================================

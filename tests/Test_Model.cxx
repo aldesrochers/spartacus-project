@@ -23,6 +23,14 @@
 #include <iostream>
 using namespace std;
 
+// Spartacus
+#include <Discrete_FunctionCurveNbSegments.hxx>
+
+// OpenCascade
+#include <GeomAdaptor_Curve.hxx>
+#include <Geom_Line.hxx>
+#include <Geom_TrimmedCurve.hxx>
+#include <math_FunctionSetRoot.hxx>
 
 
 // ============================================================================
@@ -32,6 +40,31 @@ using namespace std;
 // ============================================================================
 int main(int argc, char** argv)
 {
+
+    Handle(Geom_Line) aLine = new Geom_Line(gp_Pnt(0,0,0), gp_Vec(1,0,0));
+    Handle(Geom_TrimmedCurve) aCurve = new Geom_TrimmedCurve(aLine, 0., 1.);
+    GeomAdaptor_Curve anAdaptor(aCurve);
+    Discrete_FunctionCurveNbSegments aFunction(anAdaptor, 10);
+
+    math_Vector aTolerance(1,9,1E-10);
+    math_Vector aGuess(1,9,0.);
+    aGuess(1) = 0.05;
+    aGuess(2) = 0.2;
+    aGuess(3) = 0.29;
+    aGuess(4) = 0.35;
+    aGuess(5) = 0.49;
+    aGuess(6) = 0.61;
+    aGuess(7) = 0.69;
+    aGuess(8) = 0.75;
+    aGuess(9) = 0.95;
+    math_FunctionSetRoot aSolver(aFunction, aTolerance);
+    aSolver.Perform(aFunction, aGuess);
+    cout << aSolver.NbIterations() << endl;
+    cout << aSolver.IsDone() << endl;
+
+    math_Vector aSol = aSolver.Root();
+    cout << aSol << endl;
+
 
 
 

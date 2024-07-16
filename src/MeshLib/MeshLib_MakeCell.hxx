@@ -24,8 +24,10 @@
 #define __MeshLib_MakeCell_hxx__
 
 // Spartacus
+#include <MeshLib_CellError.hxx>
 #include <MeshLib_MakeObject.hxx>
 #include <MeshDS_Cell.hxx>
+#include <MeshDS_Node.hxx>
 #include <MeshTools_IndexedMapOfObject.hxx>
 
 
@@ -52,12 +54,17 @@ public:
     Standard_EXPORT const MeshDS_Cell&      Cell();
     Standard_EXPORT operator                MeshDS_Cell();
 
+public:
+
+    Standard_EXPORT MeshLib_CellError       Error() const;
+
 protected:
 
     MeshTools_IndexedMapOfObject    myEdges;
+    MeshLib_CellError               myError;
     MeshTools_IndexedMapOfObject    myFaces;
+    MeshTools_IndexedMapOfObject    myNodes;
     MeshTools_IndexedMapOfObject    myPolygons;
-    MeshTools_IndexedMapOfObject    myVertices;
 
 };
 

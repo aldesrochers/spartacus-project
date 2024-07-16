@@ -26,6 +26,10 @@
 // Spartacus
 #include <MeshLib_MakeCell.hxx>
 
+// OpenCascade
+#include <gp_Lin2d.hxx>
+#include <Geom2d_Line.hxx>
+
 
 // ============================================================================
 /*!
@@ -41,10 +45,15 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT MeshLib_MakeLine();
+    Standard_EXPORT MeshLib_MakeLine(const MeshDS_Node& theNode1,
+                                     const MeshDS_Node& theNode2);
     // destructors
     Standard_EXPORT ~MeshLib_MakeLine();
 
+public:
+
+    Standard_EXPORT void    Initialize(const MeshDS_Node& theNode1,
+                                       const MeshDS_Node& theNode2);
 
 };
 

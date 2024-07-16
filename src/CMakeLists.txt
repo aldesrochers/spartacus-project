@@ -32,17 +32,33 @@ configure_file(Toolkit/Toolkit_Configuration.hxx.in Toolkit_Configuration.hxx)
 
 set(BRepCell_PKG_HEADERS
     BRepCell/BRepCell_Command.hxx
-    BRepCell/BRepCell_Error.hxx
-    BRepCell/BRepCell_MakeEdge.hxx
+    BRepCell/BRepCell_HexahedronError.hxx
+    BRepCell/BRepCell_LineError.hxx
+    BRepCell/BRepCell_MakeCell.hxx
+    BRepCell/BRepCell_MakeHexahedron.hxx
     BRepCell/BRepCell_MakeLine.hxx
-    BRepCell/BRepCell_MakeShape.hxx
+    BRepCell/BRepCell_MakePentahedron.hxx
+    BRepCell/BRepCell_MakePyramid.hxx
+    BRepCell/BRepCell_MakeQuadrangle.hxx
+    BRepCell/BRepCell_MakeTetrahedron.hxx
+    BRepCell/BRepCell_MakeTriangle.hxx
+    BRepCell/BRepCell_PentahedronError.hxx
+    BRepCell/BRepCell_PyramidError.hxx
+    BRepCell/BRepCell_QuadrangleError.hxx
+    BRepCell/BRepCell_TetrahedronError.hxx
+    BRepCell/BRepCell_TriangleError.hxx
 )
 
 set(BRepCell_PKG_SOURCES
     BRepCell/BRepCell_Command.cxx
-    BRepCell/BRepCell_MakeEdge.cxx
+    BRepCell/BRepCell_MakeCell.cxx
+    BRepCell/BRepCell_MakeHexahedron.cxx
     BRepCell/BRepCell_MakeLine.cxx
-    BRepCell/BRepCell_MakeShape.cxx
+    BRepCell/BRepCell_MakePentahedron.cxx
+    BRepCell/BRepCell_MakePyramid.cxx
+    BRepCell/BRepCell_MakeQuadrangle.cxx
+    BRepCell/BRepCell_MakeTetrahedron.cxx
+    BRepCell/BRepCell_MakeTriangle.cxx
 )
 
 # =============================================================================
@@ -237,6 +253,18 @@ set(DOFAdaptor_PKG_HEADERS
 
 set(DOFAdaptor_PKG_SOURCES
     DOFAdaptor/DOFAdaptor_DOF.cxx
+)
+
+# =============================================================================
+# Package : Discrete
+# =============================================================================
+
+set(Discrete_PKG_HEADERS
+    Discrete/Discrete_FunctionCurveNbSegments.hxx
+)
+
+set(Discrete_PKG_SOURCES
+    Discrete/Discrete_FunctionCurveNbSegments.cxx
 )
 
 # =============================================================================
@@ -470,6 +498,7 @@ set(Mesh1d_PKG_HEADERS
     Mesh1d/Mesh1d_Edge.hxx
     Mesh1d/Mesh1d_LinearLine.hxx
     Mesh1d/Mesh1d_Object.hxx
+    Mesh1d/Mesh1d_Node.hxx
     Mesh1d/Mesh1d_Vertex.hxx
 )
 
@@ -477,6 +506,7 @@ set(Mesh1d_PKG_SOURCES
     Mesh1d/Mesh1d_Cell.cxx
     Mesh1d/Mesh1d_Edge.cxx
     Mesh1d/Mesh1d_LinearLine.cxx
+    Mesh1d/Mesh1d_Node.cxx
     Mesh1d/Mesh1d_Object.cxx
     Mesh1d/Mesh1d_Vertex.cxx
 )
@@ -605,20 +635,24 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Builder.hxx
     MeshDS/MeshDS_Cell.hxx
     MeshDS/MeshDS_Edge.hxx
+    MeshDS/MeshDS_Face.hxx
     MeshDS/MeshDS_Group.hxx
     MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
+    MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
     MeshDS/MeshDS_Point.hxx
     MeshDS/MeshDS_Point1d.hxx
     MeshDS/MeshDS_Point2d.hxx
     MeshDS/MeshDS_Point3d.hxx
+    MeshDS/MeshDS_Polygon.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TEdge.hxx
     MeshDS/MeshDS_TEntity.hxx
     MeshDS/MeshDS_TFace.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
+    MeshDS/MeshDS_TNode.hxx
     MeshDS/MeshDS_TObject.hxx
     MeshDS/MeshDS_TPolygon.hxx
     MeshDS/MeshDS_Tool.hxx
@@ -631,19 +665,23 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Builder.cxx
     MeshDS/MeshDS_Cell.cxx
     MeshDS/MeshDS_Edge.cxx
+    MeshDS/MeshDS_Face.cxx
     MeshDS/MeshDS_Group.cxx
     MeshDS/MeshDS_Mesh.cxx
+    MeshDS/MeshDS_Node.cxx
     MeshDS/MeshDS_Object.cxx
     MeshDS/MeshDS_Point.cxx
     MeshDS/MeshDS_Point1d.cxx
     MeshDS/MeshDS_Point2d.cxx
     MeshDS/MeshDS_Point3d.cxx
+    MeshDS/MeshDS_Polygon.cxx
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TEdge.cxx
     MeshDS/MeshDS_TEntity.cxx
     MeshDS/MeshDS_TFace.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
+    MeshDS/MeshDS_TNode.cxx
     MeshDS/MeshDS_TObject.cxx
     MeshDS/MeshDS_TPolygon.cxx
     MeshDS/MeshDS_Tool.cxx
@@ -669,19 +707,29 @@ set(MeshExp_PKG_SOURCES
 
 set(MeshLib_PKG_HEADERS
     MeshLib/MeshLib_Command.hxx
+    MeshLib/MeshLib_EdgeBuilder.hxx
+    MeshLib/MeshLib_FaceBuilder.hxx
     MeshLib/MeshLib_MakeCell.hxx
+    MeshLib/MeshLib_MakeEdge.hxx
+    MeshLib/MeshLib_MakeFace.hxx
     MeshLib/MeshLib_MakeLine.hxx
     MeshLib/MeshLib_MakeLine2d.hxx
     MeshLib/MeshLib_MakeObject.hxx
+    MeshLib/MeshLib_MakePolygon.hxx
     MeshLib/MeshLib_MakeVertex2d.hxx
 )
 
 set(MeshLib_PKG_SOURCES
     MeshLib/MeshLib_Command.cxx
+    MeshLib/MeshLib_EdgeBuilder.cxx
+    MeshLib/MeshLib_FaceBuilder.cxx
     MeshLib/MeshLib_MakeCell.cxx
+    MeshLib/MeshLib_MakeEdge.cxx
+    MeshLib/MeshLib_MakeFace.cxx
     MeshLib/MeshLib_MakeLine.cxx
     MeshLib/MeshLib_MakeLine2d.cxx
     MeshLib/MeshLib_MakeObject.cxx
+    MeshLib/MeshLib_MakePolygon.cxx
     MeshLib/MeshLib_MakeVertex2d.cxx
 )
 
@@ -1275,140 +1323,13 @@ set(xsp_PKG_SOURCES
 # header files
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
-    #${BRepCellAPI_PKG_HEADERS}
-    #${BRepPoly_PKG_HEADERS}
-    #${BRepPolyAPI_PKG_HEADERS}
-    #${Cell_PKG_HEADERS}
-    ${Cell1d_PKG_HEADERS}
-    #${Cell2d_PKG_HEADERS}
-    #${CM_PKG_HEADERS}
-    ${cmf_PKG_HEADERS}
-    ${cmp_PKG_HEADERS}
-    #${cp_PKG_HEADERS}
-    ${DOF_PKG_HEADERS}
-    ${DOFAdaptor_PKG_HEADERS}
-    ${DOFAbs_PKG_HEADERS}
-    #${EleProp_PKG_HEADERS}
-    ${FE_PKG_HEADERS}
-    ${FEAbs_PKG_HEADERS}
-    ${FEAdaptor_PKG_HEADERS}
-    #${FEM_PKG_HEADERS}
-    ${fep_PKG_HEADERS}
-    ${gp_PKG_HEADERS}
-    ${load_PKG_HEADERS}
-    ${material_PKG_HEADERS}
-    ${math_PKG_HEADERS}
-    ${Mech_PKG_HEADERS}
-    ${Mech1d_PKG_HEADERS}
-    ${Mech1dAdaptor_PKG_HEADERS}
-    ${Mech2d_PKG_HEADERS}
-    ${Mesh_PKG_HEADERS}
-    ${Mesh1d_PKG_HEADERS}
-    ${Mesh1dAdaptor_PKG_HEADERS}
-    ${MeshAbs_PKG_HEADERS}
-    ${MeshAdaptor_PKG_HEADERS}
-    ${MeshBuilder_PKG_HEADERS}
-    ${MeshDS_PKG_HEADERS}
-    ${MeshExp_PKG_HEADERS}
-    ${MeshLib_PKG_HEADERS}
-    #${MeshRep_PKG_HEADERS}
-    ${MeshTools_PKG_HEADERS}
-    ${Model_PKG_HEADERS}
-    ${ModelAbs_PKG_HEADERS}
-    ${ModelAdaptor_PKG_HEADERS}
-    ${ModelAlgo_PKG_HEADERS}
-    ${ModelBuilder_PKG_HEADERS}
-    ${ModelDS_PKG_HEADERS}
-    ${ModelExp_PKG_HEADERS}
-    ${ModelLib_PKG_HEADERS}
-    ${ModelRep_PKG_HEADERS}
-    ${ModelTools_PKG_HEADERS}
-    #${mp_PKG_HEADERS}
-    ${PolyMesh_PKG_HEADERS}
-    #${PolyMesh1d_PKG_HEADERS}
-    #${PolyMesh2d_PKG_HEADERS}
-    #${PolyMeshAbs_PKG_HEADERS}
-    ${pmp_PKG_HEADERS}
-    ${TColDOF_PKG_HEADERS}
-    ${TColfep_PKG_HEADERS}
-    ${TColgp_PKG_HEADERS}
-    #${TColMesh1d_PKG_HEADERS}
-    #${TColmp_PKG_HEADERS}
-    ${TColpmp_PKG_HEADERS}
-    #${Trsf2d_PKG_HEADERS}
-    ${Toolkit_PKG_HEADERS}
-    ${UCM_PKG_HEADERS}
-    #${UCMF_PKG_HEADERS}
-    #${XS_PKG_HEADERS}
-    #${XSAbs_PKG_HEADERS}
-    ${xsf_PKG_HEADERS}
-    #${xsp_PKG_HEADERS}
-    ${XSM_PKG_HEADERS}
-    #${XSM2d_PKG_HEADERS}
+    ${Discrete_PKG_HEADERS}
 )
 
 # source files
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
-    #${BRepCellAPI_PKG_SOURCES}
-    #${BRepPoly_PKG_SOURCES}
-    #${BRepPolyAPI_PKG_SOURCES}
-    #${Cell_PKG_SOURCES}
-    ${Cell1d_PKG_SOURCES}
-    #${Cell2d_PKG_SOURCES}
-    #${CM_PKG_SOURCES}
-    ${cmf_PKG_SOURCES}
-    ${cmp_PKG_SOURCES}
-    #${cp_PKG_SOURCES}
-    ${DOF_PKG_SOURCES}
-    ${DOFAbs_PKG_SOURCES}
-    ${DOFAdaptor_PKG_SOURCES}
-    #${EleProp_PKG_SOURCES}
-    ${FE_PKG_SOURCES}
-    ${FEAdaptor_PKG_SOURCES}
-    #${FEM_PKG_SOURCES}
-    ${fep_PKG_SOURCES}
-    ${gp_PKG_SOURCES}
-    ${load_PKG_SOURCES}
-    ${material_PKG_SOURCES}
-    ${math_PKG_SOURCES}
-    ${Mech_PKG_SOURCES}
-    ${Mech1d_PKG_SOURCES}
-    ${Mech1dAdaptor_PKG_SOURCES}
-    ${Mech2d_PKG_SOURCES}
-    ${Mesh_PKG_SOURCES}
-    ${Mesh1d_PKG_SOURCES}
-    ${Mesh1dAdaptor_PKG_SOURCES}
-    ${MeshAdaptor_PKG_SOURCES}
-    ${MeshBuilder_PKG_SOURCES}
-    ${MeshDS_PKG_SOURCES}
-    ${MeshExp_PKG_SOURCES}
-    ${MeshLib_PKG_SOURCES}
-    #${MeshRep_PKG_SOURCES}
-    ${MeshTools_PKG_SOURCES}
-    ${Model_PKG_SOURCES}
-    ${ModelAdaptor_PKG_SOURCES}
-    ${ModelAlgo_PKG_SOURCES}
-    ${ModelBuilder_PKG_SOURCES}
-    ${ModelDS_PKG_SOURCES}
-    ${ModelExp_PKG_SOURCES}
-    ${ModelLib_PKG_SOURCES}
-    ${ModelRep_PKG_SOURCES}
-    ${ModelTools_PKG_SOURCES}
-    #${mp_PKG_SOURCES}
-    ${PolyMesh_PKG_SOURCES}
-    #${PolyMesh1d_PKG_SOURCES}
-    #${PolyMesh2d_PKG_SOURCES}
-    ${pmp_PKG_SOURCES}
-    #${Trsf2d_PKG_SOURCES}
-    ${Toolkit_PKG_SOURCES}
-    ${UCM_PKG_SOURCES}
-    #${UCMF_PKG_SOURCES}
-    #${XS_PKG_SOURCES}
-    ${xsf_PKG_SOURCES}
-    #${xsp_PKG_SOURCES}
-    ${XSM_PKG_SOURCES}
-    #${XSM2d_PKG_SOURCES}
+    ${Discrete_PKG_SOURCES}
 )
 
 # include directories
@@ -1416,73 +1337,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
-    ${CMAKE_CURRENT_SOURCE_DIR}/BRepCellAPI
-    ${CMAKE_CURRENT_SOURCE_DIR}/BRepPoly
-    ${CMAKE_CURRENT_SOURCE_DIR}/BRepPolyAPI
-    ${CMAKE_CURRENT_SOURCE_DIR}/Cell
-    ${CMAKE_CURRENT_SOURCE_DIR}/Cell1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Cell2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/CM
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmf
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmp
-    ${CMAKE_CURRENT_SOURCE_DIR}/cp
-    ${CMAKE_CURRENT_SOURCE_DIR}/DOF
-    ${CMAKE_CURRENT_SOURCE_DIR}/DOFAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/DOFAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/ElePRep
-    ${CMAKE_CURRENT_SOURCE_DIR}/EleProp
-    ${CMAKE_CURRENT_SOURCE_DIR}/FE
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/FEM
-    ${CMAKE_CURRENT_SOURCE_DIR}/fep
-    ${CMAKE_CURRENT_SOURCE_DIR}/gp
-    ${CMAKE_CURRENT_SOURCE_DIR}/load
-    ${CMAKE_CURRENT_SOURCE_DIR}/material
-    ${CMAKE_CURRENT_SOURCE_DIR}/math
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mech
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mech1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mech1dAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mech2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/MechAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh1dAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelAlgo
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshBuilder
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshExp
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
-    ${CMAKE_CURRENT_SOURCE_DIR}/MeshTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/Model
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelAdaptor
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelBuilder
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelExp
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelLib
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelRep
-    ${CMAKE_CURRENT_SOURCE_DIR}/ModelTools
-    ${CMAKE_CURRENT_SOURCE_DIR}/mp
-    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh
-    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMesh2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/PolyMeshAbs
-    ${CMAKE_CURRENT_SOURCE_DIR}/pmp
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColDOF
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColfep
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColgp
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh1d
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColmp
-    ${CMAKE_CURRENT_SOURCE_DIR}/TColpmp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Trsf2d
-    ${CMAKE_CURRENT_SOURCE_DIR}/Toolkit
-    ${CMAKE_CURRENT_SOURCE_DIR}/UCM
-    ${CMAKE_CURRENT_SOURCE_DIR}/UCMF
-    ${CMAKE_CURRENT_SOURCE_DIR}/xsf
-    ${CMAKE_CURRENT_SOURCE_DIR}/XSM
+    ${CMAKE_CURRENT_SOURCE_DIR}/Discrete
     ${OpenCASCADE_INCLUDE_DIR}
     ${Triangle_INCLUDE_DIRS}
 )
