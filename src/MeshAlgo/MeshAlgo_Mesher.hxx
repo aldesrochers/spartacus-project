@@ -20,33 +20,49 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __MeshAlgo_Mesher_hxx__
+#define __MeshAlgo_Mesher_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_Mesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_Mesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_Mesher();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_Mesher();
 
+public:
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+    virtual Standard_EXPORT void        Perform() = 0;
+
+public:
+
+    Standard_EXPORT Standard_Boolean    IsDone() const;
+
+protected:
+
+    Standard_EXPORT void        SetDone();
+    Standard_EXPORT void        SetNotDone();
+
+protected:
+
+    Standard_Boolean    myIsDone;
+
+};
+
+#endif // __MeshAlgo_Mesher_hxx__

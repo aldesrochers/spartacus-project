@@ -20,33 +20,44 @@
 // ============================================================================
 
 
+#ifndef __MeshAlgo_EdgeEqualRange_hxx__
+#define __MeshAlgo_EdgeEqualRange_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_EdgeMesher.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_EdgeEqualRange
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_EdgeEqualRange : public MeshAlgo_EdgeMesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_EdgeEqualRange();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_EdgeEqualRange();
 
+public:
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+    Standard_EXPORT void                Perform() Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Integer    NbSegments() const;
+    Standard_EXPORT void                SetNbSegments(const Standard_Integer theNbSegments);
+
+private:
+
+    Standard_Integer    myNbSegments;
+
+};
+
+#endif // __MeshAlgo_EdgeEqualRange_hxx__

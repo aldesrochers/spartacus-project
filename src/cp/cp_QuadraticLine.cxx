@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <cp_QuadraticLine.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+cp_QuadraticLine::cp_QuadraticLine()
 {
 
 }
@@ -39,14 +39,47 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+cp_QuadraticLine::~cp_QuadraticLine()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Direction()
+*/
+// ============================================================================
+gp_Dir cp_QuadraticLine::Direction() const
+{
+    return Line().Direction();
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+// ============================================================================
+/*!
+ *  \brief Length()
+*/
+// ============================================================================
+Standard_Real cp_QuadraticLine::Length() const
+{
+    return Point1().Distance(Point2());
+}
+
+// ============================================================================
+/*!
+ *  \brief Location()
+*/
+// ============================================================================
+gp_Pnt cp_QuadraticLine::Location() const
+{
+    return Line().Location();
+}
+
+// ============================================================================
+/*!
+ *  \brief Line()
+*/
+// ============================================================================
+gp_Lin cp_QuadraticLine::Line() const
+{
+    return gp_Lin(Point1(), gp_Vec(Point1(), Point2()));
+}

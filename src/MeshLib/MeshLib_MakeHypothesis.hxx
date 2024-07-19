@@ -20,33 +20,45 @@
 // ============================================================================
 
 
+#ifndef __MeshLib_MakeHypothesis_hxx__
+#define __MeshLib_MakeHypothesis_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshDS_Hypothesis.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshLib_MakeHypothesis
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshLib_MakeHypothesis
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshLib_MakeHypothesis();
+    // destructors
+    Standard_EXPORT ~MeshLib_MakeHypothesis();
+
+public:
+
+    Standard_EXPORT const MeshDS_Hypothesis&    Hypothesis() const;
+    Standard_EXPORT operator                    MeshDS_Hypothesis() const;
+
+private:
+
+    MeshDS_Hypothesis   myHypothesis;
+
+};
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __MeshLib_MakeHypothesis_hxx__

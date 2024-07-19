@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshDS_Hypothesis.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshDS_Hypothesis::MeshDS_Hypothesis()
 {
 
 }
@@ -39,14 +39,8 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshDS_Hypothesis::~MeshDS_Hypothesis()
 {
 
 }
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)

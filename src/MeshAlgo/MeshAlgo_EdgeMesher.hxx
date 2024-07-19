@@ -20,33 +20,43 @@
 // ============================================================================
 
 
+#ifndef __MeshAlgo_EdgeMesher_hxx__
+#define __MeshAlgo_EdgeMesher_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_Mesher.hxx>
+
+// OpenCascade
+#include <TopoDS_Edge.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_EdgeMesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_EdgeMesher : public MeshAlgo_Mesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_EdgeMesher();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_EdgeMesher();
 
+public:
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+    Standard_EXPORT const TopoDS_Edge&  Edge() const;
+    Standard_EXPORT void                SetEdge(const TopoDS_Edge& theEdge);
+
+protected:
+
+    TopoDS_Edge     myEdge;
+
+};
+
+#endif // __MeshAlgo_EdgeMesher_hxx__

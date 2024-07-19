@@ -23,9 +23,6 @@
 using namespace std;
 
 // Spartacus
-#include <Mesh_Point1d.hxx>
-#include <Mesh_Point2d.hxx>
-#include <Mesh_Point3d.hxx>
 #include <MeshDS.hxx>
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TGroup.hxx>
@@ -148,19 +145,6 @@ TCollection_AsciiString MeshDS_Tool::Name(const MeshDS_Group &theGroup)
     if(aTGroup == 0)
         throw Standard_NullObject("MeshDS_Tool::Name()->Invalid group.");
     return aTGroup->Name();
-}
-
-// ============================================================================
-/*!
- *  \brief Point()
-*/
-// ============================================================================
-const Handle(Mesh_Point)& MeshDS_Tool::Point(const MeshDS_Vertex &theVertex)
-{
-    const MeshDS_TVertex* aTVertex = static_cast<const MeshDS_TVertex*>(theVertex.TObject().get());
-    if(aTVertex == 0)
-        throw Standard_NullObject("MeshDS_Tool::Point()->Invalid vertex.");
-    return aTVertex->Point();
 }
 
 // ============================================================================

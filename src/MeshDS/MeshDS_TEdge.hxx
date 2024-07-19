@@ -24,7 +24,6 @@
 #define __MeshDS_TEdge_hxx__
 
 // Spartacus
-#include <Mesh_Curve.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_TObject.hxx>
 
@@ -59,14 +58,11 @@ public:
 public:
 
     Standard_EXPORT const MeshDS_Cell&              Cell() const;
-    Standard_EXPORT const Handle(Mesh_Curve)&       Curve() const;
     Standard_EXPORT void                            SetCell(const MeshDS_Cell& theCell);
-    Standard_EXPORT void                            SetCurve(const Handle(Mesh_Curve)& theCurve);
 
 private:
 
     MeshDS_Cell                 myCell;
-    Handle(Mesh_Curve)          myCurve;
 
 public:
 

@@ -26,7 +26,7 @@
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
-
+#include <gp_Lin.hxx>
 
 // ============================================================================
 /*!
@@ -38,47 +38,31 @@ class cp_LinearLine
 
 public:
 
-    DEFINE_STANDARD_ALLOC;
+    DEFINE_STANDARD_ALLOC
 
 public:
     // constructors
-    Standard_EXPORT cp_LinearLine() {}
-    Standard_EXPORT cp_LinearLine(const Standard_Integer theNode1,
-                                  const Standard_Integer theNode2)
-    {
-        myNodes[0] = theNode1;
-        myNodes[1] = theNode2;
-    }
-
+    Standard_EXPORT cp_LinearLine();
     // destructors
-    Standard_EXPORT ~cp_LinearLine() {}
+    Standard_EXPORT ~cp_LinearLine();
 
 public:
 
-    Standard_EXPORT Standard_Integer        Node1() const {return myNodes[0];}
-    Standard_EXPORT Standard_Integer        Node2() const {return myNodes[1];}
-    Standard_EXPORT void                    SetNode1(const Standard_Integer theNode1) {myNodes[0] = theNode1;}
-    Standard_EXPORT void                    SetNode2(const Standard_Integer theNode2) {myNodes[1] = theNode2;}
+    Standard_EXPORT gp_Dir          Direction() const;
+    Standard_EXPORT Standard_Real   Length() const;
+    Standard_EXPORT gp_Pnt          Location() const;
+    Standard_EXPORT gp_Lin          Line() const;
 
 public:
 
-    Standard_EXPORT void        Get(Standard_Integer& theNode1,
-                                    Standard_Integer& theNode2)
-    {
-        theNode1 = myNodes[0];
-        theNode2 = myNodes[1];
-    }
-
-    Standard_EXPORT void        Set(const Standard_Integer theNode1,
-                                    const Standard_Integer theNode2)
-    {
-        myNodes[0] = theNode1;
-        myNodes[1] = theNode2;
-    }
+    Standard_EXPORT const gp_Pnt&   Point1() const {return myPoints[0];}
+    Standard_EXPORT const gp_Pnt&   Point2() const {return myPoints[1];}
+    Standard_EXPORT void    SetPoint1(const gp_Pnt& thePoint) {myPoints[0] = thePoint;}
+    Standard_EXPORT void    SetPoint2(const gp_Pnt& thePoint) {myPoints[1] = thePoint;}
 
 private:
 
-    Standard_Integer    myNodes[2];
+    gp_Pnt  myPoints[2];
 
 };
 

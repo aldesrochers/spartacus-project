@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_MakeMesh.hxx>
+
 
 
 // ============================================================================
@@ -29,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshAlgo_MakeMesh::MeshAlgo_MakeMesh()
 {
 
 }
@@ -39,14 +40,38 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshAlgo_MakeMesh::~MeshAlgo_MakeMesh()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Perform()
+*/
+// ============================================================================
+void MeshAlgo_MakeMesh::Perform()
+{
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+}
+
+// ============================================================================
+/*!
+ *  \brief SetShape()
+*/
+// ============================================================================
+void MeshAlgo_MakeMesh::SetShape(const TopoDS_Shape &theShape)
+{
+    myShape = theShape;
+}
+
+// ============================================================================
+/*!
+ *  \brief Shape()
+*/
+// ============================================================================
+const TopoDS_Shape& MeshAlgo_MakeMesh::Shape() const
+{
+    return myShape;
+}
+

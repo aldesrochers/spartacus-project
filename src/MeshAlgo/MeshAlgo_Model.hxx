@@ -20,33 +20,32 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __MeshAlgo_Model_hxx__
+#define __MeshAlgo_Model_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_Model
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_Model
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_Model();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_Model();
 
+};
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __MeshAlgo_Model_hxx__

@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_EdgeMesher.hxx>
+
 
 
 // ============================================================================
@@ -29,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshAlgo_EdgeMesher::MeshAlgo_EdgeMesher()
 {
 
 }
@@ -39,14 +40,28 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshAlgo_EdgeMesher::~MeshAlgo_EdgeMesher()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Edge()
+*/
+// ============================================================================
+const TopoDS_Edge& MeshAlgo_EdgeMesher::Edge() const
+{
+    return myEdge;
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+// ============================================================================
+/*!
+ *  \brief SetEdge()
+*/
+// ============================================================================
+void MeshAlgo_EdgeMesher::SetEdge(const TopoDS_Edge &theEdge)
+{
+    myEdge = theEdge;
+}
+

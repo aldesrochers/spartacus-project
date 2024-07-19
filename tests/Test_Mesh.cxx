@@ -23,6 +23,21 @@
 #include <iostream>
 using namespace std;
 
+// OpenCascade
+#include <BRep_Tool.hxx>
+#include <DEBRepCascade_Provider.hxx>
+#include <TopoDS.hxx>
+#include <TopoDS_Shape.hxx>
+#include <TopExp.hxx>
+#include <TopExp_Explorer.hxx>
+#include <TopoDS_Edge.hxx>
+#include <TopoDS_Face.hxx>
+#include <TopoDS_Wire.hxx>
+#include <BRepMesh_IncrementalMesh.hxx>
+
+#include <MeshAlgo_MakeMesh.hxx>
+#include <MeshAlgo_EdgeEqualRange.hxx>
+#include <MeshLib_MakeMesh.hxx>
 
 
 // ============================================================================
@@ -33,10 +48,15 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
+    TopoDS_Shape aShape;
+    DEBRepCascade_Provider aProvider;
+    cout << aProvider.Read(TCollection_AsciiString("/home/alexis/Sources/opencascade-7.7.0/data/occ/bottle.brep"), aShape) << endl;
+
+    MeshLib_MakeMesh aMesher;
+    aMesher.SetShape(aShape);
+    aMesher.Perform();
 
 
-
-
-    //cout << "Test_Mesh" << endl;
+    cout << "Test_Mesh" << endl;
     return 0;
 }

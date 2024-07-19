@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <Mesh_Line.hxx>
 
 
 // ============================================================================
@@ -29,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+Mesh_Line::Mesh_Line()
 {
 
 }
@@ -39,7 +39,7 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+Mesh_Line::~Mesh_Line()
 {
 
 }
@@ -48,5 +48,5 @@ Mesh_Cell::~Mesh_Cell()
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+IMPLEMENT_STANDARD_HANDLE(Mesh_Line, Mesh_Cell)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_Line, Mesh_Cell)

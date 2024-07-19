@@ -20,33 +20,32 @@
 // ============================================================================
 
 
+#ifndef __MeshDS_Hypothesis_hxx__
+#define __MeshDS_Hypothesis_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshDS_Object.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshDS_Hypothesis
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshDS_Hypothesis : public MeshDS_Object
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshDS_Hypothesis();
+    // destructors
+    Standard_EXPORT ~MeshDS_Hypothesis();
+
+};
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __MeshDS_Hypothesis_hxx__

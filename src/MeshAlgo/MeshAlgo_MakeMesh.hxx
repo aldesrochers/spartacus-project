@@ -20,33 +20,42 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __MeshAlgo_MakeMesh_hxx__
+#define __MeshAlgo_MakeMesh_hxx__
 
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh_Cell::Mesh_Cell()
-{
-
-}
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+#include <TopoDS_Shape.hxx>
 
 // ============================================================================
 /*!
- *  \brief Destructor
+ *  \brief MeshAlgo_MakeMesh
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+class MeshAlgo_MakeMesh
 {
 
-}
+public:
 
+    DEFINE_STANDARD_ALLOC
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_MakeMesh();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_MakeMesh();
+
+public:
+
+    Standard_EXPORT void                Perform();
+    Standard_EXPORT void                SetShape(const TopoDS_Shape& theShape);
+    Standard_EXPORT const TopoDS_Shape& Shape() const;
+
+private:
+
+    TopoDS_Shape        myShape;
+
+};
+
+#endif // __MeshAlgo_MakeMesh_hxx__

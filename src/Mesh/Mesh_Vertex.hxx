@@ -20,33 +20,38 @@
 // ============================================================================
 
 
+#ifndef __Mesh_Vertex_hxx__
+#define __Mesh_Vertex_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <Mesh_Object.hxx>
 
+// Forward declarations
+class Mesh_Vertex;
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh_Cell::Mesh_Cell()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
-
-}
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+DEFINE_STANDARD_HANDLE(Mesh_Vertex, Mesh_Object)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh_Vertex
+*/
+// ============================================================================
+class Mesh_Vertex : public Mesh_Object
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_Vertex();
+    // destructors
+    Standard_EXPORT ~Mesh_Vertex();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Vertex, Mesh_Object)
+
+};
+
+
+#endif // __Mesh_Vertex_hxx__

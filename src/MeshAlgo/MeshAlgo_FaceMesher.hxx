@@ -20,33 +20,43 @@
 // ============================================================================
 
 
+#ifndef __MeshAlgo_FaceMesher_hxx__
+#define __MeshAlgo_FaceMesher_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_Mesher.hxx>
+
+// OpenCascade
+#include <TopoDS_Face.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_FaceMesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_FaceMesher : public MeshAlgo_Mesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_FaceMesher();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_FaceMesher();
 
+public:
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+    Standard_EXPORT const TopoDS_Face&  Face() const;
+    Standard_EXPORT void                SetFace(const TopoDS_Face& theFace);
+
+protected:
+
+    TopoDS_Face     myFace;
+
+};
+
+#endif // __MeshAlgo_FaceMesher_hxx__

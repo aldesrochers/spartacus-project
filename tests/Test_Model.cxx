@@ -24,13 +24,18 @@
 using namespace std;
 
 // Spartacus
-#include <Discrete_FunctionCurveNbSegments.hxx>
+#include <MeshFunc_CurveNbSegments.hxx>
+#include <Triangle_FaceMesher.hxx>
 
 // OpenCascade
 #include <GeomAdaptor_Curve.hxx>
 #include <Geom_Line.hxx>
 #include <Geom_TrimmedCurve.hxx>
 #include <math_FunctionSetRoot.hxx>
+#include <BRepBuilderAPI_MakePolygon.hxx>
+#include <BRepBuilderAPI_MakeFace.hxx>
+#include <TopoDS_Wire.hxx>
+#include <TopoDS_Face.hxx>
 
 
 // ============================================================================
@@ -44,7 +49,7 @@ int main(int argc, char** argv)
     Handle(Geom_Line) aLine = new Geom_Line(gp_Pnt(0,0,0), gp_Vec(1,0,0));
     Handle(Geom_TrimmedCurve) aCurve = new Geom_TrimmedCurve(aLine, 0., 1.);
     GeomAdaptor_Curve anAdaptor(aCurve);
-    Discrete_FunctionCurveNbSegments aFunction(anAdaptor, 10);
+    MeshFunc_CurveNbSegments aFunction(anAdaptor, 10);
 
     math_Vector aTolerance(1,9,1E-10);
     math_Vector aGuess(1,9,0.);
@@ -66,6 +71,21 @@ int main(int argc, char** argv)
     cout << aSol << endl;
 
 
+    cout << endl;
+    cout << "Starting TRIANGLE" << endl;
+
+    BRepBuilderAPI_MakePolygon aPolyBuilder;
+    aPolyBuilder.Add(gp_Pnt(0,0,0));
+    aPolyBuilder.Add(gp_Pnt(1,0,0));
+    aPolyBuilder.Add(gp_Pnt(1,1,0));
+    aPolyBuilder.Add(gp_Pnt(0,1,0));
+    aPolyBuilder.Close();
+    TopoDS_Wire aWire = aPolyBuilder.Wire();
+    TopoDS_Face aFace = BRepBuilderAPI_MakeFace(aWire, Standard_True);
+
+    Triangle_FaceMesher aMesher;
+    aMesher.SetFace(aFace);
+    aMesher.Perform();
 
 
 

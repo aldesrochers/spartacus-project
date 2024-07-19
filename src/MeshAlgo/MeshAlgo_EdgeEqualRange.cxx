@@ -19,11 +19,15 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <MeshAlgo_EdgeEqualRange.hxx>
 
-
+// OpenCascade
+#include <BRep_Tool.hxx>
+#include <BRepAdaptor_Curve.hxx>
 
 
 // ============================================================================
@@ -31,7 +35,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+MeshAlgo_EdgeEqualRange::MeshAlgo_EdgeEqualRange()
 {
 
 }
@@ -41,46 +45,60 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+MeshAlgo_EdgeEqualRange::~MeshAlgo_EdgeEqualRange()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief NbSegments()
 */
 // ============================================================================
-const MeshDS_Cell& MeshDS_TEdge::Cell() const
+Standard_Integer MeshAlgo_EdgeEqualRange::NbSegments() const
 {
-    return myCell;
+    return myNbSegments;
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Perform()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+void MeshAlgo_EdgeEqualRange::Perform()
 {
-    return MeshAbs_OBJ_Edge;
+    // check if valid edge
+    if(myEdge.IsNull()) {
+        return;
+    }
+
+    // check if valid number of segments
+    if(myNbSegments < 1) {
+        return;
+    }
+
+    // retrieve curve bounding parameters
+    BRepAdaptor_Curve anAdaptor(myEdge);
+    Standard_Real U1 = anAdaptor.FirstParameter();
+    Standard_Real U2 = anAdaptor.LastParameter();
+    Standard_Real dU = (U2-U1) / myNbSegments;
+
+    // compute discret points on curve
+    for(Standard_Integer i=1; i<=myNbSegments+1; i++) {
+        Standard_Real U = U1 + (i-1) * dU;
+        gp_Pnt aPoint = anAdaptor.Value(U);
+    }
+
+
+
 }
 
 // ============================================================================
 /*!
- *  \brief SetCell()
+ *  \brief SetNbSegments()
 */
 // ============================================================================
-void MeshDS_TEdge::SetCell(const MeshDS_Cell &theCell)
+void MeshAlgo_EdgeEqualRange::SetNbSegments(const Standard_Integer theNbSegments)
 {
-    myCell = theCell;
+    myNbSegments = theNbSegments;
 }
-
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)

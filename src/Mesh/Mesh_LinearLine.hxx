@@ -20,33 +20,42 @@
 // ============================================================================
 
 
+#ifndef __Mesh_LinearLine_hxx__
+#define __Mesh_LinearLine_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <Mesh_Line.hxx>
 
+// Forward declarations
+class Mesh_LinearLine;
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh_Cell::Mesh_Cell()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
-
-}
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+DEFINE_STANDARD_HANDLE(Mesh_LinearLine, Mesh_Line)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh_LinearLine
+*/
+// ============================================================================
+class Mesh_LinearLine : public Mesh_Line
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_LinearLine();
+    // destructors
+    Standard_EXPORT ~Mesh_LinearLine();
+
+private:
+
+    Handle(Mesh_Vertex)     myVertices[2];
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_LinearLine, Mesh_Line)
+
+};
+
+
+#endif // __Mesh_LinearLine_hxx__

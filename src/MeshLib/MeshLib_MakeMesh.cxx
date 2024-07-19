@@ -19,9 +19,11 @@
 //
 // ============================================================================
 
+#include <iostream>
+using namespace std;
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshLib_MakeMesh.hxx>
 
 
 // ============================================================================
@@ -29,7 +31,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshLib_MakeMesh::MeshLib_MakeMesh()
 {
 
 }
@@ -39,14 +41,39 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshLib_MakeMesh::~MeshLib_MakeMesh()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Perform()
+*/
+// ============================================================================
+void MeshLib_MakeMesh::Perform()
+{
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+
+    cout << "MeshLib_MakeMesh::Perform()" << endl;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetShape()
+*/
+// ============================================================================
+void MeshLib_MakeMesh::SetShape(const TopoDS_Shape &theShape)
+{
+    myShape = theShape;
+}
+
+// ============================================================================
+/*!
+ *  \brief Shape()
+*/
+// ============================================================================
+const TopoDS_Shape& MeshLib_MakeMesh::Shape() const
+{
+    return myShape;
+}

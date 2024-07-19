@@ -35,8 +35,6 @@
 #include <TopoDS_Vertex.hxx>
 
 // Spartacus
-#include <gp_Pnt1d.hxx>
-#include <Mesh1d_Vertex.hxx>
 #include <MeshAbs_TypeOfCell.hxx>
 #include <MeshAbs_TypeOfDimensionality.hxx>
 #include <MeshAbs_TypeOfInterpolation.hxx>
@@ -103,10 +101,6 @@ public:
 
     Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex) const;
     Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
-                                       const gp_Pnt1d& thePoint) const;
-    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
-                                       const gp_Pnt2d& thePoint) const;
-    Standard_EXPORT void    MakeVertex(MeshDS_Vertex& theVertex,
                                        const gp_Pnt& thePoint) const;
 
     Standard_EXPORT void    RemoveCell(const MeshDS_Group& theGroup,
@@ -137,10 +131,6 @@ public:
     Standard_EXPORT void    UpdateGroup(const MeshDS_Group& theGroup,
                                         const TCollection_AsciiString& theName) const;
 
-    Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
-                                         const gp_Pnt1d& thePoint) const;
-    Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
-                                         const gp_Pnt2d& thePoint) const;
     Standard_EXPORT void    UpdateVertex(const MeshDS_Vertex& theVertex,
                                          const gp_Pnt& thePoint) const;
 

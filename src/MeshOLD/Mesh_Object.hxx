@@ -20,33 +20,40 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __Mesh_Object_hxx__
+#define __Mesh_Object_hxx__
 
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
 
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-Mesh_Cell::Mesh_Cell()
-{
+// Forward declarations
+class Mesh_Object;
 
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
-
-}
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+DEFINE_STANDARD_HANDLE(Mesh_Object, Standard_Transient)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh_Object
+*/
+// ============================================================================
+class Mesh_Object : public Standard_Transient
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_Object();
+    // destructors
+    Standard_EXPORT ~Mesh_Object();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Object, Standard_Transient)
+
+};
+
+
+#endif // __Mesh_Object_hxx__

@@ -20,33 +20,36 @@
 // ============================================================================
 
 
+#ifndef __Triangle_FaceMesher_hxx__
+#define __Triangle_FaceMesher_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_FaceMesher.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Triangle_FaceMesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class Triangle_FaceMesher : public MeshAlgo_FaceMesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT Triangle_FaceMesher();
+    // destructors
+    Standard_EXPORT ~Triangle_FaceMesher();
+
+public:
+
+    Standard_EXPORT void        Perform() Standard_OVERRIDE;
+
+};
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __Triangle_FaceMesher_hxx__

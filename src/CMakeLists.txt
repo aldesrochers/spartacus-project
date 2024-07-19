@@ -210,7 +210,8 @@ set(cp_PKG_HEADERS
 )
 
 set(cp_PKG_SOURCES
-
+    cp/cp_LinearLine.cxx
+    cp/cp_QuadraticLine.cxx
 )
 
 # =============================================================================
@@ -547,30 +548,18 @@ set(Mesh2d_PKG_SOURCES
 
 set(Mesh_PKG_HEADERS
     Mesh/Mesh_Cell.hxx
-    Mesh/Mesh_Cell1d.hxx
-    Mesh/Mesh_Curve.hxx
-    Mesh/Mesh_Curve1d.hxx
-    Mesh/Mesh_Curve2d.hxx
-    Mesh/Mesh_Curve3d.hxx
+    Mesh/Mesh_Line.hxx
+    Mesh/Mesh_LinearLine.hxx
     Mesh/Mesh_Object.hxx
-    Mesh/Mesh_Point.hxx
-    Mesh/Mesh_Point1d.hxx
-    Mesh/Mesh_Point2d.hxx
-    Mesh/Mesh_Point3d.hxx
+    Mesh/Mesh_Vertex.hxx
 )
 
 set(Mesh_PKG_SOURCES
     Mesh/Mesh_Cell.cxx
-    Mesh/Mesh_Cell1d.cxx
-    Mesh/Mesh_Curve.cxx
-    Mesh/Mesh_Curve1d.cxx
-    Mesh/Mesh_Curve2d.cxx
-    Mesh/Mesh_Curve3d.cxx
+    Mesh/Mesh_Line.cxx
+    Mesh/Mesh_LinearLine.cxx
     Mesh/Mesh_Object.cxx
-    Mesh/Mesh_Point.cxx
-    Mesh/Mesh_Point1d.cxx
-    Mesh/Mesh_Point2d.cxx
-    Mesh/Mesh_Point3d.cxx
+    Mesh/Mesh_Vertex.cxx
 )
 
 # =============================================================================
@@ -595,6 +584,30 @@ set(MeshAdaptor_PKG_HEADERS
 
 set(MeshAdaptor_PKG_SOURCES
     MeshAdaptor/MeshAdaptor_Vertex.cxx
+)
+
+# =============================================================================
+# Package : MeshAlgo
+# =============================================================================
+
+set(MeshAlgo_PKG_HEADERS
+    MeshAlgo/MeshAlgo_EdgeEqualRange.hxx
+    MeshAlgo/MeshAlgo_EdgeMesher.hxx
+    MeshAlgo/MeshAlgo_FaceMesher.hxx
+    MeshAlgo/MeshAlgo_MakeMesh.hxx
+    MeshAlgo/MeshAlgo_Mesher.hxx
+    MeshAlgo/MeshAlgo_Model.hxx
+    MeshAlgo/MeshAlgo_SolidMesher.hxx
+)
+
+set(MeshAlgo_PKG_SOURCES
+    MeshAlgo/MeshAlgo_EdgeEqualRange.cxx
+    MeshAlgo/MeshAlgo_EdgeMesher.cxx
+    MeshAlgo/MeshAlgo_FaceMesher.cxx
+    MeshAlgo/MeshAlgo_MakeMesh.cxx
+    MeshAlgo/MeshAlgo_Mesher.cxx
+    MeshAlgo/MeshAlgo_Model.cxx
+    MeshAlgo/MeshAlgo_SolidMesher.cxx
 )
 
 # =============================================================================
@@ -637,14 +650,11 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_Edge.hxx
     MeshDS/MeshDS_Face.hxx
     MeshDS/MeshDS_Group.hxx
+    MeshDS/MeshDS_Hypothesis.hxx
     MeshDS/MeshDS_ListOfObject.hxx
     MeshDS/MeshDS_Mesh.hxx
     MeshDS/MeshDS_Node.hxx
     MeshDS/MeshDS_Object.hxx
-    MeshDS/MeshDS_Point.hxx
-    MeshDS/MeshDS_Point1d.hxx
-    MeshDS/MeshDS_Point2d.hxx
-    MeshDS/MeshDS_Point3d.hxx
     MeshDS/MeshDS_Polygon.hxx
     MeshDS/MeshDS_TCell.hxx
     MeshDS/MeshDS_TEdge.hxx
@@ -667,13 +677,10 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_Edge.cxx
     MeshDS/MeshDS_Face.cxx
     MeshDS/MeshDS_Group.cxx
+    MeshDS/MeshDS_Hypothesis.cxx
     MeshDS/MeshDS_Mesh.cxx
     MeshDS/MeshDS_Node.cxx
     MeshDS/MeshDS_Object.cxx
-    MeshDS/MeshDS_Point.cxx
-    MeshDS/MeshDS_Point1d.cxx
-    MeshDS/MeshDS_Point2d.cxx
-    MeshDS/MeshDS_Point3d.cxx
     MeshDS/MeshDS_Polygon.cxx
     MeshDS/MeshDS_TCell.cxx
     MeshDS/MeshDS_TEdge.cxx
@@ -702,35 +709,29 @@ set(MeshExp_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : MeshFunc
+# =============================================================================
+
+set(MeshFunc_PKG_HEADERS
+    MeshFunc/MeshFunc_CurveNbSegments.hxx
+)
+
+set(MeshFunc_PKG_SOURCES
+    MeshFunc/MeshFunc_CurveNbSegments.cxx
+)
+
+# =============================================================================
 # Package : MeshLib
 # =============================================================================
 
 set(MeshLib_PKG_HEADERS
-    MeshLib/MeshLib_Command.hxx
-    MeshLib/MeshLib_EdgeBuilder.hxx
-    MeshLib/MeshLib_FaceBuilder.hxx
-    MeshLib/MeshLib_MakeCell.hxx
-    MeshLib/MeshLib_MakeEdge.hxx
-    MeshLib/MeshLib_MakeFace.hxx
-    MeshLib/MeshLib_MakeLine.hxx
-    MeshLib/MeshLib_MakeLine2d.hxx
-    MeshLib/MeshLib_MakeObject.hxx
-    MeshLib/MeshLib_MakePolygon.hxx
-    MeshLib/MeshLib_MakeVertex2d.hxx
+    MeshLib/MeshLib_MakeHypothesis.hxx
+    MeshLib/MeshLib_MakeMesh.hxx
 )
 
 set(MeshLib_PKG_SOURCES
-    MeshLib/MeshLib_Command.cxx
-    MeshLib/MeshLib_EdgeBuilder.cxx
-    MeshLib/MeshLib_FaceBuilder.cxx
-    MeshLib/MeshLib_MakeCell.cxx
-    MeshLib/MeshLib_MakeEdge.cxx
-    MeshLib/MeshLib_MakeFace.cxx
-    MeshLib/MeshLib_MakeLine.cxx
-    MeshLib/MeshLib_MakeLine2d.cxx
-    MeshLib/MeshLib_MakeObject.cxx
-    MeshLib/MeshLib_MakePolygon.cxx
-    MeshLib/MeshLib_MakeVertex2d.cxx
+    MeshLib/MeshLib_MakeHypothesis.cxx
+    MeshLib/MeshLib_MakeMesh.cxx
 )
 
 # =============================================================================
@@ -1189,6 +1190,18 @@ set(TColpmp_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : Tetgen
+# =============================================================================
+
+set(Tetgen_PKG_HEADERS
+    Tetgen/Tetgen_Mesher.hxx
+)
+
+set(Tetgen_PKG_SOURCES
+    Tetgen/Tetgen_Mesher.cxx
+)
+
+# =============================================================================
 # Package : Trsf2d
 # =============================================================================
 
@@ -1216,6 +1229,20 @@ set(Toolkit_PKG_HEADERS
 set(Toolkit_PKG_SOURCES
     Toolkit/Toolkit.cxx
     Toolkit/Toolkit_Version.cxx
+)
+
+# =============================================================================
+# Package : Triangle
+# =============================================================================
+
+set(Triangle_PKG_HEADERS
+    Triangle/Triangle_FaceMesher.hxx
+    Triangle/Triangle_Parameters.hxx
+)
+
+set(Triangle_PKG_SOURCES
+    Triangle/Triangle_FaceMesher.cxx
+    Triangle/Triangle_Parameters.cxx
 )
 
 # =============================================================================
@@ -1323,13 +1350,28 @@ set(xsp_PKG_SOURCES
 # header files
 set(Ceres_HEADERS
     ${BRepCell_PKG_HEADERS}
-    ${Discrete_PKG_HEADERS}
+    ${cp_PKG_HEADERS}
+    ${Mesh_PKG_HEADERS}
+    ${MeshAbs_PKG_HEADERS}
+    ${MeshAlgo_PKG_HEADERS}
+    ${MeshDS_PKG_HEADERS}
+    ${MeshFunc_PKG_HEADERS}
+    ${MeshLib_PKG_HEADERS}
+    ${Tetgen_PKG_HEADERS}
+    ${Triangle_PKG_HEADERS}
 )
 
 # source files
 set(Ceres_SOURCES
     ${BRepCell_PKG_SOURCES}
-    ${Discrete_PKG_SOURCES}
+    ${cp_PKG_SOURCES}
+    ${Mesh_PKG_SOURCES}
+    ${MeshAlgo_PKG_SOURCES}
+    ${MeshDS_PKG_SOURCES}
+    ${MeshFunc_PKG_SOURCES}
+    ${MeshLib_PKG_SOURCES}
+    ${Tetgen_PKG_SOURCES}
+    ${Triangle_PKG_SOURCES}
 )
 
 # include directories
@@ -1337,7 +1379,15 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/BRepCell
-    ${CMAKE_CURRENT_SOURCE_DIR}/Discrete
+    ${CMAKE_CURRENT_SOURCE_DIR}/cp
+    ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshAlgo
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshFunc
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
+    ${CMAKE_CURRENT_SOURCE_DIR}/Tetgen
+    ${CMAKE_CURRENT_SOURCE_DIR}/Triangle
     ${OpenCASCADE_INCLUDE_DIR}
     ${Triangle_INCLUDE_DIRS}
 )
@@ -1349,6 +1399,7 @@ set(Ceres_LINKED_LIBRARIES
     ${OpenCASCADE_ModelingAlgorithms_LIBRARIES}
     ${OpenCASCADE_ApplicationFramework_LIBRARIES}
     ${OpenCASCADE_DataExchange_LIBRARIES}
+    ${Tetgen_LIBRARIES}
     ${Triangle_LIBRARIES}
 )
 

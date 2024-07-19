@@ -21,8 +21,13 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <Tetgen_Mesher.hxx>
 
+// OpenCascade
+#include <StdFail_NotDone.hxx>
+
+// Tetgen
+#include <tetgen.h>
 
 
 
@@ -31,7 +36,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+Tetgen_Mesher::Tetgen_Mesher()
+    : myIsDone(Standard_False)
 {
 
 }
@@ -41,46 +47,61 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+Tetgen_Mesher::~Tetgen_Mesher()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief Cell()
+ *  \brief Check()
 */
 // ============================================================================
-const MeshDS_Cell& MeshDS_TEdge::Cell() const
+void Tetgen_Mesher::Check()const
 {
-    return myCell;
+    if (!myIsDone)
+        throw StdFail_NotDone("Tetgen_Mesher::Check() -> Command not done");
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief IsDone()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+Standard_Boolean Tetgen_Mesher::IsDone() const
 {
-    return MeshAbs_OBJ_Edge;
+    return myIsDone;
 }
 
 // ============================================================================
 /*!
- *  \brief SetCell()
+ *  \brief Perform()
 */
 // ============================================================================
-void MeshDS_TEdge::SetCell(const MeshDS_Cell &theCell)
+void Tetgen_Mesher::Perform()
 {
-    myCell = theCell;
+
+}
+
+// ============================================================================
+/*!
+ *  \brief SetDone()
+*/
+// ============================================================================
+void Tetgen_Mesher::SetDone()
+{
+    myIsDone = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotDone()
+*/
+// ============================================================================
+void Tetgen_Mesher::SetNotDone()
+{
+    myIsDone = Standard_False;
 }
 
 
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)

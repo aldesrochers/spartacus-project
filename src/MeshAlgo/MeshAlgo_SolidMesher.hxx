@@ -20,33 +20,31 @@
 // ============================================================================
 
 
+#ifndef __MeshAlgo_SolidMesher_hxx__
+#define __MeshAlgo_SolidMesher_hxx__
+
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_Mesher.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshAlgo_SolidMesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class MeshAlgo_SolidMesher : public MeshAlgo_Mesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshAlgo_SolidMesher();
+    // destructors
+    Standard_EXPORT ~MeshAlgo_SolidMesher();
 
+};
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __MeshAlgo_SolidMesher_hxx__

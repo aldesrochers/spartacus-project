@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_FaceMesher.hxx>
+
 
 
 // ============================================================================
@@ -29,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshAlgo_FaceMesher::MeshAlgo_FaceMesher()
 {
 
 }
@@ -39,14 +40,27 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshAlgo_FaceMesher::~MeshAlgo_FaceMesher()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief Face()
+*/
+// ============================================================================
+const TopoDS_Face& MeshAlgo_FaceMesher::Face() const
+{
+    return myFace;
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+// ============================================================================
+/*!
+ *  \brief SetFace()
+*/
+// ============================================================================
+void MeshAlgo_FaceMesher::SetFace(const TopoDS_Face &theFace)
+{
+    myFace = theFace;
+}

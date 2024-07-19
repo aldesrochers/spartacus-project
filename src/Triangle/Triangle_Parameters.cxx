@@ -21,7 +21,9 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <Triangle_Parameters.hxx>
+
+
 
 
 // ============================================================================
@@ -29,7 +31,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+Triangle_Parameters::Triangle_Parameters()
 {
 
 }
@@ -39,14 +41,8 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+Triangle_Parameters::~Triangle_Parameters()
 {
 
 }
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)

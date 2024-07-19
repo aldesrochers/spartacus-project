@@ -39,7 +39,6 @@
 #include <MeshAbs_TypeOfShape.hxx>
 #include <MeshDS_Cell.hxx>
 #include <MeshDS_Group.hxx>
-#include <Mesh_Point.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_Node.hxx>
 #include <MeshDS_Vertex.hxx>
@@ -71,8 +70,6 @@ public:
     static Standard_EXPORT Standard_Boolean             IsPoint3d(const MeshDS_Vertex& theVertex);
 
     static Standard_EXPORT TCollection_AsciiString      Name(const MeshDS_Group& theGroup);
-
-    static Standard_EXPORT const Handle(Mesh_Point)&    Point(const MeshDS_Vertex& theVertex);
 
     static Standard_EXPORT TopoDS_Shape                 Shape(const MeshDS_Cell& theCell);
 

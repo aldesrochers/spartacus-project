@@ -24,7 +24,6 @@
 #define __MeshDS_TVertex_hxx__
 
 // Spartacus
-#include <Mesh_Point.hxx>
 #include <MeshDS_ListOfObject.hxx>
 #include <MeshDS_Mesh.hxx>
 #include <MeshDS_TObject.hxx>
@@ -59,15 +58,12 @@ public:
     Standard_EXPORT const MeshDS_ListOfObject&  LinkedCells() const;
     Standard_EXPORT MeshDS_ListOfObject&        LinkedCells();
     Standard_EXPORT const MeshDS_Mesh&          Mesh() const;
-    Standard_EXPORT const Handle(Mesh_Point)&   Point() const;
     Standard_EXPORT void                        SetMesh(const MeshDS_Mesh& theMesh);
-    Standard_EXPORT void                        SetPoint(const Handle(Mesh_Point)& thePoint);
 
 private:
 
     MeshDS_ListOfObject     myLinkedCells;
     MeshDS_Mesh             myMesh;
-    Handle(Mesh_Point)    myPoint;
 
 public:
 

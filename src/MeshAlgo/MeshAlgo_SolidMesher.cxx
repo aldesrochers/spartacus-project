@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_SolidMesher.hxx>
+
 
 
 // ============================================================================
@@ -29,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshAlgo_SolidMesher::MeshAlgo_SolidMesher()
 {
 
 }
@@ -39,14 +40,8 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshAlgo_SolidMesher::~MeshAlgo_SolidMesher()
 {
 
 }
 
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)

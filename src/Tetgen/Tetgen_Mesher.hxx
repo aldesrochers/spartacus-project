@@ -20,33 +20,50 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __Tetgen_Mesher_hxx__
+#define __Tetgen_Mesher_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+#include <TopoDS_Face.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Tetgen_Mesher
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class Tetgen_Mesher
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT Tetgen_Mesher();
+    // destructors
+    Standard_EXPORT ~Tetgen_Mesher();
+
+public:
+
+    Standard_EXPORT void                    Check() const;
+    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT void                    Perform();
+
+protected:
+
+    Standard_EXPORT void                    SetDone();
+    Standard_EXPORT void                    SetNotDone();
+
+protected:
+
+    TopoDS_Face             myFace;
+    Standard_Boolean        myIsDone;
+
+};
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+#endif // __Tetgen_Mesher_hxx__

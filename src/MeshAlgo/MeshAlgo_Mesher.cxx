@@ -21,7 +21,8 @@
 
 
 // Spartacus
-#include <Mesh_Cell.hxx>
+#include <MeshAlgo_Mesher.hxx>
+
 
 
 // ============================================================================
@@ -29,7 +30,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+MeshAlgo_Mesher::MeshAlgo_Mesher()
+    : myIsDone(Standard_False)
 {
 
 }
@@ -39,14 +41,39 @@ Mesh_Cell::Mesh_Cell()
  *  \brief Destructor
 */
 // ============================================================================
-Mesh_Cell::~Mesh_Cell()
+MeshAlgo_Mesher::~MeshAlgo_Mesher()
 {
 
 }
 
+// ============================================================================
+/*!
+ *  \brief IsDone()
+*/
+// ============================================================================
+Standard_Boolean MeshAlgo_Mesher::IsDone() const
+{
+    return myIsDone;
+}
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+// ============================================================================
+/*!
+ *  \brief SetDone()
+*/
+// ============================================================================
+void MeshAlgo_Mesher::SetDone()
+{
+    myIsDone = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotDone()
+*/
+// ============================================================================
+void MeshAlgo_Mesher::SetNotDone()
+{
+    myIsDone = Standard_False;
+}
+
+

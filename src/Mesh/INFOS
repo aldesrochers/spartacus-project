@@ -1,3 +1,4 @@
 Mesh
 
-This package contains classes used to represents mesh objects.
+This package contains classes used to contain data of tesselated
+geometry objects.

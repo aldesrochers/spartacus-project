@@ -20,33 +20,35 @@
 // ============================================================================
 
 
-// Spartacus
-#include <Mesh_Cell.hxx>
+#ifndef __Triangle_Parameters_hxx__
+#define __Triangle_Parameters_hxx__
+
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Triangle_Parameters
 */
 // ============================================================================
-Mesh_Cell::Mesh_Cell()
+class Triangle_Parameters
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-Mesh_Cell::~Mesh_Cell()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT Triangle_Parameters();
+    // destructors
+    Standard_EXPORT ~Triangle_Parameters();
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Mesh_Cell, Mesh_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Mesh_Cell, Mesh_Object)
+
+};
+
+
+#endif // __Triangle_Parameters_hxx__

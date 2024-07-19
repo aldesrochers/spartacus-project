@@ -25,6 +25,7 @@
 
 // Spartacus
 #include <Mesh_Object.hxx>
+#include <Mesh_Vertex.hxx>
 
 // Forward declarations
 class Mesh_Cell;

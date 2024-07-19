@@ -23,12 +23,6 @@
 using namespace std;
 
 // Spartacus
-#include <Mesh_Curve1d.hxx>
-#include <Mesh_Curve2d.hxx>
-#include <Mesh_Curve3d.hxx>
-#include <Mesh_Point1d.hxx>
-#include <Mesh_Point2d.hxx>
-#include <Mesh_Point3d.hxx>
 #include <MeshDS_Builder.hxx>
 #include <MeshDS_TCell.hxx>
 #include <MeshDS_TEdge.hxx>
@@ -235,30 +229,6 @@ void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex) const
 */
 // ============================================================================
 void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
-                                const gp_Pnt1d& thePoint) const
-{
-    MakeVertex(theVertex);
-    UpdateVertex(theVertex, thePoint);
-}
-
-// ============================================================================
-/*!
- *  \brief MakeVertex()
-*/
-// ============================================================================
-void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
-                                const gp_Pnt2d& thePoint) const
-{
-    MakeVertex(theVertex);
-    UpdateVertex(theVertex, thePoint);
-}
-
-// ============================================================================
-/*!
- *  \brief MakeVertex()
-*/
-// ============================================================================
-void MeshDS_Builder::MakeVertex(MeshDS_Vertex &theVertex,
                                 const gp_Pnt& thePoint) const
 {
     MakeVertex(theVertex);
@@ -428,7 +398,7 @@ void MeshDS_Builder::UpdateEdge(const MeshDS_Edge &theEdge,
                                 const Handle(Geom2d_Curve)& theCurve) const
 {
     const Handle(MeshDS_TEdge)& aTEdge = *((Handle(MeshDS_TEdge)*) &theEdge.TObject());
-    Handle(Mesh_Curve2d) aCurve2d = new Mesh_Curve2d(theCurve);
+    //Handle(Mesh_Curve2d) aCurve2d = new Mesh_Curve2d(theCurve);
 
 }
 
@@ -450,35 +420,9 @@ void MeshDS_Builder::UpdateGroup(const MeshDS_Group &theGroup,
 */
 // ============================================================================
 void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
-                                  const gp_Pnt1d& thePoint) const
-{
-    const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(Mesh_Point1d) aPoint = new Mesh_Point1d(thePoint);
-    aTVertex->SetPoint(aPoint);
-}
-
-// ============================================================================
-/*!
- *  \brief UpdateVertex()
-*/
-// ============================================================================
-void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
-                                  const gp_Pnt2d& thePoint) const
-{
-    const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(Mesh_Point2d) aPoint = new Mesh_Point2d(thePoint);
-    aTVertex->SetPoint(aPoint);
-}
-
-// ============================================================================
-/*!
- *  \brief UpdateVertex()
-*/
-// ============================================================================
-void MeshDS_Builder::UpdateVertex(const MeshDS_Vertex &theVertex,
                                   const gp_Pnt& thePoint) const
 {
     const Handle(MeshDS_TVertex)& aTVertex = *((Handle(MeshDS_TVertex)*) &theVertex.TObject());
-    Handle(Mesh_Point3d) aPoint = new Mesh_Point3d(thePoint);
-    aTVertex->SetPoint(aPoint);
+    //Handle(Mesh_Point3d) aPoint = new Mesh_Point3d(thePoint);
+    //aTVertex->SetPoint(aPoint);
 }
