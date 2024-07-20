@@ -20,47 +20,17 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_ListOfRegion_hxx__
+#define __Triangle_ListOfRegion_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <NCollection_List.hxx>
 
+// Spartacus
+#include <Triangle_Region.hxx>
 
-// ============================================================================
-/*!
- *  \brief Triangle_Command
-*/
-// ============================================================================
-class Triangle_Command
-{
+// Type definitions
+typedef NCollection_List<Handle(Triangle_Region)>               Triangle_ListOfRegion;
+typedef NCollection_List<Handle(Triangle_Region)>::Iterator     Triangle_ListIteratorOfListOfRegion;
 
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-    // constructors
-    Standard_EXPORT Triangle_Command();
-    // destructors
-    Standard_EXPORT ~Triangle_Command();
-
-public:
-
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
-
-};
-
-
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_ListOfRegion_hxx__

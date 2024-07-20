@@ -20,47 +20,41 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_Object_hxx__
+#define __Triangle_Object_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+
+// Forward declarations
+class Triangle_Object;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Triangle_Object, Standard_Transient)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle_Object
 */
 // ============================================================================
-class Triangle_Command
+class Triangle_Object : public Standard_Transient
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Triangle_Object();
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Triangle_Object();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Triangle_Object, Standard_Transient)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_Object_hxx__

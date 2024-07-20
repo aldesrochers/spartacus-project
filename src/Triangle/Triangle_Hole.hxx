@@ -20,47 +20,53 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_Hole_hxx__
+#define __Triangle_Hole_hxx__
+
+// Spartacus
+#include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <gp_Pnt2d.hxx>
+
+// Forward declarations
+class Triangle_Hole;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Triangle_Hole, Triangle_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle_Hole
 */
 // ============================================================================
-class Triangle_Command
+class Triangle_Hole : public Triangle_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Triangle_Hole();
+    Standard_EXPORT Triangle_Hole(const gp_Pnt2d& thePoint);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Triangle_Hole();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT gp_Pnt2d&       ChangePoint();
+    Standard_EXPORT const gp_Pnt2d& Point() const;
+    Standard_EXPORT void            SetPoint(const gp_Pnt2d& thePoint);
 
-protected:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+private:
 
-protected:
+    gp_Pnt2d      myPoint;
 
-    Standard_Boolean        myIsDone;
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Triangle_Hole, Triangle_Object)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_Hole_hxx__

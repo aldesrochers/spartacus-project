@@ -25,7 +25,7 @@ using namespace std;
 
 // Spartacus
 #include <MeshFunc_CurveNbSegments.hxx>
-#include <Triangle_FaceMesher.hxx>
+
 
 // OpenCascade
 #include <GeomAdaptor_Curve.hxx>
@@ -83,9 +83,7 @@ int main(int argc, char** argv)
     TopoDS_Wire aWire = aPolyBuilder.Wire();
     TopoDS_Face aFace = BRepBuilderAPI_MakeFace(aWire, Standard_True);
 
-    Triangle_FaceMesher aMesher;
-    aMesher.SetFace(aFace);
-    aMesher.Perform();
+
 
 
 

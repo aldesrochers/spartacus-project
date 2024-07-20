@@ -20,20 +20,20 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_MakeModel_hxx__
+#define __Tetgen_MakeModel_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+// Spartacus
+#include <Tetgen_Command.hxx>
+#include <Tetgen_Model.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_MakeModel
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_MakeModel : public Tetgen_Command
 {
 
 public:
@@ -42,25 +42,19 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_MakeModel();
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_MakeModel();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT const Handle(Tetgen_Model)&     Model() const;
 
-protected:
+private:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
+    Handle(Tetgen_Model)    myModel;
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_MakeModel_hxx__

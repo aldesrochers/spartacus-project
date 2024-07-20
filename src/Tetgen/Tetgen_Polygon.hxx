@@ -20,47 +20,54 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Polygon_hxx__
+#define __Tetgen_Polygon_hxx__
+
+// Spartacus
+#include <Tetgen_Object.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+
+// Forward declarations
+class Tetgen_Polygon;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Tetgen_Polygon, Tetgen_Object)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_Polygon
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_Polygon : public Tetgen_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_Polygon();
+    Standard_EXPORT Tetgen_Polygon(const TColStd_Array1OfInteger& theNodes);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_Polygon();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT TColStd_Array1OfInteger&        ChangeNodes();
+    Standard_EXPORT Standard_Boolean                IsDegenerated() const;
+    Standard_EXPORT Standard_Integer                NbNodes() const;
+    Standard_EXPORT const TColStd_Array1OfInteger&  Nodes() const;
 
-protected:
+private:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+    TColStd_Array1OfInteger     myNodes;
 
-protected:
+public:
 
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Tetgen_Polygon, Tetgen_Object)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Polygon_hxx__

@@ -20,47 +20,56 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_Segment_hxx__
+#define __Triangle_Segment_hxx__
+
+// Spartacus
+#include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <TColStd_Array1OfInteger.hxx>
+
+// Forward declarations
+class Triangle_Segment;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Triangle_Segment, Triangle_Object)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle_Segment
 */
 // ============================================================================
-class Triangle_Command
+class Triangle_Segment : public Triangle_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Triangle_Segment();
+    Standard_EXPORT Triangle_Segment(const Standard_Integer theNode1,
+                                     const Standard_Integer theNode2);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Triangle_Segment();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
 
-protected:
+private:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+    Standard_Integer    myNode1;
+    Standard_Integer    myNode2;
 
-protected:
+public:
 
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Triangle_Segment, Triangle_Object)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_Segment_hxx__

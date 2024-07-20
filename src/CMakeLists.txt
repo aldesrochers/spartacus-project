@@ -1194,11 +1194,40 @@ set(TColpmp_PKG_HEADERS
 # =============================================================================
 
 set(Tetgen_PKG_HEADERS
+    Tetgen/Tetgen_Array1OfFacet.hxx
+    Tetgen/Tetgen_Array1OfHole.hxx
+    Tetgen/Tetgen_Array1OfNode.hxx
+    Tetgen/Tetgen_Array1OfPolygon.hxx
+    Tetgen/Tetgen_Array1OfRegion.hxx
+    Tetgen/Tetgen_Command.hxx
+    Tetgen/Tetgen_Edge.hxx
+    Tetgen/Tetgen_Facet.hxx
+    Tetgen/Tetgen_Hole.hxx
+    Tetgen/Tetgen_MakeModel.hxx
     Tetgen/Tetgen_Mesher.hxx
+    Tetgen/Tetgen_Model.hxx
+    Tetgen/Tetgen_Node.hxx
+    Tetgen/Tetgen_Object.hxx
+    Tetgen/Tetgen_Polygon.hxx
+    Tetgen/Tetgen_Region.hxx
+    Tetgen/Tetgen_Tetrahedron.hxx
+    Tetgen/Tetgen_Triangle.hxx
 )
 
 set(Tetgen_PKG_SOURCES
+    Tetgen/Tetgen_Command.cxx
+    Tetgen/Tetgen_Edge.cxx
+    Tetgen/Tetgen_Facet.cxx
+    Tetgen/Tetgen_Hole.cxx
+    Tetgen/Tetgen_MakeModel.cxx
     Tetgen/Tetgen_Mesher.cxx
+    Tetgen/Tetgen_Model.cxx
+    Tetgen/Tetgen_Node.cxx
+    Tetgen/Tetgen_Object.cxx
+    Tetgen/Tetgen_Polygon.cxx
+    Tetgen/Tetgen_Region.cxx
+    Tetgen/Tetgen_Tetrahedron.cxx
+    Tetgen/Tetgen_Triangle.cxx
 )
 
 # =============================================================================
@@ -1236,13 +1265,33 @@ set(Toolkit_PKG_SOURCES
 # =============================================================================
 
 set(Triangle_PKG_HEADERS
-    Triangle/Triangle_FaceMesher.hxx
-    Triangle/Triangle_Parameters.hxx
+    Triangle/Triangle_Array1OfHole.hxx
+    Triangle/Triangle_Array1OfNode.hxx
+    Triangle/Triangle_Array1OfRegion.hxx
+    Triangle/Triangle_Array1OfSegment.hxx
+    Triangle/Triangle_Command.hxx
+    Triangle/Triangle_Hole.hxx
+    Triangle/Triangle_ListOfHole.hxx
+    Triangle/Triangle_ListOfNode.hxx
+    Triangle/Triangle_ListOfRegion.hxx
+    Triangle/Triangle_ListOfSegment.hxx
+    Triangle/Triangle_MakeModel.hxx
+    Triangle/Triangle_Model.hxx
+    Triangle/Triangle_Node.hxx
+    Triangle/Triangle_Object.hxx
+    Triangle/Triangle_Region.hxx
+    Triangle/Triangle_Segment.hxx
 )
 
 set(Triangle_PKG_SOURCES
-    Triangle/Triangle_FaceMesher.cxx
-    Triangle/Triangle_Parameters.cxx
+    Triangle/Triangle_Command.cxx
+    Triangle/Triangle_Hole.cxx
+    Triangle/Triangle_MakeModel.cxx
+    Triangle/Triangle_Model.cxx
+    Triangle/Triangle_Node.cxx
+    Triangle/Triangle_Object.cxx
+    Triangle/Triangle_Region.cxx
+    Triangle/Triangle_Segment.cxx
 )
 
 # =============================================================================

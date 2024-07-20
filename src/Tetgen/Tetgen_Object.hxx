@@ -20,47 +20,41 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Object_hxx__
+#define __Tetgen_Object_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <Standard_DefineHandle.hxx>
+#include <Standard_Transient.hxx>
+
+// Forward declarations
+class Tetgen_Object;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Tetgen_Object, Standard_Transient)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_Object
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_Object : public Standard_Transient
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_Object();
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_Object();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Tetgen_Object, Standard_Transient)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Object_hxx__

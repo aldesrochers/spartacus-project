@@ -34,11 +34,16 @@ using namespace std;
 #include <TopoDS_Face.hxx>
 #include <TopoDS_Wire.hxx>
 #include <BRepMesh_IncrementalMesh.hxx>
+#include <BRepBuilderAPI_MakeWire.hxx>
+#include <BRepBuilderAPI_MakeVertex.hxx>
+#include <BRepBuilderAPI_MakeFace.hxx>
+#include <BRepBuilderAPI_MakePolygon.hxx>
 
-#include <MeshAlgo_MakeMesh.hxx>
-#include <MeshAlgo_EdgeEqualRange.hxx>
-#include <MeshLib_MakeMesh.hxx>
-
+// Spartacus
+#include <Triangle_MakeModel.hxx>
+#include <Triangle_Model.hxx>
+#include <Triangle_Node.hxx>
+#include <cp_LinearLine.hxx>
 
 // ============================================================================
 /*!
@@ -48,13 +53,26 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    TopoDS_Shape aShape;
-    DEBRepCascade_Provider aProvider;
-    cout << aProvider.Read(TCollection_AsciiString("/home/alexis/Sources/opencascade-7.7.0/data/occ/bottle.brep"), aShape) << endl;
+    //TopoDS_Shape aShape;
+    //DEBRepCascade_Provider aProvider;
+    //cout << aProvider.Read(TCollection_AsciiString("/home/alexis/Sources/opencascade-7.7.0/data/occ/bottle.brep"), aShape) << endl;
 
-    MeshLib_MakeMesh aMesher;
-    aMesher.SetShape(aShape);
-    aMesher.Perform();
+
+    TopoDS_Vertex aVertex1 = BRepBuilderAPI_MakeVertex(gp_Pnt(0,0,0)).Vertex();
+    TopoDS_Vertex aVertex2 = BRepBuilderAPI_MakeVertex(gp_Pnt(1,0,0)).Vertex();
+    TopoDS_Vertex aVertex3 = BRepBuilderAPI_MakeVertex(gp_Pnt(1,1,0)).Vertex();
+    TopoDS_Vertex aVertex4 = BRepBuilderAPI_MakeVertex(gp_Pnt(0,1,0)).Vertex();
+    TopoDS_Wire aWire = BRepBuilderAPI_MakePolygon(aVertex1, aVertex2, aVertex3, aVertex4, Standard_True).Wire();
+    TopoDS_Face aFace = BRepBuilderAPI_MakeFace(aWire, Standard_True).Face();
+
+    Handle(Triangle_Model) aModel = Triangle_MakeModel(aFace).Model();
+
+    cout << aModel->NbNodes() << endl;
+    cout << aModel->NbSegments() << endl;
+
+    Handle(Triangle_Segment) aSegment = aModel->Segment(3);
+    cout << aSegment->Node1() << " " << aSegment->Node2() << endl;
+
 
 
     cout << "Test_Mesh" << endl;

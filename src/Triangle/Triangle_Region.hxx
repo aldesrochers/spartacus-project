@@ -20,50 +20,58 @@
 // ============================================================================
 
 
-#ifndef __Triangle_MakeTriangulation_hxx__
-#define __Triangle_MakeTriangulation_hxx__
+#ifndef __Triangle_Region_hxx__
+#define __Triangle_Region_hxx__
 
 // Spartacus
-#include <Triangle_Command.hxx>
+#include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <Poly_Triangulation.hxx>
-#include <TColgp_Array1OfPnt2d.hxx>
+#include <gp_Pnt2d.hxx>
+
+// Forward declarations
+class Triangle_Region;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Triangle_Region, Triangle_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_MakeTriangulation
+ *  \brief Triangle_Region
 */
 // ============================================================================
-class Triangle_MakeTriangulation : public Triangle_Command
+class Triangle_Region : public Triangle_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC;
-
-public:
     // constructors
-    Standard_EXPORT Triangle_MakeTriangulation(const TColgp_Array1OfPnt2d& thePoints,
-                                               const Standard_Real theMaxArea);
+    Standard_EXPORT Triangle_Region();
+    Standard_EXPORT Triangle_Region(const gp_Pnt2d& thePoint);
     // destructors
-    Standard_EXPORT ~Triangle_MakeTriangulation();
+    Standard_EXPORT ~Triangle_Region();
 
 public:
 
-    Standard_EXPORT const Handle(Poly_Triangulation)&   Triangulation() const;
+    Standard_EXPORT Standard_Integer    Attribute() const;
+    Standard_EXPORT gp_Pnt2d&           ChangePoint();
+    Standard_EXPORT Standard_Real       MaxArea() const;
+    Standard_EXPORT const gp_Pnt2d&     Point() const;
+    Standard_EXPORT void                SetAttribute(const Standard_Integer theAttribute);
+    Standard_EXPORT void                SetMaxArea(const Standard_Real theMaxArea);
+    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
 
-protected:
+public:
 
-    Standard_EXPORT void            Initialize(const TColgp_Array1OfPnt2d& thePoints,
-                                               const Standard_Real theMaxArea);
+    DEFINE_STANDARD_RTTIEXT(Triangle_Region, Triangle_Object)
 
 private:
 
-    Handle(Poly_Triangulation)      myTriangulation;
+    Standard_Integer    myAttribute;
+    Standard_Real       myMaxArea;
+    gp_Pnt2d            myPoint;
 
 };
 
 
-#endif // __Triangle_MakeTriangulation_hxx__
+#endif // __Triangle_Region_hxx__

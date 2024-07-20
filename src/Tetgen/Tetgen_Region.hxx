@@ -20,47 +20,58 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Region_hxx__
+#define __Tetgen_Region_hxx__
+
+// Spartacus
+#include <Tetgen_Object.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <gp_Pnt.hxx>
+
+// Forward declarations
+class Tetgen_Region;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Tetgen_Region, Tetgen_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_Region
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_Region : public Tetgen_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_Region();
+    Standard_EXPORT Tetgen_Region(const gp_Pnt& thePoint);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_Region();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT Standard_Integer    Attribute() const;
+    Standard_EXPORT gp_Pnt&             ChangePoint();
+    Standard_EXPORT Standard_Real       MaxVolumne() const;
+    Standard_EXPORT const gp_Pnt&       Point() const;
+    Standard_EXPORT void                SetAttribute(const Standard_Integer theAttribute);
+    Standard_EXPORT void                SetMaxVolumne(const Standard_Real theMaxVolumne);
+    Standard_EXPORT void                SetPoint(const gp_Pnt& thePoint);
 
-protected:
+public:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+    DEFINE_STANDARD_RTTIEXT(Tetgen_Region, Tetgen_Object)
 
-protected:
+private:
 
-    Standard_Boolean        myIsDone;
+    Standard_Integer    myAttribute;
+    Standard_Real       myMaxVolumne;
+    gp_Pnt              myPoint;
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Region_hxx__

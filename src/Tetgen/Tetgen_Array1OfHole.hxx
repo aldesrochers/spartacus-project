@@ -20,47 +20,17 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Array1OfHole_hxx__
+#define __Tetgen_Array1OfHole_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <NCollection_Array1.hxx>
+
+// Spartacus
+#include <Tetgen_Hole.hxx>
+
+// Type definitions
+typedef NCollection_Array1<Handle(Tetgen_Hole)>     Tetgen_Array1OfHole;
 
 
-// ============================================================================
-/*!
- *  \brief Triangle_Command
-*/
-// ============================================================================
-class Triangle_Command
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-    // constructors
-    Standard_EXPORT Triangle_Command();
-    // destructors
-    Standard_EXPORT ~Triangle_Command();
-
-public:
-
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
-
-};
-
-
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Array1OfHole_hxx__

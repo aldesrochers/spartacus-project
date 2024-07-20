@@ -20,35 +20,17 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Parameters_hxx__
-#define __Triangle_Parameters_hxx__
+#ifndef __Tetgen_Array1OfFacet_hxx__
+#define __Tetgen_Array1OfFacet_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <NCollection_Array1.hxx>
+
+// Spartacus
+#include <Tetgen_Facet.hxx>
+
+// Type definitions
+typedef NCollection_Array1<Handle(Tetgen_Facet)>    Tetgen_Array1OfFacet;
 
 
-// ============================================================================
-/*!
- *  \brief Triangle_Parameters
-*/
-// ============================================================================
-class Triangle_Parameters
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-    // constructors
-    Standard_EXPORT Triangle_Parameters();
-    // destructors
-    Standard_EXPORT ~Triangle_Parameters();
-
-
-
-};
-
-
-#endif // __Triangle_Parameters_hxx__
+#endif // __Tetgen_Array1OfFacet_hxx__

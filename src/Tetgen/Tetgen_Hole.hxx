@@ -20,47 +20,52 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Hole_hxx__
+#define __Tetgen_Hole_hxx__
+
+// Spartacus
+#include <Tetgen_Object.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <gp_Pnt.hxx>
+
+// Forward declarations
+class Tetgen_Hole;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Tetgen_Hole, Tetgen_Object)
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_Hole
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_Hole : public Tetgen_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_Hole();
+    Standard_EXPORT Tetgen_Hole(const gp_Pnt& thePoint);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_Hole();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT gp_Pnt&         ChangePoint();
+    Standard_EXPORT const gp_Pnt&   Point() const;
+    Standard_EXPORT void            SetPoint(const gp_Pnt& thePoint);
 
-protected:
+private:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+    gp_Pnt      myPoint;
 
-protected:
+public:
 
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Tetgen_Hole, Tetgen_Object)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Hole_hxx__

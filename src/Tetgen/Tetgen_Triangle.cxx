@@ -20,47 +20,35 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+// Spartacus
+#include <Tetgen_Triangle.hxx>
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Constructor
 */
 // ============================================================================
-class Triangle_Command
+Tetgen_Triangle::Tetgen_Triangle()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+Tetgen_Triangle::~Tetgen_Triangle()
+{
 
-public:
-    // constructors
-    Standard_EXPORT Triangle_Command();
-    // destructors
-    Standard_EXPORT ~Triangle_Command();
-
-public:
-
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
-
-};
+}
 
 
-#endif // __Triangle_Command_hxx__
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Tetgen_Triangle, Tetgen_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Tetgen_Triangle, Tetgen_Object)
+

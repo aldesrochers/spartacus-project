@@ -20,19 +20,20 @@
 // ============================================================================
 
 
-#ifndef __Triangle_FaceMesher_hxx__
-#define __Triangle_FaceMesher_hxx__
+#ifndef __Tetgen_Command_hxx__
+#define __Tetgen_Command_hxx__
 
-// Spartacus
-#include <MeshAlgo_FaceMesher.hxx>
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_FaceMesher
+ *  \brief Tetgen_Command
 */
 // ============================================================================
-class Triangle_FaceMesher : public MeshAlgo_FaceMesher
+class Tetgen_Command
 {
 
 public:
@@ -41,15 +42,25 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Triangle_FaceMesher();
+    Standard_EXPORT Tetgen_Command();
     // destructors
-    Standard_EXPORT ~Triangle_FaceMesher();
+    Standard_EXPORT ~Tetgen_Command();
 
 public:
 
-    Standard_EXPORT void        Perform() Standard_OVERRIDE;
+    Standard_EXPORT void                    Check() const;
+    Standard_EXPORT Standard_Boolean        IsDone() const;
+
+protected:
+
+    Standard_EXPORT void                    SetDone();
+    Standard_EXPORT void                    SetNotDone();
+
+protected:
+
+    Standard_Boolean        myIsDone;
 
 };
 
 
-#endif // __Triangle_FaceMesher_hxx__
+#endif // __Tetgen_Command_hxx__

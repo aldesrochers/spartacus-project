@@ -20,20 +20,23 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_MakeModel_hxx__
+#define __Triangle_MakeModel_hxx__
+
+// Spartacus
+#include <Triangle_Command.hxx>
+#include <Triangle_Model.hxx>
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <TopoDS_Face.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle_MakeModel
 */
 // ============================================================================
-class Triangle_Command
+class Triangle_MakeModel : public Triangle_Command
 {
 
 public:
@@ -42,25 +45,23 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Triangle_MakeModel(const TopoDS_Face& theFace);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Triangle_MakeModel();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
+    Standard_EXPORT const Handle(Triangle_Model)&   Model() const;
 
-protected:
+public:
 
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
+    Standard_EXPORT void    Initialize(const TopoDS_Face& theFace);
 
-protected:
+private:
 
-    Standard_Boolean        myIsDone;
+    Handle(Triangle_Model)  myModel;
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_MakeModel_hxx__

@@ -20,47 +20,39 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Tetgen_Tetrahedron_hxx__
+#define __Tetgen_Tetrahedron_hxx__
 
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+// Spartacus
+#include <Tetgen_Object.hxx>
+
+// Forward declarations
+class Tetgen_Tetrahedron;
+
+// Handles
+DEFINE_STANDARD_HANDLE(Tetgen_Tetrahedron, Tetgen_Object)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Tetgen_Tetrahedron
 */
 // ============================================================================
-class Triangle_Command
+class Tetgen_Tetrahedron : public Tetgen_Object
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Tetgen_Tetrahedron();
     // destructors
-    Standard_EXPORT ~Triangle_Command();
+    Standard_EXPORT ~Tetgen_Tetrahedron();
 
 public:
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
+    DEFINE_STANDARD_RTTIEXT(Tetgen_Tetrahedron, Tetgen_Object)
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Tetgen_Tetrahedron_hxx__

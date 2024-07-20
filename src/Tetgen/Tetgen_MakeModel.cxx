@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <Triangle_Parameters.hxx>
-
-
+#include <Tetgen_MakeModel.hxx>
 
 
 // ============================================================================
@@ -31,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_Parameters::Triangle_Parameters()
+Tetgen_MakeModel::Tetgen_MakeModel()
 {
 
 }
@@ -41,8 +39,19 @@ Triangle_Parameters::Triangle_Parameters()
  *  \brief Destructor
 */
 // ============================================================================
-Triangle_Parameters::~Triangle_Parameters()
+Tetgen_MakeModel::~Tetgen_MakeModel()
 {
 
 }
+
+// ============================================================================
+/*!
+ *  \brief Model()
+*/
+// ============================================================================
+const Handle(Tetgen_Model)& Tetgen_MakeModel::Model() const
+{
+    return myModel;
+}
+
 
