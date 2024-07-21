@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
-
+#include <mp_Edge2N.hxx>
 
 
 
@@ -31,7 +30,10 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+mp_Edge2N::mp_Edge2N(const Standard_Integer theNode1,
+                     const Standard_Integer theNode2)
+    : myNode1(theNode1),
+    myNode2(theNode2)
 {
 
 }
@@ -41,27 +43,28 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+mp_Edge2N::~mp_Edge2N()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Node1()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+Standard_Integer mp_Edge2N::Node1() const
 {
-    return MeshAbs_OBJ_Edge;
+    return myNode1;
 }
 
+// ============================================================================
+/*!
+ *  \brief Node2()
+*/
+// ============================================================================
+Standard_Integer mp_Edge2N::Node2() const
+{
+    return myNode2;
+}
 
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)

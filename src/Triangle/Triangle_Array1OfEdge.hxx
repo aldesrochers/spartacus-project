@@ -20,17 +20,16 @@
 // ============================================================================
 
 
-#ifndef __Triangle_ListOfSegment_hxx__
-#define __Triangle_ListOfSegment_hxx__
+#ifndef __Triangle_Array1OfEdge_hxx__
+#define __Triangle_Array1OfEdge_hxx__
 
 // OpenCascade
-#include <NCollection_List.hxx>
+#include <NCollection_Array1.hxx>
 
 // Spartacus
-#include <Triangle_Segment.hxx>
+#include <Triangle_Edge.hxx>
 
 // Type definitions
-typedef NCollection_List<Handle(Triangle_Segment)>              Triangle_ListOfSegment;
-typedef NCollection_List<Handle(Triangle_Segment)>::Iterator    Triangle_ListIteratorOfListOfSegment;
+typedef NCollection_Array1<Handle(Triangle_Edge)>   Triangle_Array1OfEdge;
 
-#endif // __Triangle_ListOfSegment_hxx__
+#endif // __Triangle_Array1OfEdge_hxx__

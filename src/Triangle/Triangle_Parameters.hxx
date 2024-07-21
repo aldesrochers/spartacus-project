@@ -20,48 +20,43 @@
 // ============================================================================
 
 
-// Spartacus
-#include <MeshDS_TEdge.hxx>
+#ifndef __Triangle_Parameters_hxx__
+#define __Triangle_Parameters_hxx__
 
-
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+#include <TCollection_AsciiString.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Triangle_Parameters
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+class Triangle_Parameters
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT Triangle_Parameters();
+    // destructors
+    Standard_EXPORT ~Triangle_Parameters();
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
+public:
 
+    Standard_EXPORT Standard_Boolean            IsQualityMesh() const;
+    Standard_EXPORT void                        SetQualityMesh(const Standard_Boolean isQualityMesh);
+    Standard_EXPORT TCollection_AsciiString     Switches() const;
+private:
+
+    Standard_Boolean    myIsQualityMesh;
+
+};
 
 
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __Triangle_Parameters_hxx__

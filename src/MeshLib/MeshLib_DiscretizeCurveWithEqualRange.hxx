@@ -20,48 +20,44 @@
 // ============================================================================
 
 
+#ifndef __MeshLib_DiscretizeCurve_hxx__
+#define __MeshLib_DiscretizeCurve_hxx__
+
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <MeshLib_Command.hxx>
 
-
+// OpenCascade
+#include <Geom_Curve.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshLib_DiscretizeCurve
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+class MeshLib_DiscretizeCurve : public MeshLib_Command
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshLib_DiscretizeCurve();
+    // destructors
+    Standard_EXPORT ~MeshLib_DiscretizeCurve();
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
+public:
 
+    Standard_EXPORT const Handle(Geom_Curve)&   Curve() const;
+    Standard_EXPORT void                        SetCurve(const Handle(Geom_Curve)& theCurve);
+
+private:
+
+    Handle(Geom_Curve)  myCurve;
+
+};
 
 
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __MeshLib_DiscretizeCurve_hxx__

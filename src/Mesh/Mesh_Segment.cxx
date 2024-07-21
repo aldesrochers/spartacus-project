@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
-
-
+#include <Mesh_Segment.hxx>
 
 
 // ============================================================================
@@ -31,7 +29,20 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+Mesh_Segment::Mesh_Segment()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+Mesh_Segment::Mesh_Segment(const Standard_Integer theNode1,
+                           const Standard_Integer theNode2)
+    : myNode1(theNode1),
+    myNode2(theNode2)
 {
 
 }
@@ -41,21 +52,50 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+Mesh_Segment::~Mesh_Segment()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Node1()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+Standard_Integer Mesh_Segment::Node1() const
 {
-    return MeshAbs_OBJ_Edge;
+    return myNode1;
 }
 
+// ============================================================================
+/*!
+ *  \brief Node2()
+*/
+// ============================================================================
+Standard_Integer Mesh_Segment::Node2() const
+{
+    return myNode2;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode1()
+*/
+// ============================================================================
+void Mesh_Segment::SetNode1(const Standard_Integer theNode1)
+{
+    myNode1 = theNode1;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNode2()
+*/
+// ============================================================================
+void Mesh_Segment::SetNode2(const Standard_Integer theNode2)
+{
+    myNode2 = theNode2;
+}
 
 
 
@@ -63,5 +103,5 @@ MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+IMPLEMENT_STANDARD_HANDLE(Mesh_Segment, Mesh_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_Segment, Mesh_Object)

@@ -20,48 +20,55 @@
 // ============================================================================
 
 
+#ifndef __MeshDS_TEdge_hxx__
+#define __MeshDS_TEdge_hxx__
+
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <MeshDS_Cell.hxx>
+#include <MeshDS_TObject.hxx>
 
+// OpenCascade
+#include <TopoDS_Edge.hxx>
 
+// Forward declarations
+class MeshDS_TEdge;
 
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
-
-
-
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
+
+
+// ============================================================================
+/*!
+ *  \brief MeshDS_TEdge
+*/
+// ============================================================================
+class MeshDS_TEdge : public MeshDS_TObject
+{
+
+public:
+    // constructors
+    Standard_EXPORT MeshDS_TEdge();
+    // destructors
+    Standard_EXPORT ~MeshDS_TEdge();
+
+public:
+
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT const MeshDS_Cell&              Cell() const;
+    Standard_EXPORT void                            SetCell(const MeshDS_Cell& theCell);
+
+private:
+
+    MeshDS_Cell                 myCell;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+
+};
+
+
+#endif // __MeshDS_TEdge_hxx__

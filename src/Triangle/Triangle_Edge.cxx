@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Triangle_Node.hxx>
+#include <Triangle_Edge.hxx>
 
 
 
@@ -30,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_Node::Triangle_Node()
+Triangle_Edge::Triangle_Edge()
 {
 
 }
@@ -40,8 +40,10 @@ Triangle_Node::Triangle_Node()
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_Node::Triangle_Node(const gp_Pnt2d &thePoint)
-    : myPoint(thePoint)
+Triangle_Edge::Triangle_Edge(const Standard_Integer theNode1,
+                                   const Standard_Integer theNode2)
+    : myNode1(theNode1),
+    myNode2(theNode2)
 {
 
 }
@@ -51,29 +53,9 @@ Triangle_Node::Triangle_Node(const gp_Pnt2d &thePoint)
  *  \brief Destructor
 */
 // ============================================================================
-Triangle_Node::~Triangle_Node()
+Triangle_Edge::~Triangle_Edge()
 {
 
-}
-
-// ============================================================================
-/*!
- *  \brief Attribute()
-*/
-// ============================================================================
-Standard_Real Triangle_Node::Attribute(const Standard_Integer theIndex) const
-{
-    return myAttributes.Value(theIndex);
-}
-
-// ============================================================================
-/*!
- *  \brief Attributes()
-*/
-// ============================================================================
-const TColStd_Array1OfReal& Triangle_Node::Attributes() const
-{
-    return myAttributes;
 }
 
 // ============================================================================
@@ -81,71 +63,29 @@ const TColStd_Array1OfReal& Triangle_Node::Attributes() const
  *  \brief BoundaryMarker()
 */
 // ============================================================================
-Standard_Integer Triangle_Node::BoundaryMarker() const
+Standard_Integer Triangle_Edge::BoundaryMarker() const
 {
     return myBoundaryMarker;
 }
 
 // ============================================================================
 /*!
- *  \brief ChangeAttributes()
+ *  \brief Node1()
 */
 // ============================================================================
-TColStd_Array1OfReal& Triangle_Node::ChangeAttributes()
+Standard_Integer Triangle_Edge::Node1() const
 {
-    return myAttributes;
+    return myNode1;
 }
 
 // ============================================================================
 /*!
- *  \brief ChangePoint()
+ *  \brief Node2()
 */
 // ============================================================================
-gp_Pnt2d& Triangle_Node::ChangePoint()
+Standard_Integer Triangle_Edge::Node2() const
 {
-    return myPoint;
-}
-
-// ============================================================================
-/*!
- *  \brief NbAttributes()
-*/
-// ============================================================================
-Standard_Integer Triangle_Node::NbAttributes() const
-{
-    return myAttributes.Size();
-}
-
-// ============================================================================
-/*!
- *  \brief Point()
-*/
-// ============================================================================
-const gp_Pnt2d& Triangle_Node::Point() const
-{
-    return myPoint;
-}
-
-// ============================================================================
-/*!
- *  \brief ResizeAttributes()
-*/
-// ============================================================================
-void Triangle_Node::ResizeAttributes(const Standard_Integer theNbAttributes,
-                                     const Standard_Boolean toCopyData)
-{
-    myAttributes.Resize(1, theNbAttributes, toCopyData);
-}
-
-// ============================================================================
-/*!
- *  \brief SetAttribute()
-*/
-// ============================================================================
-void Triangle_Node::SetAttribute(const Standard_Integer theIndex,
-                                 const Standard_Real theValue)
-{
-    myAttributes.SetValue(theIndex, theValue);
+    return myNode2;
 }
 
 // ============================================================================
@@ -153,27 +93,35 @@ void Triangle_Node::SetAttribute(const Standard_Integer theIndex,
  *  \brief SetBoundaryMarker()
 */
 // ============================================================================
-void Triangle_Node::SetBoundaryMarker(const Standard_Integer theBoundaryMarker)
+void Triangle_Edge::SetBoundaryMarker(const Standard_Integer theBoundaryMarker)
 {
     myBoundaryMarker = theBoundaryMarker;
 }
 
 // ============================================================================
 /*!
- *  \brief SetPoint()
+ *  \brief SetNode1()
 */
 // ============================================================================
-void Triangle_Node::SetPoint(const gp_Pnt2d &thePoint)
+void Triangle_Edge::SetNode1(const Standard_Integer theNode1)
 {
-    myPoint = thePoint;
+    myNode1 = theNode1;
 }
 
-
+// ============================================================================
+/*!
+ *  \brief SetNode2()
+*/
+// ============================================================================
+void Triangle_Edge::SetNode2(const Standard_Integer theNode2)
+{
+    myNode2 = theNode2;
+}
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Triangle_Node, Triangle_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Triangle_Node, Triangle_Object)
+IMPLEMENT_STANDARD_HANDLE(Triangle_Edge, Triangle_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Triangle_Edge, Triangle_Object)
 

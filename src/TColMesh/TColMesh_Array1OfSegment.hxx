@@ -20,49 +20,16 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TEdge_hxx__
-#define __MeshDS_TEdge_hxx__
-
-// Spartacus
-#include <MeshDS_TObject.hxx>
+#ifndef __TColMesh_Array1OfSegment_hxx__
+#define __TColMesh_Array1OfSegment_hxx__
 
 // OpenCascade
-#include <TopoDS_Edge.hxx>
+#include <NCollection_Array1.hxx>
 
-// Forward declarations
-class MeshDS_TEdge;
+// Spartacus
+#include <Mesh_Segment.hxx>
 
-// Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
+// Type definitions
+typedef NCollection_Array1<Handle(Mesh_Segment)>    TColMesh_Array1OfSegment;
 
-
-// ============================================================================
-/*!
- *  \brief MeshDS_TEdge
-*/
-// ============================================================================
-class MeshDS_TEdge : public MeshDS_TObject
-{
-
-public:
-    // constructors
-    Standard_EXPORT MeshDS_TEdge();
-    // destructors
-    Standard_EXPORT ~MeshDS_TEdge();
-
-public:
-
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
-
-private:
-
-    TopoDS_Edge     myTopology;
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
-
-};
-
-
-#endif // __MeshDS_TEdge_hxx__
+#endif  // __TColMesh_Array1OfSegment_hxx__

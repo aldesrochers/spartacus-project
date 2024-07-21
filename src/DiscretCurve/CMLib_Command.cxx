@@ -21,9 +21,10 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <MeshLib_Command.hxx>
 
-
+// OpenCascade
+#include <StdFail_NotDone.hxx>
 
 
 // ============================================================================
@@ -31,7 +32,8 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+MeshLib_Command::MeshLib_Command()
+    : myIsDone(Standard_False)
 {
 
 }
@@ -41,27 +43,51 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+MeshLib_Command::~MeshLib_Command()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief Check()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+void MeshLib_Command::Check()const
 {
-    return MeshAbs_OBJ_Edge;
+    if (!myIsDone)
+        throw StdFail_NotDone("MeshLib_Command::Check() -> Command not done");
+}
+
+// ============================================================================
+/*!
+ *  \brief IsDone()
+*/
+// ============================================================================
+Standard_Boolean MeshLib_Command::IsDone() const
+{
+    return myIsDone;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetDone()
+*/
+// ============================================================================
+void MeshLib_Command::SetDone()
+{
+    myIsDone = Standard_True;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetNotDone()
+*/
+// ============================================================================
+void MeshLib_Command::SetNotDone()
+{
+    myIsDone = Standard_False;
 }
 
 
 
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)

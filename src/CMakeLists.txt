@@ -551,6 +551,8 @@ set(Mesh_PKG_HEADERS
     Mesh/Mesh_Line.hxx
     Mesh/Mesh_LinearLine.hxx
     Mesh/Mesh_Object.hxx
+    Mesh/Mesh_Point.hxx
+    Mesh/Mesh_Segment.hxx
     Mesh/Mesh_Vertex.hxx
 )
 
@@ -559,6 +561,8 @@ set(Mesh_PKG_SOURCES
     Mesh/Mesh_Line.cxx
     Mesh/Mesh_LinearLine.cxx
     Mesh/Mesh_Object.cxx
+    Mesh/Mesh_Point.cxx
+    Mesh/Mesh_Segment.cxx
     Mesh/Mesh_Vertex.cxx
 )
 
@@ -725,11 +729,17 @@ set(MeshFunc_PKG_SOURCES
 # =============================================================================
 
 set(MeshLib_PKG_HEADERS
+    MeshLib/MeshLib_Command.hxx
+    MeshLib/MeshLib_CurveEqualRange.hxx
+    MeshLib/MeshLib_DiscretizeCurve.hxx
     MeshLib/MeshLib_MakeHypothesis.hxx
     MeshLib/MeshLib_MakeMesh.hxx
 )
 
 set(MeshLib_PKG_SOURCES
+    MeshLib/MeshLib_Command.cxx
+    MeshLib/MeshLib_CurveEqualRange.cxx
+    MeshLib/MeshLib_DiscretizeCurve.cxx
     MeshLib/MeshLib_MakeHypothesis.cxx
     MeshLib/MeshLib_MakeMesh.cxx
 )
@@ -1128,6 +1138,14 @@ set(TColgp_PKG_HEADERS
 )
 
 # =============================================================================
+# Package : TColMesh
+# =============================================================================
+
+set(TColMesh_PKG_HEADERS
+    TColMesh/TColMesh_Array1OfSegment.hxx
+)
+
+# =============================================================================
 # Package : TColMesh1d
 # =============================================================================
 
@@ -1265,31 +1283,39 @@ set(Toolkit_PKG_SOURCES
 # =============================================================================
 
 set(Triangle_PKG_HEADERS
+    Triangle/Triangle_Array1OfEdge.hxx
+    Triangle/Triangle_Array1OfElement.hxx
     Triangle/Triangle_Array1OfHole.hxx
     Triangle/Triangle_Array1OfNode.hxx
     Triangle/Triangle_Array1OfRegion.hxx
     Triangle/Triangle_Array1OfSegment.hxx
     Triangle/Triangle_Command.hxx
+    Triangle/Triangle_Edge.hxx
+    Triangle/Triangle_Element.hxx
     Triangle/Triangle_Hole.hxx
-    Triangle/Triangle_ListOfHole.hxx
-    Triangle/Triangle_ListOfNode.hxx
-    Triangle/Triangle_ListOfRegion.hxx
-    Triangle/Triangle_ListOfSegment.hxx
+    Triangle/Triangle_MakeMesh.hxx
     Triangle/Triangle_MakeModel.hxx
+    Triangle/Triangle_Mesh.hxx
     Triangle/Triangle_Model.hxx
     Triangle/Triangle_Node.hxx
     Triangle/Triangle_Object.hxx
+    Triangle/Triangle_Parameters.hxx
     Triangle/Triangle_Region.hxx
     Triangle/Triangle_Segment.hxx
 )
 
 set(Triangle_PKG_SOURCES
     Triangle/Triangle_Command.cxx
+    Triangle/Triangle_Edge.cxx
+    Triangle/Triangle_Element.cxx
     Triangle/Triangle_Hole.cxx
+    Triangle/Triangle_MakeMesh.cxx
     Triangle/Triangle_MakeModel.cxx
+    Triangle/Triangle_Mesh.cxx
     Triangle/Triangle_Model.cxx
     Triangle/Triangle_Node.cxx
     Triangle/Triangle_Object.cxx
+    Triangle/Triangle_Parameters.cxx
     Triangle/Triangle_Region.cxx
     Triangle/Triangle_Segment.cxx
 )
@@ -1406,6 +1432,7 @@ set(Ceres_HEADERS
     ${MeshDS_PKG_HEADERS}
     ${MeshFunc_PKG_HEADERS}
     ${MeshLib_PKG_HEADERS}
+    ${TColMesh_PKG_HEADERS}
     ${Tetgen_PKG_HEADERS}
     ${Triangle_PKG_HEADERS}
 )
@@ -1419,6 +1446,7 @@ set(Ceres_SOURCES
     ${MeshDS_PKG_SOURCES}
     ${MeshFunc_PKG_SOURCES}
     ${MeshLib_PKG_SOURCES}
+    ${TColMesh_PKG_SOURCES}
     ${Tetgen_PKG_SOURCES}
     ${Triangle_PKG_SOURCES}
 )
@@ -1435,6 +1463,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshFunc
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
+    ${CMAKE_CURRENT_SOURCE_DIR}/TColMesh
     ${CMAKE_CURRENT_SOURCE_DIR}/Tetgen
     ${CMAKE_CURRENT_SOURCE_DIR}/Triangle
     ${OpenCASCADE_INCLUDE_DIR}

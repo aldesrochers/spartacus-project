@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
-
-
+#include <Mesh_Point.hxx>
 
 
 // ============================================================================
@@ -31,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+Mesh_Point::Mesh_Point()
 {
 
 }
@@ -41,27 +39,14 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+Mesh_Point::~Mesh_Point()
 {
 
 }
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
-
-
-
 
 
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+IMPLEMENT_STANDARD_HANDLE(Mesh_Point, Mesh_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Mesh_Point, Mesh_Object)

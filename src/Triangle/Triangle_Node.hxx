@@ -27,7 +27,7 @@
 #include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <TColStd_Array1OfInteger.hxx>
+#include <TColStd_Array1OfReal.hxx>
 #include <gp_Pnt2d.hxx>
 
 // Forward declarations
@@ -55,18 +55,23 @@ public:
 
 public:
 
-    Standard_EXPORT const TColStd_Array1OfInteger&  Attributes() const;
+    Standard_EXPORT Standard_Real                   Attribute(const Standard_Integer theIndex) const;
+    Standard_EXPORT const TColStd_Array1OfReal&     Attributes() const;
     Standard_EXPORT Standard_Integer                BoundaryMarker() const;
-    Standard_EXPORT TColStd_Array1OfInteger&        ChangeAttributes();
+    Standard_EXPORT TColStd_Array1OfReal&           ChangeAttributes();
     Standard_EXPORT gp_Pnt2d&                       ChangePoint();
     Standard_EXPORT Standard_Integer                NbAttributes() const;
     Standard_EXPORT const gp_Pnt2d&                 Point() const;
+    Standard_EXPORT void                            ResizeAttributes(const Standard_Integer theNbAttributes,
+                                                                     const Standard_Boolean toCopyData = Standard_True);
+    Standard_EXPORT void                            SetAttribute(const Standard_Integer theIndex,
+                                                                 const Standard_Real theValue);
     Standard_EXPORT void                            SetBoundaryMarker(const Standard_Integer theBoundaryMarker);
     Standard_EXPORT void                            SetPoint(const gp_Pnt2d& thePoint);
 
 private:
 
-    TColStd_Array1OfInteger myAttributes;
+    TColStd_Array1OfReal    myAttributes;
     Standard_Integer        myBoundaryMarker;
     gp_Pnt2d                myPoint;
 

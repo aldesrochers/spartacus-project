@@ -21,9 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
-
-
+#include <MeshLib_DiscretizeCurve.hxx>
 
 
 // ============================================================================
@@ -31,7 +29,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+MeshLib_DiscretizeCurve::MeshLib_DiscretizeCurve()
 {
 
 }
@@ -41,27 +39,11 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+MeshLib_DiscretizeCurve::~MeshLib_DiscretizeCurve()
 {
 
 }
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
 
 
 
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)

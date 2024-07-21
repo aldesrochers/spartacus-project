@@ -20,48 +20,48 @@
 // ============================================================================
 
 
-// Spartacus
-#include <MeshDS_TEdge.hxx>
+#ifndef __MeshLib_Command_hxx__
+#define __MeshLib_Command_hxx__
 
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief MeshLib_Command
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+class MeshLib_Command
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT MeshLib_Command();
+    // destructors
+    Standard_EXPORT ~MeshLib_Command();
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
+public:
+
+    Standard_EXPORT void                Check() const;
+    Standard_EXPORT Standard_Boolean    IsDone() const;
+
+protected:
+
+    Standard_EXPORT void                SetDone();
+    Standard_EXPORT void                SetNotDone();
+
+protected:
+
+    Standard_Boolean        myIsDone;
+
+};
 
 
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __MeshLib_Command_hxx__

@@ -20,48 +20,44 @@
 // ============================================================================
 
 
-// Spartacus
-#include <MeshDS_TEdge.hxx>
+#ifndef __mp_Edge2N_hxx__
+#define __mp_Edge2N_hxx__
 
-
+// OpenCascade
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief mp_Edge2N
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+class mp_Edge2N
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
+    DEFINE_STANDARD_ALLOC;
 
-}
+public:
+    // constructors
+    Standard_EXPORT mp_Edge2N(const Standard_Integer theNode1,
+                              const Standard_Integer theNode2);
+    // destructors
+    Standard_EXPORT ~mp_Edge2N();
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
+public:
 
+    Standard_EXPORT Standard_Integer        Node1() const;
+    Standard_EXPORT Standard_Integer        Node2() const;
 
+private:
 
+    Standard_Integer        myNode1;
+    Standard_Integer        myNode2;
+
+};
 
 
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __mp_Edge2N_hxx__

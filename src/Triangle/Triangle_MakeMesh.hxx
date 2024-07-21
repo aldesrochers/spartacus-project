@@ -20,48 +20,52 @@
 // ============================================================================
 
 
+#ifndef __Triangle_MakeMesh_hxx__
+#define __Triangle_MakeMesh_hxx__
+
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <Triangle_Command.hxx>
+#include <Triangle_Mesh.hxx>
+#include <Triangle_Model.hxx>
 
+// OpenCascade
+#include <TCollection_AsciiString.hxx>
 
 
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Triangle_MakeMesh
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+class Triangle_MakeMesh : public Triangle_Command
 {
 
-}
+public:
 
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
+    DEFINE_STANDARD_ALLOC
 
-}
+public:
+    // constructors
+    Standard_EXPORT Triangle_MakeMesh(const Handle(Triangle_Model)& theModel);
+    // destructors
+    Standard_EXPORT ~Triangle_MakeMesh();
 
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
+public:
+
+    Standard_EXPORT const Handle(Triangle_Mesh)&    Mesh() const;
+    Standard_EXPORT TCollection_AsciiString         Switches() const;
+
+public:
+
+    Standard_EXPORT void    Initialize(const Handle(Triangle_Model)& theModel);
+
+private:
+
+    Handle(Triangle_Mesh)       myMesh;
+    TCollection_AsciiString     mySwitches;
+
+};
 
 
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __Triangle_MakeMesh_hxx__

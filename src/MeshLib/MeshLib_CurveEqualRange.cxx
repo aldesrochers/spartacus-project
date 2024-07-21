@@ -20,17 +20,30 @@
 // ============================================================================
 
 
-#ifndef __Triangle_ListOfRegion_hxx__
-#define __Triangle_ListOfRegion_hxx__
-
-// OpenCascade
-#include <NCollection_List.hxx>
-
 // Spartacus
-#include <Triangle_Region.hxx>
+#include <MeshLib_CurveEqualRange.hxx>
 
-// Type definitions
-typedef NCollection_List<Handle(Triangle_Region)>               Triangle_ListOfRegion;
-typedef NCollection_List<Handle(Triangle_Region)>::Iterator     Triangle_ListIteratorOfListOfRegion;
 
-#endif // __Triangle_ListOfRegion_hxx__
+// ============================================================================
+/*!
+ *  \brief Constructor
+*/
+// ============================================================================
+MeshLib_CurveEqualRange::MeshLib_CurveEqualRange()
+{
+
+}
+
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+MeshLib_CurveEqualRange::~MeshLib_CurveEqualRange()
+{
+
+}
+
+
+
+

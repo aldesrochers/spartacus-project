@@ -20,48 +20,19 @@
 // ============================================================================
 
 
-// Spartacus
-#include <MeshDS_TEdge.hxx>
-
-
-
+#ifndef __Triangle_TypeOfElement_hxx__
+#define __Triangle_TypeOfElement_hxx__
 
 // ============================================================================
 /*!
- *  \brief Constructor
+ *  \brief Triangle_TypeOfElement
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+enum Triangle_TypeOfElement
 {
+    Triangle_InvalidElement,
+    Triangle_LinearTriangleElement,
+    Triangle_QuadraticTriangleElement,
+};
 
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
-
-
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+#endif // __Triangle_TypeOfElement_hxx__

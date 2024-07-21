@@ -20,48 +20,38 @@
 // ============================================================================
 
 
+#ifndef __Mesh_Point_hxx__
+#define __Mesh_Point_hxx__
+
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <Mesh_Object.hxx>
 
+// Forward declarations
+class Mesh_Point;
 
-
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
-
-
-
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(Mesh_Point, Mesh_Object)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh_Point
+*/
+// ============================================================================
+class Mesh_Point : public Mesh_Object
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_Point();
+    // destructors
+    Standard_EXPORT ~Mesh_Point();
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Point, Mesh_Object)
+
+};
+
+
+#endif // __Mesh_Point_hxx__

@@ -20,49 +20,59 @@
 // ============================================================================
 
 
-#ifndef __MeshDS_TEdge_hxx__
-#define __MeshDS_TEdge_hxx__
+#ifndef __Triangle_Edge_hxx__
+#define __Triangle_Edge_hxx__
 
 // Spartacus
-#include <MeshDS_TObject.hxx>
+#include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <TopoDS_Edge.hxx>
+#include <TColStd_Array1OfInteger.hxx>
 
 // Forward declarations
-class MeshDS_TEdge;
+class Triangle_Edge;
 
 // Handles
-DEFINE_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(Triangle_Edge, Triangle_Object)
+
 
 
 // ============================================================================
 /*!
- *  \brief MeshDS_TEdge
+ *  \brief Triangle_Edge
 */
 // ============================================================================
-class MeshDS_TEdge : public MeshDS_TObject
+class Triangle_Edge : public Triangle_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT MeshDS_TEdge();
+    Standard_EXPORT Triangle_Edge();
+    Standard_EXPORT Triangle_Edge(const Standard_Integer theNode1,
+                                  const Standard_Integer theNode2);
     // destructors
-    Standard_EXPORT ~MeshDS_TEdge();
+    Standard_EXPORT ~Triangle_Edge();
 
 public:
 
-    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
+    Standard_EXPORT Standard_Integer    BoundaryMarker() const;
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetBoundaryMarker(const Standard_Integer theBoundaryMarker);
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
 
 private:
 
-    TopoDS_Edge     myTopology;
+    Standard_Integer    myBoundaryMarker;
+    Standard_Integer    myNode1;
+    Standard_Integer    myNode2;
 
 public:
 
-    DEFINE_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+    DEFINE_STANDARD_RTTIEXT(Triangle_Edge, Triangle_Object)
 
 };
 
 
-#endif // __MeshDS_TEdge_hxx__
+#endif // __Triangle_Edge_hxx__

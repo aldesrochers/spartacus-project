@@ -20,17 +20,16 @@
 // ============================================================================
 
 
-#ifndef __Triangle_ListOfHole_hxx__
-#define __Triangle_ListOfHole_hxx__
+#ifndef __Triangle_Array1OfElement_hxx__
+#define __Triangle_Array1OfElement_hxx__
 
 // OpenCascade
-#include <NCollection_List.hxx>
+#include <NCollection_Array1.hxx>
 
 // Spartacus
-#include <Triangle_Hole.hxx>
+#include <Triangle_Element.hxx>
 
 // Type definitions
-typedef NCollection_List<Handle(Triangle_Hole)>             Triangle_ListOfHole;
-typedef NCollection_List<Handle(Triangle_Hole)>::Iterator   Triangle_ListIteratorOfListOfHole;
+typedef NCollection_Array1<Handle(Triangle_Element)>    Triangle_Array1OfElement;
 
-#endif // __Triangle_ListOfHole_hxx__
+#endif // __Triangle_Array1OfElement_hxx__

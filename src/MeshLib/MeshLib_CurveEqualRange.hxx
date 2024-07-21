@@ -20,17 +20,43 @@
 // ============================================================================
 
 
-#ifndef __Triangle_ListOfNode_hxx__
-#define __Triangle_ListOfNode_hxx__
+#ifndef __MeshLib_CurveEqualRange_hxx__
+#define __MeshLib_CurveEqualRange_hxx__
 
 // OpenCascade
-#include <NCollection_List.hxx>
+#include <Standard.hxx>
+#include <Standard_DefineAlloc.hxx>
+#include <Geom_Curve.hxx>
 
-// Spartacus
-#include <Triangle_Node.hxx>
 
-// Type definitions
-typedef NCollection_List<Handle(Triangle_Node)>             Triangle_ListOfNode;
-typedef NCollection_List<Handle(Triangle_Node)>::Iterator   Triangle_ListIteratorOfListOfNode;
+// ============================================================================
+/*!
+ *  \brief MeshLib_CurveEqualRange
+*/
+// ============================================================================
+class MeshLib_CurveEqualRange
+{
 
-#endif // __Triangle_ListOfNode_hxx__
+public:
+
+    DEFINE_STANDARD_ALLOC
+
+public:
+    // constructors
+    Standard_EXPORT MeshLib_CurveEqualRange();
+    // destructors
+    Standard_EXPORT ~MeshLib_CurveEqualRange();
+
+public:
+
+    Standard_EXPORT const Handle(Geom_Curve)&   Curve() const;
+    Standard_EXPORT void                        SetCurve(const Handle(Geom_Curve)& theCurve);
+
+private:
+
+    Handle(Geom_Curve)  myCurve;
+
+};
+
+
+#endif // __MeshLib_CurveEqualRange_hxx__

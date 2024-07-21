@@ -20,48 +20,52 @@
 // ============================================================================
 
 
+#ifndef __Mesh_Segment_hxx__
+#define __Mesh_Segment_hxx__
+
 // Spartacus
-#include <MeshDS_TEdge.hxx>
+#include <Mesh_Object.hxx>
 
+// Forward declarations
+class Mesh_Segment;
 
-
-
-// ============================================================================
-/*!
- *  \brief Constructor
-*/
-// ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief Destructor
-*/
-// ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
-{
-
-}
-
-// ============================================================================
-/*!
- *  \brief ObjectType()
-*/
-// ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
-{
-    return MeshAbs_OBJ_Edge;
-}
-
-
-
-
-
-// ****************************************************************************
 // Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+DEFINE_STANDARD_HANDLE(Mesh_Segment, Mesh_Object)
+
+
+// ============================================================================
+/*!
+ *  \brief Mesh_Segment
+*/
+// ============================================================================
+class Mesh_Segment : public Mesh_Object
+{
+
+public:
+    // constructors
+    Standard_EXPORT Mesh_Segment();
+    Standard_EXPORT Mesh_Segment(const Standard_Integer theNode1,
+                                 const Standard_Integer theNode2);
+    // destructors
+    Standard_EXPORT ~Mesh_Segment();
+
+public:
+
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
+
+private:
+
+    Standard_Integer    myNode1;
+    Standard_Integer    myNode2;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Mesh_Segment, Mesh_Object)
+
+};
+
+
+#endif // __Mesh_Segment_hxx__

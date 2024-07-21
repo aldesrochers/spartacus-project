@@ -21,8 +21,7 @@
 
 
 // Spartacus
-#include <MeshDS_TEdge.hxx>
-
+#include <Triangle_Parameters.hxx>
 
 
 
@@ -31,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-MeshDS_TEdge::MeshDS_TEdge()
+Triangle_Parameters::Triangle_Parameters()
 {
 
 }
@@ -41,27 +40,40 @@ MeshDS_TEdge::MeshDS_TEdge()
  *  \brief Destructor
 */
 // ============================================================================
-MeshDS_TEdge::~MeshDS_TEdge()
+Triangle_Parameters::~Triangle_Parameters()
 {
 
 }
 
 // ============================================================================
 /*!
- *  \brief ObjectType()
+ *  \brief IsQualityMesh()
 */
 // ============================================================================
-MeshAbs_TypeOfObject MeshDS_TEdge::ObjectType() const
+Standard_Boolean Triangle_Parameters::IsQualityMesh() const
 {
-    return MeshAbs_OBJ_Edge;
+    return myIsQualityMesh;
 }
 
+// ============================================================================
+/*!
+ *  \brief SetQualityMesh()
+*/
+// ============================================================================
+void Triangle_Parameters::SetQualityMesh(const Standard_Boolean isQualityMesh)
+{
+    myIsQualityMesh = isQualityMesh;
+}
 
-
-
-
-// ****************************************************************************
-// Handles
-// ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(MeshDS_TEdge, MeshDS_TObject)
-IMPLEMENT_STANDARD_RTTIEXT(MeshDS_TEdge, MeshDS_TObject)
+// ============================================================================
+/*!
+ *  \brief Switches()
+*/
+// ============================================================================
+TCollection_AsciiString Triangle_Parameters::Switches() const
+{
+    TCollection_AsciiString aString;
+    if(myIsQualityMesh)
+        aString += TCollection_AsciiString("q");
+    return aString;
+}
