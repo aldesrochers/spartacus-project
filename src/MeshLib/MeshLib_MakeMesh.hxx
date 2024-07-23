@@ -52,7 +52,6 @@ public:
 
 public:
 
-    Standard_EXPORT Standard_Boolean        AddHypothesis(const MeshDS_Hypothesis& theHypothesis);
     Standard_EXPORT void                    Perform();
     Standard_EXPORT void                    SetShape(const TopoDS_Shape& theShape);
     Standard_EXPORT const TopoDS_Shape&     Shape() const;

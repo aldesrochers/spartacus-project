@@ -47,22 +47,35 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Triangle_MakeMesh(const Handle(Triangle_Model)& theModel);
+    Standard_EXPORT Triangle_MakeMesh();
     // destructors
     Standard_EXPORT ~Triangle_MakeMesh();
 
 public:
 
+    Standard_EXPORT void                            Perform() Standard_OVERRIDE;
+
+public:
+
+    Standard_EXPORT Standard_Boolean                IsConformingDelaunay() const;
+    Standard_EXPORT Standard_Boolean                IsQualityMesh() const;
     Standard_EXPORT const Handle(Triangle_Mesh)&    Mesh() const;
+    Standard_EXPORT const Handle(Triangle_Model)&   Model() const;
+    Standard_EXPORT void                            SetConformingDelaunay(const Standard_Boolean isConformingDelaunay);
+    Standard_EXPORT void                            SetQualityMesh(const Standard_Boolean isQualityMesh);
+    Standard_EXPORT void                            SetModel(const Handle(Triangle_Model)& theModel);
     Standard_EXPORT TCollection_AsciiString         Switches() const;
 
 public:
 
-    Standard_EXPORT void    Initialize(const Handle(Triangle_Model)& theModel);
+    //Standard_EXPORT void    Initialize(const Handle(Triangle_Model)& theModel);
 
 private:
 
+    Standard_Boolean            myIsConformingDelaunay;
+    Standard_Boolean            myIsQualityMesh;
     Handle(Triangle_Mesh)       myMesh;
+    Handle(Triangle_Model)      myModel;
     TCollection_AsciiString     mySwitches;
 
 };

@@ -23,7 +23,13 @@
 using namespace std;
 
 // Spartacus
+#include <BRepAdaptor_Curve.hxx>
+#include <GCPnts_UniformAbscissa.hxx>
+#include <GeomAdaptor_Curve.hxx>
 #include <MeshLib_MakeMesh.hxx>
+#include <TopExp.hxx>
+#include <TopoDS.hxx>
+#include <Geom2dAdaptor_Curve.hxx>
 
 
 // ============================================================================
@@ -53,6 +59,24 @@ MeshLib_MakeMesh::~MeshLib_MakeMesh()
 // ============================================================================
 void MeshLib_MakeMesh::Perform()
 {
+
+    // perform edge tessellation
+    TopTools_IndexedMapOfShape aMapOfEdges;
+    TopExp::MapShapes(myShape, TopAbs_EDGE, aMapOfEdges);
+    for(Standard_Integer i=1; i<=aMapOfEdges.Size(); i++) {
+        TopoDS_Edge anEdge = TopoDS::Edge(aMapOfEdges.FindKey(i));
+        BRepAdaptor_Curve anAdaptor(anEdge);
+        if(anAdaptor.IsCurveOnSurface()) {
+
+        } else {
+            GeomAdaptor_Curve aCurve(anAdaptor.Curve());
+            GCPnts_UniformAbscissa anAlgo(aCurve, 1.);
+            cout << anAlgo.NbPoints() << endl;
+        }
+
+
+    }
+
 
 
     cout << "MeshLib_MakeMesh::Perform()" << endl;

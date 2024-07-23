@@ -30,7 +30,10 @@ using namespace std;
 #include <Standard_CString.hxx>
 
 // Triangle
+#ifndef __triangle_h__
 #include <triangle.h>
+#define __triangle_h__
+#endif
 
 
 // ============================================================================
@@ -38,9 +41,9 @@ using namespace std;
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_MakeMesh::Triangle_MakeMesh(const Handle(Triangle_Model)& theModel)
+Triangle_MakeMesh::Triangle_MakeMesh()
 {
-    Initialize(theModel);
+
 }
 
 // ============================================================================
@@ -55,39 +58,22 @@ Triangle_MakeMesh::~Triangle_MakeMesh()
 
 // ============================================================================
 /*!
- *  \brief Initialize()
+ *  \brief IsConformingDelaunay()
 */
 // ============================================================================
-void Triangle_MakeMesh::Initialize(const Handle(Triangle_Model) &theModel)
+Standard_Boolean Triangle_MakeMesh::IsConformingDelaunay() const
 {
-    mySwitches += "N";
-    mySwitches += "E";
-    mySwitches += "a0.001";
+    return myIsConformingDelaunay;
+}
 
-    triangulateio in, out, vorout;
-
-    // process nodes
-    in.numberofpoints = theModel->NbNodes();
-    in.pointlist = (REAL *) malloc(in.numberofpoints * 2 * sizeof(REAL));
-    for(Standard_Integer i=1; i<=theModel->NbNodes(); i++) {
-        Handle(Triangle_Node) aNode = theModel->Node(i);
-        in.pointlist[(i-1)*2+0] = aNode->Point().X();
-        in.pointlist[(i-1)*2+1] = aNode->Point().Y();
-        cout << aNode->Point().X() << " " << aNode->Point().Y() << endl;
-    }
-
-    // process segments
-    in.numberofsegments = theModel->NbSegments();
-    in.segmentlist = (int *) malloc(in.numberofsegments * 2 * sizeof(int));
-    for(Standard_Integer i=1; i<=theModel->NbSegments(); i++) {
-        Handle(Triangle_Segment) aSegment = theModel->Segment(i);
-        in.segmentlist[(i-1)*2+0] = aSegment->Node1();
-        in.segmentlist[(i-1)*2+1] = aSegment->Node2();
-    }
-
-    triangulate((char*) mySwitches.ToCString(), &in, &out, &vorout);
-
-
+// ============================================================================
+/*!
+ *  \brief IsQualityMesh()
+*/
+// ============================================================================
+Standard_Boolean Triangle_MakeMesh::IsQualityMesh() const
+{
+    return myIsQualityMesh;
 }
 
 // ============================================================================
@@ -102,13 +88,161 @@ const Handle(Triangle_Mesh)& Triangle_MakeMesh::Mesh() const
 
 // ============================================================================
 /*!
+ *  \brief Model()
+*/
+// ============================================================================
+const Handle(Triangle_Model)& Triangle_MakeMesh::Model() const
+{
+    return myModel;
+}
+
+// ============================================================================
+/*!
+ *  \brief Perform()
+*/
+// ============================================================================
+void Triangle_MakeMesh::Perform()
+{
+
+    triangulateio in, out, vorout;
+
+    // process nodes
+    in.numberofpoints = myModel->NbNodes();
+    in.pointlist = (REAL *) malloc(in.numberofpoints * 2 * sizeof(REAL));
+    for(Standard_Integer i=1; i<=myModel->NbNodes(); i++) {
+        Handle(Triangle_Node) aNode = myModel->Node(i);
+        in.pointlist[(i-1)*2+0] = aNode->Point().X();
+        in.pointlist[(i-1)*2+1] = aNode->Point().Y();
+    }
+
+    // process segments
+    in.numberofsegments = myModel->NbSegments();
+    in.segmentlist = (int *) malloc(in.numberofsegments * 2 * sizeof(int));
+    for(Standard_Integer i=1; i<=myModel->NbSegments(); i++) {
+        Handle(Triangle_Segment) aSegment = myModel->Segment(i);
+        in.segmentlist[(i-1)*2+0] = aSegment->Node1();
+        in.segmentlist[(i-1)*2+1] = aSegment->Node2();
+    }
+
+    in.numberofpointattributes = 0;
+    in.pointattributelist = NULL;
+    in.pointmarkerlist = NULL;
+    in.numberofregions = 0;
+    in.regionlist = NULL;
+    in.numberofholes = 0;
+    in.holelist = NULL;
+
+    vorout.pointlist = (REAL *) NULL;
+    vorout.pointattributelist = (REAL *) NULL;
+    vorout.edgelist = (int *) NULL;
+    vorout.normlist = (REAL *) NULL;
+
+    //triangulate((char*) Switches().ToCString(), &in, &out, &vorout);
+    triangulate("pBOqa0.1vV", &in, &out, &vorout);
+
+    //cout << vorout.pointlist[2] << endl;
+
+
+    free(in.pointlist);
+    free(in.pointattributelist);
+    free(in.pointmarkerlist);
+    free(in.regionlist);
+    free(in.holelist);
+    free(in.segmentlist);
+    free(out.pointlist);
+    free(out.pointattributelist);
+    free(out.pointmarkerlist);
+    free(out.regionlist);
+    free(out.holelist);
+    free(out.segmentlist);
+    //free(vorout.pointlist);
+    //free(vorout.pointattributelist);
+    //free(vorout.pointmarkerlist);
+    //free(vorout.regionlist);
+    //free(vorout.holelist);
+    //free(vorout.segmentlist);
+
+    cout << vorout.numberofcorners << endl;
+    cout << vorout.numberofedges << endl;
+    cout << vorout.numberofholes << endl;
+    cout << vorout.numberofpointattributes << endl;
+    cout << vorout.numberofpoints << endl;
+    cout << vorout.numberofregions << endl;
+    cout << vorout.numberofsegments << endl;
+    cout << vorout.numberoftriangleattributes << endl;
+    cout << vorout.numberoftriangles << endl;
+
+    //free(mid.pointlist);
+    //free(mid.pointattributelist);
+    //free(mid.pointmarkerlist);
+    //free(mid.trianglelist);
+    //free(mid.triangleattributelist);
+    //free(mid.trianglearealist);
+    //free(mid.neighborlist);
+    //free(mid.segmentlist);
+    //free(mid.segmentmarkerlist);
+    //free(mid.edgelist);
+    //free(mid.edgemarkerlist);
+    //free(vorout.pointlist);
+    //free(vorout.pointattributelist);
+    //free(vorout.regionlist);
+    //free(vorout.edgelist);
+    //free(vorout.normlist);
+    //free(out.pointlist);
+    //free(out.pointattributelist);
+    //free(out.trianglelist);
+    //free(out.triangleattributelist);
+
+}
+
+
+// ============================================================================
+/*!
+ *  \brief SetConformingDelaunay()
+*/
+// ============================================================================
+void Triangle_MakeMesh::SetConformingDelaunay(const Standard_Boolean isConformingDelaunay)
+{
+    myIsConformingDelaunay = isConformingDelaunay;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetQualityMesh()
+*/
+// ============================================================================
+void Triangle_MakeMesh::SetQualityMesh(const Standard_Boolean isQualityMesh)
+{
+    myIsQualityMesh = isQualityMesh;
+}
+
+// ============================================================================
+/*!
+ *  \brief SetModel()
+*/
+// ============================================================================
+void Triangle_MakeMesh::SetModel(const Handle(Triangle_Model) &theModel)
+{
+    myModel = theModel;
+}
+
+// ============================================================================
+/*!
  *  \brief Switches()
 */
 // ============================================================================
 TCollection_AsciiString Triangle_MakeMesh::Switches() const
 {
-    TCollection_AsciiString aString;
-    aString += "N";
-    aString += "E";
+    TCollection_AsciiString aString("-");
+    aString += "B"; // Do not generate boundary markers
+    aString += "P";
+    aString += "X";
+    //aString += "v"; // Always generate a Veronoi Diagram
+    //aString += "N";
+    //aString += "E";
+    if(myIsQualityMesh)
+        aString += "q";
+    if(myIsConformingDelaunay)
+        aString += "D";
     return aString;
 }

@@ -35,6 +35,8 @@ using namespace std;
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <GeomAPI_ProjectPointOnSurf.hxx>
 
+#include <triangle.h>
+
 // ============================================================================
 /*!
  *  \brief Constructor
@@ -66,24 +68,6 @@ void Triangle_MakeModel::Initialize(const TopoDS_Face &theFace)
     TopTools_IndexedMapOfShape faceEdges;
     TopExp::MapShapes(theFace, TopAbs_VERTEX, faceVertices);
     TopExp::MapShapes(theFace, TopAbs_EDGE, faceEdges);
-
-    Handle(Geom_Surface) aSurface = BRep_Tool::Surface(theFace);
-    GeomLib_IsPlanarSurface anAlgo(aSurface);
-    if(!anAlgo.IsPlanar())
-        return;
-    gp_Pln aPlane = anAlgo.Plan();
-
-    GeomAPI_ProjectPointOnSurf aProjector;
-    aProjector.Init(gp_Pnt(0.5,0.5,0.1), aSurface);
-    cout << aProjector.NbPoints() << endl;
-    gp_Pnt aPoint = aProjector.Point(1);
-
-    cout << aPoint.X() << " " << aPoint.Y() << " " << aPoint.Z() << endl;
-    cout << "OK" << endl;
-
-
-
-    //return;
 
     // initialize model data
     myModel = new Triangle_Model();

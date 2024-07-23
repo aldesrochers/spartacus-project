@@ -24,6 +24,7 @@
 #define __Triangle_Model_hxx__
 
 // Spartacus
+#include <Triangle_Array1OfEdge.hxx>
 #include <Triangle_Array1OfSegment.hxx>
 #include <Triangle_Array1OfHole.hxx>
 #include <Triangle_Array1OfNode.hxx>
@@ -89,10 +90,10 @@ public:
 
 private:
 
-    Triangle_Array1OfHole     myHoles;
-    Triangle_Array1OfNode     myNodes;
-    Triangle_Array1OfRegion   myRegions;
-    Triangle_Array1OfSegment  mySegments;
+    Triangle_Array1OfHole       myHoles;
+    Triangle_Array1OfNode       myNodes;
+    Triangle_Array1OfRegion     myRegions;
+    Triangle_Array1OfSegment    mySegments;
 
 public:
 

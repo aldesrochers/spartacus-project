@@ -20,20 +20,24 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_Mesher_hxx__
+#define __Triangle_Mesher_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <TColgp_SequenceOfPnt2d.hxx>
+
+// Spartacus
+#include <Triangle_Model.hxx>
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle_Mesher
 */
 // ============================================================================
-class Triangle_Command
+class Triangle_Mesher
 {
 
 public:
@@ -42,29 +46,30 @@ public:
 
 public:
     // constructors
-    Standard_EXPORT Triangle_Command();
+    Standard_EXPORT Triangle_Mesher(const TColgp_SequenceOfPnt2d& thePoints);
     // destructors
-    Standard_EXPORT ~Triangle_Command();
-
-public:
-
-    virtual Standard_EXPORT void            Perform() = 0;
+    Standard_EXPORT ~Triangle_Mesher();
 
 public:
 
     Standard_EXPORT void                    Check() const;
     Standard_EXPORT Standard_Boolean        IsDone() const;
 
-protected:
+public:
+
+    Standard_EXPORT void                    Initialize(const TColgp_SequenceOfPnt2d& thePoints);
+
+private:
 
     Standard_EXPORT void                    SetDone();
     Standard_EXPORT void                    SetNotDone();
 
-protected:
+private:
 
     Standard_Boolean        myIsDone;
+    Handle(Triangle_Model)  myModel;
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_Mesher_hxx__

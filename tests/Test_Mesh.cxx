@@ -23,36 +23,10 @@
 #include <iostream>
 using namespace std;
 
-// OpenCascade
-#include <BRep_Tool.hxx>
-#include <DEBRepCascade_Provider.hxx>
-#include <TopoDS.hxx>
-#include <TopoDS_Shape.hxx>
-#include <TopExp.hxx>
-#include <TopExp_Explorer.hxx>
-#include <TopoDS_Edge.hxx>
-#include <TopoDS_Face.hxx>
-#include <TopoDS_Wire.hxx>
-#include <BRepMesh_IncrementalMesh.hxx>
-#include <BRepBuilderAPI_MakeWire.hxx>
-#include <BRepBuilderAPI_MakeVertex.hxx>
-#include <BRepBuilderAPI_MakeFace.hxx>
-#include <BRepBuilderAPI_MakePolygon.hxx>
-#include <gp_Parab.hxx>
-#include <Geom_Parabola.hxx>
-#include <BRepAdaptor_Curve.hxx>
-
 // Spartacus
-#include <Triangle_MakeMesh.hxx>
-#include <Triangle_MakeModel.hxx>
-#include <Triangle_Model.hxx>
-#include <Triangle_Node.hxx>
-#include <cp_LinearLine.hxx>
-#include <BRepLib_MakeEdge.hxx>
-#include <GeomAdaptor_Curve.hxx>
-#include <GCPnts_UniformDeflection.hxx>
-#include <GCPnts_UniformAbscissa.hxx>
-#include <Geom_TrimmedCurve.hxx>
+#include <Triangle.hxx>
+#include <Triangle_Parameters.hxx>
+
 
 // ============================================================================
 /*!
@@ -62,34 +36,26 @@ using namespace std;
 int main(int argc, char** argv)
 {
 
-    TopoDS_Shape aShape;
-    DEBRepCascade_Provider aProvider;
-    cout << aProvider.Read(TCollection_AsciiString("/home/alexis/Sources/opencascade-7.7.0/data/occ/bottle.brep"), aShape) << endl;
+    Handle(Triangle_Model) anInput = new Triangle_Model();
+    anInput->ResizeNodes(4);
+    anInput->ResizeSegments(4);
+    anInput->SetNode(1, new Triangle_Node(gp_Pnt2d(0.,0.)));
+    anInput->SetNode(2, new Triangle_Node(gp_Pnt2d(10.,0.)));
+    anInput->SetNode(3, new Triangle_Node(gp_Pnt2d(10.,5.)));
+    anInput->SetNode(4, new Triangle_Node(gp_Pnt2d(2.,3.)));
+    anInput->SetSegment(1, new Triangle_Segment(1, 2));
+    anInput->SetSegment(2, new Triangle_Segment(2, 3));
+    anInput->SetSegment(3, new Triangle_Segment(3, 4));
+    anInput->SetSegment(4, new Triangle_Segment(4, 1));
 
-    gp_Ax2 aLocation;
-    aLocation.SetXDirection(gp_Dir(0,1,0));
-    gp_Parab aParab(aLocation, 400.);
-    Handle(Geom_Parabola) aParabola = new Geom_Parabola(aParab);
-    Handle(Geom_TrimmedCurve) aCurve = new Geom_TrimmedCurve(aParabola, -200, 200);
 
-    GeomAdaptor_Curve anAdaptor(aCurve);
-    GCPnts_UniformAbscissa anAlgo(anAdaptor, 300);
-    cout << anAlgo.IsDone() << endl;
-    cout << anAlgo.NbPoints() << endl;
 
-    for(Standard_Integer i=1; i<=anAlgo.NbPoints(); i++) {
-        Standard_Real P = anAlgo.Parameter(i);
-        gp_Pnt aPoint = aCurve->Value(P);
-        cout << aPoint.X() << " " << aPoint.Y() << " " << aPoint.Z() << endl;
-    }
 
-    for(Standard_Integer i=1; i<anAlgo.NbPoints(); i++) {
-        Standard_Real P1 = anAlgo.Parameter(i);
-        Standard_Real P2 = anAlgo.Parameter(i+1);
-        gp_Pnt aPoint1 = aCurve->Value(P1);
-        gp_Pnt aPoint2 = aCurve->Value(P2);
-        cout << aPoint1.Distance(aPoint2) << endl;
-    }
+    Triangle_Parameters aParameters;
+    cout << Triangle::Switches(aParameters).ToCString() << endl;
+
+    TCollection_AsciiString aString("fslfas");
+    cout << aString << endl;
 
 
     cout << "Test_Mesh" << endl;

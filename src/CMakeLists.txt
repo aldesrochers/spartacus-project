@@ -1283,6 +1283,7 @@ set(Toolkit_PKG_SOURCES
 # =============================================================================
 
 set(Triangle_PKG_HEADERS
+    Triangle/Triangle.hxx
     Triangle/Triangle_Array1OfEdge.hxx
     Triangle/Triangle_Array1OfElement.hxx
     Triangle/Triangle_Array1OfHole.hxx
@@ -1296,6 +1297,7 @@ set(Triangle_PKG_HEADERS
     Triangle/Triangle_MakeMesh.hxx
     Triangle/Triangle_MakeModel.hxx
     Triangle/Triangle_Mesh.hxx
+    Triangle/Triangle_Mesher.hxx
     Triangle/Triangle_Model.hxx
     Triangle/Triangle_Node.hxx
     Triangle/Triangle_Object.hxx
@@ -1305,6 +1307,7 @@ set(Triangle_PKG_HEADERS
 )
 
 set(Triangle_PKG_SOURCES
+    Triangle/Triangle.cxx
     Triangle/Triangle_Command.cxx
     Triangle/Triangle_Edge.cxx
     Triangle/Triangle_Element.cxx
@@ -1312,6 +1315,7 @@ set(Triangle_PKG_SOURCES
     Triangle/Triangle_MakeMesh.cxx
     Triangle/Triangle_MakeModel.cxx
     Triangle/Triangle_Mesh.cxx
+    Triangle/Triangle_Mesher.cxx
     Triangle/Triangle_Model.cxx
     Triangle/Triangle_Node.cxx
     Triangle/Triangle_Object.cxx

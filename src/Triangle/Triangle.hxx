@@ -20,20 +20,24 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Command_hxx__
-#define __Triangle_Command_hxx__
+#ifndef __Triangle_hxx__
+#define __Triangle_hxx__
 
 // OpenCascade
 #include <Standard.hxx>
 #include <Standard_DefineAlloc.hxx>
+#include <Poly_Triangulation.hxx>
 
+// Spartacus
+#include <Triangle_Model.hxx>
+#include <Triangle_Parameters.hxx>
 
 // ============================================================================
 /*!
- *  \brief Triangle_Command
+ *  \brief Triangle
 */
 // ============================================================================
-class Triangle_Command
+class Triangle
 {
 
 public:
@@ -41,30 +45,21 @@ public:
     DEFINE_STANDARD_ALLOC
 
 public:
-    // constructors
-    Standard_EXPORT Triangle_Command();
-    // destructors
-    Standard_EXPORT ~Triangle_Command();
 
-public:
+    static Standard_EXPORT Standard_Boolean     MakeModel(const Handle(Poly_Triangulation)& theTriangulation,
+                                                          Handle(Triangle_Model)& theModel);
 
-    virtual Standard_EXPORT void            Perform() = 0;
+    static Standard_EXPORT Standard_Boolean     MakeTriangulation(const Handle(Triangle_Model)& theModel,
+                                                                  Handle(Poly_Triangulation)& theTriangulation);
 
-public:
+    static Standard_EXPORT void                 Triangulate(const Triangle_Parameters& theParameters,
+                                                            const Handle(Triangle_Model)& theInput,
+                                                            Handle(Triangle_Model)& theOutput,
+                                                            Handle(Triangle_Model)& theVeronoi);
 
-    Standard_EXPORT void                    Check() const;
-    Standard_EXPORT Standard_Boolean        IsDone() const;
-
-protected:
-
-    Standard_EXPORT void                    SetDone();
-    Standard_EXPORT void                    SetNotDone();
-
-protected:
-
-    Standard_Boolean        myIsDone;
+    static Standard_EXPORT const TCollection_AsciiString&   Switches(const Triangle_Parameters& theParameters);
 
 };
 
 
-#endif // __Triangle_Command_hxx__
+#endif // __Triangle_hxx__
