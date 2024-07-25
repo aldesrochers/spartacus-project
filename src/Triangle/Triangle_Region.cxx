@@ -78,12 +78,12 @@ gp_Pnt2d& Triangle_Region::ChangePoint()
 
 // ============================================================================
 /*!
- *  \brief MaxArea()
+ *  \brief MaximumArea()
 */
 // ============================================================================
-Standard_Real Triangle_Region::MaxArea() const
+Standard_Real Triangle_Region::MaximumArea() const
 {
-    return myMaxArea;
+    return myMaximumArea;
 }
 
 // ============================================================================
@@ -108,12 +108,12 @@ void Triangle_Region::SetAttribute(const Standard_Integer theAttribute)
 
 // ============================================================================
 /*!
- *  \brief SetMaxArea()
+ *  \brief SetMaximumArea()
 */
 // ============================================================================
-void Triangle_Region::SetMaxArea(const Standard_Real theMaxArea)
+void Triangle_Region::SetMaximumArea(const Standard_Real theMaximumArea)
 {
-    myMaxArea = theMaxArea;
+    myMaximumArea = theMaximumArea;
 }
 
 // ============================================================================

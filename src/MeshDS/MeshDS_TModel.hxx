@@ -20,42 +20,43 @@
 // ============================================================================
 
 
-#ifndef __Triangle_hxx__
-#define __Triangle_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#ifndef __MeshDS_TModel_hxx__
+#define __MeshDS_TModel_hxx__
 
 // Spartacus
-#include <Triangle_MeshIO.hxx>
+#include <MeshDS_SequenceOfObject.hxx>
+#include <MeshDS_TObject.hxx>
 
-// Triangle
-#ifndef __triangle_h__
-#define __triangle_h__
-    #include <triangle.h>
-#endif  // __triangle_h__
+// Forward declarations
+class MeshDS_TModel;
+
+// Handles
+DEFINE_STANDARD_HANDLE(MeshDS_TModel, MeshDS_TObject)
 
 
 // ============================================================================
 /*!
- *  \brief Triangle
+ *  \brief MeshDS_TModel
 */
 // ============================================================================
-class Triangle
+class MeshDS_TModel : public MeshDS_TObject
 {
 
 public:
-
-    DEFINE_STANDARD_ALLOC
+    // constructors
+    Standard_EXPORT MeshDS_TModel();
+    // destructors
+    Standard_EXPORT ~MeshDS_TModel();
 
 public:
 
-    static Standard_EXPORT Handle(Triangle_MeshIO)  MeshIO(const triangulateio& aTriangleIO);
-    static Standard_EXPORT triangulateio            TriangleIO(const Handle(Triangle_MeshIO)& theMeshIO);
+    Standard_EXPORT MeshAbs_TypeOfObject    ObjectType() const Standard_OVERRIDE;
 
+public:
+
+    DEFINE_STANDARD_RTTIEXT(MeshDS_TModel, MeshDS_TObject)
 
 };
 
 
-#endif // __Triangle_hxx__
+#endif // __MeshDS_TModel_hxx__

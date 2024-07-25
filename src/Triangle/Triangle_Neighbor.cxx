@@ -21,7 +21,7 @@
 
 
 // Spartacus
-#include <Triangle_Segment.hxx>
+#include <Triangle_Edge.hxx>
 
 
 
@@ -30,7 +30,7 @@
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_Segment::Triangle_Segment()
+Triangle_Edge::Triangle_Edge()
 {
 
 }
@@ -40,7 +40,7 @@ Triangle_Segment::Triangle_Segment()
  *  \brief Constructor
 */
 // ============================================================================
-Triangle_Segment::Triangle_Segment(const Standard_Integer theNode1,
+Triangle_Edge::Triangle_Edge(const Standard_Integer theNode1,
                                    const Standard_Integer theNode2)
     : myNode1(theNode1),
     myNode2(theNode2)
@@ -53,7 +53,7 @@ Triangle_Segment::Triangle_Segment(const Standard_Integer theNode1,
  *  \brief Destructor
 */
 // ============================================================================
-Triangle_Segment::~Triangle_Segment()
+Triangle_Edge::~Triangle_Edge()
 {
 
 }
@@ -63,7 +63,7 @@ Triangle_Segment::~Triangle_Segment()
  *  \brief BoundaryMarker()
 */
 // ============================================================================
-Standard_Integer Triangle_Segment::BoundaryMarker() const
+Standard_Integer Triangle_Edge::BoundaryMarker() const
 {
     return myBoundaryMarker;
 }
@@ -73,7 +73,7 @@ Standard_Integer Triangle_Segment::BoundaryMarker() const
  *  \brief Node1()
 */
 // ============================================================================
-Standard_Integer Triangle_Segment::Node1() const
+Standard_Integer Triangle_Edge::Node1() const
 {
     return myNode1;
 }
@@ -83,7 +83,7 @@ Standard_Integer Triangle_Segment::Node1() const
  *  \brief Node2()
 */
 // ============================================================================
-Standard_Integer Triangle_Segment::Node2() const
+Standard_Integer Triangle_Edge::Node2() const
 {
     return myNode2;
 }
@@ -93,7 +93,7 @@ Standard_Integer Triangle_Segment::Node2() const
  *  \brief SetBoundaryMarker()
 */
 // ============================================================================
-void Triangle_Segment::SetBoundaryMarker(const Standard_Integer theBoundaryMarker)
+void Triangle_Edge::SetBoundaryMarker(const Standard_Integer theBoundaryMarker)
 {
     myBoundaryMarker = theBoundaryMarker;
 }
@@ -103,7 +103,7 @@ void Triangle_Segment::SetBoundaryMarker(const Standard_Integer theBoundaryMarke
  *  \brief SetNode1()
 */
 // ============================================================================
-void Triangle_Segment::SetNode1(const Standard_Integer theNode1)
+void Triangle_Edge::SetNode1(const Standard_Integer theNode1)
 {
     myNode1 = theNode1;
 }
@@ -113,7 +113,7 @@ void Triangle_Segment::SetNode1(const Standard_Integer theNode1)
  *  \brief SetNode2()
 */
 // ============================================================================
-void Triangle_Segment::SetNode2(const Standard_Integer theNode2)
+void Triangle_Edge::SetNode2(const Standard_Integer theNode2)
 {
     myNode2 = theNode2;
 }
@@ -122,6 +122,6 @@ void Triangle_Segment::SetNode2(const Standard_Integer theNode2)
 // ****************************************************************************
 // Handles
 // ****************************************************************************
-IMPLEMENT_STANDARD_HANDLE(Triangle_Segment, Triangle_Object)
-IMPLEMENT_STANDARD_RTTIEXT(Triangle_Segment, Triangle_Object)
+IMPLEMENT_STANDARD_HANDLE(Triangle_Edge, Triangle_Object)
+IMPLEMENT_STANDARD_RTTIEXT(Triangle_Edge, Triangle_Object)
 

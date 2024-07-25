@@ -31,7 +31,8 @@
 */
 // ============================================================================
 Triangle_Element::Triangle_Element()
-    : myType(Triangle_InvalidElement)
+    : myType(Triangle_InvalidElement),
+    myMaximumArea(-1.)
 {
 
 }
@@ -94,6 +95,16 @@ TColStd_Array1OfInteger& Triangle_Element::ChangeNeighbors()
 TColStd_Array1OfInteger& Triangle_Element::ChangeNodes()
 {
     return myNodes;
+}
+
+// ============================================================================
+/*!
+ *  \brief MaximumArea()
+*/
+// ============================================================================
+Standard_Real Triangle_Element::MaximumArea() const
+{
+    return myMaximumArea;
 }
 
 // ============================================================================
@@ -208,6 +219,16 @@ void Triangle_Element::SetAttribute(const Standard_Integer theIndex,
                                     const Standard_Real theValue)
 {
     myAttributes.SetValue(theIndex, theValue);
+}
+
+// ============================================================================
+/*!
+ *  \brief SetMaximumArea()
+*/
+// ============================================================================
+void Triangle_Element::SetMaximumArea(const Standard_Real theMaximumArea)
+{
+    myMaximumArea = theMaximumArea;
 }
 
 // ============================================================================

@@ -20,58 +20,59 @@
 // ============================================================================
 
 
-#ifndef __Triangle_Region_hxx__
-#define __Triangle_Region_hxx__
+#ifndef __Triangle_AreaConstraint_hxx__
+#define __Triangle_AreaConstraint_hxx__
 
 // Spartacus
 #include <Triangle_Object.hxx>
 
 // OpenCascade
-#include <gp_Pnt2d.hxx>
+#include <TColStd_Array1OfInteger.hxx>
 
 // Forward declarations
-class Triangle_Region;
+class Triangle_AreaConstraint;
 
 // Handles
-DEFINE_STANDARD_HANDLE(Triangle_Region, Triangle_Object)
+DEFINE_STANDARD_HANDLE(Triangle_AreaConstraint, Triangle_Object)
+
 
 
 // ============================================================================
 /*!
- *  \brief Triangle_Region
+ *  \brief Triangle_AreaConstraint
 */
 // ============================================================================
-class Triangle_Region : public Triangle_Object
+class Triangle_AreaConstraint : public Triangle_Object
 {
 
 public:
     // constructors
-    Standard_EXPORT Triangle_Region();
-    Standard_EXPORT Triangle_Region(const gp_Pnt2d& thePoint);
+    Standard_EXPORT Triangle_AreaConstraint();
+    Standard_EXPORT Triangle_AreaConstraint(const Standard_Integer theNode1,
+                                  const Standard_Integer theNode2);
     // destructors
-    Standard_EXPORT ~Triangle_Region();
+    Standard_EXPORT ~Triangle_AreaConstraint();
 
 public:
 
-    Standard_EXPORT Standard_Integer    Attribute() const;
-    Standard_EXPORT gp_Pnt2d&           ChangePoint();
-    Standard_EXPORT Standard_Real       MaximumArea() const;
-    Standard_EXPORT const gp_Pnt2d&     Point() const;
-    Standard_EXPORT void                SetAttribute(const Standard_Integer theAttribute);
-    Standard_EXPORT void                SetMaximumArea(const Standard_Real theMaximumArea);
-    Standard_EXPORT void                SetPoint(const gp_Pnt2d& thePoint);
-
-public:
-
-    DEFINE_STANDARD_RTTIEXT(Triangle_Region, Triangle_Object)
+    Standard_EXPORT Standard_Integer    BoundaryMarker() const;
+    Standard_EXPORT Standard_Integer    Node1() const;
+    Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetBoundaryMarker(const Standard_Integer theBoundaryMarker);
+    Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
+    Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
 
 private:
 
-    Standard_Integer    myAttribute;
-    Standard_Real       myMaximumArea;
-    gp_Pnt2d            myPoint;
+    Standard_Integer    myBoundaryMarker;
+    Standard_Integer    myNode1;
+    Standard_Integer    myNode2;
+
+public:
+
+    DEFINE_STANDARD_RTTIEXT(Triangle_AreaConstraint, Triangle_Object)
 
 };
 
 
-#endif // __Triangle_Region_hxx__
+#endif // __Triangle_AreaConstraint_hxx__

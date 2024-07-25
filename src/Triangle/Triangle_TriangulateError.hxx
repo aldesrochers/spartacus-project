@@ -20,42 +20,19 @@
 // ============================================================================
 
 
-#ifndef __Triangle_hxx__
-#define __Triangle_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
-// Spartacus
-#include <Triangle_MeshIO.hxx>
-
-// Triangle
-#ifndef __triangle_h__
-#define __triangle_h__
-    #include <triangle.h>
-#endif  // __triangle_h__
+#ifndef __Triangle_TriangulateError_hxx__
+#define __Triangle_TriangulateError_hxx__
 
 
 // ============================================================================
 /*!
- *  \brief Triangle
+ *  \brief Triangle_TriangulateError
 */
 // ============================================================================
-class Triangle
+enum Triangle_TriangulateError
 {
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-
-    static Standard_EXPORT Handle(Triangle_MeshIO)  MeshIO(const triangulateio& aTriangleIO);
-    static Standard_EXPORT triangulateio            TriangleIO(const Handle(Triangle_MeshIO)& theMeshIO);
-
-
+    Triangle_TriangulateNoError,
+    Triangle_TriangulateInvalidInputModelError
 };
 
-
-#endif // __Triangle_hxx__
+#endif // __Triangle_TriangulateError_hxx__

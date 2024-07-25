@@ -60,6 +60,7 @@ public:
     Standard_EXPORT TColStd_Array1OfReal&           ChangeAttributes();
     Standard_EXPORT TColStd_Array1OfInteger&        ChangeNeighbors();
     Standard_EXPORT TColStd_Array1OfInteger&        ChangeNodes();
+    Standard_EXPORT Standard_Real                   MaximumArea() const;
     Standard_EXPORT Standard_Integer                NbAttributes() const;
     Standard_EXPORT Standard_Integer                NbNeighbors() const;
     Standard_EXPORT Standard_Integer                NbNodes() const;
@@ -75,6 +76,7 @@ public:
                                                                 const Standard_Boolean toCopyData = Standard_True);
     Standard_EXPORT void                            SetAttribute(const Standard_Integer theIndex,
                                                                  const Standard_Real theValue);
+    Standard_EXPORT void                            SetMaximumArea(const Standard_Real theMaximumArea);
     Standard_EXPORT void                            SetNeighbor(const Standard_Integer theIndex,
                                                                 const Standard_Integer theNeighbor);
     Standard_EXPORT void                            SetNode(const Standard_Integer theIndex,
@@ -85,6 +87,7 @@ public:
 private:
 
     TColStd_Array1OfReal        myAttributes;
+    Standard_Real               myMaximumArea;
     TColStd_Array1OfInteger     myNeighbors;
     TColStd_Array1OfInteger     myNodes;
     Triangle_TypeOfElement      myType;

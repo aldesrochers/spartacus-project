@@ -20,42 +20,14 @@
 // ============================================================================
 
 
-#ifndef __Triangle_hxx__
-#define __Triangle_hxx__
+#ifndef __Triangle_Array1OfSequenceOfInteger_hxx__
+#define __Triangle_Array1OfSequenceOfInteger_hxx__
 
 // OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
+#include <NCollection_Array1.hxx>
+#include <TColStd_SequenceOfInteger.hxx>
 
-// Spartacus
-#include <Triangle_MeshIO.hxx>
+// Type definitions
+typedef NCollection_Array1<TColStd_SequenceOfInteger>   Triangle_Array1OfSequenceOfInteger;
 
-// Triangle
-#ifndef __triangle_h__
-#define __triangle_h__
-    #include <triangle.h>
-#endif  // __triangle_h__
-
-
-// ============================================================================
-/*!
- *  \brief Triangle
-*/
-// ============================================================================
-class Triangle
-{
-
-public:
-
-    DEFINE_STANDARD_ALLOC
-
-public:
-
-    static Standard_EXPORT Handle(Triangle_MeshIO)  MeshIO(const triangulateio& aTriangleIO);
-    static Standard_EXPORT triangulateio            TriangleIO(const Handle(Triangle_MeshIO)& theMeshIO);
-
-
-};
-
-
-#endif // __Triangle_hxx__
+#endif // __Triangle_Array1OfSequenceOfInteger_hxx__

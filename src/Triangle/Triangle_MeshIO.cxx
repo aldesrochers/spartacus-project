@@ -20,42 +20,36 @@
 // ============================================================================
 
 
-#ifndef __Triangle_hxx__
-#define __Triangle_hxx__
-
-// OpenCascade
-#include <Standard.hxx>
-#include <Standard_DefineAlloc.hxx>
-
 // Spartacus
 #include <Triangle_MeshIO.hxx>
 
-// Triangle
-#ifndef __triangle_h__
-#define __triangle_h__
-    #include <triangle.h>
-#endif  // __triangle_h__
 
 
 // ============================================================================
 /*!
- *  \brief Triangle
+ *  \brief Constructor
 */
 // ============================================================================
-class Triangle
+Triangle_MeshIO::Triangle_MeshIO()
 {
 
-public:
+}
 
-    DEFINE_STANDARD_ALLOC
+// ============================================================================
+/*!
+ *  \brief Destructor
+*/
+// ============================================================================
+Triangle_MeshIO::~Triangle_MeshIO()
+{
 
-public:
-
-    static Standard_EXPORT Handle(Triangle_MeshIO)  MeshIO(const triangulateio& aTriangleIO);
-    static Standard_EXPORT triangulateio            TriangleIO(const Handle(Triangle_MeshIO)& theMeshIO);
+}
 
 
-};
 
+// ****************************************************************************
+// Handles
+// ****************************************************************************
+IMPLEMENT_STANDARD_HANDLE(Triangle_MeshIO, Standard_Transient)
+IMPLEMENT_STANDARD_RTTIEXT(Triangle_MeshIO, Standard_Transient)
 
-#endif // __Triangle_hxx__

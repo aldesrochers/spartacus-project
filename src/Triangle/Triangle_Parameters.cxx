@@ -40,7 +40,7 @@ Triangle_Parameters::Triangle_Parameters()
     myComputeQualityMesh(Standard_True),
     myComputeRefinedMesh(Standard_False),
     myComputeSecondOrderElements(Standard_False),
-    myComputeSteinerPoints(Standard_False),
+    myComputeSteinerPoints(Standard_True),
     myComputeVeronoiDiagram(Standard_True),
     myEncloseConvexHull(Standard_True),
     myFixMaximumElementArea(Standard_False),

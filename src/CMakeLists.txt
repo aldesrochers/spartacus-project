@@ -666,6 +666,7 @@ set(MeshDS_PKG_HEADERS
     MeshDS/MeshDS_TFace.hxx
     MeshDS/MeshDS_TGroup.hxx
     MeshDS/MeshDS_TMesh.hxx
+    MeshDS/MeshDS_TModel.hxx
     MeshDS/MeshDS_TNode.hxx
     MeshDS/MeshDS_TObject.hxx
     MeshDS/MeshDS_TPolygon.hxx
@@ -692,6 +693,7 @@ set(MeshDS_PKG_SOURCES
     MeshDS/MeshDS_TFace.cxx
     MeshDS/MeshDS_TGroup.cxx
     MeshDS/MeshDS_TMesh.cxx
+    MeshDS/MeshDS_TModel.cxx
     MeshDS/MeshDS_TNode.cxx
     MeshDS/MeshDS_TObject.cxx
     MeshDS/MeshDS_TPolygon.cxx
@@ -1290,13 +1292,17 @@ set(Triangle_PKG_HEADERS
     Triangle/Triangle_Array1OfNode.hxx
     Triangle/Triangle_Array1OfRegion.hxx
     Triangle/Triangle_Array1OfSegment.hxx
+    Triangle/Triangle_Array1OfSequenceOfInteger.hxx
+    Triangle/Triangle_Array1OfSequenceOfReal.hxx
     Triangle/Triangle_Command.hxx
+    Triangle/Triangle_DataModel.hxx
     Triangle/Triangle_Edge.hxx
     Triangle/Triangle_Element.hxx
     Triangle/Triangle_Hole.hxx
     Triangle/Triangle_MakeMesh.hxx
     Triangle/Triangle_MakeModel.hxx
     Triangle/Triangle_Mesh.hxx
+    Triangle/Triangle_MeshIO.hxx
     Triangle/Triangle_Mesher.hxx
     Triangle/Triangle_Model.hxx
     Triangle/Triangle_Node.hxx
@@ -1304,17 +1310,21 @@ set(Triangle_PKG_HEADERS
     Triangle/Triangle_Parameters.hxx
     Triangle/Triangle_Region.hxx
     Triangle/Triangle_Segment.hxx
+    Triangle/Triangle_Triangulate.hxx
+    Triangle/Triangle_TriangulateError.hxx
 )
 
 set(Triangle_PKG_SOURCES
     Triangle/Triangle.cxx
     Triangle/Triangle_Command.cxx
+    Triangle/Triangle_DataModel.cxx
     Triangle/Triangle_Edge.cxx
     Triangle/Triangle_Element.cxx
     Triangle/Triangle_Hole.cxx
     Triangle/Triangle_MakeMesh.cxx
     Triangle/Triangle_MakeModel.cxx
     Triangle/Triangle_Mesh.cxx
+    Triangle/Triangle_MeshIO.cxx
     Triangle/Triangle_Mesher.cxx
     Triangle/Triangle_Model.cxx
     Triangle/Triangle_Node.cxx
@@ -1322,6 +1332,7 @@ set(Triangle_PKG_SOURCES
     Triangle/Triangle_Parameters.cxx
     Triangle/Triangle_Region.cxx
     Triangle/Triangle_Segment.cxx
+    Triangle/Triangle_Triangulate.cxx
 )
 
 # =============================================================================

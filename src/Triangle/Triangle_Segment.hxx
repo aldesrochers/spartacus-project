@@ -55,13 +55,16 @@ public:
 
 public:
 
+    Standard_EXPORT Standard_Integer    BoundaryMarker() const;
     Standard_EXPORT Standard_Integer    Node1() const;
     Standard_EXPORT Standard_Integer    Node2() const;
+    Standard_EXPORT void                SetBoundaryMarker(const Standard_Integer theBoundaryMarker);
     Standard_EXPORT void                SetNode1(const Standard_Integer theNode1);
     Standard_EXPORT void                SetNode2(const Standard_Integer theNode2);
 
 private:
 
+    Standard_Integer    myBoundaryMarker;
     Standard_Integer    myNode1;
     Standard_Integer    myNode2;
 
