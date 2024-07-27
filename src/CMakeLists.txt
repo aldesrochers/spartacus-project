@@ -703,6 +703,30 @@ set(MeshDS_PKG_SOURCES
 )
 
 # =============================================================================
+# Package : MeshData
+# =============================================================================
+
+set(MeshData_PKG_HEADERS
+    MeshData/MeshData_Edge.hxx
+    MeshData/MeshData_Face.hxx
+    MeshData/MeshData_Shape.hxx
+    MeshData/MeshData_Shell.hxx
+    MeshData/MeshData_Solid.hxx
+    MeshData/MeshData_Vertex.hxx
+    MeshData/MeshData_Wire.hxx
+)
+
+set(MeshData_PKG_SOURCES
+    MeshData/MeshData_Edge.cxx
+    MeshData/MeshData_Face.cxx
+    MeshData/MeshData_Shape.cxx
+    MeshData/MeshData_Shell.cxx
+    MeshData/MeshData_Solid.cxx
+    MeshData/MeshData_Vertex.cxx
+    MeshData/MeshData_Wire.cxx
+)
+
+# =============================================================================
 # Package : MeshExp
 # =============================================================================
 
@@ -1015,67 +1039,11 @@ set(ModelTools_PKG_SOURCES
 # =============================================================================
 
 set(mp_PKG_HEADERS
-    mp/mp_Edge2N.hxx
-    mp/mp_Edge3N.hxx
-    mp/mp_LinearHexahedron8N.hxx
-    mp/mp_LinearLine2N.hxx
-    mp/mp_LinearPentahedron6N.hxx
-    mp/mp_LinearPyramid5N.hxx
-    mp/mp_LinearQuadrangle4N.hxx
-    mp/mp_LinearTetrahedron4N.hxx
-    mp/mp_LinearTriangle3N.hxx
-    mp/mp_QuadrangleFace4N.hxx
-    mp/mp_QuadrangleFace8N.hxx
-    mp/mp_QuadrangleFace9N.hxx
-    mp/mp_QuadraticHexahedron20N.hxx
-    mp/mp_QuadraticHexahedron27N.hxx
-    mp/mp_QuadraticLine3N.hxx
-    mp/mp_QuadraticPentahedron15N.hxx
-    mp/mp_QuadraticPentahedron18N.hxx
-    mp/mp_QuadraticPyramid13N.hxx
-    mp/mp_QuadraticPyramid14N.hxx
-    mp/mp_QuadraticQuadrangle8N.hxx
-    mp/mp_QuadraticQuadrangle9N.hxx
-    mp/mp_QuadraticTetrahedron10N.hxx
-    mp/mp_QuadraticTriangle6N.hxx
-    mp/mp_QuadraticTriangle7N.hxx
-    mp/mp_TriangleFace3N.hxx
-    mp/mp_TriangleFace6N.hxx
-    mp/mp_TriangleFace7N.hxx
-
-    mp/mp_LinearLine.hxx
+    mp/mp_Segment.hxx
 )
 
 set(mp_PKG_SOURCES
-    mp/mp_Edge2N.cxx
-    mp/mp_Edge3N.cxx
-    mp/mp_LinearHexahedron8N.cxx
-    mp/mp_LinearLine2N.cxx
-    mp/mp_LinearPentahedron6N.cxx
-    mp/mp_LinearPyramid5N.cxx
-    mp/mp_LinearQuadrangle4N.cxx
-    mp/mp_LinearTetrahedron4N.cxx
-    mp/mp_LinearTriangle3N.cxx
-    mp/mp_QuadrangleFace4N.cxx
-    mp/mp_QuadrangleFace8N.cxx
-    mp/mp_QuadrangleFace9N.cxx
-    mp/mp_QuadraticHexahedron20N.cxx
-    mp/mp_QuadraticHexahedron27N.cxx
-    mp/mp_QuadraticLine3N.cxx
-    mp/mp_QuadraticPentahedron15N.cxx
-    mp/mp_QuadraticPentahedron18N.cxx
-    mp/mp_QuadraticPyramid13N.cxx
-    mp/mp_QuadraticPyramid14N.cxx
-    mp/mp_QuadraticQuadrangle8N.cxx
-    mp/mp_QuadraticQuadrangle9N.cxx
-    mp/mp_QuadraticTetrahedron10N.cxx
-    mp/mp_QuadraticTriangle6N.cxx
-    mp/mp_QuadraticTriangle7N.cxx
-    mp/mp_TriangleFace3N.cxx
-    mp/mp_TriangleFace6N.cxx
-    mp/mp_TriangleFace7N.cxx
-
-    mp/mp_LinearLine.cxx
+    mp/mp_Segment.cxx
 )
 
 # =============================================================================
@@ -1083,13 +1051,11 @@ set(mp_PKG_SOURCES
 # =============================================================================
 
 set(PolyMesh_PKG_HEADERS
-    PolyMesh/PolyMesh_Line.hxx
-    PolyMesh/PolyMesh_Mesh1d.hxx
+    PolyMesh/PolyMesh_Object.hxx
 )
 
 set(PolyMesh_PKG_SOURCES
-    PolyMesh/PolyMesh_Line.cxx
-    PolyMesh/PolyMesh_Mesh1d.cxx
+    PolyMesh/PolyMesh_Object.cxx
 )
 
 # =============================================================================
@@ -1444,6 +1410,7 @@ set(Ceres_HEADERS
     ${Mesh_PKG_HEADERS}
     ${MeshAbs_PKG_HEADERS}
     ${MeshAlgo_PKG_HEADERS}
+    ${MeshData_PKG_HEADERS}
     ${MeshDS_PKG_HEADERS}
     ${MeshFunc_PKG_HEADERS}
     ${MeshLib_PKG_HEADERS}
@@ -1458,6 +1425,7 @@ set(Ceres_SOURCES
     ${cp_PKG_SOURCES}
     ${Mesh_PKG_SOURCES}
     ${MeshAlgo_PKG_SOURCES}
+    ${MeshData_PKG_SOURCES}
     ${MeshDS_PKG_SOURCES}
     ${MeshFunc_PKG_SOURCES}
     ${MeshLib_PKG_SOURCES}
@@ -1475,6 +1443,7 @@ set(Ceres_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/Mesh
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAbs
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshAlgo
+    ${CMAKE_CURRENT_SOURCE_DIR}/MeshData
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshDS
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshFunc
     ${CMAKE_CURRENT_SOURCE_DIR}/MeshLib
